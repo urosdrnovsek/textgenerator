@@ -19,6 +19,7 @@ import { isPrintReady, printWorksheet } from './export/print.js';
 import { exportDocx } from './export/docx.js';
 import { createTranslator } from './i18n.js';
 import { checkStorageCapability, listPresets, savePreset, deletePreset } from './storage.js';
+import { readImageFile } from './import.js';
 
 const t = createTranslator(slLocale);
 
@@ -104,6 +105,7 @@ const state = {
     personalization: { name: '' },
     marginMm: 20
   },
+  customImage: null, // { id: 'custom', path: dataUrl } | null — session-only, never persisted (blueprint 8.8/section 15)
   lastGood: null // { model, layout }
 };
 
@@ -137,7 +139,10 @@ const els = {
   loadPresetButton: document.getElementById('btn-load-preset'),
   deletePresetButton: document.getElementById('btn-delete-preset'),
   savePresetButton: document.getElementById('btn-save-preset'),
-  storageStatus: document.getElementById('storage-status')
+  storageStatus: document.getElementById('storage-status'),
+  imageUpload: document.getElementById('image-upload'),
+  resetImageButton: document.getElementById('btn-reset-image'),
+  imageStatus: document.getElementById('image-status')
 };
 
 /** Applies t() to every element carrying a data-label (text) or data-placeholder (input placeholder) key. */
@@ -183,6 +188,7 @@ function createText() {
   const entry = chooseEntry(candidates, state.contentId);
   if (!entry) return; // createButton is disabled in this case, but guard anyway
   state.contentId = entry.id;
+  resetCustomImage(); // a newly created text gets its own paired image, not the previous text's custom one
   requestRender();
 }
 
@@ -193,6 +199,27 @@ function updateWritingMode(mode) {
 
 function updatePersonalizationName(name) {
   state.settings.personalization.name = name;
+  if (state.contentId) requestRender();
+}
+
+function resetCustomImage() {
+  state.customImage = null;
+  els.imageUpload.value = '';
+  els.resetImageButton.disabled = true;
+  els.imageStatus.textContent = '';
+}
+
+async function handleImageUpload(file) {
+  if (!file) return;
+  const result = await readImageFile(file);
+  if (!result.ok) {
+    els.imageStatus.textContent = t(`image.error.${result.code}`);
+    els.imageUpload.value = '';
+    return;
+  }
+  state.customImage = { id: 'custom', path: result.dataUrl };
+  els.resetImageButton.disabled = false;
+  els.imageStatus.textContent = t('image.replaced');
   if (state.contentId) requestRender();
 }
 
@@ -376,7 +403,12 @@ function showFit(model, result) {
 async function requestRender() {
   const revision = ++state.revision;
   const entry = CATALOG.byId.get(state.contentId);
-  const model = buildWorksheet(entry, state.settings, { imagesById: IMAGES_BY_ID }, entry.language);
+  // A teacher-uploaded image overrides only this entry's mapping, for this
+  // render — the shared IMAGES_BY_ID map itself is never mutated.
+  const imagesById = state.customImage
+    ? new Map(IMAGES_BY_ID).set(entry.imageId, state.customImage)
+    : IMAGES_BY_ID;
+  const model = buildWorksheet(entry, state.settings, { imagesById }, entry.language);
 
   const result = await measureWorksheet(model, revision);
   if (revision !== state.revision) return; // stale async result, discard
@@ -449,6 +481,8 @@ els.dyslexiaPresetButton.addEventListener('click', applyDyslexiaPreset);
 els.loadPresetButton.addEventListener('click', handleLoadPreset);
 els.deletePresetButton.addEventListener('click', handleDeletePreset);
 els.savePresetButton.addEventListener('click', handleSavePreset);
+els.imageUpload.addEventListener('change', (e) => handleImageUpload(e.target.files[0]));
+els.resetImageButton.addEventListener('click', resetCustomImage);
 
 applyStaticLabels();
 populateThemeSelect();

@@ -47,6 +47,13 @@
     "preset.builtin.dyslexia": "Dyslexia-friendly",
     "preset.saveFailed": "Saving failed. Settings are only available for this session.",
     "preset.storageUnavailable": "Saving isn't available in this browser — built-in setups still work.",
-    "preset.deleteBuiltinBlocked": "Built-in setups can't be deleted."
+    "preset.deleteBuiltinBlocked": "Built-in setups can't be deleted.",
+    "field.customImage": "Custom image (optional)",
+    "action.resetImage": "Reset to default image",
+    "image.error.UNSUPPORTED_TYPE": "Image must be PNG or JPEG.",
+    "image.error.FILE_TOO_LARGE": "Image is too large (max 10 MB).",
+    "image.error.DECODE_FAILED": "Couldn't open the file as an image.",
+    "image.error.TOO_MANY_PIXELS": "Image has too many pixels.",
+    "image.replaced": "Image replaced for this worksheet."
   }
 }

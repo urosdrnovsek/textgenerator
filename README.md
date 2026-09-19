@@ -8,7 +8,7 @@ result as print/PDF or an editable Word (`.docx`) file. Designed to run
 entirely offline: open `index.html`, no server, no install, no internet
 connection at any point.
 
-## Status: Phase 3 in progress (Slovene pilot)
+## Status: Phase 3 complete (Slovene pilot MVP), except the ruling
 
 - **Content:** 25 reviewed-pending Slovene entries (5 themes × 5 levels),
   drawn from the larger collection in `Texts collection/` and `Images/`.
@@ -17,16 +17,19 @@ connection at any point.
   and clicks "Create text" to select one (never silently swapped by a filter
   change) — plus a writing-mode switch, dyslexia-support controls (font
   size, line/letter/word spacing, letter- and syllable-color toggles, a
-  "Dyslexia-friendly" preset), optional child-name personalization, live
-  fit-checked preview, print/PDF, and editable `.docx` export. Fully in
-  Slovene.
+  "Dyslexia-friendly" preset), optional child-name personalization, an
+  optional custom image upload (PNG/JPEG, validated by actually decoding
+  it, EXIF-orientation-corrected, downsampled locally), live fit-checked
+  preview, print/PDF, and editable `.docx` export. Fully in Slovene.
 - **Named setups:** two built-in presets (Standard / Dyslexia-friendly) plus
   teacher-saved ones, persisted via localStorage with a capability check —
-  save failure is reported honestly rather than claiming success.
+  save failure is reported honestly rather than claiming success. A saved
+  setup never includes the child's name or a custom image (those are
+  per-worksheet, not reusable).
 - **Not yet built:** font choice beyond the one bundled font (Andika, others
-  are Phase 4), custom image/logo upload, country-specific handwriting
-  rulings (only a generic 3-line guide exists — needs real teacher input,
-  intentionally not fabricated).
+  are Phase 4), country-specific handwriting rulings (only a generic
+  3-line guide exists — needs real teacher/classroom input, intentionally
+  not fabricated; see the blueprint's decision table).
 
 ## Running it
 

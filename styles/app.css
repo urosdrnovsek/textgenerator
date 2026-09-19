@@ -36,11 +36,12 @@ body {
 }
 
 .app-sidebar select,
-.app-sidebar input[type='text'] {
+.app-sidebar input[type='text'],
+.app-sidebar input[type='file'] {
   display: block;
   width: 100%;
   padding: 6px;
-  font-size: 14px;
+  font-size: 13px;
   margin-bottom: 4px;
   box-sizing: border-box;
 }

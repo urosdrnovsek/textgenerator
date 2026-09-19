@@ -47,6 +47,13 @@
     "preset.builtin.dyslexia": "Prijazno za disleksijo",
     "preset.saveFailed": "Shranjevanje ni uspelo. Nastavitve so na voljo samo v tej seji.",
     "preset.storageUnavailable": "Shranjevanje ni na voljo v tem brskalniku — vgrajene nastavitve še vedno delujejo.",
-    "preset.deleteBuiltinBlocked": "Vgrajenih nastavitev ni mogoče izbrisati."
+    "preset.deleteBuiltinBlocked": "Vgrajenih nastavitev ni mogoče izbrisati.",
+    "field.customImage": "Lastna slika (neobvezno)",
+    "action.resetImage": "Ponastavi na privzeto sliko",
+    "image.error.UNSUPPORTED_TYPE": "Slika mora biti v obliki PNG ali JPEG.",
+    "image.error.FILE_TOO_LARGE": "Slika je prevelika (največ 10 MB).",
+    "image.error.DECODE_FAILED": "Datoteke ni bilo mogoče odpreti kot sliko.",
+    "image.error.TOO_MANY_PIXELS": "Slika ima preveč slikovnih pik.",
+    "image.replaced": "Slika je bila zamenjana za ta delovni list."
   }
 }
