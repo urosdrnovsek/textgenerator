@@ -36,6 +36,7 @@
       <label for="writing-mode-select" data-label="field.writingMode">Način pisanja</label>
       <select id="writing-mode-select">
         <option value="read-copy" data-label="writingMode.read-copy">Beri in prepiši</option>
+        <option value="trace" data-label="writingMode.trace">Sledi črkam</option>
         <option value="read-only" data-label="writingMode.read-only">Samo branje</option>
       </select>
 
@@ -64,6 +65,29 @@
         <label class="checkbox-label">
           <input type="checkbox" id="syllable-colors-toggle" />
           <span data-label="field.syllableColors">Barve zlogov</span>
+        </label>
+
+        <label class="checkbox-label">
+          <input type="checkbox" id="syllable-separators-toggle" />
+          <span data-label="field.syllableSeparators">Ločila med zlogi (Ma·ja)</span>
+        </label>
+
+        <label class="checkbox-label">
+          <input type="checkbox" id="sentence-per-line-toggle" />
+          <span data-label="field.sentencePerLine">Ena poved na vrstico</span>
+        </label>
+
+        <label for="tint-select" data-label="field.tint">Barva ozadja</label>
+        <select id="tint-select">
+          <option value="none" data-label="tint.none">Brez</option>
+          <option value="cream" data-label="tint.cream">Krem</option>
+          <option value="blue" data-label="tint.blue">Svetlo modra</option>
+          <option value="green" data-label="tint.green">Svetlo zelena</option>
+        </select>
+
+        <label class="checkbox-label">
+          <input type="checkbox" id="print-tint-toggle" />
+          <span data-label="field.printTint">Natisni tudi barvno ozadje</span>
         </label>
       </details>
 

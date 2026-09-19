@@ -5,8 +5,8 @@
  * section 3's module responsibility table).
  */
 
-import { resolvePersonalization } from '../text/prepare.js';
-import { buildStyledRuns, countWords } from '../text/runs.js';
+import { resolvePersonalization, splitIntoSentences } from '../text/prepare.js';
+import { buildStyledRuns, splitRunsIntoSentences, lightenParagraphs, countWords } from '../text/runs.js';
 
 /**
  * @typedef {object} ImageAsset
@@ -27,8 +27,11 @@ import { buildStyledRuns, countWords } from '../text/runs.js';
  * @property {string} rulingId
  * @property {number} guideHeightMm
  * @property {Record<string, string>} letterColors
- * @property {'off' | 'colors'} syllableMode
+ * @property {'off' | 'colors' | 'separators' | 'both'} syllableMode
  * @property {[string, string]} [syllableColors]
+ * @property {boolean} [sentencePerLine]
+ * @property {string} [tintId] key into config.TINTS_BY_ID
+ * @property {boolean} [printTint] whether the tint also shows when printed (default off, to save ink)
  * @property {{ nameLine: boolean, date: boolean, title: boolean }} header
  * @property {{ name?: string }} [personalization]
  * @property {number} marginMm
@@ -40,7 +43,7 @@ import { buildStyledRuns, countWords } from '../text/runs.js';
  * @typedef {object} WorksheetModel
  * @property {{ language: string, id: string, version: number }} contentKey
  * @property {string} title
- * @property {import('../text/runs.js').StyledRun[]} bodyRuns
+ * @property {import('../text/runs.js').StyledRun[][]} bodyParagraphs one array of runs per line — a single element unless settings.sentencePerLine is on
  * @property {number} wordCount
  * @property {number} level
  * @property {ImageAsset} image
@@ -64,6 +67,16 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount) {
     syllableColors: settings.syllableColors
   });
 
+  const sentenceParagraphs = settings.sentencePerLine
+    ? splitRunsIntoSentences(bodyRuns, splitIntoSentences(resolvedText.body))
+    : [bodyRuns];
+
+  // Trace: light solid text (blueprint 8.7) — computed once here so HTML
+  // and DOCX render identical colors, never two implementations of "light".
+  const bodyParagraphs = settings.writingMode === 'trace'
+    ? lightenParagraphs(sentenceParagraphs)
+    : sentenceParagraphs;
+
   const image = assets.imagesById.get(entry.imageId);
   if (!image) {
     throw new Error(`MISSING_IMAGE: no asset registered for imageId "${entry.imageId}"`);
@@ -72,7 +85,7 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount) {
   return {
     contentKey: { language: entry.language ?? localeForWordCount, id: entry.id, version: entry.version },
     title: entry.title,
-    bodyRuns,
+    bodyParagraphs,
     wordCount: countWords(resolvedText.body, localeForWordCount),
     level: entry.level,
     image,

@@ -16,6 +16,7 @@
     "field.level": "Level",
     "field.writingMode": "Writing mode",
     "writingMode.read-copy": "Read & copy",
+    "writingMode.trace": "Trace",
     "writingMode.read-only": "Read only",
     "theme.stories": "Stories",
     "theme.animal_facts": "Animal facts",
@@ -54,6 +55,14 @@
     "image.error.FILE_TOO_LARGE": "Image is too large (max 10 MB).",
     "image.error.DECODE_FAILED": "Couldn't open the file as an image.",
     "image.error.TOO_MANY_PIXELS": "Image has too many pixels.",
-    "image.replaced": "Image replaced for this worksheet."
+    "image.replaced": "Image replaced for this worksheet.",
+    "field.syllableSeparators": "Syllable separators (Ma·ja)",
+    "field.sentencePerLine": "One sentence per line",
+    "field.tint": "Background color",
+    "field.printTint": "Also print the tinted background",
+    "tint.none": "None",
+    "tint.cream": "Cream",
+    "tint.blue": "Light blue",
+    "tint.green": "Light green"
   }
 }

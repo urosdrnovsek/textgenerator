@@ -53,3 +53,38 @@ export function resolvePersonalization(entry, name) {
   // coloring is not available on a personalized passage in Phase 0.
   return { body, syllableBody: undefined, personalized: true };
 }
+
+/**
+ * Splits on a paragraph break, or a run of non-terminator characters
+ * followed by ./!/? (or end of paragraph). Algorithmic rather than
+ * author-marked: unlike syllable boundaries (which have real per-language
+ * phonological rules and are explicitly never to be guessed — blueprint
+ * 8.2), terminal punctuation is a reliable sentence-boundary signal, and
+ * none of the current content authors sentence boundaries explicitly.
+ *
+ * A closing quote/bracket is allowed to sit between the terminator and the
+ * following whitespace ("prideš!« so vpili.") — found via a real content
+ * entry using Slovene dialogue quoting (»...«), which was silently dropping
+ * the entire quoted sentence before this was added.
+ */
+const CLOSING_MARKS = '»«"\'“”‘’)\\]';
+const SENTENCE_PATTERN = new RegExp(`[^.!?]+[.!?]+[${CLOSING_MARKS}]*(?=\\s|$)|[^.!?]+$`, 'g');
+
+/**
+ * @param {string} text already-resolved body text (post-personalization)
+ * @returns {string[]} one entry per sentence, trimmed, empty ones dropped
+ */
+export function splitIntoSentences(text) {
+  const paragraphs = text.split(/\n+/);
+  const sentences = [];
+  for (const paragraph of paragraphs) {
+    const trimmedParagraph = paragraph.trim();
+    if (trimmedParagraph.length === 0) continue;
+    const matches = trimmedParagraph.match(SENTENCE_PATTERN) ?? [trimmedParagraph];
+    for (const match of matches) {
+      const sentence = match.trim();
+      if (sentence.length > 0) sentences.push(sentence);
+    }
+  }
+  return sentences;
+}

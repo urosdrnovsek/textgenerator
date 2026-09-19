@@ -64,6 +64,9 @@ const STANDARD_SETTINGS = {
   syllableMode: 'colors',
   syllableColors: ['#1D4ED8', '#B45309'],
   header: { nameLine: true, date: true, title: true },
+  sentencePerLine: false,
+  tintId: 'none',
+  printTint: false,
   marginMm: 20
 };
 
@@ -103,6 +106,9 @@ const state = {
     syllableColors: ['#1D4ED8', '#B45309'],
     header: { nameLine: true, date: true, title: true },
     personalization: { name: '' },
+    sentencePerLine: false,
+    tintId: 'none',
+    printTint: false,
     marginMm: 20
   },
   customImage: null, // { id: 'custom', path: dataUrl } | null — session-only, never persisted (blueprint 8.8/section 15)
@@ -134,6 +140,10 @@ const els = {
   wordSpacingInput: document.getElementById('word-spacing-input'),
   letterColorsToggle: document.getElementById('letter-colors-toggle'),
   syllableColorsToggle: document.getElementById('syllable-colors-toggle'),
+  syllableSeparatorsToggle: document.getElementById('syllable-separators-toggle'),
+  sentencePerLineToggle: document.getElementById('sentence-per-line-toggle'),
+  tintSelect: document.getElementById('tint-select'),
+  printTintToggle: document.getElementById('print-tint-toggle'),
   dyslexiaPresetButton: document.getElementById('btn-dyslexia-preset'),
   presetSelect: document.getElementById('preset-select'),
   loadPresetButton: document.getElementById('btn-load-preset'),
@@ -243,7 +253,12 @@ function syncSettingsControlsFromState() {
   els.letterSpacingInput.value = s.letterSpacingPt;
   els.wordSpacingInput.value = s.extraWordSpacePt;
   els.letterColorsToggle.checked = Object.keys(s.letterColors).length > 0;
-  els.syllableColorsToggle.checked = s.syllableMode === 'colors';
+  els.syllableColorsToggle.checked = s.syllableMode === 'colors' || s.syllableMode === 'both';
+  els.syllableSeparatorsToggle.checked = s.syllableMode === 'separators' || s.syllableMode === 'both';
+  els.sentencePerLineToggle.checked = Boolean(s.sentencePerLine);
+  els.tintSelect.value = s.tintId ?? 'none';
+  els.printTintToggle.checked = Boolean(s.printTint);
+  els.printTintToggle.disabled = (s.tintId ?? 'none') === 'none';
 }
 
 function clamp(value, range) {
@@ -262,8 +277,27 @@ function updateLetterColorsEnabled(enabled) {
   if (state.contentId) requestRender();
 }
 
-function updateSyllableColorsEnabled(enabled) {
-  state.settings.syllableMode = enabled ? 'colors' : 'off';
+/** Colors and separators are independently toggleable (brief section 5: "and/or") — this reads both checkboxes to derive the single syllableMode value the rest of the app expects. */
+function updateSyllableMode() {
+  const colors = els.syllableColorsToggle.checked;
+  const separators = els.syllableSeparatorsToggle.checked;
+  state.settings.syllableMode = colors && separators ? 'both' : colors ? 'colors' : separators ? 'separators' : 'off';
+  if (state.contentId) requestRender();
+}
+
+function updateSentencePerLine(enabled) {
+  state.settings.sentencePerLine = enabled;
+  if (state.contentId) requestRender();
+}
+
+function updateTint(tintId) {
+  state.settings.tintId = tintId;
+  els.printTintToggle.disabled = tintId === 'none';
+  if (state.contentId) requestRender();
+}
+
+function updatePrintTint(enabled) {
+  state.settings.printTint = enabled;
   if (state.contentId) requestRender();
 }
 
@@ -298,6 +332,9 @@ function extractPresetSettings() {
     syllableMode: s.syllableMode,
     syllableColors: s.syllableColors,
     header: s.header,
+    sentencePerLine: s.sentencePerLine,
+    tintId: s.tintId,
+    printTint: s.printTint,
     marginMm: s.marginMm
   };
 }
@@ -318,6 +355,9 @@ function applyPresetSettings(settings) {
     syllableMode: settings.syllableMode,
     syllableColors: settings.syllableColors,
     header: settings.header,
+    sentencePerLine: settings.sentencePerLine ?? false,
+    tintId: settings.tintId ?? 'none',
+    printTint: settings.printTint ?? false,
     marginMm: settings.marginMm
     // personalization is left untouched — loading a setup must not erase a name already typed in
   });
@@ -476,7 +516,11 @@ els.lineHeightInput.addEventListener('change', (e) => updateNumericSetting('line
 els.letterSpacingInput.addEventListener('change', (e) => updateNumericSetting('letterSpacingPt', SETTINGS_LIMITS.letterSpacingPt, e.target));
 els.wordSpacingInput.addEventListener('change', (e) => updateNumericSetting('extraWordSpacePt', SETTINGS_LIMITS.extraWordSpacePt, e.target));
 els.letterColorsToggle.addEventListener('change', (e) => updateLetterColorsEnabled(e.target.checked));
-els.syllableColorsToggle.addEventListener('change', (e) => updateSyllableColorsEnabled(e.target.checked));
+els.syllableColorsToggle.addEventListener('change', updateSyllableMode);
+els.syllableSeparatorsToggle.addEventListener('change', updateSyllableMode);
+els.sentencePerLineToggle.addEventListener('change', (e) => updateSentencePerLine(e.target.checked));
+els.tintSelect.addEventListener('change', (e) => updateTint(e.target.value));
+els.printTintToggle.addEventListener('change', (e) => updatePrintTint(e.target.checked));
 els.dyslexiaPresetButton.addEventListener('click', applyDyslexiaPreset);
 els.loadPresetButton.addEventListener('click', handleLoadPreset);
 els.deletePresetButton.addEventListener('click', handleDeletePreset);

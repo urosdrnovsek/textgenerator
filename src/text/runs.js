@@ -64,12 +64,16 @@ function mergePairsIntoRuns(pairs, baseColor) {
   return runs;
 }
 
+/** Between-syllable mark for 'separators'/'both' mode (blueprint brief section 5: "separating words into syllables and/or alternating syllable colors" — both are independently available, not either/or). */
+const SYLLABLE_SEPARATOR = '·'; // middle dot
+
 /**
  * @typedef {object} StyleOptions
  * @property {Record<string, string>} [letterColors] lowercase letter -> hex color, e.g. { b: '#B42318', d: '#166534' }
  * @property {boolean} [uppercaseAlso] apply letterColors to uppercase too (default false)
  * @property {[string, string]} [syllableColors] two hex colors to alternate across syllables
- * @property {'off' | 'colors'} [syllableMode]
+ * @property {string} [separatorColor] color of the middle-dot mark in 'separators'/'both' mode
+ * @property {'off' | 'colors' | 'separators' | 'both'} [syllableMode]
  * @property {string} [baseColor]
  */
 
@@ -107,11 +111,17 @@ export function buildSyllableRuns(syllableBody, options = {}) {
     letterColors = {},
     uppercaseAlso = false,
     syllableColors = ['#1D4ED8', '#B45309'],
+    separatorColor = '#64748B',
+    syllableMode = 'colors',
     baseColor = '#202020'
   } = options;
   for (const color of Object.values(letterColors)) assertValidColor(color);
   for (const color of syllableColors) assertValidColor(color);
+  assertValidColor(separatorColor);
   assertValidColor(baseColor);
+
+  const showColors = syllableMode === 'colors' || syllableMode === 'both';
+  const showSeparators = syllableMode === 'separators' || syllableMode === 'both';
 
   /** @type {Array<[string, string | null]>} */
   const pairs = [];
@@ -125,7 +135,10 @@ export function buildSyllableRuns(syllableBody, options = {}) {
     }
     const syllables = token.split('|');
     syllables.forEach((syllable, index) => {
-      const syllableColor = syllableColors[index % syllableColors.length];
+      if (index > 0 && showSeparators) {
+        pairs.push([SYLLABLE_SEPARATOR, separatorColor]);
+      }
+      const syllableColor = showColors ? syllableColors[index % syllableColors.length] : null;
       for (const char of syllable) {
         const letterColor = colorForChar(char, letterColors, uppercaseAlso);
         pairs.push([char, letterColor ?? syllableColor]);
@@ -144,10 +157,87 @@ export function buildSyllableRuns(syllableBody, options = {}) {
  * @returns {StyledRun[]}
  */
 export function buildStyledRuns(resolvedText, options = {}) {
-  if (options.syllableMode === 'colors' && resolvedText.syllableBody) {
+  const usesSyllables = options.syllableMode && options.syllableMode !== 'off';
+  if (usesSyllables && resolvedText.syllableBody) {
     return buildSyllableRuns(resolvedText.syllableBody, options);
   }
   return buildLetterRuns(resolvedText.body, options);
+}
+
+/**
+ * Splits one flat run array into one run array per sentence, for
+ * "one sentence per line" (blueprint brief section 5). Cuts the already-
+ * built runs at sentence-boundary character offsets rather than re-deriving
+ * styling per sentence, so styling (syllable alternation, letter-color
+ * precedence) stays computed exactly once on the full text — the same
+ * shared-runs principle as the rest of this module (blueprint 8.6/8.9).
+ * @param {StyledRun[]} runs flat runs whose concatenated text exactly equals the source of `sentences`
+ * @param {string[]} sentences from splitIntoSentences(sourceText) — trimmed, whitespace-joined approximation of sourceText
+ * @returns {StyledRun[][]}
+ */
+export function splitRunsIntoSentences(runs, sentences) {
+  const paragraphs = [];
+  let runIndex = 0;
+  let offsetInRun = 0;
+
+  const isWhitespace = (char) => char !== undefined && /\s/.test(char);
+
+  for (const sentence of sentences) {
+    /** @type {StyledRun[]} */
+    const paragraphRuns = [];
+    let remaining = sentence.length;
+    while (remaining > 0 && runIndex < runs.length) {
+      const run = runs[runIndex];
+      const availableInRun = run.text.length - offsetInRun;
+      const take = Math.min(remaining, availableInRun);
+      paragraphRuns.push({ text: run.text.slice(offsetInRun, offsetInRun + take), color: run.color });
+      offsetInRun += take;
+      remaining -= take;
+      if (offsetInRun >= run.text.length) {
+        runIndex++;
+        offsetInRun = 0;
+      }
+    }
+    paragraphs.push(paragraphRuns);
+
+    // Skip the whitespace/newline between this sentence and the next —
+    // splitIntoSentences trimmed it out, so it isn't part of any sentence.
+    while (runIndex < runs.length && isWhitespace(runs[runIndex].text[offsetInRun])) {
+      offsetInRun++;
+      if (offsetInRun >= runs[runIndex].text.length) {
+        runIndex++;
+        offsetInRun = 0;
+      }
+    }
+  }
+
+  return paragraphs;
+}
+
+/**
+ * @param {string} hexColor
+ * @param {number} amount 0 (unchanged) to 1 (white)
+ * @returns {string}
+ */
+function lightenColor(hexColor, amount) {
+  const channel = (start) => parseInt(hexColor.slice(start, start + 2), 16);
+  const mix = (value) => Math.round(value + (255 - value) * amount);
+  const toHex = (value) => value.toString(16).padStart(2, '0');
+  return `#${toHex(mix(channel(1)))}${toHex(mix(channel(3)))}${toHex(mix(channel(5)))}`.toUpperCase();
+}
+
+/**
+ * Produces a lightened copy of styled paragraphs for trace mode — keeps
+ * every color (letter, syllable, separator) distinguishable but light
+ * enough to trace over (blueprint 8.6: "explicit lighter variants while
+ * preserving b/d/p/q distinction"). Same shared-runs data flows to both
+ * HTML and DOCX, so the two can't render trace mode differently.
+ * @param {StyledRun[][]} paragraphs
+ * @param {number} [amount]
+ * @returns {StyledRun[][]}
+ */
+export function lightenParagraphs(paragraphs, amount = 0.65) {
+  return paragraphs.map((runs) => runs.map((run) => ({ text: run.text, color: lightenColor(run.color, amount) })));
 }
 
 /**

@@ -6,7 +6,7 @@
  */
 
 import { buildRulingRows } from '../layout/rulings.js';
-import { ptToMm, FONT_FAMILIES, COPY_AREA_GAP_MM } from '../config.js';
+import { ptToMm, FONT_FAMILIES, COPY_AREA_GAP_MM, TINTS_BY_ID } from '../config.js';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 
@@ -104,6 +104,13 @@ export function renderWorksheet(model, layout, container, labels = DEFAULT_LABEL
   page.style.setProperty('--ws-letter-spacing-mm', `${ptToMm(model.settings.letterSpacingPt)}mm`);
   page.style.setProperty('--ws-word-spacing-mm', `${ptToMm(model.settings.extraWordSpacePt)}mm`);
 
+  const tintId = model.settings.tintId ?? 'none';
+  if (tintId !== 'none') {
+    page.classList.add('ws-page--tinted');
+    page.style.setProperty('--ws-tint-color', TINTS_BY_ID[tintId]);
+    page.classList.toggle('ws-page--print-tint', Boolean(model.settings.printTint));
+  }
+
   const headerEl = renderHeaderFields(model.header, labels);
   if (headerEl) page.append(headerEl);
 
@@ -123,10 +130,16 @@ export function renderWorksheet(model, layout, container, labels = DEFAULT_LABEL
   imageWrap.append(img);
   page.append(imageWrap);
 
-  const body = document.createElement('p');
-  body.className = 'ws-body';
-  renderRuns(model.bodyRuns, body);
-  page.append(body);
+  const bodyWrap = document.createElement('div');
+  bodyWrap.className = 'ws-body';
+  bodyWrap.classList.toggle('ws-sentence-per-line', model.bodyParagraphs.length > 1);
+  for (const paragraphRuns of model.bodyParagraphs) {
+    const paragraph = document.createElement('p');
+    paragraph.className = 'ws-sentence';
+    renderRuns(paragraphRuns, paragraph);
+    bodyWrap.append(paragraph);
+  }
+  page.append(bodyWrap);
 
   if (model.settings.writingMode === 'read-copy' && layout.rowCount > 0) {
     const copyArea = document.createElement('div');

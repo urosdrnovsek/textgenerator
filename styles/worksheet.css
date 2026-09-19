@@ -28,6 +28,12 @@
   text-align: left;
 }
 
+/* Tint is screen-visible whenever selected; printing it is a separate,
+   explicit opt-in to save ink by default (blueprint 8.5/8.6). */
+.ws-page.ws-page--tinted {
+  background: var(--ws-tint-color, #ffffff);
+}
+
 .ws-header {
   display: flex;
   gap: 12mm;
@@ -61,9 +67,20 @@
 
 .ws-body {
   margin: 0;
+}
+
+/* One per sentence when settings.sentencePerLine is on; otherwise a single
+   .ws-sentence wraps the whole passage (blueprint brief section 5: "one
+   sentence per line... helping children who lose their place"). */
+.ws-sentence {
+  margin: 0;
   text-align: left;
   letter-spacing: var(--ws-letter-spacing-mm, 0mm);
   word-spacing: var(--ws-word-spacing-mm, 0mm);
+}
+
+.ws-body.ws-sentence-per-line .ws-sentence {
+  margin-bottom: 0.25em;
 }
 
 .ws-copy-area {

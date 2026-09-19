@@ -34,6 +34,13 @@
     box-shadow: none;
   }
 
+  /* Tint prints only when the teacher explicitly opted in (printTint) —
+     otherwise fall back to white to save ink, regardless of the on-screen
+     preview color (blueprint 8.5). */
+  .ws-page.ws-page--tinted:not(.ws-page--print-tint) {
+    background: #ffffff;
+  }
+
   .no-print {
     display: none !important;
   }

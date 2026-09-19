@@ -77,3 +77,39 @@ test('collects multiple errors in one pass rather than stopping at the first', (
   assert.equal(result.ok, false);
   assert.ok(result.errors.length >= 3);
 });
+
+test('accepts settings with sentencePerLine, tintId, and printTint set', () => {
+  const result = validateSettings({ ...VALID_SETTINGS, sentencePerLine: true, tintId: 'cream', printTint: false });
+  assert.equal(result.ok, true);
+});
+
+test('accepts "separators" and "both" syllable modes', () => {
+  assert.equal(validateSettings({ ...VALID_SETTINGS, syllableMode: 'separators' }).ok, true);
+  assert.equal(validateSettings({ ...VALID_SETTINGS, syllableMode: 'both' }).ok, true);
+});
+
+test('accepts writingMode "trace"', () => {
+  assert.equal(validateSettings({ ...VALID_SETTINGS, writingMode: 'trace' }).ok, true);
+});
+
+test('rejects a non-boolean sentencePerLine', () => {
+  const result = validateSettings({ ...VALID_SETTINGS, sentencePerLine: 'yes' });
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some((e) => e.field === 'sentencePerLine'));
+});
+
+test('rejects an unknown tintId', () => {
+  const result = validateSettings({ ...VALID_SETTINGS, tintId: 'lavender' });
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some((e) => e.field === 'tintId'));
+});
+
+test('rejects a non-boolean printTint', () => {
+  const result = validateSettings({ ...VALID_SETTINGS, printTint: 'yes' });
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some((e) => e.field === 'printTint'));
+});
+
+test('sentencePerLine, tintId, and printTint are all optional — their absence is not an error', () => {
+  assert.equal(validateSettings(VALID_SETTINGS).ok, true);
+});

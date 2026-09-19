@@ -16,6 +16,7 @@
     "field.level": "Stopnja",
     "field.writingMode": "Način pisanja",
     "writingMode.read-copy": "Beri in prepiši",
+    "writingMode.trace": "Sledi črkam",
     "writingMode.read-only": "Samo branje",
     "theme.stories": "Zgodbe",
     "theme.animal_facts": "Zanimivosti o živalih",
@@ -54,6 +55,14 @@
     "image.error.FILE_TOO_LARGE": "Slika je prevelika (največ 10 MB).",
     "image.error.DECODE_FAILED": "Datoteke ni bilo mogoče odpreti kot sliko.",
     "image.error.TOO_MANY_PIXELS": "Slika ima preveč slikovnih pik.",
-    "image.replaced": "Slika je bila zamenjana za ta delovni list."
+    "image.replaced": "Slika je bila zamenjana za ta delovni list.",
+    "field.syllableSeparators": "Ločila med zlogi (Ma·ja)",
+    "field.sentencePerLine": "Ena poved na vrstico",
+    "field.tint": "Barva ozadja",
+    "field.printTint": "Natisni tudi barvno ozadje",
+    "tint.none": "Brez",
+    "tint.cream": "Krem",
+    "tint.blue": "Svetlo modra",
+    "tint.green": "Svetlo zelena"
   }
 }

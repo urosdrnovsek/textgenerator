@@ -27,9 +27,10 @@ import {
   HeightRule,
   WidthType,
   VerticalAlign,
+  ShadingType,
   convertMillimetersToTwip
 } from 'docx';
-import { FONT_FAMILIES, TWIPS_PER_PT, mmToPx, mmToTwips } from '../config.js';
+import { FONT_FAMILIES, TWIPS_PER_PT, mmToPx, mmToTwips, TINTS_BY_ID } from '../config.js';
 
 /**
  * @param {import('../text/runs.js').StyledRun[]} runs
@@ -63,6 +64,14 @@ export async function exportDocx(model, layout, imageBytes) {
   /** @type {(Paragraph | Table)[]} */
   const children = [];
 
+  // Page tint (brief section 5) is print-optional to save ink (blueprint
+  // 8.5); reuses paragraph shading rather than page background, since Word
+  // page color is a screen-only feature by default and often isn't printed
+  // (blueprint 8.6: "Test cell/paragraph/page shading rather than assume a
+  // screen background prints").
+  const tintHex = s.tintId && s.tintId !== 'none' ? TINTS_BY_ID[s.tintId] : undefined;
+  const shading = s.printTint && tintHex ? { type: ShadingType.CLEAR, fill: tintHex.replace('#', '') } : undefined;
+
   if (model.header.nameLine || model.header.date) {
     const parts = [];
     if (model.header.nameLine) {
@@ -71,7 +80,7 @@ export async function exportDocx(model, layout, imageBytes) {
     if (model.header.date) {
       parts.push(new TextRun({ text: '          Datum: ________________', font: fontFamily, size: 22 }));
     }
-    children.push(new Paragraph({ children: parts, spacing: { after: 200 } }));
+    children.push(new Paragraph({ children: parts, spacing: { after: 200 }, shading }));
   }
 
   if (model.header.title) {
@@ -80,7 +89,8 @@ export async function exportDocx(model, layout, imageBytes) {
         children: [
           new TextRun({ text: model.header.titleText, bold: true, font: fontFamily, size: Math.round((s.fontSizePt + 4) * 2) })
         ],
-        spacing: { after: 200 }
+        spacing: { after: 200 },
+        shading
       })
     );
   }
@@ -98,18 +108,22 @@ export async function exportDocx(model, layout, imageBytes) {
             transformation: { width: Math.round(mmToPx(widthMm)), height: Math.round(mmToPx(heightMm)) }
           })
         ],
-        spacing: { after: 200 }
+        spacing: { after: 200 },
+        shading
       })
     );
   }
 
-  children.push(
-    new Paragraph({
-      alignment: AlignmentType.LEFT,
-      spacing: { line: Math.round((s.lineHeightMultiplier ?? 1.5) * 240) },
-      children: toWordRuns(model.bodyRuns, { fontFamily, fontSizePt: s.fontSizePt, characterSpacingTwips })
-    })
-  );
+  for (const paragraphRuns of model.bodyParagraphs) {
+    children.push(
+      new Paragraph({
+        alignment: AlignmentType.LEFT,
+        spacing: { line: Math.round((s.lineHeightMultiplier ?? 1.5) * 240) },
+        children: toWordRuns(paragraphRuns, { fontFamily, fontSizePt: s.fontSizePt, characterSpacingTwips }),
+        shading
+      })
+    );
+  }
 
   // Copy-practice lines: a single-column table with one row per line.
   // Paragraph-border "exact" spacing on empty/near-empty paragraphs was

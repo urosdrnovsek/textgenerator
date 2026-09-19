@@ -94,4 +94,20 @@ export const SETTINGS_LIMITS = {
 };
 
 export const KNOWN_WRITING_MODES = new Set(['read-copy', 'trace', 'read-only']);
-export const KNOWN_SYLLABLE_MODES = new Set(['off', 'colors']);
+export const KNOWN_SYLLABLE_MODES = new Set(['off', 'colors', 'separators', 'both']);
+
+/**
+ * Screen/print background tint (brief section 5: "Tinted background
+ * options (cream / soft pastel) instead of pure white, to reduce glare").
+ * `printTint` (a separate boolean on WorksheetSettings) controls whether the
+ * tint also shows when printed, kept off by default to save ink — matches
+ * the printTint/printStripes fields in the blueprint's own example preset
+ * (section 6).
+ * @type {Record<string, string>}
+ */
+export const TINTS_BY_ID = {
+  none: '#FFFFFF',
+  cream: '#FFF8E7',
+  blue: '#EAF3FB',
+  green: '#EDF7EE'
+};

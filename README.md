@@ -8,28 +8,35 @@ result as print/PDF or an editable Word (`.docx`) file. Designed to run
 entirely offline: open `index.html`, no server, no install, no internet
 connection at any point.
 
-## Status: Phase 3 complete (Slovene pilot MVP), except the ruling
+## Status: Phase 3 complete; Phase 4 in progress
 
 - **Content:** 25 reviewed-pending Slovene entries (5 themes × 5 levels),
   drawn from the larger collection in `Texts collection/` and `Images/`.
   German/English/French/Spanish are not wired in yet.
 - **Interface:** teacher picks a theme and level, sees how many texts match,
   and clicks "Create text" to select one (never silently swapped by a filter
-  change) — plus a writing-mode switch, dyslexia-support controls (font
-  size, line/letter/word spacing, letter- and syllable-color toggles, a
-  "Dyslexia-friendly" preset), optional child-name personalization, an
-  optional custom image upload (PNG/JPEG, validated by actually decoding
-  it, EXIF-orientation-corrected, downsampled locally), live fit-checked
-  preview, print/PDF, and editable `.docx` export. Fully in Slovene.
+  change) — plus a writing-mode switch (read & copy / trace / read only),
+  dyslexia-support controls (font size, line/letter/word spacing,
+  letter-color and syllable-color-or-separator toggles, a "Dyslexia-friendly"
+  preset), one-sentence-per-line, a background tint (print-optional, to save
+  ink by default), optional child-name personalization, an optional custom
+  image upload (PNG/JPEG, validated by actually decoding it,
+  EXIF-orientation-corrected, downsampled locally), live fit-checked
+  preview, print/PDF, and editable `.docx` export carrying every one of
+  these through (same shared styled-run model as the HTML preview). Fully
+  in Slovene.
 - **Named setups:** two built-in presets (Standard / Dyslexia-friendly) plus
   teacher-saved ones, persisted via localStorage with a capability check —
   save failure is reported honestly rather than claiming success. A saved
   setup never includes the child's name or a custom image (those are
   per-worksheet, not reusable).
-- **Not yet built:** font choice beyond the one bundled font (Andika, others
-  are Phase 4), country-specific handwriting rulings (only a generic
-  3-line guide exists — needs real teacher/classroom input, intentionally
-  not fabricated; see the blueprint's decision table).
+- **Not yet built (Phase 4 remainder):** the other three fonts (Lexend,
+  OpenDyslexic, Comic Neue — only Andika is bundled so far), physical-line
+  "zebra" striping (blueprint 8.6 flags this as needing real post-layout
+  line measurement, deliberately not attempted yet), and country-specific
+  handwriting rulings (only a generic 3-line guide exists — needs real
+  teacher/classroom input, intentionally not fabricated; see the
+  blueprint's decision table).
 
 ## Running it
 

@@ -4,7 +4,7 @@
  * or a malformed export — this is the boundary that stops that.
  */
 
-import { FONT_FAMILIES, SETTINGS_LIMITS, KNOWN_WRITING_MODES, KNOWN_SYLLABLE_MODES } from '../config.js';
+import { FONT_FAMILIES, SETTINGS_LIMITS, KNOWN_WRITING_MODES, KNOWN_SYLLABLE_MODES, TINTS_BY_ID } from '../config.js';
 import { RULINGS_BY_ID } from '../layout/rulings.js';
 
 const HEX_COLOR_PATTERN = /^#[0-9a-fA-F]{6}$/;
@@ -109,6 +109,18 @@ export function validateSettings(settings) {
   const header = settings.header;
   if (!header || typeof header !== 'object' || typeof header.nameLine !== 'boolean' || typeof header.date !== 'boolean' || typeof header.title !== 'boolean') {
     push('header', 'header must be an object with boolean nameLine, date, and title fields');
+  }
+
+  if (settings.sentencePerLine !== undefined && typeof settings.sentencePerLine !== 'boolean') {
+    push('sentencePerLine', 'sentencePerLine must be a boolean when present');
+  }
+
+  if (settings.tintId !== undefined && !Object.hasOwn(TINTS_BY_ID, settings.tintId)) {
+    push('tintId', `unknown tintId "${settings.tintId}" — known: ${Object.keys(TINTS_BY_ID).join(', ')}`);
+  }
+
+  if (settings.printTint !== undefined && typeof settings.printTint !== 'boolean') {
+    push('printTint', 'printTint must be a boolean when present');
   }
 
   if (errors.length > 0) {
