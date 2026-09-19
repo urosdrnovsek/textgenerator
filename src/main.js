@@ -26,8 +26,21 @@ import { measureWorksheet } from './layout/measure.js';
 import { isPrintReady, printWorksheet } from './export/print.js';
 import { exportDocx } from './export/docx.js';
 import { createTranslator } from './i18n.js';
-import { checkStorageCapability, listPresets, savePreset, deletePreset } from './storage.js';
-import { readImageFile } from './import.js';
+import {
+  checkStorageCapability,
+  listPresets,
+  savePreset,
+  deletePreset,
+  exportPresetsToBlob,
+  importPresetsFromJson,
+  listFavorites,
+  isFavorite,
+  addFavorite,
+  removeFavorite,
+  resetAllData
+} from './storage.js';
+import { readImageFile, readContentPackImport } from './import.js';
+import { PACKET_MAX_SHEETS, addSnapshot, removeSnapshot, moveSnapshot, generateSnapshotId } from './worksheet/packet.js';
 
 /** blueprint 8.1: "The interface starts in Slovene for the pilot." */
 const DEFAULT_LANGUAGE = 'sl';
@@ -58,9 +71,14 @@ function validateAndBuildCatalog(language) {
 
 // Validate every bundled pack up front — a broken pack for a language the
 // teacher hasn't picked yet should still fail loudly at startup, not later.
-for (const language of LANGUAGES) validateAndBuildCatalog(language);
+// Cached per language (not just validated-and-discarded) so favorites can
+// resolve a title in a language the teacher isn't currently viewing, and so
+// content import (below) has somewhere to install a replacement catalog.
+/** @type {Record<string, import('./content/catalog.js').CatalogIndex>} */
+const CATALOGS = {};
+for (const language of LANGUAGES) CATALOGS[language] = validateAndBuildCatalog(language);
 
-let CATALOG = validateAndBuildCatalog(DEFAULT_LANGUAGE);
+let CATALOG = CATALOGS[DEFAULT_LANGUAGE];
 let THEMES = listThemes(CATALOG);
 
 /** Preserved so the letter-colors checkbox can restore real colors after being switched off. */
@@ -152,7 +170,8 @@ const state = {
     marginMm: 20
   },
   customImage: null, // { id: 'custom', path: dataUrl } | null — session-only, never persisted (blueprint 8.8/section 15)
-  lastGood: null // { model, layout }
+  lastGood: null, // { model, layout }
+  packet: [] // ordered PacketSnapshot[] (worksheet/packet.js) — frozen { id, title, language, level, model, layout, labels }, never live references (blueprint 8.10/6)
 };
 
 const settingsCheck = validateSettings(state.settings);
@@ -196,7 +215,24 @@ const els = {
   storageStatus: document.getElementById('storage-status'),
   imageUpload: document.getElementById('image-upload'),
   resetImageButton: document.getElementById('btn-reset-image'),
-  imageStatus: document.getElementById('image-status')
+  imageStatus: document.getElementById('image-status'),
+  favoriteToggleButton: document.getElementById('btn-favorite-toggle'),
+  favoriteSelect: document.getElementById('favorite-select'),
+  loadFavoriteButton: document.getElementById('btn-load-favorite'),
+  removeFavoriteButton: document.getElementById('btn-remove-favorite'),
+  packetCount: document.getElementById('packet-count'),
+  packetList: document.getElementById('packet-list'),
+  addToPacketButton: document.getElementById('btn-add-to-packet'),
+  printPacketButton: document.getElementById('btn-print-packet'),
+  clearPacketButton: document.getElementById('btn-clear-packet'),
+  packetStatus: document.getElementById('packet-status'),
+  importJsonInput: document.getElementById('import-json-input'),
+  importImagesInput: document.getElementById('import-images-input'),
+  importContentButton: document.getElementById('btn-import-content'),
+  importStatus: document.getElementById('import-status'),
+  exportSetupsButton: document.getElementById('btn-export-setups'),
+  importSetupsInput: document.getElementById('import-setups-input'),
+  resetDataButton: document.getElementById('btn-reset-data')
 };
 
 /** Applies t() to every element carrying a data-label (text) or data-placeholder (input placeholder) key. */
@@ -245,11 +281,13 @@ function populateLanguageSelect() {
 function switchLanguage(language) {
   state.language = language;
   t = createTranslator(LOCALES[language]);
-  CATALOG = validateAndBuildCatalog(language);
+  CATALOG = CATALOGS[language];
   THEMES = listThemes(CATALOG);
   applyStaticLabels();
   populateLanguageSelect();
   populateThemeSelect();
+  populateFavoriteSelect();
+  renderPacketList();
 }
 
 function updateLanguage(language) {
@@ -540,6 +578,280 @@ function handleSavePreset() {
   els.presetSelect.value = result.preset.id;
 }
 
+function handleExportSetups() {
+  const blob = exportPresetsToBlob();
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'worksheet-setups.json';
+  document.body.append(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 4000);
+}
+
+async function handleImportSetups(file) {
+  if (!file) return;
+  const text = await file.text();
+  const result = importPresetsFromJson(text);
+  els.importSetupsInput.value = '';
+  if (!result.ok) {
+    els.storageStatus.textContent = t(`setup.import.error.${result.error}`);
+    return;
+  }
+  els.storageStatus.textContent = t('setup.import.success', { count: result.imported });
+  populatePresetSelect();
+}
+
+function handleResetData() {
+  // eslint-disable-next-line no-alert
+  if (!confirm(t('reset.confirm'))) return;
+  const ok = resetAllData();
+  if (!ok) {
+    els.storageStatus.textContent = t('preset.storageUnavailable');
+    return;
+  }
+  populatePresetSelect();
+  populateFavoriteSelect();
+  updateFavoriteButton();
+  els.storageStatus.textContent = t('reset.done');
+}
+
+/** Whether the currently displayed content entry (state.language + state.contentId) is favorited — reflects into the toggle button. */
+function updateFavoriteButton() {
+  if (!state.contentId) {
+    els.favoriteToggleButton.disabled = true;
+    return;
+  }
+  els.favoriteToggleButton.disabled = false;
+  const favorited = isFavorite(state.language, state.contentId);
+  els.favoriteToggleButton.classList.toggle('is-favorite', favorited);
+  els.favoriteToggleButton.textContent = t(favorited ? 'action.unfavorite' : 'action.favorite');
+}
+
+function handleToggleFavorite() {
+  if (!state.contentId) return;
+  if (isFavorite(state.language, state.contentId)) {
+    removeFavorite(state.language, state.contentId);
+  } else {
+    addFavorite(state.language, state.contentId);
+  }
+  updateFavoriteButton();
+  populateFavoriteSelect();
+}
+
+/** A favorite only stores {language, contentId} (blueprint 6) — its display title is resolved live from CATALOGS, so a favorite from a pack that has since been replaced by an import shows as missing rather than a stale cached title. */
+function populateFavoriteSelect() {
+  const favorites = listFavorites();
+  const previousValue = els.favoriteSelect.value;
+  els.favoriteSelect.replaceChildren(
+    ...favorites.map((favorite) => {
+      const option = document.createElement('option');
+      option.value = JSON.stringify(favorite);
+      const entry = CATALOGS[favorite.language]?.byId.get(favorite.contentId);
+      const languageName = t(`language.${favorite.language}`);
+      option.textContent = entry ? `${languageName} — ${entry.title}` : `${languageName} — ${favorite.contentId} (${t('favorite.missing')})`;
+      return option;
+    })
+  );
+  if ([...els.favoriteSelect.options].some((o) => o.value === previousValue)) {
+    els.favoriteSelect.value = previousValue;
+  }
+  els.loadFavoriteButton.disabled = favorites.length === 0;
+  els.removeFavoriteButton.disabled = favorites.length === 0;
+}
+
+function handleLoadFavorite() {
+  if (!els.favoriteSelect.value) return;
+  const { language, contentId } = JSON.parse(els.favoriteSelect.value);
+  const entry = CATALOGS[language]?.byId.get(contentId);
+  if (!entry) return; // stale reference into a pack that's since been replaced — nothing to load
+  if (language !== state.language) switchLanguage(language);
+  state.filter.theme = entry.theme;
+  state.filter.level = entry.level;
+  els.themeSelect.value = entry.theme;
+  els.levelSelect.value = String(entry.level);
+  state.contentId = entry.id;
+  resetCustomImage();
+  updateCandidateCount();
+  requestRender();
+}
+
+function handleRemoveFavorite() {
+  if (!els.favoriteSelect.value) return;
+  const { language, contentId } = JSON.parse(els.favoriteSelect.value);
+  removeFavorite(language, contentId);
+  populateFavoriteSelect();
+  updateFavoriteButton();
+}
+
+/** Reflects state.packet into the sidebar list/buttons — pure DOM sync, no state changes. */
+function renderPacketList() {
+  els.packetList.replaceChildren(
+    ...state.packet.map((sheet, index) => {
+      const li = document.createElement('li');
+
+      const titleSpan = document.createElement('span');
+      titleSpan.className = 'packet-item-title';
+      titleSpan.textContent = `${index + 1}. ${sheet.title} — ${t(`language.${sheet.language}`)}, ${t('field.level')} ${sheet.level}`;
+      li.append(titleSpan);
+
+      const upButton = document.createElement('button');
+      upButton.type = 'button';
+      upButton.textContent = '↑';
+      upButton.title = t('action.moveUp');
+      upButton.disabled = index === 0;
+      upButton.addEventListener('click', () => {
+        state.packet = moveSnapshot(state.packet, sheet.id, -1);
+        renderPacketList();
+      });
+      li.append(upButton);
+
+      const downButton = document.createElement('button');
+      downButton.type = 'button';
+      downButton.textContent = '↓';
+      downButton.title = t('action.moveDown');
+      downButton.disabled = index === state.packet.length - 1;
+      downButton.addEventListener('click', () => {
+        state.packet = moveSnapshot(state.packet, sheet.id, 1);
+        renderPacketList();
+      });
+      li.append(downButton);
+
+      const removeButton = document.createElement('button');
+      removeButton.type = 'button';
+      removeButton.textContent = '✕';
+      removeButton.title = t('action.removeFromPacket');
+      removeButton.addEventListener('click', () => {
+        state.packet = removeSnapshot(state.packet, sheet.id);
+        updatePacketControls();
+        renderPacketList();
+      });
+      li.append(removeButton);
+
+      return li;
+    })
+  );
+}
+
+function updatePacketControls() {
+  els.packetCount.textContent = t('packet.count', { count: state.packet.length, max: PACKET_MAX_SHEETS });
+  els.addToPacketButton.disabled = !state.lastGood || state.packet.length >= PACKET_MAX_SHEETS;
+  els.printPacketButton.disabled = state.packet.length === 0;
+  els.clearPacketButton.disabled = state.packet.length === 0;
+}
+
+function handleAddToPacket() {
+  if (!state.lastGood) return;
+  const { model, layout } = state.lastGood;
+  const labels = { nameLine: t('header.nameLine'), date: t('header.date') };
+  const result = addSnapshot(state.packet, {
+    id: generateSnapshotId(),
+    title: model.title,
+    language: model.contentKey.language,
+    level: model.level,
+    model,
+    layout,
+    labels
+  });
+  if (!result.ok) {
+    els.packetStatus.textContent = t('packet.full', { max: PACKET_MAX_SHEETS });
+    return;
+  }
+  state.packet = result.packet;
+  els.packetStatus.textContent = '';
+  updatePacketControls();
+  renderPacketList();
+}
+
+function handleClearPacket() {
+  state.packet = [];
+  updatePacketControls();
+  renderPacketList();
+}
+
+/**
+ * Prints every packet snapshot as its own page, in order. Each snapshot was
+ * only ever added once it was already a print-ready worksheet, and the
+ * frozen model/layout/labels can't have changed since — so there is nothing
+ * left to re-measure here, only to re-render (blueprint 8.10: "Recheck
+ * every sheet before printing" is satisfied by re-rendering from the
+ * immutable snapshot rather than trusting stale DOM).
+ */
+function handlePrintPacket() {
+  if (state.packet.length === 0) return;
+  const fragment = document.createDocumentFragment();
+  for (const sheet of state.packet) {
+    const container = document.createElement('div');
+    renderWorksheet(sheet.model, sheet.layout, container, sheet.labels);
+    fragment.append(...container.children);
+  }
+  els.printSurface.replaceChildren(fragment);
+  printWorksheet();
+  // Restore the print surface to the currently displayed single worksheet
+  // so a subsequent plain "Print" click reflects what's on screen again.
+  if (state.lastGood) {
+    const labels = { nameLine: t('header.nameLine'), date: t('header.date') };
+    renderWorksheet(state.lastGood.model, state.lastGood.layout, els.printSurface, labels);
+  }
+}
+
+function describeImportError(result) {
+  if (result.code === 'INVALID_JSON') return t('error.INVALID_JSON');
+  if (result.code === 'IMAGE_READ_FAILED') return t('import.error.IMAGE_READ_FAILED', { filename: result.imageError.filename });
+  const first = result.errors[0];
+  return t('import.error.VALIDATION_FAILED', {
+    count: result.errors.length,
+    entryId: first.entryId,
+    field: first.field,
+    message: first.message
+  });
+}
+
+/**
+ * Teacher-driven content extension without coding (blueprint 8.11):
+ * validates the selected JSON + any new images together, then — all or
+ * nothing — replaces that language's catalog for the rest of this session.
+ * Imported packs are session-resident only, never written back to disk
+ * (blueprint 8.11: "Imported packs are session-resident initially").
+ */
+async function handleImportContent() {
+  const jsonFile = els.importJsonInput.files[0];
+  if (!jsonFile) return;
+  const imageFiles = [...els.importImagesInput.files];
+  const result = await readContentPackImport(jsonFile, imageFiles, new Set(IMAGES_BY_ID.keys()));
+  if (!result.ok) {
+    els.importStatus.textContent = describeImportError(result);
+    return;
+  }
+
+  for (const [id, image] of result.images) IMAGES_BY_ID.set(id, image);
+  const entriesWithLanguage = result.pack.entries.map((entry) => ({ ...entry, language: result.pack.language }));
+  CATALOGS[result.pack.language] = buildCatalogIndex(entriesWithLanguage);
+
+  els.importStatus.textContent = t('import.success', {
+    count: result.pack.entries.length,
+    language: t(`language.${result.pack.language}`)
+  });
+  els.importJsonInput.value = '';
+  els.importImagesInput.value = '';
+
+  if (result.pack.language === state.language) {
+    CATALOG = CATALOGS[state.language];
+    THEMES = listThemes(CATALOG);
+    populateThemeSelect();
+    state.contentId = null;
+    state.lastGood = null;
+    els.preview.replaceChildren();
+    els.printSurface.replaceChildren();
+    els.printButton.disabled = true;
+    els.docxButton.disabled = true;
+    updateCandidateCount();
+    updateFavoriteButton();
+    els.fitIndicator.textContent = t('preview.empty');
+  }
+}
+
 function showFit(model, result) {
   const el = els.fitIndicator;
   el.classList.toggle('is-overflow', !result.ok);
@@ -564,6 +876,7 @@ function showFit(model, result) {
 async function requestRender() {
   const revision = ++state.revision;
   const entry = CATALOG.byId.get(state.contentId);
+  updateFavoriteButton();
   // A teacher-uploaded image overrides only this entry's mapping, for this
   // render — the shared IMAGES_BY_ID map itself is never mutated.
   const imagesById = state.customImage
@@ -582,6 +895,7 @@ async function requestRender() {
     state.lastGood = null;
     els.preview.replaceChildren();
     els.printSurface.replaceChildren();
+    updatePacketControls();
     return;
   }
 
@@ -589,6 +903,7 @@ async function requestRender() {
   renderWorksheet(model, result.layout, els.preview, labels);
   renderWorksheet(model, result.layout, els.printSurface, labels);
   state.lastGood = { model, layout: result.layout };
+  updatePacketControls();
 }
 
 function dataUrlToUint8Array(dataUrl) {
@@ -654,6 +969,20 @@ els.savePresetButton.addEventListener('click', handleSavePreset);
 els.imageUpload.addEventListener('change', (e) => handleImageUpload(e.target.files[0]));
 els.resetImageButton.addEventListener('click', resetCustomImage);
 
+els.exportSetupsButton.addEventListener('click', handleExportSetups);
+els.importSetupsInput.addEventListener('change', (e) => handleImportSetups(e.target.files[0]));
+els.resetDataButton.addEventListener('click', handleResetData);
+
+els.favoriteToggleButton.addEventListener('click', handleToggleFavorite);
+els.loadFavoriteButton.addEventListener('click', handleLoadFavorite);
+els.removeFavoriteButton.addEventListener('click', handleRemoveFavorite);
+
+els.addToPacketButton.addEventListener('click', handleAddToPacket);
+els.printPacketButton.addEventListener('click', handlePrintPacket);
+els.clearPacketButton.addEventListener('click', handleClearPacket);
+
+els.importContentButton.addEventListener('click', handleImportContent);
+
 applyStaticLabels();
 populateLanguageSelect();
 populateThemeSelect();
@@ -662,9 +991,13 @@ updateCandidateCount();
 applySettingsLimits();
 syncSettingsControlsFromState();
 populatePresetSelect();
+populateFavoriteSelect();
+updatePacketControls();
+renderPacketList();
 if (!checkStorageCapability()) {
   els.storageStatus.textContent = t('preset.storageUnavailable');
   els.savePresetButton.disabled = true;
+  els.favoriteToggleButton.disabled = true;
 }
 els.fitIndicator.textContent = t('fit.measuring');
 createText(); // show something on first load rather than an empty preview

@@ -61,6 +61,11 @@ body {
   cursor: not-allowed;
 }
 
+.app-sidebar button.is-favorite {
+  background: #fff3cd;
+  border-color: #e0b400;
+}
+
 .candidate-count {
   font-size: 12px;
   color: #555;
@@ -104,6 +109,42 @@ body {
   gap: 6px;
   font-weight: 400 !important;
   cursor: pointer;
+}
+
+.panel-heading {
+  margin-top: 10px;
+  margin-bottom: 4px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+#packet-list {
+  list-style: none;
+  margin: 6px 0;
+  padding: 0;
+  font-size: 12px;
+}
+
+#packet-list li {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 0;
+  border-bottom: 1px solid #eee;
+}
+
+#packet-list li .packet-item-title {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#packet-list li button {
+  width: auto;
+  margin: 0;
+  padding: 2px 6px;
+  font-size: 12px;
 }
 
 .fit-indicator {

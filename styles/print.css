@@ -32,6 +32,16 @@
   .ws-page {
     width: 170mm;
     box-shadow: none;
+    /* Packet printing puts more than one .ws-page into #print-surface —
+       break after every sheet except the last (blueprint 8.5: "Use
+       break-after: page between packet sheets and auto after the last
+       sheet"). A lone single-worksheet print is unaffected: one page,
+       breaking to auto right after it, same as before. */
+    break-after: page;
+  }
+
+  .ws-page:last-child {
+    break-after: auto;
   }
 
   /* Tint prints only when the teacher explicitly opted in (printTint) —

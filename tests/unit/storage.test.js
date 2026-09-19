@@ -6,7 +6,12 @@ import {
   savePreset,
   deletePreset,
   exportPresetsToBlob,
-  importPresetsFromJson
+  importPresetsFromJson,
+  listFavorites,
+  isFavorite,
+  addFavorite,
+  removeFavorite,
+  resetAllData
 } from '../../src/storage.js';
 
 /** Minimal in-memory localStorage-shaped mock, so tests never touch a real browser's storage. */
@@ -122,4 +127,60 @@ test('importPresetsFromJson assigns a fresh id instead of silently overwriting o
   assert.equal(presets.length, 2);
   const ids = new Set(presets.map((p) => p.id));
   assert.equal(ids.size, 2, 'imported preset must not collide with the existing id');
+});
+
+test('listFavorites returns an empty array when storage is unavailable', () => {
+  assert.deepEqual(listFavorites(createFailingStorage()), []);
+});
+
+test('addFavorite then isFavorite/listFavorites round-trips', () => {
+  const storage = createMockStorage();
+  const ok = addFavorite('sl', 'stories_muc_1', storage);
+  assert.equal(ok, true);
+  assert.equal(isFavorite('sl', 'stories_muc_1', storage), true);
+  assert.equal(isFavorite('sl', 'stories_muc_5', storage), false);
+  assert.deepEqual(listFavorites(storage), [{ language: 'sl', contentId: 'stories_muc_1' }]);
+});
+
+test('addFavorite is idempotent — adding the same reference twice does not duplicate it', () => {
+  const storage = createMockStorage();
+  addFavorite('sl', 'stories_muc_1', storage);
+  addFavorite('sl', 'stories_muc_1', storage);
+  assert.equal(listFavorites(storage).length, 1);
+});
+
+test('addFavorite distinguishes the same contentId across different languages', () => {
+  const storage = createMockStorage();
+  addFavorite('sl', 'stories_muc_1', storage);
+  addFavorite('en', 'stories_muc_1', storage);
+  assert.equal(listFavorites(storage).length, 2);
+});
+
+test('removeFavorite removes only the targeted reference', () => {
+  const storage = createMockStorage();
+  addFavorite('sl', 'a', storage);
+  addFavorite('sl', 'b', storage);
+  removeFavorite('sl', 'a', storage);
+  assert.deepEqual(listFavorites(storage), [{ language: 'sl', contentId: 'b' }]);
+});
+
+test('addFavorite reports failure (not a false success) when storage cannot actually write', () => {
+  assert.equal(addFavorite('sl', 'a', createFailingStorage()), false);
+});
+
+test('resetAllData clears presets and favorites but nothing else in the same storage', () => {
+  const storage = createMockStorage();
+  savePreset('Ime', SETTINGS, storage);
+  addFavorite('sl', 'stories_muc_1', storage);
+  storage.setItem('some-unrelated-app-key', 'keep me');
+
+  const ok = resetAllData(storage);
+  assert.equal(ok, true);
+  assert.deepEqual(listPresets(storage), []);
+  assert.deepEqual(listFavorites(storage), []);
+  assert.equal(storage.getItem('some-unrelated-app-key'), 'keep me');
+});
+
+test('resetAllData reports failure (not a false success) when storage is unavailable', () => {
+  assert.equal(resetAllData(createFailingStorage()), false);
 });

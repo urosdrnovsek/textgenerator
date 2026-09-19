@@ -8,7 +8,7 @@ result as print/PDF or an editable Word (`.docx`) file. Designed to run
 entirely offline: open `index.html`, no server, no install, no internet
 connection at any point.
 
-## Status: Phase 3-4 complete except country-specific rulings; Phase 5 (multi-language) functional, content unreviewed
+## Status: Phase 3-4 complete except country-specific rulings; Phase 5 (multi-language) functional, content unreviewed; Phase 6 (convenience) complete
 
 - **Content:** 25 entries per language (5 themes × 5 levels) for Slovene,
   English, German, French, and Spanish — 125 entries total, all
@@ -79,6 +79,39 @@ connection at any point.
   3-line guide exists — needs real teacher/classroom input, intentionally
   not fabricated; see the blueprint's decision table). This is the one
   Phase 4 item still open, and it's blocked on external input, not effort.
+- **Favorites:** bookmark a content entry by `{language, contentId}` and
+  jump back to it later via a Load button — a favorite whose entry no
+  longer exists (e.g. after importing replacement content for that
+  language) shows as "no longer available" rather than silently vanishing.
+- **Packets:** assemble up to 20 worksheets — each one an immutable
+  snapshot taken at "Add to packet" time, unaffected by later setting
+  changes — reorder or remove sheets, then "Print packet" opens one print
+  job with every sheet as its own page (verified: N sheets in the packet
+  produce exactly N `.ws-page` elements in the print surface, each with
+  `break-after: page` except the last, and the surface is restored to the
+  single current worksheet afterward so a plain "Print" click still works).
+- **Setup portability:** "Export my setups" downloads every saved preset as
+  a portable `worksheet-setups.json`; "Import setups" merges one back in,
+  giving a colliding id a fresh one rather than overwriting (already
+  existed at the storage-module level from Phase 3; this phase wired it
+  into the UI). "Reset saved data" clears only this app's own localStorage
+  keys (presets + favorites) after a confirmation, never anything else in
+  the browser profile.
+- **Content import without coding:** a teacher (or content maintainer)
+  selects a content-pack JSON file plus any new images through "Add new
+  content"; the whole file is validated — including deriving each new
+  image's asset id from its filename — before anything changes, and a bad
+  entry blocks the entire import with the specific entry/field/message
+  rather than partially merging. A successful import replaces that
+  language's catalog for the rest of the session (never written back to
+  `content/*.json` on disk — session-resident by design, per blueprint
+  8.11). Verified end-to-end in a real browser: importing a one-entry pack
+  for German actually replaces what "Create text" serves for that
+  language/theme/level.
+- **Teacher documentation:** `docs/teacher-guide.md` — day-to-day usage
+  (worksheet creation, reading/writing supports, presets, favorites,
+  packets, backup/restore, content import), written for a non-technical
+  reader.
 
 ## Running it
 
@@ -119,3 +152,4 @@ against `src/content/validate.js` and gated in the build via
 - `scripts/build.mjs` — bundles `src/` into the self-contained `release/`;
   refuses to build if `scripts/validate-content.mjs` finds a problem
 - `tests/unit/` — Node test-runner suite
+- `docs/teacher-guide.md` — non-technical, day-to-day usage guide

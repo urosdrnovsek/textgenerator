@@ -27,6 +27,7 @@
 
       <div id="candidate-count" class="candidate-count"></div>
       <button id="btn-create" type="button" data-label="action.createText">Ustvari besedilo</button>
+      <button id="btn-favorite-toggle" type="button" data-label="action.favorite" disabled></button>
 
       <label for="name-input" data-label="field.childName">Ime otroka (neobvezno)</label>
       <input type="text" id="name-input" data-placeholder="field.childNamePlaceholder" maxlength="40" />
@@ -115,6 +116,43 @@
         <button id="btn-delete-preset" type="button" data-label="action.deletePreset">Izbriši</button>
         <button id="btn-save-preset" type="button" data-label="action.savePreset">Shrani trenutne nastavitve</button>
         <div id="storage-status" class="storage-status"></div>
+
+        <div class="panel-heading" data-label="field.setupBackup">Varnostna kopija nastavitev</div>
+        <button id="btn-export-setups" type="button" data-label="action.exportSetups">Izvozi moje nastavitve</button>
+        <label for="import-setups-input" data-label="field.importSetups">Uvozi nastavitve (.json)</label>
+        <input type="file" id="import-setups-input" accept="application/json" />
+
+        <button id="btn-reset-data" type="button" data-label="action.resetData">Ponastavi shranjene podatke</button>
+      </details>
+
+      <details class="settings-panel">
+        <summary data-label="field.favorites">Priljubljeno</summary>
+
+        <select id="favorite-select"></select>
+        <button id="btn-load-favorite" type="button" data-label="action.loadFavorite" disabled>Naloži</button>
+        <button id="btn-remove-favorite" type="button" data-label="action.removeFavorite" disabled>Odstrani</button>
+      </details>
+
+      <details class="settings-panel">
+        <summary data-label="field.packet">Sveženj listov</summary>
+
+        <div id="packet-count" class="candidate-count"></div>
+        <button id="btn-add-to-packet" type="button" data-label="action.addToPacket" disabled>Dodaj v sveženj</button>
+        <ol id="packet-list"></ol>
+        <button id="btn-print-packet" type="button" data-label="action.printPacket" disabled>Natisni sveženj</button>
+        <button id="btn-clear-packet" type="button" data-label="action.clearPacket" disabled>Počisti sveženj</button>
+        <div id="packet-status" class="storage-status"></div>
+      </details>
+
+      <details class="settings-panel">
+        <summary data-label="field.importContent">Dodaj novo vsebino</summary>
+
+        <label for="import-json-input" data-label="field.importJson">Datoteka z vsebino (.json)</label>
+        <input type="file" id="import-json-input" accept="application/json" />
+        <label for="import-images-input" data-label="field.importImages">Nove slike (neobvezno)</label>
+        <input type="file" id="import-images-input" accept="image/png,image/jpeg" multiple />
+        <button id="btn-import-content" type="button" data-label="action.importContent">Uvozi</button>
+        <div id="import-status" class="storage-status"></div>
       </details>
 
       <button id="btn-print" type="button" data-label="action.print">Natisni / Shrani kot PDF</button>
