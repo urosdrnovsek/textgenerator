@@ -15,11 +15,18 @@ connection at any point.
   German/English/French/Spanish are not wired in yet.
 - **Interface:** teacher picks a theme and level, sees how many texts match,
   and clicks "Create text" to select one (never silently swapped by a filter
-  change) — plus a writing-mode switch, live fit-checked preview, print/PDF,
-  and editable `.docx` export. Fully in Slovene.
-- **Not yet built:** font choice beyond the one bundled font (Andika),
-  personalization UI, custom image/logo upload, named setup save/reload,
-  country-specific handwriting rulings (only a generic 3-line guide exists).
+  change) — plus a writing-mode switch, dyslexia-support controls (font
+  size, line/letter/word spacing, letter- and syllable-color toggles, a
+  "Dyslexia-friendly" preset), optional child-name personalization, live
+  fit-checked preview, print/PDF, and editable `.docx` export. Fully in
+  Slovene.
+- **Named setups:** two built-in presets (Standard / Dyslexia-friendly) plus
+  teacher-saved ones, persisted via localStorage with a capability check —
+  save failure is reported honestly rather than claiming success.
+- **Not yet built:** font choice beyond the one bundled font (Andika, others
+  are Phase 4), custom image/logo upload, country-specific handwriting
+  rulings (only a generic 3-line guide exists — needs real teacher input,
+  intentionally not fabricated).
 
 ## Running it
 

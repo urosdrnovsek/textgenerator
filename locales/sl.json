@@ -37,6 +37,16 @@
     "field.syllableColors": "Barve zlogov",
     "action.dyslexiaPreset": "Prijazno za disleksijo",
     "field.childName": "Ime otroka (neobvezno)",
-    "field.childNamePlaceholder": "npr. Maja"
+    "field.childNamePlaceholder": "npr. Maja",
+    "field.presets": "Shranjene nastavitve",
+    "action.loadPreset": "Naloži",
+    "action.deletePreset": "Izbriši",
+    "action.savePreset": "Shrani trenutne nastavitve",
+    "preset.namePrompt": "Ime za shranjeno nastavitev:",
+    "preset.builtin.standard": "Standardno prepisovanje",
+    "preset.builtin.dyslexia": "Prijazno za disleksijo",
+    "preset.saveFailed": "Shranjevanje ni uspelo. Nastavitve so na voljo samo v tej seji.",
+    "preset.storageUnavailable": "Shranjevanje ni na voljo v tem brskalniku — vgrajene nastavitve še vedno delujejo.",
+    "preset.deleteBuiltinBlocked": "Vgrajenih nastavitev ni mogoče izbrisati."
   }
 }

@@ -37,6 +37,16 @@
     "field.syllableColors": "Syllable colors",
     "action.dyslexiaPreset": "Dyslexia-friendly",
     "field.childName": "Child's name (optional)",
-    "field.childNamePlaceholder": "e.g. Mia"
+    "field.childNamePlaceholder": "e.g. Mia",
+    "field.presets": "Saved setups",
+    "action.loadPreset": "Load",
+    "action.deletePreset": "Delete",
+    "action.savePreset": "Save current setup",
+    "preset.namePrompt": "Name for this saved setup:",
+    "preset.builtin.standard": "Standard copy practice",
+    "preset.builtin.dyslexia": "Dyslexia-friendly",
+    "preset.saveFailed": "Saving failed. Settings are only available for this session.",
+    "preset.storageUnavailable": "Saving isn't available in this browser — built-in setups still work.",
+    "preset.deleteBuiltinBlocked": "Built-in setups can't be deleted."
   }
 }

@@ -18,6 +18,7 @@ import { measureWorksheet } from './layout/measure.js';
 import { isPrintReady, printWorksheet } from './export/print.js';
 import { exportDocx } from './export/docx.js';
 import { createTranslator } from './i18n.js';
+import { checkStorageCapability, listPresets, savePreset, deletePreset } from './storage.js';
 
 const t = createTranslator(slLocale);
 
@@ -46,6 +47,41 @@ const DYSLEXIA_PRESET = {
   letterColorsEnabled: true,
   syllableColorsEnabled: true
 };
+
+const STANDARD_SETTINGS = {
+  theme: THEMES[0],
+  level: 1,
+  fontId: 'andika',
+  fontSizePt: 16,
+  lineHeightMultiplier: 1.4,
+  letterSpacingPt: 0.3,
+  extraWordSpacePt: 1,
+  writingMode: 'read-copy',
+  rulingId: 'standard-3line',
+  guideHeightMm: 10,
+  letterColors: DEFAULT_LETTER_COLORS,
+  syllableMode: 'colors',
+  syllableColors: ['#1D4ED8', '#B45309'],
+  header: { nameLine: true, date: true, title: true },
+  marginMm: 20
+};
+
+/** Built-in presets always exist, independent of localStorage (blueprint 8.10: "a couple of sensible built-in presets out of the box"). */
+const BUILT_IN_PRESETS = [
+  { id: 'builtin-standard', name: t('preset.builtin.standard'), builtin: true, settings: STANDARD_SETTINGS },
+  {
+    id: 'builtin-dyslexia',
+    name: t('preset.builtin.dyslexia'),
+    builtin: true,
+    settings: {
+      ...STANDARD_SETTINGS,
+      fontSizePt: DYSLEXIA_PRESET.fontSizePt,
+      lineHeightMultiplier: DYSLEXIA_PRESET.lineHeightMultiplier,
+      letterSpacingPt: DYSLEXIA_PRESET.letterSpacingPt,
+      extraWordSpacePt: DYSLEXIA_PRESET.extraWordSpacePt
+    }
+  }
+];
 
 /** Single mutable state object (blueprint section 5). */
 const state = {
@@ -96,7 +132,12 @@ const els = {
   wordSpacingInput: document.getElementById('word-spacing-input'),
   letterColorsToggle: document.getElementById('letter-colors-toggle'),
   syllableColorsToggle: document.getElementById('syllable-colors-toggle'),
-  dyslexiaPresetButton: document.getElementById('btn-dyslexia-preset')
+  dyslexiaPresetButton: document.getElementById('btn-dyslexia-preset'),
+  presetSelect: document.getElementById('preset-select'),
+  loadPresetButton: document.getElementById('btn-load-preset'),
+  deletePresetButton: document.getElementById('btn-delete-preset'),
+  savePresetButton: document.getElementById('btn-save-preset'),
+  storageStatus: document.getElementById('storage-status')
 };
 
 /** Applies t() to every element carrying a data-label (text) or data-placeholder (input placeholder) key. */
@@ -212,6 +253,105 @@ function applyDyslexiaPreset() {
   if (state.contentId) requestRender();
 }
 
+/** Everything a preset should capture. Deliberately excludes personalization.name — presets are reusable setups shared across children, not tied to one child's saved worksheet (blueprint 8.10, section 15). */
+function extractPresetSettings() {
+  const s = state.settings;
+  return {
+    theme: state.filter.theme,
+    level: state.filter.level,
+    fontId: s.fontId,
+    fontSizePt: s.fontSizePt,
+    lineHeightMultiplier: s.lineHeightMultiplier,
+    letterSpacingPt: s.letterSpacingPt,
+    extraWordSpacePt: s.extraWordSpacePt,
+    writingMode: s.writingMode,
+    rulingId: s.rulingId,
+    guideHeightMm: s.guideHeightMm,
+    letterColors: s.letterColors,
+    syllableMode: s.syllableMode,
+    syllableColors: s.syllableColors,
+    header: s.header,
+    marginMm: s.marginMm
+  };
+}
+
+function applyPresetSettings(settings) {
+  state.filter.theme = settings.theme;
+  state.filter.level = settings.level;
+  Object.assign(state.settings, {
+    fontId: settings.fontId,
+    fontSizePt: settings.fontSizePt,
+    lineHeightMultiplier: settings.lineHeightMultiplier,
+    letterSpacingPt: settings.letterSpacingPt,
+    extraWordSpacePt: settings.extraWordSpacePt,
+    writingMode: settings.writingMode,
+    rulingId: settings.rulingId,
+    guideHeightMm: settings.guideHeightMm,
+    letterColors: settings.letterColors,
+    syllableMode: settings.syllableMode,
+    syllableColors: settings.syllableColors,
+    header: settings.header,
+    marginMm: settings.marginMm
+    // personalization is left untouched — loading a setup must not erase a name already typed in
+  });
+
+  els.themeSelect.value = state.filter.theme;
+  els.levelSelect.value = String(state.filter.level);
+  els.writingModeSelect.value = state.settings.writingMode;
+  syncSettingsControlsFromState();
+  updateCandidateCount();
+  createText();
+}
+
+function getAllPresets() {
+  return [...BUILT_IN_PRESETS, ...listPresets()];
+}
+
+function populatePresetSelect() {
+  const previousValue = els.presetSelect.value;
+  els.presetSelect.replaceChildren(
+    ...getAllPresets().map((preset) => {
+      const option = document.createElement('option');
+      option.value = preset.id;
+      option.textContent = preset.name;
+      return option;
+    })
+  );
+  if ([...els.presetSelect.options].some((o) => o.value === previousValue)) {
+    els.presetSelect.value = previousValue;
+  }
+}
+
+function handleLoadPreset() {
+  const preset = getAllPresets().find((p) => p.id === els.presetSelect.value);
+  if (preset) applyPresetSettings(preset.settings);
+}
+
+function handleDeletePreset() {
+  const preset = getAllPresets().find((p) => p.id === els.presetSelect.value);
+  if (!preset) return;
+  if (preset.builtin) {
+    els.storageStatus.textContent = t('preset.deleteBuiltinBlocked');
+    return;
+  }
+  deletePreset(preset.id);
+  els.storageStatus.textContent = '';
+  populatePresetSelect();
+}
+
+function handleSavePreset() {
+  const name = prompt(t('preset.namePrompt'));
+  if (!name || !name.trim()) return;
+  const result = savePreset(name.trim(), extractPresetSettings());
+  if (!result.ok) {
+    els.storageStatus.textContent = t('preset.saveFailed');
+    return;
+  }
+  els.storageStatus.textContent = '';
+  populatePresetSelect();
+  els.presetSelect.value = result.preset.id;
+}
+
 function showFit(model, result) {
   const el = els.fitIndicator;
   el.classList.toggle('is-overflow', !result.ok);
@@ -306,11 +446,19 @@ els.wordSpacingInput.addEventListener('change', (e) => updateNumericSetting('ext
 els.letterColorsToggle.addEventListener('change', (e) => updateLetterColorsEnabled(e.target.checked));
 els.syllableColorsToggle.addEventListener('change', (e) => updateSyllableColorsEnabled(e.target.checked));
 els.dyslexiaPresetButton.addEventListener('click', applyDyslexiaPreset);
+els.loadPresetButton.addEventListener('click', handleLoadPreset);
+els.deletePresetButton.addEventListener('click', handleDeletePreset);
+els.savePresetButton.addEventListener('click', handleSavePreset);
 
 applyStaticLabels();
 populateThemeSelect();
 updateCandidateCount();
 applySettingsLimits();
 syncSettingsControlsFromState();
+populatePresetSelect();
+if (!checkStorageCapability()) {
+  els.storageStatus.textContent = t('preset.storageUnavailable');
+  els.savePresetButton.disabled = true;
+}
 els.fitIndicator.textContent = t('fit.measuring');
 createText(); // show something on first load rather than an empty preview
