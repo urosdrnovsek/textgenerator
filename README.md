@@ -8,20 +8,34 @@ result as print/PDF or an editable Word (`.docx`) file. Designed to run
 entirely offline: open `index.html`, no server, no install, no internet
 connection at any point.
 
-## Status: Phase 3-4 complete except country-specific rulings; Phase 5 (multi-language) functional, content unreviewed; Phase 6 (convenience) complete; Phase 7 (release qualification) partially done — see below
+## Status: Phase 3-4 complete except country-specific rulings; Phase 5 (multi-language) functional; Phase 6 (convenience) complete; Phase 7 (release qualification) partially done — see below
 
 - **Content:** 25 entries per language (5 themes × 5 levels) for Slovene,
   English, German, French, and Spanish — 125 entries total, all
   schema-validated (unique ids, valid image references, syllable/body
-  consistency), each entry carrying a `version` (currently `1` for every
-  entry across every language — see "Content versioning" below). Slovene is
-  the original curated selection. **English/German/French/Spanish are
-  unreviewed drafts**, drawn from `Texts collection/`: nobody has proofread
-  them for a native speaker's eye, and for German (all 25 entries), French
-  (20 of 25 entries), and Spanish (all 25 entries) the source material's own
-  paired image didn't exist in `assets/images/`, so a topically-closest
-  substitute image was manually reassigned instead — a documented stopgap,
-  not a verified accurate pairing.
+  consistency), each entry carrying a `version` (see "Content versioning"
+  below). Slovene is the original curated selection.
+  **English/German/French/Spanish have now had a close editorial pass**
+  (grammar, natural phrasing, factual accuracy, syllable-break correctness
+  — see `Instructions/` for the session that did this, or the git history):
+  English and Spanish needed no text changes; German had 3 real
+  syllable-break errors fixed (a compound-word split and two `qu`-digraph
+  splits); French had 3 (a proper-noun `y`-digraph split and two instances
+  of the monosyllabic word "où" incorrectly split). All 100 non-Slovene
+  entries are now marked `review.status: "reviewed"`. **Two things this
+  pass deliberately did not touch:** image accuracy (German — all 25
+  entries, French — 20 of 25, Spanish — 24 of 25 — still use topically
+  reassigned substitute images, not verified-accurate ones; a few are
+  outright mismatched, e.g. a Bavarian castle entry pointing at a windmill
+  photo) and a newly-found **fit problem**: every German and every French
+  level-5 entry overflows the page under the app's *default* settings
+  (confirmed pre-existing, not caused by the syllable fixes — reproduced
+  identically against the unmodified content). Slovene, English, and
+  Spanish level-5 entries all fit. This means a teacher picking German or
+  French at level 5 currently cannot create a worksheet at all without
+  first changing settings (e.g. switching to read-only mode). Not fixed
+  yet — flagged for the next content pass, since trimming these texts is a
+  bigger edit than a text-quality review covers.
 - **Content versioning:** every content entry carries an integer `version`
   field, currently `1` across all five languages. The intent going forward:
   `version` bumps when an entry's text is corrected after native-language
