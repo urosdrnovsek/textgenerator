@@ -8,7 +8,7 @@ result as print/PDF or an editable Word (`.docx`) file. Designed to run
 entirely offline: open `index.html`, no server, no install, no internet
 connection at any point.
 
-## Status: Phase 3-4 complete except country-specific rulings; Phase 5 (multi-language) functional, content unreviewed; Phase 6 (convenience) complete
+## Status: Phase 3-4 complete except country-specific rulings; Phase 5 (multi-language) functional, content unreviewed; Phase 6 (convenience) complete; Phase 7 (release qualification) partially done — see below
 
 - **Content:** 25 entries per language (5 themes × 5 levels) for Slovene,
   English, German, French, and Spanish — 125 entries total, all
@@ -113,6 +113,46 @@ connection at any point.
   packets, backup/restore, content import), written for a non-technical
   reader.
 
+### Phase 7 (release qualification): partially done
+
+See `docs/compatibility.md` for the full release matrix — what's verified,
+how, and what's still open. Summary:
+
+- **Real LibreOffice compatibility — automated, passing.** Closes a gap
+  every earlier phase explicitly flagged but never tested: the app's own
+  Chromium-based fit-check doesn't run Word/LibreOffice's own layout
+  engine. `npm run verify-docx` drives the real app through real headless
+  Chromium to export representative `.docx` files (every language, every
+  font, every writing mode, the near-max-content level-5 boundary case,
+  tint, sentence-per-line, personalization), converts each through real
+  headless LibreOffice, and checks the resulting PDF is exactly 1 page
+  with intact text — not just that no exception was thrown.
+- **Fresh-machine offline test — automated, passing.** `npm run
+  verify-offline` (and its `--unzip` variant against the actual packaged
+  ZIP, extracted outside the repo) launches a completely fresh Chromium
+  profile with DNS resolution forced to fail, then drives a broad real
+  user journey — all 5 languages, dyslexia preset, presets, favorites,
+  packets, print, packet print, `.docx` export — and checks for zero
+  non-`file://` network requests and zero console errors.
+- **Versioned ZIP release — done.** `npm run package` rebuilds and
+  produces `dist/writing-worksheet-generator-v<version>.zip`, bundling
+  `release/` with `docs/`, `THIRD_PARTY_NOTICES.md`, and `licenses/`.
+- **Font and `docx`-library licenses — resolved.** See
+  `THIRD_PARTY_NOTICES.md`.
+- **Still open, needs the user's own hardware/software** (none of this is
+  available in the development environment this was built in): real
+  Microsoft Word, real Firefox/Safari, and physical printer tests.
+  `docs/compatibility.md` has a concrete checklist for each.
+- **Still open, deliberately not attempted here:** image licenses (every
+  bundled image is still an "unreviewed placeholder" in
+  `assets/manifest.json`) and native-language content review — both are
+  scheduled as part of the upcoming content-quality pass, not a Phase 7
+  gap to paper over.
+
+Current version `0.7.0-rc.1` reflects this: a release candidate, not a
+final `1.0.0` — the image-license and content-review gaps are real,
+user-facing risk, not paperwork.
+
 ## Running it
 
 ```bash
@@ -130,6 +170,9 @@ bundled inside `release/`.
 npm test               # unit test suite
 npm run validate-content  # validate content packs + asset manifest only
 npm run build           # rebuild release/ after editing src/, styles/, or content/
+npm run verify-docx     # real LibreOffice compatibility check (needs soffice + poppler-utils)
+npm run verify-offline   # fresh-profile offline/network check (needs chromium)
+npm run package          # produces dist/writing-worksheet-generator-vX.Y.Z.zip
 ```
 
 Source content lives in `content/*.json` (one file per language, validated
@@ -151,5 +194,13 @@ against `src/content/validate.js` and gated in the build via
   `assets/manifest.json`
 - `scripts/build.mjs` — bundles `src/` into the self-contained `release/`;
   refuses to build if `scripts/validate-content.mjs` finds a problem
+- `scripts/verify-docx-libreoffice.mjs`, `scripts/verify-offline.mjs` —
+  Phase 7 developer/QA tools (real LibreOffice + fresh-profile offline
+  checks); never a teacher prerequisite
+- `scripts/package-release.mjs` — produces the versioned distributable ZIP
 - `tests/unit/` — Node test-runner suite
 - `docs/teacher-guide.md` — non-technical, day-to-day usage guide
+- `docs/compatibility.md` — release matrix: what's verified, how, and
+  what's still open
+- `THIRD_PARTY_NOTICES.md`, `licenses/` — bundled fonts' and dependencies'
+  license notices

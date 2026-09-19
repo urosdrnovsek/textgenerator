@@ -3,6 +3,9 @@ node_modules/
 # Generated deliverable — reproducible via `npm run build`, never hand-edited.
 release/
 
+# Generated versioned ZIP — reproducible via `npm run package`.
+dist/
+
 # Generated from assets/manifest.json on every build.
 src/generated/
 
