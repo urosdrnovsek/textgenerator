@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "language": "sl",
   "strings": {
+    "app.title": "Delovni list",
     "header.nameLine": "Ime:",
     "header.date": "Datum:",
     "fit.measuring": "Preverjanje…",
@@ -10,6 +11,22 @@
     "fit.suggestion.choose-shorter-text": "izberite krajše besedilo",
     "fit.suggestion.reduce-image": "zmanjšajte sliko",
     "fit.suggestion.read-only": "samo za branje",
-    "export.failed": "Izvoz ni uspel: {message}. Podrobnosti v konzoli brskalnika."
+    "export.failed": "Izvoz ni uspel: {message}. Podrobnosti v konzoli brskalnika.",
+    "field.theme": "Tema",
+    "field.level": "Stopnja",
+    "field.writingMode": "Način pisanja",
+    "writingMode.read-copy": "Beri in prepiši",
+    "writingMode.read-only": "Samo branje",
+    "theme.stories": "Zgodbe",
+    "theme.animal_facts": "Zanimivosti o živalih",
+    "theme.around_the_world": "Okoli sveta",
+    "theme.amazing_science": "Osupljiva znanost",
+    "theme.nature_seasons": "Narava in letni časi",
+    "action.createText": "Ustvari besedilo",
+    "action.print": "Natisni / Shrani kot PDF",
+    "action.exportDocx": "Izvozi v Word (.docx)",
+    "candidates.available": "Na voljo: {count}",
+    "candidates.none": "Za to izbiro ni besedil.",
+    "preview.empty": "Izberite temo in stopnjo, nato kliknite »Ustvari besedilo«."
   }
 }

@@ -6,10 +6,10 @@
 
 import slPack from '../content/sl.json';
 import slLocale from '../locales/sl.json';
-import blueKiteUrl from '../assets/images/blue_kite.jpg';
-import kiteYellowFieldUrl from '../assets/images/kite_yellow_field.jpg';
+import imageData from './generated/imageData.json';
 
 import { validatePack } from './content/validate.js';
+import { buildCatalogIndex, findCandidates, chooseEntry, listThemes } from './content/catalog.js';
 import { validateSettings } from './worksheet/validateSettings.js';
 import { buildWorksheet } from './worksheet/build.js';
 import { renderWorksheet } from './render/html.js';
@@ -20,11 +20,8 @@ import { createTranslator } from './i18n.js';
 
 const t = createTranslator(slLocale);
 
-const KNOWN_ASSET_IDS = new Set(['blue_kite', 'kite_yellow_field']);
-const IMAGES_BY_ID = new Map([
-  ['blue_kite', { id: 'blue_kite', path: blueKiteUrl }],
-  ['kite_yellow_field', { id: 'kite_yellow_field', path: kiteYellowFieldUrl }]
-]);
+const IMAGES_BY_ID = new Map(Object.entries(imageData).map(([id, path]) => [id, { id, path }]));
+const KNOWN_ASSET_IDS = new Set(IMAGES_BY_ID.keys());
 
 const validation = validatePack(slPack, KNOWN_ASSET_IDS);
 if (!validation.ok) {
@@ -32,11 +29,14 @@ if (!validation.ok) {
   console.error('Starter content pack failed validation:', validation.errors);
   throw new Error('Starter content pack failed validation — see console for details.');
 }
-const CATALOG = new Map(validation.pack.entries.map((entry) => [entry.id, { ...entry, language: validation.pack.language }]));
+const entriesWithLanguage = validation.pack.entries.map((entry) => ({ ...entry, language: validation.pack.language }));
+const CATALOG = buildCatalogIndex(entriesWithLanguage);
+const THEMES = listThemes(CATALOG);
 
 /** Single mutable state object (blueprint section 5). */
 const state = {
-  contentId: 'stories_lost_kite_1',
+  filter: { theme: THEMES[0], level: 1 },
+  contentId: null,
   revision: 0,
   settings: {
     fontId: 'andika',
@@ -54,7 +54,7 @@ const state = {
     personalization: { name: '' },
     marginMm: 20
   },
-  lastGood: null // { model, layout, imageBytesPromise }
+  lastGood: null // { model, layout }
 };
 
 const settingsCheck = validateSettings(state.settings);
@@ -70,18 +70,59 @@ const els = {
   fitIndicator: document.getElementById('fit-indicator'),
   printButton: document.getElementById('btn-print'),
   docxButton: document.getElementById('btn-docx'),
-  contentSelect: document.getElementById('content-select'),
-  writingModeSelect: document.getElementById('writing-mode-select')
+  createButton: document.getElementById('btn-create'),
+  themeSelect: document.getElementById('theme-select'),
+  levelSelect: document.getElementById('level-select'),
+  writingModeSelect: document.getElementById('writing-mode-select'),
+  candidateCount: document.getElementById('candidate-count')
 };
 
-function selectContent(id) {
-  state.contentId = id;
+/** Applies t() to every element carrying a data-label key (blueprint 8.1: stable ids, looked-up labels). */
+function applyStaticLabels() {
+  document.title = t('app.title');
+  for (const el of document.querySelectorAll('[data-label]')) {
+    el.textContent = t(el.dataset.label);
+  }
+}
+
+function populateThemeSelect() {
+  els.themeSelect.replaceChildren(
+    ...THEMES.map((theme) => {
+      const option = document.createElement('option');
+      option.value = theme;
+      option.textContent = t(`theme.${theme}`);
+      return option;
+    })
+  );
+  els.themeSelect.value = state.filter.theme;
+}
+
+/** Updates the "N texts available" indicator without touching the displayed worksheet — a filter change alone must never silently swap the visible passage (blueprint 8.2). */
+function updateCandidateCount() {
+  const candidates = findCandidates(CATALOG, state.filter);
+  els.candidateCount.textContent = candidates.length > 0
+    ? t('candidates.available', { count: candidates.length })
+    : t('candidates.none');
+  els.createButton.disabled = candidates.length === 0;
+  return candidates;
+}
+
+function updateFilter(partial) {
+  Object.assign(state.filter, partial);
+  updateCandidateCount();
+}
+
+function createText() {
+  const candidates = findCandidates(CATALOG, state.filter);
+  const entry = chooseEntry(candidates, state.contentId);
+  if (!entry) return; // createButton is disabled in this case, but guard anyway
+  state.contentId = entry.id;
   requestRender();
 }
 
 function updateWritingMode(mode) {
   state.settings.writingMode = mode;
-  requestRender();
+  if (state.contentId) requestRender();
 }
 
 function showFit(model, result) {
@@ -107,7 +148,7 @@ function showFit(model, result) {
 
 async function requestRender() {
   const revision = ++state.revision;
-  const entry = CATALOG.get(state.contentId);
+  const entry = CATALOG.byId.get(state.contentId);
   const model = buildWorksheet(entry, state.settings, { imagesById: IMAGES_BY_ID }, entry.language);
 
   const result = await measureWorksheet(model, revision);
@@ -163,10 +204,15 @@ async function handleExportDocx() {
   }
 }
 
-els.contentSelect.addEventListener('change', (event) => selectContent(event.target.value));
+els.themeSelect.addEventListener('change', (event) => updateFilter({ theme: event.target.value }));
+els.levelSelect.addEventListener('change', (event) => updateFilter({ level: Number(event.target.value) }));
+els.createButton.addEventListener('click', createText);
 els.writingModeSelect.addEventListener('change', (event) => updateWritingMode(event.target.value));
 els.printButton.addEventListener('click', printWorksheet);
 els.docxButton.addEventListener('click', handleExportDocx);
 
+applyStaticLabels();
+populateThemeSelect();
+updateCandidateCount();
 els.fitIndicator.textContent = t('fit.measuring');
-requestRender();
+createText(); // show something on first load rather than an empty preview

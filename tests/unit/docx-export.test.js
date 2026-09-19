@@ -12,6 +12,7 @@ import { exportDocx } from '../../src/export/docx.js';
 import { convertMillimetersToTwip } from 'docx';
 
 const root = path.dirname(path.dirname(path.dirname(fileURLToPath(import.meta.url))));
+const TEST_ENTRY_ID = 'stories_muc_1';
 
 const SETTINGS = {
   fontId: 'andika',
@@ -30,15 +31,26 @@ const SETTINGS = {
   marginMm: 20
 };
 
+async function loadManifestAssets() {
+  const manifest = JSON.parse(await readFile(path.join(root, 'assets/manifest.json'), 'utf8'));
+  const assetIds = new Set(manifest.assets.map((a) => a.id));
+  const imagesById = new Map(manifest.assets.map((a) => [a.id, { id: a.id, path: a.path }]));
+  return { assetIds, imagesById };
+}
+
 async function buildModel(entryId) {
   const raw = JSON.parse(await readFile(path.join(root, 'content/sl.json'), 'utf8'));
-  const { pack } = validatePack(raw, new Set(['blue_kite', 'kite_yellow_field']));
+  const { assetIds, imagesById } = await loadManifestAssets();
+  const { pack } = validatePack(raw, assetIds);
   const entry = { ...pack.entries.find((e) => e.id === entryId), language: pack.language };
-  const imagesById = new Map([
-    ['blue_kite', { id: 'blue_kite', path: 'assets/images/blue_kite.jpg' }],
-    ['kite_yellow_field', { id: 'kite_yellow_field', path: 'assets/images/kite_yellow_field.jpg' }]
-  ]);
   return buildWorksheet(entry, SETTINGS, { imagesById }, 'sl');
+}
+
+async function imageBytesFor(entryId) {
+  const raw = JSON.parse(await readFile(path.join(root, 'content/sl.json'), 'utf8'));
+  const entry = raw.entries.find((e) => e.id === entryId);
+  const { imagesById } = await loadManifestAssets();
+  return readFile(path.join(root, imagesById.get(entry.imageId).path));
 }
 
 async function unzipEntry(docxPath, entryName) {
@@ -46,8 +58,8 @@ async function unzipEntry(docxPath, entryName) {
 }
 
 test('exportDocx produces a real zip/OOXML package with colored runs, correct A4 page size, and an embedded (not linked) image', async (t) => {
-  const model = await buildModel('stories_lost_kite_1');
-  const imageBytes = await readFile(path.join(root, 'assets/images/blue_kite.jpg'));
+  const model = await buildModel(TEST_ENTRY_ID);
+  const imageBytes = await imageBytesFor(TEST_ENTRY_ID);
   const layout = { rowCount: 6 };
 
   const blob = await exportDocx(model, layout, imageBytes);
@@ -79,10 +91,10 @@ test('exportDocx produces a real zip/OOXML package with colored runs, correct A4
 });
 
 test('exportDocx renders no copy-practice lines when rowCount is 0 (read-only mode)', async () => {
-  const model = await buildModel('stories_lost_kite_1');
+  const model = await buildModel(TEST_ENTRY_ID);
   const readOnlySettings = { ...SETTINGS, writingMode: 'read-only' };
   const modelReadOnly = { ...model, settings: readOnlySettings };
-  const imageBytes = await readFile(path.join(root, 'assets/images/blue_kite.jpg'));
+  const imageBytes = await imageBytesFor(TEST_ENTRY_ID);
 
   const blob = await exportDocx(modelReadOnly, { rowCount: 0 }, imageBytes);
   const buffer = Buffer.from(await blob.arrayBuffer());

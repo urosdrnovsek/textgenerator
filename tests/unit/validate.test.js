@@ -6,7 +6,9 @@ import path from 'node:path';
 import { validatePack } from '../../src/content/validate.js';
 
 const root = path.dirname(path.dirname(path.dirname(fileURLToPath(import.meta.url))));
-const ASSET_IDS = new Set(['blue_kite', 'kite_yellow_field']);
+
+const manifest = JSON.parse(await readFile(path.join(root, 'assets/manifest.json'), 'utf8'));
+const ASSET_IDS = new Set(manifest.assets.map((a) => a.id));
 
 async function loadSlPack() {
   const raw = await readFile(path.join(root, 'content/sl.json'), 'utf8');
@@ -17,12 +19,14 @@ test('the real starter sl.json pack validates cleanly', async () => {
   const pack = await loadSlPack();
   const result = validatePack(pack, ASSET_IDS);
   assert.equal(result.ok, true);
-  assert.equal(result.pack.entries.length, 2);
+  assert.equal(result.pack.entries.length, 25);
 });
 
 test('rejects a syllable_body that does not reproduce body', async () => {
   const pack = await loadSlPack();
-  pack.entries[0].syllable_body = pack.entries[0].syllable_body.replace('Ma|ja', 'Ma|jaa');
+  // Insert a letter right after the first syllable boundary — guaranteed to
+  // desync the stripped text from body regardless of the entry's content.
+  pack.entries[0].syllable_body = pack.entries[0].syllable_body.replace('|', '|x');
   const result = validatePack(pack, ASSET_IDS);
   assert.equal(result.ok, false);
   assert.ok(result.errors.some((e) => e.code === 'SYLLABLE_MISMATCH'));
@@ -105,7 +109,9 @@ test('rejects a neutral_syllable_body that does not reproduce neutral_body', asy
 
 test('accepts valid sentences that join with single spaces to reproduce body', async () => {
   const pack = await loadSlPack();
-  pack.entries[0].sentences = ['Maja ima modrega zmaja.', 'Zmaj leti nad travo.', 'Piha veter.', 'Trak zdrsne iz Majine roke.', 'Maja teče za zmajem.', 'Najde ga ob nizkem drevesu.'];
+  // A single-element array trivially reproduces body when joined, regardless
+  // of the entry's actual content — keeps this test independent of fixtures.
+  pack.entries[0].sentences = [pack.entries[0].body];
   const result = validatePack(pack, ASSET_IDS);
   assert.equal(result.ok, true);
   assert.deepEqual(result.pack.entries[0].sentences, pack.entries[0].sentences);

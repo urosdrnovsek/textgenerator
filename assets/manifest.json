@@ -2,26 +2,6 @@
   "schemaVersion": 1,
   "assets": [
     {
-      "id": "blue_kite",
-      "mime": "image/jpeg",
-      "path": "assets/images/blue_kite.jpg",
-      "width": 512,
-      "height": 512,
-      "license": "unreviewed placeholder — confirm license before classroom release",
-      "source": "local starter image collection",
-      "attribution": ""
-    },
-    {
-      "id": "kite_yellow_field",
-      "mime": "image/jpeg",
-      "path": "assets/images/kite_yellow_field.jpg",
-      "width": 512,
-      "height": 512,
-      "license": "unreviewed placeholder — confirm license before classroom release",
-      "source": "local starter image collection",
-      "attribution": ""
-    },
-    {
       "id": "font-andika-regular",
       "mime": "font/ttf",
       "path": "assets/fonts/andika/Andika-Regular.ttf",
@@ -56,6 +36,256 @@
       "source": "https://github.com/silnrsi/font-andika release v7.000",
       "attribution": "Andika (c) SIL Global",
       "licenseFile": "assets/fonts/andika/OFL.txt"
+    },
+    {
+      "id": "benetke_trg",
+      "mime": "image/jpeg",
+      "path": "assets/images/benetke_trg.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "cebela_cvet",
+      "mime": "image/jpeg",
+      "path": "assets/images/cebela_cvet.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "delfin_jata",
+      "mime": "image/jpeg",
+      "path": "assets/images/delfin_jata.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "delfin_morje",
+      "mime": "image/jpeg",
+      "path": "assets/images/delfin_morje.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "dez_kaplje",
+      "mime": "image/jpeg",
+      "path": "assets/images/dez_kaplje.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "gravitacija_jabolko",
+      "mime": "image/jpeg",
+      "path": "assets/images/gravitacija_jabolko.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "jesensko_listje_drevo",
+      "mime": "image/jpeg",
+      "path": "assets/images/jesensko_listje_drevo.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "letni_casi_pokrajina",
+      "mime": "image/jpeg",
+      "path": "assets/images/letni_casi_pokrajina.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "mavrica",
+      "mime": "image/jpeg",
+      "path": "assets/images/mavrica.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "mavrica_kaplja",
+      "mime": "image/jpeg",
+      "path": "assets/images/mavrica_kaplja.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "mavrica_lok",
+      "mime": "image/jpeg",
+      "path": "assets/images/mavrica_lok.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "mavrica_polje",
+      "mime": "image/jpeg",
+      "path": "assets/images/mavrica_polje.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "moker_muc",
+      "mime": "image/jpeg",
+      "path": "assets/images/moker_muc.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "muc_dom",
+      "mime": "image/jpeg",
+      "path": "assets/images/muc_dom.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "netopir",
+      "mime": "image/jpeg",
+      "path": "assets/images/netopir.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "piramide_bloki",
+      "mime": "image/jpeg",
+      "path": "assets/images/piramide_bloki.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "piramide_giza",
+      "mime": "image/jpeg",
+      "path": "assets/images/piramide_giza.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "piramide_kamnolom",
+      "mime": "image/jpeg",
+      "path": "assets/images/piramide_kamnolom.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "piramide_klancina",
+      "mime": "image/jpeg",
+      "path": "assets/images/piramide_klancina.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "piscancek_gnezdo",
+      "mime": "image/jpeg",
+      "path": "assets/images/piscancek_gnezdo.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "piscancek_skedenj",
+      "mime": "image/jpeg",
+      "path": "assets/images/piscancek_skedenj.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "polz_dirka",
+      "mime": "image/jpeg",
+      "path": "assets/images/polz_dirka.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "seme_kalica",
+      "mime": "image/jpeg",
+      "path": "assets/images/seme_kalica.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "sova_veja",
+      "mime": "image/jpeg",
+      "path": "assets/images/sova_veja.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "veter",
+      "mime": "image/jpeg",
+      "path": "assets/images/veter.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
     }
   ]
 }

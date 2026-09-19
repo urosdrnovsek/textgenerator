@@ -2,7 +2,7 @@
 <html lang="sl">
 <head>
   <meta charset="utf-8" />
-  <title>Delovni list — Phase 0 proof</title>
+  <title>Delovni list — Phase 3</title>
   <link rel="stylesheet" href="styles/worksheet.css" />
   <link rel="stylesheet" href="styles/app.css" />
   <link rel="stylesheet" href="styles/print.css" />
@@ -10,20 +10,29 @@
 <body>
   <div class="app-shell no-print">
     <div class="app-sidebar">
-      <label for="content-select">Passage</label>
-      <select id="content-select">
-        <option value="stories_lost_kite_1">Level 1 — Pobegli zmaj (draft)</option>
-        <option value="stories_lost_kite_5">Level 5 — Zmaj nad rumenim poljem (near-limit)</option>
+      <label for="theme-select" data-label="field.theme">Tema</label>
+      <select id="theme-select"></select>
+
+      <label for="level-select" data-label="field.level">Stopnja</label>
+      <select id="level-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
       </select>
 
-      <label for="writing-mode-select">Writing mode</label>
+      <div id="candidate-count" class="candidate-count"></div>
+      <button id="btn-create" type="button" data-label="action.createText">Ustvari besedilo</button>
+
+      <label for="writing-mode-select" data-label="field.writingMode">Način pisanja</label>
       <select id="writing-mode-select">
-        <option value="read-copy">Read &amp; copy</option>
-        <option value="read-only">Read only</option>
+        <option value="read-copy" data-label="writingMode.read-copy">Beri in prepiši</option>
+        <option value="read-only" data-label="writingMode.read-only">Samo branje</option>
       </select>
 
-      <button id="btn-print" type="button">Print / Save as PDF</button>
-      <button id="btn-docx" type="button">Export as Word (.docx)</button>
+      <button id="btn-print" type="button" data-label="action.print">Natisni / Shrani kot PDF</button>
+      <button id="btn-docx" type="button" data-label="action.exportDocx">Izvozi v Word (.docx)</button>
 
       <div id="fit-indicator" class="fit-indicator" role="status">Preverjanje…</div>
     </div>

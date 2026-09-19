@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "language": "en",
   "strings": {
+    "app.title": "Worksheet",
     "header.nameLine": "Name:",
     "header.date": "Date:",
     "fit.measuring": "Measuring…",
@@ -10,6 +11,22 @@
     "fit.suggestion.choose-shorter-text": "choose shorter text",
     "fit.suggestion.reduce-image": "reduce image",
     "fit.suggestion.read-only": "read only",
-    "export.failed": "Export failed: {message}. See browser console for details."
+    "export.failed": "Export failed: {message}. See browser console for details.",
+    "field.theme": "Theme",
+    "field.level": "Level",
+    "field.writingMode": "Writing mode",
+    "writingMode.read-copy": "Read & copy",
+    "writingMode.read-only": "Read only",
+    "theme.stories": "Stories",
+    "theme.animal_facts": "Animal facts",
+    "theme.around_the_world": "Around the world",
+    "theme.amazing_science": "Amazing science",
+    "theme.nature_seasons": "Nature & seasons",
+    "action.createText": "Create text",
+    "action.print": "Print / Save as PDF",
+    "action.exportDocx": "Export as Word (.docx)",
+    "candidates.available": "Available: {count}",
+    "candidates.none": "No texts for this selection.",
+    "preview.empty": "Choose a theme and level, then click \"Create text\"."
   }
 }
