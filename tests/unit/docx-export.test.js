@@ -100,3 +100,23 @@ test('exportDocx renders no copy-practice lines when rowCount is 0 (read-only mo
   const buffer = Buffer.from(await blob.arrayBuffer());
   assert.equal(buffer.subarray(0, 2).toString('hex'), '504b');
 });
+
+test('exportDocx uses the caller-supplied header labels instead of the hardcoded Slovene defaults', async () => {
+  const model = await buildModel(TEST_ENTRY_ID);
+  const imageBytes = await imageBytesFor(TEST_ENTRY_ID);
+  const layout = { rowCount: 6 };
+
+  const blob = await exportDocx(model, layout, imageBytes, { nameLine: 'Nombre:', date: 'Fecha:' });
+  const buffer = Buffer.from(await blob.arrayBuffer());
+  const tmpDir = await mkdtemp(path.join(os.tmpdir(), 'worksheet-docx-test-'));
+  const docxPath = path.join(tmpDir, 'worksheet.docx');
+  await import('node:fs/promises').then((fs) => fs.writeFile(docxPath, buffer));
+  try {
+    const documentXml = await unzipEntry(docxPath, 'word/document.xml');
+    assert.ok(documentXml.includes('Nombre:'), 'expected the supplied nameLine label in the exported document');
+    assert.ok(documentXml.includes('Fecha:'), 'expected the supplied date label in the exported document');
+    assert.ok(!documentXml.includes('Ime:') && !documentXml.includes('Datum:'), 'must not fall back to the hardcoded Slovene labels when labels are supplied');
+  } finally {
+    await rm(tmpDir, { recursive: true, force: true });
+  }
+});

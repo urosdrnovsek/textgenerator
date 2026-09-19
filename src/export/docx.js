@@ -46,6 +46,9 @@ import {
 } from 'docx';
 import { FONT_FAMILIES, TWIPS_PER_PT, mmToPx, mmToTwips, TINTS_BY_ID } from '../config.js';
 
+/** Matches src/render/html.js DEFAULT_LABELS — used only when a caller doesn't pass the active locale's translated labels. */
+const DEFAULT_LABELS = { nameLine: 'Ime:', date: 'Datum:' };
+
 /**
  * @param {import('../text/runs.js').StyledRun[]} runs
  * @param {{ fontFamily: string, fontSizePt: number, characterSpacingTwips: number }} options
@@ -68,9 +71,10 @@ function toWordRuns(runs, { fontFamily, fontSizePt, characterSpacingTwips }) {
  * @param {import('../worksheet/build.js').WorksheetModel} model
  * @param {{ rowCount: number }} layout the fit-checked layout decision from layout/measure.js
  * @param {Uint8Array | Buffer | undefined} imageBytes decoded bytes of model.image
+ * @param {{ nameLine: string, date: string }} [labels] translated header.nameLine/header.date strings for the active locale (blueprint 8.1: every teacher-facing label must localize) — falls back to the Slovene defaults only if omitted
  * @returns {Promise<Blob>} browser- and Node-compatible; tests convert via .arrayBuffer()
  */
-export async function exportDocx(model, layout, imageBytes) {
+export async function exportDocx(model, layout, imageBytes, labels = DEFAULT_LABELS) {
   const s = model.settings;
   const fontFamily = FONT_FAMILIES[s.fontId] ?? s.fontId;
   const characterSpacingTwips = Math.round((s.letterSpacingPt ?? 0) * TWIPS_PER_PT);
@@ -89,10 +93,10 @@ export async function exportDocx(model, layout, imageBytes) {
   if (model.header.nameLine || model.header.date) {
     const parts = [];
     if (model.header.nameLine) {
-      parts.push(new TextRun({ text: 'Ime: _______________________', font: fontFamily, size: 22 }));
+      parts.push(new TextRun({ text: `${labels.nameLine} _______________________`, font: fontFamily, size: 22 }));
     }
     if (model.header.date) {
-      parts.push(new TextRun({ text: '          Datum: ________________', font: fontFamily, size: 22 }));
+      parts.push(new TextRun({ text: `          ${labels.date} ________________`, font: fontFamily, size: 22 }));
     }
     children.push(new Paragraph({ children: parts, spacing: { after: 200 }, shading }));
   }

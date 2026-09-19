@@ -31,8 +31,8 @@ test('throws a clear error for an unknown key rather than returning undefined', 
   assert.throws(() => t('does.not.exist'), /missing translation/);
 });
 
-test('all four bundled locale files expose exactly the same set of keys', async () => {
-  const languages = ['sl', 'en', 'de', 'fr'];
+test('all bundled locale files expose exactly the same set of keys', async () => {
+  const languages = ['sl', 'en', 'de', 'fr', 'es'];
   const keysByLanguage = {};
   for (const lang of languages) {
     const locale = (await import(`../../locales/${lang}.json`, { with: { type: 'json' } })).default;

@@ -5,7 +5,7 @@
  * merged into the working catalog. Nothing here touches the DOM or storage.
  */
 
-const KNOWN_LANGUAGES = new Set(['sl', 'en', 'de', 'fr']);
+const KNOWN_LANGUAGES = new Set(['sl', 'en', 'de', 'fr', 'es']);
 const KNOWN_THEMES = new Set([
   'stories',
   'animal_facts',

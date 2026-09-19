@@ -188,6 +188,16 @@
       "attribution": ""
     },
     {
+      "id": "axolotl",
+      "mime": "image/jpeg",
+      "path": "assets/images/axolotl.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
       "id": "piramide_bloki",
       "mime": "image/jpeg",
       "path": "assets/images/piramide_bloki.jpg",

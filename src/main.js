@@ -8,10 +8,12 @@ import slPack from '../content/sl.json';
 import enPack from '../content/en.json';
 import dePack from '../content/de.json';
 import frPack from '../content/fr.json';
+import esPack from '../content/es.json';
 import slLocale from '../locales/sl.json';
 import enLocale from '../locales/en.json';
 import deLocale from '../locales/de.json';
 import frLocale from '../locales/fr.json';
+import esLocale from '../locales/es.json';
 import imageData from './generated/imageData.json';
 
 import { validatePack } from './content/validate.js';
@@ -29,8 +31,8 @@ import { readImageFile } from './import.js';
 
 /** blueprint 8.1: "The interface starts in Slovene for the pilot." */
 const DEFAULT_LANGUAGE = 'sl';
-const CONTENT_PACKS = { sl: slPack, en: enPack, de: dePack, fr: frPack };
-const LOCALES = { sl: slLocale, en: enLocale, de: deLocale, fr: frLocale };
+const CONTENT_PACKS = { sl: slPack, en: enPack, de: dePack, fr: frPack, es: esPack };
+const LOCALES = { sl: slLocale, en: enLocale, de: deLocale, fr: frLocale, es: esLocale };
 const LANGUAGES = Object.keys(CONTENT_PACKS);
 
 // Reassigned by switchLanguage() — not const, since the active locale/catalog change at runtime.
@@ -221,7 +223,7 @@ function populateThemeSelect() {
   els.themeSelect.value = state.filter.theme;
 }
 
-/** Language names (language.sl/en/de/fr) are identical across every locale file by design — each language names itself the same way regardless of interface language, the standard "endonym" convention. */
+/** Language names (language.sl/en/de/fr/es) are identical across every locale file by design — each language names itself the same way regardless of interface language, the standard "endonym" convention. */
 function populateLanguageSelect() {
   els.languageSelect.replaceChildren(
     ...LANGUAGES.map((language) => {
@@ -602,7 +604,8 @@ async function handleExportDocx() {
   try {
     const { model, layout } = state.lastGood;
     const imageBytes = dataUrlToUint8Array(model.image.path);
-    const blob = await exportDocx(model, layout, imageBytes);
+    const labels = { nameLine: t('header.nameLine'), date: t('header.date') };
+    const blob = await exportDocx(model, layout, imageBytes, labels);
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;

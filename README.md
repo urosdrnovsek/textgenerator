@@ -11,23 +11,36 @@ connection at any point.
 ## Status: Phase 3-4 complete except country-specific rulings; Phase 5 (multi-language) functional, content unreviewed
 
 - **Content:** 25 entries per language (5 themes × 5 levels) for Slovene,
-  English, German, and French — 100 entries total, all schema-validated
-  (unique ids, valid image references, syllable/body consistency). Slovene
-  is the original curated selection. **English/German/French are unreviewed
-  drafts**, drawn from `Texts collection/`: nobody has proofread the
-  translations for a native speaker's eye, and for German (all 25 entries)
-  and French (20 of 25 entries) the source material's own paired image
-  didn't exist in `assets/images/`, so a topically-closest substitute image
-  was manually reassigned instead — a documented stopgap, not a verified
-  accurate pairing. Spanish is not wired in.
+  English, German, French, and Spanish — 125 entries total, all
+  schema-validated (unique ids, valid image references, syllable/body
+  consistency), each entry carrying a `version` (currently `1` for every
+  entry across every language — see "Content versioning" below). Slovene is
+  the original curated selection. **English/German/French/Spanish are
+  unreviewed drafts**, drawn from `Texts collection/`: nobody has proofread
+  them for a native speaker's eye, and for German (all 25 entries), French
+  (20 of 25 entries), and Spanish (all 25 entries) the source material's own
+  paired image didn't exist in `assets/images/`, so a topically-closest
+  substitute image was manually reassigned instead — a documented stopgap,
+  not a verified accurate pairing.
+- **Content versioning:** every content entry carries an integer `version`
+  field, currently `1` across all five languages. The intent going forward:
+  `version` bumps when an entry's text is corrected after native-language
+  review (not when unrelated entries are merely added), and new entries can
+  be added at any time without bumping the ones already reviewed. There is
+  no cross-entry "pack version" concept yet — each entry versions
+  independently.
 - **Language switching:** a language selector switches the active content
   pack, UI strings, `<html lang>`, and theme list at runtime, with no page
   reload — verified in a real (headless) browser: switching updates every
   static label and the theme dropdown, content and images actually change
   per language, word counts and fit-checking stay correct after a switch,
-  print and `.docx` export both keep working (export filenames carry the
-  active language), and a saved preset remembers and restores the language
-  it was saved in.
+  print and `.docx` export both keep working (export filenames and,
+  as of this pass, the `.docx` "Name:"/"Date:" header labels themselves
+  carry the active language — a real bug caught by testing Spanish DOCX
+  export end-to-end: the header had been hardcoded to Slovene labels for
+  every language since Phase 0/3, now fixed and covered by a regression
+  test), and a saved preset remembers and restores the language it was
+  saved in.
 - **Interface:** teacher picks a theme and level, sees how many texts match,
   and clicks "Create text" to select one (never silently swapped by a filter
   change) — plus a writing-mode switch (read & copy / trace / read only),
@@ -39,8 +52,8 @@ connection at any point.
   EXIF-orientation-corrected, downsampled locally), live fit-checked
   preview, print/PDF, and editable `.docx` export carrying every one of
   these through (same shared styled-run model as the HTML preview). Fully
-  translated UI in Slovene, English, German, and French (all four locale
-  files verified to expose the identical set of string keys).
+  translated UI in Slovene, English, German, French, and Spanish (all five
+  locale files verified to expose the identical set of string keys).
 - **Named setups:** two built-in presets (Standard / Dyslexia-friendly) plus
   teacher-saved ones, persisted via localStorage with a capability check —
   save failure is reported honestly rather than claiming success. A saved
@@ -97,9 +110,9 @@ against `src/content/validate.js` and gated in the build via
   export, i18n)
 - `styles/` — shared worksheet appearance, print stylesheet, app chrome
 - `content/` — validated content packs (JSON, one per language: `sl`, `en`,
-  `de`, `fr`)
-- `locales/` — UI string tables, one per language (`sl`, `en`, `de`, `fr`),
-  all with identical key sets (enforced by a test)
+  `de`, `fr`, `es`)
+- `locales/` — UI string tables, one per language (`sl`, `en`, `de`, `fr`,
+  `es`), all with identical key sets (enforced by a test)
 - `assets/` — bundled fonts (Andika, Lexend, OpenDyslexic, Comic Neue — all
   SIL OFL) and images referenced by `content/`, tracked in
   `assets/manifest.json`
