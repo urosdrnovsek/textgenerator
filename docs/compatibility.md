@@ -14,25 +14,77 @@ npm test                 # unit-level logic
 npm run validate-content # content + asset manifest schema
 npm run verify-docx      # real LibreOffice: exports every representative worksheet through the actual app, converts via headless soffice, checks page count + text
 npm run verify-offline   # fresh Chromium profile, DNS resolution forced to fail, full user journey, checks zero network requests / zero console errors
+npm run verify-firefox   # real Firefox via geckodriver: same broad journey, plus packet page-count via WebDriver's real printPage() command
 npm run package           # produces dist/writing-worksheet-generator-vX.Y.Z.zip
 node scripts/verify-offline.mjs --unzip dist/writing-worksheet-generator-vX.Y.Z.zip   # same offline check, but against the actual extracted ZIP outside the repo
+node scripts/verify-firefox.mjs --unzip dist/writing-worksheet-generator-vX.Y.Z.zip   # same Firefox check, against the actual extracted ZIP
 ```
 
 `verify-docx` and `verify-offline` need `soffice` (LibreOffice), `pdfinfo`
 and `pdftotext` (poppler-utils), and `/usr/bin/chromium` on the machine
-running them. They are developer/QA tools — never something a teacher
-needs to run (blueprint 12: "Office automation is a developer/QA tool,
-never a teacher prerequisite").
+running them. `verify-firefox` additionally needs `geckodriver` (`sudo
+pacman -S geckodriver` on this Arch-based environment; Firefox itself via
+`sudo pacman -S firefox`) and the `selenium-webdriver` npm package
+(already a devDependency). All of these are developer/QA tools — never
+something a teacher needs to run (blueprint 12: "Office automation is a
+developer/QA tool, never a teacher prerequisite").
 
 ## Browser matrix
 
 | Browser | Status | How verified |
 | --- | --- | --- |
 | Chromium (headless, this dev environment) | **Automated, passing** | `npm run verify-offline` and the Phase 3–6 CDP-driven scripts referenced in commit history: language switching, every dyslexia support, presets, favorites, packets, content import, print, `.docx` export. |
+| Firefox (headless, this dev environment — version 155.0.1) | **Automated, passing except one known Gecko engine issue (see below)** | `npm run verify-firefox`, via `geckodriver` + `selenium-webdriver` (Firefox doesn't speak Chrome DevTools Protocol — it speaks WebDriver BiDi, so the Chromium scripts' approach doesn't carry over). Covers all 5 languages, favorites, the dyslexia preset, saving a setup, `.docx` export, and both single-worksheet and packet printing verified via WebDriver's real `printPage()` command (Firefox's actual print/PDF engine) piped through `pdfinfo`/`pdftotext` — not a simulation. All pass in the clean/primary flow (create a worksheet and print it; build a packet and print it immediately, matching the documented `docs/teacher-guide.md` workflow). One known issue found and documented separately below. |
 | Google Chrome (real, desktop) | **Not yet tested here** | Same underlying engine as Chromium; low risk, but not the same binary — needs a real run before claiming it. |
 | Microsoft Edge (real, desktop — the brief's primary target, "Windows most likely") | **Not yet tested here** | Chromium-based; same low-but-nonzero risk as Chrome. This is the brief's actual primary target browser and should be the first real-browser check done outside this environment. |
-| Firefox | **Not tested — no Firefox available in this development environment** | Needs a real run. Firefox's print pipeline and `@page`/`break-after` handling have historically differed from Chromium's in edge cases; the packet multi-page printing feature (Phase 6) is the highest-risk area to check first. |
+| Firefox (real, desktop) | **Not yet tested** | The headless automated run above is real Firefox, but a real desktop session (different windowing/print-dialog path) hasn't been checked. Given the known issue below, this is worth a real run specifically to see whether ordinary interactive use (not automation) hits it too. |
 | Safari | **Not tested — not applicable to this Linux dev environment** | Lower priority per the brief ("Windows most likely, possibly Mac/Linux") but should be checked before claiming Mac support. |
+
+### Firefox-specific known issue: print pagination can become unreliable after enough prior re-renders in the same tab
+
+**Found**, not fixed — this is a real Gecko (Firefox's rendering engine)
+bug, not a bug in this app's CSS/DOM, based on extensive bisection (see
+the Phase 7 Firefox-testing commit for the full investigation). Documented
+here per this project's standing rule: report limitations honestly rather
+than omit them.
+
+**What happens:** in the same Firefox tab, after enough prior worksheet
+re-renders have happened (the exact trigger found: 2 or more sequential
+*settings changes* — e.g. font size then line height — applied to the
+*current* worksheet), the *next* print operation can come out wrong. For
+packet printing specifically, this manifests as an extra blank page
+inserted after every sheet (5 sheets → 10 pages, half blank). In one
+observed case deep into a long test session, it also affected a plain
+single-worksheet print (1 page → 5). The worksheet's own fit-check is not
+wrong in either case — the app correctly reports the content fits; the
+corruption is in Firefox's own print/PDF pagination.
+
+**What was ruled out** (so this isn't misdiagnosed as an app bug on a
+future pass): specific content, specific language/theme/font, each
+individual setting changed alone (font size alone: fine; line height
+alone: fine — only combinations of 2+ trigger it), `#print-surface`'s own
+render history, the hidden `#preview` pane's content (cleared it — no
+change), DOM node identity (rebuilt `#print-surface` as a fresh element —
+no change), and timing (added up to 3 full seconds of settle time between
+steps — no change). The trigger is specifically *how many* unrelated
+re-renders happened earlier in the tab's lifetime, not their content or
+timing.
+
+**Practical mitigation for now:** if a teacher has been actively adjusting
+settings for a while in one browser session, reload the page (or just
+close and reopen the app) before printing a packet, especially a large
+one. This resets whatever internal Firefox state accumulates. Building a
+packet and printing it right away — the workflow `docs/teacher-guide.md`
+actually describes — is unaffected; that path is covered by
+`verify-firefox`'s primary (non-demonstration) checks and passes cleanly.
+
+**Not pursued further this pass** (explicit decision, not an oversight):
+possible next steps would be filing a minimal reproduction with Mozilla
+(Bugzilla) or trying more invasive structural workarounds (e.g. rendering
+print content in an iframe) — neither was attempted, since everything
+tried at the CSS/DOM level had no effect, suggesting the fix would need to
+happen inside Gecko itself or require much deeper investigation than is
+warranted right now.
 
 ## Office application matrix
 
@@ -69,6 +121,13 @@ bundled language, the dyslexia-friendly preset, saving a setup, favoriting
 a text, adding to a packet, printing, printing the packet, and exporting
 `.docx`. Current result: **zero non-`file://`/`data:` network requests,
 zero console errors or exceptions.**
+
+`npm run verify-firefox` applies the same offline principle for Firefox —
+a fresh profile (geckodriver's default) with network egress hard-blocked
+via an unreachable proxy (Firefox has no exact equivalent of Chromium's
+`--host-resolver-rules`, so a dead proxy is the closest substitute; file://
+navigation is never proxied, so it's unaffected) — and confirms zero
+console errors across the same kind of broad journey.
 
 Not yet tested: a genuinely separate physical/virtual machine with *no*
 development tooling installed at all (Node, browsers other than whatever

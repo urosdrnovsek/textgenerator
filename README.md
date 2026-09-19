@@ -134,6 +134,18 @@ how, and what's still open. Summary:
   user journey — all 5 languages, dyslexia preset, presets, favorites,
   packets, print, packet print, `.docx` export — and checks for zero
   non-`file://` network requests and zero console errors.
+- **Real Firefox compatibility — automated, passing except one known Gecko
+  engine issue.** Firefox doesn't speak Chrome DevTools Protocol — it
+  speaks WebDriver BiDi — so `npm run verify-firefox` uses `geckodriver` +
+  `selenium-webdriver` instead. Covers the same broad journey as the
+  Chromium checks, plus single-worksheet and packet printing verified via
+  WebDriver's real `printPage()` command (Firefox's actual print engine).
+  The clean/primary flows all pass. One real, reproducible Firefox-only bug
+  was found and thoroughly bisected: after enough prior settings-driven
+  re-renders happen in the same tab, the *next* print can come out with
+  extra blank pages — this reproduces even with a trivial, isolated repro
+  and traces to Firefox's own print pagination, not this app's CSS/DOM (see
+  `docs/compatibility.md` for the full writeup and a practical mitigation).
 - **Versioned ZIP release — done.** `npm run package` rebuilds and
   produces `dist/writing-worksheet-generator-v<version>.zip`, bundling
   `release/` with `docs/`, `THIRD_PARTY_NOTICES.md`, and `licenses/`.
@@ -141,7 +153,7 @@ how, and what's still open. Summary:
   `THIRD_PARTY_NOTICES.md`.
 - **Still open, needs the user's own hardware/software** (none of this is
   available in the development environment this was built in): real
-  Microsoft Word, real Firefox/Safari, and physical printer tests.
+  Microsoft Word, real desktop Firefox/Safari, and physical printer tests.
   `docs/compatibility.md` has a concrete checklist for each.
 - **Still open, deliberately not attempted here:** image licenses (every
   bundled image is still an "unreviewed placeholder" in
@@ -172,6 +184,7 @@ npm run validate-content  # validate content packs + asset manifest only
 npm run build           # rebuild release/ after editing src/, styles/, or content/
 npm run verify-docx     # real LibreOffice compatibility check (needs soffice + poppler-utils)
 npm run verify-offline   # fresh-profile offline/network check (needs chromium)
+npm run verify-firefox   # real Firefox compatibility check (needs geckodriver)
 npm run package          # produces dist/writing-worksheet-generator-vX.Y.Z.zip
 ```
 
@@ -194,9 +207,10 @@ against `src/content/validate.js` and gated in the build via
   `assets/manifest.json`
 - `scripts/build.mjs` — bundles `src/` into the self-contained `release/`;
   refuses to build if `scripts/validate-content.mjs` finds a problem
-- `scripts/verify-docx-libreoffice.mjs`, `scripts/verify-offline.mjs` —
-  Phase 7 developer/QA tools (real LibreOffice + fresh-profile offline
-  checks); never a teacher prerequisite
+- `scripts/verify-docx-libreoffice.mjs`, `scripts/verify-offline.mjs`,
+  `scripts/verify-firefox.mjs` — Phase 7 developer/QA tools (real
+  LibreOffice, fresh-profile offline, and real Firefox checks); never a
+  teacher prerequisite
 - `scripts/package-release.mjs` — produces the versioned distributable ZIP
 - `tests/unit/` — Node test-runner suite
 - `docs/teacher-guide.md` — non-technical, day-to-day usage guide
