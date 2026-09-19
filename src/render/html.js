@@ -6,7 +6,7 @@
  */
 
 import { buildRulingRows } from '../layout/rulings.js';
-import { ptToMm, FONT_FAMILIES, COPY_AREA_GAP_MM, TINTS_BY_ID } from '../config.js';
+import { ptToMm, pxToMm, FONT_FAMILIES, COPY_AREA_GAP_MM, TINTS_BY_ID } from '../config.js';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 
@@ -86,6 +86,70 @@ function renderHeaderFields(header, labels) {
 }
 
 /**
+ * Measures the body's actual rendered visual lines (blueprint 8.6:
+ * "alternating paragraphs is not equivalent to alternating physical lines
+ * — extract line boundaries after browser layout"). A Range over a whole
+ * paragraph's contents yields one client rect per style-run fragment, so
+ * same-line fragments (several differently-colored spans on one wrapped
+ * line) are merged by rounding their top edge — real line boxes never
+ * share a top within a fraction of a pixel, styled fragments on the same
+ * line always do. Requires `bodyElement` to already be attached to the
+ * document; unattached nodes report zero-size rects.
+ * @param {HTMLElement} bodyElement
+ * @returns {Array<{ topMm: number, heightMm: number }>}
+ */
+export function measureBodyLineBoxes(bodyElement) {
+  const containerRect = bodyElement.getBoundingClientRect();
+  const lineMap = new Map();
+  for (const paragraph of bodyElement.children) {
+    if (!(paragraph instanceof HTMLElement) || paragraph.classList.contains('ws-line-stripes')) continue;
+    const range = document.createRange();
+    range.selectNodeContents(paragraph);
+    for (const rect of range.getClientRects()) {
+      if (rect.width === 0 || rect.height === 0) continue;
+      const key = Math.round(rect.top);
+      const existing = lineMap.get(key);
+      if (existing) {
+        existing.top = Math.min(existing.top, rect.top);
+        existing.bottom = Math.max(existing.bottom, rect.bottom);
+      } else {
+        lineMap.set(key, { top: rect.top, bottom: rect.bottom });
+      }
+    }
+  }
+  return [...lineMap.values()]
+    .sort((a, b) => a.top - b.top)
+    .map((line) => ({
+      topMm: pxToMm(line.top - containerRect.top),
+      heightMm: pxToMm(line.bottom - line.top)
+    }));
+}
+
+/**
+ * Inserts a faint alternating background behind every other measured line
+ * (brief section 5: "zebra striping to keep the reader's eye anchored").
+ * Absolutely positioned behind the text (blueprint: never hides/clips
+ * content — this only paints behind it), driven entirely by real measured
+ * line boxes, never a fixed-height CSS repeat (which would drift from the
+ * text the moment font metrics or wrapping changed).
+ * @param {HTMLElement} bodyElement already attached to the document
+ */
+export function applyLineStripes(bodyElement) {
+  const lines = measureBodyLineBoxes(bodyElement);
+  const overlay = document.createElement('div');
+  overlay.className = 'ws-line-stripes';
+  lines.forEach((line, index) => {
+    if (index % 2 !== 1) return; // stripe every other line
+    const stripe = document.createElement('div');
+    stripe.className = 'ws-line-stripe';
+    stripe.style.top = `${line.topMm}mm`;
+    stripe.style.height = `${line.heightMm}mm`;
+    overlay.append(stripe);
+  });
+  bodyElement.prepend(overlay);
+}
+
+/**
  * Renders the complete worksheet page into `container`, replacing its
  * children. `rowCount` is a layout decision made upstream by
  * layout/measure.js (0 / ignored outside read-copy mode).
@@ -150,5 +214,14 @@ export function renderWorksheet(model, layout, container, labels = DEFAULT_LABEL
   }
 
   container.replaceChildren(page);
+
+  // Must run after the page is attached (above) — measuring line boxes on
+  // detached nodes returns all-zero rects, since there's no layout yet.
+  if (model.settings.lineStripes) {
+    page.classList.add('ws-page--striped');
+    page.classList.toggle('ws-page--print-stripes', Boolean(model.settings.printStripes));
+    applyLineStripes(bodyWrap);
+  }
+
   return page;
 }

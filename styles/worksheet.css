@@ -115,12 +115,15 @@
 
 .ws-body {
   margin: 0;
+  position: relative; /* anchors .ws-line-stripes, which positions against this box */
 }
 
 /* One per sentence when settings.sentencePerLine is on; otherwise a single
    .ws-sentence wraps the whole passage (blueprint brief section 5: "one
    sentence per line... helping children who lose their place"). */
 .ws-sentence {
+  position: relative; /* stacks above .ws-line-stripes */
+  z-index: 1;
   margin: 0;
   text-align: left;
   letter-spacing: var(--ws-letter-spacing-mm, 0mm);
@@ -129,6 +132,24 @@
 
 .ws-body.ws-sentence-per-line .ws-sentence {
   margin-bottom: 0.25em;
+}
+
+/* Positioned from real measured line boxes (render/html.js), never a fixed
+   CSS repeat — see measureBodyLineBoxes' doc comment for why. Screen-visible
+   whenever lineStripes is on; printing it is a separate ink-saving opt-in
+   (blueprint 8.5), same pattern as tint. */
+.ws-line-stripes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ws-line-stripe {
+  position: absolute;
+  left: -2mm;
+  right: -2mm;
+  background: rgba(20, 20, 20, 0.06);
 }
 
 .ws-copy-area {

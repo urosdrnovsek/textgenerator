@@ -61,6 +61,8 @@
     "field.sentencePerLine": "Ena poved na vrstico",
     "field.tint": "Barva ozadja",
     "field.printTint": "Natisni tudi barvno ozadje",
+    "field.lineStripes": "Progaste vrstice",
+    "field.printStripes": "Natisni tudi proge",
     "tint.none": "Brez",
     "tint.cream": "Krem",
     "tint.blue": "Svetlo modra",

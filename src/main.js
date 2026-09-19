@@ -67,6 +67,8 @@ const STANDARD_SETTINGS = {
   sentencePerLine: false,
   tintId: 'none',
   printTint: false,
+  lineStripes: false,
+  printStripes: false,
   marginMm: 20
 };
 
@@ -109,6 +111,8 @@ const state = {
     sentencePerLine: false,
     tintId: 'none',
     printTint: false,
+    lineStripes: false,
+    printStripes: false,
     marginMm: 20
   },
   customImage: null, // { id: 'custom', path: dataUrl } | null — session-only, never persisted (blueprint 8.8/section 15)
@@ -145,6 +149,8 @@ const els = {
   sentencePerLineToggle: document.getElementById('sentence-per-line-toggle'),
   tintSelect: document.getElementById('tint-select'),
   printTintToggle: document.getElementById('print-tint-toggle'),
+  lineStripesToggle: document.getElementById('line-stripes-toggle'),
+  printStripesToggle: document.getElementById('print-stripes-toggle'),
   dyslexiaPresetButton: document.getElementById('btn-dyslexia-preset'),
   presetSelect: document.getElementById('preset-select'),
   loadPresetButton: document.getElementById('btn-load-preset'),
@@ -278,6 +284,9 @@ function syncSettingsControlsFromState() {
   els.tintSelect.value = s.tintId ?? 'none';
   els.printTintToggle.checked = Boolean(s.printTint);
   els.printTintToggle.disabled = (s.tintId ?? 'none') === 'none';
+  els.lineStripesToggle.checked = Boolean(s.lineStripes);
+  els.printStripesToggle.checked = Boolean(s.printStripes);
+  els.printStripesToggle.disabled = !s.lineStripes;
 }
 
 function clamp(value, range) {
@@ -320,6 +329,17 @@ function updatePrintTint(enabled) {
   if (state.contentId) requestRender();
 }
 
+function updateLineStripes(enabled) {
+  state.settings.lineStripes = enabled;
+  els.printStripesToggle.disabled = !enabled;
+  if (state.contentId) requestRender();
+}
+
+function updatePrintStripes(enabled) {
+  state.settings.printStripes = enabled;
+  if (state.contentId) requestRender();
+}
+
 function applyDyslexiaPreset() {
   Object.assign(state.settings, {
     fontSizePt: DYSLEXIA_PRESET.fontSizePt,
@@ -354,6 +374,8 @@ function extractPresetSettings() {
     sentencePerLine: s.sentencePerLine,
     tintId: s.tintId,
     printTint: s.printTint,
+    lineStripes: s.lineStripes,
+    printStripes: s.printStripes,
     marginMm: s.marginMm
   };
 }
@@ -377,6 +399,8 @@ function applyPresetSettings(settings) {
     sentencePerLine: settings.sentencePerLine ?? false,
     tintId: settings.tintId ?? 'none',
     printTint: settings.printTint ?? false,
+    lineStripes: settings.lineStripes ?? false,
+    printStripes: settings.printStripes ?? false,
     marginMm: settings.marginMm
     // personalization is left untouched — loading a setup must not erase a name already typed in
   });
@@ -541,6 +565,8 @@ els.syllableSeparatorsToggle.addEventListener('change', updateSyllableMode);
 els.sentencePerLineToggle.addEventListener('change', (e) => updateSentencePerLine(e.target.checked));
 els.tintSelect.addEventListener('change', (e) => updateTint(e.target.value));
 els.printTintToggle.addEventListener('change', (e) => updatePrintTint(e.target.checked));
+els.lineStripesToggle.addEventListener('change', (e) => updateLineStripes(e.target.checked));
+els.printStripesToggle.addEventListener('change', (e) => updatePrintStripes(e.target.checked));
 els.dyslexiaPresetButton.addEventListener('click', applyDyslexiaPreset);
 els.loadPresetButton.addEventListener('click', handleLoadPreset);
 els.deletePresetButton.addEventListener('click', handleDeletePreset);

@@ -123,6 +123,14 @@ export function validateSettings(settings) {
     push('printTint', 'printTint must be a boolean when present');
   }
 
+  if (settings.lineStripes !== undefined && typeof settings.lineStripes !== 'boolean') {
+    push('lineStripes', 'lineStripes must be a boolean when present');
+  }
+
+  if (settings.printStripes !== undefined && typeof settings.printStripes !== 'boolean') {
+    push('printStripes', 'printStripes must be a boolean when present');
+  }
+
   if (errors.length > 0) {
     return { ok: false, errors };
   }

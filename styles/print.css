@@ -41,6 +41,11 @@
     background: #ffffff;
   }
 
+  /* Same ink-saving default for zebra striping (blueprint 8.5/8.6). */
+  .ws-page.ws-page--striped:not(.ws-page--print-stripes) .ws-line-stripes {
+    display: none;
+  }
+
   .no-print {
     display: none !important;
   }

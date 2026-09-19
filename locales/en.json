@@ -61,6 +61,8 @@
     "field.sentencePerLine": "One sentence per line",
     "field.tint": "Background color",
     "field.printTint": "Also print the tinted background",
+    "field.lineStripes": "Alternate-line stripes",
+    "field.printStripes": "Also print the stripes",
     "tint.none": "None",
     "tint.cream": "Cream",
     "tint.blue": "Light blue",

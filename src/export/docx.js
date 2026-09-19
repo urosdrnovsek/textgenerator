@@ -3,14 +3,28 @@
  * `docx` package. Reuses the exact same StyledRun[] the HTML renderer
  * consumes — no separate coloring logic (blueprint 8.6/8.9).
  *
- * Known Phase-0 limitation, recorded rather than hidden: the bundled
- * Andika font is *declared* on each run (`font: "Andika"`) but not
- * embedded in the file. `docx`'s FontTable only registers a font-family
- * reference; true OOXML font embedding requires obfuscated embedded font
- * parts the library does not expose. Word/LibreOffice will substitute a
- * fallback font unless Andika is installed on the machine that opens the
- * file. This is exactly the go/no-go risk the blueprint (8.9) flags for
- * Phase 0 — resolved here as "not yet embedded," not silently assumed.
+ * Known Phase-0 limitation, recorded rather than hidden: bundled fonts are
+ * *declared* on each run (`font: "Andika"` etc.) but not embedded in the
+ * file. `docx`'s FontTable only registers a font-family reference; true
+ * OOXML font embedding requires obfuscated embedded font parts the library
+ * does not expose. Word/LibreOffice will substitute a fallback font unless
+ * the chosen font is installed on the machine that opens the file. This is
+ * exactly the go/no-go risk the blueprint (8.9) flags for Phase 0 —
+ * resolved here as "not yet embedded," not silently assumed.
+ *
+ * settings.lineStripes (zebra striping) is deliberately NOT implemented
+ * here. Blueprint 8.6 is explicit about why: "alternating paragraphs is
+ * not equivalent to alternating physical lines... if a line wraps again in
+ * Word, the feature fails the compatibility gate" — and 8.6 again: "this
+ * feature is deliberately scheduled after basic exports." Reproducing it in
+ * Word would mean pre-splitting the passage into one paragraph per line at
+ * the SAME character offsets the browser wrapped at, then trusting Word's
+ * own layout engine to wrap identically at those conservative widths —
+ * unverified without the real cross-application "compatibility gate"
+ * testing (actual Word, actual LibreOffice, actual content) the blueprint
+ * calls for, which is a separate, later effort. Everything else about the
+ * passage (text, colors, personalization, sentence-per-line, trace,
+ * tint) still exports correctly; only the striped background is skipped.
  */
 
 import {

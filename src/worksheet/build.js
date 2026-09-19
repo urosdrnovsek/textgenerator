@@ -32,6 +32,8 @@ import { buildStyledRuns, splitRunsIntoSentences, lightenParagraphs, countWords 
  * @property {boolean} [sentencePerLine]
  * @property {string} [tintId] key into config.TINTS_BY_ID
  * @property {boolean} [printTint] whether the tint also shows when printed (default off, to save ink)
+ * @property {boolean} [lineStripes] alternating faint background per real measured visual line — HTML/PDF only, see src/export/docx.js's header comment for why
+ * @property {boolean} [printStripes] whether stripes also show when printed (default off, to save ink)
  * @property {{ nameLine: boolean, date: boolean, title: boolean }} header
  * @property {{ name?: string }} [personalization]
  * @property {number} marginMm

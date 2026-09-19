@@ -8,7 +8,7 @@ result as print/PDF or an editable Word (`.docx`) file. Designed to run
 entirely offline: open `index.html`, no server, no install, no internet
 connection at any point.
 
-## Status: Phase 3 complete; Phase 4 in progress
+## Status: Phase 3 complete; Phase 4 complete except country-specific rulings
 
 - **Content:** 25 reviewed-pending Slovene entries (5 themes × 5 levels),
   drawn from the larger collection in `Texts collection/` and `Images/`.
@@ -37,11 +37,19 @@ connection at any point.
   embedded in DOCX exports (font is declared by name only — Word/LibreOffice
   substitute a fallback if the font isn't installed on the machine that
   opens the file; a known, documented Phase 0 limitation, not fixed here).
-- **Not yet built (Phase 4 remainder):** physical-line "zebra" striping
-  (blueprint 8.6 flags this as needing real post-layout line measurement,
-  deliberately not attempted yet), and country-specific handwriting rulings
-  (only a generic 3-line guide exists — needs real teacher/classroom input,
-  intentionally not fabricated; see the blueprint's decision table).
+- **Zebra striping:** alternate-line shading, built from real measured
+  visual line boxes (`Range.getClientRects()` after layout), not a fixed
+  CSS repeat — verified against actual multi-line wrapped text that the
+  stripe count exactly matches the measured line count, including
+  continuous alternation across sentence-per-line paragraph boundaries.
+  Screen/PDF only: blueprint 8.6 is explicit that reproducing this in Word
+  needs a separate "compatibility gate" (real Word, real LibreOffice, real
+  content) this phase didn't attempt — everything else about a striped
+  worksheet still exports correctly to `.docx`, just without the stripes.
+- **Not yet built:** country-specific handwriting rulings (only a generic
+  3-line guide exists — needs real teacher/classroom input, intentionally
+  not fabricated; see the blueprint's decision table). This is the one
+  Phase 4 item still open, and it's blocked on external input, not effort.
 
 ## Running it
 

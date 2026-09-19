@@ -84,6 +84,16 @@ test('collects multiple errors in one pass rather than stopping at the first', (
   assert.ok(result.errors.length >= 3);
 });
 
+test('accepts settings with lineStripes and printStripes set', () => {
+  const result = validateSettings({ ...VALID_SETTINGS, lineStripes: true, printStripes: false });
+  assert.equal(result.ok, true);
+});
+
+test('rejects a non-boolean lineStripes or printStripes', () => {
+  assert.equal(validateSettings({ ...VALID_SETTINGS, lineStripes: 'yes' }).ok, false);
+  assert.equal(validateSettings({ ...VALID_SETTINGS, printStripes: 'yes' }).ok, false);
+});
+
 test('accepts settings with sentencePerLine, tintId, and printTint set', () => {
   const result = validateSettings({ ...VALID_SETTINGS, sentencePerLine: true, tintId: 'cream', printTint: false });
   assert.equal(result.ok, true);
