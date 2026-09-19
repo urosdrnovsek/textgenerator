@@ -27,6 +27,14 @@
     "action.exportDocx": "Export as Word (.docx)",
     "candidates.available": "Available: {count}",
     "candidates.none": "No texts for this selection.",
-    "preview.empty": "Choose a theme and level, then click \"Create text\"."
+    "preview.empty": "Choose a theme and level, then click \"Create text\".",
+    "field.textSettings": "Text settings",
+    "field.fontSize": "Font size (pt)",
+    "field.lineHeight": "Line spacing",
+    "field.letterSpacing": "Letter spacing (pt)",
+    "field.wordSpacing": "Extra word spacing (pt)",
+    "field.letterColors": "Confused-letter colors (b/d/p/q)",
+    "field.syllableColors": "Syllable colors",
+    "action.dyslexiaPreset": "Dyslexia-friendly"
   }
 }

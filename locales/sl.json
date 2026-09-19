@@ -27,6 +27,14 @@
     "action.exportDocx": "Izvozi v Word (.docx)",
     "candidates.available": "Na voljo: {count}",
     "candidates.none": "Za to izbiro ni besedil.",
-    "preview.empty": "Izberite temo in stopnjo, nato kliknite »Ustvari besedilo«."
+    "preview.empty": "Izberite temo in stopnjo, nato kliknite »Ustvari besedilo«.",
+    "field.textSettings": "Nastavitve besedila",
+    "field.fontSize": "Velikost pisave (pt)",
+    "field.lineHeight": "Razmik med vrsticami",
+    "field.letterSpacing": "Razmik med črkami (pt)",
+    "field.wordSpacing": "Dodaten razmik med besedami (pt)",
+    "field.letterColors": "Barve zamenljivih črk (b/d/p/q)",
+    "field.syllableColors": "Barve zlogov",
+    "action.dyslexiaPreset": "Prijazno za disleksijo"
   }
 }

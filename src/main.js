@@ -11,6 +11,7 @@ import imageData from './generated/imageData.json';
 import { validatePack } from './content/validate.js';
 import { buildCatalogIndex, findCandidates, chooseEntry, listThemes } from './content/catalog.js';
 import { validateSettings } from './worksheet/validateSettings.js';
+import { SETTINGS_LIMITS } from './config.js';
 import { buildWorksheet } from './worksheet/build.js';
 import { renderWorksheet } from './render/html.js';
 import { measureWorksheet } from './layout/measure.js';
@@ -32,6 +33,19 @@ if (!validation.ok) {
 const entriesWithLanguage = validation.pack.entries.map((entry) => ({ ...entry, language: validation.pack.language }));
 const CATALOG = buildCatalogIndex(entriesWithLanguage);
 const THEMES = listThemes(CATALOG);
+
+/** Preserved so the letter-colors checkbox can restore real colors after being switched off. */
+const DEFAULT_LETTER_COLORS = { b: '#B42318', d: '#166534', p: '#7C3AED', q: '#B45309' };
+
+/** blueprint 8.6: "a Dyslexia-friendly preset as an adjustable starting point" — a starting combination, not a claim of clinical efficacy. */
+const DYSLEXIA_PRESET = {
+  fontSizePt: 18,
+  lineHeightMultiplier: 1.6,
+  letterSpacingPt: 0.5,
+  extraWordSpacePt: 1.5,
+  letterColorsEnabled: true,
+  syllableColorsEnabled: true
+};
 
 /** Single mutable state object (blueprint section 5). */
 const state = {
@@ -74,7 +88,14 @@ const els = {
   themeSelect: document.getElementById('theme-select'),
   levelSelect: document.getElementById('level-select'),
   writingModeSelect: document.getElementById('writing-mode-select'),
-  candidateCount: document.getElementById('candidate-count')
+  candidateCount: document.getElementById('candidate-count'),
+  fontSizeInput: document.getElementById('font-size-input'),
+  lineHeightInput: document.getElementById('line-height-input'),
+  letterSpacingInput: document.getElementById('letter-spacing-input'),
+  wordSpacingInput: document.getElementById('word-spacing-input'),
+  letterColorsToggle: document.getElementById('letter-colors-toggle'),
+  syllableColorsToggle: document.getElementById('syllable-colors-toggle'),
+  dyslexiaPresetButton: document.getElementById('btn-dyslexia-preset')
 };
 
 /** Applies t() to every element carrying a data-label key (blueprint 8.1: stable ids, looked-up labels). */
@@ -122,6 +143,63 @@ function createText() {
 
 function updateWritingMode(mode) {
   state.settings.writingMode = mode;
+  if (state.contentId) requestRender();
+}
+
+/** Sets each number input's min/max from the single shared limits config (blueprint 5) — never hardcoded in HTML. */
+function applySettingsLimits() {
+  els.fontSizeInput.min = SETTINGS_LIMITS.fontSizePt.min;
+  els.fontSizeInput.max = SETTINGS_LIMITS.fontSizePt.max;
+  els.lineHeightInput.min = SETTINGS_LIMITS.lineHeightMultiplier.min;
+  els.lineHeightInput.max = SETTINGS_LIMITS.lineHeightMultiplier.max;
+  els.letterSpacingInput.min = SETTINGS_LIMITS.letterSpacingPt.min;
+  els.letterSpacingInput.max = SETTINGS_LIMITS.letterSpacingPt.max;
+  els.wordSpacingInput.min = SETTINGS_LIMITS.extraWordSpacePt.min;
+  els.wordSpacingInput.max = SETTINGS_LIMITS.extraWordSpacePt.max;
+}
+
+/** Reflects state.settings into the settings-panel controls — used at startup and after applying a preset. */
+function syncSettingsControlsFromState() {
+  const s = state.settings;
+  els.fontSizeInput.value = s.fontSizePt;
+  els.lineHeightInput.value = s.lineHeightMultiplier;
+  els.letterSpacingInput.value = s.letterSpacingPt;
+  els.wordSpacingInput.value = s.extraWordSpacePt;
+  els.letterColorsToggle.checked = Object.keys(s.letterColors).length > 0;
+  els.syllableColorsToggle.checked = s.syllableMode === 'colors';
+}
+
+function clamp(value, range) {
+  return Math.min(range.max, Math.max(range.min, value));
+}
+
+function updateNumericSetting(field, range, inputEl) {
+  const value = clamp(Number(inputEl.value), range);
+  state.settings[field] = value;
+  inputEl.value = value; // reflect clamping back — the box must never show a value that isn't actually applied
+  if (state.contentId) requestRender();
+}
+
+function updateLetterColorsEnabled(enabled) {
+  state.settings.letterColors = enabled ? DEFAULT_LETTER_COLORS : {};
+  if (state.contentId) requestRender();
+}
+
+function updateSyllableColorsEnabled(enabled) {
+  state.settings.syllableMode = enabled ? 'colors' : 'off';
+  if (state.contentId) requestRender();
+}
+
+function applyDyslexiaPreset() {
+  Object.assign(state.settings, {
+    fontSizePt: DYSLEXIA_PRESET.fontSizePt,
+    lineHeightMultiplier: DYSLEXIA_PRESET.lineHeightMultiplier,
+    letterSpacingPt: DYSLEXIA_PRESET.letterSpacingPt,
+    extraWordSpacePt: DYSLEXIA_PRESET.extraWordSpacePt,
+    letterColors: DYSLEXIA_PRESET.letterColorsEnabled ? DEFAULT_LETTER_COLORS : {},
+    syllableMode: DYSLEXIA_PRESET.syllableColorsEnabled ? 'colors' : 'off'
+  });
+  syncSettingsControlsFromState();
   if (state.contentId) requestRender();
 }
 
@@ -211,8 +289,18 @@ els.writingModeSelect.addEventListener('change', (event) => updateWritingMode(ev
 els.printButton.addEventListener('click', printWorksheet);
 els.docxButton.addEventListener('click', handleExportDocx);
 
+els.fontSizeInput.addEventListener('change', (e) => updateNumericSetting('fontSizePt', SETTINGS_LIMITS.fontSizePt, e.target));
+els.lineHeightInput.addEventListener('change', (e) => updateNumericSetting('lineHeightMultiplier', SETTINGS_LIMITS.lineHeightMultiplier, e.target));
+els.letterSpacingInput.addEventListener('change', (e) => updateNumericSetting('letterSpacingPt', SETTINGS_LIMITS.letterSpacingPt, e.target));
+els.wordSpacingInput.addEventListener('change', (e) => updateNumericSetting('extraWordSpacePt', SETTINGS_LIMITS.extraWordSpacePt, e.target));
+els.letterColorsToggle.addEventListener('change', (e) => updateLetterColorsEnabled(e.target.checked));
+els.syllableColorsToggle.addEventListener('change', (e) => updateSyllableColorsEnabled(e.target.checked));
+els.dyslexiaPresetButton.addEventListener('click', applyDyslexiaPreset);
+
 applyStaticLabels();
 populateThemeSelect();
 updateCandidateCount();
+applySettingsLimits();
+syncSettingsControlsFromState();
 els.fitIndicator.textContent = t('fit.measuring');
 createText(); // show something on first load rather than an empty preview

@@ -31,6 +31,34 @@
         <option value="read-only" data-label="writingMode.read-only">Samo branje</option>
       </select>
 
+      <details class="settings-panel">
+        <summary data-label="field.textSettings">Nastavitve besedila</summary>
+
+        <button id="btn-dyslexia-preset" type="button" data-label="action.dyslexiaPreset">Prijazno za disleksijo</button>
+
+        <label for="font-size-input" data-label="field.fontSize">Velikost pisave</label>
+        <input type="number" id="font-size-input" step="1" />
+
+        <label for="line-height-input" data-label="field.lineHeight">Razmik med vrsticami</label>
+        <input type="number" id="line-height-input" step="0.1" />
+
+        <label for="letter-spacing-input" data-label="field.letterSpacing">Razmik med črkami</label>
+        <input type="number" id="letter-spacing-input" step="0.1" />
+
+        <label for="word-spacing-input" data-label="field.wordSpacing">Dodaten razmik med besedami</label>
+        <input type="number" id="word-spacing-input" step="0.1" />
+
+        <label class="checkbox-label">
+          <input type="checkbox" id="letter-colors-toggle" />
+          <span data-label="field.letterColors">Barve zamenljivih črk (b/d/p/q)</span>
+        </label>
+
+        <label class="checkbox-label">
+          <input type="checkbox" id="syllable-colors-toggle" />
+          <span data-label="field.syllableColors">Barve zlogov</span>
+        </label>
+      </details>
+
       <button id="btn-print" type="button" data-label="action.print">Natisni / Shrani kot PDF</button>
       <button id="btn-docx" type="button" data-label="action.exportDocx">Izvozi v Word (.docx)</button>
 

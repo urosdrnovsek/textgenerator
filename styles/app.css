@@ -63,6 +63,40 @@ body {
   color: #555;
 }
 
+.settings-panel {
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.settings-panel summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.settings-panel input[type='number'] {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  font-size: 13px;
+  margin-bottom: 4px;
+  box-sizing: border-box;
+}
+
+.settings-panel label {
+  margin-top: 8px;
+}
+
+.checkbox-label {
+  display: flex !important;
+  align-items: center;
+  gap: 6px;
+  font-weight: 400 !important;
+  cursor: pointer;
+}
+
 .fit-indicator {
   margin-top: 12px;
   padding: 8px;
