@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "language": "en",
+  "strings": {
+    "header.nameLine": "Name:",
+    "header.date": "Date:",
+    "fit.measuring": "Measuring…",
+    "fit.fits": "Fits — {words} words, level {level}. Used {used}mm of {budget}mm.",
+    "fit.overflow": "Does not fit on one page ({code}): needs {required}mm, budget is {available}mm. Try: {suggestions}.",
+    "fit.suggestion.choose-shorter-text": "choose shorter text",
+    "fit.suggestion.reduce-image": "reduce image",
+    "fit.suggestion.read-only": "read only",
+    "export.failed": "Export failed: {message}. See browser console for details."
+  }
+}

@@ -76,3 +76,22 @@ export function contentHeightMm(marginMm = DEFAULT_MARGIN_MM) {
 export const FONT_FAMILIES = {
   andika: 'Andika'
 };
+
+/**
+ * Bounded numeric ranges for WorksheetSettings — the single source both the
+ * settings validator and any future settings form must read from, so a
+ * form's allowed range and the validator's accepted range can never drift
+ * apart (blueprint section 5: "one configuration source for font sizes,
+ * permitted spacing, asset limits, and page dimensions").
+ */
+export const SETTINGS_LIMITS = {
+  fontSizePt: { min: 10, max: 32 },
+  lineHeightMultiplier: { min: 1, max: 2.5 },
+  letterSpacingPt: { min: 0, max: 4 },
+  extraWordSpacePt: { min: 0, max: 6 },
+  guideHeightMm: { min: 6, max: 20 },
+  marginMm: { min: 10, max: 30 }
+};
+
+export const KNOWN_WRITING_MODES = new Set(['read-copy', 'trace', 'read-only']);
+export const KNOWN_SYLLABLE_MODES = new Set(['off', 'colors']);

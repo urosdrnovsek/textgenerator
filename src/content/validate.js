@@ -26,6 +26,9 @@ const PLACEHOLDER_PATTERN = /\{([a-zA-Z_]+)\}/g;
  * @property {string} title
  * @property {string} body
  * @property {string} [syllable_body]
+ * @property {string} [neutral_body] required alongside a `{name}` placeholder in body for grammatically-correct personalization
+ * @property {string} [neutral_syllable_body]
+ * @property {string[]} [sentences] must join with single spaces to reproduce body exactly
  * @property {string} imageId
  * @property {{status: string}} review
  */
@@ -138,6 +141,50 @@ function validateEntry(raw, assetIds, seenIds) {
     }
   }
 
+  let neutralBody = null;
+  if (entry.neutral_body !== undefined) {
+    if (!isNonEmptyString(entry.neutral_body)) {
+      push('INVALID_FIELD', 'neutral_body', 'neutral_body must be a non-empty string when present');
+    } else {
+      neutralBody = normalize(entry.neutral_body);
+      if (neutralBody.includes('{name}')) {
+        push('INVALID_FIELD', 'neutral_body', 'neutral_body must not itself contain the {name} placeholder');
+      }
+    }
+  }
+
+  if (entry.neutral_syllable_body !== undefined) {
+    if (typeof entry.neutral_syllable_body !== 'string' || entry.neutral_syllable_body.length === 0) {
+      push('INVALID_FIELD', 'neutral_syllable_body', 'neutral_syllable_body must be a non-empty string when present');
+    } else if (neutralBody !== null) {
+      const neutralSyllableBody = normalize(entry.neutral_syllable_body);
+      if (neutralSyllableBody.replaceAll('|', '') !== neutralBody) {
+        push(
+          'SYLLABLE_MISMATCH',
+          'neutral_syllable_body',
+          'neutral_syllable_body with "|" removed must exactly reproduce neutral_body'
+        );
+      }
+    } else {
+      push('INVALID_FIELD', 'neutral_syllable_body', 'neutral_syllable_body requires a valid neutral_body to check against');
+    }
+  }
+
+  if (entry.sentences !== undefined) {
+    if (!Array.isArray(entry.sentences) || entry.sentences.length === 0 || !entry.sentences.every(isNonEmptyString)) {
+      push('INVALID_FIELD', 'sentences', 'sentences must be a non-empty array of non-empty strings');
+    } else if (body !== null) {
+      const joined = entry.sentences.map((s) => normalize(s)).join(' ');
+      if (joined !== body) {
+        push(
+          'SENTENCES_MISMATCH',
+          'sentences',
+          'sentences joined with single spaces must exactly reproduce body'
+        );
+      }
+    }
+  }
+
   if (!isNonEmptyString(entry.imageId)) {
     push('MISSING_FIELD', 'imageId', 'imageId is required');
   } else if (!assetIds.has(entry.imageId)) {
@@ -166,6 +213,9 @@ function validateEntry(raw, assetIds, seenIds) {
       title: entry.title,
       body,
       syllable_body: typeof entry.syllable_body === 'string' ? normalize(entry.syllable_body) : undefined,
+      neutral_body: neutralBody ?? undefined,
+      neutral_syllable_body: typeof entry.neutral_syllable_body === 'string' ? normalize(entry.neutral_syllable_body) : undefined,
+      sentences: Array.isArray(entry.sentences) ? entry.sentences.map((s) => normalize(s)) : undefined,
       imageId: entry.imageId,
       review: { status: review.status }
     },

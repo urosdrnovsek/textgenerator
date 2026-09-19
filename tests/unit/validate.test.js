@@ -73,3 +73,48 @@ test('a failing entry does not throw — it returns structured errors', async ()
   pack.entries.push({ id: '', level: 99 });
   assert.doesNotThrow(() => validatePack(pack, ASSET_IDS));
 });
+
+test('accepts a valid neutral_body/neutral_syllable_body pair and carries it through to the entry', async () => {
+  const pack = await loadSlPack();
+  pack.entries[0].body = 'Zgodba o {name} in zmaju.';
+  pack.entries[0].neutral_body = 'Zgodba o dečku in zmaju.';
+  pack.entries[0].neutral_syllable_body = 'Zgod|ba o deč|ku in zma|ju.';
+  delete pack.entries[0].syllable_body;
+  const result = validatePack(pack, ASSET_IDS);
+  assert.equal(result.ok, true);
+  assert.equal(result.pack.entries[0].neutral_body, 'Zgodba o dečku in zmaju.');
+  assert.equal(result.pack.entries[0].neutral_syllable_body, 'Zgod|ba o deč|ku in zma|ju.');
+});
+
+test('rejects a neutral_body that still contains the {name} placeholder', async () => {
+  const pack = await loadSlPack();
+  pack.entries[0].neutral_body = 'Zgodba o {name}.';
+  const result = validatePack(pack, ASSET_IDS);
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some((e) => e.field === 'neutral_body'));
+});
+
+test('rejects a neutral_syllable_body that does not reproduce neutral_body', async () => {
+  const pack = await loadSlPack();
+  pack.entries[0].neutral_body = 'Zgodba o dečku.';
+  pack.entries[0].neutral_syllable_body = 'Zgod|ba o deč|ku|u.';
+  const result = validatePack(pack, ASSET_IDS);
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some((e) => e.code === 'SYLLABLE_MISMATCH' && e.field === 'neutral_syllable_body'));
+});
+
+test('accepts valid sentences that join with single spaces to reproduce body', async () => {
+  const pack = await loadSlPack();
+  pack.entries[0].sentences = ['Maja ima modrega zmaja.', 'Zmaj leti nad travo.', 'Piha veter.', 'Trak zdrsne iz Majine roke.', 'Maja teče za zmajem.', 'Najde ga ob nizkem drevesu.'];
+  const result = validatePack(pack, ASSET_IDS);
+  assert.equal(result.ok, true);
+  assert.deepEqual(result.pack.entries[0].sentences, pack.entries[0].sentences);
+});
+
+test('rejects sentences that do not reproduce body when joined', async () => {
+  const pack = await loadSlPack();
+  pack.entries[0].sentences = ['This does not match the body at all.'];
+  const result = validatePack(pack, ASSET_IDS);
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some((e) => e.code === 'SENTENCES_MISMATCH'));
+});

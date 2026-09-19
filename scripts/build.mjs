@@ -10,10 +10,20 @@ import { mkdir, cp, rm } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
+import { validateAllContent } from './validate-content.mjs';
+
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const releaseDir = path.join(root, 'release');
 
 async function main() {
+  const contentCheck = await validateAllContent();
+  if (!contentCheck.ok) {
+    console.error(`Refusing to build: content validation failed (${contentCheck.errors.length} error(s)):`);
+    for (const e of contentCheck.errors) console.error(`  - ${e}`);
+    process.exitCode = 1;
+    return;
+  }
+
   await rm(releaseDir, { recursive: true, force: true });
   await mkdir(releaseDir, { recursive: true });
 

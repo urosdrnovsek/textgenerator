@@ -5,15 +5,20 @@
  */
 
 import slPack from '../content/sl.json';
+import slLocale from '../locales/sl.json';
 import blueKiteUrl from '../assets/images/blue_kite.jpg';
 import kiteYellowFieldUrl from '../assets/images/kite_yellow_field.jpg';
 
 import { validatePack } from './content/validate.js';
+import { validateSettings } from './worksheet/validateSettings.js';
 import { buildWorksheet } from './worksheet/build.js';
 import { renderWorksheet } from './render/html.js';
 import { measureWorksheet } from './layout/measure.js';
 import { isPrintReady, printWorksheet } from './export/print.js';
 import { exportDocx } from './export/docx.js';
+import { createTranslator } from './i18n.js';
+
+const t = createTranslator(slLocale);
 
 const KNOWN_ASSET_IDS = new Set(['blue_kite', 'kite_yellow_field']);
 const IMAGES_BY_ID = new Map([
@@ -52,6 +57,13 @@ const state = {
   lastGood: null // { model, layout, imageBytesPromise }
 };
 
+const settingsCheck = validateSettings(state.settings);
+if (!settingsCheck.ok) {
+  // eslint-disable-next-line no-console
+  console.error('Default settings failed validation:', settingsCheck.errors);
+  throw new Error('Default settings failed validation — see console for details.');
+}
+
 const els = {
   preview: document.getElementById('preview'),
   printSurface: document.getElementById('print-surface'),
@@ -76,9 +88,20 @@ function showFit(model, result) {
   const el = els.fitIndicator;
   el.classList.toggle('is-overflow', !result.ok);
   if (result.ok) {
-    el.textContent = `Fits — ${model.wordCount} words, level ${model.level}. Used ${(result.heightsMm.final ?? result.heightsMm.used).toFixed(1)}mm of ${result.heightsMm.budget.toFixed(1)}mm.`;
+    el.textContent = t('fit.fits', {
+      words: model.wordCount,
+      level: model.level,
+      used: (result.heightsMm.final ?? result.heightsMm.used).toFixed(1),
+      budget: result.heightsMm.budget.toFixed(1)
+    });
   } else {
-    el.textContent = `Does not fit on one page (${result.code}): needs ${result.details.requiredHeightMm.toFixed(1)}mm, budget is ${result.details.availableHeightMm.toFixed(1)}mm. Try: ${result.suggestions?.join(', ') ?? 'reduce content'}.`;
+    const suggestions = (result.suggestions ?? []).map((code) => t(`fit.suggestion.${code}`)).join(', ');
+    el.textContent = t('fit.overflow', {
+      code: result.code,
+      required: result.details.requiredHeightMm.toFixed(1),
+      available: result.details.availableHeightMm.toFixed(1),
+      suggestions
+    });
   }
 }
 
@@ -101,8 +124,9 @@ async function requestRender() {
     return;
   }
 
-  renderWorksheet(model, result.layout, els.preview);
-  renderWorksheet(model, result.layout, els.printSurface);
+  const labels = { nameLine: t('header.nameLine'), date: t('header.date') };
+  renderWorksheet(model, result.layout, els.preview, labels);
+  renderWorksheet(model, result.layout, els.printSurface, labels);
   state.lastGood = { model, layout: result.layout };
 }
 
@@ -134,7 +158,7 @@ async function handleExportDocx() {
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('DOCX export failed:', error);
-    els.fitIndicator.textContent = `Export failed: ${error.message}. See browser console for details.`;
+    els.fitIndicator.textContent = t('export.failed', { message: error.message });
     els.fitIndicator.classList.add('is-overflow');
   }
 }
@@ -144,4 +168,5 @@ els.writingModeSelect.addEventListener('change', (event) => updateWritingMode(ev
 els.printButton.addEventListener('click', printWorksheet);
 els.docxButton.addEventListener('click', handleExportDocx);
 
+els.fitIndicator.textContent = t('fit.measuring');
 requestRender();

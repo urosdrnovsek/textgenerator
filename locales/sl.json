@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "language": "sl",
+  "strings": {
+    "header.nameLine": "Ime:",
+    "header.date": "Datum:",
+    "fit.measuring": "Preverjanje…",
+    "fit.fits": "Ustreza — {words} besed, {level}. stopnja. Uporabljeno {used}mm od {budget}mm.",
+    "fit.overflow": "Ne ustreza na eno stran ({code}): potrebno {required}mm, na voljo {available}mm. Poskusite: {suggestions}.",
+    "fit.suggestion.choose-shorter-text": "izberite krajše besedilo",
+    "fit.suggestion.reduce-image": "zmanjšajte sliko",
+    "fit.suggestion.read-only": "samo za branje",
+    "export.failed": "Izvoz ni uspel: {message}. Podrobnosti v konzoli brskalnika."
+  }
+}
