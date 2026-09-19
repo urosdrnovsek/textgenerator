@@ -198,6 +198,46 @@
       "attribution": "Uros Drnovsek"
     },
     {
+      "id": "castle",
+      "mime": "image/jpeg",
+      "path": "assets/images/castle.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
+      "source": "Generated with ChatGPT (OpenAI)",
+      "attribution": "Uros Drnovsek"
+    },
+    {
+      "id": "red_rock_monolith",
+      "mime": "image/jpeg",
+      "path": "assets/images/red_rock_monolith.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
+      "source": "Generated with ChatGPT (OpenAI)",
+      "attribution": "Uros Drnovsek"
+    },
+    {
+      "id": "moai_statues",
+      "mime": "image/jpeg",
+      "path": "assets/images/moai_statues.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
+      "source": "Generated with ChatGPT (OpenAI)",
+      "attribution": "Uros Drnovsek"
+    },
+    {
+      "id": "roman_aqueduct",
+      "mime": "image/jpeg",
+      "path": "assets/images/roman_aqueduct.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
+      "source": "Generated with ChatGPT (OpenAI)",
+      "attribution": "Uros Drnovsek"
+    },
+    {
       "id": "piramide_bloki",
       "mime": "image/jpeg",
       "path": "assets/images/piramide_bloki.jpg",

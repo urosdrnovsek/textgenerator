@@ -173,9 +173,13 @@ own hardware. Checklist:
   now records this per image (all rights reserved by the project owner,
   bundled for this project only — not an open license). See
   `THIRD_PARTY_NOTICES.md` for the full statement and its caveats.
-  Separately, a few entries still pair a text with a visually mismatched
-  image (a licensing-independent content-accuracy issue) — tracked in
-  `Instructions/progress-and-next-steps.md`, not a licensing blocker.
+  Separately (a licensing-independent content-accuracy concern): the 4
+  entries that used an outright mismatched image (a castle showing a
+  windmill, etc.) now have new, correctly-matched images the project
+  owner generated in the same style — verified byte-for-byte to be the
+  ones actually rendered. Most other DE/FR/ES entries still use topically
+  reassigned substitute images that are plausible but unverified; tracked
+  in `Instructions/progress-and-next-steps.md`.
 - **Content text** — Slovene has real editorial review. English, German,
   French, and Spanish have had a close editorial pass (grammar, natural
   phrasing, facts, syllable-break correctness) but not a native speaker's

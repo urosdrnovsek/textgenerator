@@ -135,26 +135,26 @@
     },
     {
       "id": "around_the_world_neuschwanstein_1",
-      "version": 1,
+      "version": 2,
       "theme": "around_the_world",
       "level": 1,
       "title": "Das Schloss über dem Tal",
       "body": "Schloss Neuschwanstein steht in Bayern. Seine Türme ragen über Bäume hinaus. Berge und Seen liegen in der Nähe. Das Schloss sieht wie eine Burg aus einem Märchen aus.",
       "syllable_body": "Schloss Neu|schwan|stein steht in Bay|ern. Sei|ne Tür|me ra|gen ü|ber Bäu|me hin|aus. Ber|ge und Seen lie|gen in der Nä|he. Das Schloss sieht wie ei|ne Burg aus ei|nem Mär|chen aus.",
-      "imageId": "nizozemska_mlin",
+      "imageId": "castle",
       "review": {
         "status": "reviewed"
       }
     },
     {
       "id": "around_the_world_uluru_2",
-      "version": 1,
+      "version": 2,
       "theme": "around_the_world",
       "level": 2,
       "title": "Der rote Felsen",
       "body": "Ein großer roter Felsen steht in der Mitte Australiens. Er heißt Uluru. Im wechselnden Licht sieht er anders aus. Für die Anangu ist der Ort sehr wichtig. Menschen besuchen den Felsen auf erlaubten Wegen. Manche Stellen sind heilig und brauchen besonderen Respekt. Ein schöner Ausblick erlaubt nicht, überall hinzulaufen oder alles zu fotografieren.",
       "syllable_body": "Ein gro|ßer ro|ter Fel|sen steht in der Mit|te Aus|tra|li|ens. Er heißt U|lu|ru. Im wech|seln|den Licht sieht er an|ders aus. Für die An|an|gu ist der Ort sehr wich|tig. Men|schen be|su|chen den Fel|sen auf er|laub|ten We|gen. Man|che Stel|len sind hei|lig und brau|chen be|son|de|ren Re|spekt. Ein schö|ner Aus|blick er|laubt nicht, ü|ber|all hin|zu|lau|fen o|der al|les zu fo|to|gra|fie|ren.",
-      "imageId": "sahara_landscape",
+      "imageId": "red_rock_monolith",
       "review": {
         "status": "reviewed"
       }

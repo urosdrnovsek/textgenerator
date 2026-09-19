@@ -135,26 +135,26 @@
     },
     {
       "id": "around_the_world_pont_gard_1",
-      "version": 1,
+      "version": 2,
       "theme": "around_the_world",
       "level": 1,
       "title": "Le pont de pierre",
       "body": "Le pont du Gard se trouve dans le sud de la France. Ses arches portent plusieurs étages de pierre. Autrefois, un canal faisait passer de l’eau au sommet.",
       "syllable_body": "Le pont du Gard se trou|ve dans le sud de la Fran|ce. Ses ar|ches por|tent plu|sieurs é|ta|ges de pier|re. Au|tre|fois, un ca|nal fai|sait pas|ser de l’eau au som|met.",
-      "imageId": "benetke_most",
+      "imageId": "roman_aqueduct",
       "review": {
         "status": "reviewed"
       }
     },
     {
       "id": "around_the_world_ile_de_paques_2",
-      "version": 2,
+      "version": 3,
       "theme": "around_the_world",
       "level": 2,
       "title": "Les statues de Rapa Nui",
       "body": "Sur l’île de Rapa Nui, de grandes statues regardent le paysage. Elles sont en pierre. On les appelle moaï. Des habitants de l’île les ont sculptées autrefois. Rapa Nui est dans l’océan Pacifique et appartient au Chili. La roche volcanique a fourni la matière de nombreuses statues. Leur transport a demandé beaucoup de travail.",
       "syllable_body": "Sur l’î|le de Ra|pa Nui, de gran|des sta|tues re|gar|dent le pay|sa|ge. El|les sont en pier|re. On les ap|pel|le mo|a|ï. Des ha|bi|tants de l’î|le les ont sculp|tées au|tre|fois. Ra|pa Nui est dans l’o|cé|an Pa|ci|fi|que et ap|par|tient au Chi|li. La ro|che vol|ca|ni|que a four|ni la ma|tiè|re de nom|breu|ses sta|tues. Leur trans|port a de|man|dé beau|coup de tra|vail.",
-      "imageId": "afrika_savana",
+      "imageId": "moai_statues",
       "review": {
         "status": "reviewed"
       }

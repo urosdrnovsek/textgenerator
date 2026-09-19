@@ -33,12 +33,16 @@ connection at any point.
   via real LibreOffice; those two boundary cases are now permanent
   regression cases in `scripts/verify-docx-libreoffice.mjs`. Trimmed
   entries' versions were bumped accordingly.
-  **One thing this pass deliberately did not touch:** image accuracy
-  (German — all 25 entries, French — 20 of 25, Spanish — 24 of 25 — still
-  use topically reassigned substitute images, not verified-accurate ones;
-  a few are outright mismatched, e.g. a Bavarian castle entry pointing at
-  a windmill photo — see `Instructions/` for the full list). Image
-  *licensing*, a separate concern, is resolved — see below.
+  **The 4 outright-mismatched images are also now fixed:** the project
+  owner generated 4 new illustrations matching the existing bundled art
+  style (a castle, a red-rock monolith, moai statues, a Roman aqueduct),
+  verified byte-for-byte to be the ones actually rendered for their
+  entries in a real browser. Most of German (25 entries), French (18 of
+  25 now), and Spanish (24 of 25) still use topically reassigned
+  substitute images that are plausible but not verified accurate — that
+  broader image-accuracy pass is still open, just narrower now that the
+  4 clearest mismatches are gone. Image *licensing*, a separate concern,
+  is resolved — see below.
 - **Image licensing:** every bundled image is original artwork the project
   owner generated with ChatGPT (OpenAI); `assets/manifest.json` and
   `THIRD_PARTY_NOTICES.md` now record this (all rights reserved by the
@@ -179,12 +183,12 @@ how, and what's still open. Summary:
   `docs/compatibility.md` has a concrete checklist for each.
 - **Still open, deliberately not attempted here:** a native speaker's
   review of the EN/DE/FR/ES content (this pass's editorial review is
-  thorough but not the same thing) and fixing the handful of mismatched
-  images noted above — both tracked for the next content pass.
+  thorough but not the same thing) and the broader (non-mismatched, just
+  unverified) image-accuracy pass noted above.
 
 Current version `0.7.0-rc.1` reflects this: a release candidate, not a
-final `1.0.0` — a native-speaker content review and the mismatched-image
-fixes are real, user-facing gaps, not paperwork.
+final `1.0.0` — a native-speaker content review is a real, user-facing
+gap, not paperwork.
 
 ## Running it
 
