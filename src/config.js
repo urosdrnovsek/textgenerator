@@ -69,12 +69,16 @@ export function contentHeightMm(marginMm = DEFAULT_MARGIN_MM) {
 }
 
 /**
- * Maps a stable fontId to the CSS/Word font-family name. Phase 0 bundles
- * only Andika; Lexend/OpenDyslexic/Comic Neue are added in Phase 4.
+ * Maps a stable fontId to the CSS/Word font-family name. All four fonts
+ * verified with full glyph coverage for Slovene diacritics (č š ž) before
+ * bundling — checked their cmap tables directly, not assumed.
  * @type {Record<string, string>}
  */
 export const FONT_FAMILIES = {
-  andika: 'Andika'
+  andika: 'Andika',
+  lexend: 'Lexend',
+  opendyslexic: 'OpenDyslexic',
+  comicneue: 'Comic Neue'
 };
 
 /**

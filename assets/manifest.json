@@ -286,6 +286,114 @@
       "license": "unreviewed placeholder — confirm license before classroom release",
       "source": "local starter image collection",
       "attribution": ""
+    },
+    {
+      "id": "font-lexend-regular",
+      "mime": "font/ttf",
+      "path": "assets/fonts/lexend/Lexend-Regular.ttf",
+      "license": "SIL Open Font License 1.1",
+      "source": "https://github.com/googlefonts/lexend",
+      "attribution": "Lexend (c) 2018 The Lexend Project Authors",
+      "licenseFile": "assets/fonts/lexend/OFL.txt"
+    },
+    {
+      "id": "font-lexend-regular-web",
+      "mime": "font/woff2",
+      "path": "assets/fonts/lexend/Lexend-Regular.woff2",
+      "license": "SIL Open Font License 1.1",
+      "source": "https://github.com/googlefonts/lexend",
+      "attribution": "Lexend (c) 2018 The Lexend Project Authors",
+      "licenseFile": "assets/fonts/lexend/OFL.txt"
+    },
+    {
+      "id": "font-lexend-bold",
+      "mime": "font/ttf",
+      "path": "assets/fonts/lexend/Lexend-Bold.ttf",
+      "license": "SIL Open Font License 1.1",
+      "source": "https://github.com/googlefonts/lexend",
+      "attribution": "Lexend (c) 2018 The Lexend Project Authors",
+      "licenseFile": "assets/fonts/lexend/OFL.txt"
+    },
+    {
+      "id": "font-lexend-bold-web",
+      "mime": "font/woff2",
+      "path": "assets/fonts/lexend/Lexend-Bold.woff2",
+      "license": "SIL Open Font License 1.1",
+      "source": "https://github.com/googlefonts/lexend",
+      "attribution": "Lexend (c) 2018 The Lexend Project Authors",
+      "licenseFile": "assets/fonts/lexend/OFL.txt"
+    },
+    {
+      "id": "font-opendyslexic-regular",
+      "mime": "font/otf",
+      "path": "assets/fonts/opendyslexic/OpenDyslexic-Regular.otf",
+      "license": "SIL Open Font License 1.1",
+      "source": "https://github.com/antijingoist/opendyslexic release v0.91.12",
+      "attribution": "OpenDyslexic (c) 2019 Abbie Gonzalez",
+      "licenseFile": "assets/fonts/opendyslexic/OFL.txt"
+    },
+    {
+      "id": "font-opendyslexic-regular-web",
+      "mime": "font/woff2",
+      "path": "assets/fonts/opendyslexic/OpenDyslexic-Regular.woff2",
+      "license": "SIL Open Font License 1.1",
+      "source": "https://github.com/antijingoist/opendyslexic release v0.91.12",
+      "attribution": "OpenDyslexic (c) 2019 Abbie Gonzalez",
+      "licenseFile": "assets/fonts/opendyslexic/OFL.txt"
+    },
+    {
+      "id": "font-opendyslexic-bold",
+      "mime": "font/otf",
+      "path": "assets/fonts/opendyslexic/OpenDyslexic-Bold.otf",
+      "license": "SIL Open Font License 1.1",
+      "source": "https://github.com/antijingoist/opendyslexic release v0.91.12",
+      "attribution": "OpenDyslexic (c) 2019 Abbie Gonzalez",
+      "licenseFile": "assets/fonts/opendyslexic/OFL.txt"
+    },
+    {
+      "id": "font-opendyslexic-bold-web",
+      "mime": "font/woff2",
+      "path": "assets/fonts/opendyslexic/OpenDyslexic-Bold.woff2",
+      "license": "SIL Open Font License 1.1",
+      "source": "https://github.com/antijingoist/opendyslexic release v0.91.12",
+      "attribution": "OpenDyslexic (c) 2019 Abbie Gonzalez",
+      "licenseFile": "assets/fonts/opendyslexic/OFL.txt"
+    },
+    {
+      "id": "font-comicneue-regular",
+      "mime": "font/ttf",
+      "path": "assets/fonts/comicneue/ComicNeue-Regular.ttf",
+      "license": "SIL Open Font License 1.1",
+      "source": "https://github.com/crozynski/comicneue release 2.51",
+      "attribution": "Comic Neue (c) Craig Rozynski",
+      "licenseFile": "assets/fonts/comicneue/OFL.txt"
+    },
+    {
+      "id": "font-comicneue-regular-web",
+      "mime": "font/woff2",
+      "path": "assets/fonts/comicneue/ComicNeue-Regular.woff2",
+      "license": "SIL Open Font License 1.1",
+      "source": "https://github.com/crozynski/comicneue release 2.51",
+      "attribution": "Comic Neue (c) Craig Rozynski",
+      "licenseFile": "assets/fonts/comicneue/OFL.txt"
+    },
+    {
+      "id": "font-comicneue-bold",
+      "mime": "font/ttf",
+      "path": "assets/fonts/comicneue/ComicNeue-Bold.ttf",
+      "license": "SIL Open Font License 1.1",
+      "source": "https://github.com/crozynski/comicneue release 2.51",
+      "attribution": "Comic Neue (c) Craig Rozynski",
+      "licenseFile": "assets/fonts/comicneue/OFL.txt"
+    },
+    {
+      "id": "font-comicneue-bold-web",
+      "mime": "font/woff2",
+      "path": "assets/fonts/comicneue/ComicNeue-Bold.woff2",
+      "license": "SIL Open Font License 1.1",
+      "source": "https://github.com/crozynski/comicneue release 2.51",
+      "attribution": "Comic Neue (c) Craig Rozynski",
+      "licenseFile": "assets/fonts/comicneue/OFL.txt"
     }
   ]
 }

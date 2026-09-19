@@ -30,6 +30,7 @@
     "candidates.none": "Za to izbiro ni besedil.",
     "preview.empty": "Izberite temo in stopnjo, nato kliknite »Ustvari besedilo«.",
     "field.textSettings": "Nastavitve besedila",
+    "field.font": "Pisava",
     "field.fontSize": "Velikost pisave (pt)",
     "field.lineHeight": "Razmik med vrsticami",
     "field.letterSpacing": "Razmik med črkami (pt)",

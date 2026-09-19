@@ -30,13 +30,18 @@ connection at any point.
   save failure is reported honestly rather than claiming success. A saved
   setup never includes the child's name or a custom image (those are
   per-worksheet, not reusable).
-- **Not yet built (Phase 4 remainder):** the other three fonts (Lexend,
-  OpenDyslexic, Comic Neue — only Andika is bundled so far), physical-line
-  "zebra" striping (blueprint 8.6 flags this as needing real post-layout
-  line measurement, deliberately not attempted yet), and country-specific
-  handwriting rulings (only a generic 3-line guide exists — needs real
-  teacher/classroom input, intentionally not fabricated; see the
-  blueprint's decision table).
+- **Fonts:** all four brief-requested fonts bundled and selectable — Andika,
+  Lexend, OpenDyslexic, Comic Neue (all SIL OFL). Each verified to have full
+  glyph coverage for Slovene diacritics (č š ž, upper and lower case) by
+  reading their cmap tables directly before bundling, not assumed. Not yet
+  embedded in DOCX exports (font is declared by name only — Word/LibreOffice
+  substitute a fallback if the font isn't installed on the machine that
+  opens the file; a known, documented Phase 0 limitation, not fixed here).
+- **Not yet built (Phase 4 remainder):** physical-line "zebra" striping
+  (blueprint 8.6 flags this as needing real post-layout line measurement,
+  deliberately not attempted yet), and country-specific handwriting rulings
+  (only a generic 3-line guide exists — needs real teacher/classroom input,
+  intentionally not fabricated; see the blueprint's decision table).
 
 ## Running it
 
@@ -70,8 +75,9 @@ against `src/content/validate.js` and gated in the build via
 - `content/` — validated content packs (JSON, one per language)
 - `locales/` — UI string tables (`sl.json` in use, `en.json` draft; `de`/`fr`
   need a native reviewer before they're added)
-- `assets/` — bundled fonts (Andika, SIL OFL) and images referenced by
-  `content/`, tracked in `assets/manifest.json`
+- `assets/` — bundled fonts (Andika, Lexend, OpenDyslexic, Comic Neue — all
+  SIL OFL) and images referenced by `content/`, tracked in
+  `assets/manifest.json`
 - `scripts/build.mjs` — bundles `src/` into the self-contained `release/`;
   refuses to build if `scripts/validate-content.mjs` finds a problem
 - `tests/unit/` — Node test-runner suite

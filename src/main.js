@@ -11,7 +11,7 @@ import imageData from './generated/imageData.json';
 import { validatePack } from './content/validate.js';
 import { buildCatalogIndex, findCandidates, chooseEntry, listThemes } from './content/catalog.js';
 import { validateSettings } from './worksheet/validateSettings.js';
-import { SETTINGS_LIMITS } from './config.js';
+import { SETTINGS_LIMITS, FONT_FAMILIES } from './config.js';
 import { buildWorksheet } from './worksheet/build.js';
 import { renderWorksheet } from './render/html.js';
 import { measureWorksheet } from './layout/measure.js';
@@ -134,6 +134,7 @@ const els = {
   levelSelect: document.getElementById('level-select'),
   writingModeSelect: document.getElementById('writing-mode-select'),
   candidateCount: document.getElementById('candidate-count'),
+  fontSelect: document.getElementById('font-select'),
   fontSizeInput: document.getElementById('font-size-input'),
   lineHeightInput: document.getElementById('line-height-input'),
   letterSpacingInput: document.getElementById('letter-spacing-input'),
@@ -176,6 +177,23 @@ function populateThemeSelect() {
     })
   );
   els.themeSelect.value = state.filter.theme;
+}
+
+/** Font names (Andika, Lexend, ...) are proper nouns — shown as-is, not translated. */
+function populateFontSelect() {
+  els.fontSelect.replaceChildren(
+    ...Object.entries(FONT_FAMILIES).map(([fontId, displayName]) => {
+      const option = document.createElement('option');
+      option.value = fontId;
+      option.textContent = displayName;
+      return option;
+    })
+  );
+}
+
+function updateFontId(fontId) {
+  state.settings.fontId = fontId;
+  if (state.contentId) requestRender();
 }
 
 /** Updates the "N texts available" indicator without touching the displayed worksheet — a filter change alone must never silently swap the visible passage (blueprint 8.2). */
@@ -248,6 +266,7 @@ function applySettingsLimits() {
 /** Reflects state.settings into the settings-panel controls — used at startup and after applying a preset. */
 function syncSettingsControlsFromState() {
   const s = state.settings;
+  els.fontSelect.value = s.fontId;
   els.fontSizeInput.value = s.fontSizePt;
   els.lineHeightInput.value = s.lineHeightMultiplier;
   els.letterSpacingInput.value = s.letterSpacingPt;
@@ -511,6 +530,7 @@ els.writingModeSelect.addEventListener('change', (event) => updateWritingMode(ev
 els.printButton.addEventListener('click', printWorksheet);
 els.docxButton.addEventListener('click', handleExportDocx);
 
+els.fontSelect.addEventListener('change', (e) => updateFontId(e.target.value));
 els.fontSizeInput.addEventListener('change', (e) => updateNumericSetting('fontSizePt', SETTINGS_LIMITS.fontSizePt, e.target));
 els.lineHeightInput.addEventListener('change', (e) => updateNumericSetting('lineHeightMultiplier', SETTINGS_LIMITS.lineHeightMultiplier, e.target));
 els.letterSpacingInput.addEventListener('change', (e) => updateNumericSetting('letterSpacingPt', SETTINGS_LIMITS.letterSpacingPt, e.target));
@@ -530,6 +550,7 @@ els.resetImageButton.addEventListener('click', resetCustomImage);
 
 applyStaticLabels();
 populateThemeSelect();
+populateFontSelect();
 updateCandidateCount();
 applySettingsLimits();
 syncSettingsControlsFromState();

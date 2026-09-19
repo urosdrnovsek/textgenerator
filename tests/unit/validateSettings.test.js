@@ -29,6 +29,12 @@ test('rejects an unknown fontId', () => {
   assert.ok(result.errors.some((e) => e.field === 'fontId'));
 });
 
+test('accepts all four bundled fonts', () => {
+  for (const fontId of ['andika', 'lexend', 'opendyslexic', 'comicneue']) {
+    assert.equal(validateSettings({ ...VALID_SETTINGS, fontId }).ok, true, `${fontId} should be a valid fontId`);
+  }
+});
+
 test('rejects a font size outside the configured range', () => {
   const tooSmall = validateSettings({ ...VALID_SETTINGS, fontSizePt: 4 });
   const tooBig = validateSettings({ ...VALID_SETTINGS, fontSizePt: 100 });

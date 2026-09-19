@@ -66,11 +66,7 @@ async function main() {
 
   await cp(path.join(root, 'index.html'), path.join(releaseDir, 'index.html'));
   await cp(path.join(root, 'styles'), path.join(releaseDir, 'styles'), { recursive: true });
-  await cp(
-    path.join(root, 'assets/fonts/andika'),
-    path.join(releaseDir, 'assets/fonts/andika'),
-    { recursive: true }
-  );
+  await cp(path.join(root, 'assets/fonts'), path.join(releaseDir, 'assets/fonts'), { recursive: true });
 
   console.log('\nRelease written to', releaseDir);
 }
