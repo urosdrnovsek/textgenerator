@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8" />
+  <title>Delovni list — Phase 0 proof</title>
+  <link rel="stylesheet" href="styles/worksheet.css" />
+  <link rel="stylesheet" href="styles/app.css" />
+  <link rel="stylesheet" href="styles/print.css" />
+</head>
+<body>
+  <div class="app-shell no-print">
+    <div class="app-sidebar">
+      <label for="content-select">Passage</label>
+      <select id="content-select">
+        <option value="stories_lost_kite_1">Level 1 — Pobegli zmaj (draft)</option>
+        <option value="stories_lost_kite_5">Level 5 — Zmaj nad rumenim poljem (near-limit)</option>
+      </select>
+
+      <label for="writing-mode-select">Writing mode</label>
+      <select id="writing-mode-select">
+        <option value="read-copy">Read &amp; copy</option>
+        <option value="read-only">Read only</option>
+      </select>
+
+      <button id="btn-print" type="button">Print / Save as PDF</button>
+      <button id="btn-docx" type="button">Export as Word (.docx)</button>
+
+      <div id="fit-indicator" class="fit-indicator" role="status">Measuring…</div>
+    </div>
+    <div class="preview-scroll">
+      <div class="page-frame">
+        <div id="preview"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="print-surface"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

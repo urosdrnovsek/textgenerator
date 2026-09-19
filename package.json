@@ -1,0 +1,15 @@
+{
+  "name": "writing-worksheet-generator",
+  "version": "0.0.0-phase0",
+  "private": true,
+  "description": "Offline writing-practice worksheet generator for elementary schools.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/unit/"
+  },
+  "devDependencies": {
+    "docx": "^9.5.1",
+    "esbuild": "^0.24.0"
+  }
+}

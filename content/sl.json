@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "packId": "starter-sl",
+  "language": "sl",
+  "entries": [
+    {
+      "id": "stories_lost_kite_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Pobegli zmaj",
+      "body": "Maja ima modrega zmaja. Zmaj leti nad travo. Piha veter. Trak zdrsne iz Majine roke. Maja teče za zmajem. Najde ga ob nizkem drevesu.",
+      "syllable_body": "Ma|ja i|ma mo|dre|ga zma|ja. Zmaj le|ti nad tra|vo. Pi|ha ve|ter. Trak zdr|sne iz Ma|ji|ne ro|ke. Ma|ja te|če za zma|jem. Naj|de ga ob niz|kem dre|ve|su.",
+      "imageId": "blue_kite",
+      "review": { "status": "draft" }
+    },
+    {
+      "id": "stories_lost_kite_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Zmaj nad rumenim poljem",
+      "body": "Maja je več dni čakala na dovolj vetroven popoldan. Ko so se v soboto začele premikati veje na jablani, je vzela svojega modrega zmaja in odšla na travnik. Zmaj je imel rumen rep, ki se je v zraku zvijal kakor dolg trak svetlobe. Sprva je letel mirno, nato pa je veter postal sunkovit. Maja je hotela skrajšati vrvico, vendar ji je lesen ročaj zdrsnil iz dlani. Zmaj je poskočil čez živo mejo in izginil nad sosednjim poljem. Maja je stekla za njim. Na poti je srečala Jana, ki je ravno peljal kolo. Skupaj sta sledila rumenemu repu, ki se je za hip pokazal med vejami. Zmaj se je ujel v mlado lesko ob robu polja. Jan je držal vejo, Maja pa je previdno odvila rep in papirnato krilo. Nič ni bilo strgano. Doma je Maja z očetom izbrala ročaj, ki ga je lažje držala. Ko je zmaj spet poletel, je vrvico lažje nadzorovala. Jan je predlagal še majhno barvno oznako na vrvici, da bi Maja lažje opazila, koliko je že odvila. Maja je idejo takoj preizkusila.",
+      "syllable_body": "Ma|ja je več dni ča|ka|la na do|volj ve|tro|ven po|pol|dan. Ko so se v so|bo|to za|če|le pre|mi|ka|ti ve|je na ja|bla|ni, je vze|la svo|je|ga mo|dre|ga zma|ja in od|šla na trav|nik. Zmaj je i|mel ru|men rep, ki se je v zra|ku zvi|jal ka|kor dolg trak sve|tlo|be. Spr|va je le|tel mir|no, na|to pa je ve|ter po|stal sun|ko|vit. Ma|ja je ho|te|la skraj|ša|ti vr|vi|co, ven|dar ji je le|sen ro|čaj zdr|snil iz dla|ni. Zmaj je pos|ko|čil čez ži|vo me|jo in iz|gi|nil nad so|sed|njim po|ljem. Ma|ja je ste|kla za njim. Na po|ti je sre|ča|la Ja|na, ki je rav|no pe|ljal ko|lo. Sku|paj sta sle|di|la ru|me|ne|mu re|pu, ki se je za hip po|ka|zal med ve|ja|mi. Zmaj se je u|jel v mla|do les|ko ob ro|bu po|lja. Jan je dr|žal ve|jo, Ma|ja pa je pre|vid|no od|vi|la rep in pa|pir|na|to kri|lo. Nič ni bi|lo str|ga|no. Do|ma je Ma|ja z o|če|tom iz|bra|la ro|čaj, ki ga je laž|je dr|ža|la. Ko je zmaj spet po|le|tel, je vr|vi|co laž|je nad|zo|ro|va|la. Jan je pre|dla|gal še majh|no barv|no o|zna|ko na vr|vi|ci, da bi Ma|ja laž|je o|pa|zi|la, ko|li|ko je že od|vi|la. Ma|ja je i|de|jo ta|koj pre|iz|ku|si|la.",
+      "imageId": "kite_yellow_field",
+      "review": { "status": "draft" }
+    }
+  ]
+}

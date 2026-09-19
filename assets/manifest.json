@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "assets": [
+    {
+      "id": "blue_kite",
+      "mime": "image/jpeg",
+      "path": "assets/images/blue_kite.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "kite_yellow_field",
+      "mime": "image/jpeg",
+      "path": "assets/images/kite_yellow_field.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "font-andika-regular",
+      "mime": "font/ttf",
+      "path": "assets/fonts/andika/Andika-Regular.ttf",
+      "license": "SIL Open Font License 1.1",
+      "source": "https://github.com/silnrsi/font-andika release v7.000",
+      "attribution": "Andika (c) SIL Global",
+      "licenseFile": "assets/fonts/andika/OFL.txt"
+    },
+    {
+      "id": "font-andika-bold",
+      "mime": "font/ttf",
+      "path": "assets/fonts/andika/Andika-Bold.ttf",
+      "license": "SIL Open Font License 1.1",
+      "source": "https://github.com/silnrsi/font-andika release v7.000",
+      "attribution": "Andika (c) SIL Global",
+      "licenseFile": "assets/fonts/andika/OFL.txt"
+    },
+    {
+      "id": "font-andika-regular-web",
+      "mime": "font/woff2",
+      "path": "assets/fonts/andika/Andika-Regular.woff2",
+      "license": "SIL Open Font License 1.1",
+      "source": "https://github.com/silnrsi/font-andika release v7.000",
+      "attribution": "Andika (c) SIL Global",
+      "licenseFile": "assets/fonts/andika/OFL.txt"
+    },
+    {
+      "id": "font-andika-bold-web",
+      "mime": "font/woff2",
+      "path": "assets/fonts/andika/Andika-Bold.woff2",
+      "license": "SIL Open Font License 1.1",
+      "source": "https://github.com/silnrsi/font-andika release v7.000",
+      "attribution": "Andika (c) SIL Global",
+      "licenseFile": "assets/fonts/andika/OFL.txt"
+    }
+  ]
+}

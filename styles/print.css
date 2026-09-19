@@ -1,0 +1,45 @@
+/* Print-only surface. One margin system: @page owns the 20mm margin, so
+   .ws-page prints at its native 170mm content width with no extra
+   wrapper padding (blueprint 8.5) — avoids doubling the margin. */
+
+@page {
+  size: A4 portrait;
+  margin: 20mm;
+}
+
+@media print {
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  #print-surface,
+  #print-surface * {
+    visibility: visible;
+  }
+
+  #print-surface {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .ws-page {
+    width: 170mm;
+    box-shadow: none;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  * {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}

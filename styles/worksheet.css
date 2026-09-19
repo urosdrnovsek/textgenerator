@@ -1,0 +1,91 @@
+/* Shared appearance of the worksheet sheet itself — used by both the
+   screen preview and print output, so the two never visually drift. */
+
+@font-face {
+  font-family: 'Andika';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/andika/Andika-Regular.woff2') format('woff2');
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Andika';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/fonts/andika/Andika-Bold.woff2') format('woff2');
+  font-display: block;
+}
+
+.ws-page {
+  width: 170mm;
+  box-sizing: border-box;
+  background: #ffffff;
+  color: #202020;
+  font-family: var(--ws-font-family, 'Andika'), sans-serif;
+  font-size: calc(var(--ws-font-size-pt, 18) * 1pt);
+  line-height: var(--ws-line-height, 1.5);
+  text-align: left;
+}
+
+.ws-header {
+  display: flex;
+  gap: 12mm;
+  margin-bottom: 4mm;
+  font-size: 11pt;
+}
+
+.ws-header-field {
+  border-bottom: 0.3mm solid #333;
+  padding-bottom: 1mm;
+  flex: 1;
+}
+
+.ws-title {
+  font-size: calc((var(--ws-font-size-pt, 18) + 4) * 1pt);
+  margin: 0 0 3mm 0;
+  font-weight: 700;
+}
+
+.ws-image-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3mm;
+}
+
+.ws-image {
+  max-width: 60mm;
+  max-height: 45mm;
+  object-fit: contain;
+}
+
+.ws-body {
+  margin: 0;
+  text-align: left;
+  letter-spacing: var(--ws-letter-spacing-mm, 0mm);
+  word-spacing: var(--ws-word-spacing-mm, 0mm);
+}
+
+.ws-copy-area {
+  /* margin-top is set inline by render/html.js from config.COPY_AREA_GAP_MM
+     — the single source of truth also used by layout/measure.js's row
+     budget, so the two can never drift apart. */
+}
+
+.ws-ruling {
+  display: block;
+}
+
+.ws-ruling-line {
+  stroke: #666;
+  stroke-width: 0.25;
+}
+
+.ws-ruling-baseline {
+  stroke: #333;
+  stroke-width: 0.3;
+}
+
+.ws-ruling-dashed {
+  stroke-dasharray: 2 1.5;
+}

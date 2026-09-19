@@ -1,0 +1,76 @@
+/* Interface chrome around the worksheet preview. Not part of the printed
+   page — everything here is hidden by .no-print in print.css. */
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #f2f1ea;
+  color: #1a1a1a;
+}
+
+.app-shell {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  align-items: flex-start;
+}
+
+.app-sidebar {
+  flex: 0 0 240px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.app-sidebar button {
+  display: block;
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 8px 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.fit-indicator {
+  margin-top: 12px;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 13px;
+  background: #eef4ea;
+  color: #205020;
+}
+
+.fit-indicator.is-overflow {
+  background: #fbe9e7;
+  color: #8a1c14;
+}
+
+.preview-scroll {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* Screen-only simulation of the printed A4 sheet; print.css removes this
+   padding because @page already reserves the 20mm margin. */
+.page-frame {
+  width: 210mm;
+  min-height: 297mm;
+  box-sizing: border-box;
+  padding: 20mm;
+  background: #ffffff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Off-screen twin of the preview, rendered so print.css has a ready DOM to
+   reveal — kept out of the screen viewport without display:none. */
+#print-surface {
+  position: fixed;
+  top: 0;
+  left: -10000px;
+}
