@@ -22,22 +22,30 @@ connection at any point.
   syllable-break errors fixed (a compound-word split and two `qu`-digraph
   splits); French had 3 (a proper-noun `y`-digraph split and two instances
   of the monosyllabic word "où" incorrectly split). All 100 non-Slovene
-  entries are now marked `review.status: "reviewed"`. **Two things this
-  pass deliberately did not touch:** image accuracy (German — all 25
-  entries, French — 20 of 25, Spanish — 24 of 25 — still use topically
-  reassigned substitute images, not verified-accurate ones; a few are
-  outright mismatched, e.g. a Bavarian castle entry pointing at a windmill
-  photo) and a newly-found **fit problem**: every German and every French
-  level-5 entry overflows the page under the app's *default* settings
-  (confirmed pre-existing, not caused by the syllable fixes — reproduced
-  identically against the unmodified content). Slovene, English, and
-  Spanish level-5 entries all fit. This means a teacher picking German or
-  French at level 5 currently cannot create a worksheet at all without
-  first changing settings (e.g. switching to read-only mode). Not fixed
-  yet — flagged for the next content pass, since trimming these texts is a
-  bigger edit than a text-quality review covers.
+  entries are now marked `review.status: "reviewed"`.
+  **A newly-found fit problem is also now fixed:** every German and every
+  French level-5 entry used to overflow the page under the app's *default*
+  settings (confirmed pre-existing, not caused by the syllable fixes —
+  reproduced identically against the unmodified content, via `git stash`).
+  All 10 affected entries (5 DE + 5 FR) were trimmed — removing 1–3
+  supplementary sentences each, keeping the core narrative/facts intact —
+  and re-verified to fit in a real browser and convert to a real 1-page PDF
+  via real LibreOffice; those two boundary cases are now permanent
+  regression cases in `scripts/verify-docx-libreoffice.mjs`. Trimmed
+  entries' versions were bumped accordingly.
+  **One thing this pass deliberately did not touch:** image accuracy
+  (German — all 25 entries, French — 20 of 25, Spanish — 24 of 25 — still
+  use topically reassigned substitute images, not verified-accurate ones;
+  a few are outright mismatched, e.g. a Bavarian castle entry pointing at
+  a windmill photo — see `Instructions/` for the full list). Image
+  *licensing*, a separate concern, is resolved — see below.
+- **Image licensing:** every bundled image is original artwork the project
+  owner generated with ChatGPT (OpenAI); `assets/manifest.json` and
+  `THIRD_PARTY_NOTICES.md` now record this (all rights reserved by the
+  project owner, bundled for this project's use — not an open license).
+  See `THIRD_PARTY_NOTICES.md` for the full statement and its caveats.
 - **Content versioning:** every content entry carries an integer `version`
-  field, currently `1` across all five languages. The intent going forward:
+  field. The intent going forward:
   `version` bumps when an entry's text is corrected after native-language
   review (not when unrelated entries are merely added), and new entries can
   be added at any time without bumping the ones already reviewed. There is
@@ -163,21 +171,20 @@ how, and what's still open. Summary:
 - **Versioned ZIP release — done.** `npm run package` rebuilds and
   produces `dist/writing-worksheet-generator-v<version>.zip`, bundling
   `release/` with `docs/`, `THIRD_PARTY_NOTICES.md`, and `licenses/`.
-- **Font and `docx`-library licenses — resolved.** See
+- **Font, `docx`-library, and image licenses — all resolved.** See
   `THIRD_PARTY_NOTICES.md`.
 - **Still open, needs the user's own hardware/software** (none of this is
   available in the development environment this was built in): real
   Microsoft Word, real desktop Firefox/Safari, and physical printer tests.
   `docs/compatibility.md` has a concrete checklist for each.
-- **Still open, deliberately not attempted here:** image licenses (every
-  bundled image is still an "unreviewed placeholder" in
-  `assets/manifest.json`) and native-language content review — both are
-  scheduled as part of the upcoming content-quality pass, not a Phase 7
-  gap to paper over.
+- **Still open, deliberately not attempted here:** a native speaker's
+  review of the EN/DE/FR/ES content (this pass's editorial review is
+  thorough but not the same thing) and fixing the handful of mismatched
+  images noted above — both tracked for the next content pass.
 
 Current version `0.7.0-rc.1` reflects this: a release candidate, not a
-final `1.0.0` — the image-license and content-review gaps are real,
-user-facing risk, not paperwork.
+final `1.0.0` — a native-speaker content review and the mismatched-image
+fixes are real, user-facing gaps, not paperwork.
 
 ## Running it
 

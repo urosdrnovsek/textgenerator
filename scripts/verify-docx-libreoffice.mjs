@@ -102,7 +102,14 @@ const CASES = [
   { label: 'en-lexend-level3-trace', language: 'en', theme: 'stories', level: 3, fontId: 'lexend', writingMode: 'trace' },
   { label: 'de-opendyslexic-level3-readonly-tint', language: 'de', theme: 'stories', level: 3, fontId: 'opendyslexic', writingMode: 'read-only', tintId: 'cream', printTint: true },
   { label: 'fr-comicneue-level3-readcopy-sentenceperline', language: 'fr', theme: 'stories', level: 3, fontId: 'comicneue', writingMode: 'read-copy', sentencePerLine: true },
-  { label: 'es-andika-level5-readcopy-stress', language: 'es', theme: 'stories', level: 5, fontId: 'andika', writingMode: 'read-copy' }
+  { label: 'es-andika-level5-readcopy-stress', language: 'es', theme: 'stories', level: 5, fontId: 'andika', writingMode: 'read-copy' },
+  // Regression coverage for a real bug: every DE/FR level-5 entry used to
+  // overflow the page under default settings (fixed by trimming the
+  // content — see the content-review commit history). Both fit now, but
+  // stay right at the edge of the budget, so keep them as permanent
+  // boundary cases rather than trusting they'll never regress silently.
+  { label: 'de-andika-level5-readcopy-stress', language: 'de', theme: 'amazing_science', level: 5, fontId: 'andika', writingMode: 'read-copy' },
+  { label: 'fr-andika-level5-readcopy-stress', language: 'fr', theme: 'nature_seasons', level: 5, fontId: 'andika', writingMode: 'read-copy' }
 ];
 
 async function main() {

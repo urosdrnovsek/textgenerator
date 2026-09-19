@@ -167,13 +167,19 @@ own hardware. Checklist:
   `THIRD_PARTY_NOTICES.md`.
 - **The `docx` library** — resolved. MIT, license copy in
   `licenses/docx-MIT.txt`.
-- **Images** — **not resolved.** Every entry in `assets/manifest.json`
-  still carries the placeholder `"license": "unreviewed placeholder —
-  confirm license before classroom release"`. This is the single largest
-  remaining Phase 7 blocker and is explicitly scheduled as part of the
-  upcoming content-quality review pass, not something to guess at here.
-- **Content text** — Slovene has real editorial review; English, German,
-  French, and Spanish do not yet. Same upcoming review pass.
+- **Images** — resolved. Every bundled image is original artwork the
+  project owner generated with ChatGPT (OpenAI); per OpenAI's Terms of Use
+  at generation time, the creator owns that output. `assets/manifest.json`
+  now records this per image (all rights reserved by the project owner,
+  bundled for this project only — not an open license). See
+  `THIRD_PARTY_NOTICES.md` for the full statement and its caveats.
+  Separately, a few entries still pair a text with a visually mismatched
+  image (a licensing-independent content-accuracy issue) — tracked in
+  `Instructions/progress-and-next-steps.md`, not a licensing blocker.
+- **Content text** — Slovene has real editorial review. English, German,
+  French, and Spanish have had a close editorial pass (grammar, natural
+  phrasing, facts, syllable-break correctness) but not a native speaker's
+  review.
 
 ## Teacher documentation
 
