@@ -85,6 +85,7 @@ const els = {
   printButton: document.getElementById('btn-print'),
   docxButton: document.getElementById('btn-docx'),
   createButton: document.getElementById('btn-create'),
+  nameInput: document.getElementById('name-input'),
   themeSelect: document.getElementById('theme-select'),
   levelSelect: document.getElementById('level-select'),
   writingModeSelect: document.getElementById('writing-mode-select'),
@@ -98,11 +99,14 @@ const els = {
   dyslexiaPresetButton: document.getElementById('btn-dyslexia-preset')
 };
 
-/** Applies t() to every element carrying a data-label key (blueprint 8.1: stable ids, looked-up labels). */
+/** Applies t() to every element carrying a data-label (text) or data-placeholder (input placeholder) key. */
 function applyStaticLabels() {
   document.title = t('app.title');
   for (const el of document.querySelectorAll('[data-label]')) {
     el.textContent = t(el.dataset.label);
+  }
+  for (const el of document.querySelectorAll('[data-placeholder]')) {
+    el.placeholder = t(el.dataset.placeholder);
   }
 }
 
@@ -143,6 +147,11 @@ function createText() {
 
 function updateWritingMode(mode) {
   state.settings.writingMode = mode;
+  if (state.contentId) requestRender();
+}
+
+function updatePersonalizationName(name) {
+  state.settings.personalization.name = name;
   if (state.contentId) requestRender();
 }
 
@@ -285,6 +294,7 @@ async function handleExportDocx() {
 els.themeSelect.addEventListener('change', (event) => updateFilter({ theme: event.target.value }));
 els.levelSelect.addEventListener('change', (event) => updateFilter({ level: Number(event.target.value) }));
 els.createButton.addEventListener('click', createText);
+els.nameInput.addEventListener('change', (event) => updatePersonalizationName(event.target.value));
 els.writingModeSelect.addEventListener('change', (event) => updateWritingMode(event.target.value));
 els.printButton.addEventListener('click', printWorksheet);
 els.docxButton.addEventListener('click', handleExportDocx);

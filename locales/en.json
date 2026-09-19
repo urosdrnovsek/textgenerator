@@ -35,6 +35,8 @@
     "field.wordSpacing": "Extra word spacing (pt)",
     "field.letterColors": "Confused-letter colors (b/d/p/q)",
     "field.syllableColors": "Syllable colors",
-    "action.dyslexiaPreset": "Dyslexia-friendly"
+    "action.dyslexiaPreset": "Dyslexia-friendly",
+    "field.childName": "Child's name (optional)",
+    "field.childNamePlaceholder": "e.g. Mia"
   }
 }

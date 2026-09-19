@@ -6,6 +6,8 @@
  */
 
 const NAME_PLACEHOLDER = '{name}';
+/** Matches {name} at the very start of the text or right after sentence-ending punctuation, capturing the letter that follows so it can be re-capitalized once the placeholder is gone. */
+const SENTENCE_START_NAME_PATTERN = /(^|[.!?]\s+)\{name\}\s*([\p{L}]?)/gu;
 
 /**
  * @typedef {object} ResolvedText
@@ -33,8 +35,12 @@ export function resolvePersonalization(entry, name) {
     }
     // Phase 0 fallback: authored neutral_body is the correct long-term path
     // (see blueprint 8.8); blind removal is a documented simplification and
-    // does not attempt grammatically-safe substitution.
+    // does not attempt grammatically-safe substitution (no declension, no
+    // gender agreement — blueprint 8.8 explicitly says not to attempt that).
+    // It does fix the one thing plain removal gets visibly wrong: dropping a
+    // sentence-initial placeholder left the next word lowercase.
     const body = entry.body
+      .replace(SENTENCE_START_NAME_PATTERN, (match, prefix, nextLetter) => prefix + nextLetter.toUpperCase())
       .replaceAll(NAME_PLACEHOLDER, '')
       .replace(/[ \t]{2,}/g, ' ')
       .replace(/[ \t]+([.,!?])/g, '$1')
