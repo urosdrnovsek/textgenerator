@@ -394,6 +394,496 @@
       "source": "https://github.com/crozynski/comicneue release 2.51",
       "attribution": "Comic Neue (c) Craig Rozynski",
       "licenseFile": "assets/fonts/comicneue/OFL.txt"
+    },
+    {
+      "id": "kite_in_tree",
+      "mime": "image/jpeg",
+      "path": "assets/images/kite_in_tree.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "piscancek_lupina",
+      "mime": "image/jpeg",
+      "path": "assets/images/piscancek_lupina.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "svetilnik",
+      "mime": "image/jpeg",
+      "path": "assets/images/svetilnik.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "weaverbird_nest",
+      "mime": "image/jpeg",
+      "path": "assets/images/weaverbird_nest.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "gecko_feet",
+      "mime": "image/jpeg",
+      "path": "assets/images/gecko_feet.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "lisica",
+      "mime": "image/jpeg",
+      "path": "assets/images/lisica.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "pingvin",
+      "mime": "image/jpeg",
+      "path": "assets/images/pingvin.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "narwhal",
+      "mime": "image/jpeg",
+      "path": "assets/images/narwhal.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "cappadocia",
+      "mime": "image/jpeg",
+      "path": "assets/images/cappadocia.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "kitajski_zid",
+      "mime": "image/jpeg",
+      "path": "assets/images/kitajski_zid.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "serengeti_plain",
+      "mime": "image/jpeg",
+      "path": "assets/images/serengeti_plain.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "machu_picchu",
+      "mime": "image/jpeg",
+      "path": "assets/images/machu_picchu.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "zvok_uho",
+      "mime": "image/jpeg",
+      "path": "assets/images/zvok_uho.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "rising_dough",
+      "mime": "image/jpeg",
+      "path": "assets/images/rising_dough.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "ognjenik",
+      "mime": "image/jpeg",
+      "path": "assets/images/ognjenik.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "smelling_orange",
+      "mime": "image/jpeg",
+      "path": "assets/images/smelling_orange.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "water_cycle",
+      "mime": "image/jpeg",
+      "path": "assets/images/water_cycle.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "fireflies",
+      "mime": "image/jpeg",
+      "path": "assets/images/fireflies.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "snezinka",
+      "mime": "image/jpeg",
+      "path": "assets/images/snezinka.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "maple_seeds",
+      "mime": "image/jpeg",
+      "path": "assets/images/maple_seeds.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "jez",
+      "mime": "image/jpeg",
+      "path": "assets/images/jez.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "zelva",
+      "mime": "image/jpeg",
+      "path": "assets/images/zelva.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "modri_kit",
+      "mime": "image/jpeg",
+      "path": "assets/images/modri_kit.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "stara_skrinja",
+      "mime": "image/jpeg",
+      "path": "assets/images/stara_skrinja.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "kite_chase",
+      "mime": "image/jpeg",
+      "path": "assets/images/kite_chase.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "silver_key_garden",
+      "mime": "image/jpeg",
+      "path": "assets/images/silver_key_garden.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "green_garden_gate",
+      "mime": "image/jpeg",
+      "path": "assets/images/green_garden_gate.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "benetke_most",
+      "mime": "image/jpeg",
+      "path": "assets/images/benetke_most.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "afrika_savana",
+      "mime": "image/jpeg",
+      "path": "assets/images/afrika_savana.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "odmev_gore",
+      "mime": "image/jpeg",
+      "path": "assets/images/odmev_gore.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "reka",
+      "mime": "image/jpeg",
+      "path": "assets/images/reka.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "benetke_ulica",
+      "mime": "image/jpeg",
+      "path": "assets/images/benetke_ulica.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "prvi_led",
+      "mime": "image/jpeg",
+      "path": "assets/images/prvi_led.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "winter_tree_buds",
+      "mime": "image/jpeg",
+      "path": "assets/images/winter_tree_buds.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "red_mitten_bench",
+      "mime": "image/jpeg",
+      "path": "assets/images/red_mitten_bench.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "hisica_drevo",
+      "mime": "image/jpeg",
+      "path": "assets/images/hisica_drevo.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "sundial",
+      "mime": "image/jpeg",
+      "path": "assets/images/sundial.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "zirafa",
+      "mime": "image/jpeg",
+      "path": "assets/images/zirafa.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "tide_pool",
+      "mime": "image/jpeg",
+      "path": "assets/images/tide_pool.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "octopus_camouflage",
+      "mime": "image/jpeg",
+      "path": "assets/images/octopus_camouflage.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "nizozemska_mlin",
+      "mime": "image/jpeg",
+      "path": "assets/images/nizozemska_mlin.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "sahara_landscape",
+      "mime": "image/jpeg",
+      "path": "assets/images/sahara_landscape.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "amazonski_pragozd",
+      "mime": "image/jpeg",
+      "path": "assets/images/amazonski_pragozd.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "button_boat",
+      "mime": "image/jpeg",
+      "path": "assets/images/button_boat.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "gozd",
+      "mime": "image/jpeg",
+      "path": "assets/images/gozd.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "ptice_selivke",
+      "mime": "image/jpeg",
+      "path": "assets/images/ptice_selivke.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "frozen_river",
+      "mime": "image/jpeg",
+      "path": "assets/images/frozen_river.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "veverica",
+      "mime": "image/jpeg",
+      "path": "assets/images/veverica.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
+    },
+    {
+      "id": "forest_mushrooms",
+      "mime": "image/jpeg",
+      "path": "assets/images/forest_mushrooms.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "unreviewed placeholder — confirm license before classroom release",
+      "source": "local starter image collection",
+      "attribution": ""
     }
   ]
 }

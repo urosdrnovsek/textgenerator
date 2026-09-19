@@ -5,7 +5,13 @@
  */
 
 import slPack from '../content/sl.json';
+import enPack from '../content/en.json';
+import dePack from '../content/de.json';
+import frPack from '../content/fr.json';
 import slLocale from '../locales/sl.json';
+import enLocale from '../locales/en.json';
+import deLocale from '../locales/de.json';
+import frLocale from '../locales/fr.json';
 import imageData from './generated/imageData.json';
 
 import { validatePack } from './content/validate.js';
@@ -21,20 +27,39 @@ import { createTranslator } from './i18n.js';
 import { checkStorageCapability, listPresets, savePreset, deletePreset } from './storage.js';
 import { readImageFile } from './import.js';
 
-const t = createTranslator(slLocale);
+/** blueprint 8.1: "The interface starts in Slovene for the pilot." */
+const DEFAULT_LANGUAGE = 'sl';
+const CONTENT_PACKS = { sl: slPack, en: enPack, de: dePack, fr: frPack };
+const LOCALES = { sl: slLocale, en: enLocale, de: deLocale, fr: frLocale };
+const LANGUAGES = Object.keys(CONTENT_PACKS);
+
+// Reassigned by switchLanguage() — not const, since the active locale/catalog change at runtime.
+let t = createTranslator(LOCALES[DEFAULT_LANGUAGE]);
 
 const IMAGES_BY_ID = new Map(Object.entries(imageData).map(([id, path]) => [id, { id, path }]));
 const KNOWN_ASSET_IDS = new Set(IMAGES_BY_ID.keys());
 
-const validation = validatePack(slPack, KNOWN_ASSET_IDS);
-if (!validation.ok) {
-  // eslint-disable-next-line no-console
-  console.error('Starter content pack failed validation:', validation.errors);
-  throw new Error('Starter content pack failed validation — see console for details.');
+/**
+ * @param {string} language
+ * @returns {import('./content/catalog.js').CatalogIndex}
+ */
+function validateAndBuildCatalog(language) {
+  const validation = validatePack(CONTENT_PACKS[language], KNOWN_ASSET_IDS);
+  if (!validation.ok) {
+    // eslint-disable-next-line no-console
+    console.error(`Content pack "${language}" failed validation:`, validation.errors);
+    throw new Error(`Content pack "${language}" failed validation — see console for details.`);
+  }
+  const entriesWithLanguage = validation.pack.entries.map((entry) => ({ ...entry, language: validation.pack.language }));
+  return buildCatalogIndex(entriesWithLanguage);
 }
-const entriesWithLanguage = validation.pack.entries.map((entry) => ({ ...entry, language: validation.pack.language }));
-const CATALOG = buildCatalogIndex(entriesWithLanguage);
-const THEMES = listThemes(CATALOG);
+
+// Validate every bundled pack up front — a broken pack for a language the
+// teacher hasn't picked yet should still fail loudly at startup, not later.
+for (const language of LANGUAGES) validateAndBuildCatalog(language);
+
+let CATALOG = validateAndBuildCatalog(DEFAULT_LANGUAGE);
+let THEMES = listThemes(CATALOG);
 
 /** Preserved so the letter-colors checkbox can restore real colors after being switched off. */
 const DEFAULT_LETTER_COLORS = { b: '#B42318', d: '#166534', p: '#7C3AED', q: '#B45309' };
@@ -50,6 +75,7 @@ const DYSLEXIA_PRESET = {
 };
 
 const STANDARD_SETTINGS = {
+  language: DEFAULT_LANGUAGE,
   theme: THEMES[0],
   level: 1,
   fontId: 'andika',
@@ -72,25 +98,33 @@ const STANDARD_SETTINGS = {
   marginMm: 20
 };
 
-/** Built-in presets always exist, independent of localStorage (blueprint 8.10: "a couple of sensible built-in presets out of the box"). */
-const BUILT_IN_PRESETS = [
-  { id: 'builtin-standard', name: t('preset.builtin.standard'), builtin: true, settings: STANDARD_SETTINGS },
-  {
-    id: 'builtin-dyslexia',
-    name: t('preset.builtin.dyslexia'),
-    builtin: true,
-    settings: {
-      ...STANDARD_SETTINGS,
-      fontSizePt: DYSLEXIA_PRESET.fontSizePt,
-      lineHeightMultiplier: DYSLEXIA_PRESET.lineHeightMultiplier,
-      letterSpacingPt: DYSLEXIA_PRESET.letterSpacingPt,
-      extraWordSpacePt: DYSLEXIA_PRESET.extraWordSpacePt
+/**
+ * Built-in presets always exist, independent of localStorage (blueprint
+ * 8.10: "a couple of sensible built-in presets out of the box"). A
+ * function, not a module-level const: its names must re-translate when the
+ * teacher switches the interface language.
+ */
+function getBuiltInPresets() {
+  return [
+    { id: 'builtin-standard', name: t('preset.builtin.standard'), builtin: true, settings: STANDARD_SETTINGS },
+    {
+      id: 'builtin-dyslexia',
+      name: t('preset.builtin.dyslexia'),
+      builtin: true,
+      settings: {
+        ...STANDARD_SETTINGS,
+        fontSizePt: DYSLEXIA_PRESET.fontSizePt,
+        lineHeightMultiplier: DYSLEXIA_PRESET.lineHeightMultiplier,
+        letterSpacingPt: DYSLEXIA_PRESET.letterSpacingPt,
+        extraWordSpacePt: DYSLEXIA_PRESET.extraWordSpacePt
+      }
     }
-  }
-];
+  ];
+}
 
 /** Single mutable state object (blueprint section 5). */
 const state = {
+  language: DEFAULT_LANGUAGE,
   filter: { theme: THEMES[0], level: 1 },
   contentId: null,
   revision: 0,
@@ -134,6 +168,7 @@ const els = {
   docxButton: document.getElementById('btn-docx'),
   createButton: document.getElementById('btn-create'),
   nameInput: document.getElementById('name-input'),
+  languageSelect: document.getElementById('language-select'),
   themeSelect: document.getElementById('theme-select'),
   levelSelect: document.getElementById('level-select'),
   writingModeSelect: document.getElementById('writing-mode-select'),
@@ -164,6 +199,7 @@ const els = {
 
 /** Applies t() to every element carrying a data-label (text) or data-placeholder (input placeholder) key. */
 function applyStaticLabels() {
+  document.documentElement.lang = state.language;
   document.title = t('app.title');
   for (const el of document.querySelectorAll('[data-label]')) {
     el.textContent = t(el.dataset.label);
@@ -183,6 +219,42 @@ function populateThemeSelect() {
     })
   );
   els.themeSelect.value = state.filter.theme;
+}
+
+/** Language names (language.sl/en/de/fr) are identical across every locale file by design — each language names itself the same way regardless of interface language, the standard "endonym" convention. */
+function populateLanguageSelect() {
+  els.languageSelect.replaceChildren(
+    ...LANGUAGES.map((language) => {
+      const option = document.createElement('option');
+      option.value = language;
+      option.textContent = t(`language.${language}`);
+      return option;
+    })
+  );
+  els.languageSelect.value = state.language;
+}
+
+/**
+ * Switches the active content pack and UI locale. Does not touch
+ * theme/level (stable ids, valid across every language) or trigger a
+ * re-render — callers decide whether/when to call createText().
+ * @param {string} language
+ */
+function switchLanguage(language) {
+  state.language = language;
+  t = createTranslator(LOCALES[language]);
+  CATALOG = validateAndBuildCatalog(language);
+  THEMES = listThemes(CATALOG);
+  applyStaticLabels();
+  populateLanguageSelect();
+  populateThemeSelect();
+}
+
+function updateLanguage(language) {
+  switchLanguage(language);
+  updateCandidateCount();
+  resetCustomImage();
+  createText();
 }
 
 /** Font names (Andika, Lexend, ...) are proper nouns — shown as-is, not translated. */
@@ -357,6 +429,7 @@ function applyDyslexiaPreset() {
 function extractPresetSettings() {
   const s = state.settings;
   return {
+    language: state.language,
     theme: state.filter.theme,
     level: state.filter.level,
     fontId: s.fontId,
@@ -381,6 +454,9 @@ function extractPresetSettings() {
 }
 
 function applyPresetSettings(settings) {
+  if (settings.language && settings.language !== state.language && LANGUAGES.includes(settings.language)) {
+    switchLanguage(settings.language);
+  }
   state.filter.theme = settings.theme;
   state.filter.level = settings.level;
   Object.assign(state.settings, {
@@ -414,7 +490,7 @@ function applyPresetSettings(settings) {
 }
 
 function getAllPresets() {
-  return [...BUILT_IN_PRESETS, ...listPresets()];
+  return [...getBuiltInPresets(), ...listPresets()];
 }
 
 function populatePresetSelect() {
@@ -546,6 +622,7 @@ async function handleExportDocx() {
   }
 }
 
+els.languageSelect.addEventListener('change', (event) => updateLanguage(event.target.value));
 els.themeSelect.addEventListener('change', (event) => updateFilter({ theme: event.target.value }));
 els.levelSelect.addEventListener('change', (event) => updateFilter({ level: Number(event.target.value) }));
 els.createButton.addEventListener('click', createText);
@@ -575,6 +652,7 @@ els.imageUpload.addEventListener('change', (e) => handleImageUpload(e.target.fil
 els.resetImageButton.addEventListener('click', resetCustomImage);
 
 applyStaticLabels();
+populateLanguageSelect();
 populateThemeSelect();
 populateFontSelect();
 updateCandidateCount();

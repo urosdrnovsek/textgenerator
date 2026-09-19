@@ -31,10 +31,15 @@ test('throws a clear error for an unknown key rather than returning undefined', 
   assert.throws(() => t('does.not.exist'), /missing translation/);
 });
 
-test('both bundled locale files (sl, en) exist and expose every key the app uses', async () => {
-  const sl = (await import('../../locales/sl.json', { with: { type: 'json' } })).default;
-  const en = (await import('../../locales/en.json', { with: { type: 'json' } })).default;
-  const slKeys = Object.keys(sl.strings).sort();
-  const enKeys = Object.keys(en.strings).sort();
-  assert.deepEqual(slKeys, enKeys, 'sl.json and en.json must define exactly the same set of keys');
+test('all four bundled locale files expose exactly the same set of keys', async () => {
+  const languages = ['sl', 'en', 'de', 'fr'];
+  const keysByLanguage = {};
+  for (const lang of languages) {
+    const locale = (await import(`../../locales/${lang}.json`, { with: { type: 'json' } })).default;
+    keysByLanguage[lang] = Object.keys(locale.strings).sort();
+  }
+  const [reference, ...rest] = languages;
+  for (const lang of rest) {
+    assert.deepEqual(keysByLanguage[lang], keysByLanguage[reference], `${lang}.json must define exactly the same keys as ${reference}.json`);
+  }
 });
