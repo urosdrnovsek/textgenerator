@@ -213,8 +213,8 @@ own hardware. Checklist:
   windmill, etc.) now have new, correctly-matched images the project
   owner generated in the same style — verified byte-for-byte to be the
   ones actually rendered. Most other DE/FR/ES entries still use topically
-  reassigned substitute images that are plausible but unverified; tracked
-  in `Instructions/progress-and-next-steps.md`.
+  reassigned substitute images that are plausible but unverified; listed
+  as open in `README.md`, "Status".
 - **Content text** — Slovene has real editorial review. English, German,
   French, and Spanish have had a close editorial pass (grammar, natural
   phrasing, facts, syllable-break correctness) but not a native speaker's
@@ -236,7 +236,7 @@ that the packaged ZIP extracts and runs standalone (see "Fresh-machine /
 offline test" above) — this was tested against the actual ZIP artifact,
 not just the repo's `release/` folder.
 
-Current version is `0.8.0-rc.1` — a release *candidate*, not a final
+Current version is `0.8.1-rc.1` — a release *candidate*, not a final
 `1.0.0`: the image-license and native-language-content-review gaps above
 are real, open, user-facing-risk items, not paperwork. Don't bump to
 `1.0.0` until those are resolved.

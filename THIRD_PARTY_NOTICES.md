@@ -66,12 +66,14 @@ own Terms of Use can change over time — worth a quick re-check against
 the current terms before any future redistribution decision, rather than
 relying on this note indefinitely.
 
-A handful of entries' *stories* still use images that don't visually
-match their content — e.g. a Bavarian castle story paired with a windmill
-image (see `Instructions/progress-and-next-steps.md` for the current
-list). That's a content-pairing accuracy issue, separate from licensing:
-the images themselves are properly licensed regardless of which text
-entry currently references them.
+The four entries whose images outright mismatched their stories (a
+Bavarian castle paired with a windmill, and three similar) were given
+new, correctly-matched artwork; most other German, French and Spanish
+entries still use topically reassigned substitute images that are
+plausible but not verified accurate (see `README.md`, "Status"). That's
+a content-pairing accuracy issue, separate from licensing: the images
+themselves are properly licensed regardless of which text entry
+currently references them.
 
 ## Content text
 
@@ -79,5 +81,5 @@ Text content in `content/*.json` is original writing produced for this
 project. Slovene content has had real editorial review. English, German,
 French, and Spanish content has had a close editorial pass (grammar,
 natural phrasing, factual accuracy, syllable-break correctness) but not a
-native speaker's review — see `README.md`'s "Content" section and
-`Instructions/progress-and-next-steps.md` for the current state.
+native speaker's review — see `README.md`, "Status", and `CHANGELOG.md`
+for the current state.
