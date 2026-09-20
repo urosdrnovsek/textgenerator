@@ -19,7 +19,7 @@ import imageData from './generated/imageData.json';
 import { validatePack } from './content/validate.js';
 import { buildCatalogIndex, findCandidates, chooseEntry, listThemes } from './content/catalog.js';
 import { validateSettings } from './worksheet/validateSettings.js';
-import { SETTINGS_LIMITS, FONT_FAMILIES, DEFAULT_CHILD_NAME } from './config.js';
+import { DEFAULT_CHILD_NAME } from './config.js';
 import { buildWorksheet } from './worksheet/build.js';
 import { renderWorksheet } from './render/html.js';
 import { measureWorksheet } from './layout/measure.js';
@@ -31,6 +31,7 @@ import { readImageFile } from './import.js';
 import { init as initPacketUi } from './ui/packet.js';
 import { init as initPresetsUi } from './ui/presets.js';
 import { init as initContentImportUi } from './ui/contentImport.js';
+import { init as initSettingsPanelUi } from './ui/settingsPanel.js';
 
 /** blueprint 8.1: "The interface starts in Slovene for the pilot." */
 const DEFAULT_LANGUAGE = 'sl';
@@ -189,6 +190,12 @@ const els = {
 // gets the shared state/els and a translator *getter* (t is reassigned on
 // language switch) and hands back only what the wiring here still calls.
 const { renderPacketList, updatePacketControls } = initPacketUi({ state, els, getT: () => t });
+const { populateFontSelect, applySettingsLimits, syncSettingsControlsFromState } = initSettingsPanelUi({
+  state,
+  els,
+  defaultLetterColors: DEFAULT_LETTER_COLORS,
+  requestRender
+});
 const { populatePresetSelect } = initPresetsUi({
   state,
   els,
@@ -271,23 +278,6 @@ function updateLanguage(language) {
   createText();
 }
 
-/** Font names (Andika, Lexend, ...) are proper nouns — shown as-is, not translated. */
-function populateFontSelect() {
-  els.fontSelect.replaceChildren(
-    ...Object.entries(FONT_FAMILIES).map(([fontId, displayName]) => {
-      const option = document.createElement('option');
-      option.value = fontId;
-      option.textContent = displayName;
-      return option;
-    })
-  );
-}
-
-function updateFontId(fontId) {
-  state.settings.fontId = fontId;
-  if (state.contentId) requestRender();
-}
-
 /** Updates the "N texts available" indicator without touching the displayed worksheet — a filter change alone must never silently swap the visible passage (blueprint 8.2). */
 function updateCandidateCount() {
   const candidates = findCandidates(CATALOG, state.filter);
@@ -354,101 +344,6 @@ async function handleImageUpload(file) {
   state.customImage = { id: 'custom', path: result.dataUrl, width: result.width, height: result.height };
   els.resetImageButton.disabled = false;
   els.imageStatus.textContent = t('image.replaced');
-  if (state.contentId) requestRender();
-}
-
-/** Sets each number input's min/max from the single shared limits config (blueprint 5) — never hardcoded in HTML. */
-function applySettingsLimits() {
-  els.fontSizeInput.min = SETTINGS_LIMITS.fontSizePt.min;
-  els.fontSizeInput.max = SETTINGS_LIMITS.fontSizePt.max;
-  els.lineHeightInput.min = SETTINGS_LIMITS.lineHeightMultiplier.min;
-  els.lineHeightInput.max = SETTINGS_LIMITS.lineHeightMultiplier.max;
-  els.letterSpacingInput.min = SETTINGS_LIMITS.letterSpacingPt.min;
-  els.letterSpacingInput.max = SETTINGS_LIMITS.letterSpacingPt.max;
-  els.wordSpacingInput.min = SETTINGS_LIMITS.extraWordSpacePt.min;
-  els.wordSpacingInput.max = SETTINGS_LIMITS.extraWordSpacePt.max;
-  els.guideHeightInput.min = SETTINGS_LIMITS.guideHeightMm.min;
-  els.guideHeightInput.max = SETTINGS_LIMITS.guideHeightMm.max;
-}
-
-/** Reflects state.settings into the settings-panel controls — used at startup and after applying a preset. */
-function syncSettingsControlsFromState() {
-  const s = state.settings;
-  els.fontSelect.value = s.fontId;
-  els.fontSizeInput.value = s.fontSizePt;
-  els.lineHeightInput.value = s.lineHeightMultiplier;
-  els.letterSpacingInput.value = s.letterSpacingPt;
-  els.wordSpacingInput.value = s.extraWordSpacePt;
-  els.letterColorsToggle.checked = Object.keys(s.letterColors).length > 0;
-  els.syllableColorsToggle.checked = s.syllableMode === 'colors' || s.syllableMode === 'both';
-  els.syllableSeparatorsToggle.checked = s.syllableMode === 'separators' || s.syllableMode === 'both';
-  els.sentencePerLineToggle.checked = Boolean(s.sentencePerLine);
-  els.tintSelect.value = s.tintId ?? 'none';
-  els.printTintToggle.checked = Boolean(s.printTint);
-  els.printTintToggle.disabled = (s.tintId ?? 'none') === 'none';
-  els.lineStripesToggle.checked = Boolean(s.lineStripes);
-  els.printStripesToggle.checked = Boolean(s.printStripes);
-  els.printStripesToggle.disabled = !s.lineStripes;
-  els.headerNameLineToggle.checked = Boolean(s.header.nameLine);
-  els.headerDateToggle.checked = Boolean(s.header.date);
-  els.headerTitleToggle.checked = Boolean(s.header.title);
-  els.guideHeightInput.value = s.guideHeightMm;
-}
-
-function clamp(value, range) {
-  return Math.min(range.max, Math.max(range.min, value));
-}
-
-function updateNumericSetting(field, range, inputEl) {
-  const value = clamp(Number(inputEl.value), range);
-  state.settings[field] = value;
-  inputEl.value = value; // reflect clamping back — the box must never show a value that isn't actually applied
-  if (state.contentId) requestRender();
-}
-
-function updateLetterColorsEnabled(enabled) {
-  state.settings.letterColors = enabled ? DEFAULT_LETTER_COLORS : {};
-  if (state.contentId) requestRender();
-}
-
-/** Colors and separators are independently toggleable (brief section 5: "and/or") — this reads both checkboxes to derive the single syllableMode value the rest of the app expects. */
-function updateSyllableMode() {
-  const colors = els.syllableColorsToggle.checked;
-  const separators = els.syllableSeparatorsToggle.checked;
-  state.settings.syllableMode = colors && separators ? 'both' : colors ? 'colors' : separators ? 'separators' : 'off';
-  if (state.contentId) requestRender();
-}
-
-function updateSentencePerLine(enabled) {
-  state.settings.sentencePerLine = enabled;
-  if (state.contentId) requestRender();
-}
-
-function updateTint(tintId) {
-  state.settings.tintId = tintId;
-  els.printTintToggle.disabled = tintId === 'none';
-  if (state.contentId) requestRender();
-}
-
-function updatePrintTint(enabled) {
-  state.settings.printTint = enabled;
-  if (state.contentId) requestRender();
-}
-
-function updateLineStripes(enabled) {
-  state.settings.lineStripes = enabled;
-  els.printStripesToggle.disabled = !enabled;
-  if (state.contentId) requestRender();
-}
-
-function updatePrintStripes(enabled) {
-  state.settings.printStripes = enabled;
-  if (state.contentId) requestRender();
-}
-
-/** Header field toggles (upgrade blueprint v3, workstream D6) — the model and both exporters already supported these; this just exposes them in the settings panel. */
-function updateHeaderField(field, enabled) {
-  state.settings.header[field] = enabled;
   if (state.contentId) requestRender();
 }
 
@@ -570,23 +465,6 @@ els.writingModeSelect.addEventListener('change', (event) => updateWritingMode(ev
 els.printButton.addEventListener('click', printWorksheet);
 els.docxButton.addEventListener('click', handleExportDocx);
 
-els.fontSelect.addEventListener('change', (e) => updateFontId(e.target.value));
-els.fontSizeInput.addEventListener('change', (e) => updateNumericSetting('fontSizePt', SETTINGS_LIMITS.fontSizePt, e.target));
-els.lineHeightInput.addEventListener('change', (e) => updateNumericSetting('lineHeightMultiplier', SETTINGS_LIMITS.lineHeightMultiplier, e.target));
-els.letterSpacingInput.addEventListener('change', (e) => updateNumericSetting('letterSpacingPt', SETTINGS_LIMITS.letterSpacingPt, e.target));
-els.wordSpacingInput.addEventListener('change', (e) => updateNumericSetting('extraWordSpacePt', SETTINGS_LIMITS.extraWordSpacePt, e.target));
-els.letterColorsToggle.addEventListener('change', (e) => updateLetterColorsEnabled(e.target.checked));
-els.syllableColorsToggle.addEventListener('change', updateSyllableMode);
-els.syllableSeparatorsToggle.addEventListener('change', updateSyllableMode);
-els.sentencePerLineToggle.addEventListener('change', (e) => updateSentencePerLine(e.target.checked));
-els.tintSelect.addEventListener('change', (e) => updateTint(e.target.value));
-els.printTintToggle.addEventListener('change', (e) => updatePrintTint(e.target.checked));
-els.lineStripesToggle.addEventListener('change', (e) => updateLineStripes(e.target.checked));
-els.printStripesToggle.addEventListener('change', (e) => updatePrintStripes(e.target.checked));
-els.headerNameLineToggle.addEventListener('change', (e) => updateHeaderField('nameLine', e.target.checked));
-els.headerDateToggle.addEventListener('change', (e) => updateHeaderField('date', e.target.checked));
-els.headerTitleToggle.addEventListener('change', (e) => updateHeaderField('title', e.target.checked));
-els.guideHeightInput.addEventListener('change', (e) => updateNumericSetting('guideHeightMm', SETTINGS_LIMITS.guideHeightMm, e.target));
 els.imageUpload.addEventListener('change', (e) => handleImageUpload(e.target.files[0]));
 els.resetImageButton.addEventListener('click', handleResetImage);
 
