@@ -45,7 +45,7 @@
     "field.syllableColors": "Barve zlogov",
     "action.dyslexiaPreset": "Prijazno za disleksijo",
     "field.childName": "Ime otroka (neobvezno)",
-    "field.childNamePlaceholder": "npr. Maja",
+    "field.childNamePlaceholder": "npr. {name}",
     "field.presets": "Shranjene nastavitve",
     "action.loadPreset": "Naloži",
     "action.deletePreset": "Izbriši",

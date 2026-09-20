@@ -57,10 +57,15 @@ afterward.
 - **Trace** — the text shown lightly, for tracing over.
 - **Read only** — just the text and picture, no handwriting lines.
 
-**Child's name** (optional) personalizes a text that supports it — leave it
-blank for a neutral version. **Custom image** lets you swap in your own
-picture (PNG or JPEG) for this one worksheet; it's not saved anywhere and
-resets the next time you create a new text.
+**Child's name** (optional) personalizes a text that supports it. Type any
+name and it's used exactly as typed. Leave it blank and the text uses its
+own built-in default name instead (shown as the box's example text, e.g.
+"e.g. Mia") — texts never print with the name missing. A name you type is
+inserted exactly as written, with no grammar adjustment, so pick one that
+fits the sentence if the wording reads a little oddly with an unusual name.
+**Custom image** lets you swap in your own picture (PNG or JPEG) for this
+one worksheet; it's not saved anywhere and resets the next time you create
+a new text.
 
 ## Saved setups (presets)
 
@@ -117,7 +122,11 @@ content) can add new texts without changing any code:
 
 1. Prepare a JSON file describing one or more texts for a single language,
    following the same structure as the files already bundled in
-   `content/*.json` — copy an existing entry as a starting point.
+   `content/*.json` — copy an existing entry as a starting point. If your
+   text should address the child by name, use `{name}` in the text exactly
+   like the bundled examples do, and also fill in `name_default` (the name
+   used whenever a teacher leaves the name field blank) — an entry using
+   `{name}` without a `name_default` is rejected on import.
 2. If the new texts use pictures that aren't already in `assets/images/`,
    select those image files too (PNG or JPEG). Each new text's `imageId`
    in the JSON should match its image's filename without the extension

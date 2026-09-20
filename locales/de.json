@@ -45,7 +45,7 @@
     "field.syllableColors": "Silbenfarben",
     "action.dyslexiaPreset": "Legasthenie-freundlich",
     "field.childName": "Name des Kindes (optional)",
-    "field.childNamePlaceholder": "z. B. Mia",
+    "field.childNamePlaceholder": "z. B. {name}",
     "field.presets": "Gespeicherte Einstellungen",
     "action.loadPreset": "Laden",
     "action.deletePreset": "Löschen",

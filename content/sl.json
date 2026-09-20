@@ -5,12 +5,14 @@
   "entries": [
     {
       "id": "stories_muc_1",
-      "version": 1,
+      "version": 2,
       "theme": "stories",
       "level": 1,
       "title": "Moker muc",
       "body": "Zunaj dežuje. Pod klopjo se stiska majhen muc. Ves je moker. {name} ga vzame v roke. Muc tiho zaprede. Doma dobi mleko in toplo odejo. Zdaj ni več sam.",
       "syllable_body": "Zu|naj de|žu|je. Pod klop|jo se sti|ska maj|hen muc. Ves je mo|ker. {name} ga vza|me v ro|ke. Muc ti|ho za|pre|de. Do|ma do|bi mle|ko in to|plo o|de|jo. Zdaj ni več sam.",
+      "name_default": "Mia",
+      "name_default_syllables": "Mi|a",
       "imageId": "moker_muc",
       "review": {
         "status": "draft"
@@ -18,12 +20,14 @@
     },
     {
       "id": "stories_piscancek_2",
-      "version": 1,
+      "version": 2,
       "theme": "stories",
       "level": 2,
       "title": "Belo jajce",
       "body": "{name} je poletje preživljal pri babici na kmetiji. V toplem gnezdu je ležalo belo jajce. Babica je rekla, naj bo potrpežljiv. In {name} je čakal. Nekega jutra je iz jajca zaslišal tiho trkanje. Počasi je počila lupina in ven je pokukal majhen piščanček. Bil je rumen, mehak in droben. {name} se je od veselja kar zasmejal.",
       "syllable_body": "{name} je po|le|tje pre|živ|ljal pri ba|bi|ci na kme|ti|ji. V to|plem gnez|du je le|ža|lo be|lo jaj|ce. Ba|bi|ca je re|kla, naj bo po|tr|pež|ljiv. In {name} je ča|kal. Ne|ke|ga ju|tra je iz jaj|ca za|sli|šal ti|ho tr|ka|nje. Po|ča|si je po|či|la lu|pi|na in ven je po|ku|kal maj|hen pi|ščan|ček. Bil je ru|men, me|hak in dro|ben. {name} se je od ve|se|lja kar za|sme|jal.",
+      "name_default": "Tom",
+      "name_default_syllables": "Tom",
       "imageId": "piscancek_gnezdo",
       "review": {
         "status": "draft"
@@ -44,12 +48,14 @@
     },
     {
       "id": "stories_piscancek_4",
-      "version": 1,
+      "version": 2,
       "theme": "stories",
       "level": 4,
       "title": "Pok v skednju",
       "body": "Poletje je {name} preživljal pri babici na kmetiji, kjer je bilo vsak dan polno novih doživetij. A najbolj ga je prevzelo majhno belo jajce, ki je ležalo v toplem gnezdu v kotu skednja.\n\nBabica mu je razložila, da se v jajcu skriva piščanček in da se bo izlegel, ko bo pripravljen. »Potrpljenje,« je rekla z nasmehom. »Takih stvari se ne da priganjati.« {name} je vsako jutro pritekel v skedenj in pokukal v gnezdo, a jajce je vztrajno mirovalo.\n\nNekega jutra je bilo drugače. Iz jajca se je slišalo tiho trkanje, nato pa je lupina počila. Skoznjo je pomolil kljunček in kmalu je ven pokukal majhen, rumen piščanček. Bil je moker in nebogljen, a poln življenja. {name} se je sklonil in obljubil, da bo dobro skrbel zanj.",
       "syllable_body": "Po|le|tje je {name} pre|živ|ljal pri ba|bi|ci na kme|ti|ji, kjer je bi|lo vsak dan pol|no no|vih do|ži|ve|tij. A naj|bolj ga je prev|ze|lo maj|hno be|lo jaj|ce, ki je le|ža|lo v to|plem gnez|du v ko|tu sked|nja.\n\nBa|bi|ca mu je raz|lo|ži|la, da se v jaj|cu skri|va pi|ščan|ček in da se bo iz|le|gel, ko bo pri|prav|ljen. »Po|tr|plje|nje,« je re|kla z na|sme|hom. »Ta|kih stva|ri se ne da pri|ga|nja|ti.« {name} je vsa|ko ju|tro pri|te|kel v ske|denj in po|ku|kal v gnez|do, a jaj|ce je vztraj|no mi|ro|va|lo.\n\nNe|ke|ga ju|tra je bi|lo dru|ga|če. Iz jaj|ca se je sli|ša|lo ti|ho tr|ka|nje, na|to pa je lu|pi|na po|či|la. Skoz|njo je po|mo|lil kljun|ček in kma|lu je ven po|ku|kal maj|hen, ru|men pi|ščan|ček. Bil je mo|ker in ne|bo|gljen, a poln živ|lje|nja. {name} se je sklo|nil in o|blju|bil, da bo do|bro skr|bel zanj.",
+      "name_default": "Tom",
+      "name_default_syllables": "Tom",
       "imageId": "piscancek_skedenj",
       "review": {
         "status": "draft"
@@ -57,12 +63,14 @@
     },
     {
       "id": "stories_muc_5",
-      "version": 1,
+      "version": 2,
       "theme": "stories",
       "level": 5,
       "title": "Muc, ki je našel dom",
       "body": "Nekega deževnega popoldneva se je {name} vračal domov iz šole. Dež je bobnel po strehah, mimoidoči pa so hiteli pod dežniki, da bi čim prej prišli na suho. Tik pred domačo hišo se je {name} nenadoma ustavil. Iz nekje blizu je prihajal tih, žalosten glas.\n\nSklonil se je in pod klopjo zagledal majhnega muca. Bil je ves moker, droben in tako prestrašen, da je ves drhtel. Ko je {name} počepnil in mu tiho spregovoril, ga je muc pogledal z velikimi, prosečimi očmi, a se ni umaknil. Fant ga je nežno vzel v roke in ga skril pod jopico, kjer je bilo toplo in suho.\n\nDoma je najprej segrel mleko in ga nalil v skledico. Muc je bil tako lačen, da je vse popil v hipu. Nato se je stisnil v mehko odejo, ki mu jo je {name} položil v košaro, se zvil v klobčič in zadovoljno zapredel.\n\nZunaj je še vedno deževalo, a v topli sobi je bilo prijetno. Tisti večer je muc prvič po dolgem času mirno zaspal. Od tistega dne sta {name} in mali muc postala nerazdružljiva prijatelja, ki sta bila skupaj v lepih in slabih dneh.",
       "syllable_body": "Ne|ke|ga de|žev|ne|ga po|pol|dne|va se je {name} vra|čal do|mov iz šo|le. Dež je bob|nel po stre|hah, mi|mo|i|do|či pa so hi|te|li pod dež|ni|ki, da bi čim prej pri|šli na su|ho. Tik pred do|ma|čo hi|šo se je {name} ne|na|do|ma u|sta|vil. Iz ne|kje bli|zu je pri|ha|jal tih, ža|lo|sten glas.\n\nSklo|nil se je in pod klop|jo za|gle|dal maj|hne|ga mu|ca. Bil je ves mo|ker, dro|ben in ta|ko pre|stra|šen, da je ves drh|tel. Ko je {name} po|čep|nil in mu ti|ho spre|go|vo|ril, ga je muc po|gle|dal z ve|li|ki|mi, pro|se|či|mi oč|mi, a se ni u|mak|nil. Fant ga je než|no vzel v ro|ke in ga skril pod jo|pi|co, kjer je bi|lo to|plo in su|ho.\n\nDo|ma je naj|prej se|grel mle|ko in ga na|lil v skle|di|co. Muc je bil ta|ko la|čen, da je vse po|pil v hi|pu. Na|to se je sti|snil v meh|ko o|de|jo, ki mu jo je {name} po|lo|žil v ko|ša|ro, se zvil v klob|čič in za|do|volj|no za|pre|del.\n\nZu|naj je še ved|no de|že|va|lo, a v to|pli so|bi je bi|lo pri|jet|no. Ti|sti ve|čer je muc pr|vič po dol|gem ča|su mir|no za|spal. Od ti|ste|ga dne sta {name} in ma|li muc po|sta|la ne|raz|druž|lji|va pri|ja|te|lja, ki sta bi|la sku|paj v le|pih in sla|bih dneh.",
+      "name_default": "Tom",
+      "name_default_syllables": "Tom",
       "imageId": "muc_dom",
       "review": {
         "status": "draft"

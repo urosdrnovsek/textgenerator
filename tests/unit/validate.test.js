@@ -78,33 +78,62 @@ test('a failing entry does not throw — it returns structured errors', async ()
   assert.doesNotThrow(() => validatePack(pack, ASSET_IDS));
 });
 
-test('accepts a valid neutral_body/neutral_syllable_body pair and carries it through to the entry', async () => {
+test('accepts a valid name_default/name_default_syllables pair and carries it through to the entry', async () => {
   const pack = await loadSlPack();
   pack.entries[0].body = 'Zgodba o {name} in zmaju.';
-  pack.entries[0].neutral_body = 'Zgodba o dečku in zmaju.';
-  pack.entries[0].neutral_syllable_body = 'Zgod|ba o deč|ku in zma|ju.';
-  delete pack.entries[0].syllable_body;
+  pack.entries[0].syllable_body = 'Zgod|ba o {name} in zma|ju.';
+  pack.entries[0].name_default = 'Tom';
+  pack.entries[0].name_default_syllables = 'Tom';
   const result = validatePack(pack, ASSET_IDS);
   assert.equal(result.ok, true);
-  assert.equal(result.pack.entries[0].neutral_body, 'Zgodba o dečku in zmaju.');
-  assert.equal(result.pack.entries[0].neutral_syllable_body, 'Zgod|ba o deč|ku in zma|ju.');
+  assert.equal(result.pack.entries[0].name_default, 'Tom');
+  assert.equal(result.pack.entries[0].name_default_syllables, 'Tom');
 });
 
-test('rejects a neutral_body that still contains the {name} placeholder', async () => {
+test('rejects a {name} body with no name_default at all', async () => {
   const pack = await loadSlPack();
-  pack.entries[0].neutral_body = 'Zgodba o {name}.';
+  pack.entries[0].body = 'Zgodba o {name} in zmaju.';
+  pack.entries[0].syllable_body = 'Zgod|ba o {name} in zma|ju.';
+  // entries[0] is a real starter entry that already carries its own
+  // name_default — remove it so this test actually exercises the "missing"
+  // case rather than inheriting a valid default from the fixture.
+  delete pack.entries[0].name_default;
+  delete pack.entries[0].name_default_syllables;
   const result = validatePack(pack, ASSET_IDS);
   assert.equal(result.ok, false);
-  assert.ok(result.errors.some((e) => e.field === 'neutral_body'));
+  assert.ok(result.errors.some((e) => e.code === 'MISSING_NAME_DEFAULT' && e.field === 'name_default'));
 });
 
-test('rejects a neutral_syllable_body that does not reproduce neutral_body', async () => {
+test('rejects a name_default that contains "|", "{", or "}"', async () => {
   const pack = await loadSlPack();
-  pack.entries[0].neutral_body = 'Zgodba o dečku.';
-  pack.entries[0].neutral_syllable_body = 'Zgod|ba o deč|ku|u.';
+  pack.entries[0].body = 'Zgodba o {name}.';
+  pack.entries[0].syllable_body = 'Zgod|ba o {name}.';
+  pack.entries[0].name_default = 'To|m';
   const result = validatePack(pack, ASSET_IDS);
   assert.equal(result.ok, false);
-  assert.ok(result.errors.some((e) => e.code === 'SYLLABLE_MISMATCH' && e.field === 'neutral_syllable_body'));
+  assert.ok(result.errors.some((e) => e.code === 'INVALID_NAME_DEFAULT' && e.field === 'name_default'));
+});
+
+test('rejects a name_default_syllables that does not reproduce name_default', async () => {
+  const pack = await loadSlPack();
+  pack.entries[0].body = 'Zgodba o {name}.';
+  pack.entries[0].syllable_body = 'Zgod|ba o {name}.';
+  pack.entries[0].name_default = 'Mia';
+  pack.entries[0].name_default_syllables = 'Mi|a|a';
+  const result = validatePack(pack, ASSET_IDS);
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some((e) => e.code === 'SYLLABLE_MISMATCH' && e.field === 'name_default_syllables'));
+});
+
+test('an entry with no {name} placeholder does not require name_default, and a stray neutral_body field is dropped rather than carried through', async () => {
+  const pack = await loadSlPack();
+  const entry = pack.entries.find((e) => !e.body.includes('{name}'));
+  entry.neutral_body = 'left over from an older schema';
+  const result = validatePack(pack, ASSET_IDS);
+  assert.equal(result.ok, true);
+  const resultEntry = result.pack.entries.find((e) => e.id === entry.id);
+  assert.equal(resultEntry.name_default, undefined);
+  assert.equal(resultEntry.neutral_body, undefined);
 });
 
 test('accepts valid sentences that join with single spaces to reproduce body', async () => {

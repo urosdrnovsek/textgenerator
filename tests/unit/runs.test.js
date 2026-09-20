@@ -45,6 +45,24 @@ test('syllable runs alternate per syllable and reset at each word', () => {
   );
 });
 
+test('a name substituted as a single unsplit chunk (as resolvePersonalization does for a teacher-typed name) still alternates correctly around it', () => {
+  // "Zgod"(0) "ba"(1) " "(base) "o"(0, word boundary reset) " "(base) "Eva."(0, its own word — one chunk, not split into syllables)
+  const syllableBody = 'Zgod|ba o Eva.';
+  const runs = buildSyllableRuns(syllableBody, { syllableColors: ['#111111', '#222222'] });
+  assert.equal(runs.map((r) => r.text).join(''), syllableBody.replaceAll('|', ''));
+  assert.deepEqual(
+    runs.map((r) => [r.text, r.color]),
+    [
+      ['Zgod', '#111111'],
+      ['ba', '#222222'],
+      [' ', '#202020'],
+      ['o', '#111111'],
+      [' ', '#202020'],
+      ['Eva.', '#111111']
+    ]
+  );
+});
+
 test('separators mode inserts a middle dot between syllables, syllable text staying base-colored', () => {
   const syllableBody = 'Ma|ja i|ma';
   const runs = buildSyllableRuns(syllableBody, { syllableMode: 'separators' });

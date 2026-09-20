@@ -115,3 +115,12 @@ export const TINTS_BY_ID = {
   blue: '#EAF3FB',
   green: '#EDF7EE'
 };
+
+/**
+ * Shown only as the name-input placeholder for an entry that has no
+ * `name_default` of its own (upgrade blueprint v3, workstream B) — never
+ * used as a runtime fallback in src/text/prepare.js. A missing
+ * `name_default` on a `{name}` entry is a content validation error, not
+ * something this constant silently papers over.
+ */
+export const DEFAULT_CHILD_NAME = 'Mia';

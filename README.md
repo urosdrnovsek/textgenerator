@@ -43,6 +43,16 @@ connection at any point.
   broader image-accuracy pass is still open, just narrower now that the
   4 clearest mismatches are gone. Image *licensing*, a separate concern,
   is resolved — see below.
+- **Personalization default name (0.8):** a text using `{name}` (7 entries:
+  4 Slovene, 3 English) used to blindly delete the placeholder when the
+  teacher left the name field empty, producing broken sentences (e.g. "Was
+  spending the summer..."). Every such entry now carries a required
+  `name_default` (validated at import time), used automatically whenever
+  the field is empty — a typed name still overrides it, exactly as typed,
+  with no grammar adjustment. Fixed the related bug where syllable coloring
+  was silently dropped on any personalized passage; it's now preserved
+  around the substituted name in both cases. Slovene's masculine-verb-form
+  entries use "Tom" as their default; the rest use "Mia".
 - **Image licensing:** every bundled image is original artwork the project
   owner generated with ChatGPT (OpenAI); `assets/manifest.json` and
   `THIRD_PARTY_NOTICES.md` now record this (all rights reserved by the

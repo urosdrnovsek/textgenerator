@@ -18,12 +18,14 @@
     },
     {
       "id": "stories_piscancek_2",
-      "version": 1,
+      "version": 2,
       "theme": "stories",
       "level": 2,
       "title": "The White Egg",
       "body": "{name} was spending the summer at Grandma's farm. In a warm nest lay a white egg. Grandma said {name} should be patient. And so {name} waited. One morning a quiet knocking came from inside the egg. Slowly the shell cracked, and out peeped a little chick. It was yellow, soft and tiny. {name} laughed out loud for joy.",
       "syllable_body": "{name} was spend|ing the sum|mer at Grand|ma's farm. In a warm nest lay a white egg. Grand|ma said {name} should be pa|tient. And so {name} wait|ed. One morn|ing a qui|et knock|ing came from in|side the egg. Slow|ly the shell cracked, and out peeped a lit|tle chick. It was yel|low, soft and ti|ny. {name} laughed out loud for joy.",
+      "name_default": "Mia",
+      "name_default_syllables": "Mi|a",
       "imageId": "piscancek_gnezdo",
       "review": {
         "status": "reviewed"
@@ -31,12 +33,14 @@
     },
     {
       "id": "stories_piscancek_3",
-      "version": 1,
+      "version": 2,
       "theme": "stories",
       "level": 3,
       "title": "Waiting Patiently",
       "body": "{name} was spending the summer at Grandma's farm. What interested {name} most was the white egg lying in a warm nest. Grandma explained that a chick was hiding inside the egg, and that {name} would have to be patient, because growing takes its time. Every day {name} peeked into the nest, but the egg lay quietly still. Then one morning a quiet knocking came from inside. The shell cracked, and through it looked a little yellow chick. It was wet and tiny, but full of life. {name} had never been so happy.",
       "syllable_body": "{name} was spend|ing the sum|mer at Grand|ma's farm. What in|ter|est|ed {name} most was the white egg ly|ing in a warm nest. Grand|ma ex|plained that a chick was hid|ing in|side the egg, and that {name} would have to be pa|tient, be|cause grow|ing takes its time. Eve|ry day {name} peeked in|to the nest, but the egg lay qui|et|ly still. Then one morn|ing a qui|et knock|ing came from in|side. The shell cracked, and through it looked a lit|tle yel|low chick. It was wet and ti|ny, but full of life. {name} had nev|er been so hap|py.",
+      "name_default": "Mia",
+      "name_default_syllables": "Mi|a",
       "imageId": "piscancek_lupina",
       "review": {
         "status": "reviewed"
@@ -44,12 +48,14 @@
     },
     {
       "id": "stories_piscancek_4",
-      "version": 1,
+      "version": 2,
       "theme": "stories",
       "level": 4,
       "title": "A Crack in the Barn",
       "body": "{name} was spending the summer at Grandma's farm, where every day was full of new adventures. But what took hold of {name} most was a little white egg, lying in a warm nest in the corner of the barn.\n\nGrandma explained that a chick was hiding inside the egg and that it would hatch when it was ready. \"Patience,\" she said with a smile. \"Such things cannot be hurried.\" Every morning {name} ran into the barn and peeked into the nest, but the egg lay stubbornly still.\n\nOne morning it was different. A quiet knocking came from the egg, and then the shell cracked. A little beak poked through, and soon out peeped a small, yellow chick. It was wet and helpless, but full of life. {name} bent down and promised to take good care of it.",
       "syllable_body": "{name} was spend|ing the sum|mer at Grand|ma's farm, where eve|ry day was full of new ad|ven|tures. But what took hold of {name} most was a lit|tle white egg, ly|ing in a warm nest in the cor|ner of the barn.\n\nGrand|ma ex|plained that a chick was hid|ing in|side the egg and that it would hatch when it was read|y. \"Pa|tience,\" she said with a smile. \"Such things can|not be hur|ried.\" Eve|ry morn|ing {name} ran in|to the barn and peeked in|to the nest, but the egg lay stub|born|ly still.\n\nOne morn|ing it was dif|fer|ent. A qui|et knock|ing came from the egg, and then the shell cracked. A lit|tle beak poked through, and soon out peeped a small, yel|low chick. It was wet and help|less, but full of life. {name} bent down and prom|ised to take good care of it.",
+      "name_default": "Mia",
+      "name_default_syllables": "Mi|a",
       "imageId": "piscancek_skedenj",
       "review": {
         "status": "reviewed"

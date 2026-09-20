@@ -26,8 +26,8 @@ const PLACEHOLDER_PATTERN = /\{([a-zA-Z_]+)\}/g;
  * @property {string} title
  * @property {string} body
  * @property {string} [syllable_body]
- * @property {string} [neutral_body] required alongside a `{name}` placeholder in body for grammatically-correct personalization
- * @property {string} [neutral_syllable_body]
+ * @property {string} [name_default] required whenever body contains `{name}` — the name used when the teacher leaves the name field empty
+ * @property {string} [name_default_syllables] optional syllable-marked form of name_default, so the default name can take part in syllable coloring
  * @property {string[]} [sentences] must join with single spaces to reproduce body exactly
  * @property {string} imageId
  * @property {{status: string}} review
@@ -141,32 +141,39 @@ function validateEntry(raw, assetIds, seenIds) {
     }
   }
 
-  let neutralBody = null;
-  if (entry.neutral_body !== undefined) {
-    if (!isNonEmptyString(entry.neutral_body)) {
-      push('INVALID_FIELD', 'neutral_body', 'neutral_body must be a non-empty string when present');
+  // A {name} placeholder needs a default name to fall back to when the
+  // teacher leaves the name field empty (blueprint v3, workstream B) —
+  // required, not optional, so a content author can never ship an entry
+  // that silently deletes the placeholder at render time.
+  let nameDefault = null;
+  const requiresNameDefault = body !== null && body.includes('{name}');
+  if (requiresNameDefault) {
+    if (!isNonEmptyString(entry.name_default)) {
+      push('MISSING_NAME_DEFAULT', 'name_default', 'name_default is required when body contains {name}');
     } else {
-      neutralBody = normalize(entry.neutral_body);
-      if (neutralBody.includes('{name}')) {
-        push('INVALID_FIELD', 'neutral_body', 'neutral_body must not itself contain the {name} placeholder');
+      const candidate = normalize(entry.name_default);
+      if (candidate.includes('|') || candidate.includes('{') || candidate.includes('}')) {
+        push('INVALID_NAME_DEFAULT', 'name_default', 'name_default must not contain "|", "{", or "}"');
+      } else {
+        nameDefault = candidate;
       }
     }
   }
 
-  if (entry.neutral_syllable_body !== undefined) {
-    if (typeof entry.neutral_syllable_body !== 'string' || entry.neutral_syllable_body.length === 0) {
-      push('INVALID_FIELD', 'neutral_syllable_body', 'neutral_syllable_body must be a non-empty string when present');
-    } else if (neutralBody !== null) {
-      const neutralSyllableBody = normalize(entry.neutral_syllable_body);
-      if (neutralSyllableBody.replaceAll('|', '') !== neutralBody) {
+  if (entry.name_default_syllables !== undefined) {
+    if (typeof entry.name_default_syllables !== 'string' || entry.name_default_syllables.length === 0) {
+      push('INVALID_FIELD', 'name_default_syllables', 'name_default_syllables must be a non-empty string when present');
+    } else if (nameDefault !== null) {
+      const stripped = normalize(entry.name_default_syllables).replaceAll('|', '');
+      if (stripped !== nameDefault) {
         push(
           'SYLLABLE_MISMATCH',
-          'neutral_syllable_body',
-          'neutral_syllable_body with "|" removed must exactly reproduce neutral_body'
+          'name_default_syllables',
+          'name_default_syllables with "|" removed must exactly reproduce name_default'
         );
       }
     } else {
-      push('INVALID_FIELD', 'neutral_syllable_body', 'neutral_syllable_body requires a valid neutral_body to check against');
+      push('INVALID_FIELD', 'name_default_syllables', 'name_default_syllables requires a valid name_default to check against');
     }
   }
 
@@ -213,8 +220,8 @@ function validateEntry(raw, assetIds, seenIds) {
       title: entry.title,
       body,
       syllable_body: typeof entry.syllable_body === 'string' ? normalize(entry.syllable_body) : undefined,
-      neutral_body: neutralBody ?? undefined,
-      neutral_syllable_body: typeof entry.neutral_syllable_body === 'string' ? normalize(entry.neutral_syllable_body) : undefined,
+      name_default: nameDefault ?? undefined,
+      name_default_syllables: typeof entry.name_default_syllables === 'string' ? normalize(entry.name_default_syllables) : undefined,
       sentences: Array.isArray(entry.sentences) ? entry.sentences.map((s) => normalize(s)) : undefined,
       imageId: entry.imageId,
       review: { status: review.status }

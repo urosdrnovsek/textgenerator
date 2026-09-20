@@ -19,7 +19,7 @@ import imageData from './generated/imageData.json';
 import { validatePack } from './content/validate.js';
 import { buildCatalogIndex, findCandidates, chooseEntry, listThemes } from './content/catalog.js';
 import { validateSettings } from './worksheet/validateSettings.js';
-import { SETTINGS_LIMITS, FONT_FAMILIES } from './config.js';
+import { SETTINGS_LIMITS, FONT_FAMILIES, DEFAULT_CHILD_NAME } from './config.js';
 import { buildWorksheet } from './worksheet/build.js';
 import { renderWorksheet } from './render/html.js';
 import { measureWorksheet } from './layout/measure.js';
@@ -234,7 +234,10 @@ function applyStaticLabels() {
     el.textContent = t(el.dataset.label);
   }
   for (const el of document.querySelectorAll('[data-placeholder]')) {
-    el.placeholder = t(el.dataset.placeholder);
+    // requestRender() immediately refines name-input's placeholder to the
+    // current entry's own name_default; this generic fallback only shows
+    // briefly before the first render, or for an entry with no {name} use.
+    el.placeholder = t(el.dataset.placeholder, { name: DEFAULT_CHILD_NAME });
   }
 }
 
@@ -333,8 +336,15 @@ function updateWritingMode(mode) {
   if (state.contentId) requestRender();
 }
 
-function updatePersonalizationName(name) {
-  state.settings.personalization.name = name;
+/** Strips syllable/placeholder-marker characters a typed name could otherwise inject into syllable_body once substituted (upgrade blueprint v3, workstream B). */
+function sanitizePersonalizationName(name) {
+  return name.replace(/[|{}]/g, '');
+}
+
+function updatePersonalizationName(inputEl) {
+  const sanitized = sanitizePersonalizationName(inputEl.value);
+  inputEl.value = sanitized; // reflect the stripped value back — the box must never show characters that aren't actually applied
+  state.settings.personalization.name = sanitized;
   if (state.contentId) requestRender();
 }
 
@@ -795,6 +805,10 @@ function showFit(model, result) {
 async function requestRender() {
   const revision = ++state.revision;
   const entry = CATALOG.byId.get(state.contentId);
+  // The placeholder hints at the name this entry will actually use if the
+  // field is left empty (upgrade blueprint v3, workstream B) — entries with
+  // no {name} placeholder fall back to the generic default.
+  els.nameInput.placeholder = t('field.childNamePlaceholder', { name: entry.name_default ?? DEFAULT_CHILD_NAME });
   // A teacher-uploaded image overrides only this entry's mapping, for this
   // render — the shared IMAGES_BY_ID map itself is never mutated.
   const imagesById = state.customImage
@@ -862,7 +876,7 @@ els.languageSelect.addEventListener('change', (event) => updateLanguage(event.ta
 els.themeSelect.addEventListener('change', (event) => updateFilter({ theme: event.target.value }));
 els.levelSelect.addEventListener('change', (event) => updateFilter({ level: Number(event.target.value) }));
 els.createButton.addEventListener('click', createText);
-els.nameInput.addEventListener('change', (event) => updatePersonalizationName(event.target.value));
+els.nameInput.addEventListener('change', (event) => updatePersonalizationName(event.target));
 els.writingModeSelect.addEventListener('change', (event) => updateWritingMode(event.target.value));
 els.printButton.addEventListener('click', printWorksheet);
 els.docxButton.addEventListener('click', handleExportDocx);

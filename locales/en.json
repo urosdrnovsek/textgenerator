@@ -45,7 +45,7 @@
     "field.syllableColors": "Syllable colors",
     "action.dyslexiaPreset": "Dyslexia-friendly",
     "field.childName": "Child's name (optional)",
-    "field.childNamePlaceholder": "e.g. Mia",
+    "field.childNamePlaceholder": "e.g. {name}",
     "field.presets": "Saved setups",
     "action.loadPreset": "Load",
     "action.deletePreset": "Delete",

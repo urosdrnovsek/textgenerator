@@ -13,55 +13,53 @@ test('passes text through unchanged when there is no {name} placeholder', () => 
   assert.equal(result.personalized, false);
 });
 
-test('uses the authored neutral variant when no name is supplied', () => {
+test('uses name_default when the name field is empty', () => {
   const entry = {
     body: 'Zgodba o {name}.',
-    neutral_body: 'Zgodba o dečku.',
-    neutral_syllable_body: 'Zgod|ba o deč|ku.'
+    syllable_body: 'Zgod|ba o {name}.',
+    name_default: 'Tom',
+    name_default_syllables: 'Tom'
   };
   const result = resolvePersonalization(entry, '');
-  assert.equal(result.body, 'Zgodba o dečku.');
-  assert.equal(result.syllableBody, 'Zgod|ba o deč|ku.');
+  assert.equal(result.body, 'Zgodba o Tom.');
+  assert.equal(result.syllableBody, 'Zgod|ba o Tom.');
   assert.equal(result.personalized, false);
 });
 
-test('falls back to blind placeholder removal with whitespace cleanup when there is no neutral_body', () => {
-  const entry = { body: 'Zgodba o {name} in zmaju.' };
+test('uses name_default (falling back to it as syllables) when name_default_syllables is absent', () => {
+  const entry = { body: 'Zgodba o {name}.', syllable_body: 'Zgod|ba o {name}.', name_default: 'Tom' };
   const result = resolvePersonalization(entry, undefined);
-  assert.equal(result.body, 'Zgodba o in zmaju.');
-  assert.equal(result.syllableBody, undefined);
+  assert.equal(result.body, 'Zgodba o Tom.');
+  assert.equal(result.syllableBody, 'Zgod|ba o Tom.');
 });
 
-test('substitutes a supplied name and drops syllable coloring for the personalized text', () => {
-  const entry = { body: 'Zgodba o {name}.', syllable_body: 'ignored' };
+test('a typed name overrides name_default and is inserted as a single unsplit syllable chunk', () => {
+  const entry = {
+    body: 'Zgodba o {name}.',
+    syllable_body: 'Zgod|ba o {name}.',
+    name_default: 'Tom',
+    name_default_syllables: 'Tom'
+  };
   const result = resolvePersonalization(entry, '  Mia  ');
   assert.equal(result.body, 'Zgodba o Mia.');
-  assert.equal(result.syllableBody, undefined);
+  assert.equal(result.syllableBody, 'Zgod|ba o Mia.');
   assert.equal(result.personalized, true);
 });
 
-test('capitalizes the next word when a sentence-initial placeholder is blindly removed', () => {
-  const entry = { body: 'Ves je moker. {name} ga vzame v roke.' };
-  const result = resolvePersonalization(entry, '');
-  assert.equal(result.body, 'Ves je moker. Ga vzame v roke.');
-});
+test('preserves the rest of the passage\'s authored syllable boundaries around the substituted name', () => {
+  const entry = {
+    body: 'Ves je moker. {name} ga vzame v roke.',
+    syllable_body: 'Ves je mo|ker. {name} ga vza|me v ro|ke.',
+    name_default: 'Mia',
+    name_default_syllables: 'Mi|a'
+  };
+  const withDefault = resolvePersonalization(entry, '');
+  assert.equal(withDefault.body, 'Ves je moker. Mia ga vzame v roke.');
+  assert.equal(withDefault.syllableBody, 'Ves je mo|ker. Mi|a ga vza|me v ro|ke.');
 
-test('capitalizes correctly when the placeholder is the very first word of the body', () => {
-  const entry = { body: '{name} je poletje preživljal pri babici.' };
-  const result = resolvePersonalization(entry, '');
-  assert.equal(result.body, 'Je poletje preživljal pri babici.');
-});
-
-test('does not touch capitalization for a mid-sentence placeholder', () => {
-  const entry = { body: 'Babica je rekla. In {name} je čakal.' };
-  const result = resolvePersonalization(entry, '');
-  assert.equal(result.body, 'Babica je rekla. In je čakal.');
-});
-
-test('handles Slovene diacritics as the letter immediately following a removed placeholder', () => {
-  const entry = { body: '{name} živi v gozdu.' };
-  const result = resolvePersonalization(entry, '');
-  assert.equal(result.body, 'Živi v gozdu.');
+  const withTypedName = resolvePersonalization(entry, 'Eva');
+  assert.equal(withTypedName.body, 'Ves je moker. Eva ga vzame v roke.');
+  assert.equal(withTypedName.syllableBody, 'Ves je mo|ker. Eva ga vza|me v ro|ke.');
 });
 
 test('splitIntoSentences splits on terminal punctuation', () => {
