@@ -6,7 +6,7 @@
     "header.nameLine": "Nom :",
     "header.date": "Date :",
     "fit.measuring": "Vérification…",
-    "fit.fits": "Tient sur la page — {words} mots, niveau {level}. Utilisé {used}mm sur {budget}mm.",
+    "fit.fits": "Tient sur une page — {words} mots, niveau {level}.",
     "fit.extends": "Plus d'une page — cette fiche s'imprimera sur {pages} pages ({words} mots, niveau {level}). Pour une seule page, essayez : {suggestions}.",
     "fit.blocked": "Impossible de composer cette fiche ({code}) : {reason}. Essayez : {suggestions}.",
     "fit.blocked.reason.WIDTH_OVERFLOW": "un mot est plus large que la page",
@@ -111,6 +111,13 @@
     "setup.import.error.STORAGE_UNAVAILABLE": "Enregistrement impossible — le stockage n'est pas disponible dans ce navigateur.",
     "action.resetData": "Réinitialiser les données enregistrées",
     "reset.confirm": "Supprimer tous les réglages enregistrés sur cet ordinateur ? Cette action est irréversible.",
-    "reset.done": "Les données enregistrées ont été supprimées."
+    "reset.done": "Les données enregistrées ont été supprimées.",
+    "preview.regionLabel": "Aperçu de la fiche",
+    "export.formatNote": "Imprimer / PDF conserve exactement la mise en page de l'aperçu. Word (.docx) est modifiable et peut se réagencer légèrement dans votre traitement de texte.",
+    "level.1": "1 — très court, environ 20–40 mots",
+    "level.2": "2 — court, environ 40–70 mots",
+    "level.3": "3 — moyen, environ 70–110 mots",
+    "level.4": "4 — plus long, environ 110–160 mots",
+    "level.5": "5 — le plus long, environ 160–220 mots"
   }
 }

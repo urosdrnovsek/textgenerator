@@ -6,7 +6,7 @@
     "header.nameLine": "Name:",
     "header.date": "Datum:",
     "fit.measuring": "Wird geprüft…",
-    "fit.fits": "Passt — {words} Wörter, Stufe {level}. Verwendet {used}mm von {budget}mm.",
+    "fit.fits": "Passt auf eine Seite — {words} Wörter, Stufe {level}.",
     "fit.extends": "Länger als eine Seite — dieses Arbeitsblatt wird auf {pages} Seiten gedruckt ({words} Wörter, Stufe {level}). Für eine Seite versuchen Sie: {suggestions}.",
     "fit.blocked": "Dieses Arbeitsblatt kann nicht dargestellt werden ({code}): {reason}. Versuchen Sie: {suggestions}.",
     "fit.blocked.reason.WIDTH_OVERFLOW": "ein Wort ist breiter als die Seite",
@@ -111,6 +111,13 @@
     "setup.import.error.STORAGE_UNAVAILABLE": "Speichern nicht möglich — Speicher ist in diesem Browser nicht verfügbar.",
     "action.resetData": "Gespeicherte Daten zurücksetzen",
     "reset.confirm": "Alle gespeicherten Einstellungen auf diesem Computer löschen? Dies kann nicht rückgängig gemacht werden.",
-    "reset.done": "Gespeicherte Daten wurden gelöscht."
+    "reset.done": "Gespeicherte Daten wurden gelöscht.",
+    "preview.regionLabel": "Vorschau des Arbeitsblatts",
+    "export.formatNote": "Drucken / PDF behält das Layout genau wie in der Vorschau. Word (.docx) ist bearbeitbar und kann im Textverarbeitungsprogramm leicht anders umbrechen.",
+    "level.1": "1 — sehr kurz, etwa 20–40 Wörter",
+    "level.2": "2 — kurz, etwa 40–70 Wörter",
+    "level.3": "3 — mittel, etwa 70–110 Wörter",
+    "level.4": "4 — länger, etwa 110–160 Wörter",
+    "level.5": "5 — am längsten, etwa 160–220 Wörter"
   }
 }

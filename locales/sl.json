@@ -6,7 +6,7 @@
     "header.nameLine": "Ime:",
     "header.date": "Datum:",
     "fit.measuring": "Preverjanje…",
-    "fit.fits": "Ustreza — {words} besed, {level}. stopnja. Uporabljeno {used}mm od {budget}mm.",
+    "fit.fits": "Ustreza na eno stran — {words} besed, {level}. stopnja.",
     "fit.extends": "Daljše od ene strani — ta delovni list bo natisnjen na {pages} straneh ({words} besed, {level}. stopnja). Za eno stran poskusite: {suggestions}.",
     "fit.blocked": "Tega delovnega lista ni mogoče postaviti ({code}): {reason}. Poskusite: {suggestions}.",
     "fit.blocked.reason.WIDTH_OVERFLOW": "beseda je širša od strani",
@@ -111,6 +111,13 @@
     "setup.import.error.STORAGE_UNAVAILABLE": "Shranjevanje ni mogoče — v tem brskalniku shramba ni na voljo.",
     "action.resetData": "Ponastavi shranjene podatke",
     "reset.confirm": "Izbrišem vse shranjene nastavitve na tem računalniku? Tega ni mogoče razveljaviti.",
-    "reset.done": "Shranjeni podatki so izbrisani."
+    "reset.done": "Shranjeni podatki so izbrisani.",
+    "preview.regionLabel": "Predogled delovnega lista",
+    "export.formatNote": "Tiskanje / PDF ohrani postavitev natanko kot v predogledu. Word (.docx) je mogoče urejati in se lahko v urejevalniku nekoliko drugače prelomi.",
+    "level.1": "1 — zelo kratko, približno 20–40 besed",
+    "level.2": "2 — kratko, približno 40–70 besed",
+    "level.3": "3 — srednje, približno 70–110 besed",
+    "level.4": "4 — daljše, približno 110–160 besed",
+    "level.5": "5 — najdaljše, približno 160–220 besed"
   }
 }

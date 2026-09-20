@@ -6,7 +6,7 @@
     "header.nameLine": "Nombre:",
     "header.date": "Fecha:",
     "fit.measuring": "Midiendo…",
-    "fit.fits": "Cabe — {words} palabras, nivel {level}. Usado {used}mm de {budget}mm.",
+    "fit.fits": "Cabe en una página — {words} palabras, nivel {level}.",
     "fit.extends": "Más de una página — esta ficha se imprimirá en {pages} páginas ({words} palabras, nivel {level}). Para una sola página, prueba: {suggestions}.",
     "fit.blocked": "No se puede componer esta ficha ({code}): {reason}. Prueba: {suggestions}.",
     "fit.blocked.reason.WIDTH_OVERFLOW": "una palabra es más ancha que la página",
@@ -111,6 +111,13 @@
     "setup.import.error.STORAGE_UNAVAILABLE": "No se pudo guardar — el almacenamiento no está disponible en este navegador.",
     "action.resetData": "Restablecer datos guardados",
     "reset.confirm": "¿Eliminar todas las configuraciones guardadas en este equipo? Esta acción no se puede deshacer.",
-    "reset.done": "Los datos guardados se han eliminado."
+    "reset.done": "Los datos guardados se han eliminado.",
+    "preview.regionLabel": "Vista previa de la ficha",
+    "export.formatNote": "Imprimir / PDF conserva la maquetación exactamente como en la vista previa. Word (.docx) es editable y puede reajustarse ligeramente en tu procesador de textos.",
+    "level.1": "1 — muy corto, unas 20–40 palabras",
+    "level.2": "2 — corto, unas 40–70 palabras",
+    "level.3": "3 — medio, unas 70–110 palabras",
+    "level.4": "4 — más largo, unas 110–160 palabras",
+    "level.5": "5 — el más largo, unas 160–220 palabras"
   }
 }

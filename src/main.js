@@ -238,6 +238,9 @@ function applyStaticLabels() {
     // briefly before the first render, or for an entry with no {name} use.
     el.placeholder = t(el.dataset.placeholder, { name: DEFAULT_CHILD_NAME });
   }
+  for (const el of document.querySelectorAll('[data-aria-label]')) {
+    el.setAttribute('aria-label', t(el.dataset.ariaLabel));
+  }
 }
 
 function populateThemeSelect() {
@@ -870,16 +873,15 @@ function showFit(model, result) {
   el.classList.toggle('is-overflow', result.status === 'blocked');
   el.classList.toggle('is-extends', result.status === 'extends');
   el.dataset.pageCount = result.pageCount ?? '';
+  // The millimetre figures are a developer diagnostic, not teacher-facing
+  // text (workstream I3) — kept here for the verify-* scripts and debugging.
+  el.dataset.usedMm = result.heightsMm ? (result.heightsMm.final ?? result.heightsMm.used).toFixed(1) : '';
+  el.dataset.budgetMm = result.heightsMm ? result.heightsMm.budget.toFixed(1) : '';
 
   const suggestions = (result.suggestions ?? []).map((code) => t(`fit.suggestion.${code}`)).join(', ');
 
   if (result.status === 'fits') {
-    el.textContent = t('fit.fits', {
-      words: model.wordCount,
-      level: model.level,
-      used: (result.heightsMm.final ?? result.heightsMm.used).toFixed(1),
-      budget: result.heightsMm.budget.toFixed(1)
-    });
+    el.textContent = t('fit.fits', { words: model.wordCount, level: model.level });
   } else if (result.status === 'extends') {
     el.textContent = t('fit.extends', {
       pages: result.pageCount,
@@ -1026,4 +1028,20 @@ if (!checkStorageCapability()) {
   els.savePresetButton.disabled = true;
 }
 els.fitIndicator.textContent = t('fit.measuring');
+
+// Scale the on-screen A4 preview down to fit the available width (never
+// up). Display-only: the fit check measures in its own unscaled surface.
+{
+  const previewScroll = document.querySelector('.preview-scroll');
+  const pageFrame = document.querySelector('.page-frame');
+  const A4_WIDTH_PX = 210 * (96 / 25.4);
+  const fitPreview = () => {
+    const available = previewScroll.clientWidth - 16;
+    const scale = Math.min(1, available / A4_WIDTH_PX);
+    pageFrame.style.setProperty('--preview-scale', scale.toFixed(3));
+  };
+  if (typeof ResizeObserver !== 'undefined') new ResizeObserver(fitPreview).observe(previewScroll);
+  fitPreview();
+}
+
 createText(); // show something on first load rather than an empty preview

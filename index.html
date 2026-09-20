@@ -27,11 +27,11 @@
 
       <label for="level-select" data-label="field.level">Stopnja</label>
       <select id="level-select">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
+        <option value="1" data-label="level.1">1 — zelo kratko, ~20–40 besed</option>
+        <option value="2" data-label="level.2">2 — kratko, ~40–70 besed</option>
+        <option value="3" data-label="level.3">3 — srednje, ~70–110 besed</option>
+        <option value="4" data-label="level.4">4 — daljše, ~110–160 besed</option>
+        <option value="5" data-label="level.5">5 — najdaljše, ~160–220 besed</option>
       </select>
 
       <div id="candidate-count" class="candidate-count"></div>
@@ -175,19 +175,23 @@
         <div id="import-status" class="storage-status"></div>
       </details>
 
-      <button id="btn-print" type="button" data-label="action.print">Natisni / Shrani kot PDF</button>
-      <button id="btn-docx" type="button" data-label="action.exportDocx">Izvozi v Word (.docx)</button>
-
-      <div id="fit-indicator" class="fit-indicator" role="status">Preverjanje…</div>
+      <div class="sidebar-actions">
+        <button id="btn-print" type="button" data-label="action.print">Natisni / Shrani kot PDF</button>
+        <button id="btn-docx" type="button" data-label="action.exportDocx">Izvozi v Word (.docx)</button>
+        <div class="candidate-count" data-label="export.formatNote">Tiskanje / PDF ohrani postavitev natanko kot v predogledu. Word (.docx) je mogoče urejati in se lahko v urejevalniku nekoliko drugače prelomi.</div>
+        <div id="fit-indicator" class="fit-indicator" role="status">Preverjanje…</div>
+      </div>
     </div>
     <div class="preview-scroll">
       <div class="page-frame">
-        <div id="preview"></div>
+        <div id="preview" role="region" data-aria-label="preview.regionLabel" aria-label="Predogled delovnega lista"></div>
       </div>
     </div>
   </div>
 
-  <div id="print-surface"></div>
+  <!-- Off-screen twin of the preview for print.css. aria-hidden so screen
+       readers don't announce the whole worksheet twice (workstream I1). -->
+  <div id="print-surface" aria-hidden="true"></div>
 
   <script src="app.js"></script>
 </body>

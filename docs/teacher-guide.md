@@ -17,16 +17,20 @@ the app needs is already inside that folder.
 1. **Language** — choose the language of the text and of the interface.
 2. **Theme** — Stories, Animal facts, Around the world, Amazing science, or
    Nature & seasons.
-3. **Level** — 1 (shortest, simplest) through 5 (longest, most complex).
-   The app shows how many texts are available for your current
-   theme+level combination before you create anything.
+3. **Level** — 1 (shortest, simplest) through 5 (longest, most complex);
+   each option shows the approximate word count it aims for. The app shows
+   how many texts are available for your current theme+level combination
+   before you create anything.
 4. Click **Create text**. The app picks one matching text (never the same
    one twice in a row if others are available) and shows a preview on the
    right. Changing the theme or level afterward does *not* change what's
    shown until you click **Create text** again — so you can safely explore
    filters without losing your current worksheet.
 5. When you're happy with the preview, use **Print / Save as PDF** or
-   **Export as Word (.docx)** at the bottom of the sidebar.
+   **Export as Word (.docx)** at the bottom of the sidebar (they stay in
+   view while you scroll the settings). Print / PDF keeps the layout
+   exactly as previewed; Word is editable and may reflow slightly in your
+   word processor.
 
 ### When a worksheet is longer than one page
 

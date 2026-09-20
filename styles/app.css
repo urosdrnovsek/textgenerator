@@ -25,6 +25,23 @@ body {
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 12px;
+  /* The sidebar is its own scroll container, pinned to the viewport, so
+     the Print/Export block below can stick to its bottom edge instead of
+     scrolling out of reach once the Text settings panel is open
+     (workstream I5). */
+  position: sticky;
+  top: 16px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+}
+
+.sidebar-actions {
+  position: sticky;
+  bottom: -12px; /* the sidebar's own padding; stick flush to its edge */
+  margin: 12px -12px -12px;
+  padding: 8px 12px 12px;
+  background: #ffffff;
+  border-top: 1px solid #ddd;
 }
 
 .app-sidebar label {
@@ -185,6 +202,14 @@ body {
   padding: 20mm;
   background: #ffffff;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  /* Scaled down to fit the available width on smaller screens
+     (main.js sets --preview-scale from a ResizeObserver; workstream I6).
+     `zoom` rather than `transform` so the layout box shrinks with the
+     content — no phantom scroll area. Safe because nothing is ever
+     measured in #preview: layout/measure.js uses its own unscaled
+     off-screen surface (blueprint v2 §8.4), and print.css hides this
+     element entirely. Browsers without CSS zoom just show it unscaled. */
+  zoom: var(--preview-scale, 1);
 }
 
 /* Off-screen twin of the preview, rendered so print.css has a ready DOM to

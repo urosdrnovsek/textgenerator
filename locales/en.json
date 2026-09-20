@@ -6,7 +6,7 @@
     "header.nameLine": "Name:",
     "header.date": "Date:",
     "fit.measuring": "Measuring…",
-    "fit.fits": "Fits — {words} words, level {level}. Used {used}mm of {budget}mm.",
+    "fit.fits": "Fits on one page — {words} words, level {level}.",
     "fit.extends": "Longer than one page — this worksheet will print on {pages} pages ({words} words, level {level}). For one page, try: {suggestions}.",
     "fit.blocked": "Cannot lay out this worksheet ({code}): {reason}. Try: {suggestions}.",
     "fit.blocked.reason.WIDTH_OVERFLOW": "a word is wider than the page",
@@ -111,6 +111,13 @@
     "setup.import.error.STORAGE_UNAVAILABLE": "Couldn't save — storage isn't available in this browser.",
     "action.resetData": "Reset saved data",
     "reset.confirm": "Delete all saved setups on this computer? This can't be undone.",
-    "reset.done": "Saved data cleared."
+    "reset.done": "Saved data cleared.",
+    "preview.regionLabel": "Worksheet preview",
+    "export.formatNote": "Print / PDF keeps the layout exactly as previewed. Word (.docx) is editable and may reflow slightly in your word processor.",
+    "level.1": "1 — very short, about 20–40 words",
+    "level.2": "2 — short, about 40–70 words",
+    "level.3": "3 — medium, about 70–110 words",
+    "level.4": "4 — longer, about 110–160 words",
+    "level.5": "5 — longest, about 160–220 words"
   }
 }
