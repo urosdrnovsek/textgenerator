@@ -301,3 +301,26 @@ against `src/content/validate.js` and gated in the build via
   what's still open
 - `THIRD_PARTY_NOTICES.md`, `licenses/` — bundled fonts' and dependencies'
   license notices
+
+## License
+
+This project's own code (everything under `src/`, `styles/`, `scripts/`,
+`tests/`, `index.html`, and the build tooling) is licensed under the MIT
+License — see `LICENSE`.
+
+That covers the code only. Bundled assets carry their own, separate
+terms, documented in `THIRD_PARTY_NOTICES.md`:
+
+- **Fonts** (Andika, Lexend, OpenDyslexic, Comic Neue) are each SIL Open
+  Font License 1.1 — see `assets/fonts/<font>/OFL.txt`.
+- **Images** in `assets/images/` are original artwork the project owner
+  generated with ChatGPT (OpenAI); per `assets/manifest.json`, all rights
+  are reserved by the project owner and they are bundled for use within
+  this project only — not an open license, and not covered by the MIT
+  grant above.
+- **Content text** in `content/*.json` is original writing produced for
+  this project; it is not currently released under a separate open
+  license.
+- The `docx` npm package (a build/runtime dependency, not part of this
+  project's own code) is MIT-licensed by its own authors — see
+  `licenses/docx-MIT.txt`.
