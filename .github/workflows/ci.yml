@@ -78,7 +78,9 @@ jobs:
           sudo apt-get install -y --no-install-recommends poppler-utils
       - uses: browser-actions/setup-firefox@v1
         id: firefox
-      - uses: browser-actions/setup-geckodriver@v1
+      # setup-geckodriver publishes no version tags (only a `latest` branch,
+      # which its README uses); `@v1` fails to resolve.
+      - uses: browser-actions/setup-geckodriver@latest
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - run: npm run build
