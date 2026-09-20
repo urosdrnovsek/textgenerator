@@ -74,12 +74,6 @@
     "tint.blue": "Hellblau",
     "tint.green": "Hellgrün",
     "error.INVALID_JSON": "Die ausgewählte Datei ist kein gültiges JSON.",
-    "action.favorite": "Zu Favoriten hinzufügen",
-    "action.unfavorite": "Aus Favoriten entfernen",
-    "field.favorites": "Favoriten",
-    "action.loadFavorite": "Laden",
-    "action.removeFavorite": "Entfernen",
-    "favorite.missing": "nicht mehr verfügbar",
     "field.packet": "Blätterset",
     "packet.count": "{count}/{max} Blätter",
     "action.addToPacket": "Zum Set hinzufügen",
@@ -104,7 +98,7 @@
     "setup.import.error.UNSUPPORTED_SCHEMA": "Diese Datei ist keine unterstützte Sicherung von Einstellungen.",
     "setup.import.error.STORAGE_UNAVAILABLE": "Speichern nicht möglich — Speicher ist in diesem Browser nicht verfügbar.",
     "action.resetData": "Gespeicherte Daten zurücksetzen",
-    "reset.confirm": "Alle gespeicherten Einstellungen und Favoriten auf diesem Computer löschen? Dies kann nicht rückgängig gemacht werden.",
+    "reset.confirm": "Alle gespeicherten Einstellungen auf diesem Computer löschen? Dies kann nicht rückgängig gemacht werden.",
     "reset.done": "Gespeicherte Daten wurden gelöscht."
   }
 }

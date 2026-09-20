@@ -74,12 +74,6 @@
     "tint.blue": "Azul claro",
     "tint.green": "Verde claro",
     "error.INVALID_JSON": "El archivo seleccionado no es un JSON válido.",
-    "action.favorite": "Añadir a favoritos",
-    "action.unfavorite": "Quitar de favoritos",
-    "field.favorites": "Favoritos",
-    "action.loadFavorite": "Cargar",
-    "action.removeFavorite": "Quitar",
-    "favorite.missing": "ya no disponible",
     "field.packet": "Lote de fichas",
     "packet.count": "{count}/{max} fichas",
     "action.addToPacket": "Añadir al lote",
@@ -104,7 +98,7 @@
     "setup.import.error.UNSUPPORTED_SCHEMA": "Este archivo no es una copia de seguridad de configuraciones compatible.",
     "setup.import.error.STORAGE_UNAVAILABLE": "No se pudo guardar — el almacenamiento no está disponible en este navegador.",
     "action.resetData": "Restablecer datos guardados",
-    "reset.confirm": "¿Eliminar todas las configuraciones y favoritos guardados en este equipo? Esta acción no se puede deshacer.",
+    "reset.confirm": "¿Eliminar todas las configuraciones guardadas en este equipo? Esta acción no se puede deshacer.",
     "reset.done": "Los datos guardados se han eliminado."
   }
 }

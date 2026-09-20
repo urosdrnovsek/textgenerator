@@ -74,12 +74,6 @@
     "tint.blue": "Light blue",
     "tint.green": "Light green",
     "error.INVALID_JSON": "The selected file is not valid JSON.",
-    "action.favorite": "Add to favorites",
-    "action.unfavorite": "Remove from favorites",
-    "field.favorites": "Favorites",
-    "action.loadFavorite": "Load",
-    "action.removeFavorite": "Remove",
-    "favorite.missing": "no longer available",
     "field.packet": "Packet",
     "packet.count": "{count}/{max} sheets",
     "action.addToPacket": "Add to packet",
@@ -104,7 +98,7 @@
     "setup.import.error.UNSUPPORTED_SCHEMA": "This file isn't a supported setups backup.",
     "setup.import.error.STORAGE_UNAVAILABLE": "Couldn't save — storage isn't available in this browser.",
     "action.resetData": "Reset saved data",
-    "reset.confirm": "Delete all saved setups and favorites on this computer? This can't be undone.",
+    "reset.confirm": "Delete all saved setups on this computer? This can't be undone.",
     "reset.done": "Saved data cleared."
   }
 }

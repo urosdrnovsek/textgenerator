@@ -17,7 +17,7 @@
  * release/ if no zip is given.
  *
  * Exercises a broad real user journey (every bundled language, dyslexia
- * supports, presets, favorites, packets, content import, both exports) and
+ * supports, presets, packets, content import, both exports) and
  * fails on: any non-file:// network request, any console error/exception,
  * or a failed download.
  *
@@ -180,7 +180,6 @@ async function main() {
         })();
       `);
       await waitForFit();
-      await evalJs(`document.getElementById('btn-favorite-toggle').click();`);
       await evalJs(`document.getElementById('btn-add-to-packet').click();`);
     }
 

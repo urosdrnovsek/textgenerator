@@ -27,7 +27,6 @@
 
       <div id="candidate-count" class="candidate-count"></div>
       <button id="btn-create" type="button" data-label="action.createText">Ustvari besedilo</button>
-      <button id="btn-favorite-toggle" type="button" data-label="action.favorite" disabled></button>
 
       <label for="name-input" data-label="field.childName">Ime otroka (neobvezno)</label>
       <input type="text" id="name-input" data-placeholder="field.childNamePlaceholder" maxlength="40" />
@@ -123,14 +122,6 @@
         <input type="file" id="import-setups-input" accept="application/json" />
 
         <button id="btn-reset-data" type="button" data-label="action.resetData">Ponastavi shranjene podatke</button>
-      </details>
-
-      <details class="settings-panel">
-        <summary data-label="field.favorites">Priljubljeno</summary>
-
-        <select id="favorite-select"></select>
-        <button id="btn-load-favorite" type="button" data-label="action.loadFavorite" disabled>Naloži</button>
-        <button id="btn-remove-favorite" type="button" data-label="action.removeFavorite" disabled>Odstrani</button>
       </details>
 
       <details class="settings-panel">

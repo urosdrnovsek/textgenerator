@@ -87,25 +87,10 @@ restore setups**:
   internal id already exists, the imported copy gets added as a new one
   rather than overwriting it.
 
-**Reset saved data**, further down, deletes every setup and favorite saved
-on this computer (after asking you to confirm) — useful before handing the
-computer to someone else, or if something looks wrong and you want a clean
-slate. It only touches this app's own saved data, nothing else on the
-computer.
-
-## Favorites
-
-Found a text you'll want again? Click the **Add to favorites** button
-(next to Create text) while it's showing. It turns into **Remove from
-favorites**, and the text is added to the **Favorites** panel.
-
-To come back to it later: open **Favorites**, pick it from the list, and
-click **Load** — this switches language/theme/level as needed and shows
-that exact text again. **Remove** takes it back out of your favorites.
-
-If a favorited text was removed or replaced (for example, after importing
-new content for that language — see below), it's shown as "no longer
-available" in the list rather than silently disappearing.
+**Reset saved data**, further down, deletes every setup saved on this
+computer (after asking you to confirm) — useful before handing the computer
+to someone else, or if something looks wrong and you want a clean slate. It
+only touches this app's own saved data, nothing else on the computer.
 
 ## Printing several worksheets at once (packets)
 

@@ -33,8 +33,8 @@ developer/QA tool, never a teacher prerequisite").
 
 | Browser | Status | How verified |
 | --- | --- | --- |
-| Chromium (headless, this dev environment) | **Automated, passing** | `npm run verify-offline` and the Phase 3–6 CDP-driven scripts referenced in commit history: language switching, every dyslexia support, presets, favorites, packets, content import, print, `.docx` export. |
-| Firefox (headless, this dev environment — version 155.0.1) | **Automated, passing except one known Gecko engine issue (see below)** | `npm run verify-firefox`, via `geckodriver` + `selenium-webdriver` (Firefox doesn't speak Chrome DevTools Protocol — it speaks WebDriver BiDi, so the Chromium scripts' approach doesn't carry over). Covers all 5 languages, favorites, the dyslexia preset, saving a setup, `.docx` export, and both single-worksheet and packet printing verified via WebDriver's real `printPage()` command (Firefox's actual print/PDF engine) piped through `pdfinfo`/`pdftotext` — not a simulation. All pass in the clean/primary flow (create a worksheet and print it; build a packet and print it immediately, matching the documented `docs/teacher-guide.md` workflow). One known issue found and documented separately below. |
+| Chromium (headless, this dev environment) | **Automated, passing** | `npm run verify-offline` and the Phase 3–6 CDP-driven scripts referenced in commit history: language switching, every dyslexia support, presets, packets, content import, print, `.docx` export. |
+| Firefox (headless, this dev environment — version 155.0.1) | **Automated, passing except one known Gecko engine issue (see below)** | `npm run verify-firefox`, via `geckodriver` + `selenium-webdriver` (Firefox doesn't speak Chrome DevTools Protocol — it speaks WebDriver BiDi, so the Chromium scripts' approach doesn't carry over). Covers all 5 languages, the dyslexia preset, saving a setup, `.docx` export, and both single-worksheet and packet printing verified via WebDriver's real `printPage()` command (Firefox's actual print/PDF engine) piped through `pdfinfo`/`pdftotext` — not a simulation. All pass in the clean/primary flow (create a worksheet and print it; build a packet and print it immediately, matching the documented `docs/teacher-guide.md` workflow). One known issue found and documented separately below. |
 | Google Chrome (real, desktop) | **Not yet tested here** | Same underlying engine as Chromium; low risk, but not the same binary — needs a real run before claiming it. |
 | Microsoft Edge (real, desktop — the brief's primary target, "Windows most likely") | **Not yet tested here** | Chromium-based; same low-but-nonzero risk as Chrome. This is the brief's actual primary target browser and should be the first real-browser check done outside this environment. |
 | Firefox (real, desktop) | **Not yet tested** | The headless automated run above is real Firefox, but a real desktop session (different windowing/print-dialog path) hasn't been checked. Given the known issue below, this is worth a real run specifically to see whether ordinary interactive use (not automation) hits it too. |
@@ -117,8 +117,8 @@ any real network attempt (`--host-resolver-rules=MAP * ~NOTFOUND` — a
 request would error out, not happen to succeed because the test machine
 itself has internet access), extracts the actual packaged ZIP to a
 directory outside the repo, and drives a broad real user journey: every
-bundled language, the dyslexia-friendly preset, saving a setup, favoriting
-a text, adding to a packet, printing, printing the packet, and exporting
+bundled language, the dyslexia-friendly preset, saving a setup, adding to a
+packet, printing, printing the packet, and exporting
 `.docx`. Current result: **zero non-`file://`/`data:` network requests,
 zero console errors or exceptions.**
 
@@ -188,7 +188,7 @@ own hardware. Checklist:
 ## Teacher documentation
 
 **Done.** `docs/teacher-guide.md` — worksheet creation, reading/writing
-supports, presets (including backup/restore), favorites, packets, content
+supports, presets (including backup/restore), packets, content
 import, and the Reset action. Written for a non-technical reader per the
 original brief's deliverable #3.
 

@@ -11,6 +11,7 @@
  */
 
 const STORAGE_KEY = 'worksheet-presets-v1';
+/** Favorites were removed in 0.8 (upgrade blueprint v3, workstream C — teachers didn't use the feature). Kept here only so resetAllData() still cleans up this key on a browser profile that has 0.7 data in it. */
 const FAVORITES_STORAGE_KEY = 'worksheet-favorites-v1';
 const CAPABILITY_TEST_KEY = 'worksheet-storage-check';
 /** Every key this application writes to localStorage — resetAllData() must clear exactly these and nothing else (blueprint 13: "deletes only this application's keys, never every key in localStorage"). */
@@ -149,83 +150,11 @@ export function importPresetsFromJson(jsonText, storage = defaultStorage()) {
 }
 
 /**
- * @typedef {object} Favorite
- * @property {string} language
- * @property {string} contentId
- */
-
-/**
- * @param {Storage} [storage]
- * @returns {Favorite[]} empty array if storage is unavailable or empty — never throws
- */
-export function listFavorites(storage = defaultStorage()) {
-  if (!checkStorageCapability(storage)) return [];
-  try {
-    const raw = storage.getItem(FAVORITES_STORAGE_KEY);
-    if (!raw) return [];
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    return [];
-  }
-}
-
-/**
- * @param {Favorite[]} favorites
- * @param {Storage} storage
- * @returns {boolean} true if the write actually succeeded
- */
-function writeFavorites(favorites, storage) {
-  if (!checkStorageCapability(storage)) return false;
-  try {
-    storage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(favorites));
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-/**
- * @param {string} language
- * @param {string} contentId
- * @param {Storage} [storage]
- * @returns {boolean}
- */
-export function isFavorite(language, contentId, storage = defaultStorage()) {
-  return listFavorites(storage).some((f) => f.language === language && f.contentId === contentId);
-}
-
-/**
- * Adds a content reference to favorites (a no-op, reported as success, if
- * already favorited — blueprint: "Favorite: {language, contentId}", no
- * separate id, so identity is the pair itself).
- * @param {string} language
- * @param {string} contentId
- * @param {Storage} [storage]
- * @returns {boolean} true if the write actually succeeded
- */
-export function addFavorite(language, contentId, storage = defaultStorage()) {
-  const existing = listFavorites(storage);
-  if (existing.some((f) => f.language === language && f.contentId === contentId)) return true;
-  return writeFavorites([...existing, { language, contentId }], storage);
-}
-
-/**
- * @param {string} language
- * @param {string} contentId
- * @param {Storage} [storage]
- * @returns {boolean} true if the write actually succeeded
- */
-export function removeFavorite(language, contentId, storage = defaultStorage()) {
-  const existing = listFavorites(storage);
-  return writeFavorites(existing.filter((f) => !(f.language === language && f.contentId === contentId)), storage);
-}
-
-/**
  * Deletes only this application's own localStorage keys (blueprint 13: "A
  * Reset action deletes only this application's keys, never every key in
- * localStorage") — presets and favorites. Never touches anything else a
- * shared school computer's browser profile might hold.
+ * localStorage") — presets, plus the legacy favorites key from pre-0.8
+ * installs. Never touches anything else a shared school computer's browser
+ * profile might hold.
  * @param {Storage} [storage]
  * @returns {boolean} true if every key was actually removed
  */

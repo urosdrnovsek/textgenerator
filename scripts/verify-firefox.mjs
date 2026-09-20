@@ -11,7 +11,7 @@
  *
  * Exercises the real built release the way a teacher would — every
  * bundled language, the dyslexia-friendly preset, saving a setup,
- * favoriting a text, and both exports — then specifically verifies the
+ * and both exports — then specifically verifies the
  * single highest cross-browser risk called out in docs/compatibility.md:
  * packet multi-page printing. `break-after: page` handling has
  * historically differed between browser print engines, so this doesn't
@@ -196,11 +196,8 @@ async function main() {
       `);
       const fitText = await waitForFit();
       check(`${language}: worksheet renders and fits`, /^(Ustreza|Fits|Cabe|Passt|Tient)/i.test(fitText));
-      await evalJs(`document.getElementById('btn-favorite-toggle').click();`);
       await evalJs(`document.getElementById('btn-add-to-packet').click();`);
     }
-    const favoriteCount = await evalJs(`return document.getElementById('favorite-select').options.length`);
-    check('favoriting once per language yields 5 favorites', favoriteCount === 5);
 
     console.log('\nPacket multi-page print check (the documented workflow: build, then print immediately)...');
     const primaryResult = await checkPacketPageCount(driver, evalJs, downloadDir, 'primary-flow');

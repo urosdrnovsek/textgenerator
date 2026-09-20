@@ -7,7 +7,7 @@ test('imageFilenameToAssetId strips a simple extension', () => {
 });
 
 test('imageFilenameToAssetId strips only the final extension, keeping dots in the base name', () => {
-  assert.equal(imageFilenameToAssetId('my.favorite.octopus.jpeg'), 'my.favorite.octopus');
+  assert.equal(imageFilenameToAssetId('my.best.octopus.jpeg'), 'my.best.octopus');
 });
 
 test('imageFilenameToAssetId leaves a filename with no extension unchanged', () => {

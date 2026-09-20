@@ -33,10 +33,6 @@ import {
   deletePreset,
   exportPresetsToBlob,
   importPresetsFromJson,
-  listFavorites,
-  isFavorite,
-  addFavorite,
-  removeFavorite,
   resetAllData
 } from './storage.js';
 import { readImageFile, readContentPackImport } from './import.js';
@@ -71,9 +67,8 @@ function validateAndBuildCatalog(language) {
 
 // Validate every bundled pack up front — a broken pack for a language the
 // teacher hasn't picked yet should still fail loudly at startup, not later.
-// Cached per language (not just validated-and-discarded) so favorites can
-// resolve a title in a language the teacher isn't currently viewing, and so
-// content import (below) has somewhere to install a replacement catalog.
+// Cached per language (not just validated-and-discarded) so content import
+// (below) has somewhere to install a replacement catalog.
 /** @type {Record<string, import('./content/catalog.js').CatalogIndex>} */
 const CATALOGS = {};
 for (const language of LANGUAGES) CATALOGS[language] = validateAndBuildCatalog(language);
@@ -216,10 +211,6 @@ const els = {
   imageUpload: document.getElementById('image-upload'),
   resetImageButton: document.getElementById('btn-reset-image'),
   imageStatus: document.getElementById('image-status'),
-  favoriteToggleButton: document.getElementById('btn-favorite-toggle'),
-  favoriteSelect: document.getElementById('favorite-select'),
-  loadFavoriteButton: document.getElementById('btn-load-favorite'),
-  removeFavoriteButton: document.getElementById('btn-remove-favorite'),
   packetCount: document.getElementById('packet-count'),
   packetList: document.getElementById('packet-list'),
   addToPacketButton: document.getElementById('btn-add-to-packet'),
@@ -286,7 +277,6 @@ function switchLanguage(language) {
   applyStaticLabels();
   populateLanguageSelect();
   populateThemeSelect();
-  populateFavoriteSelect();
   renderPacketList();
 }
 
@@ -612,77 +602,7 @@ function handleResetData() {
     return;
   }
   populatePresetSelect();
-  populateFavoriteSelect();
-  updateFavoriteButton();
   els.storageStatus.textContent = t('reset.done');
-}
-
-/** Whether the currently displayed content entry (state.language + state.contentId) is favorited — reflects into the toggle button. */
-function updateFavoriteButton() {
-  if (!state.contentId) {
-    els.favoriteToggleButton.disabled = true;
-    return;
-  }
-  els.favoriteToggleButton.disabled = false;
-  const favorited = isFavorite(state.language, state.contentId);
-  els.favoriteToggleButton.classList.toggle('is-favorite', favorited);
-  els.favoriteToggleButton.textContent = t(favorited ? 'action.unfavorite' : 'action.favorite');
-}
-
-function handleToggleFavorite() {
-  if (!state.contentId) return;
-  if (isFavorite(state.language, state.contentId)) {
-    removeFavorite(state.language, state.contentId);
-  } else {
-    addFavorite(state.language, state.contentId);
-  }
-  updateFavoriteButton();
-  populateFavoriteSelect();
-}
-
-/** A favorite only stores {language, contentId} (blueprint 6) — its display title is resolved live from CATALOGS, so a favorite from a pack that has since been replaced by an import shows as missing rather than a stale cached title. */
-function populateFavoriteSelect() {
-  const favorites = listFavorites();
-  const previousValue = els.favoriteSelect.value;
-  els.favoriteSelect.replaceChildren(
-    ...favorites.map((favorite) => {
-      const option = document.createElement('option');
-      option.value = JSON.stringify(favorite);
-      const entry = CATALOGS[favorite.language]?.byId.get(favorite.contentId);
-      const languageName = t(`language.${favorite.language}`);
-      option.textContent = entry ? `${languageName} — ${entry.title}` : `${languageName} — ${favorite.contentId} (${t('favorite.missing')})`;
-      return option;
-    })
-  );
-  if ([...els.favoriteSelect.options].some((o) => o.value === previousValue)) {
-    els.favoriteSelect.value = previousValue;
-  }
-  els.loadFavoriteButton.disabled = favorites.length === 0;
-  els.removeFavoriteButton.disabled = favorites.length === 0;
-}
-
-function handleLoadFavorite() {
-  if (!els.favoriteSelect.value) return;
-  const { language, contentId } = JSON.parse(els.favoriteSelect.value);
-  const entry = CATALOGS[language]?.byId.get(contentId);
-  if (!entry) return; // stale reference into a pack that's since been replaced — nothing to load
-  if (language !== state.language) switchLanguage(language);
-  state.filter.theme = entry.theme;
-  state.filter.level = entry.level;
-  els.themeSelect.value = entry.theme;
-  els.levelSelect.value = String(entry.level);
-  state.contentId = entry.id;
-  resetCustomImage();
-  updateCandidateCount();
-  requestRender();
-}
-
-function handleRemoveFavorite() {
-  if (!els.favoriteSelect.value) return;
-  const { language, contentId } = JSON.parse(els.favoriteSelect.value);
-  removeFavorite(language, contentId);
-  populateFavoriteSelect();
-  updateFavoriteButton();
 }
 
 /** Reflects state.packet into the sidebar list/buttons — pure DOM sync, no state changes. */
@@ -847,7 +767,6 @@ async function handleImportContent() {
     els.printButton.disabled = true;
     els.docxButton.disabled = true;
     updateCandidateCount();
-    updateFavoriteButton();
     els.fitIndicator.textContent = t('preview.empty');
   }
 }
@@ -876,7 +795,6 @@ function showFit(model, result) {
 async function requestRender() {
   const revision = ++state.revision;
   const entry = CATALOG.byId.get(state.contentId);
-  updateFavoriteButton();
   // A teacher-uploaded image overrides only this entry's mapping, for this
   // render — the shared IMAGES_BY_ID map itself is never mutated.
   const imagesById = state.customImage
@@ -973,10 +891,6 @@ els.exportSetupsButton.addEventListener('click', handleExportSetups);
 els.importSetupsInput.addEventListener('change', (e) => handleImportSetups(e.target.files[0]));
 els.resetDataButton.addEventListener('click', handleResetData);
 
-els.favoriteToggleButton.addEventListener('click', handleToggleFavorite);
-els.loadFavoriteButton.addEventListener('click', handleLoadFavorite);
-els.removeFavoriteButton.addEventListener('click', handleRemoveFavorite);
-
 els.addToPacketButton.addEventListener('click', handleAddToPacket);
 els.printPacketButton.addEventListener('click', handlePrintPacket);
 els.clearPacketButton.addEventListener('click', handleClearPacket);
@@ -991,13 +905,11 @@ updateCandidateCount();
 applySettingsLimits();
 syncSettingsControlsFromState();
 populatePresetSelect();
-populateFavoriteSelect();
 updatePacketControls();
 renderPacketList();
 if (!checkStorageCapability()) {
   els.storageStatus.textContent = t('preset.storageUnavailable');
   els.savePresetButton.disabled = true;
-  els.favoriteToggleButton.disabled = true;
 }
 els.fitIndicator.textContent = t('fit.measuring');
 createText(); // show something on first load rather than an empty preview

@@ -61,11 +61,6 @@ body {
   cursor: not-allowed;
 }
 
-.app-sidebar button.is-favorite {
-  background: #fff3cd;
-  border-color: #e0b400;
-}
-
 .candidate-count {
   font-size: 12px;
   color: #555;

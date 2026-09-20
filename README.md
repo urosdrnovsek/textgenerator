@@ -105,10 +105,6 @@ connection at any point.
   3-line guide exists — needs real teacher/classroom input, intentionally
   not fabricated; see the blueprint's decision table). This is the one
   Phase 4 item still open, and it's blocked on external input, not effort.
-- **Favorites:** bookmark a content entry by `{language, contentId}` and
-  jump back to it later via a Load button — a favorite whose entry no
-  longer exists (e.g. after importing replacement content for that
-  language) shows as "no longer available" rather than silently vanishing.
 - **Packets:** assemble up to 20 worksheets — each one an immutable
   snapshot taken at "Add to packet" time, unaffected by later setting
   changes — reorder or remove sheets, then "Print packet" opens one print
@@ -121,8 +117,8 @@ connection at any point.
   giving a colliding id a fresh one rather than overwriting (already
   existed at the storage-module level from Phase 3; this phase wired it
   into the UI). "Reset saved data" clears only this app's own localStorage
-  keys (presets + favorites) after a confirmation, never anything else in
-  the browser profile.
+  keys (presets) after a confirmation, never anything else in the browser
+  profile.
 - **Content import without coding:** a teacher (or content maintainer)
   selects a content-pack JSON file plus any new images through "Add new
   content"; the whole file is validated — including deriving each new
@@ -135,7 +131,7 @@ connection at any point.
   for German actually replaces what "Create text" serves for that
   language/theme/level.
 - **Teacher documentation:** `docs/teacher-guide.md` — day-to-day usage
-  (worksheet creation, reading/writing supports, presets, favorites,
+  (worksheet creation, reading/writing supports, presets,
   packets, backup/restore, content import), written for a non-technical
   reader.
 
@@ -157,7 +153,7 @@ how, and what's still open. Summary:
   verify-offline` (and its `--unzip` variant against the actual packaged
   ZIP, extracted outside the repo) launches a completely fresh Chromium
   profile with DNS resolution forced to fail, then drives a broad real
-  user journey — all 5 languages, dyslexia preset, presets, favorites,
+  user journey — all 5 languages, dyslexia preset, presets,
   packets, print, packet print, `.docx` export — and checks for zero
   non-`file://` network requests and zero console errors.
 - **Real Firefox compatibility — automated, passing except one known Gecko
