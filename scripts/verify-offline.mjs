@@ -34,6 +34,9 @@ import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+// Default matches the development machine; CI overrides it (workstream F4).
+const CHROMIUM_BIN = process.env.CHROMIUM_BIN ?? '/usr/bin/chromium';
+
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const CDP_PORT = 9423;
 
@@ -106,7 +109,7 @@ async function main() {
   const downloadDir = await mkdtemp(path.join(os.tmpdir(), 'worksheet-offline-downloads-'));
 
   const chrome = spawn(
-    '/usr/bin/chromium',
+    CHROMIUM_BIN,
     [
       `--remote-debugging-port=${CDP_PORT}`,
       '--headless=new',

@@ -39,6 +39,7 @@ import {
   TableRow,
   TableCell,
   HeightRule,
+  LineRuleType,
   WidthType,
   VerticalAlign,
   ShadingType,
@@ -155,11 +156,22 @@ export async function exportDocx(model, layout, imageBytes, labels = DEFAULT_LAB
     );
   }
 
+  // Line spacing must be EXACT, in twips of the font size, to mean the same
+  // thing as the preview's CSS `line-height: <multiplier>` (a multiple of
+  // the font size). The default "auto" rule multiplies the font's own
+  // natural line height instead, which for Andika is 1.61em (Lexend
+  // 1.25em) — so with the real fonts installed, 1.4x came out as 2.25em
+  // per line, 60% taller than the preview, and every read-copy worksheet
+  // that filled the page spilled its copy lines onto a second page. The
+  // development machine had none of the bundled fonts installed and
+  // LibreOffice's Liberation Sans substitute (1.15em) happened to fit, so
+  // verify-docx passed until CI installed the real fonts (0.8.1, F4).
+  const lineTwips = Math.round((s.lineHeightMultiplier ?? 1.5) * s.fontSizePt * TWIPS_PER_PT);
   for (const paragraphRuns of model.bodyParagraphs) {
     children.push(
       new Paragraph({
         alignment: AlignmentType.LEFT,
-        spacing: { line: Math.round((s.lineHeightMultiplier ?? 1.5) * 240) },
+        spacing: { line: lineTwips, lineRule: LineRuleType.EXACT },
         children: toWordRuns(paragraphRuns, { fontFamily, fontSizePt: s.fontSizePt, characterSpacingTwips, wordSpacingTwips }),
         shading
       })

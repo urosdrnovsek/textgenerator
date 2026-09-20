@@ -1,0 +1,88 @@
+# Two layers, mirroring the project's own rule that nothing is claimed to
+# work until it has run in a real environment (docs/compatibility.md):
+#
+#   unit             — fast, always: unit tests, content validation, build.
+#   real-environment — real LibreOffice + real headless Chromium:
+#                      npm run verify-docx, npm run verify-offline.
+#   real-firefox     — real Firefox via geckodriver: npm run verify-firefox.
+#                      Its own job on purpose: headless Firefox on hosted
+#                      runners is the one most likely to flake, and a red
+#                      Firefox run must never hide a green Chromium/
+#                      LibreOffice run (0.8.1, workstream F4).
+#
+# The verify scripts default to the development machine's binary paths
+# and take CHROMIUM_BIN / SOFFICE_BIN / FIREFOX_BIN overrides; the jobs
+# below export them from the setup actions' outputs.
+
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run validate-content
+      - run: npm run build
+      - run: npm run content-status
+
+  real-environment:
+    runs-on: ubuntu-latest
+    needs: unit
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Install LibreOffice Writer and poppler (pdfinfo, pdftotext)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libreoffice-writer poppler-utils fontconfig
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - run: npm run build
+      - name: verify-docx (real LibreOffice conversion, page counts, full passage text)
+        run: npm run verify-docx
+        env:
+          CHROMIUM_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          SOFFICE_BIN: soffice
+      - name: verify-offline (fresh profile, network forced to fail, full journey)
+        run: npm run verify-offline
+        env:
+          CHROMIUM_BIN: ${{ steps.chrome.outputs.chrome-path }}
+
+  real-firefox:
+    runs-on: ubuntu-latest
+    needs: unit
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Install poppler (pdfinfo, pdftotext)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends poppler-utils
+      - uses: browser-actions/setup-firefox@v1
+        id: firefox
+      - uses: browser-actions/setup-geckodriver@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - run: npm run build
+      - name: verify-firefox (real printPage() page counts, packet immutability)
+        run: npm run verify-firefox
+        env:
+          FIREFOX_BIN: ${{ steps.firefox.outputs.firefox-path }}

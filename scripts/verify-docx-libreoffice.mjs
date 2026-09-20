@@ -30,6 +30,16 @@
  * A case whose export never happened fails the run, and every case in
  * CASES must produce its file.
  *
+ * LibreOffice is run with the project's bundled fonts (assets/fonts) made
+ * visible through a private fontconfig file, so the conversion uses the
+ * real Andika/Lexend/OpenDyslexic/Comic Neue — what a school machine that
+ * installed them would use — rather than whatever the machine substitutes.
+ * That distinction is not academic: the development machine had none of
+ * them installed, LibreOffice fell back to Liberation Sans, and a DOCX
+ * line-spacing bug that put every read-copy worksheet onto two pages with
+ * the real Andika stayed invisible until the fonts were present (0.8.1,
+ * workstream F4). The script prints what each family resolves to.
+ *
  * Developer/QA tool only, per blueprint 12 ("never a teacher prerequisite")
  * — not part of `npm test` or the build gate: requires `soffice` and
  * `pdfinfo`/`pdftotext` (poppler-utils) locally, and `npm run build` to
@@ -38,7 +48,7 @@
 
 import { spawn } from 'node:child_process';
 import { execFileSync } from 'node:child_process';
-import { mkdtemp, rm, readdir } from 'node:fs/promises';
+import { mkdtemp, rm, readdir, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -134,14 +144,24 @@ const CASES = [
   // export, not just that a 1-page export still converts. 'en'+level-5
   // and 'de'+level-4 are both otherwise-unused language+level pairs (see
   // the filename-collision note above).
-  // toleratedPageDelta: real cross-application DOCX pagination difference,
-  // not an app bug — confirmed by checking this exact case's real
-  // Chromium print output, which matches the app's own reported page
-  // count (2) exactly; only LibreOffice's DOCX text layout (different
-  // font metrics/line-wrap) produces 3. See docs/compatibility.md.
-  { label: 'en-andika-level5-readcopy-multipage', language: 'en', theme: 'stories', level: 5, fontId: 'andika', writingMode: 'read-copy', fontSizePt: 24, toleratedPageDelta: 1 },
+  // The 'en' level-5 case used to carry toleratedPageDelta: 1 (LibreOffice
+  // produced 3 pages where the app said 2), documented at the time as a
+  // "cross-application pagination difference, not an app bug". It was an
+  // app bug: DOCX body line spacing used Word's "auto" rule (a multiple of
+  // the font's own line height) instead of an exact multiple of the font
+  // size like the preview's CSS. With the EXACT rule (0.8.1, F4) this case
+  // is 2 pages with the real Andika and with a substitute font alike, so
+  // the tolerance is gone. toleratedPageDelta itself stays supported for
+  // a future case that genuinely needs it.
+  { label: 'en-andika-level5-readcopy-multipage', language: 'en', theme: 'stories', level: 5, fontId: 'andika', writingMode: 'read-copy', fontSizePt: 24 },
   { label: 'de-andika-level4-readonly-multipage', language: 'de', theme: 'stories', level: 4, fontId: 'andika', writingMode: 'read-only', fontSizePt: 20, lineHeightMultiplier: 2.0 }
 ];
+
+// Binaries: the defaults match the development machine; CI (and anyone
+// whose Chromium/LibreOffice live elsewhere) overrides them with
+// CHROMIUM_BIN / SOFFICE_BIN (workstream F4).
+const CHROMIUM_BIN = process.env.CHROMIUM_BIN ?? '/usr/bin/chromium';
+const SOFFICE_BIN = process.env.SOFFICE_BIN ?? 'soffice';
 
 async function main() {
   const downloadDir = await mkdtemp(path.join(os.tmpdir(), 'worksheet-lo-downloads-'));
@@ -149,7 +169,7 @@ async function main() {
   const indexPath = path.join(root, 'release/index.html');
 
   const chrome = spawn(
-    '/usr/bin/chromium',
+    CHROMIUM_BIN,
     [
       `--remote-debugging-port=${CDP_PORT}`,
       '--headless=new',
@@ -330,10 +350,34 @@ async function main() {
 
   const docxPaths = filesInDownloadDir.filter((f) => f.endsWith('.docx')).map((f) => path.join(downloadDir, f));
   if (docxPaths.length > 0) {
-    console.log(execFileSync('soffice', ['--version']).toString().trim());
-    execFileSync('soffice', ['--headless', '--convert-to', 'pdf', '--outdir', downloadDir, ...docxPaths], {
+    // A private fontconfig that adds assets/fonts on top of the system
+    // configuration; LibreOffice (and fc-match, for the log) read it via
+    // FONTCONFIG_FILE. Nothing is installed on the machine.
+    const fontsConfPath = path.join(downloadDir, 'fonts.conf');
+    await writeFile(
+      fontsConfPath,
+      `<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+  <include ignore_missing="yes">/etc/fonts/fonts.conf</include>
+  <dir>${path.join(root, 'assets/fonts')}</dir>
+  <cachedir>${path.join(downloadDir, 'fc-cache')}</cachedir>
+</fontconfig>
+`
+    );
+    const fontEnv = { ...process.env, FONTCONFIG_FILE: fontsConfPath };
+    console.log(execFileSync(SOFFICE_BIN, ['--version'], { env: fontEnv }).toString().trim());
+    for (const family of ['Andika', 'Lexend', 'OpenDyslexic', 'Comic Neue']) {
+      let resolved = '(fc-match not available)';
+      try {
+        resolved = execFileSync('fc-match', [family], { env: fontEnv }).toString().trim();
+      } catch {}
+      console.log(`  font "${family}" -> ${resolved}`);
+    }
+    execFileSync(SOFFICE_BIN, ['--headless', '--convert-to', 'pdf', '--outdir', downloadDir, ...docxPaths], {
       stdio: 'pipe',
-      timeout: 180_000
+      timeout: 180_000,
+      env: fontEnv
     });
   }
 

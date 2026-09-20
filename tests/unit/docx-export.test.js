@@ -150,6 +150,29 @@ test('exportDocx applies extraWordSpacePt as additional characterSpacing on spac
   assert.ok(spacingValues.includes(126), 'expected 6 + 120 = 126 twips on space runs (letter + word spacing combined)');
 });
 
+test('exportDocx sets body line spacing as an EXACT multiple of the font size, not of the font\'s own line height', async (t) => {
+  // CSS line-height 1.4 on an 18pt font is 25.2pt = 504 twips. Word's
+  // default "auto" rule would instead take 1.4x the font's natural line
+  // height — 1.61em for Andika — which with the real font installed pushed
+  // every page-filling read-copy worksheet onto a second page (0.8.1, F4).
+  const spacingSettings = { ...SETTINGS, fontSizePt: 18, lineHeightMultiplier: 1.4, writingMode: 'read-only' };
+  const model = { ...(await buildModel(TEST_ENTRY_ID)), settings: spacingSettings };
+  const imageBytes = await imageBytesFor(TEST_ENTRY_ID);
+
+  const blob = await exportDocx(model, { copyBlocks: [] }, imageBytes);
+  const buffer = Buffer.from(await blob.arrayBuffer());
+  const tmpDir = await mkdtemp(path.join(os.tmpdir(), 'worksheet-docx-test-'));
+  const docxPath = path.join(tmpDir, 'worksheet.docx');
+  await import('node:fs/promises').then((fs) => fs.writeFile(docxPath, buffer));
+  t.after(() => rm(tmpDir, { recursive: true, force: true }));
+
+  const documentXml = await unzipEntry(docxPath, 'word/document.xml');
+  const bodySpacing = documentXml.match(/<w:spacing w:line="(\d+)" w:lineRule="(\w+)"\/>/);
+  assert.ok(bodySpacing, 'expected a paragraph spacing element with both w:line and w:lineRule');
+  assert.equal(Number(bodySpacing[1]), 504, 'expected 1.4 x 18pt = 25.2pt = 504 twips');
+  assert.equal(bodySpacing[2], 'exact');
+});
+
 test('exportDocx renders no copy-practice lines when copyBlocks is empty (read-only mode)', async () => {
   const model = await buildModel(TEST_ENTRY_ID);
   const readOnlySettings = { ...SETTINGS, writingMode: 'read-only' };

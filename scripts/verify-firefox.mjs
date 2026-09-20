@@ -128,6 +128,9 @@ async function main() {
 
   const options = new firefox.Options();
   options.addArguments('-headless');
+  // Selenium finds `firefox` on PATH by default; FIREFOX_BIN points it at a
+  // specific build (CI's setup-firefox output) — workstream F4.
+  if (process.env.FIREFOX_BIN) options.setBinary(process.env.FIREFOX_BIN);
   // Hard-block network egress: point at an unreachable local port rather
   // than relying on this dev machine happening to be offline. file:// URLs
   // are never proxied, so local navigation is unaffected.

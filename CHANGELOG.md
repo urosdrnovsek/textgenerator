@@ -36,6 +36,20 @@ Driven by the project owner's independent review of the shipped 0.8 code.
   teacher-saved setups still restore everything. Preset names re-translate
   on language switch. The Dyslexia button and the built-in preset share one
   code path.
+- **DOCX line spacing matched the font, not the preview.** Body
+  paragraphs used Word's "auto" line rule (a multiple of the font's own
+  line height — 1.61em for Andika) where the preview multiplies the font
+  size; with the real fonts installed, every page-filling read-copy
+  worksheet spilled onto a second page. Hidden for two releases because
+  the development machine had none of the bundled fonts and LibreOffice's
+  substitute happened to fit. Now an EXACT rule in twips of the font
+  size; `verify-docx` runs LibreOffice against the bundled fonts through
+  a private fontconfig (6 of 11 cases failed on the old exporter that
+  way), and the one page-count tolerance it used to carry is gone.
+- **CI.** `.github/workflows/ci.yml`: unit tests/validation/build on every
+  push, then the LibreOffice+Chromium and Firefox verification scripts as
+  separate real-environment jobs; the scripts take `CHROMIUM_BIN` /
+  `SOFFICE_BIN` / `FIREFOX_BIN` overrides.
 - **Line stripes no longer block the worksheet.** From 0.8 (the
   multi-page work) until now, switching "alternating stripes on the
   lines" on made the fit check report WIDTH_OVERFLOW and blank the

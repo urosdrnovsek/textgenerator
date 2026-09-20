@@ -21,13 +21,43 @@ node scripts/verify-firefox.mjs --unzip dist/writing-worksheet-generator-vX.Y.Z.
 ```
 
 `verify-docx` and `verify-offline` need `soffice` (LibreOffice), `pdfinfo`
-and `pdftotext` (poppler-utils), and `/usr/bin/chromium` on the machine
-running them. `verify-firefox` additionally needs `geckodriver` (`sudo
-pacman -S geckodriver` on this Arch-based environment; Firefox itself via
-`sudo pacman -S firefox`) and the `selenium-webdriver` npm package
-(already a devDependency). All of these are developer/QA tools — never
-something a teacher needs to run (blueprint 12: "Office automation is a
-developer/QA tool, never a teacher prerequisite").
+and `pdftotext` (poppler-utils), and Chromium on the machine running
+them. `verify-firefox` additionally needs `geckodriver` (`sudo pacman -S
+geckodriver` on this Arch-based environment; Firefox itself via `sudo
+pacman -S firefox`) and the `selenium-webdriver` npm package (already a
+devDependency). All of these are developer/QA tools — never something a
+teacher needs to run (blueprint 12: "Office automation is a developer/QA
+tool, never a teacher prerequisite").
+
+Binary locations default to this development machine's (`/usr/bin/chromium`,
+`soffice` and `firefox` on `PATH`) and can be overridden per run:
+
+```bash
+CHROMIUM_BIN=/path/to/chrome npm run verify-docx      # also verify-offline
+SOFFICE_BIN=/path/to/soffice npm run verify-docx
+FIREFOX_BIN=/path/to/firefox npm run verify-firefox   # geckodriver is still found on PATH
+```
+
+`verify-docx` runs LibreOffice with the project's bundled fonts made
+visible through a private fontconfig file (`FONTCONFIG_FILE`), so the
+conversion uses the real Andika/Lexend/OpenDyslexic/Comic Neue — the
+situation on a school machine that installed them — and prints what each
+family resolved to. Nothing is installed on the machine. Without this,
+LibreOffice silently substitutes (Liberation Sans here), and that
+substitution hid a real DOCX line-spacing bug for two releases (see the
+pagination note below).
+
+**Continuous integration** (`.github/workflows/ci.yml`, 0.8.1): a `unit`
+job (tests, content validation, build, content-status) on every push and
+pull request, then `real-environment` (apt LibreOffice Writer + poppler,
+Chrome via `browser-actions/setup-chrome`; runs `verify-docx` and
+`verify-offline`) and `real-firefox` (Firefox + geckodriver via
+`browser-actions`; runs `verify-firefox`) as separate jobs, so a flaky
+headless-Firefox run can never hide a green Chromium/LibreOffice run.
+Both real-environment jobs export `CHROMIUM_BIN`/`FIREFOX_BIN` from the
+setup actions' outputs. As of 0.8.1-rc.1 the workflow has been written
+against the documented action outputs but has not yet run on GitHub —
+the project owner pushes; the first run will say.
 
 ## Multi-page worksheets (0.8)
 
@@ -105,26 +135,37 @@ regression first.
 
 | Application | Status | How verified |
 | --- | --- | --- |
-| LibreOffice (real, headless, this dev environment — version 26.8.0.3) | **Automated, passing** | `npm run verify-docx`: 11 representative `.docx` exports (every bundled language, every font, every writing mode, the near-max-content level-5 boundary case in two languages, tint, sentence-per-line, `{name}` personalization, a maximum-word-spacing case, and — since 0.8's multi-page support — two genuinely multi-page cases) — each downloaded from the real running app (not hand-built), converted to PDF with real `soffice --convert-to pdf`, and checked against the *app's own reported page count* (read from the fit indicator, not a hardcoded 1) and non-empty extracted text via `pdfinfo`/`pdftotext`. All 11 passed on the current codebase, one (`en-andika-level5-readcopy-multipage`) via an explicit `toleratedPageDelta: 1` — see below. An earlier draft of this check hand-built the WorksheetModel instead of driving the real app, hardcoded a guess at the handwriting-line row count, and reported 2 false "page overflow" failures for the level-5 cases — a reminder that this kind of check is only trustworthy when it exercises the real, live fit-checked output, not a re-implementation of it. (0.8 gotcha found while adding the word-spacing case: two cases sharing the same language+level download to the same filename, and Chromium's headless auto-download silently overwrites rather than uniquifying — each case now needs a distinct language+level pair, not just a distinct label.) |
+| LibreOffice (real, headless, this dev environment — version 26.8.0.3) | **Automated, passing** | `npm run verify-docx`: 11 representative `.docx` exports (every bundled language, every font, every writing mode, the near-max-content level-5 boundary case in two languages, tint, sentence-per-line, `{name}` personalization, a maximum-word-spacing case, and — since 0.8's multi-page support — two genuinely multi-page cases) — each downloaded from the real running app (not hand-built), converted to PDF with real `soffice --convert-to pdf`, and checked against the *app's own reported page count* (read from the fit indicator, not a hardcoded 1) and non-empty extracted text via `pdfinfo`/`pdftotext`. All 11 pass on the current codebase with no tolerance, run against the real bundled fonts (a `toleratedPageDelta: 1` on the 24pt multi-page case was removed in 0.8.1 once its cause turned out to be an exporter bug — see below). An earlier draft of this check hand-built the WorksheetModel instead of driving the real app, hardcoded a guess at the handwriting-line row count, and reported 2 false "page overflow" failures for the level-5 cases — a reminder that this kind of check is only trustworthy when it exercises the real, live fit-checked output, not a re-implementation of it. (0.8 gotcha found while adding the word-spacing case: two cases sharing the same language+level download to the same filename, and Chromium's headless auto-download silently overwrites rather than uniquifying — each case now needs a distinct language+level pair, not just a distinct label.) |
 | LibreOffice (real, interactive desktop GUI) | **Not yet tested** | The headless conversion above proves PDF-rendered pagination; it does *not* prove the file *opens cleanly*, *displays correctly on screen*, or that a teacher can *edit the text* in LibreOffice Writer afterward without breaking colors/spacing. Open a few exported files in the actual LibreOffice Writer GUI and check visually. |
 | Microsoft Word (real) | **Not tested — Word is not available in this Linux development environment** | This is the single most important remaining compatibility gap (blueprint: "the pilot needs editable output," and font substitution behavior is genuinely Word-specific, not just "close enough to LibreOffice"). Needs the user's own Windows machine with a real, licensed Word install. Checklist below. |
 | OpenOffice | **Not tested** | Lower priority per blueprint ("include OpenOffice's actual import behavior before claiming it supported" — basic, not blocking). |
 
-**LibreOffice-vs-Chromium pagination note (0.8):** since a worksheet may
-now span more than one page (see the multi-page section earlier in this
-document), each DOCX case is checked against the app's *own* reported
-page count rather than a fixed "1". One case
-(`en-andika-level5-readcopy-multipage`, 24pt read-copy) needed an
-explicit `toleratedPageDelta: 1` in `scripts/verify-docx-libreoffice.mjs`:
-the app reports 2 pages, and real headless Chromium's own print output
-(checked directly, independent of DOCX) also produces exactly 2 —
-confirming the app's own pagination is correct — but LibreOffice's DOCX
-text layout (different font metrics/line-wrap than Chromium's) produces
-3. This is exactly the risk v2's blueprint (§1, risk B) called out from
-the start: "editable DOCX cannot promise identical pagination in every
-office application." It is not a bug in this app; it's why PDF remains
-the print reference and DOCX stays "editable, verified to open and
-convert correctly" rather than "pixel/page-identical to the preview."
+**LibreOffice-vs-Chromium pagination note (0.8, corrected in 0.8.1):**
+since a worksheet may now span more than one page (see the multi-page
+section earlier in this document), each DOCX case is checked against the
+app's *own* reported page count rather than a fixed "1". In 0.8 one case
+(`en-andika-level5-readcopy-multipage`, 24pt read-copy) needed a
+`toleratedPageDelta: 1`: the app and real Chromium print said 2 pages,
+LibreOffice said 3, and this document called that "a cross-application
+pagination difference, not a bug in this app". **That was wrong.** The
+DOCX exporter set body line spacing with Word's default "auto" rule,
+which multiplies the *font's own* natural line height — 1.61em for
+Andika, 1.25em for Lexend — where the preview's CSS `line-height: 1.4`
+multiplies the font size. With the real Andika that is 2.25em per line,
+60% taller than the preview; with LibreOffice's Liberation Sans
+substitute (1.15em) it was only 15% taller, which most one-page cases
+absorbed and the 24pt case did not. The fonts were never installed on
+the development machine, so the substitute's near-miss was all
+`verify-docx` ever saw. Found when CI work (F4) made the bundled fonts
+visible to LibreOffice: 6 of 11 cases went to two pages, including a
+level-1 Slovene text. The exporter now uses the EXACT rule
+(`lineHeightMultiplier × fontSizePt`, in twips; unit-tested), all 11
+cases match the app's page count with the real fonts and with
+substitutes alike, and the tolerance is removed. The general point
+stands — editable DOCX cannot *promise* identical pagination in every
+office application, PDF remains the print reference — but it must not
+be used to explain away a measurable discrepancy before the cause is
+known.
 
 ### Real-Word checklist (needs the user's own machine)
 
