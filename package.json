@@ -8,7 +8,7 @@
     "build": "node scripts/build.mjs",
     "validate-content": "node scripts/validate-content.mjs",
     "content-status": "node scripts/content-status.mjs",
-    "test": "node --test tests/unit/",
+    "test": "node --test \"tests/unit/*.test.js\"",
     "verify-docx": "node scripts/verify-docx-libreoffice.mjs",
     "verify-offline": "node scripts/verify-offline.mjs",
     "verify-firefox": "node scripts/verify-firefox.mjs",
