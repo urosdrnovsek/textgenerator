@@ -49,6 +49,7 @@
     "field.syllableColors": "Barve zlogov",
     "action.dyslexiaPreset": "Prijazno za disleksijo",
     "field.childName": "Ime otroka (neobvezno)",
+    "field.textChoice": "Besedilo",
     "field.childNamePlaceholder": "npr. {name}",
     "field.presets": "Shranjene nastavitve",
     "action.loadPreset": "Naloži",

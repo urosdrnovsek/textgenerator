@@ -458,6 +458,194 @@
         "syllablesReviewed": true,
         "imageAccuracy": "plausible"
       }
+    },
+    {
+      "id": "stories_wet_kitten_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "The Wet Kitten",
+      "body": "Rain falls on the park. A small kitten sits under a bench. It is wet and cold. {name} picks it up. At home it gets warm milk and a soft blanket. Now it purrs.",
+      "syllable_body": "Rain falls on the park. A small kit|ten sits un|der a bench. It is wet and cold. {name} picks it up. At home it gets warm milk and a soft blan|ket. Now it purrs.",
+      "name_default": "Mia",
+      "name_default_syllables": "Mi|a",
+      "imageId": "moker_muc",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-20",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_leaf_boat_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "The Leaf Boat",
+      "body": "After the rain there is a puddle by the bench. {name} puts a green leaf on the water. A blue button is the sailor. The leaf floats away. A ladybird watches from the grass.",
+      "syllable_body": "Af|ter the rain there is a pud|dle by the bench. {name} puts a green leaf on the wa|ter. A blue but|ton is the sail|or. The leaf floats a|way. A la|dy|bird watch|es from the grass.",
+      "name_default": "Tom",
+      "name_default_syllables": "Tom",
+      "imageId": "button_boat",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-20",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_blue_kite_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "The Kite in the Oak Tree",
+      "body": "{name} has a new blue kite. It flies high above the meadow. Then the wind stops, and the kite drops into an old oak tree. {name} stands on tiptoe and reaches up. The ribbon is too high. So {name} waits. A gust of wind shakes the branch, and the kite slides down. {name} catches it.",
+      "syllable_body": "{name} has a new blue kite. It flies high a|bove the mead|ow. Then the wind stops, and the kite drops in|to an old oak tree. {name} stands on tip|toe and reach|es up. The rib|bon is too high. So {name} waits. A gust of wind shakes the branch, and the kite slides down. {name} catch|es it.",
+      "name_default": "Mia",
+      "name_default_syllables": "Mi|a",
+      "imageId": "kite_chase",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-20",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_red_mitten_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "The Red Mitten",
+      "body": "It is a cold autumn morning. Tom walks to school. On a bench he sees a red mitten with a white snowflake. Tom picks it up and looks around. A girl in a pink hat runs back along the path. She is wearing only one red mitten. Tom holds up the other one, and the girl waves. Now her hands will be warm again.",
+      "syllable_body": "It is a cold au|tumn morn|ing. Tom walks to school. On a bench he sees a red mit|ten with a white snow|flake. Tom picks it up and looks a|round. A girl in a pink hat runs back a|long the path. She is wear|ing on|ly one red mit|ten. Tom holds up the oth|er one, and the girl waves. Now her hands will be warm a|gain.",
+      "imageId": "red_mitten_bench",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-20",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_snail_race_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "The Slowest Runner",
+      "body": "One evening the forest animals held a race. The hare laughed when he saw Sam the snail at the starting line. “You will never get there,” he said. The race began, and the hare shot off like an arrow. Sam just crawled. The hare was so far ahead that he lay down under a tree for a nap. The squirrel stopped to eat some nuts. Sam did not stop. The sun went down. Still Sam crawled on. At the finish line the deer, the badger and the hedgehog cheered. The slowest runner had won.",
+      "syllable_body": "One eve|ning the for|est an|i|mals held a race. The hare laughed when he saw Sam the snail at the start|ing line. “You will nev|er get there,” he said. The race be|gan, and the hare shot off like an ar|row. Sam just crawled. The hare was so far a|head that he lay down un|der a tree for a nap. The squir|rel stopped to eat some nuts. Sam did not stop. The sun went down. Still Sam crawled on. At the fin|ish line the deer, the badg|er and the hedge|hog cheered. The slow|est run|ner had won.",
+      "imageId": "polz_dirka",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-20",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_garden_gate_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Behind the Green Gate",
+      "body": "Behind the green gate is Grandpa's garden. Mia goes there every Saturday. She opens the gate, and the smell of lavender and mint greets her. In spring Grandpa gave her a small pot with a tiny plant. “This one is yours,” he said. Mia waters it every week with the old grey watering can. She pulls out the weeds and turns the pot towards the sun. Slowly the plant grows taller. One day Mia finds a small green tomato hidden under a leaf. Her plant has given her a gift.",
+      "syllable_body": "Be|hind the green gate is Grand|pa's gar|den. Mi|a goes there ev|ery Sat|ur|day. She o|pens the gate, and the smell of lav|en|der and mint greets her. In spring Grand|pa gave her a small pot with a ti|ny plant. “This one is yours,” he said. Mi|a wa|ters it ev|ery week with the old grey wa|ter|ing can. She pulls out the weeds and turns the pot to|wards the sun. Slow|ly the plant grows tall|er. One day Mi|a finds a small green to|ma|to hid|den un|der a leaf. Her plant has giv|en her a gift.",
+      "imageId": "green_garden_gate",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-20",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_treehouse_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "The Treehouse",
+      "body": "All summer the old oak tree at the end of the garden had been waiting for something. Then Dad brought home a pile of wooden boards, and Leo, Ella and their cousin Ben knew exactly what to do.\n\nLeo climbed up first with the hammer. Ella passed the boards up to him one by one, and Ben carried the longest planks from the pile. Their dog Biscuit did not carry anything, but he watched every nail with great interest. Building was harder than it looked. One board was too short, another was crooked, and a bag of nails fell into the grass.\n\nBy evening the little house had four walls, a window and a ladder. The three builders sat inside, and they listened to the leaves whisper around them. It was the best room in the world.",
+      "syllable_body": "All sum|mer the old oak tree at the end of the gar|den had been wait|ing for some|thing. Then Dad brought home a pile of wood|en boards, and Le|o, El|la and their cous|in Ben knew ex|act|ly what to do.\n\nLe|o climbed up first with the ham|mer. El|la passed the boards up to him one by one, and Ben car|ried the long|est planks from the pile. Their dog Bis|cuit did not car|ry an|y|thing, but he watched ev|ery nail with great in|ter|est. Build|ing was hard|er than it looked. One board was too short, an|oth|er was crook|ed, and a bag of nails fell in|to the grass.\n\nBy eve|ning the lit|tle house had four walls, a win|dow and a lad|der. The three build|ers sat in|side, and they lis|tened to the leaves whis|per a|round them. It was the best room in the world.",
+      "imageId": "hisica_drevo",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-20",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_silver_key_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "The Little Silver Key",
+      "body": "While digging in Grandma's herb garden, Noah's spade hit something hard. He brushed away the soil and found a little silver key, dark with age. It was far too small for any door in the house.\n\nGrandma turned it over in her hand and smiled. “I know this key,” she said. “I lost it when I was about your age.” She fetched a wooden chest from the shed and set it on the garden table. The key turned with a click, and the lid creaked open.\n\nInside lay postcards from the mountains and the seaside, a bundle of letters, and an old photo of a little girl. “That was me,” Grandma laughed. They spent the whole afternoon reading the postcards one by one, while the cat watched from the herb pots. Noah had wanted to find treasure. He had found Grandma's stories instead.",
+      "syllable_body": "While dig|ging in Grand|ma's herb gar|den, No|ah's spade hit some|thing hard. He brushed a|way the soil and found a lit|tle sil|ver key, dark with age. It was far too small for an|y door in the house.\n\nGrand|ma turned it o|ver in her hand and smiled. “I know this key,” she said. “I lost it when I was a|bout your age.” She fetched a wood|en chest from the shed and set it on the gar|den ta|ble. The key turned with a click, and the lid creaked o|pen.\n\nIn|side lay post|cards from the moun|tains and the sea|side, a bun|dle of let|ters, and an old pho|to of a lit|tle girl. “That was me,” Grand|ma laughed. They spent the whole af|ter|noon read|ing the post|cards one by one, while the cat watched from the herb pots. No|ah had want|ed to find trea|sure. He had found Grand|ma's sto|ries in|stead.",
+      "imageId": "silver_key_garden",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-20",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_kitten_home_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "A Home for the Kitten",
+      "body": "The rain had not stopped all day. {name} sat by the window and watched the drops run down the glass, when a thin sound came from the garden. It was not the rain. It was a tiny, frightened meow.\n\nUnder the hedge, {name} found a small grey kitten, so wet that its fur stuck to its body. It was shivering. {name} lifted it carefully and carried it inside under a jumper, out of the rain.\n\nIn the warm room {name} poured some milk into a bowl. At first the kitten only sniffed at it. Then it drank and drank, until the bowl was empty and its whiskers were white. {name} made a bed out of a basket and a soft blue blanket. The kitten climbed in, turned around twice and curled up into a ball.\n\nMum said a kitten needs a name. {name} thought for a long time and chose Raindrop, because of the day they had met. Outside the rain went on falling, but Raindrop was warm, full and fast asleep. From that evening on, the small grey kitten had a home.",
+      "syllable_body": "The rain had not stopped all day. {name} sat by the win|dow and watched the drops run down the glass, when a thin sound came from the gar|den. It was not the rain. It was a ti|ny, fright|ened me|ow.\n\nUn|der the hedge, {name} found a small grey kit|ten, so wet that its fur stuck to its bod|y. It was shiv|er|ing. {name} lift|ed it care|ful|ly and car|ried it in|side un|der a jump|er, out of the rain.\n\nIn the warm room {name} poured some milk in|to a bowl. At first the kit|ten on|ly sniffed at it. Then it drank and drank, un|til the bowl was emp|ty and its whis|kers were white. {name} made a bed out of a bas|ket and a soft blue blan|ket. The kit|ten climbed in, turned a|round twice and curled up in|to a ball.\n\nMum said a kit|ten needs a name. {name} thought for a long time and chose Rain|drop, be|cause of the day they had met. Out|side the rain went on fall|ing, but Rain|drop was warm, full and fast a|sleep. From that eve|ning on, the small grey kit|ten had a home.",
+      "name_default": "Mia",
+      "name_default_syllables": "Mi|a",
+      "imageId": "muc_dom",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-20",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_old_chest_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "The Chest in the Cellar",
+      "body": "Ella did not like the cellar. The air smelled of stone and dust, and the only light came from an old lantern. But Grandpa had asked her to fetch a jar of plum jam, so down she went.\n\nBehind the jars, in the darkest corner, stood a wooden chest with iron corners and a big rusty lock. Ella had never noticed it before. A small key hung from a nail beside it. She tried it. The lock gave a tired click, and the heavy lid swung open.\n\nThere was no gold inside. There were old books with cracked leather covers, bundles of letters tied with string, and old brown photographs. One photo showed a man and a little girl in a white dress. On the back someone had written a date from long ago.\n\nElla forgot the jam. She sat down on the cold floor with the lantern beside her and read until Grandpa came looking for her. “Ah,” he said softly when he saw the photo. “That little girl is your great-grandmother.” Then he sat down beside her, and together they turned the pages.",
+      "syllable_body": "El|la did not like the cel|lar. The air smelled of stone and dust, and the on|ly light came from an old lan|tern. But Grand|pa had asked her to fetch a jar of plum jam, so down she went.\n\nBe|hind the jars, in the dark|est cor|ner, stood a wood|en chest with i|ron cor|ners and a big rust|y lock. El|la had nev|er no|ticed it be|fore. A small key hung from a nail be|side it. She tried it. The lock gave a tired click, and the heav|y lid swung o|pen.\n\nThere was no gold in|side. There were old books with cracked leath|er cov|ers, bun|dles of let|ters tied with string, and old brown pho|to|graphs. One pho|to showed a man and a lit|tle girl in a white dress. On the back some|one had writ|ten a date from long a|go.\n\nEl|la for|got the jam. She sat down on the cold floor with the lan|tern be|side her and read un|til Grand|pa came look|ing for her. “Ah,” he said soft|ly when he saw the pho|to. “That lit|tle girl is your great-grand|moth|er.” Then he sat down be|side her, and to|geth|er they turned the pag|es.",
+      "imageId": "stara_skrinja",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-20",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
     }
   ]
 }

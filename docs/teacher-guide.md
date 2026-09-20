@@ -21,10 +21,14 @@ the app needs is already inside that folder.
    each option shows the approximate word count it aims for. The app shows
    how many texts are available for your current theme+level combination
    before you create anything.
-4. Click **Create text**. The app picks one matching text (never the same
-   one twice in a row if others are available) and shows a preview on the
-   right. Changing the theme or level afterward does *not* change what's
-   shown until you click **Create text** again — so you can safely explore
+4. Click **Create text**. The app shows a matching text in the preview on
+   the right. When a theme+level combination has more than one text, a
+   **Text** list appears above the button with every title: pick one
+   directly, or click **Create text** again to move on to the next title
+   in the list (it goes through them in order and starts over at the end,
+   so a class never gets the same text twice by accident). Changing the
+   theme or level afterward does *not* change what's shown until you pick
+   a title or click **Create text** again — so you can safely explore
    filters without losing your current worksheet.
 5. When you're happy with the preview, use **Print / Save as PDF** or
    **Export as Word (.docx)** at the bottom of the sidebar (they stay in

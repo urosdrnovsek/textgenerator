@@ -7,6 +7,22 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
+- **English stories: three texts per level.** Ten original English
+  stories (two per level, 34–185 words) written for pictures already in
+  the bundle — the wet kitten, the leaf boat, the kite in the oak, the
+  red mitten, the snail race, the garden gate, the treehouse, the silver
+  key, the kitten's new home, the chest in the cellar — so the pack grows
+  without new assets. Each fits one page at default settings (checked in
+  real Chromium), follows the English syllable convention, and is marked
+  `imageAccuracy: verified`. The other four themes follow.
+- **Title picker and predictable "Create text"** (upgrade blueprint v3,
+  workstream I7, unblocked by the above). When a theme and level offer
+  more than one text, a "Text" list above the button shows every title;
+  choosing one shows it at once, and "Create text" now moves to the
+  *next* title in pack order (wrapping around) instead of picking at
+  random. The list is hidden while a cell has a single text, so nothing
+  changes for the other languages yet. `verify-docx` cases can pin an
+  `entryId`; the three English cases do.
 - **Syllable breaks re-checked in English, German, French and Spanish.**
   Every unique word in the 100 non-Slovene entries was checked against the
   per-language rules now written down in `docs/content-guide.md`

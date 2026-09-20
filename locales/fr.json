@@ -49,6 +49,7 @@
     "field.syllableColors": "Couleurs des syllabes",
     "action.dyslexiaPreset": "Adapté à la dyslexie",
     "field.childName": "Prénom de l'enfant (facultatif)",
+    "field.textChoice": "Texte",
     "field.childNamePlaceholder": "ex. {name}",
     "field.presets": "Réglages enregistrés",
     "action.loadPreset": "Charger",

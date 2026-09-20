@@ -31,24 +31,25 @@ test('chooseEntry returns null for an empty candidate list', () => {
   assert.equal(chooseEntry([], null), null);
 });
 
-test('chooseEntry avoids immediate repetition when another candidate exists', () => {
+test('chooseEntry starts with the first candidate when nothing was shown before', () => {
   const candidates = ENTRIES.filter((e) => e.theme === 'stories' && e.level === 1);
-  // rng always returns 0 -> would pick index 0 of whatever pool is offered
-  const chosen = chooseEntry(candidates, 'a1', () => 0);
-  assert.notEqual(chosen.id, 'a1');
+  assert.equal(chooseEntry(candidates, null).id, 'a1');
+});
+
+test('chooseEntry moves to the next candidate in pack order and wraps around', () => {
+  const candidates = ENTRIES.filter((e) => e.theme === 'stories' && e.level === 1);
+  assert.equal(chooseEntry(candidates, 'a1').id, 'a2');
+  assert.equal(chooseEntry(candidates, 'a2').id, 'a1');
+});
+
+test('chooseEntry starts from the first candidate when previousId belongs to another cell', () => {
+  const candidates = ENTRIES.filter((e) => e.theme === 'stories' && e.level === 1);
+  assert.equal(chooseEntry(candidates, 'b1').id, 'a1');
 });
 
 test('chooseEntry falls back to the only candidate when it equals previousId', () => {
   const candidates = [ENTRIES[2]]; // only b1
-  const chosen = chooseEntry(candidates, 'b1', () => 0);
-  assert.equal(chosen.id, 'b1');
-});
-
-test('chooseEntry is deterministic given an injected rng', () => {
-  const candidates = ENTRIES.filter((e) => e.theme === 'stories' && e.level === 1);
-  const first = chooseEntry(candidates, null, () => 0.999);
-  const second = chooseEntry(candidates, null, () => 0.999);
-  assert.equal(first.id, second.id);
+  assert.equal(chooseEntry(candidates, 'b1').id, 'b1');
 });
 
 test('listThemes returns each theme once, in first-seen order', () => {

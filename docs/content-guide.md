@@ -24,10 +24,16 @@ The app offers five themes (`stories`, `animal_facts`, `around_the_world`,
 `amazing_science`, `nature_seasons`) and five levels. **Every theme × level
 cell should have at least one entry** — an empty cell is exactly what a
 teacher sees as "No texts for this selection" (the app never quietly
-substitutes another level). Today every pack has exactly one entry per
-cell, 25 per language; the next content milestone is a second choice per
-cell, so a class doesn't get the same text twice. `npm run content-status`
-prints the grid and flags empty cells.
+substitutes another level). Slovene, German, French and Spanish have
+exactly one entry per cell, 25 per language; English is being grown to
+three per cell so a class doesn't get the same text twice (stories done
+on 2026-09-20 — ten original texts on already-bundled pictures — the
+other four themes to follow). Within a cell the app offers the titles in
+a picker and "Create text" cycles through them in pack order, so **new
+entries go at the end of the file**: the first entry of a cell is what a
+teacher sees first, and what the verify scripts get unless they pin an
+`entryId`. `npm run content-status` prints the grid and flags empty
+cells.
 
 ## Levels
 
@@ -197,7 +203,10 @@ From `npm run content-status`:
   never formally reviewed, because it was written by the project owner
   rather than reviewed after the fact. Images: `plausible` (drawn for the
   texts, never checked one by one).
-- **English, German, French, Spanish:** 25 entries each, all `reviewed`
+- **English:** 35 entries — the 25 below plus ten original stories
+  (2026-09-20, two per level, `imageAccuracy: verified` because each
+  text was written for the picture it is paired with).
+- **English (original 25), German, French, Spanish:** 25 entries each, all `reviewed`
   by an AI editorial pass on 2026-09-19 (`nativeSpeaker: false`,
   `syllablesReviewed: true`; 3 German and 3 French syllable breaks were
   fixed in that pass). A second, word-by-word syllable pass on 2026-09-20

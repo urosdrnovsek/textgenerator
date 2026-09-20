@@ -1,8 +1,7 @@
 /**
  * Content catalog: id/(theme,level) indexes, candidate filtering, and
- * selection without immediate repetition (blueprint 8.2). Owns no DOM or
- * random-selection-hidden-inside-rendering — the caller always supplies the
- * rng, so selection stays deterministic under test.
+ * selection without immediate repetition (blueprint 8.2) — deterministic,
+ * in pack order, so a second click always shows the next text. Owns no DOM.
  */
 
 /**
@@ -38,19 +37,22 @@ export function findCandidates(catalog, filter) {
 }
 
 /**
- * Picks an entry from candidates, avoiding immediate repetition of
- * previousId when another candidate exists.
+ * Picks the entry after previousId in candidate order, wrapping around, or
+ * the first candidate when previousId is not among them. Deterministic on
+ * purpose (upgrade blueprint v3, workstream I7): "Create text" cycles
+ * through a cell's texts in the order the pack lists them, so a teacher
+ * clicking twice sees every text once and can predict what comes next;
+ * random choice was a v2 assumption, not a requirement, and it made the
+ * verify-* scripts' expected page counts depend on luck once a cell held
+ * more than one entry.
  * @param {import('./validate.js').ContentEntry[]} candidates
  * @param {string | null} previousId
- * @param {() => number} [rng] injected for deterministic tests; defaults to Math.random
  * @returns {import('./validate.js').ContentEntry | null}
  */
-export function chooseEntry(candidates, previousId, rng = Math.random) {
+export function chooseEntry(candidates, previousId) {
   if (candidates.length === 0) return null;
-  const pool = candidates.length > 1 ? candidates.filter((c) => c.id !== previousId) : candidates;
-  const chosenFrom = pool.length > 0 ? pool : candidates;
-  const index = Math.floor(rng() * chosenFrom.length);
-  return chosenFrom[Math.min(index, chosenFrom.length - 1)];
+  const previousIndex = previousId === null ? -1 : candidates.findIndex((c) => c.id === previousId);
+  return candidates[(previousIndex + 1) % candidates.length];
 }
 
 /**

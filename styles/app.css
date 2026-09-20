@@ -63,6 +63,13 @@ body {
   box-sizing: border-box;
 }
 
+/* The sidebar's display: block rules above would otherwise beat the
+   hidden attribute (e.g. the title picker, shown only when a theme/level
+   cell has more than one text). */
+.app-sidebar [hidden] {
+  display: none;
+}
+
 .app-sidebar button {
   display: block;
   width: 100%;

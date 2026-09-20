@@ -145,6 +145,8 @@ const els = {
   levelSelect: document.getElementById('level-select'),
   writingModeSelect: document.getElementById('writing-mode-select'),
   candidateCount: document.getElementById('candidate-count'),
+  textSelect: document.getElementById('text-select'),
+  textSelectLabel: document.getElementById('text-select-label'),
   fontSelect: document.getElementById('font-select'),
   fontSizeInput: document.getElementById('font-size-input'),
   lineHeightInput: document.getElementById('line-height-input'),
@@ -285,7 +287,52 @@ function updateCandidateCount() {
     ? t('candidates.available', { count: candidates.length })
     : t('candidates.none');
   els.createButton.disabled = candidates.length === 0;
+  populateTextSelect(candidates);
   return candidates;
+}
+
+/**
+ * The title picker (upgrade blueprint v3, workstream I7): lists the current
+ * cell's texts by title so a teacher can go straight to one instead of
+ * clicking "Create text" through the cycle. Shown only when there is
+ * something to choose between. Choosing a title shows that text at once;
+ * "Create text" then continues from it in pack order.
+ * @param {import('./content/validate.js').ContentEntry[]} candidates
+ */
+function populateTextSelect(candidates) {
+  const select = els.textSelect;
+  select.innerHTML = '';
+  const show = candidates.length > 1;
+  select.hidden = !show;
+  els.textSelectLabel.hidden = !show;
+  if (!show) return;
+  for (const entry of candidates) {
+    const option = document.createElement('option');
+    option.value = entry.id;
+    option.textContent = entry.title;
+    select.appendChild(option);
+  }
+  syncTextSelect(candidates);
+}
+
+/** Reflects the displayed text in the picker; a filter change alone leaves the preview on a text from another cell, so nothing is selected then. */
+function syncTextSelect(candidates = findCandidates(CATALOG, state.filter)) {
+  if (els.textSelect.hidden) return;
+  const shown = candidates.some((c) => c.id === state.contentId);
+  els.textSelect.value = shown ? state.contentId : '';
+  if (!shown) els.textSelect.selectedIndex = -1;
+}
+
+function showEntry(entry) {
+  state.contentId = entry.id;
+  resetCustomImage(); // a newly created text gets its own paired image, not the previous text's custom one
+  syncTextSelect();
+  requestRender();
+}
+
+function chooseTextById(id) {
+  const entry = findCandidates(CATALOG, state.filter).find((c) => c.id === id);
+  if (entry) showEntry(entry);
 }
 
 function updateFilter(partial) {
@@ -297,9 +344,7 @@ function createText() {
   const candidates = findCandidates(CATALOG, state.filter);
   const entry = chooseEntry(candidates, state.contentId);
   if (!entry) return; // createButton is disabled in this case, but guard anyway
-  state.contentId = entry.id;
-  resetCustomImage(); // a newly created text gets its own paired image, not the previous text's custom one
-  requestRender();
+  showEntry(entry);
 }
 
 function updateWritingMode(mode) {
@@ -460,6 +505,7 @@ els.languageSelect.addEventListener('change', (event) => updateLanguage(event.ta
 els.themeSelect.addEventListener('change', (event) => updateFilter({ theme: event.target.value }));
 els.levelSelect.addEventListener('change', (event) => updateFilter({ level: Number(event.target.value) }));
 els.createButton.addEventListener('click', createText);
+els.textSelect.addEventListener('change', () => chooseTextById(els.textSelect.value));
 els.nameInput.addEventListener('change', (event) => updatePersonalizationName(event.target));
 els.writingModeSelect.addEventListener('change', (event) => updateWritingMode(event.target.value));
 els.printButton.addEventListener('click', printWorksheet);

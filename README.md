@@ -8,7 +8,8 @@ or an editable Word (`.docx`) file. It runs entirely offline — open
 `index.html`; no server, no install, no internet connection at any point.
 
 Five languages (Slovene, English, German, French, Spanish), five themes,
-five difficulty levels. Current version: `0.8.1-rc.1` — a release
+five difficulty levels; the English pack is being grown to three texts per
+theme and level (stories done, the other themes in progress). Current version: `0.8.1-rc.1` — a release
 candidate; see "Status" below for what's still open.
 
 ## Quick start
@@ -30,11 +31,13 @@ to a school.
 
 ## What it does
 
-- **Pick language, theme, level; click "Create text."** The app selects a
-  reviewed passage with a matching picture and shows a live preview. One
-  page is the default target; a worksheet that needs more says so ("will
-  print on N pages") and stays fully printable/exportable rather than being
-  blocked.
+- **Pick language, theme, level; click "Create text."** The app shows a
+  reviewed passage with a matching picture in a live preview; where a
+  theme and level have several texts (English stories have three each), a
+  title list lets the teacher pick one, and "Create text" moves on to the
+  next in order. One page is the default target; a worksheet that needs
+  more says so ("will print on N pages") and stays fully
+  printable/exportable rather than being blocked.
 - **Reading supports, each independently switchable:** four bundled fonts
   (Andika, Lexend, OpenDyslexic, Comic Neue); font size, line, letter and
   word spacing; confused-letter colors (b/d/p/q); syllable colors and/or

@@ -110,10 +110,16 @@ class CdpClient {
  * (twice — once per script author's higher-risk languages), tint,
  * sentence-per-line, and personalization each exercised at least once.
  */
+// entryId pins the text when a theme/level cell holds more than one (the
+// English pack has three per stories cell since 2026-09-20). Without it a
+// case gets the cell's first text in pack order — "Create text" is
+// deterministic (catalog.js chooseEntry) — which is fine for a case that
+// only needs *a* worksheet, but a boundary case that exists because of one
+// specific text must say which one.
 const CASES = [
   { label: 'sl-andika-level1-readcopy-colors-name', language: 'sl', theme: 'stories', level: 1, fontId: 'andika', writingMode: 'read-copy', letterColors: true, syllableColors: true, name: 'Maja' },
   { label: 'sl-andika-level5-readcopy-stress', language: 'sl', theme: 'stories', level: 5, fontId: 'andika', writingMode: 'read-copy' },
-  { label: 'en-lexend-level3-trace', language: 'en', theme: 'stories', level: 3, fontId: 'lexend', writingMode: 'trace' },
+  { label: 'en-lexend-level3-trace', language: 'en', theme: 'stories', level: 3, entryId: 'stories_piscancek_3', fontId: 'lexend', writingMode: 'trace' },
   { label: 'de-opendyslexic-level3-readonly-tint', language: 'de', theme: 'stories', level: 3, fontId: 'opendyslexic', writingMode: 'read-only', tintId: 'cream', printTint: true },
   { label: 'fr-comicneue-level3-readcopy-sentenceperline', language: 'fr', theme: 'stories', level: 3, fontId: 'comicneue', writingMode: 'read-copy', sentencePerLine: true },
   { label: 'es-andika-level5-readcopy-stress', language: 'es', theme: 'stories', level: 5, fontId: 'andika', writingMode: 'read-copy' },
@@ -136,7 +142,7 @@ const CASES = [
   // no label in it, and Chrome's headless auto-download silently overwrites
   // same-named files rather than uniquifying them, so two 'en'+level-3
   // cases would leave only one actually verified.
-  { label: 'en-andika-level1-readonly-wordspacing', language: 'en', theme: 'stories', level: 1, fontId: 'andika', writingMode: 'read-only', wordSpacingPt: 6 },
+  { label: 'en-andika-level1-readonly-wordspacing', language: 'en', theme: 'stories', level: 1, entryId: 'stories_kite_in_tree_1', fontId: 'andika', writingMode: 'read-only', wordSpacingPt: 6 },
   // Multi-page DOCX cases (upgrade blueprint v3, workstream A.9) — the
   // app now allows a worksheet to extend past one page instead of
   // blocking it; this proves Word/LibreOffice pagination actually agrees
@@ -153,7 +159,7 @@ const CASES = [
   // is 2 pages with the real Andika and with a substitute font alike, so
   // the tolerance is gone. toleratedPageDelta itself stays supported for
   // a future case that genuinely needs it.
-  { label: 'en-andika-level5-readcopy-multipage', language: 'en', theme: 'stories', level: 5, fontId: 'andika', writingMode: 'read-copy', fontSizePt: 24 },
+  { label: 'en-andika-level5-readcopy-multipage', language: 'en', theme: 'stories', level: 5, entryId: 'stories_svetilnik_5', fontId: 'andika', writingMode: 'read-copy', fontSizePt: 24 },
   { label: 'de-andika-level4-readonly-multipage', language: 'de', theme: 'stories', level: 4, fontId: 'andika', writingMode: 'read-only', fontSizePt: 20, lineHeightMultiplier: 2.0 }
 ];
 
@@ -241,6 +247,14 @@ async function main() {
           document.getElementById('level-select').value = '${testCase.level}';
           document.getElementById('level-select').dispatchEvent(new Event('change', { bubbles: true }));
           document.getElementById('btn-create').click();
+          if (${JSON.stringify(testCase.entryId ?? null)}) {
+            const picker = document.getElementById('text-select');
+            if (picker.hidden || ![...picker.options].some((o) => o.value === ${JSON.stringify(testCase.entryId ?? null)})) {
+              throw new Error('case ${testCase.label}: entry ${testCase.entryId} is not offered by the title picker');
+            }
+            picker.value = ${JSON.stringify(testCase.entryId ?? null)};
+            picker.dispatchEvent(new Event('change', { bubbles: true }));
+          }
           document.getElementById('font-select').value = '${testCase.fontId}';
           document.getElementById('font-select').dispatchEvent(new Event('change', { bubbles: true }));
           document.getElementById('writing-mode-select').value = '${testCase.writingMode}';
