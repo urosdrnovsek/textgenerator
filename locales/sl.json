@@ -38,6 +38,7 @@
     "candidates.available": "Na voljo: {count}",
     "candidates.none": "Za to izbiro ni besedil.",
     "preview.empty": "Izberite temo in stopnjo, nato kliknite »Ustvari besedilo«.",
+    "preview.pageBreak": "Stran {n}",
     "field.textSettings": "Nastavitve besedila",
     "field.font": "Pisava",
     "field.fontSize": "Velikost pisave (pt)",

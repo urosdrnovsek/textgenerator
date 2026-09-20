@@ -44,7 +44,7 @@ import {
   ShadingType,
   convertMillimetersToTwip
 } from 'docx';
-import { FONT_FAMILIES, TWIPS_PER_PT, mmToPx, mmToTwips, TINTS_BY_ID } from '../config.js';
+import { FONT_FAMILIES, TWIPS_PER_PT, mmToPx, mmToTwips, TINTS_BY_ID, contentWidthMm } from '../config.js';
 import { computeContainedImageSizeMm } from '../layout/imageBox.js';
 
 /** Matches src/render/html.js DEFAULT_LABELS — used only when a caller doesn't pass the active locale's translated labels. */
@@ -93,6 +93,11 @@ export async function exportDocx(model, layout, imageBytes, labels = DEFAULT_LAB
   const fontFamily = FONT_FAMILIES[s.fontId] ?? s.fontId;
   const characterSpacingTwips = Math.round((s.letterSpacingPt ?? 0) * TWIPS_PER_PT);
   const wordSpacingTwips = Math.round((s.extraWordSpacePt ?? 0) * TWIPS_PER_PT);
+  // Derived from the actual margin setting rather than hardcoded — margin
+  // has no UI control today (always 20mm, giving 170mm), but a settings
+  // field for it already exists and is validated, so this must not
+  // silently drift from it if a control is ever added.
+  const contentWidthTwips = mmToTwips(contentWidthMm(s.marginMm));
 
   /** @type {(Paragraph | Table)[]} */
   const children = [];
@@ -192,7 +197,7 @@ export async function exportDocx(model, layout, imageBytes, labels = DEFAULT_LAB
             cantSplit: true,
             children: [
               new TableCell({
-                width: { size: mmToTwips(170), type: WidthType.DXA },
+                width: { size: contentWidthTwips, type: WidthType.DXA },
                 margins: { top: 0, bottom: 0, left: 0, right: 0 },
                 verticalAlign: VerticalAlign.BOTTOM,
                 borders: { top: noBorder, left: noBorder, right: noBorder, bottom: { style: BorderStyle.SINGLE, size: 6, color: '333333' } },
@@ -204,7 +209,7 @@ export async function exportDocx(model, layout, imageBytes, labels = DEFAULT_LAB
       }
       children.push(
         new Table({
-          width: { size: mmToTwips(170), type: WidthType.DXA },
+          width: { size: contentWidthTwips, type: WidthType.DXA },
           borders: {
             top: noBorder,
             bottom: noBorder,

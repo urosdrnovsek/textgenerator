@@ -38,6 +38,7 @@
     "candidates.available": "Disponibles : {count}",
     "candidates.none": "Aucun texte pour cette sélection.",
     "preview.empty": "Choisissez un thème et un niveau, puis cliquez sur « Créer le texte ».",
+    "preview.pageBreak": "Page {n}",
     "field.textSettings": "Réglages du texte",
     "field.font": "Police",
     "field.fontSize": "Taille de police (pt)",

@@ -658,6 +658,13 @@ function handleResetData() {
 
 /** Reflects state.packet into the sidebar list/buttons — pure DOM sync, no state changes. */
 function renderPacketList() {
+  if (state.packet.length === 0) {
+    const empty = document.createElement('li');
+    empty.className = 'packet-empty';
+    empty.textContent = t('packet.empty');
+    els.packetList.replaceChildren(empty);
+    return;
+  }
   els.packetList.replaceChildren(
     ...state.packet.map((sheet, index) => {
       const li = document.createElement('li');
@@ -720,7 +727,7 @@ function updatePacketControls() {
 function handleAddToPacket() {
   if (!state.lastGood) return;
   const { model, layout, pageCount } = state.lastGood;
-  const labels = { nameLine: t('header.nameLine'), date: t('header.date') };
+  const labels = { nameLine: t('header.nameLine'), date: t('header.date'), pageBreak: (n) => t('preview.pageBreak', { n }) };
   const result = addSnapshot(state.packet, {
     id: generateSnapshotId(),
     title: model.title,
@@ -768,7 +775,7 @@ function handlePrintPacket() {
   // Restore the print surface to the currently displayed single worksheet
   // so a subsequent plain "Print" click reflects what's on screen again.
   if (state.lastGood) {
-    const labels = { nameLine: t('header.nameLine'), date: t('header.date') };
+    const labels = { nameLine: t('header.nameLine'), date: t('header.date'), pageBreak: (n) => t('preview.pageBreak', { n }) };
     renderWorksheet(state.lastGood.model, state.lastGood.layout, els.printSurface, labels);
   }
 }
@@ -895,7 +902,7 @@ async function requestRender() {
     return;
   }
 
-  const labels = { nameLine: t('header.nameLine'), date: t('header.date') };
+  const labels = { nameLine: t('header.nameLine'), date: t('header.date'), pageBreak: (n) => t('preview.pageBreak', { n }) };
   // previewMode (page-break markers) only in #preview — never the print
   // surface or a packet sheet (upgrade blueprint v3, workstream A).
   renderWorksheet(model, result.layout, els.preview, labels, true);
@@ -917,7 +924,7 @@ async function handleExportDocx() {
   try {
     const { model, layout } = state.lastGood;
     const imageBytes = dataUrlToUint8Array(model.image.path);
-    const labels = { nameLine: t('header.nameLine'), date: t('header.date') };
+    const labels = { nameLine: t('header.nameLine'), date: t('header.date'), pageBreak: (n) => t('preview.pageBreak', { n }) };
     const blob = await exportDocx(model, layout, imageBytes, labels);
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');

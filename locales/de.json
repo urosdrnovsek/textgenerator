@@ -38,6 +38,7 @@
     "candidates.available": "Verfügbar: {count}",
     "candidates.none": "Keine Texte für diese Auswahl.",
     "preview.empty": "Wählen Sie Thema und Stufe, dann klicken Sie auf „Text erstellen“.",
+    "preview.pageBreak": "Seite {n}",
     "field.textSettings": "Texteinstellungen",
     "field.font": "Schriftart",
     "field.fontSize": "Schriftgröße (pt)",

@@ -84,13 +84,18 @@ function writePresets(presets, storage) {
 }
 
 /**
- * Saves (or overwrites, by name) a named setup.
+ * Saves (or overwrites, by name) a named setup. Validates settings first
+ * (same check importPresetsFromJson runs — upgrade blueprint v3, workstream
+ * D2) even though the caller today always builds `settings` from already-
+ * valid live UI state: defense in depth against a future caller that
+ * doesn't, rather than trusting that invariant to hold forever.
  * @param {string} name
  * @param {Preset['settings']} settings
  * @param {Storage} [storage]
  * @returns {{ ok: true, preset: Preset } | { ok: false }}
  */
 export function savePreset(name, settings, storage = defaultStorage()) {
+  if (!validatePresetSettings(settings).ok) return { ok: false };
   const presets = listPresets(storage);
   const existingIndex = presets.findIndex((p) => p.name === name);
   /** @type {Preset} */

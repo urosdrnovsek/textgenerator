@@ -94,6 +94,13 @@ test('savePreset reports failure (not a false success) when storage cannot actua
   assert.equal(result.ok, false);
 });
 
+test('savePreset rejects invalid settings instead of writing them unchecked', () => {
+  const storage = createMockStorage();
+  const result = savePreset('Ime', { ...SETTINGS, rulingId: 'does-not-exist' }, storage);
+  assert.equal(result.ok, false);
+  assert.deepEqual(listPresets(storage), []);
+});
+
 test('deletePreset removes only the targeted preset', () => {
   const storage = createMockStorage();
   const a = savePreset('A', SETTINGS, storage).preset;

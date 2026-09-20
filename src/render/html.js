@@ -11,8 +11,8 @@ import { IMAGE_BOX_MAX_WIDTH_MM, IMAGE_BOX_MAX_HEIGHT_MM } from '../layout/image
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 
-/** @type {{ nameLine: string, date: string }} */
-const DEFAULT_LABELS = { nameLine: 'Ime:', date: 'Datum:' };
+/** @type {{ nameLine: string, date: string, pageBreak: (n: number) => string }} */
+const DEFAULT_LABELS = { nameLine: 'Ime:', date: 'Datum:', pageBreak: (n) => `Stran ${n}` };
 
 /**
  * @param {import('../text/runs.js').StyledRun[]} runs
@@ -159,15 +159,16 @@ export function applyLineStripes(bodyElement) {
  * offset from the page's own top rather than inserted into element flow.
  * @param {HTMLElement} page already has `position: relative`
  * @param {number[]} pageBreaksMm
+ * @param {(n: number) => string} pageBreakLabel translates "Page {n}" for the active locale — was hardcoded English until found in a 2026-09-20 review, since this app is otherwise fully localized
  */
-function renderPageBreakMarkers(page, pageBreaksMm) {
+function renderPageBreakMarkers(page, pageBreaksMm, pageBreakLabel) {
   pageBreaksMm.forEach((offsetMm, index) => {
     const marker = document.createElement('div');
     marker.className = 'ws-page-break-marker no-print';
     marker.style.top = `${offsetMm}mm`;
     const label = document.createElement('span');
     label.className = 'ws-page-break-label';
-    label.textContent = `Page ${index + 2}`;
+    label.textContent = pageBreakLabel(index + 2);
     marker.append(label);
     page.append(marker);
   });
@@ -265,7 +266,7 @@ export function renderWorksheet(model, layout, container, labels = DEFAULT_LABEL
   }
 
   if (previewMode && layout.pageBreaksMm?.length > 0) {
-    renderPageBreakMarkers(page, layout.pageBreaksMm);
+    renderPageBreakMarkers(page, layout.pageBreaksMm, labels.pageBreak ?? DEFAULT_LABELS.pageBreak);
   }
 
   return page;

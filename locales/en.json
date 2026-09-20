@@ -38,6 +38,7 @@
     "candidates.available": "Available: {count}",
     "candidates.none": "No texts for this selection.",
     "preview.empty": "Choose a theme and level, then click \"Create text\".",
+    "preview.pageBreak": "Page {n}",
     "field.textSettings": "Text settings",
     "field.font": "Font",
     "field.fontSize": "Font size (pt)",

@@ -135,6 +135,12 @@ body {
   white-space: nowrap;
 }
 
+#packet-list li.packet-empty {
+  border-bottom: none;
+  color: #555;
+  font-style: italic;
+}
+
 #packet-list li button {
   width: auto;
   margin: 0;

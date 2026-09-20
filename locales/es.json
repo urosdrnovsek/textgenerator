@@ -38,6 +38,7 @@
     "candidates.available": "Disponibles: {count}",
     "candidates.none": "No hay textos para esta selección.",
     "preview.empty": "Elige un tema y un nivel, luego pulsa «Crear texto».",
+    "preview.pageBreak": "Página {n}",
     "field.textSettings": "Ajustes del texto",
     "field.font": "Tipo de letra",
     "field.fontSize": "Tamaño de letra (pt)",
