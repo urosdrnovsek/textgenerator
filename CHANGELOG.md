@@ -49,7 +49,8 @@ Driven by the project owner's independent review of the shipped 0.8 code.
 - **CI.** `.github/workflows/ci.yml`: unit tests/validation/build on every
   push, then the LibreOffice+Chromium and Firefox verification scripts as
   separate real-environment jobs; the scripts take `CHROMIUM_BIN` /
-  `SOFFICE_BIN` / `FIREFOX_BIN` overrides.
+  `SOFFICE_BIN` / `FIREFOX_BIN` overrides. All three jobs green on
+  GitHub-hosted runners as of 808cd0b.
 - **Line stripes no longer block the worksheet.** From 0.8 (the
   multi-page work) until now, switching "alternating stripes on the
   lines" on made the fit check report WIDTH_OVERFLOW and blank the

@@ -55,9 +55,11 @@ Chrome via `browser-actions/setup-chrome`; runs `verify-docx` and
 `browser-actions`; runs `verify-firefox`) as separate jobs, so a flaky
 headless-Firefox run can never hide a green Chromium/LibreOffice run.
 Both real-environment jobs export `CHROMIUM_BIN`/`FIREFOX_BIN` from the
-setup actions' outputs. As of 0.8.1-rc.1 the workflow has been written
-against the documented action outputs but has not yet run on GitHub —
-the project owner pushes; the first run will say.
+setup actions' outputs. First green run on GitHub-hosted `ubuntu-latest`
+on 2026-09-20 (commit 808cd0b, after two workflow fixes: `node --test`
+needs a glob on Node 22, and `setup-geckodriver` has no `v1` tag) — so
+verify-docx, verify-offline and verify-firefox have now all passed on a
+machine that is not the development box.
 
 ## Multi-page worksheets (0.8)
 
