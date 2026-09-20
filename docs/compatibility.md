@@ -12,8 +12,8 @@ based on a similar-looking row, and don't delete a row that failed.
 npm run build           # always first — everything below tests release/
 npm test                 # unit-level logic
 npm run validate-content # content + asset manifest schema
-npm run verify-docx      # real LibreOffice: exports every representative worksheet through the actual app, converts via headless soffice, checks page count + text
-npm run verify-offline   # fresh Chromium profile, DNS resolution forced to fail, full user journey, checks zero network requests / zero console errors
+npm run verify-docx      # real LibreOffice: exports every representative worksheet through the actual app, converts via headless soffice, checks page count + that the complete title and passage survived; a missing export fails the run
+npm run verify-offline   # fresh Chromium profile, DNS resolution forced to fail, full user journey incl. real .docx downloads, reset-image and built-in-preset behaviour; zero network requests / zero console errors
 npm run verify-firefox   # real Firefox via geckodriver: same broad journey, plus packet page-count via WebDriver's real printPage() command
 npm run package           # produces dist/writing-worksheet-generator-vX.Y.Z.zip
 node scripts/verify-offline.mjs --unzip dist/writing-worksheet-generator-vX.Y.Z.zip   # same offline check, but against the actual extracted ZIP outside the repo

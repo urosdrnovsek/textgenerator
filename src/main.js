@@ -81,20 +81,15 @@ let THEMES = listThemes(CATALOG);
 /** Preserved so the letter-colors checkbox can restore real colors after being switched off. */
 const DEFAULT_LETTER_COLORS = { b: '#B42318', d: '#166534', p: '#7C3AED', q: '#B45309' };
 
-/** blueprint 8.6: "a Dyslexia-friendly preset as an adjustable starting point" — a starting combination, not a claim of clinical efficacy. */
-const DYSLEXIA_PRESET = {
-  fontSizePt: 18,
-  lineHeightMultiplier: 1.6,
-  letterSpacingPt: 0.5,
-  extraWordSpacePt: 1.5,
-  letterColorsEnabled: true,
-  syllableColorsEnabled: true
-};
-
-const STANDARD_SETTINGS = {
-  language: DEFAULT_LANGUAGE,
-  theme: THEMES[0],
-  level: 1,
+/**
+ * The two built-in presets are *formatting* presets: no language, theme,
+ * level, or text. A teacher-saved setup (extractPresetSettings) is a full
+ * setup and does carry those, and restoring them is the point of saving
+ * one. Until 0.8.1 the built-ins carried the app's default language too,
+ * so loading "Standard" in an English session switched the whole app back
+ * to Slovene and replaced the current text (upgrade blueprint v3, H).
+ */
+const STANDARD_FORMATTING = {
   fontId: 'andika',
   fontSizePt: 16,
   lineHeightMultiplier: 1.4,
@@ -115,6 +110,15 @@ const STANDARD_SETTINGS = {
   marginMm: 20
 };
 
+/** blueprint 8.6: "a Dyslexia-friendly preset as an adjustable starting point" (Andika, larger type, ~1.6 line spacing, modest spacing) — a starting combination, not a claim of clinical efficacy. */
+const DYSLEXIA_FORMATTING = {
+  ...STANDARD_FORMATTING,
+  fontSizePt: 18,
+  lineHeightMultiplier: 1.6,
+  letterSpacingPt: 0.5,
+  extraWordSpacePt: 1.5
+};
+
 /**
  * Built-in presets always exist, independent of localStorage (blueprint
  * 8.10: "a couple of sensible built-in presets out of the box"). A
@@ -123,19 +127,8 @@ const STANDARD_SETTINGS = {
  */
 function getBuiltInPresets() {
   return [
-    { id: 'builtin-standard', name: t('preset.builtin.standard'), builtin: true, settings: STANDARD_SETTINGS },
-    {
-      id: 'builtin-dyslexia',
-      name: t('preset.builtin.dyslexia'),
-      builtin: true,
-      settings: {
-        ...STANDARD_SETTINGS,
-        fontSizePt: DYSLEXIA_PRESET.fontSizePt,
-        lineHeightMultiplier: DYSLEXIA_PRESET.lineHeightMultiplier,
-        letterSpacingPt: DYSLEXIA_PRESET.letterSpacingPt,
-        extraWordSpacePt: DYSLEXIA_PRESET.extraWordSpacePt
-      }
-    }
+    { id: 'builtin-standard', name: t('preset.builtin.standard'), builtin: true, settings: STANDARD_FORMATTING },
+    { id: 'builtin-dyslexia', name: t('preset.builtin.dyslexia'), builtin: true, settings: DYSLEXIA_FORMATTING }
   ];
 }
 
@@ -286,6 +279,7 @@ function switchLanguage(language) {
   applyStaticLabels();
   populateLanguageSelect();
   populateThemeSelect();
+  populatePresetSelect(); // built-in preset names are translated
   renderPacketList();
 }
 
@@ -354,11 +348,18 @@ function updatePersonalizationName(inputEl) {
   if (state.contentId) requestRender();
 }
 
+/** Clears the custom image without rendering — its other callers (createText, updateLanguage) go on to render themselves. */
 function resetCustomImage() {
   state.customImage = null;
   els.imageUpload.value = '';
   els.resetImageButton.disabled = true;
   els.imageStatus.textContent = '';
+}
+
+/** The Reset button's own handler: the one caller that must trigger the render itself, or the preview and lastGood keep the uploaded image. */
+function handleResetImage() {
+  resetCustomImage();
+  if (state.contentId) requestRender();
 }
 
 async function handleImageUpload(file) {
@@ -470,17 +471,9 @@ function updateHeaderField(field, enabled) {
   if (state.contentId) requestRender();
 }
 
+/** The one-click button is the same thing as loading the built-in "Dyslexia-friendly" preset — one code path, so the two can't drift. */
 function applyDyslexiaPreset() {
-  Object.assign(state.settings, {
-    fontSizePt: DYSLEXIA_PRESET.fontSizePt,
-    lineHeightMultiplier: DYSLEXIA_PRESET.lineHeightMultiplier,
-    letterSpacingPt: DYSLEXIA_PRESET.letterSpacingPt,
-    extraWordSpacePt: DYSLEXIA_PRESET.extraWordSpacePt,
-    letterColors: DYSLEXIA_PRESET.letterColorsEnabled ? DEFAULT_LETTER_COLORS : {},
-    syllableMode: DYSLEXIA_PRESET.syllableColorsEnabled ? 'colors' : 'off'
-  });
-  syncSettingsControlsFromState();
-  if (state.contentId) requestRender();
+  applyPresetSettings(DYSLEXIA_FORMATTING, { keepSelection: true });
 }
 
 /** Everything a preset should capture. Deliberately excludes personalization.name — presets are reusable setups shared across children, not tied to one child's saved worksheet (blueprint 8.10, section 15). */
@@ -517,10 +510,22 @@ function extractPresetSettings() {
  * a different app version, or corrupted in localStorage, which would
  * otherwise reach layout/measure.js later and throw instead of failing with
  * a clear message.
+ *
+ * `keepSelection` (built-in formatting presets and the Dyslexia button):
+ * the current language, theme, level and text all stay; only formatting
+ * changes, and the current worksheet is re-rendered. Without it (a
+ * teacher-saved setup): language/theme/level are restored and a text is
+ * created for them, which is what saving a setup is for.
  * @param {unknown} settings
+ * @param {{ keepSelection?: boolean }} [options]
  */
-function applyPresetSettings(settings) {
-  const validation = validatePresetSettings(settings);
+function applyPresetSettings(settings, { keepSelection = false } = {}) {
+  // Built-in presets carry no selection; fill it from the current state so
+  // the same validator serves both kinds.
+  const full = keepSelection
+    ? { ...settings, language: state.language, theme: state.filter.theme, level: state.filter.level }
+    : settings;
+  const validation = validatePresetSettings(full);
   if (!validation.ok) {
     // eslint-disable-next-line no-console
     console.error('Preset failed validation, not applied:', validation.errors);
@@ -529,39 +534,50 @@ function applyPresetSettings(settings) {
   }
   els.storageStatus.textContent = '';
 
-  if (settings.language && settings.language !== state.language && LANGUAGES.includes(settings.language)) {
-    switchLanguage(settings.language);
+  if (!keepSelection) {
+    if (full.language !== state.language && LANGUAGES.includes(full.language)) {
+      switchLanguage(full.language);
+    }
+    state.filter.theme = full.theme;
+    state.filter.level = full.level;
   }
-  state.filter.theme = settings.theme;
-  state.filter.level = settings.level;
-  Object.assign(state.settings, {
-    fontId: settings.fontId,
-    fontSizePt: settings.fontSizePt,
-    lineHeightMultiplier: settings.lineHeightMultiplier,
-    letterSpacingPt: settings.letterSpacingPt,
-    extraWordSpacePt: settings.extraWordSpacePt,
-    writingMode: settings.writingMode,
-    rulingId: settings.rulingId,
-    guideHeightMm: settings.guideHeightMm,
-    letterColors: settings.letterColors,
-    syllableMode: settings.syllableMode,
-    syllableColors: settings.syllableColors,
-    header: settings.header,
-    sentencePerLine: settings.sentencePerLine ?? false,
-    tintId: settings.tintId ?? 'none',
-    printTint: settings.printTint ?? false,
-    lineStripes: settings.lineStripes ?? false,
-    printStripes: settings.printStripes ?? false,
-    marginMm: settings.marginMm
+  // structuredClone: the preset's nested header/letterColors/syllableColors
+  // must not become state.settings' own objects — the settings panel
+  // mutates those in place, which would otherwise silently rewrite the
+  // preset (a module constant, for the built-ins) for the rest of the
+  // session. Same aliasing class as the packet-snapshot bug.
+  Object.assign(state.settings, structuredClone({
+    fontId: full.fontId,
+    fontSizePt: full.fontSizePt,
+    lineHeightMultiplier: full.lineHeightMultiplier,
+    letterSpacingPt: full.letterSpacingPt,
+    extraWordSpacePt: full.extraWordSpacePt,
+    writingMode: full.writingMode,
+    rulingId: full.rulingId,
+    guideHeightMm: full.guideHeightMm,
+    letterColors: full.letterColors,
+    syllableMode: full.syllableMode,
+    syllableColors: full.syllableColors,
+    header: full.header,
+    sentencePerLine: full.sentencePerLine ?? false,
+    tintId: full.tintId ?? 'none',
+    printTint: full.printTint ?? false,
+    lineStripes: full.lineStripes ?? false,
+    printStripes: full.printStripes ?? false,
+    marginMm: full.marginMm
     // personalization is left untouched — loading a setup must not erase a name already typed in
-  });
+  }));
 
   els.themeSelect.value = state.filter.theme;
   els.levelSelect.value = String(state.filter.level);
   els.writingModeSelect.value = state.settings.writingMode;
   syncSettingsControlsFromState();
-  updateCandidateCount();
-  createText();
+  if (keepSelection) {
+    if (state.contentId) requestRender();
+  } else {
+    updateCandidateCount();
+    createText();
+  }
 }
 
 function getAllPresets() {
@@ -585,7 +601,7 @@ function populatePresetSelect() {
 
 function handleLoadPreset() {
   const preset = getAllPresets().find((p) => p.id === els.presetSelect.value);
-  if (preset) applyPresetSettings(preset.settings);
+  if (preset) applyPresetSettings(preset.settings, { keepSelection: Boolean(preset.builtin) });
 }
 
 function handleDeletePreset() {
@@ -983,7 +999,7 @@ els.loadPresetButton.addEventListener('click', handleLoadPreset);
 els.deletePresetButton.addEventListener('click', handleDeletePreset);
 els.savePresetButton.addEventListener('click', handleSavePreset);
 els.imageUpload.addEventListener('change', (e) => handleImageUpload(e.target.files[0]));
-els.resetImageButton.addEventListener('click', resetCustomImage);
+els.resetImageButton.addEventListener('click', handleResetImage);
 
 els.exportSetupsButton.addEventListener('click', handleExportSetups);
 els.importSetupsInput.addEventListener('change', (e) => handleImportSetups(e.target.files[0]));

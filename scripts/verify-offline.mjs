@@ -17,15 +17,19 @@
  * release/ if no zip is given.
  *
  * Exercises a broad real user journey (every bundled language, dyslexia
- * supports, presets, packets, content import, both exports) and
- * fails on: any non-file:// network request, any console error/exception,
- * or a failed download.
+ * supports, presets, packets, a multi-page worksheet, print, and real
+ * .docx export with the download tracked to completion) and fails on:
+ * any non-file:// network request, any console error/exception, or a
+ * .docx export that doesn't produce a real OOXML file. (Until 2026-09-20
+ * this header claimed the script failed on a failed download, but it had
+ * no download tracking at all and never clicked the export button — the
+ * "print and .docx export" step only pressed Print.)
  *
  * Developer/QA tool, not part of `npm test`. Run with `npm run verify-offline`.
  */
 
 import { spawn, execFileSync } from 'node:child_process';
-import { mkdtemp, mkdir, rm, cp } from 'node:fs/promises';
+import { mkdtemp, mkdir, rm, cp, readFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -99,6 +103,7 @@ async function resolveIndexPath() {
 async function main() {
   const indexPath = await resolveIndexPath();
   const profileDir = await mkdtemp(path.join(os.tmpdir(), 'worksheet-offline-profile-'));
+  const downloadDir = await mkdtemp(path.join(os.tmpdir(), 'worksheet-offline-downloads-'));
 
   const chrome = spawn(
     '/usr/bin/chromium',
@@ -119,6 +124,8 @@ async function main() {
 
   const networkRequests = [];
   const consoleErrors = [];
+  /** @type {Array<{ label: string, ok: boolean, note: string }>} */
+  const journeyChecks = [];
 
   try {
     await waitForCdp();
@@ -132,6 +139,12 @@ async function main() {
     await cdp.send('Page.enable');
     await cdp.send('Runtime.enable');
     await cdp.send('Network.enable');
+    await cdp.send('Browser.setDownloadBehavior', { behavior: 'allow', downloadPath: downloadDir, eventsEnabled: true });
+
+    const downloadEvents = [];
+    cdp.on((method, params) => {
+      if (method === 'Browser.downloadProgress') downloadEvents.push(params);
+    });
 
     cdp.on((method, params) => {
       if (method === 'Network.requestWillBeSent') {
@@ -171,6 +184,45 @@ async function main() {
       throw new Error('fit check never settled');
     }
 
+    // Clicks "Export as Word", waits for the real download to complete,
+    // and checks the file on disk is a non-trivial OOXML zip. Same
+    // download-tracking mechanism as verify-docx-libreoffice.mjs.
+    async function exportDocxAndCheck(label) {
+      const ready = await evalJs(`!document.getElementById('btn-docx').disabled`);
+      if (!ready) {
+        journeyChecks.push({ label, ok: false, note: 'export button was disabled' });
+        return;
+      }
+      const beforeCount = downloadEvents.filter((e) => e.state === 'completed').length;
+      await evalJs(`document.getElementById('btn-docx').click();`);
+      let completed = null;
+      for (let i = 0; i < 40 && !completed; i++) {
+        await wait(200);
+        const finished = downloadEvents.filter((e) => e.state === 'completed');
+        if (finished.length > beforeCount) completed = finished[finished.length - 1];
+      }
+      if (!completed) {
+        journeyChecks.push({ label, ok: false, note: 'download never completed' });
+        return;
+      }
+      // Chromium names the file from the app's download attribute; there is
+      // exactly one new .docx per export, so read whichever is newest.
+      const { readdir, stat } = await import('node:fs/promises');
+      const files = (await readdir(downloadDir)).filter((f) => f.endsWith('.docx'));
+      let newest = null;
+      for (const f of files) {
+        const info = await stat(path.join(downloadDir, f));
+        if (!newest || info.mtimeMs > newest.mtimeMs) newest = { name: f, mtimeMs: info.mtimeMs };
+      }
+      const bytes = newest ? await readFile(path.join(downloadDir, newest.name)) : Buffer.alloc(0);
+      const isZip = bytes.length > 1000 && bytes.subarray(0, 2).toString('hex') === '504b';
+      journeyChecks.push({
+        label,
+        ok: isZip,
+        note: isZip ? `${newest.name}, ${bytes.length} bytes, PK signature` : `file missing or not OOXML (${bytes.length} bytes)`
+      });
+    }
+
     console.log('Exercising a broad user journey across all 5 languages...');
     for (const language of ['sl', 'en', 'de', 'fr', 'es']) {
       await evalJs(`
@@ -193,9 +245,89 @@ async function main() {
     `);
     await wait(200);
 
+    console.log('Checking built-in presets keep the current language and text (workstream H)...');
+    await evalJs(`
+      document.getElementById('language-select').value = 'en';
+      document.getElementById('language-select').dispatchEvent(new Event('change', { bubbles: true }));
+    `);
+    await waitForFit();
+    const titleBeforeBuiltin = await evalJs(`document.querySelector('#preview .ws-title')?.textContent ?? ''`);
+    await evalJs(`
+      document.getElementById('preset-select').value = 'builtin-standard';
+      document.getElementById('btn-load-preset').click();
+    `);
+    await waitForFit();
+    const langAfterBuiltin = await evalJs(`document.documentElement.lang`);
+    const titleAfterBuiltin = await evalJs(`document.querySelector('#preview .ws-title')?.textContent ?? ''`);
+    const presetOptionTexts = await evalJs(`[...document.getElementById('preset-select').options].slice(0, 2).map((o) => o.textContent)`);
+    journeyChecks.push({
+      label: 'loading the built-in Standard preset in an English session keeps English and the current text',
+      ok: langAfterBuiltin === 'en' && titleAfterBuiltin === titleBeforeBuiltin,
+      note: `lang=${langAfterBuiltin}, title ${titleAfterBuiltin === titleBeforeBuiltin ? 'unchanged' : 'CHANGED'}`
+    });
+    journeyChecks.push({
+      label: 'built-in preset names re-translate on language switch',
+      ok: presetOptionTexts[0] === 'Standard copy practice' && presetOptionTexts[1] === 'Dyslexia-friendly',
+      note: JSON.stringify(presetOptionTexts)
+    });
+    // A teacher-saved setup, by contrast, must still restore its language.
+    await evalJs(`
+      window.prompt = () => 'offline-test-english-setup';
+      document.getElementById('btn-save-preset').click();
+    `);
+    await wait(100);
+    await evalJs(`
+      document.getElementById('language-select').value = 'de';
+      document.getElementById('language-select').dispatchEvent(new Event('change', { bubbles: true }));
+    `);
+    await waitForFit();
+    await evalJs(`
+      const select = document.getElementById('preset-select');
+      select.value = [...select.options].find((o) => o.textContent === 'offline-test-english-setup').value;
+      document.getElementById('btn-load-preset').click();
+    `);
+    await waitForFit();
+    const langAfterSaved = await evalJs(`document.documentElement.lang`);
+    journeyChecks.push({
+      label: 'loading a teacher-saved setup restores the language it was saved in',
+      ok: langAfterSaved === 'en',
+      note: `lang=${langAfterSaved}`
+    });
+
+    console.log('Checking "Reset image" re-renders the worksheet (workstream G)...');
+    const bundledImageSrc = await evalJs(`document.querySelector('#preview .ws-image').src`);
+    // A minimal valid 1x1 PNG, written to disk so the real file input can be driven via CDP.
+    const pngPath = path.join(downloadDir, 'tiny.png');
+    await (await import('node:fs/promises')).writeFile(
+      pngPath,
+      Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==', 'base64')
+    );
+    const { root: domRoot } = await cdp.send('DOM.getDocument');
+    const { nodeId: uploadNodeId } = await cdp.send('DOM.querySelector', { nodeId: domRoot.nodeId, selector: '#image-upload' });
+    await cdp.send('DOM.setFileInputFiles', { nodeId: uploadNodeId, files: [pngPath] });
+    await waitForFit();
+    await wait(300);
+    const customImageSrc = await evalJs(`document.querySelector('#preview .ws-image').src`);
+    await evalJs(`document.getElementById('btn-reset-image').click();`);
+    await waitForFit();
+    await wait(300);
+    const previewSrcAfterReset = await evalJs(`document.querySelector('#preview .ws-image').src`);
+    const printSurfaceSrcAfterReset = await evalJs(`document.querySelector('#print-surface .ws-image').src`);
+    journeyChecks.push({
+      label: 'uploading a custom image changes the preview image',
+      ok: customImageSrc !== bundledImageSrc,
+      note: customImageSrc !== bundledImageSrc ? 'preview switched to the uploaded image' : 'preview did NOT change'
+    });
+    journeyChecks.push({
+      label: '"Reset image" restores the bundled image in the preview and the print surface (not just the button state)',
+      ok: previewSrcAfterReset === bundledImageSrc && printSurfaceSrcAfterReset === bundledImageSrc,
+      note: previewSrcAfterReset === bundledImageSrc ? 'both restored' : 'still showing the uploaded image'
+    });
+
     console.log('Exercising print and .docx export...');
     await evalJs(`document.getElementById('btn-print').click();`); // window.print() is a real no-op without a print handler in headless mode — safe
     await wait(200);
+    await exportDocxAndCheck('.docx export of the current worksheet completed');
 
     console.log('Exercising packet print...');
     await evalJs(`document.getElementById('btn-print-packet').click();`);
@@ -224,6 +356,7 @@ async function main() {
     }
     await evalJs(`document.getElementById('btn-print').click();`);
     await wait(200);
+    await exportDocxAndCheck('.docx export of a multi-page worksheet completed');
   } finally {
     chrome.kill();
     // Give Chromium a moment to actually release its profile-directory file
@@ -234,6 +367,7 @@ async function main() {
     await rm(profileDir, { recursive: true, force: true }).catch((error) => {
       console.log(`(cleanup note: couldn't remove ${profileDir}: ${error.message})`);
     });
+    await rm(downloadDir, { recursive: true, force: true }).catch(() => {});
   }
 
   console.log('\nResults:');
@@ -244,7 +378,13 @@ async function main() {
   console.log(`  ${consoleOk ? 'PASS' : 'FAIL'}  zero console errors/exceptions (observed: ${consoleErrors.length})`);
   if (!consoleOk) for (const e of consoleErrors) console.log(`         - ${e}`);
 
-  const allOk = networkOk && consoleOk;
+  let journeyOk = true;
+  for (const c of journeyChecks) {
+    journeyOk = journeyOk && c.ok;
+    console.log(`  ${c.ok ? 'PASS' : 'FAIL'}  ${c.label} (${c.note})`);
+  }
+
+  const allOk = networkOk && consoleOk && journeyOk;
   console.log(allOk ? '\nFresh-machine offline test PASSED.' : '\nFresh-machine offline test FAILED.');
   process.exitCode = allOk ? 0 : 1;
 }

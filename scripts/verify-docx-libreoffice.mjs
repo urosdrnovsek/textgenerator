@@ -23,8 +23,12 @@
  * invalid) document than the one the app actually produces.
  *
  * For each downloaded .docx this converts to PDF with real headless
- * LibreOffice and checks the PDF has exactly 1 page and contains the
- * expected text — not just that no exception was thrown.
+ * LibreOffice and checks the PDF has the page count the app itself
+ * reported for that worksheet (1 for most cases; more for the multi-page
+ * cases) and contains the complete rendered title and passage — not just
+ * that no exception was thrown, and not just that *some* text came out.
+ * A case whose export never happened fails the run, and every case in
+ * CASES must produce its file.
  *
  * Developer/QA tool only, per blueprint 12 ("never a teacher prerequisite")
  * — not part of `npm test` or the build gate: requires `soffice` and
@@ -259,6 +263,12 @@ async function main() {
       const expectedPages = Number(await evalJs(`document.getElementById('fit-indicator').dataset.pageCount`));
 
       const beforeCount = downloadEvents.filter((e) => e.state === 'completed').length;
+      // The rendered passage, captured from the real app before export, is
+      // what the PDF is later checked against — "non-empty text" proved
+      // nothing (a header line alone passed it).
+      const renderedTitle = await evalJs(`document.querySelector('#preview .ws-title')?.textContent ?? ''`);
+      const renderedBody = await evalJs(`document.querySelector('#preview .ws-body').textContent`);
+
       await evalJs(`document.getElementById('btn-docx').click();`);
       let completed = null;
       for (let i = 0; i < 40; i++) {
@@ -273,7 +283,7 @@ async function main() {
         downloaded.push({ testCase, ok: false, note: 'docx download never completed' });
         continue;
       }
-      downloaded.push({ testCase, ok: true, guid: completed.guid, fitText, expectedPages });
+      downloaded.push({ testCase, ok: true, guid: completed.guid, fitText, expectedPages, renderedTitle, renderedBody });
     }
   } finally {
     chrome.kill();
@@ -282,9 +292,14 @@ async function main() {
   const filesInDownloadDir = await readdir(downloadDir);
   console.log(`Downloaded ${filesInDownloadDir.length} .docx file(s). Converting via real LibreOffice...`);
 
+  let allOk = true;
   const okCases = downloaded.filter((d) => d.ok);
   for (const d of downloaded.filter((d) => !d.ok)) {
-    console.log(`  SKIP  ${d.testCase.label}  — ${d.note}`);
+    // A case that never produced its file is a failure of the run, not a
+    // footnote — until 2026-09-20 these were logged and then ignored, so a
+    // disabled export button or a hung download could not fail this check.
+    allOk = false;
+    console.log(`  FAIL  ${d.testCase.label}  — export never happened: ${d.note}`);
   }
 
   // Each case downloads to worksheet-<language>-level-<level>.docx (never
@@ -296,6 +311,23 @@ async function main() {
     okCases.map((d) => [`worksheet-${d.testCase.language}-level-${d.testCase.level}.docx`, d])
   );
 
+  // Every case in CASES must have produced its artifact — a shrunken
+  // results table must never look like a pass.
+  const expectedFiles = new Set(CASES.map((c) => `worksheet-${c.language}-level-${c.level}.docx`));
+  const actualFiles = new Set(filesInDownloadDir.filter((f) => f.endsWith('.docx')));
+  for (const f of expectedFiles) {
+    if (!actualFiles.has(f)) {
+      allOk = false;
+      console.log(`  FAIL  ${f}  — expected artifact missing from the download directory`);
+    }
+  }
+  for (const f of actualFiles) {
+    if (!expectedFiles.has(f)) {
+      allOk = false;
+      console.log(`  FAIL  ${f}  — unexpected artifact (a case's filename doesn't match its language/level?)`);
+    }
+  }
+
   const docxPaths = filesInDownloadDir.filter((f) => f.endsWith('.docx')).map((f) => path.join(downloadDir, f));
   if (docxPaths.length > 0) {
     console.log(execFileSync('soffice', ['--version']).toString().trim());
@@ -305,8 +337,13 @@ async function main() {
     });
   }
 
+  // LibreOffice re-wraps lines and pdftotext inserts its own line breaks
+  // and hyphen-less line joins, so the only stable comparison is
+  // whitespace-insensitive: NFC-normalize, then strip every whitespace
+  // character, and check the PDF *contains* the rendered title and body.
+  const normalizeForCompare = (s) => s.normalize('NFC').replace(/\s+/g, '');
+
   console.log('\nResults:');
-  let allOk = true;
   for (const docxPath of docxPaths) {
     const pdfPath = docxPath.replace(/\.docx$/, '.pdf');
     const label = path.basename(docxPath);
@@ -318,9 +355,14 @@ async function main() {
       const pagesMatch = info.match(/^Pages:\s+(\d+)/m);
       const pages = pagesMatch ? Number(pagesMatch[1]) : null;
       const text = execFileSync('pdftotext', [pdfPath, '-']).toString();
-      const ok = pages !== null && Math.abs(pages - expectedPages) <= toleratedDelta && text.trim().length > 0;
+      const pdfNormalized = normalizeForCompare(text);
+      const bodyOk = matched ? pdfNormalized.includes(normalizeForCompare(matched.renderedBody)) : false;
+      const titleOk = matched ? pdfNormalized.includes(normalizeForCompare(matched.renderedTitle)) : false;
+      const pagesOk = pages !== null && Math.abs(pages - expectedPages) <= toleratedDelta;
+      const ok = pagesOk && bodyOk && titleOk;
       allOk = allOk && ok;
-      console.log(`  ${ok ? 'PASS' : 'FAIL'}  ${label}  pages=${pages} (expected ${expectedPages}${toleratedDelta ? ` ±${toleratedDelta}` : ''})  textLength=${text.trim().length}`);
+      const textNote = bodyOk && titleOk ? 'full passage present' : `text MISMATCH (title ${titleOk ? 'ok' : 'missing'}, body ${bodyOk ? 'ok' : 'incomplete'})`;
+      console.log(`  ${ok ? 'PASS' : 'FAIL'}  ${label}  pages=${pages} (expected ${expectedPages}${toleratedDelta ? ` ±${toleratedDelta}` : ''})  ${textNote}`);
     } catch (error) {
       allOk = false;
       console.log(`  FAIL  ${label}  — conversion/inspection failed: ${error.message}`);

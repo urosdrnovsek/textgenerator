@@ -93,6 +93,12 @@ to name and keep it. **Load** brings a saved setup back at any time;
 **Delete** removes one (the two built-in setups — Standard and
 Dyslexia-friendly — can't be deleted, only used as a starting point).
 
+The two built-in setups change only the formatting: loading one keeps
+your current language, theme, level and the text you're looking at. A
+setup you saved yourself restores everything it was saved with, including
+the language and the theme/level, and creates a text for them — that's
+what saving a setup is for.
+
 A saved setup does **not** include a child's name or a custom image — those
 stay specific to the one worksheet you were making, not the reusable setup.
 
