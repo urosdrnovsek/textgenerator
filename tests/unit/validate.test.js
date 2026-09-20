@@ -153,3 +153,62 @@ test('rejects sentences that do not reproduce body when joined', async () => {
   assert.equal(result.ok, false);
   assert.ok(result.errors.some((e) => e.code === 'SENTENCES_MISMATCH'));
 });
+
+// Optional review provenance (0.8.1, workstream I8). Only `status` is
+// required; the rest is validated for type/enum when present.
+
+test('accepts the optional review provenance fields and carries them through', async () => {
+  const pack = await loadSlPack();
+  pack.entries[0].review = {
+    status: 'reviewed',
+    reviewer: 'A. Native',
+    date: '2026-09-21',
+    nativeSpeaker: true,
+    syllablesReviewed: true,
+    imageAccuracy: 'verified'
+  };
+  const result = validatePack(pack, ASSET_IDS);
+  assert.equal(result.ok, true);
+  assert.deepEqual(result.pack.entries[0].review, {
+    status: 'reviewed',
+    reviewer: 'A. Native',
+    date: '2026-09-21',
+    nativeSpeaker: true,
+    syllablesReviewed: true,
+    imageAccuracy: 'verified'
+  });
+});
+
+test('a review with only status stays valid and leaves the provenance fields undefined', async () => {
+  const pack = await loadSlPack();
+  pack.entries[0].review = { status: 'draft' };
+  const result = validatePack(pack, ASSET_IDS);
+  assert.equal(result.ok, true);
+  const review = result.pack.entries[0].review;
+  assert.equal(review.status, 'draft');
+  for (const field of ['reviewer', 'date', 'nativeSpeaker', 'syllablesReviewed', 'imageAccuracy']) {
+    assert.equal(review[field], undefined, field);
+  }
+});
+
+test('rejects malformed review provenance fields, each with its own field name', async () => {
+  const bad = [
+    ['reviewer', ''],
+    ['reviewer', 42],
+    ['date', '21.09.2026'],
+    ['date', 20260921],
+    ['nativeSpeaker', 'yes'],
+    ['syllablesReviewed', 1],
+    ['imageAccuracy', 'checked']
+  ];
+  for (const [field, value] of bad) {
+    const pack = await loadSlPack();
+    pack.entries[0].review = { status: 'reviewed', [field]: value };
+    const result = validatePack(pack, ASSET_IDS);
+    assert.equal(result.ok, false, `${field}=${JSON.stringify(value)} should be rejected`);
+    assert.ok(
+      result.errors.some((e) => e.code === 'INVALID_FIELD' && e.field === `review.${field}`),
+      `${field}=${JSON.stringify(value)} should report review.${field}`
+    );
+  }
+});

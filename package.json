@@ -7,6 +7,7 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "validate-content": "node scripts/validate-content.mjs",
+    "content-status": "node scripts/content-status.mjs",
     "test": "node --test tests/unit/",
     "verify-docx": "node scripts/verify-docx-libreoffice.mjs",
     "verify-offline": "node scripts/verify-offline.mjs",

@@ -14,6 +14,10 @@ const KNOWN_THEMES = new Set([
   'nature_seasons'
 ]);
 const KNOWN_REVIEW_STATUSES = new Set(['draft', 'reviewed', 'rejected']);
+const KNOWN_IMAGE_ACCURACIES = new Set(['verified', 'plausible', 'mismatch']);
+// YYYY-MM-DD only — a review date is a label for humans and
+// `content-status`, never parsed as a timestamp.
+const ISO_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 const ALLOWED_PLACEHOLDERS = new Set(['name']);
 const PLACEHOLDER_PATTERN = /\{([a-zA-Z_]+)\}/g;
 
@@ -30,7 +34,22 @@ const PLACEHOLDER_PATTERN = /\{([a-zA-Z_]+)\}/g;
  * @property {string} [name_default_syllables] optional syllable-marked form of name_default, so the default name can take part in syllable coloring
  * @property {string[]} [sentences] must join with single spaces to reproduce body exactly
  * @property {string} imageId
- * @property {{status: string}} review
+ * @property {EntryReview} review
+ */
+
+/**
+ * Review provenance for one entry. Only `status` is required; the rest is
+ * optional metadata that `scripts/content-status.mjs` aggregates so the
+ * quality of a pack is measurable rather than asserted. Every optional
+ * field is validated for type/enum when present, so older packs (and
+ * teacher-imported ones that only set `status`) stay valid.
+ * @typedef {object} EntryReview
+ * @property {string} status `draft` | `reviewed` | `rejected`
+ * @property {string} [reviewer] who did the review (a person, or e.g. "Claude (AI editorial pass)")
+ * @property {string} [date] ISO date, YYYY-MM-DD
+ * @property {boolean} [nativeSpeaker] was the reviewer a native speaker of this language
+ * @property {boolean} [syllablesReviewed] were the syllable breaks checked, not just the prose
+ * @property {string} [imageAccuracy] `verified` (someone confirmed the picture matches the text) | `plausible` (topically reassigned, never checked) | `mismatch` (known wrong)
  */
 
 /**
@@ -204,6 +223,25 @@ function validateEntry(raw, assetIds, seenIds) {
   } else if (!KNOWN_REVIEW_STATUSES.has(review.status)) {
     push('INVALID_FIELD', 'review.status', `unknown review status "${review.status}"`);
   }
+  if (review) {
+    if (review.reviewer !== undefined && !isNonEmptyString(review.reviewer)) {
+      push('INVALID_FIELD', 'review.reviewer', 'review.reviewer must be a non-empty string when present');
+    }
+    if (review.date !== undefined && !(typeof review.date === 'string' && ISO_DATE_PATTERN.test(review.date))) {
+      push('INVALID_FIELD', 'review.date', 'review.date must be an ISO date (YYYY-MM-DD) when present');
+    }
+    for (const flag of ['nativeSpeaker', 'syllablesReviewed']) {
+      if (review[flag] !== undefined && typeof review[flag] !== 'boolean') {
+        push('INVALID_FIELD', `review.${flag}`, `review.${flag} must be a boolean when present`);
+      }
+    }
+    if (
+      review.imageAccuracy !== undefined &&
+      !(typeof review.imageAccuracy === 'string' && KNOWN_IMAGE_ACCURACIES.has(review.imageAccuracy))
+    ) {
+      push('INVALID_FIELD', 'review.imageAccuracy', `unknown image accuracy "${review.imageAccuracy}"`);
+    }
+  }
 
   if (errors.length > 0) {
     return { entry: null, errors };
@@ -224,7 +262,16 @@ function validateEntry(raw, assetIds, seenIds) {
       name_default_syllables: typeof entry.name_default_syllables === 'string' ? normalize(entry.name_default_syllables) : undefined,
       sentences: Array.isArray(entry.sentences) ? entry.sentences.map((s) => normalize(s)) : undefined,
       imageId: entry.imageId,
-      review: { status: review.status }
+      review: {
+        status: /** @type {string} */ (review.status),
+        // Optional provenance is carried through unchanged (undefined when
+        // absent) — the catalog does not use it, content-status does.
+        reviewer: /** @type {string | undefined} */ (review.reviewer),
+        date: /** @type {string | undefined} */ (review.date),
+        nativeSpeaker: /** @type {boolean | undefined} */ (review.nativeSpeaker),
+        syllablesReviewed: /** @type {boolean | undefined} */ (review.syllablesReviewed),
+        imageAccuracy: /** @type {string | undefined} */ (review.imageAccuracy)
+      }
     },
     errors: []
   };

@@ -69,8 +69,12 @@ project owner's own hardware.
 
 Still open, deliberately: a native speaker's review of the English, German,
 French and Spanish content (they've had a careful editorial pass, not a
-native speaker's read); a broader image-accuracy pass over the German,
-French and Spanish entries (plausible, not verified); country-specific
+native speaker's read — 0 of 100 entries native-reviewed); an
+image-accuracy pass over the entries whose pictures were reassigned on
+topic rather than drawn for the text (9 of 125 verified, the rest
+plausible). Both numbers come from the per-entry review record and are
+printed by `npm run content-status`, so progress is measurable rather
+than asserted (see `docs/content-guide.md`). Also open: country-specific
 handwriting rulings (blocked on real classroom samples); fonts are declared
 but not embedded in `.docx`; zebra striping is screen/PDF only. The
 project's development history is in `CHANGELOG.md`.
@@ -79,16 +83,19 @@ project's development history is in `CHANGELOG.md`.
 
 Texts live in `content/<language>.json`, one file per language, validated
 by `src/content/validate.js` and gated at build time by
-`scripts/validate-content.mjs`. Every entry carries a `version`, bumped
-when its text is corrected. The teacher-facing way to add texts (no
-rebuild) is described in `docs/teacher-guide.md`; the permanent way is to
-edit the JSON and run `npm run build`.
+`scripts/validate-content.mjs`. `docs/content-guide.md` is the maintainer's
+reference: the five level definitions and word bands, every entry field
+(including `{name}` and `name_default`), and how to record a review so
+`npm run content-status` can count it. The teacher-facing way to add texts
+(no rebuild) is described in `docs/teacher-guide.md`; the permanent way is
+to edit the JSON and run `npm run build`.
 
 ## Development
 
 ```bash
 npm test                  # unit test suite (Node's built-in runner)
 npm run validate-content  # content packs + asset manifest
+npm run content-status    # per-language report: theme x level grid, review/native-speaker/image-accuracy counts
 npm run build             # rebuild release/ after editing src/, styles/, content/ or locales/
 npm run verify-docx       # real LibreOffice: exports through the real app, converts, checks page count + full text (needs soffice, poppler-utils, chromium)
 npm run verify-offline    # fresh Chromium profile, network forced to fail, full journey incl. real .docx downloads
@@ -116,6 +123,7 @@ never a teacher prerequisite.
   packaging
 - `tests/unit/` — Node test-runner suite
 - `docs/teacher-guide.md` — non-technical usage guide
+- `docs/content-guide.md` — levels, entry schema, review provenance
 - `docs/compatibility.md` — release matrix: what's verified, how, and
   what's still open
 - `CHANGELOG.md` — development history

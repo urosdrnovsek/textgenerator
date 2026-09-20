@@ -150,7 +150,8 @@ content) can add new texts without changing any code:
 
 1. Prepare a JSON file describing one or more texts for a single language,
    following the same structure as the files already bundled in
-   `content/*.json` — copy an existing entry as a starting point. If your
+   `content/*.json` — copy an existing entry as a starting point (every
+   field is explained in `docs/content-guide.md`). If your
    text should address the child by name, use `{name}` in the text exactly
    like the bundled examples do, and also fill in `name_default` (the name
    used whenever a teacher leaves the name field blank) — an entry using

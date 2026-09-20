@@ -15,7 +15,8 @@
       "name_default_syllables": "Mi|a",
       "imageId": "moker_muc",
       "review": {
-        "status": "draft"
+        "status": "draft",
+        "imageAccuracy": "plausible"
       }
     },
     {
@@ -30,7 +31,8 @@
       "name_default_syllables": "Tom",
       "imageId": "piscancek_gnezdo",
       "review": {
-        "status": "draft"
+        "status": "draft",
+        "imageAccuracy": "plausible"
       }
     },
     {
@@ -43,7 +45,8 @@
       "syllable_body": "V goz|du so pri|re|di|li ve|li|ko dir|ko. Vsi so se sme|ja|li pol|žu Ti|tu, ki se je po|ča|si pri|pla|zil na štart|no čr|to. »Ti pa ni|ka|mor ne pri|deš!« so vpi|li. Ko je po|čil strel, so vsi švi|gni|li na|prej. Polž Ti|to pa je šel po svo|je, ko|rak za ko|ra|kom. Za|jec se je med po|tjo u|sta|vil in za|spal. Ve|ve|ri|ca je od|šla na|bi|rat leš|ni|ke. Polž Ti|to pa je vztraj|no le|zel in se ni u|sta|vil. Ko je son|ce za|šlo, je prav on pr|vi pri|le|zel na cilj. Po|ča|si, a vztraj|no — in to je bi|lo do|volj.",
       "imageId": "polz_dirka",
       "review": {
-        "status": "draft"
+        "status": "draft",
+        "imageAccuracy": "plausible"
       }
     },
     {
@@ -58,7 +61,8 @@
       "name_default_syllables": "Tom",
       "imageId": "piscancek_skedenj",
       "review": {
-        "status": "draft"
+        "status": "draft",
+        "imageAccuracy": "plausible"
       }
     },
     {
@@ -73,7 +77,8 @@
       "name_default_syllables": "Tom",
       "imageId": "muc_dom",
       "review": {
-        "status": "draft"
+        "status": "draft",
+        "imageAccuracy": "plausible"
       }
     },
     {
@@ -86,7 +91,8 @@
       "syllable_body": "So|va je pti|ca, ki je bud|na po|no|či. I|ma ve|li|ke o|kro|gle o|či. Nje|na gla|va se o|br|ne ze|lo da|leč. Le|ti či|sto ti|ho. Ta|ko u|ja|me mi|ši v te|mi. Pod|ne|vi so|va spi.",
       "imageId": "sova_veja",
       "review": {
-        "status": "draft"
+        "status": "draft",
+        "imageAccuracy": "plausible"
       }
     },
     {
@@ -99,7 +105,8 @@
       "syllable_body": "Če|be|la je majh|na ži|val, ki nam da|je med. Le|ta od cve|ta do cve|ta in na|bi|ra sla|dek nek|tar. Med le|te|njem pre|na|ša cvet|ni prah, za|to lah|ko rast|li|ne o|bro|di|jo sad|je. Če|be|le ži|vi|jo sku|paj v pa|nju, kjer jih je na ti|so|če. Vsa|ka o|prav|lja svo|je de|lo, vse sku|paj pa skr|bi|jo za svo|jo kra|lji|co. Brez če|bel bi i|me|li ve|li|ko manj sad|ja in cve|tja.",
       "imageId": "cebela_cvet",
       "review": {
-        "status": "draft"
+        "status": "draft",
+        "imageAccuracy": "plausible"
       }
     },
     {
@@ -112,7 +119,8 @@
       "syllable_body": "Del|fin je e|na naj|pa|met|nej|ših ži|va|li v mor|ju. Če|prav ži|vi v vo|di in od|lič|no pla|va, ni ri|ba, am|pak se|sa|lec — prav ta|ko kot pes a|li člo|vek. Za|to ne mo|re di|ha|ti pod vo|do in mo|ra po|go|sto pri|pla|va|ti na po|vr|šje po zrak. Del|fi|ni ži|vi|jo v sku|pi|nah, ki jim pra|vi|mo ja|te. Med se|boj se spo|ra|zu|me|va|jo z vi|so|ki|mi žviž|gi, vsak del|fin pa i|ma ce|lo svoj po|se|ben žvižg, ne|kak|šno i|me. Zna|ni so tu|di po tem, da si med se|boj ra|di po|ma|ga|jo. Ka|dar je ka|te|ri bo|lan, ga dru|gi po|ti|ska|jo k po|vr|šju, da lah|ko za|di|ha.",
       "imageId": "delfin_jata",
       "review": {
-        "status": "draft"
+        "status": "draft",
+        "imageAccuracy": "plausible"
       }
     },
     {
@@ -125,7 +133,8 @@
       "syllable_body": "Ne|to|pir je e|di|na ži|val s kri|li, ki res|nič|no le|ti in je ven|dar|le ni pti|ca, am|pak se|sa|lec. Nje|go|va kri|la ni|so po|kri|ta s per|jem, tem|več s tan|ko ko|žo, na|pe|to med dol|gi|mi pr|sti.\n\nVe|či|na ne|to|pir|jev spi pod|ne|vi, na lov pa se od|pra|vi v mra|ku. Vi|si z gla|vo nav|zdol v ja|mah, na pod|stre|šjih a|li v dup|lih dre|ves. Ko se zbu|di te|ma, po|le|ti in lo|vi žu|žel|ke, med nji|mi tu|di ko|mar|je.\n\nNaj|bolj ne|na|vad|no je, ka|ko se ne|to|pir znaj|de v te|mi. Od|da|ja zvo|ke, ki so ta|ko vi|so|ki, da jih na|še u|ho ne sli|ši. Ti se od|bi|je|jo od o|vir in žu|želk ter se vr|ne|jo na|zaj. Iz od|me|va ne|to|pir na|tanč|no ve, kje je hra|na in kam mo|ra le|te|ti. Za|to tu|di v po|pol|ni te|mi ne tr|či ob nič.",
       "imageId": "netopir",
       "review": {
-        "status": "draft"
+        "status": "draft",
+        "imageAccuracy": "plausible"
       }
     },
     {
@@ -138,7 +147,8 @@
       "syllable_body": "Del|fin vel|ja za e|no naj|pa|met|nej|ših ži|va|li na sve|tu. Če|prav vse živ|lje|nje pre|ži|vi v mor|ju in pla|va hi|tre|je kot mar|si|ka|te|ra ri|ba, sam ni ri|ba — je se|sa|lec, prav ta|ko kot pes, slon a|li člo|vek. Za|to ne mo|re di|ha|ti pod vo|do. Zrak za|ja|me sko|zi di|hal|no od|pr|ti|no na vr|hu gla|ve, za|to se mo|ra vsa|kih ne|kaj mi|nut vr|ni|ti na po|vr|šje.\n\nDel|fi|ni so dru|žab|ne ži|va|li in ži|vi|jo v sku|pi|nah, ki jim pra|vi|mo ja|te. V ja|ti skr|bi|jo drug za dru|ge|ga, sku|paj lo|vi|jo in se sku|paj bra|ni|jo pred ne|var|no|stjo. Med se|boj se spo|ra|zu|me|va|jo z žviž|gi, kli|ki in cvi|lje|njem. Vsak del|fin i|ma ce|lo svoj po|se|ben žvižg, po ka|te|rem ga to|va|ri|ši pre|po|zna|jo — ne|kak|šno i|me, ki ga no|si vse živ|lje|nje.\n\nNaj|bolj o|sup|lji|va je nji|ho|va spo|sob|nost, da vi|di|jo z zvo|kom. Del|fin od|da|ja hi|tre kli|ke, ki po|tu|je|jo sko|zi vo|do. Ko zvok za|de|ne ri|bo, ska|lo a|li po|top|lje|no lad|jo, se od|bi|je in vr|ne na|zaj. Iz te|ga od|me|va del|fin na|tanč|no u|go|to|vi, ka|ko da|leč je pred|met in ka|ko ve|lik je — ce|lo v po|pol|ni te|mi a|li kal|ni vo|di. Tej spret|no|sti pra|vi|mo e|ho|lo|ka|ci|ja in del|fi|nu po|ma|ga naj|ti hra|no ter se i|zo|gni|ti ne|var|no|sti.",
       "imageId": "delfin_morje",
       "review": {
-        "status": "draft"
+        "status": "draft",
+        "imageAccuracy": "plausible"
       }
     },
     {
@@ -151,7 +161,8 @@
       "syllable_body": "V E|gip|tu sto|ji|jo ve|li|ke pi|ra|mi|de. Zgra|di|li so jih pred dav|ni|mi ča|si. Na|re|je|ne so iz tež|kih kam|nov. Pi|ra|mi|de so bi|le grob|ni|ce kra|ljev. Se|ga|jo vi|so|ko v ne|bo. Še da|nes sto|ji|jo v pu|šča|vi.",
       "imageId": "piramide_giza",
       "review": {
-        "status": "draft"
+        "status": "draft",
+        "imageAccuracy": "plausible"
       }
     },
     {
@@ -164,7 +175,8 @@
       "syllable_body": "V E|gip|tu, de|že|li pu|ščav, sto|ji|jo mo|goč|ne pi|ra|mi|de. Zgra|di|li so jih pred več ti|soč le|ti. Lju|dje so drug na dru|ge|ga zla|ga|li ve|li|kan|ske kam|ni|te blo|ke, do|kler ni na|sta|la vi|so|ka pi|ra|mi|da. V njih so po|ko|pa|va|li kra|lje, ki so jim re|kli fa|ra|o|ni. Pi|ra|mi|de so ta|ko trd|ne, da sto|ji|jo še da|nes. So med naj|sta|rej|ši|mi zgrad|ba|mi na sve|tu.",
       "imageId": "piramide_bloki",
       "review": {
-        "status": "draft"
+        "status": "draft",
+        "imageAccuracy": "plausible"
       }
     },
     {
@@ -177,7 +189,8 @@
       "syllable_body": "V E|gip|tu, de|že|li vro|čih pu|ščav, se v ne|bo dvi|ga|jo mo|goč|ne pi|ra|mi|de. Naj|bolj zna|ne sto|ji|jo pri me|stu Gi|za. Lju|dje so jih zgra|di|li pred več kot šti|ri ti|soč le|ti, in to brez stro|jev, ka|kr|šne po|zna|mo da|nes. Iz kam|no|lo|ma so vle|kli o|grom|ne kam|ni|te blo|ke, tež|ke kot av|to|mo|bil, ter jih zla|ga|li dru|ge|ga na dru|ge|ga, vse viš|je in viš|je. V pi|ra|mi|dah so po|ko|pa|va|li fa|ra|o|ne, e|gip|čan|ske kra|lje. Ver|je|li so, da bo vla|dar tu|di po smr|ti po|tre|bo|val svo|je bo|ga|stvo, za|to so ga po|ko|pa|li sku|paj z njim. Ni čud|no, da pi|ra|mi|de še da|nes bu|ri do|mi|šlji|jo.",
       "imageId": "piramide_kamnolom",
       "review": {
-        "status": "draft"
+        "status": "draft",
+        "imageAccuracy": "plausible"
       }
     },
     {
@@ -190,7 +203,8 @@
       "syllable_body": "V E|gip|tu, de|že|li vro|čih pu|ščav in re|ke Nil, se v ne|bo dvi|ga|jo mo|goč|ne pi|ra|mi|de. Naj|bolj zna|ne in naj|več|je sto|ji|jo pri me|stu Gi|za. Lju|dje so jih zgra|di|li pred več kot šti|ri ti|soč le|ti, ko še ni bi|lo ne stro|jev ne žer|ja|vov.\n\nKa|ko so to|rej pre|mi|ka|li ta|ko tež|ke kam|ne? De|lav|ci so iz kam|no|lo|ma vle|kli ve|li|kan|ske blo|ke, vsak tež|ji od av|to|mo|bi|la, in jih po klan|či|nah po|ča|si vle|kli vse viš|je. Za en sam tak stolp so po|tre|bo|va|li na ti|so|če rok in mno|go let de|la.\n\nV pi|ra|mi|dah so po|ko|pa|va|li fa|ra|o|ne, e|gip|čan|ske kra|lje. Ver|je|li so, da vla|dar tu|di po smr|ti po|tu|je na|prej in da bo po|tre|bo|val svo|je bo|ga|stvo, za|to so ga skri|li glo|bo|ko v pi|ra|mi|do. Naj|več|ja med nji|mi je bi|la več ti|soč let naj|viš|ja zgrad|ba na sve|tu. Ni čud|no, da še da|nes bu|ri do|mi|šlji|jo lju|di z vse|ga sve|ta.",
       "imageId": "piramide_klancina",
       "review": {
-        "status": "draft"
+        "status": "draft",
+        "imageAccuracy": "plausible"
       }
     },
     {
@@ -203,7 +217,8 @@
       "syllable_body": "Be|net|ke so e|no naj|bolj ne|na|vad|nih in naj|lep|ših mest na sve|tu. Le|ži|jo v I|ta|li|ji, zgra|je|ne pa so na več kot sto maj|hnih o|to|kih sre|di plit|ve mor|ske la|gu|ne.\n\nKar ta|koj o|pa|ziš, ko pri|deš v Be|net|ke, je ne|kaj čud|ne|ga: ni|kjer ni av|to|mo|bi|lov. Na|me|sto cest i|ma me|sto ka|na|le, na|me|sto av|to|mo|bi|lov pa čol|ne. Med vi|so|ki|mi sta|ri|mi hi|ša|mi vi|ju|ga|jo oz|ke vod|ne po|ti, čez ka|te|re se pne na sto|ti|ne maj|hnih mo|stov. Lju|dje se v služ|bo in šo|lo vo|zi|jo z la|dji|ca|mi, ki plu|je|jo po vo|di kot vod|ni av|to|bu|si. Naj|bolj zna|ni od vseh čol|nov pa so gon|do|le — vit|ki, čr|ni in e|le|gant|ni. Voz|nik sto|ji na kon|cu gon|do|le in jo po|ga|nja z e|nim sa|mim dol|gim ve|slom.\n\nA ka|ko sploh zgra|diš me|sto na vo|di? Pre|bi|val|ci so pred dav|ni|mi ča|si v blat|no mor|sko dno za|bi|li ne|šte|to dol|gih le|se|nih ste|brov, e|ne|ga te|sno ob dru|gem. Na te ste|bre so po|sta|vi|li hi|še, mo|sto|ve, cer|kve in ve|li|ke tr|ge. Naj|lep|ši med nji|mi je Trg sve|te|ga Mar|ka, kjer se spre|ha|ja na ti|so|če go|lo|bov.\n\nČe|prav je od tak|rat mi|ni|lo že mno|go sto|le|tij, Be|net|ke še ved|no sto|ji|jo. Vsa|ko le|to jih o|bi|šče na mi|li|jo|ne lju|di z vse|ga sve|ta, ki ob|ču|du|je|jo me|sto brez cest — me|sto, ki na|me|sto po tleh ži|vi na vo|di.",
       "imageId": "benetke_trg",
       "review": {
-        "status": "draft"
+        "status": "draft",
+        "imageAccuracy": "plausible"
       }
     },
     {
@@ -216,7 +231,8 @@
       "syllable_body": "Po dež|ju vča|sih za|si|je mav|ri|ca. Na|sta|ne, ko son|ce po|sve|ti sko|zi dež|ne kap|lje. Mav|ri|ca i|ma ve|li|ko barv. Ved|no si sle|di|jo v i|stem re|du. Zgo|raj je rde|ča, spo|daj vi|jo|lič|na. Mav|ri|ca je lok na ne|bu.",
       "imageId": "mavrica",
       "review": {
-        "status": "draft"
+        "status": "draft",
+        "imageAccuracy": "plausible"
       }
     },
     {
@@ -229,7 +245,8 @@
       "syllable_body": "Vr|zi žo|go v zrak in ved|no pa|de na|zaj na tla. Za|kaj je ta|ko? Kri|va je ne|vid|na si|la, ki ji pra|vi|mo tež|nost. Zem|lja s to si|lo vle|če vse stva|ri k se|bi. Za|to ja|bol|ko pa|de z dre|ve|sa, dež pa z ne|ba. Prav tež|nost nas dr|ži na tleh, da ne od|pla|va|mo v zrak. Brez nje bi vse leb|de|lo na|o|krog.",
       "imageId": "gravitacija_jabolko",
       "review": {
-        "status": "draft"
+        "status": "draft",
+        "imageAccuracy": "plausible"
       }
     },
     {
@@ -242,7 +259,8 @@
       "syllable_body": "Mav|ri|ca je e|den naj|lep|ših po|ja|vov na ne|bu. Pri|ka|že se ta|krat, ka|dar hkra|ti si|je son|ce in de|žu|je. Če|prav se nam zdi sonč|na sve|tlo|ba be|la, je v re|sni|ci se|sta|vlje|na iz mno|gih barv, skri|tih dru|ga v dru|gi. Ko sonč|ni ža|rek po|si|je sko|zi drob|no dež|no kap|ljo, se v njej u|po|gne in raz|ce|pi na vse te bar|ve. Kap|lje de|lu|je|jo kot majh|na o|ken|ca, ki raz|pr|ši|jo sve|tlo|bo. Ker to poč|ne na ti|so|če ka|pelj hkra|ti, na ne|bu za|gle|da|mo ve|lik pi|san lok. Bar|ve si v mav|ri|ci ved|no sle|di|jo v i|stem re|du, od rde|če na vr|hu do vi|jo|lič|ne na dnu.",
       "imageId": "mavrica_kaplja",
       "review": {
-        "status": "draft"
+        "status": "draft",
+        "imageAccuracy": "plausible"
       }
     },
     {
@@ -255,7 +273,8 @@
       "syllable_body": "Mav|ri|ca je e|den naj|lep|ših po|ja|vov, kar jih lah|ko vi|di|mo na ne|bu. Pri|ka|že se ta|krat, ka|dar hkra|ti si|je son|ce in de|žu|je.\n\nČe|prav se nam zdi sonč|na sve|tlo|ba be|la, je v re|sni|ci se|sta|vlje|na iz mno|gih barv, skri|tih dru|ga v dru|gi. Ko sonč|ni ža|rek po|si|je sko|zi drob|no dež|no kap|ljo, se v njej u|po|gne in raz|ce|pi na vse te bar|ve. Vsa|ka kap|lja de|lu|je kot majh|no ste|kle|no o|ken|ce, ki sve|tlo|bo raz|pre v pi|san pas. Ker to hkra|ti poč|ne na ti|so|če ka|pelj, na ne|bu za|gle|da|mo ve|lik bar|vit lok.\n\nBar|ve si v mav|ri|ci ved|no sle|di|jo v i|stem re|du: od rde|če na vr|hu do vi|jo|lič|ne na dnu. Če že|liš mav|ri|co vi|de|ti, mo|raš i|me|ti son|ce za hrb|tom, dež pa pred se|boj. In pom|ni: bliž|je kot po|sku|šaš pri|ti, bolj se ti mav|ri|ca od|mi|ka, saj je ni mo|go|če pri|je|ti.",
       "imageId": "mavrica_lok",
       "review": {
-        "status": "draft"
+        "status": "draft",
+        "imageAccuracy": "plausible"
       }
     },
     {
@@ -268,7 +287,8 @@
       "syllable_body": "Mav|ri|ca je e|den naj|lep|ših po|ja|vov, kar jih lah|ko vi|di|mo na ne|bu. Pri|ka|že se v po|seb|nem tre|nut|ku — ta|krat, ka|dar hkra|ti si|je son|ce in de|žu|je. Za|to mav|ri|co naj|po|go|ste|je o|pa|zi|mo tik po dež|ju, ko se iz|za o|bla|kov spet pri|ka|že son|ce.\n\nČe|prav se nam zdi sonč|na sve|tlo|ba či|sto be|la, je v re|sni|ci se|sta|vlje|na iz mno|gih barv, skri|tih dru|ga v dru|gi. Ka|dar sonč|ni ža|rek po|si|je sko|zi drob|no dež|no kap|ljo, se v njej u|po|gne in raz|ce|pi na vse te bar|ve. Vsa|ka kap|lji|ca de|lu|je kot maj|ce|na ste|kle|na priz|ma, ki be|lo sve|tlo|bo raz|pre v pi|san pas. Ker to i|sto hkra|ti poč|ne na ti|so|če in ti|so|če ka|pelj, na ne|bu za|gle|da|mo ve|lik bar|vit lok.\n\nBar|ve si v mav|ri|ci ved|no sle|di|jo v na|tan|ko i|stem vrst|nem re|du: rde|ča, o|ranž|na, ru|me|na, ze|le|na, mo|dra in vi|jo|lič|na. Rde|ča je ved|no na zu|na|nji stra|ni lo|ka, vi|jo|lič|na pa na no|tra|nji.\n\nČe že|liš mav|ri|co u|je|ti s po|gle|dom, si za|pom|ni pre|pro|sto pra|vi|lo: son|ce mo|ra bi|ti za tvo|jim hrb|tom, dež pa pred te|boj. In če|prav je mav|ri|ca vi|de|ti kot pi|san most, se je ne da ni|ko|li do|tak|ni|ti. Bolj ko se ji pri|bli|žu|ješ, bolj se ti od|mi|ka — za|to o|sta|ja e|na naj|lep|ših skriv|no|sti ne|ba.",
       "imageId": "mavrica_polje",
       "review": {
-        "status": "draft"
+        "status": "draft",
+        "imageAccuracy": "plausible"
       }
     },
     {
@@ -281,7 +301,8 @@
       "syllable_body": "V zem|ljo po|sa|di|mo maj|hno se|me. Se|me do|bi vo|do in son|ce. Iz nje|ga zra|ste maj|hna ka|li|ca. Ka|li|ca ra|ste vse viš|je. Po|sta|ne ve|li|ka rast|li|na. Iz se|me|na zra|ste cvet a|li dre|vo.",
       "imageId": "seme_kalica",
       "review": {
-        "status": "draft"
+        "status": "draft",
+        "imageAccuracy": "plausible"
       }
     },
     {
@@ -294,7 +315,8 @@
       "syllable_body": "Dež je za na|ra|vo ze|lo po|mem|ben. Brez nje|ga rast|li|ne ne bi mo|gle ra|sti. Dež na|sta|ne v o|bla|kih vi|so|ko na ne|bu. V o|bla|ku je na ti|so|če drob|nih vod|nih kap|ljic. Ko se te kap|lji|ce zdru|ži|jo v več|je, po|sta|ne|jo pre|tež|ke in pa|de|jo na tla. Ta|krat re|če|mo, da de|žu|je. Dež na|po|ji zem|ljo, rast|li|ne pa se je raz|ve|se|li|jo.",
       "imageId": "dez_kaplje",
       "review": {
-        "status": "draft"
+        "status": "draft",
+        "imageAccuracy": "plausible"
       }
     },
     {
@@ -307,7 +329,8 @@
       "syllable_body": "Ve|tra ne mo|re|mo vi|de|ti, lah|ko pa ga ču|ti|mo in sli|ši|mo. Bo|ža nam o|braz, zi|blje ve|je dre|ves in po|di o|bla|ke po ne|bu. A kaj sploh je ve|ter? Ve|ter je gi|ba|nje zra|ka. Če|prav zra|ka ne vi|di|mo, je vse|po|vsod o|ko|li nas. Ko se en del zra|ka se|gre|je in drug o|sta|ne hla|den, se zrak zač|ne pre|mi|ka|ti — in to pre|mi|ka|nje ču|ti|mo kot ve|ter. Vča|sih je ve|ter blag in pri|je|ten, spo|mla|di nam su|ši pe|ri|lo in no|si vonj cve|tja. Dru|gič je mo|čan in div|ji ter lo|mi ve|je. Ve|ter pa je tu|di ko|ri|sten: raz|na|ša se|me|na rast|lin in po|ga|nja ve|tr|ni|ce.",
       "imageId": "veter",
       "review": {
-        "status": "draft"
+        "status": "draft",
+        "imageAccuracy": "plausible"
       }
     },
     {
@@ -320,7 +343,8 @@
       "syllable_body": "Vsa|ko je|sen se zgo|di ne|kaj ču|do|vi|te|ga. List|je na dre|ve|sih se iz ze|le|ne|ga o|bar|va v o|gnje|no rde|če, o|ranž|ne in zla|to ru|me|ne od|ten|ke. A za|kaj se to zgo|di in za|kaj li|sti po|tem od|pa|de|jo?\n\nČez po|le|tje so li|sti pol|ni ze|le|ne|ga bar|vi|la. To bar|vi|lo je za dre|vo ze|lo po|memb|no, saj mu po|ma|ga, da iz sonč|ne sve|tlo|be, vo|de in zra|ka iz|de|lu|je svo|jo hra|no. Ker je ze|le|ne|ga bar|vi|la ve|li|ko, pre|kri|je vse dru|ge bar|ve v li|stu.\n\nKo se je|se|ni dne|vi skraj|ša|jo in po|sta|ne hlad|ne|je, dre|vo za|ču|ti, da pri|ha|ja zi|ma. Ze|le|ne|ga bar|vi|la ne iz|de|lu|je več in to po|ča|si zble|di. Še|le ta|krat se po|ka|že|jo ru|me|ni in rde|či od|ten|ki, ki so bi|li skri|ti pod ze|le|nim.\n\nNa|zad|nje dre|vo li|ste od|vr|že, da čez zi|mo pri|hra|ni vo|do in moč. Go|la dre|ve|sa na|to mir|no po|či|va|jo, do|kler jih spo|mla|di zno|va ne pre|bu|di to|plo son|ce.",
       "imageId": "jesensko_listje_drevo",
       "review": {
-        "status": "draft"
+        "status": "draft",
+        "imageAccuracy": "plausible"
       }
     },
     {
@@ -333,7 +357,8 @@
       "syllable_body": "A|li si se kdaj vpra|šal, za|kaj je po|le|ti vro|če, po|zi|mi pa mr|zlo? Od|go|vor je v tem, da le|to po|tu|je sko|zi šti|ri let|ne ča|se, ki se vsa|ko le|to zvr|sti|jo v i|stem za|po|red|ju: po|mlad, po|le|tje, je|sen in zi|ma.\n\nSpo|mla|di se na|ra|va pre|bu|di iz dol|ge|ga zim|ske|ga spa|nja. Dre|ve|sa po|že|ne|jo sve|že ze|le|ne li|ste, trav|ni|ki se o|de|ne|jo v pi|sa|no cve|tje, pti|ce pa se vr|ne|jo iz to|plih kra|jev in si sple|ta|jo gnez|da. Vse je pol|no no|ve|ga živ|lje|nja.\n\nPo|le|ti za|vla|da to|plo|ta. Son|ce vzi|de zgo|daj in za|i|de poz|no, za|to so dne|vi dol|gi in pri|jet|ni za i|gro na pro|stem. To je čas, ko na dre|ve|sih in po|ljih do|zo|ri naj|več sad|ja in ze|le|nja|ve.\n\nJe|se|ni se dne|vi po|ča|si kraj|ša|jo in zrak po|sta|ja hlad|nej|ši. List|je na dre|ve|sih se o|bar|va v ču|do|vi|te rde|če, o|ranž|ne in ru|me|ne od|ten|ke, na|to pa za|pla|va po ve|tru na tla. Kmet|je po|spra|vi|jo zad|nji pri|de|lek, ži|va|li pa se pri|pra|vi|jo na mraz.\n\nPo|zi|mi na|ra|va u|ti|hne in po|či|va. Po|kra|ji|no po|go|sto po|be|li sneg, dne|vi so krat|ki, no|či pa dol|ge in mr|zle. Mar|si|ka|te|ra ži|val pre|spi vso zi|mo, dre|ve|sa pa mir|no ča|ka|jo. In ko se zdi, da je vse|ga ko|nec, se ve|li|ko ko|lo le|ta zno|va za|vr|ti in na|po|či no|va po|mlad.",
       "imageId": "letni_casi_pokrajina",
       "review": {
-        "status": "draft"
+        "status": "draft",
+        "imageAccuracy": "plausible"
       }
     }
   ]
