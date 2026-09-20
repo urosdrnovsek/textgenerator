@@ -14,19 +14,20 @@
     background: #ffffff;
   }
 
-  body * {
-    visibility: hidden;
-  }
-
-  #print-surface,
-  #print-surface * {
-    visibility: visible;
+  /* Hide the interactive UI and print #print-surface in normal document
+     flow (upgrade blueprint v3, workstream A) — replaces the old
+     visibility:hidden + position:absolute hack. That approach worked for
+     content that was always exactly one page, but content taller than one
+     page inside an absolutely-positioned box is not reliably fragmented
+     across printed pages by every engine; normal flow is. .app-shell
+     already carries the .no-print class below, so this rule is just the
+     explicit, load-bearing version of the same hiding for this element. */
+  .app-shell {
+    display: none;
   }
 
   #print-surface {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: static;
   }
 
   .ws-page {

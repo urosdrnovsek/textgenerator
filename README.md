@@ -1,12 +1,15 @@
 # Writing Worksheet Generator
 
-An offline, single-page web app that lets an elementary school teacher generate
-one-page reading/writing practice worksheets — a short quality text paired
+An offline, single-page web app that lets an elementary school teacher
+generate reading/writing practice worksheets — a short quality text paired
 with an image, with dyslexia-friendly typography options (letter coloring,
 syllable coloring, adjustable spacing, handwriting rulings) — and export the
-result as print/PDF or an editable Word (`.docx`) file. Designed to run
-entirely offline: open `index.html`, no server, no install, no internet
-connection at any point.
+result as print/PDF or an editable Word (`.docx`) file. One page is the
+default target and what most combinations produce; a worksheet that needs
+more is clearly labelled and still fully exportable (see "Multi-page
+worksheets" below), rather than blocked. Designed to run entirely offline:
+open `index.html`, no server, no install, no internet connection at any
+point.
 
 ## Status: Phase 3-4 complete except country-specific rulings; Phase 5 (multi-language) functional; Phase 6 (convenience) complete; Phase 7 (release qualification) partially done — see below
 
@@ -43,6 +46,34 @@ connection at any point.
   broader image-accuracy pass is still open, just narrower now that the
   4 clearest mismatches are gone. Image *licensing*, a separate concern,
   is resolved — see below.
+- **Multi-page worksheets (0.8):** the old one-page-only hard block (a
+  fitting text would export/print; anything longer was rejected outright,
+  with no way forward except shrinking the text) is gone. One page is
+  still the default target — most language/theme/level/settings
+  combinations still produce exactly one — but a worksheet that needs more
+  now reports "will print on N pages" and stays fully printable/exportable
+  rather than being blocked. Page breaks are computed from the same real,
+  measured content (header, title, image, every wrapped body line, and —
+  in "Read & copy" mode — the handwriting-ruling area, which gets a full
+  fresh page of its own if too few rows remain on the last content page)
+  that both the HTML preview and the print/PDF output are built from, so
+  the reported page count matches what actually prints; verified via real
+  headless Chromium (`pdfinfo`/`pdftotext` against the real printed PDF)
+  and real Firefox (WebDriver's own `printPage()`). DOCX export mirrors
+  this: a second copy-practice table is preceded by a real Word page
+  break. The screen preview also shows a dashed marker with a page number
+  wherever a break is expected. A genuinely unlayoutable worksheet (an
+  unbreakable word wider than the page, or a header/image/guide-height
+  taller than a page on its own) is still blocked with a clear message —
+  that class of failure hasn't gone away, only the "just too long"
+  case has. One real, narrow Chromium print-engine bug was found and
+  documented (not fixed — confirmed to be the browser engine, not this
+  app, after 5 independent CSS/DOM approaches all failed identically): a
+  multi-page sheet placed anywhere but last in a *packet*, followed by a
+  shorter sheet, can lose its later pages when printed — see
+  `docs/compatibility.md`'s Chromium known-issue section and
+  `docs/teacher-guide.md`'s packet section for the practical workaround
+  (put the multi-page sheet last, or print it separately).
 - **Personalization default name (0.8):** a text using `{name}` (7 entries:
   4 Slovene, 3 English) used to blindly delete the placeholder when the
   teacher left the name field empty, producing broken sentences (e.g. "Was
@@ -211,9 +242,11 @@ how, and what's still open. Summary:
   thorough but not the same thing) and the broader (non-mismatched, just
   unverified) image-accuracy pass noted above.
 
-Current version `0.7.0-rc.1` reflects this: a release candidate, not a
+Current version `0.8.0-rc.1` reflects this: a release candidate, not a
 final `1.0.0` — a native-speaker content review is a real, user-facing
-gap, not paperwork.
+gap, not paperwork. (0.8 added multi-page worksheet support, a default
+child name for personalized texts, and a round of DOCX/preset fixes —
+see the bullets above — none of which close that particular gap.)
 
 ## Running it
 

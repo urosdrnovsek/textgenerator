@@ -156,6 +156,14 @@ body {
   color: #8a1c14;
 }
 
+/* 'extends' (more than one page) is information, not an error — a red
+   is-overflow style would wrongly suggest something is broken (upgrade
+   blueprint v3, workstream A). */
+.fit-indicator.is-extends {
+  background: #fef3e2;
+  color: #8a5a00;
+}
+
 .preview-scroll {
   flex: 1;
   display: flex;

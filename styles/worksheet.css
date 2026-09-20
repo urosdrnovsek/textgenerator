@@ -74,12 +74,24 @@
   font-size: calc(var(--ws-font-size-pt, 18) * 1pt);
   line-height: var(--ws-line-height, 1.5);
   text-align: left;
+  /* Anchors .ws-page-break-marker, which positions against this box's own
+     top rather than the viewport — the page has no fixed height, it grows
+     with content that may print as more than one page (workstream A). */
+  position: relative;
 }
 
 /* Tint is screen-visible whenever selected; printing it is a separate,
    explicit opt-in to save ink by default (blueprint 8.5/8.6). */
 .ws-page.ws-page--tinted {
   background: var(--ws-tint-color, #ffffff);
+}
+
+/* Atomic blocks per layout/paginate.js — never split across a page
+   (blueprint v3, workstream A). */
+.ws-header,
+.ws-title,
+.ws-image-wrap {
+  break-inside: avoid;
 }
 
 .ws-header {
@@ -128,6 +140,13 @@
   text-align: left;
   letter-spacing: var(--ws-letter-spacing-mm, 0mm);
   word-spacing: var(--ws-word-spacing-mm, 0mm);
+  /* The fit model (layout/paginate.js) breaks between individual measured
+     lines, with no minimum run before/after a break — Chromium's default
+     of 2 would move a line the model didn't account for, desyncing the
+     printed page count from the one reported to the teacher (blueprint v3,
+     workstream A). */
+  orphans: 1;
+  widows: 1;
 }
 
 .ws-body.ws-sentence-per-line .ws-sentence {
@@ -153,9 +172,21 @@
 }
 
 .ws-copy-area {
-  /* margin-top is set inline by render/html.js from config.COPY_AREA_GAP_MM
-     — the single source of truth also used by layout/measure.js's row
-     budget, so the two can never drift apart. */
+  /* The first block's margin-top is set inline by render/html.js from
+     config.COPY_AREA_GAP_MM — the single source of truth also used by
+     layout/measure.js's row budget, so the two can never drift apart. */
+}
+
+/* One block per entry in layout.copyBlocks — never split across a page
+   (blueprint v3, workstream A: an SVG ruling block is atomic). */
+.ws-copy-block {
+  break-inside: avoid;
+}
+
+/* A second copy block means the fit check decided the copy exercise needs
+   a fresh page; break-before only takes effect when actually printed. */
+.ws-copy-block--new-page {
+  break-before: page;
 }
 
 .ws-ruling {
@@ -174,4 +205,26 @@
 
 .ws-ruling-dashed {
   stroke-dasharray: 2 1.5;
+}
+
+/* Screen preview aid only (upgrade blueprint v3, workstream A) — never
+   printed (.no-print, hidden by styles/print.css) and never rendered into
+   a packet sheet. Positioned against .ws-page's own top; see
+   render/html.js's renderPageBreakMarkers. */
+.ws-page-break-marker {
+  position: absolute;
+  left: -4mm;
+  right: -4mm;
+  border-top: 0.5mm dashed #94a3b8;
+  pointer-events: none;
+}
+
+.ws-page-break-label {
+  position: absolute;
+  right: 0;
+  top: 1mm;
+  font-size: 8pt;
+  color: #64748b;
+  background: #ffffff;
+  padding: 0 1.5mm;
 }

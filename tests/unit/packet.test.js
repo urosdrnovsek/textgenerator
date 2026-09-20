@@ -1,9 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { PACKET_MAX_SHEETS, addSnapshot, removeSnapshot, moveSnapshot } from '../../src/worksheet/packet.js';
+import { PACKET_MAX_SHEETS, addSnapshot, removeSnapshot, moveSnapshot, totalPages } from '../../src/worksheet/packet.js';
 
-function sheet(id) {
-  return { id, title: `Sheet ${id}`, language: 'sl', level: 1 };
+function sheet(id, pageCount = 1) {
+  return { id, title: `Sheet ${id}`, language: 'sl', level: 1, pageCount };
 }
 
 test('addSnapshot appends without mutating the original array', () => {
@@ -54,4 +54,13 @@ test('moveSnapshot is a no-op at the start (-1) or end (+1) boundary', () => {
 test('moveSnapshot is a no-op for an id that is not present', () => {
   const packet = [sheet('a'), sheet('b')];
   assert.deepEqual(moveSnapshot(packet, 'missing', 1).map((s) => s.id), ['a', 'b']);
+});
+
+test('totalPages sums each sheet\'s own page count, not the sheet count', () => {
+  const packet = [sheet('a', 1), sheet('b', 2), sheet('c', 1)];
+  assert.equal(totalPages(packet), 4);
+});
+
+test('totalPages is 0 for an empty packet', () => {
+  assert.equal(totalPages([]), 0);
 });

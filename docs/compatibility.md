@@ -29,6 +29,25 @@ pacman -S geckodriver` on this Arch-based environment; Firefox itself via
 something a teacher needs to run (blueprint 12: "Office automation is a
 developer/QA tool, never a teacher prerequisite").
 
+## Multi-page worksheets (0.8)
+
+The old hard one-page-only block is gone (upgrade blueprint v3, workstream
+A): one page is still the default target most combinations produce, but a
+worksheet that needs more now reports "will print on N pages" and stays
+fully printable/exportable. **Verified:** real headless Chromium (a
+forced-multi-page worksheet's `Page.printToPDF` output checked with
+`pdfinfo`/`pdftotext` against the app's own reported page count and full
+text, in both read-copy and read-only modes; the normal single-page case
+re-verified as a regression check), real Firefox (`verify-firefox`'s
+existing single-worksheet and packet checks, all still exactly the
+expected page count), and real LibreOffice via DOCX (see the Office
+application matrix below — one case needed an explicit tolerance for a
+genuine cross-application pagination difference, not an app bug). **Known
+issue, Chromium-specific, documented not fixed:** a multi-page sheet
+placed anywhere but last in a *packet*, followed by a shorter sheet, can
+lose its later pages when printed — see the dedicated section under the
+browser matrix below.
+
 ## Browser matrix
 
 | Browser | Status | How verified |
@@ -86,25 +105,97 @@ tried at the CSS/DOM level had no effect, suggesting the fix would need to
 happen inside Gecko itself or require much deeper investigation than is
 warranted right now.
 
+### Chromium-specific known issue: a non-last multi-page sheet in a packet can lose pages
+
+**Found**, not fixed — a real Chromium print/PDF pagination engine bug,
+not a bug in this app's CSS/DOM (see the 0.8 workstream-A commit for the
+full investigation). Discovered while adding multi-page worksheet support
+(see "Multi-page worksheets (0.8)" above); documented here per this
+project's standing rule: report limitations honestly rather than omit
+them.
+
+**What happens:** in a packet, if a worksheet that prints on more than
+one page is placed anywhere *except last*, and the next sheet is shorter,
+Chromium's print/PDF engine renders only that multi-page sheet's *first*
+page and silently drops the rest — real content loss, not just a
+cosmetic layout glitch. Two related but harmless variants: a multi-page
+sheet placed *last* in a packet always prints its full content correctly
+(the preceding shorter sheets are unaffected too), and a packet where
+*every* sheet is multi-page also prints every page of every sheet
+correctly — the bug is specific to a non-last multi-page sheet followed
+by a shorter one.
+
+**What was ruled out** (so this isn't misdiagnosed as an app bug on a
+future pass): the exact CSS mechanism used to separate sheets. Tried and
+reproduced identically under all of: `break-after: page` on each sheet
+except the last, `break-before: page` on each sheet except the first, no
+explicit break property at all (relying purely on natural overflow), a
+dedicated empty separator element between sheets carrying the break
+instead of the sheets themselves, and wrapping each sheet in a
+non-fragmenting wrapper element that carries the break instead of the
+sheet itself carrying it. All five produced the same truncation whenever
+a non-last multi-page sheet was followed by a shorter one, and all
+printed correctly whenever the multi-page sheet was last or every sheet
+was multi-page — strong evidence this is inherent to how Chromium's
+layout engine estimates a fragmenting box's available space based on
+what follows it, not something reachable from application-level CSS.
+
+**Practical mitigation for now** (the project owner's explicit decision,
+2026-09-20, mirroring how the Firefox issue above was handled — document
+and move on rather than chase a browser engine bug): a teacher building a
+packet that mixes a multi-page worksheet with shorter ones should either
+put the multi-page worksheet last in the packet, or print it separately
+from the rest. `docs/teacher-guide.md` says this. A packet where every
+sheet fits on one page (still the default and most common case) or where
+every sheet happens to be multi-page is unaffected.
+
+**Not pursued further this pass** (explicit decision, not an oversight):
+the same reasoning as the Firefox issue above applies — five independent
+CSS/DOM approaches all failed identically, suggesting a fix would need to
+happen inside Chromium itself. Not yet checked against real desktop
+Chrome/Edge or real LibreOffice/Word (packets have no DOCX equivalent, so
+this is print/PDF-only); if a teacher reports it there too, this section
+should be updated with that confirmation.
+
 ## Office application matrix
 
 | Application | Status | How verified |
 | --- | --- | --- |
-| LibreOffice (real, headless, this dev environment — version 26.8.0.3) | **Automated, passing** | `npm run verify-docx`: 9 representative `.docx` exports (every bundled language, every font, every writing mode, the near-max-content level-5 boundary case in two languages, tint, sentence-per-line, `{name}` personalization, and — since 0.8 — a maximum-word-spacing case) — each downloaded from the real running app (not hand-built), converted to PDF with real `soffice --convert-to pdf`, and checked for exactly 1 page and non-empty extracted text via `pdfinfo`/`pdftotext`. All 9 passed on the current codebase. An earlier draft of this check hand-built the WorksheetModel instead of driving the real app, hardcoded a guess at the handwriting-line row count, and reported 2 false "page overflow" failures for the level-5 cases — a reminder that this kind of check is only trustworthy when it exercises the real, live fit-checked output, not a re-implementation of it. (0.8 gotcha found while adding the word-spacing case: two cases sharing the same language+level download to the same filename, and Chromium's headless auto-download silently overwrites rather than uniquifying — each case now needs a distinct language+level pair, not just a distinct label.) |
+| LibreOffice (real, headless, this dev environment — version 26.8.0.3) | **Automated, passing** | `npm run verify-docx`: 11 representative `.docx` exports (every bundled language, every font, every writing mode, the near-max-content level-5 boundary case in two languages, tint, sentence-per-line, `{name}` personalization, a maximum-word-spacing case, and — since 0.8's multi-page support — two genuinely multi-page cases) — each downloaded from the real running app (not hand-built), converted to PDF with real `soffice --convert-to pdf`, and checked against the *app's own reported page count* (read from the fit indicator, not a hardcoded 1) and non-empty extracted text via `pdfinfo`/`pdftotext`. All 11 passed on the current codebase, one (`en-andika-level5-readcopy-multipage`) via an explicit `toleratedPageDelta: 1` — see below. An earlier draft of this check hand-built the WorksheetModel instead of driving the real app, hardcoded a guess at the handwriting-line row count, and reported 2 false "page overflow" failures for the level-5 cases — a reminder that this kind of check is only trustworthy when it exercises the real, live fit-checked output, not a re-implementation of it. (0.8 gotcha found while adding the word-spacing case: two cases sharing the same language+level download to the same filename, and Chromium's headless auto-download silently overwrites rather than uniquifying — each case now needs a distinct language+level pair, not just a distinct label.) |
 | LibreOffice (real, interactive desktop GUI) | **Not yet tested** | The headless conversion above proves PDF-rendered pagination; it does *not* prove the file *opens cleanly*, *displays correctly on screen*, or that a teacher can *edit the text* in LibreOffice Writer afterward without breaking colors/spacing. Open a few exported files in the actual LibreOffice Writer GUI and check visually. |
 | Microsoft Word (real) | **Not tested — Word is not available in this Linux development environment** | This is the single most important remaining compatibility gap (blueprint: "the pilot needs editable output," and font substitution behavior is genuinely Word-specific, not just "close enough to LibreOffice"). Needs the user's own Windows machine with a real, licensed Word install. Checklist below. |
 | OpenOffice | **Not tested** | Lower priority per blueprint ("include OpenOffice's actual import behavior before claiming it supported" — basic, not blocking). |
+
+**LibreOffice-vs-Chromium pagination note (0.8):** since a worksheet may
+now span more than one page (see the multi-page section earlier in this
+document), each DOCX case is checked against the app's *own* reported
+page count rather than a fixed "1". One case
+(`en-andika-level5-readcopy-multipage`, 24pt read-copy) needed an
+explicit `toleratedPageDelta: 1` in `scripts/verify-docx-libreoffice.mjs`:
+the app reports 2 pages, and real headless Chromium's own print output
+(checked directly, independent of DOCX) also produces exactly 2 —
+confirming the app's own pagination is correct — but LibreOffice's DOCX
+text layout (different font metrics/line-wrap than Chromium's) produces
+3. This is exactly the risk v2's blueprint (§1, risk B) called out from
+the start: "editable DOCX cannot promise identical pagination in every
+office application." It is not a bug in this app; it's why PDF remains
+the print reference and DOCX stays "editable, verified to open and
+convert correctly" rather than "pixel/page-identical to the preview."
 
 ### Real-Word checklist (needs the user's own machine)
 
 For at least one exported `.docx` per language and per writing mode (3 × 5 = 15, or a representative subset — see `verify-docx`'s CASES list for a starting set):
 
 - [ ] File opens without a repair/corruption prompt.
-- [ ] Page count is exactly 1 (Word's own layout engine, not LibreOffice's).
+- [ ] Page count matches what the app reported when the file was exported
+      (Word's own layout engine, not LibreOffice's or Chromium's — a
+      near-boundary case, especially anything using the maximum font size
+      or line height, may reasonably differ by one page; anything fitting
+      comfortably within budget should not).
 - [ ] Confused-letter colors (b/d/p/q) are the correct colors, not default black.
 - [ ] Syllable colors (where enabled) survived.
 - [ ] The embedded image displays (not a broken-image icon, not a linked/missing external reference).
-- [ ] Read-copy mode: handwriting-line rows are present, evenly spaced, and don't overflow onto a second page.
+- [ ] Read-copy mode: handwriting-line rows are present and evenly spaced; if the app reported a second copy-practice block (a fresh page of rules), confirm Word actually starts it on a new page rather than overflowing the first.
 - [ ] Font: note what Word actually renders each exported font as. Fonts are *not* embedded in the `.docx` (documented, known limitation since Phase 0) — if Andika/Lexend/OpenDyslexic/Comic Neue aren't installed on the test machine, Word will substitute a fallback. Record which fallback Word picks for each, since that's useful information for a school's IT setup instructions.
 - [ ] Edit the text (type a sentence, delete a sentence) and confirm the document remains usable — colors/spacing on the *edited* text may reasonably degrade (blueprint explicitly doesn't promise otherwise), but the file itself shouldn't break.
 
@@ -201,7 +292,7 @@ that the packaged ZIP extracts and runs standalone (see "Fresh-machine /
 offline test" above) — this was tested against the actual ZIP artifact,
 not just the repo's `release/` folder.
 
-Current version is `0.7.0-rc.1` — a release *candidate*, not a final
+Current version is `0.8.0-rc.1` — a release *candidate*, not a final
 `1.0.0`: the image-license and native-language-content-review gaps above
 are real, open, user-facing-risk items, not paperwork. Don't bump to
 `1.0.0` until those are resolved.

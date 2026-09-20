@@ -122,7 +122,21 @@ const CASES = [
   // no label in it, and Chrome's headless auto-download silently overwrites
   // same-named files rather than uniquifying them, so two 'en'+level-3
   // cases would leave only one actually verified.
-  { label: 'en-andika-level1-readonly-wordspacing', language: 'en', theme: 'stories', level: 1, fontId: 'andika', writingMode: 'read-only', wordSpacingPt: 6 }
+  { label: 'en-andika-level1-readonly-wordspacing', language: 'en', theme: 'stories', level: 1, fontId: 'andika', writingMode: 'read-only', wordSpacingPt: 6 },
+  // Multi-page DOCX cases (upgrade blueprint v3, workstream A.9) — the
+  // app now allows a worksheet to extend past one page instead of
+  // blocking it; this proves Word/LibreOffice pagination actually agrees
+  // with the app's own reported page count for a genuinely multi-page
+  // export, not just that a 1-page export still converts. 'en'+level-5
+  // and 'de'+level-4 are both otherwise-unused language+level pairs (see
+  // the filename-collision note above).
+  // toleratedPageDelta: real cross-application DOCX pagination difference,
+  // not an app bug — confirmed by checking this exact case's real
+  // Chromium print output, which matches the app's own reported page
+  // count (2) exactly; only LibreOffice's DOCX text layout (different
+  // font metrics/line-wrap) produces 3. See docs/compatibility.md.
+  { label: 'en-andika-level5-readcopy-multipage', language: 'en', theme: 'stories', level: 5, fontId: 'andika', writingMode: 'read-copy', fontSizePt: 24, toleratedPageDelta: 1 },
+  { label: 'de-andika-level4-readonly-multipage', language: 'de', theme: 'stories', level: 4, fontId: 'andika', writingMode: 'read-only', fontSizePt: 20, lineHeightMultiplier: 2.0 }
 ];
 
 async function main() {
@@ -223,6 +237,14 @@ async function main() {
           document.getElementById('word-spacing-input').value = '${testCase.wordSpacingPt}';
           document.getElementById('word-spacing-input').dispatchEvent(new Event('change', { bubbles: true }));
           ` : ''}
+          ${testCase.fontSizePt !== undefined ? `
+          document.getElementById('font-size-input').value = '${testCase.fontSizePt}';
+          document.getElementById('font-size-input').dispatchEvent(new Event('change', { bubbles: true }));
+          ` : ''}
+          ${testCase.lineHeightMultiplier !== undefined ? `
+          document.getElementById('line-height-input').value = '${testCase.lineHeightMultiplier}';
+          document.getElementById('line-height-input').dispatchEvent(new Event('change', { bubbles: true }));
+          ` : ''}
         })();
       `);
       const fitText = await waitForFit();
@@ -231,6 +253,10 @@ async function main() {
         downloaded.push({ testCase, ok: false, note: `not print-ready after settling: "${fitText}"` });
         continue;
       }
+      // Read the app's own reported page count (upgrade blueprint v3,
+      // workstream A.9) — the expectation each case's PDF is checked
+      // against, instead of a hardcoded 1.
+      const expectedPages = Number(await evalJs(`document.getElementById('fit-indicator').dataset.pageCount`));
 
       const beforeCount = downloadEvents.filter((e) => e.state === 'completed').length;
       await evalJs(`document.getElementById('btn-docx').click();`);
@@ -247,7 +273,7 @@ async function main() {
         downloaded.push({ testCase, ok: false, note: 'docx download never completed' });
         continue;
       }
-      downloaded.push({ testCase, ok: true, guid: completed.guid, fitText });
+      downloaded.push({ testCase, ok: true, guid: completed.guid, fitText, expectedPages });
     }
   } finally {
     chrome.kill();
@@ -260,6 +286,15 @@ async function main() {
   for (const d of downloaded.filter((d) => !d.ok)) {
     console.log(`  SKIP  ${d.testCase.label}  — ${d.note}`);
   }
+
+  // Each case downloads to worksheet-<language>-level-<level>.docx (never
+  // the case label) — CASES must use a distinct language+level pair per
+  // case, or Chromium's headless auto-download silently overwrites the
+  // earlier file rather than uniquifying it (a real gotcha hit adding the
+  // word-spacing case in 0.8; see docs/compatibility.md).
+  const expectedPagesByFile = new Map(
+    okCases.map((d) => [`worksheet-${d.testCase.language}-level-${d.testCase.level}.docx`, d])
+  );
 
   const docxPaths = filesInDownloadDir.filter((f) => f.endsWith('.docx')).map((f) => path.join(downloadDir, f));
   if (docxPaths.length > 0) {
@@ -275,14 +310,17 @@ async function main() {
   for (const docxPath of docxPaths) {
     const pdfPath = docxPath.replace(/\.docx$/, '.pdf');
     const label = path.basename(docxPath);
+    const matched = expectedPagesByFile.get(label);
+    const expectedPages = matched?.expectedPages ?? 1;
+    const toleratedDelta = matched?.testCase.toleratedPageDelta ?? 0;
     try {
       const info = execFileSync('pdfinfo', [pdfPath]).toString();
       const pagesMatch = info.match(/^Pages:\s+(\d+)/m);
       const pages = pagesMatch ? Number(pagesMatch[1]) : null;
       const text = execFileSync('pdftotext', [pdfPath, '-']).toString();
-      const ok = pages === 1 && text.trim().length > 0;
+      const ok = pages !== null && Math.abs(pages - expectedPages) <= toleratedDelta && text.trim().length > 0;
       allOk = allOk && ok;
-      console.log(`  ${ok ? 'PASS' : 'FAIL'}  ${label}  pages=${pages}  textLength=${text.trim().length}`);
+      console.log(`  ${ok ? 'PASS' : 'FAIL'}  ${label}  pages=${pages} (expected ${expectedPages}${toleratedDelta ? ` ±${toleratedDelta}` : ''})  textLength=${text.trim().length}`);
     } catch (error) {
       allOk = false;
       console.log(`  FAIL  ${label}  — conversion/inspection failed: ${error.message}`);

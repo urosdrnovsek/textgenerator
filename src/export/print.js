@@ -5,11 +5,15 @@
  */
 
 /**
- * @param {{ ok: boolean } | null | undefined} fitResult
+ * A worksheet is print-ready whenever it laid out at all — 'fits' (one
+ * page) and 'extends' (more than one, clearly labelled) are both allowed
+ * to print/export; only 'blocked' is not (upgrade blueprint v3, workstream
+ * A reverses the old one-page-only hard block).
+ * @param {{ status: 'fits' | 'extends' | 'blocked' } | null | undefined} fitResult
  * @returns {boolean}
  */
 export function isPrintReady(fitResult) {
-  return Boolean(fitResult && fitResult.ok);
+  return Boolean(fitResult && fitResult.status !== 'blocked');
 }
 
 /**

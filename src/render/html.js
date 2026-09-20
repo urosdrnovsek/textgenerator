@@ -151,15 +151,40 @@ export function applyLineStripes(bodyElement) {
 }
 
 /**
+ * Absolutely-positioned dashed markers showing where the model expects a
+ * page break — screen-only preview aid (upgrade blueprint v3, workstream
+ * A), never rendered into the print surface or a packet sheet. `.ws-page`
+ * has no fixed height (it grows with content, potentially spanning what
+ * will print as several pages), so a marker is positioned at its mm
+ * offset from the page's own top rather than inserted into element flow.
+ * @param {HTMLElement} page already has `position: relative`
+ * @param {number[]} pageBreaksMm
+ */
+function renderPageBreakMarkers(page, pageBreaksMm) {
+  pageBreaksMm.forEach((offsetMm, index) => {
+    const marker = document.createElement('div');
+    marker.className = 'ws-page-break-marker no-print';
+    marker.style.top = `${offsetMm}mm`;
+    const label = document.createElement('span');
+    label.className = 'ws-page-break-label';
+    label.textContent = `Page ${index + 2}`;
+    marker.append(label);
+    page.append(marker);
+  });
+}
+
+/**
  * Renders the complete worksheet page into `container`, replacing its
- * children. `rowCount` is a layout decision made upstream by
- * layout/measure.js (0 / ignored outside read-copy mode).
+ * children. `layout.copyBlocks` (rows per block; empty outside read-copy
+ * mode) and `layout.pageBreaksMm` are layout decisions made upstream by
+ * layout/measure.js.
  * @param {import('../worksheet/build.js').WorksheetModel} model
- * @param {{ rowCount: number, ruling: import('../layout/rulings.js').RulingDefinition, contentWidthMm: number }} layout
+ * @param {{ copyBlocks: number[], ruling: import('../layout/rulings.js').RulingDefinition, contentWidthMm: number, pageBreaksMm?: number[] }} layout
  * @param {HTMLElement} container
  * @param {typeof DEFAULT_LABELS} [labels]
+ * @param {boolean} [previewMode] when true, draws page-break markers (screen preview only — never the print surface or a packet sheet)
  */
-export function renderWorksheet(model, layout, container, labels = DEFAULT_LABELS) {
+export function renderWorksheet(model, layout, container, labels = DEFAULT_LABELS, previewMode = false) {
   const page = document.createElement('div');
   page.className = 'ws-page';
   const fontFamily = FONT_FAMILIES[model.settings.fontId] ?? model.settings.fontId;
@@ -209,11 +234,23 @@ export function renderWorksheet(model, layout, container, labels = DEFAULT_LABEL
   }
   page.append(bodyWrap);
 
-  if (model.settings.writingMode === 'read-copy' && layout.rowCount > 0) {
+  if (model.settings.writingMode === 'read-copy' && layout.copyBlocks?.length > 0) {
     const copyArea = document.createElement('div');
     copyArea.className = 'ws-copy-area';
-    copyArea.style.marginTop = `${COPY_AREA_GAP_MM}mm`;
-    copyArea.append(renderRulingSvg(layout.ruling, layout.rowCount, layout.contentWidthMm));
+    layout.copyBlocks.forEach((rows, index) => {
+      const block = document.createElement('div');
+      block.className = 'ws-copy-block';
+      if (index === 0) {
+        block.style.marginTop = `${COPY_AREA_GAP_MM}mm`;
+      } else {
+        // A second copy block means the fit check decided the copy
+        // exercise needs a fresh page (blueprint v3, workstream A) —
+        // break-before: page only takes effect when actually printed.
+        block.classList.add('ws-copy-block--new-page');
+      }
+      block.append(renderRulingSvg(layout.ruling, rows, layout.contentWidthMm));
+      copyArea.append(block);
+    });
     page.append(copyArea);
   }
 
@@ -225,6 +262,10 @@ export function renderWorksheet(model, layout, container, labels = DEFAULT_LABEL
     page.classList.add('ws-page--striped');
     page.classList.toggle('ws-page--print-stripes', Boolean(model.settings.printStripes));
     applyLineStripes(bodyWrap);
+  }
+
+  if (previewMode && layout.pageBreaksMm?.length > 0) {
+    renderPageBreakMarkers(page, layout.pageBreaksMm);
   }
 
   return page;

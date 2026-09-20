@@ -2,10 +2,19 @@
  * Font/image readiness, page measurement, and the fit result. Renders into
  * a real, off-screen, unscaled surface at the actual print width — never
  * `display:none` (blueprint 8.4 fit procedure).
+ *
+ * A worksheet may now print on more than one page (upgrade blueprint v3,
+ * workstream A — the old hard one-page block is gone). This module's job
+ * is to compute exactly how many pages, and where the breaks fall, by
+ * feeding real measured block heights into layout/paginate.js — the same
+ * computation the print CSS's own break rules perform, so the reported
+ * page count can't drift from what actually prints (see
+ * styles/worksheet.css's break-inside/orphans/widows rules).
  */
 
-import { renderWorksheet } from '../render/html.js';
+import { renderWorksheet, measureBodyLineBoxes } from '../render/html.js';
 import { getRuling, countFullRows } from './rulings.js';
+import { paginateBlocks } from './paginate.js';
 import { FONT_FAMILIES, contentWidthMm, contentHeightMm, FIT_SAFETY_MM, MIN_COPY_ROWS, COPY_AREA_GAP_MM, pxToMm } from '../config.js';
 
 /**
@@ -58,15 +67,82 @@ async function waitForImage(img) {
 }
 
 /**
+ * @typedef {object} PageLayout
+ * @property {import('./rulings.js').RulingDefinition} ruling
+ * @property {number} contentWidthMm
+ * @property {number[]} copyBlocks rows per copy-practice block; empty outside read-copy mode
+ * @property {number[]} pageBreaksMm cumulative height (mm, from the top of the flowed page content) at each point a new page starts
+ */
+
+/**
  * @typedef {object} FitResult
- * @property {boolean} ok
+ * @property {'fits' | 'extends' | 'blocked'} status
  * @property {number} revision
- * @property {string} [code]
+ * @property {number} [pageCount] present unless 'blocked'; 1 when status is 'fits'
+ * @property {PageLayout} [layout] present unless 'blocked'
+ * @property {string} [code] 'blocked' only: 'WIDTH_OVERFLOW' | 'BLOCK_TOO_TALL'
  * @property {object} [details]
  * @property {string[]} [suggestions]
- * @property {{ rowCount: number, ruling: import('./rulings.js').RulingDefinition, contentWidthMm: number }} [layout]
  * @property {Record<string, number>} [heightsMm]
  */
+
+/**
+ * @param {HTMLElement} page
+ * @returns {boolean}
+ */
+function hasHorizontalOverflow(page) {
+  return page.scrollWidth > page.clientWidth + 1;
+}
+
+/**
+ * Collects the atomic blocks above the copy area — header, title, image
+ * (each present/absent per settings), then every real measured body line
+ * box — in document order, from an already-rendered, already-attached
+ * page.
+ *
+ * Each block's heightMm is derived from the gap between its own top and
+ * the next block's top (or the page's own bottom, for the last block) —
+ * not from the block's own border-box height. getBoundingClientRect()
+ * excludes margins, so summing individual heights would silently drop any
+ * margin between blocks (found the hard way: sentence-per-line's
+ * `.ws-sentence { margin-bottom: 0.25em }` between paragraphs disappeared
+ * this way, undercounting total height and reporting 'fits' for content
+ * that, once printed, actually needed a second page). Measuring the real
+ * top-to-top distance between successive elements captures whatever
+ * margin sits between them, whatever it is, the same way the single
+ * whole-page measurement this replaced always did.
+ * @param {HTMLElement} page
+ * @returns {Array<{ heightMm: number }>}
+ */
+function collectContentBlocks(page) {
+  const pageTopPx = page.getBoundingClientRect().top;
+  /** @type {number[]} */
+  const topsMm = [];
+  for (const selector of ['.ws-header', '.ws-title', '.ws-image-wrap']) {
+    const el = page.querySelector(selector);
+    if (el) topsMm.push(pxToMm(el.getBoundingClientRect().top - pageTopPx));
+  }
+  const bodyEl = page.querySelector('.ws-body');
+  const bodyTopMm = pxToMm(bodyEl.getBoundingClientRect().top - pageTopPx);
+  for (const line of measureBodyLineBoxes(bodyEl)) {
+    topsMm.push(bodyTopMm + line.topMm);
+  }
+  const pageBottomMm = pxToMm(page.getBoundingClientRect().height);
+  return topsMm.map((topMm, i) => ({
+    heightMm: (i + 1 < topsMm.length ? topsMm[i + 1] : pageBottomMm) - topMm
+  }));
+}
+
+/**
+ * @param {number} revision
+ * @param {string} code
+ * @param {object} details
+ * @param {string[]} suggestions
+ * @returns {FitResult}
+ */
+function blocked(revision, code, details, suggestions) {
+  return { status: 'blocked', revision, code, details, suggestions };
+}
 
 /**
  * @param {import('../worksheet/build.js').WorksheetModel} model
@@ -87,62 +163,107 @@ export async function measureWorksheet(model, revision) {
   try {
     await waitForFonts(fontFamily);
 
-    let page = renderWorksheet(model, { rowCount: 0, ruling, contentWidthMm: widthMm }, surface);
+    const page = renderWorksheet(model, { copyBlocks: [], ruling, contentWidthMm: widthMm }, surface);
     await waitForImage(page.querySelector('img.ws-image'));
 
-    const usedHeightMm = pxToMm(page.getBoundingClientRect().height);
+    if (hasHorizontalOverflow(page)) {
+      return blocked(
+        revision,
+        'WIDTH_OVERFLOW',
+        { contentWidthMm: widthMm },
+        ['choose-shorter-text']
+      );
+    }
+
+    const blocks = collectContentBlocks(page);
+    const tooTall = blocks.find((b) => b.heightMm > budgetMm);
+    if (tooTall) {
+      return blocked(
+        revision,
+        'BLOCK_TOO_TALL',
+        { availableHeightMm: budgetMm, requiredHeightMm: tooTall.heightMm },
+        ['choose-shorter-text', 'reduce-image']
+      );
+    }
+
+    const totalContentHeightMm = blocks.reduce((sum, b) => sum + b.heightMm, 0);
+    const { pageCount, breaksMm, lastPageUsedMm } = paginateBlocks(blocks, budgetMm);
 
     if (s.writingMode !== 'read-copy') {
-      if (usedHeightMm > budgetMm) {
-        return {
-          ok: false,
+      return {
+        status: pageCount === 1 ? 'fits' : 'extends',
+        revision,
+        pageCount,
+        layout: { ruling, contentWidthMm: widthMm, copyBlocks: [], pageBreaksMm: breaksMm },
+        heightsMm: { used: totalContentHeightMm, budget: budgetMm },
+        suggestions: pageCount === 1 ? undefined : ['choose-shorter-text', 'reduce-image']
+      };
+    }
+
+    // Read-and-copy: fit as many copy rows as remain on the last content
+    // page; if fewer than a usable minimum remain, finish that page with
+    // whatever fits (may be zero rows) and give the copy exercise one full
+    // fresh page rather than a cramped handful of lines (blueprint 8.4:
+    // "do not imply five blank lines are enough for 200 handwritten
+    // words" — applied honestly via an extra page instead of blocking).
+    const remainderMm = budgetMm - lastPageUsedMm - COPY_AREA_GAP_MM;
+    const rowsOnLastPage = countFullRows(remainderMm, ruling.lineHeightMm);
+
+    let lastPageRows = rowsOnLastPage;
+    let freshPageRows = 0;
+    let extraPage = false;
+
+    if (rowsOnLastPage < MIN_COPY_ROWS) {
+      freshPageRows = countFullRows(budgetMm, ruling.lineHeightMm);
+      if (freshPageRows < MIN_COPY_ROWS) {
+        // Not even a completely empty page can fit the minimum — the
+        // configured guide height is too tall for this page budget, a
+        // genuinely impossible request rather than one more page can fix.
+        return blocked(
           revision,
-          code: 'PAGE_OVERFLOW',
-          details: { availableHeightMm: budgetMm, requiredHeightMm: usedHeightMm, overflowMm: usedHeightMm - budgetMm },
-          suggestions: ['choose-shorter-text', 'reduce-image']
-        };
+          'BLOCK_TOO_TALL',
+          { availableHeightMm: budgetMm, requiredHeightMm: MIN_COPY_ROWS * ruling.lineHeightMm },
+          ['read-only']
+        );
       }
-      return {
-        ok: true,
-        revision,
-        layout: { rowCount: 0, ruling, contentWidthMm: widthMm },
-        heightsMm: { used: usedHeightMm, budget: budgetMm }
-      };
+      extraPage = true;
     }
 
-    const availableForCopyMm = budgetMm - usedHeightMm - COPY_AREA_GAP_MM;
-    const rowCount = countFullRows(availableForCopyMm, ruling.lineHeightMm);
+    const copyBlocksRows = [lastPageRows, freshPageRows].filter((n) => n > 0);
 
-    if (rowCount < MIN_COPY_ROWS) {
-      const requiredHeightMm = usedHeightMm + COPY_AREA_GAP_MM + MIN_COPY_ROWS * ruling.lineHeightMm;
-      return {
-        ok: false,
-        revision,
-        code: 'PAGE_OVERFLOW',
-        details: { availableHeightMm: budgetMm, requiredHeightMm, overflowMm: requiredHeightMm - budgetMm },
-        suggestions: ['choose-shorter-text', 'reduce-image', 'read-only']
-      };
+    // Real second render pass with the actual final copy blocks, so the
+    // reported page count and break positions come from the DOM that will
+    // actually print, not a re-derivation of it (blueprint 8.4 fit
+    // procedure's own rule, applied to the added copy-area geometry).
+    const finalPage = renderWorksheet(model, { copyBlocks: copyBlocksRows, ruling, contentWidthMm: widthMm }, surface);
+    await waitForImage(finalPage.querySelector('img.ws-image'));
+    const measuredCopyBlockHeightsMm = [...finalPage.querySelectorAll('.ws-copy-block')].map((el) =>
+      pxToMm(el.getBoundingClientRect().height)
+    );
+
+    let cursorMm = totalContentHeightMm;
+    const copyBreaksMm = [];
+    let measuredIndex = 0;
+    if (lastPageRows > 0) {
+      cursorMm += measuredCopyBlockHeightsMm[measuredIndex];
+      measuredIndex += 1;
+    }
+    if (extraPage) {
+      copyBreaksMm.push(cursorMm);
+      if (freshPageRows > 0) {
+        cursorMm += measuredCopyBlockHeightsMm[measuredIndex];
+      }
     }
 
-    page = renderWorksheet(model, { rowCount, ruling, contentWidthMm: widthMm }, surface);
-    await waitForImage(page.querySelector('img.ws-image'));
-    const finalHeightMm = pxToMm(page.getBoundingClientRect().height);
-
-    if (finalHeightMm > budgetMm) {
-      return {
-        ok: false,
-        revision,
-        code: 'PAGE_OVERFLOW',
-        details: { availableHeightMm: budgetMm, requiredHeightMm: finalHeightMm, overflowMm: finalHeightMm - budgetMm },
-        suggestions: ['choose-shorter-text', 'reduce-image', 'read-only']
-      };
-    }
+    const finalPageCount = pageCount + (extraPage ? 1 : 0);
 
     return {
-      ok: true,
+      status: finalPageCount === 1 ? 'fits' : 'extends',
       revision,
-      layout: { rowCount, ruling, contentWidthMm: widthMm },
-      heightsMm: { used: usedHeightMm, final: finalHeightMm, budget: budgetMm }
+      pageCount: finalPageCount,
+      layout: { ruling, contentWidthMm: widthMm, copyBlocks: copyBlocksRows, pageBreaksMm: [...breaksMm, ...copyBreaksMm] },
+      heightsMm: { used: totalContentHeightMm, final: cursorMm, budget: budgetMm },
+      suggestions: finalPageCount === 1 ? undefined : ['choose-shorter-text', 'reduce-image', 'read-only']
     };
   } finally {
     surface.remove();

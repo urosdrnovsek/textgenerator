@@ -36,7 +36,7 @@ import {
   resetAllData
 } from './storage.js';
 import { readImageFile, readContentPackImport } from './import.js';
-import { PACKET_MAX_SHEETS, addSnapshot, removeSnapshot, moveSnapshot, generateSnapshotId } from './worksheet/packet.js';
+import { PACKET_MAX_SHEETS, addSnapshot, removeSnapshot, moveSnapshot, generateSnapshotId, totalPages } from './worksheet/packet.js';
 
 /** blueprint 8.1: "The interface starts in Slovene for the pilot." */
 const DEFAULT_LANGUAGE = 'sl';
@@ -664,7 +664,8 @@ function renderPacketList() {
 
       const titleSpan = document.createElement('span');
       titleSpan.className = 'packet-item-title';
-      titleSpan.textContent = `${index + 1}. ${sheet.title} — ${t(`language.${sheet.language}`)}, ${t('field.level')} ${sheet.level}`;
+      const pagesSuffix = sheet.pageCount > 1 ? ` — ${t('packet.sheetPages', { pages: sheet.pageCount })}` : '';
+      titleSpan.textContent = `${index + 1}. ${sheet.title} — ${t(`language.${sheet.language}`)}, ${t('field.level')} ${sheet.level}${pagesSuffix}`;
       li.append(titleSpan);
 
       const upButton = document.createElement('button');
@@ -706,7 +707,11 @@ function renderPacketList() {
 }
 
 function updatePacketControls() {
-  els.packetCount.textContent = t('packet.count', { count: state.packet.length, max: PACKET_MAX_SHEETS });
+  els.packetCount.textContent = t('packet.count', {
+    count: state.packet.length,
+    max: PACKET_MAX_SHEETS,
+    pages: totalPages(state.packet)
+  });
   els.addToPacketButton.disabled = !state.lastGood || state.packet.length >= PACKET_MAX_SHEETS;
   els.printPacketButton.disabled = state.packet.length === 0;
   els.clearPacketButton.disabled = state.packet.length === 0;
@@ -714,13 +719,14 @@ function updatePacketControls() {
 
 function handleAddToPacket() {
   if (!state.lastGood) return;
-  const { model, layout } = state.lastGood;
+  const { model, layout, pageCount } = state.lastGood;
   const labels = { nameLine: t('header.nameLine'), date: t('header.date') };
   const result = addSnapshot(state.packet, {
     id: generateSnapshotId(),
     title: model.title,
     language: model.contentKey.language,
     level: model.level,
+    pageCount,
     model,
     layout,
     labels
@@ -822,22 +828,39 @@ async function handleImportContent() {
   }
 }
 
+/**
+ * Renders the three-state fit result (upgrade blueprint v3, workstream A —
+ * 'extends' is new; a worksheet longer than one page is now allowed and
+ * clearly labelled instead of blocked).
+ * @param {import('./worksheet/build.js').WorksheetModel} model
+ * @param {import('./layout/measure.js').FitResult} result
+ */
 function showFit(model, result) {
   const el = els.fitIndicator;
-  el.classList.toggle('is-overflow', !result.ok);
-  if (result.ok) {
+  el.classList.toggle('is-overflow', result.status === 'blocked');
+  el.classList.toggle('is-extends', result.status === 'extends');
+  el.dataset.pageCount = result.pageCount ?? '';
+
+  const suggestions = (result.suggestions ?? []).map((code) => t(`fit.suggestion.${code}`)).join(', ');
+
+  if (result.status === 'fits') {
     el.textContent = t('fit.fits', {
       words: model.wordCount,
       level: model.level,
       used: (result.heightsMm.final ?? result.heightsMm.used).toFixed(1),
       budget: result.heightsMm.budget.toFixed(1)
     });
+  } else if (result.status === 'extends') {
+    el.textContent = t('fit.extends', {
+      pages: result.pageCount,
+      words: model.wordCount,
+      level: model.level,
+      suggestions
+    });
   } else {
-    const suggestions = (result.suggestions ?? []).map((code) => t(`fit.suggestion.${code}`)).join(', ');
-    el.textContent = t('fit.overflow', {
+    el.textContent = t('fit.blocked', {
       code: result.code,
-      required: result.details.requiredHeightMm.toFixed(1),
-      available: result.details.availableHeightMm.toFixed(1),
+      reason: t(`fit.blocked.reason.${result.code}`),
       suggestions
     });
   }
@@ -864,7 +887,7 @@ async function requestRender() {
   els.printButton.disabled = !isPrintReady(result);
   els.docxButton.disabled = !isPrintReady(result);
 
-  if (!result.ok) {
+  if (result.status === 'blocked') {
     state.lastGood = null;
     els.preview.replaceChildren();
     els.printSurface.replaceChildren();
@@ -873,9 +896,11 @@ async function requestRender() {
   }
 
   const labels = { nameLine: t('header.nameLine'), date: t('header.date') };
-  renderWorksheet(model, result.layout, els.preview, labels);
+  // previewMode (page-break markers) only in #preview — never the print
+  // surface or a packet sheet (upgrade blueprint v3, workstream A).
+  renderWorksheet(model, result.layout, els.preview, labels, true);
   renderWorksheet(model, result.layout, els.printSurface, labels);
-  state.lastGood = { model, layout: result.layout };
+  state.lastGood = { model, layout: result.layout, pageCount: result.pageCount };
   updatePacketControls();
 }
 

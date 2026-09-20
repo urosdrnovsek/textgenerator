@@ -20,6 +20,7 @@ export function generateSnapshotId() {
  * @property {string} title
  * @property {string} language
  * @property {number} level
+ * @property {number} pageCount how many pages this sheet prints as (upgrade blueprint v3, workstream A — a sheet is no longer guaranteed to be exactly one page)
  */
 
 /**
@@ -60,4 +61,12 @@ export function moveSnapshot(packet, id, direction) {
   const next = [...packet];
   [next[index], next[targetIndex]] = [next[targetIndex], next[index]];
   return next;
+}
+
+/**
+ * @param {PacketSnapshot[]} packet
+ * @returns {number} total pages across every sheet — what "Print packet" actually produces
+ */
+export function totalPages(packet) {
+  return packet.reduce((sum, sheet) => sum + sheet.pageCount, 0);
 }

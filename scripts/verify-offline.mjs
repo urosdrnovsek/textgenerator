@@ -200,6 +200,30 @@ async function main() {
     console.log('Exercising packet print...');
     await evalJs(`document.getElementById('btn-print-packet').click();`);
     await wait(300);
+
+    console.log('Exercising a multi-page worksheet print (upgrade blueprint v3, workstream A)...');
+    await evalJs(`
+      (function() {
+        document.getElementById('theme-select').value = 'stories';
+        document.getElementById('theme-select').dispatchEvent(new Event('change', { bubbles: true }));
+        document.getElementById('level-select').value = '5';
+        document.getElementById('level-select').dispatchEvent(new Event('change', { bubbles: true }));
+        document.getElementById('btn-create').click();
+        const fontSize = document.getElementById('font-size-input');
+        fontSize.value = '32';
+        fontSize.dispatchEvent(new Event('change', { bubbles: true }));
+        const lineHeight = document.getElementById('line-height-input');
+        lineHeight.value = '2.5';
+        lineHeight.dispatchEvent(new Event('change', { bubbles: true }));
+      })();
+    `);
+    const multiPageFitText = await waitForFit();
+    const pageCount = await evalJs(`Number(document.getElementById('fit-indicator').dataset.pageCount)`);
+    if (!(pageCount > 1)) {
+      throw new Error(`expected max settings on a level-5 text to report more than 1 page, got pageCount=${pageCount} ("${multiPageFitText}")`);
+    }
+    await evalJs(`document.getElementById('btn-print').click();`);
+    await wait(200);
   } finally {
     chrome.kill();
     // Give Chromium a moment to actually release its profile-directory file

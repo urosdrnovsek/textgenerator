@@ -26,12 +26,26 @@ the app needs is already inside that folder.
    shown until you click **Create text** again — so you can safely explore
    filters without losing your current worksheet.
 5. When you're happy with the preview, use **Print / Save as PDF** or
-   **Export as Word (.docx)** at the bottom of the sidebar. Both buttons
-   only become active once the worksheet fits cleanly on one page.
+   **Export as Word (.docx)** at the bottom of the sidebar.
 
-If a worksheet doesn't fit (too much text, too large a font, too much
-spacing for one page), the sidebar explains why and suggests what to try —
-a shorter text, a smaller image, or switching to "Read only" mode.
+### When a worksheet is longer than one page
+
+One page is still the goal, and most combinations of text, level, and
+settings fit on one. If a particular combination doesn't — a long level-5
+text with a large font and generous spacing, for example — the sidebar
+tells you it will print on more than one page instead of stopping you.
+Print and Word export both stay available; the preview shows a dashed
+line with a page number wherever the app expects the print to break.
+
+If you'd rather keep it to one page, the sidebar suggests what to try:
+a shorter text, a smaller image, more compact spacing, or switching to
+"Read only" mode (which needs less space than "Read & copy").
+
+A worksheet can also occasionally be impossible to lay out at all — a
+single word wider than the page, for instance, or an image/header taller
+than a page. That's rare, and in that case the sidebar explains exactly
+what's wrong; Print and Word export stay disabled until you change
+something.
 
 ## Reading and writing supports
 
@@ -113,11 +127,20 @@ levels for one lesson — use the **Packet** panel:
 3. Reorder with the **↑ / ↓** buttons next to each sheet, or remove one
    with **✕**.
 4. Click **Print packet** — this opens the normal print dialog with every
-   sheet as its own page, in the order shown, ready to print as one job.
+   sheet as its own page(s), in the order shown, ready to print as one job.
 5. **Clear packet** empties the whole set when you're done with it.
 
 The packet is not saved between sessions — it's meant for "build a set, print
 it now."
+
+**If a worksheet in your packet says it's longer than one page** (see
+"When a worksheet is longer than one page" above), put it **last** in the
+packet, or print it on its own instead of as part of the set — some
+browsers can drop that worksheet's extra pages if it's placed anywhere
+else in the middle of a packet. A packet where every sheet fits on one
+page, or where every sheet happens to be longer than one page, isn't
+affected — it's specifically mixing a longer one with shorter ones, with
+the longer one not last, that can lose pages.
 
 ## Adding your own texts
 

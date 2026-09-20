@@ -188,6 +188,47 @@ async function main() {
     const singlePages = Number((execFileSync('pdfinfo', [singlePdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
     check('single worksheet prints as exactly 1 page in real Firefox', singlePages === 1);
 
+    console.log('\nMulti-page worksheet print check (upgrade blueprint v3, workstream A)...');
+    await evalJs(`
+      document.getElementById('theme-select').value = 'stories';
+      document.getElementById('theme-select').dispatchEvent(new Event('change', { bubbles: true }));
+      document.getElementById('level-select').value = '5';
+      document.getElementById('level-select').dispatchEvent(new Event('change', { bubbles: true }));
+      document.getElementById('btn-create').click();
+      const fontSize = document.getElementById('font-size-input');
+      fontSize.value = '32';
+      fontSize.dispatchEvent(new Event('change', { bubbles: true }));
+      const lineHeight = document.getElementById('line-height-input');
+      lineHeight.value = '2.5';
+      lineHeight.dispatchEvent(new Event('change', { bubbles: true }));
+    `);
+    await waitForFit();
+    const expectedMultiPages = Number(await evalJs(`return document.getElementById('fit-indicator').dataset.pageCount`));
+    check('max settings on a level-5 text report more than 1 page', expectedMultiPages > 1);
+    const multiPdfBase64 = await driver.printPage();
+    const multiPdfPath = path.join(downloadDir, 'multi-page-worksheet.pdf');
+    await writeFile(multiPdfPath, Buffer.from(multiPdfBase64, 'base64'));
+    const multiPages = Number((execFileSync('pdfinfo', [multiPdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
+    check(`real Firefox print engine renders the multi-page worksheet as exactly ${expectedMultiPages} pages (got ${multiPages})`, multiPages === expectedMultiPages);
+    const multiText = execFileSync('pdftotext', [multiPdfPath, '-']).toString();
+    check('multi-page worksheet PDF has non-empty extracted text', multiText.trim().length > 0);
+
+    // Reset back to defaults — the language loop below checks for the
+    // localized "fits" wording specifically, which these settings would
+    // break for languages whose content doesn't also extend at max size.
+    await evalJs(`
+      document.getElementById('level-select').value = '1';
+      document.getElementById('level-select').dispatchEvent(new Event('change', { bubbles: true }));
+      document.getElementById('btn-create').click();
+      const fontSize = document.getElementById('font-size-input');
+      fontSize.value = '16';
+      fontSize.dispatchEvent(new Event('change', { bubbles: true }));
+      const lineHeight = document.getElementById('line-height-input');
+      lineHeight.value = '1.4';
+      lineHeight.dispatchEvent(new Event('change', { bubbles: true }));
+    `);
+    await waitForFit();
+
     console.log('\nExercising all 5 languages...');
     for (const language of ['sl', 'en', 'de', 'fr', 'es']) {
       await evalJs(`

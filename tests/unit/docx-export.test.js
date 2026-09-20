@@ -60,7 +60,7 @@ async function unzipEntry(docxPath, entryName) {
 test('exportDocx produces a real zip/OOXML package with colored runs, correct A4 page size, and an embedded (not linked) image', async (t) => {
   const model = await buildModel(TEST_ENTRY_ID);
   const imageBytes = await imageBytesFor(TEST_ENTRY_ID);
-  const layout = { rowCount: 6 };
+  const layout = { copyBlocks: [6] };
 
   const blob = await exportDocx(model, layout, imageBytes);
   const buffer = Buffer.from(await blob.arrayBuffer());
@@ -104,7 +104,7 @@ test('exportDocx sizes the image at its real aspect ratio instead of stretching 
   assert.equal(model.image.width, 512, 'sanity check: the fixture image is really square');
   assert.equal(model.image.height, 512);
   const imageBytes = await imageBytesFor(TEST_ENTRY_ID);
-  const layout = { rowCount: 6 };
+  const layout = { copyBlocks: [6] };
 
   const blob = await exportDocx(model, layout, imageBytes);
   const buffer = Buffer.from(await blob.arrayBuffer());
@@ -137,7 +137,7 @@ test('exportDocx applies extraWordSpacePt as additional characterSpacing on spac
   const model = { ...(await buildModel(TEST_ENTRY_ID)), settings: wordSpacingSettings };
   const imageBytes = await imageBytesFor(TEST_ENTRY_ID);
 
-  const blob = await exportDocx(model, { rowCount: 0 }, imageBytes);
+  const blob = await exportDocx(model, { copyBlocks: [] }, imageBytes);
   const buffer = Buffer.from(await blob.arrayBuffer());
   const tmpDir = await mkdtemp(path.join(os.tmpdir(), 'worksheet-docx-test-'));
   const docxPath = path.join(tmpDir, 'worksheet.docx');
@@ -150,13 +150,13 @@ test('exportDocx applies extraWordSpacePt as additional characterSpacing on spac
   assert.ok(spacingValues.includes(126), 'expected 6 + 120 = 126 twips on space runs (letter + word spacing combined)');
 });
 
-test('exportDocx renders no copy-practice lines when rowCount is 0 (read-only mode)', async () => {
+test('exportDocx renders no copy-practice lines when copyBlocks is empty (read-only mode)', async () => {
   const model = await buildModel(TEST_ENTRY_ID);
   const readOnlySettings = { ...SETTINGS, writingMode: 'read-only' };
   const modelReadOnly = { ...model, settings: readOnlySettings };
   const imageBytes = await imageBytesFor(TEST_ENTRY_ID);
 
-  const blob = await exportDocx(modelReadOnly, { rowCount: 0 }, imageBytes);
+  const blob = await exportDocx(modelReadOnly, { copyBlocks: [] }, imageBytes);
   const buffer = Buffer.from(await blob.arrayBuffer());
   assert.equal(buffer.subarray(0, 2).toString('hex'), '504b');
 });
@@ -164,7 +164,7 @@ test('exportDocx renders no copy-practice lines when rowCount is 0 (read-only mo
 test('exportDocx uses the caller-supplied header labels instead of the hardcoded Slovene defaults', async () => {
   const model = await buildModel(TEST_ENTRY_ID);
   const imageBytes = await imageBytesFor(TEST_ENTRY_ID);
-  const layout = { rowCount: 6 };
+  const layout = { copyBlocks: [6] };
 
   const blob = await exportDocx(model, layout, imageBytes, { nameLine: 'Nombre:', date: 'Fecha:' });
   const buffer = Buffer.from(await blob.arrayBuffer());

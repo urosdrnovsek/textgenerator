@@ -83,7 +83,7 @@ function toWordRuns(runs, { fontFamily, fontSizePt, characterSpacingTwips, wordS
 
 /**
  * @param {import('../worksheet/build.js').WorksheetModel} model
- * @param {{ rowCount: number }} layout the fit-checked layout decision from layout/measure.js
+ * @param {{ copyBlocks: number[] }} layout the fit-checked layout decision from layout/measure.js — one entry in copyBlocks per copy-practice block (a second entry means a page break is needed before it)
  * @param {Uint8Array | Buffer | undefined} imageBytes decoded bytes of model.image
  * @param {{ nameLine: string, date: string }} [labels] translated header.nameLine/header.date strings for the active locale (blueprint 8.1: every teacher-facing label must localize) — falls back to the Slovene defaults only if omitted
  * @returns {Promise<Blob>} browser- and Node-compatible; tests convert via .arrayBuffer()
@@ -170,40 +170,53 @@ export async function exportDocx(model, layout, imageBytes, labels = DEFAULT_LAB
   // for ruled lines in generated Word documents. The full three-line guide
   // (top + dashed midline + baseline) is still deferred to a PNG-guide
   // adapter (blueprint 8.7) -- a bottom border alone is the Phase 0 subset.
-  if (s.writingMode === 'read-copy' && layout?.rowCount > 0) {
+  //
+  // layout.copyBlocks (upgrade blueprint v3, workstream A) is one entry
+  // per block the fit check decided on — a second entry means the copy
+  // exercise needs a fresh page, same as the HTML/print output's
+  // .ws-copy-block--new-page; a Word page break is inserted before it
+  // rather than relying on the table simply overflowing, so Word's own
+  // pagination matches the app's.
+  if (s.writingMode === 'read-copy' && layout?.copyBlocks?.length > 0) {
     const rowHeightTwips = mmToTwips(s.guideHeightMm ?? 10);
     const noBorder = { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' };
-    const rows = [];
-    for (let i = 0; i < layout.rowCount; i++) {
-      rows.push(
-        new TableRow({
-          height: { value: rowHeightTwips, rule: HeightRule.EXACT },
-          children: [
-            new TableCell({
-              width: { size: mmToTwips(170), type: WidthType.DXA },
-              margins: { top: 0, bottom: 0, left: 0, right: 0 },
-              verticalAlign: VerticalAlign.BOTTOM,
-              borders: { top: noBorder, left: noBorder, right: noBorder, bottom: { style: BorderStyle.SINGLE, size: 6, color: '333333' } },
-              children: [new Paragraph({ spacing: { before: 0, after: 0 }, children: [] })]
-            })
-          ]
+    layout.copyBlocks.forEach((rowCount, blockIndex) => {
+      if (blockIndex > 0) {
+        children.push(new Paragraph({ children: [], pageBreakBefore: true }));
+      }
+      const rows = [];
+      for (let i = 0; i < rowCount; i++) {
+        rows.push(
+          new TableRow({
+            height: { value: rowHeightTwips, rule: HeightRule.EXACT },
+            cantSplit: true,
+            children: [
+              new TableCell({
+                width: { size: mmToTwips(170), type: WidthType.DXA },
+                margins: { top: 0, bottom: 0, left: 0, right: 0 },
+                verticalAlign: VerticalAlign.BOTTOM,
+                borders: { top: noBorder, left: noBorder, right: noBorder, bottom: { style: BorderStyle.SINGLE, size: 6, color: '333333' } },
+                children: [new Paragraph({ spacing: { before: 0, after: 0 }, children: [] })]
+              })
+            ]
+          })
+        );
+      }
+      children.push(
+        new Table({
+          width: { size: mmToTwips(170), type: WidthType.DXA },
+          borders: {
+            top: noBorder,
+            bottom: noBorder,
+            left: noBorder,
+            right: noBorder,
+            insideHorizontal: noBorder,
+            insideVertical: noBorder
+          },
+          rows
         })
       );
-    }
-    children.push(
-      new Table({
-        width: { size: mmToTwips(170), type: WidthType.DXA },
-        borders: {
-          top: noBorder,
-          bottom: noBorder,
-          left: noBorder,
-          right: noBorder,
-          insideHorizontal: noBorder,
-          insideVertical: noBorder
-        },
-        rows
-      })
-    );
+    });
   }
 
   const doc = new Document({
