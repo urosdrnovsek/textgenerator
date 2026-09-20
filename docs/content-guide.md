@@ -108,6 +108,48 @@ so it works with any short name; don't rely on the name's gender or
 grammatical case beyond what `name_default` shows, because a teacher can
 type anything.
 
+### Syllable breaks — the convention per language
+
+`syllable_body` marks *reading* syllables (what a child sounds out), not
+typographic hyphenation points. Every non-Slovene entry was re-checked
+word by word against these rules on 2026-09-20 (Slovene was reviewed by
+a teacher and is not covered here); apply the same rules to new entries.
+
+- **Spanish** — RAE rules. Diphthongs (`ai`, `ia`, `ue`, `ui`, `io`…) and
+  triphthongs never split (`cria|dos`, `cui|da|do`); a written accent on
+  the weak vowel makes a hiatus (`dí|a`, `ba|úl`); two strong vowels
+  split (`le|er`). `ch`, `ll`, `rr`, `qu`, `gu(e/i)` are single units; a
+  consonant + `l`/`r` opens the next syllable (`ha|blar`); other pairs
+  split (`car|ta`), and in a three-consonant group `s` closes the first
+  syllable (`cons|tan|te`, `ins|tru|men|to`).
+- **French** — *syllabes écrites*: a silent final `e` (or `-es`, `-ent`)
+  makes its own written syllable (`ta|ble`, `chas|sent`), so `ée`/`ées`
+  stay whole (`fu|sée`, `val|lées`). A single consonant opens the next
+  syllable (`a|ni|mal`); double consonants split (`bel|le`, `pous|se`),
+  including `ill` (`feuil|le`, `o|reil|les`, `mouil|le`, `vieil|le`);
+  `ch`, `ph`, `th`, `gn` and consonant + `l`/`r` never split (`ta|ble`,
+  `mon|ta|gnes`); `ck` does (`stoc|kées`). Vowel groups stay together
+  (`seuils`, `res|pec|tueux`, `si|nueu|ses`, `con|tri|bué`) except a
+  diaeresis or an accented vowel next to another vowel (`No|ël`,
+  `ré|ac|tion`, `gé|an|te`, `No|é`); `y` between vowels opens the next
+  syllable (`vo|ya|ge`, `dé|plo|yées`).
+- **German** — Duden (2006 rules): one consonant to the next syllable
+  (`Wa|gen`), of several only the last (`Was|ser`, `Müt|ze`, `Fens|ter`);
+  `ch`, `sch`, `ck`, `ph`, `ß`, `qu` never split (`Zu|cker`, `wa|schen`);
+  compounds and prefixes split at the morpheme (`Wind|stoß`,
+  `ver|las|sen`, `hin|aus`); `-tion` is two syllables (`Si|tu|a|ti|on`);
+  a single leading vowel is its own syllable (`E|le|fant`, `ü|ber`,
+  `Ei|er`).
+- **English** — the reading-instruction division that dictionaries also
+  use: split between two consonants (`win|ter`), never inside a digraph
+  (`rath|er`, `fish|ing`); an open syllable before a long vowel (`ti|ny`,
+  `o|pen`, `spi|ral`, `lo|cate`), closed before a short one (`ver|y`,
+  `man|y`, `bod|y`, `ev|ery`); consonant-`le` (`sin|gle`, `lit|tle`);
+  prefixes and suffixes kept whole (`de|spite`, `be|yond`, `re|sist`,
+  `small|er`, `dif|fer|ent|ly`); a stem's silent `e` goes with `-es`
+  (`fac|es`, `chang|es`, `ex|pe|ri|enc|es`); place names by pronunciation
+  (`Se|ren|ge|ti`, `Tan|za|nia`, `Cap|pa|do|cia`); `tired` is one syllable.
+
 ## Images
 
 Each `imageId` points at `assets/manifest.json`, which records the file,
@@ -158,7 +200,12 @@ From `npm run content-status`:
 - **English, German, French, Spanish:** 25 entries each, all `reviewed`
   by an AI editorial pass on 2026-09-19 (`nativeSpeaker: false`,
   `syllablesReviewed: true`; 3 German and 3 French syllable breaks were
-  fixed in that pass). Native-speaker review: **0 of 100.**
+  fixed in that pass). A second, word-by-word syllable pass on 2026-09-20
+  (every unique word checked against the per-language rules above, with
+  rule-based splitters and the Duden/TeX hyphenation patterns as a
+  second opinion) corrected 62 more breaks in 28 entries: 1 Spanish, 2
+  German, 18 French (mostly `feu|il|le`-type words), 41 English. Native-
+  speaker review: **0 of 100.**
 - **Images:** 9 of 125 `verified` (the four illustrations generated for
   the mismatched Neuschwanstein, Uluru, Easter Island and Pont du Gard
   entries, and the axolotl illustration bundled for the five Spanish

@@ -131,17 +131,17 @@
     },
     {
       "id": "animal_facts_kugelfisch_3",
-      "version": 1,
+      "version": 2,
       "theme": "animal_facts",
       "level": 3,
       "title": "Der runde Kugelfisch",
       "body": "Ein Kugelfisch kann seinen Körper bei Gefahr stark vergrößern. Dazu schluckt er rasch Wasser und richtet oft kleine Stacheln auf. Die plötzlich runde Form macht es einem Räuber schwerer, den Fisch zu verschlucken. Viele Kugelfische enthalten außerdem starke Giftstoffe und dürfen niemals angefasst oder gegessen werden. Im ruhigen Zustand schwimmen sie mit kleinen Flossen und suchen nach Muscheln, Schnecken oder anderer Nahrung. Aufgebläht zu sein ist keine dauernde Alltagsform. Der Fisch vergrößert sich in einer bedrohlichen Situation, wodurch ein Räuber ihn schwerer packen oder verschlucken kann.",
-      "syllable_body": "Ein Ku|gel|fisch kann sei|nen Kör|per bei Ge|fahr stark ver|grö|ßern. Da|zu schluckt er rasch Was|ser und rich|tet oft klei|ne Sta|cheln auf. Die plötz|lich run|de Form macht es ei|nem Räu|ber schwe|rer, den Fisch zu ver|schlu|cken. Vie|le Ku|gel|fi|sche ent|hal|ten au|ßer|dem star|ke Gift|stof|fe und dür|fen nie|mals an|ge|fasst o|der ge|ges|sen wer|den. Im ru|hi|gen Zu|stand schwim|men sie mit klei|nen Flos|sen und su|chen nach Mu|scheln, Schne|cken o|der an|de|rer Nah|rung. Auf|ge|bläht zu sein ist kei|ne dau|ern|de All|tags|form. Der Fisch ver|grö|ßert sich in ei|ner be|droh|li|chen Si|tu|a|tion, wo|durch ein Räu|ber ihn schwe|rer pa|cken o|der ver|schlu|cken kann.",
+      "syllable_body": "Ein Ku|gel|fisch kann sei|nen Kör|per bei Ge|fahr stark ver|grö|ßern. Da|zu schluckt er rasch Was|ser und rich|tet oft klei|ne Sta|cheln auf. Die plötz|lich run|de Form macht es ei|nem Räu|ber schwe|rer, den Fisch zu ver|schlu|cken. Vie|le Ku|gel|fi|sche ent|hal|ten au|ßer|dem star|ke Gift|stof|fe und dür|fen nie|mals an|ge|fasst o|der ge|ges|sen wer|den. Im ru|hi|gen Zu|stand schwim|men sie mit klei|nen Flos|sen und su|chen nach Mu|scheln, Schne|cken o|der an|de|rer Nah|rung. Auf|ge|bläht zu sein ist kei|ne dau|ern|de All|tags|form. Der Fisch ver|grö|ßert sich in ei|ner be|droh|li|chen Si|tu|a|ti|on, wo|durch ein Räu|ber ihn schwe|rer pa|cken o|der ver|schlu|cken kann.",
       "imageId": "octopus_camouflage",
       "review": {
         "status": "reviewed",
-        "reviewer": "Claude (AI editorial pass, not a native speaker)",
-        "date": "2026-09-19",
+        "reviewer": "Claude (AI editorial pass, not a native speaker; syllable breaks re-checked 2026-09-20)",
+        "date": "2026-09-20",
         "nativeSpeaker": false,
         "syllablesReviewed": true,
         "imageAccuracy": "plausible"
@@ -167,17 +167,17 @@
     },
     {
       "id": "animal_facts_okapi_5",
-      "version": 2,
+      "version": 3,
       "theme": "animal_facts",
       "level": 5,
       "title": "Das gestreifte Okapi",
       "body": "Das Okapi lebt in den Regenwäldern der Demokratischen Republik Kongo. Seine Beine tragen helle Streifen, doch es ist näher mit der Giraffe als mit dem Zebra verwandt. Mit seiner langen dunklen Zunge kann es Blätter greifen und sogar Teile seines Gesichts reinigen. Große bewegliche Ohren helfen ihm, leise Geräusche im dichten Wald wahrzunehmen. Okapis leben meist allein und brauchen ungestörte Waldgebiete mit reichlich Pflanzen. Die Streifen laden zu einem schnellen Vergleich mit Zebras ein. Für die Verwandtschaft reicht ein ähnliches Muster aber nicht aus. Das Okapi gehört zur Familie der Giraffen, obwohl sein Hals deutlich kürzer ist. Im dichten Wald muss es Nahrung erreichen und Bewegungen in seiner Umgebung wahrnehmen. Die beweglichen Ohren und die lange Zunge unterstützen unterschiedliche Aufgaben. Sein Lebensraum lässt sich nicht durch eine einzelne Futterstelle ersetzen. Es braucht zusammenhängenden Wald mit geeigneter Vegetation und geschützten Bereichen, in denen es sich bewegen und zurückziehen kann.",
-      "syllable_body": "Das O|ka|pi lebt in den Re|gen|wäl|dern der De|mo|kra|ti|schen Re|pu|blik Kon|go. Sei|ne Bei|ne tra|gen hel|le Strei|fen, doch es ist nä|her mit der Gi|raf|fe als mit dem Ze|bra ver|wandt. Mit sei|ner lan|gen dunk|len Zun|ge kann es Blät|ter grei|fen und so|gar Tei|le sei|nes Ge|sichts rei|ni|gen. Gro|ße be|weg|li|che Oh|ren hel|fen ihm, lei|se Ge|räu|sche im dich|ten Wald wahr|zu|neh|men. O|ka|pis le|ben meist al|lein und brau|chen un|ge|stör|te Wald|ge|bie|te mit reich|lich Pflan|zen. Die Strei|fen la|den zu ei|nem schnel|len Ver|gleich mit Ze|bras ein. Für die Ver|wandt|schaft reicht ein ähn|li|ches Mus|ter a|ber nicht aus. Das O|ka|pi ge|hört zur Fa|mi|lie der Gi|raf|fen, ob|wohl sein Hals deut|lich kür|zer ist. Im dich|ten Wald muss es Nah|rung er|rei|chen und Be|we|gun|gen in sei|ner Um|ge|bung wahr|neh|men. Die be|weg|li|chen Oh|ren und die lan|ge Zun|ge un|ter|stüt|zen un|ter|schied|li|che Auf|ga|ben. Sein Le|bens|raum lässt sich nicht durch ei|ne ein|zel|ne Fut|ter|stel|le er|set|zen. Es braucht zu|sam|men|hän|gen|den Wald mit ge|eig|ne|ter Ve|ge|ta|tion und ge|schütz|ten Be|rei|chen, in de|nen es sich be|we|gen und zu|rück|zie|hen kann.",
+      "syllable_body": "Das O|ka|pi lebt in den Re|gen|wäl|dern der De|mo|kra|ti|schen Re|pu|blik Kon|go. Sei|ne Bei|ne tra|gen hel|le Strei|fen, doch es ist nä|her mit der Gi|raf|fe als mit dem Ze|bra ver|wandt. Mit sei|ner lan|gen dunk|len Zun|ge kann es Blät|ter grei|fen und so|gar Tei|le sei|nes Ge|sichts rei|ni|gen. Gro|ße be|weg|li|che Oh|ren hel|fen ihm, lei|se Ge|räu|sche im dich|ten Wald wahr|zu|neh|men. O|ka|pis le|ben meist al|lein und brau|chen un|ge|stör|te Wald|ge|bie|te mit reich|lich Pflan|zen. Die Strei|fen la|den zu ei|nem schnel|len Ver|gleich mit Ze|bras ein. Für die Ver|wandt|schaft reicht ein ähn|li|ches Mus|ter a|ber nicht aus. Das O|ka|pi ge|hört zur Fa|mi|lie der Gi|raf|fen, ob|wohl sein Hals deut|lich kür|zer ist. Im dich|ten Wald muss es Nah|rung er|rei|chen und Be|we|gun|gen in sei|ner Um|ge|bung wahr|neh|men. Die be|weg|li|chen Oh|ren und die lan|ge Zun|ge un|ter|stüt|zen un|ter|schied|li|che Auf|ga|ben. Sein Le|bens|raum lässt sich nicht durch ei|ne ein|zel|ne Fut|ter|stel|le er|set|zen. Es braucht zu|sam|men|hän|gen|den Wald mit ge|eig|ne|ter Ve|ge|ta|ti|on und ge|schütz|ten Be|rei|chen, in de|nen es sich be|we|gen und zu|rück|zie|hen kann.",
       "imageId": "zirafa",
       "review": {
         "status": "reviewed",
-        "reviewer": "Claude (AI editorial pass, not a native speaker)",
-        "date": "2026-09-19",
+        "reviewer": "Claude (AI editorial pass, not a native speaker; syllable breaks re-checked 2026-09-20)",
+        "date": "2026-09-20",
         "nativeSpeaker": false,
         "syllablesReviewed": true,
         "imageAccuracy": "plausible"

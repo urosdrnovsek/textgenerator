@@ -5,6 +5,22 @@ can be an introduction rather than a log. Newest first. Each entry
 summarizes what shipped and what was verified; the commit messages in
 `git log` carry the full per-change detail and are the source of truth.
 
+## Unreleased
+
+- **Syllable breaks re-checked in English, German, French and Spanish.**
+  Every unique word in the 100 non-Slovene entries was checked against the
+  per-language rules now written down in `docs/content-guide.md`
+  ("Syllable breaks — the convention per language"); 62 breaks in 28
+  entries were wrong and are fixed, version bumped on each. French had
+  the one systematic error (`feu|il|le` for `feuil|le`, plus a few vowel
+  groups split apart: `seu|ils`, `res|pec|tue|ux`, `con|tri|bu|é`);
+  English had the most (`ve|ry`, `ma|ny`, `eve|ry`, `op|en`, `ti|red`,
+  `Ser|en|ge|ti`, `smal|ler`, …); Spanish one (`cri|a|dos`); German two
+  (`-tion` → `-ti|on`). Slovene was left alone — it has been reviewed by
+  a teacher. Verified: `npm test`, `npm run validate-content`, every
+  edited entry rendered with syllable separators in real headless
+  Chromium, and `npm run verify-docx` (11/11).
+
 ## 0.8.1-rc.1 — 2026-09-20 (post-review fixes)
 
 Driven by the project owner's independent review of the shipped 0.8 code.

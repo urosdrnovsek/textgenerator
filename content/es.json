@@ -167,17 +167,17 @@
     },
     {
       "id": "animal_facts_ajolote_5",
-      "version": 1,
+      "version": 2,
       "theme": "animal_facts",
       "level": 5,
       "title": "El ajolote acuático",
       "body": "El ajolote es un anfibio originario de la zona de Ciudad de México. Conserva durante toda su vida unas branquias externas parecidas a plumas. Puede regenerar partes dañadas de sus patas y algunos otros tejidos. Detecta alimento mediante el olfato y los movimientos del agua. Los ajolotes silvestres necesitan canales limpios y protegidos, pues su hábitat natural es muy reducido. Las branquias ofrecen una superficie amplia en contacto con el agua. Por ella, el animal obtiene oxígeno. Su cuerpo conserva normalmente rasgos que otros anfibios pierden al crecer, de modo que un adulto sigue llevando esas estructuras externas. La regeneración de tejidos ha despertado mucho interés científico, pero no hace al ajolote invulnerable. Una herida o un agua contaminada pueden dañarlo. Tampoco todos los ejemplares tienen el mismo color: las imágenes de animales muy pálidos criados en cautividad no representan toda la variedad natural. En los canales de su lugar de origen, el refugio y la calidad del agua resultan esenciales.",
-      "syllable_body": "El a|jo|lo|te es un an|fi|bio o|ri|gi|na|rio de la zo|na de Ciu|dad de Mé|xi|co. Con|ser|va du|ran|te to|da su vi|da u|nas bran|quias ex|ter|nas pa|re|ci|das a plu|mas. Pue|de re|ge|ne|rar par|tes da|ña|das de sus pa|tas y al|gu|nos o|tros te|ji|dos. De|tec|ta a|li|men|to me|dian|te el ol|fa|to y los mo|vi|mien|tos del a|gua. Los a|jo|lo|tes sil|ves|tres ne|ce|si|tan ca|na|les lim|pios y pro|te|gi|dos, pues su há|bi|tat na|tu|ral es muy re|du|ci|do. Las bran|quias o|fre|cen u|na su|per|fi|cie am|plia en con|tac|to con el a|gua. Por e|lla, el a|ni|mal ob|tie|ne o|xí|ge|no. Su cuer|po con|ser|va nor|mal|men|te ras|gos que o|tros an|fi|bios pier|den al cre|cer, de mo|do que un a|dul|to si|gue lle|van|do e|sas es|truc|tu|ras ex|ter|nas. La re|ge|ne|ra|ción de te|ji|dos ha des|per|ta|do mu|cho in|te|rés cien|tí|fi|co, pe|ro no ha|ce al a|jo|lo|te in|vul|ne|ra|ble. U|na he|ri|da o un a|gua con|ta|mi|na|da pue|den da|ñar|lo. Tam|po|co to|dos los e|jem|pla|res tie|nen el mis|mo co|lor: las i|má|ge|nes de a|ni|ma|les muy pá|li|dos cri|a|dos en cau|ti|vi|dad no re|pre|sen|tan to|da la va|rie|dad na|tu|ral. En los ca|na|les de su lu|gar de o|ri|gen, el re|fu|gio y la ca|li|dad del a|gua re|sul|tan e|sen|cia|les.",
+      "syllable_body": "El a|jo|lo|te es un an|fi|bio o|ri|gi|na|rio de la zo|na de Ciu|dad de Mé|xi|co. Con|ser|va du|ran|te to|da su vi|da u|nas bran|quias ex|ter|nas pa|re|ci|das a plu|mas. Pue|de re|ge|ne|rar par|tes da|ña|das de sus pa|tas y al|gu|nos o|tros te|ji|dos. De|tec|ta a|li|men|to me|dian|te el ol|fa|to y los mo|vi|mien|tos del a|gua. Los a|jo|lo|tes sil|ves|tres ne|ce|si|tan ca|na|les lim|pios y pro|te|gi|dos, pues su há|bi|tat na|tu|ral es muy re|du|ci|do. Las bran|quias o|fre|cen u|na su|per|fi|cie am|plia en con|tac|to con el a|gua. Por e|lla, el a|ni|mal ob|tie|ne o|xí|ge|no. Su cuer|po con|ser|va nor|mal|men|te ras|gos que o|tros an|fi|bios pier|den al cre|cer, de mo|do que un a|dul|to si|gue lle|van|do e|sas es|truc|tu|ras ex|ter|nas. La re|ge|ne|ra|ción de te|ji|dos ha des|per|ta|do mu|cho in|te|rés cien|tí|fi|co, pe|ro no ha|ce al a|jo|lo|te in|vul|ne|ra|ble. U|na he|ri|da o un a|gua con|ta|mi|na|da pue|den da|ñar|lo. Tam|po|co to|dos los e|jem|pla|res tie|nen el mis|mo co|lor: las i|má|ge|nes de a|ni|ma|les muy pá|li|dos cria|dos en cau|ti|vi|dad no re|pre|sen|tan to|da la va|rie|dad na|tu|ral. En los ca|na|les de su lu|gar de o|ri|gen, el re|fu|gio y la ca|li|dad del a|gua re|sul|tan e|sen|cia|les.",
       "imageId": "axolotl",
       "review": {
         "status": "reviewed",
-        "reviewer": "Claude (AI editorial pass, not a native speaker)",
-        "date": "2026-09-19",
+        "reviewer": "Claude (AI editorial pass, not a native speaker; syllable breaks re-checked 2026-09-20)",
+        "date": "2026-09-20",
         "nativeSpeaker": false,
         "syllablesReviewed": true,
         "imageAccuracy": "verified"
