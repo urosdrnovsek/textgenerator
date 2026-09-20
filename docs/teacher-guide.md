@@ -47,6 +47,10 @@ Open **Text settings** to adjust:
 - **One sentence per line** — helps a child keep their place.
 - **Background color** and **alternate-line stripes** — both screen
   options you can also choose to print (off by default, to save ink).
+- **Header fields** — turn the name line, date, and title on or off
+  independently.
+- **Handwriting line height** — how tall each ruled line is in read & copy
+  mode.
 
 The **Dyslexia-friendly** button applies a sensible starting combination of
 these in one click; every option remains individually adjustable

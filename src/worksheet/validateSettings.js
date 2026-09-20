@@ -6,6 +6,7 @@
 
 import { FONT_FAMILIES, SETTINGS_LIMITS, KNOWN_WRITING_MODES, KNOWN_SYLLABLE_MODES, TINTS_BY_ID } from '../config.js';
 import { RULINGS_BY_ID } from '../layout/rulings.js';
+import { KNOWN_LANGUAGES, KNOWN_THEMES } from '../content/validate.js';
 
 const HEX_COLOR_PATTERN = /^#[0-9a-fA-F]{6}$/;
 
@@ -135,4 +136,37 @@ export function validateSettings(settings) {
     return { ok: false, errors };
   }
   return { ok: true };
+}
+
+/**
+ * Validates a saved/imported Preset's settings object — the WorksheetSettings
+ * fields above, plus the language/theme/level fields a Preset carries
+ * alongside them (blueprint v3, workstream D2). A preset saved or imported
+ * without going through this first could otherwise reach
+ * layout/measure.js with an invalid rulingId or similar and throw instead
+ * of failing with a clear message.
+ * @param {{ language: string, theme: string, level: number } & import('./build.js').WorksheetSettings} settings
+ * @returns {{ ok: true } | { ok: false, errors: SettingsValidationError[] }}
+ */
+export function validatePresetSettings(settings) {
+  if (!settings || typeof settings !== 'object') {
+    return { ok: false, errors: [{ field: '(settings)', message: 'settings must be an object' }] };
+  }
+
+  /** @type {SettingsValidationError[]} */
+  const errors = [];
+  if (!KNOWN_LANGUAGES.has(settings.language)) {
+    errors.push({ field: 'language', message: `unknown language "${settings.language}" — known: ${[...KNOWN_LANGUAGES].join(', ')}` });
+  }
+  if (!KNOWN_THEMES.has(settings.theme)) {
+    errors.push({ field: 'theme', message: `unknown theme "${settings.theme}" — known: ${[...KNOWN_THEMES].join(', ')}` });
+  }
+  if (!Number.isInteger(settings.level) || settings.level < 1 || settings.level > 5) {
+    errors.push({ field: 'level', message: `level must be an integer from 1 to 5 (got ${JSON.stringify(settings.level)})` });
+  }
+
+  const worksheetResult = validateSettings(settings);
+  if (!worksheetResult.ok) errors.push(...worksheetResult.errors);
+
+  return errors.length > 0 ? { ok: false, errors } : { ok: true };
 }

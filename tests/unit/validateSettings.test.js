@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { validateSettings } from '../../src/worksheet/validateSettings.js';
+import { validateSettings, validatePresetSettings } from '../../src/worksheet/validateSettings.js';
 
 const VALID_SETTINGS = {
   fontId: 'andika',
@@ -128,4 +128,39 @@ test('rejects a non-boolean printTint', () => {
 
 test('sentencePerLine, tintId, and printTint are all optional — their absence is not an error', () => {
   assert.equal(validateSettings(VALID_SETTINGS).ok, true);
+});
+
+const VALID_PRESET_SETTINGS = { ...VALID_SETTINGS, language: 'sl', theme: 'stories', level: 1 };
+
+test('validatePresetSettings accepts a valid preset (language/theme/level plus WorksheetSettings)', () => {
+  assert.equal(validatePresetSettings(VALID_PRESET_SETTINGS).ok, true);
+});
+
+test('validatePresetSettings rejects an unknown language', () => {
+  const result = validatePresetSettings({ ...VALID_PRESET_SETTINGS, language: 'xx' });
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some((e) => e.field === 'language'));
+});
+
+test('validatePresetSettings rejects an unknown theme', () => {
+  const result = validatePresetSettings({ ...VALID_PRESET_SETTINGS, theme: 'space_pirates' });
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some((e) => e.field === 'theme'));
+});
+
+test('validatePresetSettings rejects an out-of-range level', () => {
+  const result = validatePresetSettings({ ...VALID_PRESET_SETTINGS, level: 9 });
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some((e) => e.field === 'level'));
+});
+
+test('validatePresetSettings also surfaces underlying WorksheetSettings errors (e.g. an unknown rulingId)', () => {
+  const result = validatePresetSettings({ ...VALID_PRESET_SETTINGS, rulingId: 'does-not-exist' });
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some((e) => e.field === 'rulingId'));
+});
+
+test('validatePresetSettings rejects a non-object', () => {
+  assert.equal(validatePresetSettings(null).ok, false);
+  assert.equal(validatePresetSettings(undefined).ok, false);
 });

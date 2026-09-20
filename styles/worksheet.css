@@ -108,8 +108,8 @@
 }
 
 .ws-image {
-  max-width: 60mm;
-  max-height: 45mm;
+  max-width: var(--ws-image-max-width-mm, 60mm);
+  max-height: var(--ws-image-max-height-mm, 45mm);
   object-fit: contain;
 }
 

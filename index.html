@@ -2,7 +2,16 @@
 <html lang="sl">
 <head>
   <meta charset="utf-8" />
-  <title>Delovni list — Phase 3</title>
+  <title>Writing Worksheet Generator</title>
+  <!--
+    Defense-in-depth per blueprint 13 ("A restrictive, tested Content
+    Security Policy... Block network connections and object embedding;
+    permit only the local/data/blob resource types actually required")
+    (upgrade blueprint v3, workstream D4). style-src needs 'unsafe-inline'
+    because render/html.js sets inline style properties on worksheet
+    elements (font size, colors, spacing) — scripts stay entirely external.
+  -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'" />
   <link rel="stylesheet" href="styles/worksheet.css" />
   <link rel="stylesheet" href="styles/app.css" />
   <link rel="stylesheet" href="styles/print.css" />
@@ -105,6 +114,26 @@
           <input type="checkbox" id="print-stripes-toggle" />
           <span data-label="field.printStripes">Natisni tudi proge</span>
         </label>
+
+        <div class="panel-heading" data-label="field.header">Glava lista</div>
+
+        <label class="checkbox-label">
+          <input type="checkbox" id="header-nameline-toggle" />
+          <span data-label="field.headerNameLine">Vrstica za ime</span>
+        </label>
+
+        <label class="checkbox-label">
+          <input type="checkbox" id="header-date-toggle" />
+          <span data-label="field.headerDate">Datum</span>
+        </label>
+
+        <label class="checkbox-label">
+          <input type="checkbox" id="header-title-toggle" />
+          <span data-label="field.headerTitle">Naslov</span>
+        </label>
+
+        <label for="guide-height-input" data-label="field.guideHeight">Višina črt za pisanje (mm)</label>
+        <input type="number" id="guide-height-input" step="1" />
       </details>
 
       <details class="settings-panel">

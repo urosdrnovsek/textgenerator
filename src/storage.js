@@ -10,6 +10,8 @@
  * uses, so tests never depend on a real browser's localStorage.
  */
 
+import { validatePresetSettings } from './worksheet/validateSettings.js';
+
 const STORAGE_KEY = 'worksheet-presets-v1';
 /** Favorites were removed in 0.8 (upgrade blueprint v3, workstream C — teachers didn't use the feature). Kept here only so resetAllData() still cleans up this key on a browser profile that has 0.7 data in it. */
 const FAVORITES_STORAGE_KEY = 'worksheet-favorites-v1';
@@ -126,9 +128,15 @@ export function exportPresetsToBlob(storage = defaultStorage()) {
 }
 
 /**
+ * @typedef {object} SkippedPreset
+ * @property {string} name
+ * @property {import('./worksheet/validateSettings.js').SettingsValidationError[]} errors
+ */
+
+/**
  * @param {string} jsonText
  * @param {Storage} [storage]
- * @returns {{ ok: true, imported: number } | { ok: false, error: string }}
+ * @returns {{ ok: true, imported: number, skipped: SkippedPreset[] } | { ok: false, error: string }}
  */
 export function importPresetsFromJson(jsonText, storage = defaultStorage()) {
   let parsed;
@@ -142,11 +150,26 @@ export function importPresetsFromJson(jsonText, storage = defaultStorage()) {
   }
   const existing = listPresets(storage);
   const existingIds = new Set(existing.map((p) => p.id));
-  const incoming = parsed.presets.filter((p) => p && typeof p.name === 'string' && typeof p.id === 'string' && p.settings);
+  const shapedIncoming = parsed.presets.filter((p) => p && typeof p.name === 'string' && typeof p.id === 'string' && p.settings);
+
+  // A preset whose settings don't actually validate (a corrupted file, or
+  // one saved by an older/newer version with a since-removed rulingId,
+  // etc.) is skipped rather than imported — importing it unchecked would
+  // otherwise reach layout/measure.js later and throw instead of failing
+  // with a clear message (upgrade blueprint v3, workstream D2).
+  /** @type {SkippedPreset[]} */
+  const skipped = [];
+  const valid = [];
+  for (const preset of shapedIncoming) {
+    const result = validatePresetSettings(preset.settings);
+    if (result.ok) valid.push(preset);
+    else skipped.push({ name: preset.name, errors: result.errors });
+  }
+
   // Imported presets with a colliding id get a fresh one rather than silently overwriting.
-  const deduped = incoming.map((p) => (existingIds.has(p.id) ? { ...p, id: generatePresetId() } : p));
+  const deduped = valid.map((p) => (existingIds.has(p.id) ? { ...p, id: generatePresetId() } : p));
   const ok = writePresets([...existing, ...deduped], storage);
-  return ok ? { ok: true, imported: deduped.length } : { ok: false, error: 'STORAGE_UNAVAILABLE' };
+  return ok ? { ok: true, imported: deduped.length, skipped } : { ok: false, error: 'STORAGE_UNAVAILABLE' };
 }
 
 /**

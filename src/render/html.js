@@ -7,6 +7,7 @@
 
 import { buildRulingRows } from '../layout/rulings.js';
 import { ptToMm, pxToMm, FONT_FAMILIES, COPY_AREA_GAP_MM, TINTS_BY_ID } from '../config.js';
+import { IMAGE_BOX_MAX_WIDTH_MM, IMAGE_BOX_MAX_HEIGHT_MM } from '../layout/imageBox.js';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 
@@ -167,6 +168,9 @@ export function renderWorksheet(model, layout, container, labels = DEFAULT_LABEL
   page.style.setProperty('--ws-line-height', String(model.settings.lineHeightMultiplier));
   page.style.setProperty('--ws-letter-spacing-mm', `${ptToMm(model.settings.letterSpacingPt)}mm`);
   page.style.setProperty('--ws-word-spacing-mm', `${ptToMm(model.settings.extraWordSpacePt)}mm`);
+  // Same box the DOCX exporter contains the image within (src/layout/imageBox.js) — one source for the slot size (workstream D1).
+  page.style.setProperty('--ws-image-max-width-mm', `${IMAGE_BOX_MAX_WIDTH_MM}mm`);
+  page.style.setProperty('--ws-image-max-height-mm', `${IMAGE_BOX_MAX_HEIGHT_MM}mm`);
 
   const tintId = model.settings.tintId ?? 'none';
   if (tintId !== 'none') {

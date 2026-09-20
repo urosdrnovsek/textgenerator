@@ -18,7 +18,7 @@ import imageData from './generated/imageData.json';
 
 import { validatePack } from './content/validate.js';
 import { buildCatalogIndex, findCandidates, chooseEntry, listThemes } from './content/catalog.js';
-import { validateSettings } from './worksheet/validateSettings.js';
+import { validateSettings, validatePresetSettings } from './worksheet/validateSettings.js';
 import { SETTINGS_LIMITS, FONT_FAMILIES, DEFAULT_CHILD_NAME } from './config.js';
 import { buildWorksheet } from './worksheet/build.js';
 import { renderWorksheet } from './render/html.js';
@@ -47,7 +47,9 @@ const LANGUAGES = Object.keys(CONTENT_PACKS);
 // Reassigned by switchLanguage() — not const, since the active locale/catalog change at runtime.
 let t = createTranslator(LOCALES[DEFAULT_LANGUAGE]);
 
-const IMAGES_BY_ID = new Map(Object.entries(imageData).map(([id, path]) => [id, { id, path }]));
+const IMAGES_BY_ID = new Map(
+  Object.entries(imageData).map(([id, { dataUrl, width, height }]) => [id, { id, path: dataUrl, width, height }])
+);
 const KNOWN_ASSET_IDS = new Set(IMAGES_BY_ID.keys());
 
 /**
@@ -202,6 +204,10 @@ const els = {
   printTintToggle: document.getElementById('print-tint-toggle'),
   lineStripesToggle: document.getElementById('line-stripes-toggle'),
   printStripesToggle: document.getElementById('print-stripes-toggle'),
+  headerNameLineToggle: document.getElementById('header-nameline-toggle'),
+  headerDateToggle: document.getElementById('header-date-toggle'),
+  headerTitleToggle: document.getElementById('header-title-toggle'),
+  guideHeightInput: document.getElementById('guide-height-input'),
   dyslexiaPresetButton: document.getElementById('btn-dyslexia-preset'),
   presetSelect: document.getElementById('preset-select'),
   loadPresetButton: document.getElementById('btn-load-preset'),
@@ -363,7 +369,7 @@ async function handleImageUpload(file) {
     els.imageUpload.value = '';
     return;
   }
-  state.customImage = { id: 'custom', path: result.dataUrl };
+  state.customImage = { id: 'custom', path: result.dataUrl, width: result.width, height: result.height };
   els.resetImageButton.disabled = false;
   els.imageStatus.textContent = t('image.replaced');
   if (state.contentId) requestRender();
@@ -379,6 +385,8 @@ function applySettingsLimits() {
   els.letterSpacingInput.max = SETTINGS_LIMITS.letterSpacingPt.max;
   els.wordSpacingInput.min = SETTINGS_LIMITS.extraWordSpacePt.min;
   els.wordSpacingInput.max = SETTINGS_LIMITS.extraWordSpacePt.max;
+  els.guideHeightInput.min = SETTINGS_LIMITS.guideHeightMm.min;
+  els.guideHeightInput.max = SETTINGS_LIMITS.guideHeightMm.max;
 }
 
 /** Reflects state.settings into the settings-panel controls — used at startup and after applying a preset. */
@@ -399,6 +407,10 @@ function syncSettingsControlsFromState() {
   els.lineStripesToggle.checked = Boolean(s.lineStripes);
   els.printStripesToggle.checked = Boolean(s.printStripes);
   els.printStripesToggle.disabled = !s.lineStripes;
+  els.headerNameLineToggle.checked = Boolean(s.header.nameLine);
+  els.headerDateToggle.checked = Boolean(s.header.date);
+  els.headerTitleToggle.checked = Boolean(s.header.title);
+  els.guideHeightInput.value = s.guideHeightMm;
 }
 
 function clamp(value, range) {
@@ -452,6 +464,12 @@ function updatePrintStripes(enabled) {
   if (state.contentId) requestRender();
 }
 
+/** Header field toggles (upgrade blueprint v3, workstream D6) — the model and both exporters already supported these; this just exposes them in the settings panel. */
+function updateHeaderField(field, enabled) {
+  state.settings.header[field] = enabled;
+  if (state.contentId) requestRender();
+}
+
 function applyDyslexiaPreset() {
   Object.assign(state.settings, {
     fontSizePt: DYSLEXIA_PRESET.fontSizePt,
@@ -493,7 +511,24 @@ function extractPresetSettings() {
   };
 }
 
+/**
+ * Applies a preset's settings after validating them (upgrade blueprint v3,
+ * workstream D2) — protects against a preset that was hand-edited, saved by
+ * a different app version, or corrupted in localStorage, which would
+ * otherwise reach layout/measure.js later and throw instead of failing with
+ * a clear message.
+ * @param {unknown} settings
+ */
 function applyPresetSettings(settings) {
+  const validation = validatePresetSettings(settings);
+  if (!validation.ok) {
+    // eslint-disable-next-line no-console
+    console.error('Preset failed validation, not applied:', validation.errors);
+    els.storageStatus.textContent = t('preset.invalid');
+    return;
+  }
+  els.storageStatus.textContent = '';
+
   if (settings.language && settings.language !== state.language && LANGUAGES.includes(settings.language)) {
     switchLanguage(settings.language);
   }
@@ -599,7 +634,13 @@ async function handleImportSetups(file) {
     els.storageStatus.textContent = t(`setup.import.error.${result.error}`);
     return;
   }
-  els.storageStatus.textContent = t('setup.import.success', { count: result.imported });
+  els.storageStatus.textContent = result.skipped.length > 0
+    ? t('setup.import.successWithSkipped', { count: result.imported, skipped: result.skipped.length })
+    : t('setup.import.success', { count: result.imported });
+  if (result.skipped.length > 0) {
+    // eslint-disable-next-line no-console
+    console.error('Some imported setups failed validation and were skipped:', result.skipped);
+  }
   populatePresetSelect();
 }
 
@@ -894,6 +935,10 @@ els.tintSelect.addEventListener('change', (e) => updateTint(e.target.value));
 els.printTintToggle.addEventListener('change', (e) => updatePrintTint(e.target.checked));
 els.lineStripesToggle.addEventListener('change', (e) => updateLineStripes(e.target.checked));
 els.printStripesToggle.addEventListener('change', (e) => updatePrintStripes(e.target.checked));
+els.headerNameLineToggle.addEventListener('change', (e) => updateHeaderField('nameLine', e.target.checked));
+els.headerDateToggle.addEventListener('change', (e) => updateHeaderField('date', e.target.checked));
+els.headerTitleToggle.addEventListener('change', (e) => updateHeaderField('title', e.target.checked));
+els.guideHeightInput.addEventListener('change', (e) => updateNumericSetting('guideHeightMm', SETTINGS_LIMITS.guideHeightMm, e.target));
 els.dyslexiaPresetButton.addEventListener('click', applyDyslexiaPreset);
 els.loadPresetButton.addEventListener('click', handleLoadPreset);
 els.deletePresetButton.addEventListener('click', handleDeletePreset);

@@ -95,7 +95,7 @@ export function imageFilenameToAssetId(filename) {
  * @property {{ filename: string, code: string }} [imageError] present only for IMAGE_READ_FAILED
  * @property {import('./content/validate.js').ValidationError[]} [errors] present only when pack validation itself failed
  * @property {ReturnType<typeof validatePack>['pack']} [pack]
- * @property {Map<string, { id: string, path: string }>} [images] newly read images, keyed by asset id
+ * @property {Map<string, { id: string, path: string, width: number, height: number }>} [images] newly read images, keyed by asset id
  */
 
 /**
@@ -126,7 +126,8 @@ export async function readContentPackImport(jsonFile, imageFiles, existingAssetI
     if (!result.ok) {
       return { ok: false, code: 'IMAGE_READ_FAILED', imageError: { filename: file.name, code: result.code } };
     }
-    images.set(imageFilenameToAssetId(file.name), { id: imageFilenameToAssetId(file.name), path: result.dataUrl });
+    const assetId = imageFilenameToAssetId(file.name);
+    images.set(assetId, { id: assetId, path: result.dataUrl, width: result.width, height: result.height });
   }
 
   const assetIds = new Set([...existingAssetIds, ...images.keys()]);

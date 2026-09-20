@@ -109,7 +109,20 @@ const CASES = [
   // stay right at the edge of the budget, so keep them as permanent
   // boundary cases rather than trusting they'll never regress silently.
   { label: 'de-andika-level5-readcopy-stress', language: 'de', theme: 'amazing_science', level: 5, fontId: 'andika', writingMode: 'read-copy' },
-  { label: 'fr-andika-level5-readcopy-stress', language: 'fr', theme: 'nature_seasons', level: 5, fontId: 'andika', writingMode: 'read-copy' }
+  { label: 'fr-andika-level5-readcopy-stress', language: 'fr', theme: 'nature_seasons', level: 5, fontId: 'andika', writingMode: 'read-copy' },
+  // Word spacing (extraWordSpacePt) is now exported to DOCX (workstream
+  // D3) — this exercises the full path at the maximum setting. pdftotext
+  // can't see character spacing (it's a rendering-only visual effect), so
+  // this only proves the file still exports/converts/paginates correctly
+  // at a nonzero wordSpacingPt; the actual per-space characterSpacing
+  // value is asserted directly against the generated XML in
+  // tests/unit/docx-export.test.js.
+  // level 1, not 3 — must not collide with 'en-lexend-level3-trace' above:
+  // the download filename is worksheet-<language>-level-<level>.docx with
+  // no label in it, and Chrome's headless auto-download silently overwrites
+  // same-named files rather than uniquifying them, so two 'en'+level-3
+  // cases would leave only one actually verified.
+  { label: 'en-andika-level1-readonly-wordspacing', language: 'en', theme: 'stories', level: 1, fontId: 'andika', writingMode: 'read-only', wordSpacingPt: 6 }
 ];
 
 async function main() {
@@ -206,6 +219,10 @@ async function main() {
           document.getElementById('print-tint-toggle').dispatchEvent(new Event('change', { bubbles: true }));
           document.getElementById('name-input').value = ${JSON.stringify(testCase.name ?? '')};
           document.getElementById('name-input').dispatchEvent(new Event('change', { bubbles: true }));
+          ${testCase.wordSpacingPt !== undefined ? `
+          document.getElementById('word-spacing-input').value = '${testCase.wordSpacingPt}';
+          document.getElementById('word-spacing-input').dispatchEvent(new Event('change', { bubbles: true }));
+          ` : ''}
         })();
       `);
       const fitText = await waitForFit();

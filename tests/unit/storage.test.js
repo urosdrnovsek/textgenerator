@@ -31,7 +31,26 @@ function createFailingStorage() {
   };
 }
 
-const SETTINGS = { theme: 'stories', level: 1, fontId: 'andika', fontSizePt: 16 };
+// A full, validatePresetSettings-passing settings object — importPresetsFromJson
+// validates each incoming preset (workstream D2), so fixtures used to
+// exercise the import path must be genuinely valid, not just shaped.
+const SETTINGS = {
+  language: 'sl',
+  theme: 'stories',
+  level: 1,
+  fontId: 'andika',
+  fontSizePt: 16,
+  lineHeightMultiplier: 1.4,
+  letterSpacingPt: 0.3,
+  extraWordSpacePt: 1,
+  writingMode: 'read-copy',
+  rulingId: 'standard-3line',
+  guideHeightMm: 10,
+  letterColors: {},
+  syllableMode: 'off',
+  header: { nameLine: true, date: true, title: true },
+  marginMm: 20
+};
 
 test('checkStorageCapability returns true for a working backend', () => {
   assert.equal(checkStorageCapability(createMockStorage()), true);
@@ -96,7 +115,30 @@ test('exportPresetsToBlob then importPresetsFromJson round-trips into a second s
   const importResult = importPresetsFromJson(text, targetStorage);
   assert.equal(importResult.ok, true);
   assert.equal(importResult.imported, 2);
+  assert.deepEqual(importResult.skipped, []);
   assert.equal(listPresets(targetStorage).length, 2);
+});
+
+test('importPresetsFromJson skips a preset with invalid settings instead of importing it unchecked', () => {
+  const storage = createMockStorage();
+  const importResult = importPresetsFromJson(
+    JSON.stringify({
+      schemaVersion: 1,
+      presets: [
+        { id: 'good', name: 'Good', settings: SETTINGS },
+        { id: 'bad', name: 'Bad (unknown rulingId)', settings: { ...SETTINGS, rulingId: 'does-not-exist' } }
+      ]
+    }),
+    storage
+  );
+  assert.equal(importResult.ok, true);
+  assert.equal(importResult.imported, 1);
+  assert.equal(importResult.skipped.length, 1);
+  assert.equal(importResult.skipped[0].name, 'Bad (unknown rulingId)');
+  assert.ok(importResult.skipped[0].errors.some((e) => e.field === 'rulingId'));
+  const presets = listPresets(storage);
+  assert.equal(presets.length, 1);
+  assert.equal(presets[0].name, 'Good');
 });
 
 test('importPresetsFromJson rejects invalid JSON without throwing', () => {

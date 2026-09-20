@@ -22,8 +22,10 @@ const MIME_EXT = { 'image/jpeg': 'jpeg', 'image/png': 'png' };
  * Bundling 100+ images as one `import x from '...jpg'` per file doesn't
  * scale and is easy to silently miss when adding new content. Instead,
  * pre-render every image/* manifest asset into one JSON file of
- * `id -> data: URL`, generated fresh on every build so it can never drift
- * from assets/manifest.json.
+ * `id -> { dataUrl, width, height }`, generated fresh on every build so it
+ * can never drift from assets/manifest.json. width/height (carried through
+ * from the manifest) let the DOCX exporter size the image at its real
+ * aspect ratio instead of stretching it into a fixed box (workstream D1).
  */
 async function generateImageData() {
   const manifest = JSON.parse(await readFile(path.join(root, 'assets/manifest.json'), 'utf8'));
@@ -32,7 +34,11 @@ async function generateImageData() {
     const ext = MIME_EXT[asset.mime];
     if (!ext) continue; // fonts and other non-image assets are copied as files, not inlined
     const bytes = await readFile(path.join(root, asset.path));
-    data[asset.id] = `data:${asset.mime};base64,${bytes.toString('base64')}`;
+    data[asset.id] = {
+      dataUrl: `data:${asset.mime};base64,${bytes.toString('base64')}`,
+      width: asset.width,
+      height: asset.height
+    };
   }
   await mkdir(generatedDir, { recursive: true });
   await writeFile(path.join(generatedDir, 'imageData.json'), JSON.stringify(data));

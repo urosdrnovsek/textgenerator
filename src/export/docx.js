@@ -45,26 +45,40 @@ import {
   convertMillimetersToTwip
 } from 'docx';
 import { FONT_FAMILIES, TWIPS_PER_PT, mmToPx, mmToTwips, TINTS_BY_ID } from '../config.js';
+import { computeContainedImageSizeMm } from '../layout/imageBox.js';
 
 /** Matches src/render/html.js DEFAULT_LABELS — used only when a caller doesn't pass the active locale's translated labels. */
 const DEFAULT_LABELS = { nameLine: 'Ime:', date: 'Datum:' };
 
 /**
+ * Splits each run on whitespace so word spacing (settings.extraWordSpacePt)
+ * can be applied only to the space runs, on top of the uniform letter
+ * spacing applied to every run — the same two-property split CSS
+ * letter-spacing/word-spacing gives the HTML preview, previously missing
+ * from DOCX export entirely (upgrade blueprint v3, workstream D3).
  * @param {import('../text/runs.js').StyledRun[]} runs
- * @param {{ fontFamily: string, fontSizePt: number, characterSpacingTwips: number }} options
+ * @param {{ fontFamily: string, fontSizePt: number, characterSpacingTwips: number, wordSpacingTwips: number }} options
  * @returns {TextRun[]}
  */
-function toWordRuns(runs, { fontFamily, fontSizePt, characterSpacingTwips }) {
-  return runs.map(
-    (run) =>
-      new TextRun({
-        text: run.text,
-        color: run.color.replace('#', ''),
-        font: fontFamily,
-        size: Math.round(fontSizePt * 2),
-        characterSpacing: characterSpacingTwips || undefined
-      })
-  );
+function toWordRuns(runs, { fontFamily, fontSizePt, characterSpacingTwips, wordSpacingTwips }) {
+  const wordRuns = [];
+  for (const run of runs) {
+    for (const segment of run.text.split(/(\s+)/)) {
+      if (segment.length === 0) continue;
+      const isSpace = /^\s+$/.test(segment);
+      const spacingTwips = characterSpacingTwips + (isSpace ? wordSpacingTwips : 0);
+      wordRuns.push(
+        new TextRun({
+          text: segment,
+          color: run.color.replace('#', ''),
+          font: fontFamily,
+          size: Math.round(fontSizePt * 2),
+          characterSpacing: spacingTwips || undefined
+        })
+      );
+    }
+  }
+  return wordRuns;
 }
 
 /**
@@ -78,6 +92,7 @@ export async function exportDocx(model, layout, imageBytes, labels = DEFAULT_LAB
   const s = model.settings;
   const fontFamily = FONT_FAMILIES[s.fontId] ?? s.fontId;
   const characterSpacingTwips = Math.round((s.letterSpacingPt ?? 0) * TWIPS_PER_PT);
+  const wordSpacingTwips = Math.round((s.extraWordSpacePt ?? 0) * TWIPS_PER_PT);
 
   /** @type {(Paragraph | Table)[]} */
   const children = [];
@@ -114,8 +129,11 @@ export async function exportDocx(model, layout, imageBytes, labels = DEFAULT_LAB
   }
 
   if (imageBytes) {
-    const widthMm = 60;
-    const heightMm = 45;
+    // Contains the image at its real aspect ratio within the same 60x45mm
+    // slot the HTML preview uses (object-fit: contain) — previously a fixed
+    // 60x45 forced every image (all bundled art is 512x512) into a
+    // stretched 4:3 box (workstream D1).
+    const { widthMm, heightMm } = computeContainedImageSizeMm(model.image.width, model.image.height);
     children.push(
       new Paragraph({
         alignment: AlignmentType.CENTER,
@@ -137,7 +155,7 @@ export async function exportDocx(model, layout, imageBytes, labels = DEFAULT_LAB
       new Paragraph({
         alignment: AlignmentType.LEFT,
         spacing: { line: Math.round((s.lineHeightMultiplier ?? 1.5) * 240) },
-        children: toWordRuns(paragraphRuns, { fontFamily, fontSizePt: s.fontSizePt, characterSpacingTwips }),
+        children: toWordRuns(paragraphRuns, { fontFamily, fontSizePt: s.fontSizePt, characterSpacingTwips, wordSpacingTwips }),
         shading
       })
     );

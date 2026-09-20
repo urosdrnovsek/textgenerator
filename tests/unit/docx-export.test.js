@@ -34,7 +34,7 @@ const SETTINGS = {
 async function loadManifestAssets() {
   const manifest = JSON.parse(await readFile(path.join(root, 'assets/manifest.json'), 'utf8'));
   const assetIds = new Set(manifest.assets.map((a) => a.id));
-  const imagesById = new Map(manifest.assets.map((a) => [a.id, { id: a.id, path: a.path }]));
+  const imagesById = new Map(manifest.assets.map((a) => [a.id, { id: a.id, path: a.path, width: a.width, height: a.height }]));
   return { assetIds, imagesById };
 }
 
@@ -88,6 +88,66 @@ test('exportDocx produces a real zip/OOXML package with colored runs, correct A4
 
   const relsXml = await unzipEntry(docxPath, 'word/_rels/document.xml.rels');
   assert.ok(!relsXml.includes('TargetMode="External"'), 'export must not reference external/linked resources');
+});
+
+function extractExtent(documentXml) {
+  const match = documentXml.match(/<wp:extent cx="(\d+)" cy="(\d+)"\s*\/>/);
+  assert.ok(match, 'expected a <wp:extent> element in the exported document');
+  return { cx: Number(match[1]), cy: Number(match[2]) };
+}
+
+test('exportDocx sizes the image at its real aspect ratio instead of stretching it into a fixed 60x45 box', async (t) => {
+  // All bundled art (including stories_muc_1's) is a 512x512 square — a
+  // stretched 60x45 box would report a non-square extent; a correctly
+  // contained square image reports a square extent (cx === cy).
+  const model = await buildModel(TEST_ENTRY_ID);
+  assert.equal(model.image.width, 512, 'sanity check: the fixture image is really square');
+  assert.equal(model.image.height, 512);
+  const imageBytes = await imageBytesFor(TEST_ENTRY_ID);
+  const layout = { rowCount: 6 };
+
+  const blob = await exportDocx(model, layout, imageBytes);
+  const buffer = Buffer.from(await blob.arrayBuffer());
+  const tmpDir = await mkdtemp(path.join(os.tmpdir(), 'worksheet-docx-test-'));
+  const docxPath = path.join(tmpDir, 'worksheet.docx');
+  await import('node:fs/promises').then((fs) => fs.writeFile(docxPath, buffer));
+  t.after(() => rm(tmpDir, { recursive: true, force: true }));
+
+  const documentXml = await unzipEntry(docxPath, 'word/document.xml');
+  const { cx, cy } = extractExtent(documentXml);
+  assert.equal(cx, cy, `a square source image must produce a square extent (got cx=${cx}, cy=${cy})`);
+
+  // A synthetic 3:2 source must come out at the same ratio, not the old
+  // fixed 60x45 (4:3) box.
+  const wideModel = { ...model, image: { ...model.image, width: 300, height: 200 } };
+  const wideBlob = await exportDocx(wideModel, layout, imageBytes);
+  const wideBuffer = Buffer.from(await wideBlob.arrayBuffer());
+  const widePath = path.join(tmpDir, 'wide.docx');
+  await import('node:fs/promises').then((fs) => fs.writeFile(widePath, wideBuffer));
+  const wideXml = await unzipEntry(widePath, 'word/document.xml');
+  const wideExtent = extractExtent(wideXml);
+  const actualRatio = wideExtent.cx / wideExtent.cy;
+  assert.ok(Math.abs(actualRatio - 1.5) < 0.01, `expected a 3:2 (1.5) extent ratio for a 300x200 source, got ${actualRatio.toFixed(3)}`);
+});
+
+test('exportDocx applies extraWordSpacePt as additional characterSpacing on space runs only', async (t) => {
+  // letterSpacingPt=0.3 -> 6 twips on every run; extraWordSpacePt=6 -> +120
+  // twips, but only on the whitespace runs (workstream D3).
+  const wordSpacingSettings = { ...SETTINGS, extraWordSpacePt: 6, writingMode: 'read-only' };
+  const model = { ...(await buildModel(TEST_ENTRY_ID)), settings: wordSpacingSettings };
+  const imageBytes = await imageBytesFor(TEST_ENTRY_ID);
+
+  const blob = await exportDocx(model, { rowCount: 0 }, imageBytes);
+  const buffer = Buffer.from(await blob.arrayBuffer());
+  const tmpDir = await mkdtemp(path.join(os.tmpdir(), 'worksheet-docx-test-'));
+  const docxPath = path.join(tmpDir, 'worksheet.docx');
+  await import('node:fs/promises').then((fs) => fs.writeFile(docxPath, buffer));
+  t.after(() => rm(tmpDir, { recursive: true, force: true }));
+
+  const documentXml = await unzipEntry(docxPath, 'word/document.xml');
+  const spacingValues = [...documentXml.matchAll(/<w:spacing w:val="(\d+)"\/>/g)].map((m) => Number(m[1]));
+  assert.ok(spacingValues.includes(6), 'expected the base 6-twip letter spacing on non-space runs');
+  assert.ok(spacingValues.includes(126), 'expected 6 + 120 = 126 twips on space runs (letter + word spacing combined)');
 });
 
 test('exportDocx renders no copy-practice lines when rowCount is 0 (read-only mode)', async () => {

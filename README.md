@@ -53,6 +53,25 @@ connection at any point.
   was silently dropped on any personalized passage; it's now preserved
   around the substituted name in both cases. Slovene's masculine-verb-form
   entries use "Tom" as their default; the rest use "Mia".
+- **Favorites removed (0.8):** the bookmark-a-text feature was removed
+  (teachers weren't using it, per the project owner). Saved setups/presets
+  and setup export/import are unaffected. "Reset saved data" still cleans
+  up the old favorites key on a browser profile left over from a pre-0.8
+  install.
+- **DOCX fixes (0.8):** the exported image used to be forced into a fixed
+  60×45mm box, stretching every bundled image (all 512×512 squares) into a
+  4:3 shape; it's now contained at its real aspect ratio, matching the HTML
+  preview, for bundled/custom/imported images alike. Word spacing
+  (`extraWordSpacePt`) was silently dropped from every DOCX export; it's
+  now applied to the exported space runs, same as the on-screen preview.
+  A saved or imported setup with an invalid value (e.g. an unknown
+  `rulingId` — hand-edited, corrupted, or from an incompatible app version)
+  is now rejected with a clear message instead of throwing when applied or
+  silently importing something that would later break. The settings panel
+  also now exposes the header-field toggles (name line / date / title) and
+  the handwriting-line-height control — both already supported by the
+  underlying model and both exporters, just not previously reachable from
+  the UI.
 - **Image licensing:** every bundled image is original artwork the project
   owner generated with ChatGPT (OpenAI); `assets/manifest.json` and
   `THIRD_PARTY_NOTICES.md` now record this (all rights reserved by the
