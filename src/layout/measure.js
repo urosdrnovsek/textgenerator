@@ -87,11 +87,18 @@ async function waitForImage(img) {
  */
 
 /**
+ * WIDTH_OVERFLOW means "a word wider than the content width" — normal
+ * wrapping cannot break it, so it overflows its own text box. Checked on
+ * the text blocks, not the page's scrollWidth: decorative overlays are
+ * allowed to bleed past the body box (the line stripes extend 2mm either
+ * side on purpose), and a page-wide check mistook that bleed for an
+ * unbreakable word, blocking every worksheet with stripes on from 0.8
+ * (cf502b9) until 0.8.1.
  * @param {HTMLElement} page
  * @returns {boolean}
  */
 function hasHorizontalOverflow(page) {
-  return page.scrollWidth > page.clientWidth + 1;
+  return [...page.querySelectorAll('.ws-title, .ws-sentence')].some((el) => el.scrollWidth > el.clientWidth + 1);
 }
 
 /**

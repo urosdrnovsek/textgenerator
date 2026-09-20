@@ -36,6 +36,27 @@ Driven by the project owner's independent review of the shipped 0.8 code.
   teacher-saved setups still restore everything. Preset names re-translate
   on language switch. The Dyslexia button and the built-in preset share one
   code path.
+- **Line stripes no longer block the worksheet.** From 0.8 (the
+  multi-page work) until now, switching "alternating stripes on the
+  lines" on made the fit check report WIDTH_OVERFLOW and blank the
+  worksheet: the new page-wide width check took the stripes' deliberate
+  2mm decorative bleed for an unbreakable word. The check now looks at
+  the text blocks only. Found while driving every settings control after
+  the `main.js` split; `verify-offline` now toggles stripes and, as the
+  counterpart, imports a text with a 160-letter word to prove the real
+  WIDTH_OVERFLOW still fires.
+- **Content quality is measurable.** Each entry's `review` object records
+  who reviewed it, when, whether they were a native speaker, whether the
+  syllable breaks were checked, and whether the picture was verified to
+  match. `npm run content-status` reports it per language (today: 0/100
+  native-reviewed, 9/125 images verified). `docs/content-guide.md` (new)
+  documents the levels, the entry schema and the review fields.
+- **`main.js` split** into four `src/ui/*` coordinators (packet, presets,
+  content import, settings panel), one verbatim move per commit, each
+  gated by all three verify scripts; `verify-offline` gained a real
+  teacher-content-import check because nothing had covered it.
+- **README/CHANGELOG split**; dangling references to the private
+  `Instructions/` folder removed.
 - **UI polish:** the off-screen print copy is `aria-hidden`; a note under
   the export buttons says which format preserves layout; the fit status is
   plain language instead of millimetres; each level shows its word band;

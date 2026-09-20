@@ -324,6 +324,37 @@ async function main() {
       note: previewSrcAfterReset === bundledImageSrc ? 'both restored' : 'still showing the uploaded image'
     });
 
+    console.log('Checking that line stripes do not block the worksheet (0.8.1 regression fix)...');
+    // From 0.8 (cf502b9) until 0.8.1 the fit check took the stripes' 2mm
+    // decorative bleed for an unbreakable word and blocked every striped
+    // worksheet with WIDTH_OVERFLOW; nothing automated exercised the toggle.
+    await evalJs(`
+      (function() {
+        const toggle = document.getElementById('line-stripes-toggle');
+        toggle.checked = true;
+        toggle.dispatchEvent(new Event('change', { bubbles: true }));
+      })();
+    `);
+    await waitForFit();
+    await wait(500);
+    const stripedPageCount = await evalJs(`document.getElementById('fit-indicator').dataset.pageCount`);
+    const stripeCount = await evalJs(`document.querySelectorAll('#preview .ws-line-stripe').length`);
+    const printDisabledWithStripes = await evalJs(`document.getElementById('btn-print').disabled`);
+    journeyChecks.push({
+      label: 'switching line stripes on keeps the worksheet renderable and printable',
+      ok: Number(stripedPageCount) >= 1 && stripeCount > 0 && !printDisabledWithStripes,
+      note: `pageCount=${stripedPageCount || '(blocked)'}, stripes=${stripeCount}, print ${printDisabledWithStripes ? 'DISABLED' : 'enabled'}`
+    });
+    await evalJs(`
+      (function() {
+        const toggle = document.getElementById('line-stripes-toggle');
+        toggle.checked = false;
+        toggle.dispatchEvent(new Event('change', { bubbles: true }));
+      })();
+    `);
+    await waitForFit();
+    await wait(300);
+
     console.log('Exercising print and .docx export...');
     await evalJs(`document.getElementById('btn-print').click();`); // window.print() is a real no-op without a print handler in headless mode — safe
     await wait(200);
@@ -382,6 +413,18 @@ async function main() {
         body: 'The cat sat on the mat. It was warm.',
         imageId: 'imported_tiny',
         review: { status: 'draft' }
+      }, {
+        // A genuinely unbreakable word wider than the page: the one case
+        // WIDTH_OVERFLOW exists for, and the counterpart of the stripes
+        // check above (the fix must not have silenced the real thing).
+        id: 'animal_facts_offline_wide_1',
+        version: 1,
+        theme: 'animal_facts',
+        level: 1,
+        title: 'Width Overflow Check',
+        body: `This word is too wide: ${'x'.repeat(160)}.`,
+        imageId: 'imported_tiny',
+        review: { status: 'draft' }
       }]
     }));
     const setImportFiles = async (selector, files) => {
@@ -421,7 +464,7 @@ async function main() {
     await wait(300);
     const importedTitle = await evalJs(`document.querySelector('#preview .ws-title')?.textContent || ''`);
     const importedImageSrc = await evalJs(`document.querySelector('#preview .ws-image')?.src || ''`);
-    const importOk = importStatus === 'Imported 1 text(s) for English.'
+    const importOk = importStatus === 'Imported 2 text(s) for English.'
       && candidateText === 'Available: 1'
       && importedTitle === 'Offline Import Check'
       && importedImageSrc.startsWith('data:image/');
@@ -431,6 +474,25 @@ async function main() {
       note: importOk
         ? 'status, candidate count, rendered title and imported image all as expected'
         : `status="${importStatus}", candidates="${candidateText}", title="${importedTitle}", image=${importedImageSrc.slice(0, 20)}`
+    });
+
+    console.log('Checking that an unbreakable word still reports WIDTH_OVERFLOW...');
+    await evalJs(`
+      (function() {
+        document.getElementById('theme-select').value = 'animal_facts';
+        document.getElementById('theme-select').dispatchEvent(new Event('change', { bubbles: true }));
+        document.getElementById('btn-create').click();
+      })();
+    `);
+    const wideFitText = await waitForFit();
+    await wait(300);
+    const widePageCount = await evalJs(`document.getElementById('fit-indicator').dataset.pageCount`);
+    const widePrintDisabled = await evalJs(`document.getElementById('btn-print').disabled`);
+    const wideBlocked = /WIDTH_OVERFLOW/.test(wideFitText) && widePageCount === '' && widePrintDisabled;
+    journeyChecks.push({
+      label: 'a word wider than the page is still blocked with WIDTH_OVERFLOW (print disabled)',
+      ok: wideBlocked,
+      note: wideBlocked ? 'blocked as expected' : `fit="${wideFitText}", pageCount="${widePageCount}", print ${widePrintDisabled ? 'disabled' : 'ENABLED'}`
     });
   } finally {
     chrome.kill();
