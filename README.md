@@ -66,14 +66,22 @@ point.
   unbreakable word wider than the page, or a header/image/guide-height
   taller than a page on its own) is still blocked with a clear message —
   that class of failure hasn't gone away, only the "just too long"
-  case has. One real, narrow Chromium print-engine bug was found and
-  documented (not fixed — confirmed to be the browser engine, not this
-  app, after 5 independent CSS/DOM approaches all failed identically): a
-  multi-page sheet placed anywhere but last in a *packet*, followed by a
-  shorter sheet, can lose its later pages when printed — see
-  `docs/compatibility.md`'s Chromium known-issue section and
-  `docs/teacher-guide.md`'s packet section for the practical workaround
-  (put the multi-page sheet last, or print it separately).
+  case has. (The 0.8 release notes here originally described a "Chromium
+  print-engine bug" affecting packets that mix multi-page and single-page
+  sheets. It was an app bug — packet snapshots shared the live settings
+  object — fixed in 0.8.1; see "Packet snapshots" below.)
+- **Packet snapshots are now real snapshots (0.8.1):** `buildWorksheet()`
+  stored the live settings object by reference, so every sheet added to a
+  packet silently followed any font/spacing/mode change the teacher made
+  afterwards, at print time, while its frozen layout still described the
+  old settings. That mismatch was what had been mis-documented as a
+  Chromium bug in 0.8 and — via a separate defect in the Firefox
+  verification script — as a "Gecko engine bug" since Phase 7. Both
+  writeups are corrected in `docs/compatibility.md` ("Corrected on
+  2026-09-20"); the settings are now deep-copied into each model, a unit
+  test mutates every field after building to prove it, and
+  `verify-firefox` has a real (failing, not informational) check that
+  changing settings after building a packet leaves the packet untouched.
 - **Personalization default name (0.8):** a text using `{name}` (7 entries:
   4 Slovene, 3 English) used to blindly delete the placeholder when the
   teacher left the name field empty, producing broken sentences (e.g. "Was
@@ -216,18 +224,16 @@ how, and what's still open. Summary:
   user journey — all 5 languages, dyslexia preset, presets,
   packets, print, packet print, `.docx` export — and checks for zero
   non-`file://` network requests and zero console errors.
-- **Real Firefox compatibility — automated, passing except one known Gecko
-  engine issue.** Firefox doesn't speak Chrome DevTools Protocol — it
-  speaks WebDriver BiDi — so `npm run verify-firefox` uses `geckodriver` +
-  `selenium-webdriver` instead. Covers the same broad journey as the
-  Chromium checks, plus single-worksheet and packet printing verified via
-  WebDriver's real `printPage()` command (Firefox's actual print engine).
-  The clean/primary flows all pass. One real, reproducible Firefox-only bug
-  was found and thoroughly bisected: after enough prior settings-driven
-  re-renders happen in the same tab, the *next* print can come out with
-  extra blank pages — this reproduces even with a trivial, isolated repro
-  and traces to Firefox's own print pagination, not this app's CSS/DOM (see
-  `docs/compatibility.md` for the full writeup and a practical mitigation).
+- **Real Firefox compatibility — automated, passing.** Firefox doesn't
+  speak Chrome DevTools Protocol — it speaks WebDriver BiDi — so `npm run
+  verify-firefox` uses `geckodriver` + `selenium-webdriver` instead. Covers
+  the same broad journey as the Chromium checks, plus single-worksheet,
+  multi-page and packet printing verified via WebDriver's real
+  `printPage()` command (Firefox's actual print engine). From Phase 7 to
+  0.8.1 this bullet described a "reproducible Firefox-only Gecko bug"
+  (extra blank pages after prior re-renders). It was a defect in the
+  verification script itself, not Firefox — see `docs/compatibility.md`,
+  "Corrected on 2026-09-20".
 - **Versioned ZIP release — done.** `npm run package` rebuilds and
   produces `dist/writing-worksheet-generator-v<version>.zip`, bundling
   `release/` with `docs/`, `THIRD_PARTY_NOTICES.md`, and `licenses/`.

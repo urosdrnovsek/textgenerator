@@ -90,8 +90,16 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount) {
     bodyParagraphs,
     wordCount: countWords(resolvedText.body, localeForWordCount),
     level: entry.level,
+    // Shared reference to an asset-registry entry; safe only because those
+    // entries are never mutated (a custom image is a new object, content
+    // import sets new entries). Don't start mutating them.
     image,
-    settings,
+    // A model is a snapshot. main.js mutates its live settings object in
+    // place on every control change, so storing it by reference made every
+    // packet sheet silently follow later changes at print time while its
+    // frozen layout/page count described the old settings — the real cause
+    // of what was mis-documented in 0.8 as a Chromium print-engine bug.
+    settings: structuredClone(settings),
     header: {
       nameLine: settings.header.nameLine,
       date: settings.header.date,

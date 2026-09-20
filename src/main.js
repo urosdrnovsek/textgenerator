@@ -714,11 +714,18 @@ function renderPacketList() {
 }
 
 function updatePacketControls() {
+  const pages = totalPages(state.packet);
   els.packetCount.textContent = t('packet.count', {
     count: state.packet.length,
     max: PACKET_MAX_SHEETS,
-    pages: totalPages(state.packet)
+    pages
   });
+  // Machine-readable, language-independent counts for the verify-* scripts
+  // (same pattern as #fit-indicator's data-page-count) — parsing the
+  // localized label text is how verify-firefox once mistook the sheet
+  // count for the page count.
+  els.packetCount.dataset.sheetCount = String(state.packet.length);
+  els.packetCount.dataset.totalPages = String(pages);
   els.addToPacketButton.disabled = !state.lastGood || state.packet.length >= PACKET_MAX_SHEETS;
   els.printPacketButton.disabled = state.packet.length === 0;
   els.clearPacketButton.disabled = state.packet.length === 0;

@@ -77,3 +77,44 @@ test('throws a clear error when the entry references an unknown imageId', () => 
   const badEntry = { ...ENTRY, imageId: 'does-not-exist' };
   assert.throws(() => buildWorksheet(badEntry, BASE_SETTINGS, ASSETS, 'sl'), /MISSING_IMAGE/);
 });
+
+test('buildWorksheet returns settings that do not alias the caller\'s object (a model is a snapshot)', () => {
+  // main.js mutates its live settings object in place on every control
+  // change; a model stored in a packet must not follow those changes. Every
+  // field is mutated here on purpose — a partial-copy regression would
+  // pass a one-field test.
+  const live = structuredClone(BASE_SETTINGS);
+  live.sentencePerLine = false;
+  live.tintId = 'none';
+  live.printTint = false;
+  live.lineStripes = false;
+  live.printStripes = false;
+  const model = buildWorksheet(ENTRY, live, ASSETS, 'sl');
+  const reference = structuredClone(model.settings);
+
+  live.fontId = 'lexend';
+  live.fontSizePt = 32;
+  live.lineHeightMultiplier = 2.5;
+  live.letterSpacingPt = 4;
+  live.extraWordSpacePt = 6;
+  live.writingMode = 'read-only';
+  live.rulingId = 'other';
+  live.guideHeightMm = 20;
+  live.marginMm = 10;
+  live.syllableMode = 'off';
+  live.sentencePerLine = true;
+  live.tintId = 'cream';
+  live.printTint = true;
+  live.lineStripes = true;
+  live.printStripes = true;
+  live.header.nameLine = false;
+  live.header.date = false;
+  live.header.title = false;
+  live.letterColors.b = '#000000'; // in-place mutation of a nested map
+  live.letterColors = { z: '#111111' }; // and reassignment
+  live.syllableColors.push('#222222'); // in-place mutation of a nested array
+  live.personalization.name = 'Eva';
+
+  assert.deepEqual(model.settings, reference);
+  assert.notDeepEqual(model.settings, live);
+});

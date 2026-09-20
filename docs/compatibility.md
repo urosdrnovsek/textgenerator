@@ -42,120 +42,64 @@ re-verified as a regression check), real Firefox (`verify-firefox`'s
 existing single-worksheet and packet checks, all still exactly the
 expected page count), and real LibreOffice via DOCX (see the Office
 application matrix below — one case needed an explicit tolerance for a
-genuine cross-application pagination difference, not an app bug). **Known
-issue, Chromium-specific, documented not fixed:** a multi-page sheet
-placed anywhere but last in a *packet*, followed by a shorter sheet, can
-lose its later pages when printed — see the dedicated section under the
-browser matrix below.
+genuine cross-application pagination difference, not an app bug).
+Packets that mix multi-page and single-page sheets print correctly in
+any order (an earlier writeup here claimed otherwise and blamed Chromium;
+it was an app bug, since fixed — see "Corrected on 2026-09-20" below).
 
 ## Browser matrix
 
 | Browser | Status | How verified |
 | --- | --- | --- |
 | Chromium (headless, this dev environment) | **Automated, passing** | `npm run verify-offline` and the Phase 3–6 CDP-driven scripts referenced in commit history: language switching, every dyslexia support, presets, packets, content import, print, `.docx` export. |
-| Firefox (headless, this dev environment — version 155.0.1) | **Automated, passing except one known Gecko engine issue (see below)** | `npm run verify-firefox`, via `geckodriver` + `selenium-webdriver` (Firefox doesn't speak Chrome DevTools Protocol — it speaks WebDriver BiDi, so the Chromium scripts' approach doesn't carry over). Covers all 5 languages, the dyslexia preset, saving a setup, `.docx` export, and both single-worksheet and packet printing verified via WebDriver's real `printPage()` command (Firefox's actual print/PDF engine) piped through `pdfinfo`/`pdftotext` — not a simulation. All pass in the clean/primary flow (create a worksheet and print it; build a packet and print it immediately, matching the documented `docs/teacher-guide.md` workflow). One known issue found and documented separately below. |
+| Firefox (headless, this dev environment — version 155.0.1) | **Automated, passing** | `npm run verify-firefox`, via `geckodriver` + `selenium-webdriver` (Firefox doesn't speak Chrome DevTools Protocol — it speaks WebDriver BiDi, so the Chromium scripts' approach doesn't carry over). Covers all 5 languages, the dyslexia preset, saving a setup, `.docx` export, single-worksheet and packet printing verified via WebDriver's real `printPage()` command (Firefox's actual print/PDF engine) piped through `pdfinfo`/`pdftotext` — not a simulation — a forced multi-page worksheet, and a packet whose settings are changed after it was built (a regression check for a real app bug; see "Corrected on 2026-09-20" below). |
 | Google Chrome (real, desktop) | **Not yet tested here** | Same underlying engine as Chromium; low risk, but not the same binary — needs a real run before claiming it. |
 | Microsoft Edge (real, desktop — the brief's primary target, "Windows most likely") | **Not yet tested here** | Chromium-based; same low-but-nonzero risk as Chrome. This is the brief's actual primary target browser and should be the first real-browser check done outside this environment. |
-| Firefox (real, desktop) | **Not yet tested** | The headless automated run above is real Firefox, but a real desktop session (different windowing/print-dialog path) hasn't been checked. Given the known issue below, this is worth a real run specifically to see whether ordinary interactive use (not automation) hits it too. |
+| Firefox (real, desktop) | **Not yet tested** | The headless automated run above is real Firefox, but a real desktop session (different windowing/print-dialog path) hasn't been checked. |
 | Safari | **Not tested — not applicable to this Linux dev environment** | Lower priority per the brief ("Windows most likely, possibly Mac/Linux") but should be checked before claiming Mac support. |
 
-### Firefox-specific known issue: print pagination can become unreliable after enough prior re-renders in the same tab
+### Corrected on 2026-09-20: two "browser engine bugs" that were not
 
-**Found**, not fixed — this is a real Gecko (Firefox's rendering engine)
-bug, not a bug in this app's CSS/DOM, based on extensive bisection (see
-the Phase 7 Firefox-testing commit for the full investigation). Documented
-here per this project's standing rule: report limitations honestly rather
-than omit them.
+Until 2026-09-20 this file carried two sections describing print bugs
+attributed to browser engines. The project owner's code review questioned
+both; each was then reproduced and made to disappear by a single isolated
+fix, with nothing else changed. Neither was a browser bug. They are
+recorded here so nobody re-documents the symptoms as browser limitations.
 
-**What happens:** in the same Firefox tab, after enough prior worksheet
-re-renders have happened (the exact trigger found: 2 or more sequential
-*settings changes* — e.g. font size then line height — applied to the
-*current* worksheet), the *next* print operation can come out wrong. For
-packet printing specifically, this manifests as an extra blank page
-inserted after every sheet (5 sheets → 10 pages, half blank). In one
-observed case deep into a long test session, it also affected a plain
-single-worksheet print (1 page → 5). The worksheet's own fit-check is not
-wrong in either case — the app correctly reports the content fits; the
-corruption is in Firefox's own print/PDF pagination.
+**"Firefox-specific known issue: print pagination can become unreliable
+after enough prior re-renders in the same tab"** (documented since Phase
+7; a 2-sheet packet printing as 5 pages). Actual cause: a defect in
+`scripts/verify-firefox.mjs` itself. Its `checkPacketPageCount()` helper
+replaced `#print-surface.replaceChildren` with a once-only wrapper to
+observe the packet DOM before the app's post-print restore, and never put
+the original back. Its second use in the same page wrapped the already-
+spent wrapper, so the second packet was never written to the print
+surface and Firefox faithfully printed the stale first packet. Restoring
+the method between calls made the "bug" vanish with no app change. The
+"extensive bisection" that ruled out app-level causes was consistent with
+this all along — nothing about the second packet mattered because the
+surface never changed. The section is now a real, failing check.
 
-**What was ruled out** (so this isn't misdiagnosed as an app bug on a
-future pass): specific content, specific language/theme/font, each
-individual setting changed alone (font size alone: fine; line height
-alone: fine — only combinations of 2+ trigger it), `#print-surface`'s own
-render history, the hidden `#preview` pane's content (cleared it — no
-change), DOM node identity (rebuilt `#print-surface` as a fresh element —
-no change), and timing (added up to 3 full seconds of settle time between
-steps — no change). The trigger is specifically *how many* unrelated
-re-renders happened earlier in the tab's lifetime, not their content or
-timing.
+**"Chromium-specific known issue: a non-last multi-page sheet in a packet
+can lose pages"** (introduced with 0.8 multi-page support). Actual cause:
+an app bug. `buildWorksheet()` stored the live settings object *by
+reference* in every model, and the app mutates that object in place on
+every control change — so every packet sheet's font size, line height,
+writing mode, tint and header silently followed whatever the teacher
+changed afterwards, at print time, while the sheet's frozen layout and
+page count still described the settings it was added with. A sheet
+"losing pages" was that sheet legitimately fitting on fewer pages at the
+*new* settings, plus its stale second copy-block forcing a page break.
+`structuredClone(settings)` in `buildWorksheet()` alone makes both
+previously-failing packet orderings print exactly the expected page
+count. The "five independent CSS/DOM approaches" that all failed
+identically were all varying the wrong thing.
 
-**Practical mitigation for now:** if a teacher has been actively adjusting
-settings for a while in one browser session, reload the page (or just
-close and reopen the app) before printing a packet, especially a large
-one. This resets whatever internal Firefox state accumulates. Building a
-packet and printing it right away — the workflow `docs/teacher-guide.md`
-actually describes — is unaffected; that path is covered by
-`verify-firefox`'s primary (non-demonstration) checks and passes cleanly.
-
-**Not pursued further this pass** (explicit decision, not an oversight):
-possible next steps would be filing a minimal reproduction with Mozilla
-(Bugzilla) or trying more invasive structural workarounds (e.g. rendering
-print content in an iframe) — neither was attempted, since everything
-tried at the CSS/DOM level had no effect, suggesting the fix would need to
-happen inside Gecko itself or require much deeper investigation than is
-warranted right now.
-
-### Chromium-specific known issue: a non-last multi-page sheet in a packet can lose pages
-
-**Found**, not fixed — a real Chromium print/PDF pagination engine bug,
-not a bug in this app's CSS/DOM (see the 0.8 workstream-A commit for the
-full investigation). Discovered while adding multi-page worksheet support
-(see "Multi-page worksheets (0.8)" above); documented here per this
-project's standing rule: report limitations honestly rather than omit
-them.
-
-**What happens:** in a packet, if a worksheet that prints on more than
-one page is placed anywhere *except last*, and the next sheet is shorter,
-Chromium's print/PDF engine renders only that multi-page sheet's *first*
-page and silently drops the rest — real content loss, not just a
-cosmetic layout glitch. Two related but harmless variants: a multi-page
-sheet placed *last* in a packet always prints its full content correctly
-(the preceding shorter sheets are unaffected too), and a packet where
-*every* sheet is multi-page also prints every page of every sheet
-correctly — the bug is specific to a non-last multi-page sheet followed
-by a shorter one.
-
-**What was ruled out** (so this isn't misdiagnosed as an app bug on a
-future pass): the exact CSS mechanism used to separate sheets. Tried and
-reproduced identically under all of: `break-after: page` on each sheet
-except the last, `break-before: page` on each sheet except the first, no
-explicit break property at all (relying purely on natural overflow), a
-dedicated empty separator element between sheets carrying the break
-instead of the sheets themselves, and wrapping each sheet in a
-non-fragmenting wrapper element that carries the break instead of the
-sheet itself carrying it. All five produced the same truncation whenever
-a non-last multi-page sheet was followed by a shorter one, and all
-printed correctly whenever the multi-page sheet was last or every sheet
-was multi-page — strong evidence this is inherent to how Chromium's
-layout engine estimates a fragmenting box's available space based on
-what follows it, not something reachable from application-level CSS.
-
-**Practical mitigation for now** (the project owner's explicit decision,
-2026-09-20, mirroring how the Firefox issue above was handled — document
-and move on rather than chase a browser engine bug): a teacher building a
-packet that mixes a multi-page worksheet with shorter ones should either
-put the multi-page worksheet last in the packet, or print it separately
-from the rest. `docs/teacher-guide.md` says this. A packet where every
-sheet fits on one page (still the default and most common case) or where
-every sheet happens to be multi-page is unaffected.
-
-**Not pursued further this pass** (explicit decision, not an oversight):
-the same reasoning as the Firefox issue above applies — five independent
-CSS/DOM approaches all failed identically, suggesting a fix would need to
-happen inside Chromium itself. Not yet checked against real desktop
-Chrome/Edge or real LibreOffice/Word (packets have no DOCX equivalent, so
-this is print/PDF-only); if a teacher reports it there too, this section
-should be updated with that confirmation.
+**Lesson, applied going forward:** a "known browser issue" must be
+reproducible in a minimal standalone HTML page with no app code before
+it is documented as one. Both of these would have failed that test in
+minutes. If either symptom ever reappears, treat it as an app or test
+regression first.
 
 ## Office application matrix
 

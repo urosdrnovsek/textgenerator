@@ -133,15 +133,6 @@ levels for one lesson — use the **Packet** panel:
 The packet is not saved between sessions — it's meant for "build a set, print
 it now."
 
-**If a worksheet in your packet says it's longer than one page** (see
-"When a worksheet is longer than one page" above), put it **last** in the
-packet, or print it on its own instead of as part of the set — some
-browsers can drop that worksheet's extra pages if it's placed anywhere
-else in the middle of a packet. A packet where every sheet fits on one
-page, or where every sheet happens to be longer than one page, isn't
-affected — it's specifically mixing a longer one with shorter ones, with
-the longer one not last, that can lose pages.
-
 ## Adding your own texts
 
 Under **Add new content**, a teacher (or whoever maintains the school's

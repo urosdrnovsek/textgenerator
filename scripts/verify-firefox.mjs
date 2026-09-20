@@ -28,22 +28,21 @@
  * profile, satisfying the same "fresh-machine offline" bar as
  * verify-offline.mjs.
  *
- * KNOWN ISSUE (documented, not a regression to chase — see
- * docs/compatibility.md "Firefox-specific known issue"): the packet check
- * below runs immediately after building the packet, matching the
- * documented teacher workflow (docs/teacher-guide.md: build the packet,
- * then print it) and passes cleanly. A *separate*, clearly-labeled section
- * near the end of this script deliberately reproduces a real Firefox/Gecko
- * print-engine bug found while building this script: if 2+ unrelated
- * settings changes re-render the *current* (non-packet) worksheet after
- * the packet already has sheets in it, Firefox's print engine inserts a
- * blank page after every packet sheet on the *next* print. Extensive
- * bisection (see commit history) ruled out every app-level cause
- * (specific content, specific settings, DOM node identity/reuse, render
- * timing up to 3s of settling, async race conditions) — this looks like
- * an internal Gecko fragmentation-counting bug, not something fixable
- * from this app's CSS/DOM. That demonstration section is informational
- * and does not count toward this script's pass/fail result.
+ * HISTORY WORTH KNOWING: from Phase 7 until 2026-09-20 this script carried
+ * an "informational" section that reproduced what was documented as a
+ * Firefox/Gecko print-engine bug (a 2-sheet packet printing as 5 pages
+ * after unrelated settings changes). It was a bug in this script:
+ * checkPacketPageCount() replaced #print-surface.replaceChildren with a
+ * once-only wrapper and never restored it, so its second use in the same
+ * page wrapped the already-spent wrapper and the second packet was never
+ * written to the print surface at all — Firefox faithfully printed the
+ * stale first packet. Restoring the method between calls (below) made
+ * the "bug" vanish with no app change. That section is now a real,
+ * failing check, and doubles as the regression test for a genuine app
+ * bug fixed the same day (packet snapshots sharing the live settings
+ * object — see src/worksheet/build.js). Lesson: a "known browser issue"
+ * must be reproducible in a standalone page with no app code before it
+ * is documented as one.
  *
  * Developer/QA tool, not part of `npm test`. Run with `npm run verify-firefox`.
  * Takes --unzip <path-to-zip> to test the actual packaged deliverable
@@ -80,23 +79,36 @@ async function resolveIndexPath() {
  * (swallowing main.js's post-print restore call, since there's no async
  * gap between the two synchronous replaceChildren() calls to intercept
  * any other way), prints via the real WebDriver printPage() command, and
- * returns the expected vs. actual page counts for the caller to judge.
+ * returns the expected vs. actual counts for the caller to judge.
+ *
+ * Safe to call any number of times in the same page: the once-only
+ * wrapper is installed as an own property over the prototype method and
+ * deleted again afterwards. The earlier version bound and kept the
+ * previous wrapper forever, which is how a second call silently printed
+ * the first call's packet (see the header comment).
+ *
+ * Expected counts come from #packet-count's data attributes, which
+ * main.js sets from the packet model — not from parsing its localized
+ * label, whose first number is the sheet count, not the page count.
  */
 async function checkPacketPageCount(driver, evalJs, downloadDir, label) {
-  const packetCount = await evalJs(`return document.getElementById('packet-count').textContent`);
-  const expectedSheets = Number(packetCount.match(/(\d+)/)?.[1] ?? 0);
+  const expectedSheets = Number(await evalJs(`return document.getElementById('packet-count').dataset.sheetCount`));
+  const expectedPages = Number(await evalJs(`return document.getElementById('packet-count').dataset.totalPages`));
   await evalJs(`
     const surface = document.getElementById('print-surface');
-    const original = surface.replaceChildren.bind(surface);
+    const original = Object.getPrototypeOf(surface).replaceChildren;
     let calls = 0;
     surface.replaceChildren = function(...args) {
       calls++;
-      if (calls === 1) original(...args);
+      if (calls === 1) original.apply(surface, args);
     };
   `);
   await evalJs(`document.getElementById('btn-print-packet').click();`);
   await driver.sleep(200);
-  const frozenPageCount = await evalJs(`return document.querySelectorAll('#print-surface .ws-page').length`);
+  const frozenSheetCount = await evalJs(`return document.querySelectorAll('#print-surface .ws-page').length`);
+  const frozenFontSizes = await evalJs(
+    `return [...document.querySelectorAll('#print-surface .ws-page')].map((p) => p.style.getPropertyValue('--ws-font-size-pt'))`
+  );
 
   const pdfBase64 = await driver.printPage();
   const pdfPath = path.join(downloadDir, `packet-${label}.pdf`);
@@ -104,7 +116,10 @@ async function checkPacketPageCount(driver, evalJs, downloadDir, label) {
   const actualPages = Number((execFileSync('pdfinfo', [pdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
   const text = execFileSync('pdftotext', [pdfPath, '-']).toString();
 
-  return { expectedSheets, frozenPageCount, actualPages, hasText: text.trim().length > 0 };
+  // Restore the real method so the next call starts from a clean state.
+  await evalJs(`delete document.getElementById('print-surface').replaceChildren;`);
+
+  return { expectedSheets, expectedPages, frozenSheetCount, frozenFontSizes, actualPages, hasText: text.trim().length > 0 };
 }
 
 async function main() {
@@ -244,11 +259,11 @@ async function main() {
     const primaryResult = await checkPacketPageCount(driver, evalJs, downloadDir, 'primary-flow');
     check(
       `#print-surface holds all ${primaryResult.expectedSheets} packet sheets right after printing`,
-      primaryResult.frozenPageCount === primaryResult.expectedSheets
+      primaryResult.frozenSheetCount === primaryResult.expectedSheets
     );
     check(
-      `real Firefox print engine renders the packet as exactly ${primaryResult.expectedSheets} pages`,
-      primaryResult.actualPages === primaryResult.expectedSheets
+      `real Firefox print engine renders the packet as exactly ${primaryResult.expectedPages} pages (got ${primaryResult.actualPages})`,
+      primaryResult.actualPages === primaryResult.expectedPages
     );
     check('packet PDF has non-empty extracted text', primaryResult.hasText);
 
@@ -290,8 +305,14 @@ async function main() {
       check('.docx export button was ready to click', false);
     }
 
-    console.log('\nKnown-issue demonstration (informational only, does not affect pass/fail — see docs/compatibility.md):');
-    console.log('  building a 2nd small packet, then changing 2 unrelated settings on the current worksheet before printing it...');
+    console.log('\nSettings changed after building a packet must not affect the packet...');
+    // Regression check for the packet-snapshot aliasing bug fixed in
+    // src/worksheet/build.js (the model used to share main.js's live
+    // settings object, so every sheet followed later changes at print
+    // time). Build a 2-sheet packet, then push the *current* worksheet to
+    // the maximum font size and line height: the frozen packet sheets must
+    // still carry the size they were added at, and print as exactly the
+    // page count they were added with.
     await evalJs(`
       document.getElementById('theme-select').value = 'stories';
       document.getElementById('theme-select').dispatchEvent(new Event('change', { bubbles: true }));
@@ -308,23 +329,26 @@ async function main() {
       await waitForFit();
       await evalJs(`document.getElementById('btn-add-to-packet').click();`);
     }
-    // The precise, bisected trigger: 2+ sequential settings changes to the
-    // *current* worksheet (unrelated to the packet) between building the
-    // packet and printing it.
+    const fontSizeAtAdd = await evalJs(`return document.querySelector('#preview .ws-page').style.getPropertyValue('--ws-font-size-pt')`);
     await evalJs(`
-      document.getElementById('font-size-input').value = '18';
+      document.getElementById('font-size-input').value = '32';
       document.getElementById('font-size-input').dispatchEvent(new Event('change', { bubbles: true }));
     `);
     await waitForFit();
     await evalJs(`
-      document.getElementById('line-height-input').value = '1.6';
+      document.getElementById('line-height-input').value = '2.5';
       document.getElementById('line-height-input').dispatchEvent(new Event('change', { bubbles: true }));
     `);
     await waitForFit();
-    const demoResult = await checkPacketPageCount(driver, evalJs, downloadDir, 'known-issue-demo');
-    console.log(
-      `  INFO: expected ${demoResult.expectedSheets} pages, Firefox rendered ${demoResult.actualPages} ` +
-        `(known Gecko engine issue, not counted as a failure — see docs/compatibility.md)`
+    const snapshotResult = await checkPacketPageCount(driver, evalJs, downloadDir, 'settings-changed-after-add');
+    check(
+      `packet sheets still render at the font size they were added with (${fontSizeAtAdd}pt, current worksheet is now 32pt)`,
+      snapshotResult.frozenSheetCount === snapshotResult.expectedSheets &&
+        snapshotResult.frozenFontSizes.every((size) => size === fontSizeAtAdd)
+    );
+    check(
+      `real Firefox print engine renders the packet as exactly ${snapshotResult.expectedPages} pages after the settings change (got ${snapshotResult.actualPages})`,
+      snapshotResult.actualPages === snapshotResult.expectedPages
     );
 
     const errors = await evalJs(`return window.__errors`);
