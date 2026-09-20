@@ -27,9 +27,10 @@ import { isPrintReady, printWorksheet } from './export/print.js';
 import { exportDocx } from './export/docx.js';
 import { createTranslator } from './i18n.js';
 import { checkStorageCapability } from './storage.js';
-import { readImageFile, readContentPackImport } from './import.js';
+import { readImageFile } from './import.js';
 import { init as initPacketUi } from './ui/packet.js';
 import { init as initPresetsUi } from './ui/presets.js';
+import { init as initContentImportUi } from './ui/contentImport.js';
 
 /** blueprint 8.1: "The interface starts in Slovene for the pilot." */
 const DEFAULT_LANGUAGE = 'sl';
@@ -70,6 +71,23 @@ for (const language of LANGUAGES) CATALOGS[language] = validateAndBuildCatalog(l
 
 let CATALOG = CATALOGS[DEFAULT_LANGUAGE];
 let THEMES = listThemes(CATALOG);
+
+/**
+ * Installs a session-only replacement catalog for a language (teacher
+ * content import); if it is the active language, the theme list follows.
+ * Lives here because CATALOG/THEMES are this module's own bindings —
+ * ui/contentImport.js cannot reassign them.
+ * @param {string} language
+ * @param {import('./content/catalog.js').CatalogIndex} catalog
+ */
+function installCatalog(language, catalog) {
+  CATALOGS[language] = catalog;
+  if (language === state.language) {
+    CATALOG = CATALOGS[language];
+    THEMES = listThemes(CATALOG);
+    populateThemeSelect();
+  }
+}
 
 /** Preserved so the letter-colors checkbox can restore real colors after being switched off. */
 const DEFAULT_LETTER_COLORS = { b: '#B42318', d: '#166534', p: '#7C3AED', q: '#B45309' };
@@ -183,6 +201,7 @@ const { populatePresetSelect } = initPresetsUi({
   createText,
   requestRender
 });
+initContentImportUi({ state, els, getT: () => t, imagesById: IMAGES_BY_ID, installCatalog, updateCandidateCount });
 
 /** Applies t() to every element carrying a data-label (text) or data-placeholder (input placeholder) key. */
 function applyStaticLabels() {
@@ -433,61 +452,6 @@ function updateHeaderField(field, enabled) {
   if (state.contentId) requestRender();
 }
 
-function describeImportError(result) {
-  if (result.code === 'INVALID_JSON') return t('error.INVALID_JSON');
-  if (result.code === 'IMAGE_READ_FAILED') return t('import.error.IMAGE_READ_FAILED', { filename: result.imageError.filename });
-  const first = result.errors[0];
-  return t('import.error.VALIDATION_FAILED', {
-    count: result.errors.length,
-    entryId: first.entryId,
-    field: first.field,
-    message: first.message
-  });
-}
-
-/**
- * Teacher-driven content extension without coding (blueprint 8.11):
- * validates the selected JSON + any new images together, then — all or
- * nothing — replaces that language's catalog for the rest of this session.
- * Imported packs are session-resident only, never written back to disk
- * (blueprint 8.11: "Imported packs are session-resident initially").
- */
-async function handleImportContent() {
-  const jsonFile = els.importJsonInput.files[0];
-  if (!jsonFile) return;
-  const imageFiles = [...els.importImagesInput.files];
-  const result = await readContentPackImport(jsonFile, imageFiles, new Set(IMAGES_BY_ID.keys()));
-  if (!result.ok) {
-    els.importStatus.textContent = describeImportError(result);
-    return;
-  }
-
-  for (const [id, image] of result.images) IMAGES_BY_ID.set(id, image);
-  const entriesWithLanguage = result.pack.entries.map((entry) => ({ ...entry, language: result.pack.language }));
-  CATALOGS[result.pack.language] = buildCatalogIndex(entriesWithLanguage);
-
-  els.importStatus.textContent = t('import.success', {
-    count: result.pack.entries.length,
-    language: t(`language.${result.pack.language}`)
-  });
-  els.importJsonInput.value = '';
-  els.importImagesInput.value = '';
-
-  if (result.pack.language === state.language) {
-    CATALOG = CATALOGS[state.language];
-    THEMES = listThemes(CATALOG);
-    populateThemeSelect();
-    state.contentId = null;
-    state.lastGood = null;
-    els.preview.replaceChildren();
-    els.printSurface.replaceChildren();
-    els.printButton.disabled = true;
-    els.docxButton.disabled = true;
-    updateCandidateCount();
-    els.fitIndicator.textContent = t('preview.empty');
-  }
-}
-
 /**
  * Renders the three-state fit result (upgrade blueprint v3, workstream A —
  * 'extends' is new; a worksheet longer than one page is now allowed and
@@ -625,8 +589,6 @@ els.headerTitleToggle.addEventListener('change', (e) => updateHeaderField('title
 els.guideHeightInput.addEventListener('change', (e) => updateNumericSetting('guideHeightMm', SETTINGS_LIMITS.guideHeightMm, e.target));
 els.imageUpload.addEventListener('change', (e) => handleImageUpload(e.target.files[0]));
 els.resetImageButton.addEventListener('click', handleResetImage);
-
-els.importContentButton.addEventListener('click', handleImportContent);
 
 applyStaticLabels();
 populateLanguageSelect();

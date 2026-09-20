@@ -357,6 +357,81 @@ async function main() {
     await evalJs(`document.getElementById('btn-print').click();`);
     await wait(200);
     await exportDocxAndCheck('.docx export of a multi-page worksheet completed');
+
+    console.log('Exercising teacher content import (blueprint 8.11 / ui/contentImport.js)...');
+    // A one-entry English pack referencing a brand-new image, driven through
+    // the real file inputs: import must (1) reject a broken file with the
+    // localized message and change nothing, (2) accept the pack, add the
+    // image, and make the entry the only candidate for its theme/level.
+    const fs = await import('node:fs/promises');
+    const badJsonPath = path.join(downloadDir, 'broken-pack.json');
+    await fs.writeFile(badJsonPath, '{ this is not json');
+    const importedImagePath = path.join(downloadDir, 'imported_tiny.png');
+    await fs.copyFile(pngPath, importedImagePath);
+    const packPath = path.join(downloadDir, 'imported-pack.json');
+    await fs.writeFile(packPath, JSON.stringify({
+      schemaVersion: 1,
+      packId: 'offline-test-import',
+      language: 'en',
+      entries: [{
+        id: 'stories_offline_import_1',
+        version: 1,
+        theme: 'stories',
+        level: 1,
+        title: 'Offline Import Check',
+        body: 'The cat sat on the mat. It was warm.',
+        imageId: 'imported_tiny',
+        review: { status: 'draft' }
+      }]
+    }));
+    const setImportFiles = async (selector, files) => {
+      const { root } = await cdp.send('DOM.getDocument');
+      const { nodeId } = await cdp.send('DOM.querySelector', { nodeId: root.nodeId, selector });
+      await cdp.send('DOM.setFileInputFiles', { nodeId, files });
+    };
+    const titleBeforeImport = await evalJs(`document.querySelector('#preview .ws-title')?.textContent || ''`);
+    await setImportFiles('#import-json-input', [badJsonPath]);
+    await evalJs(`document.getElementById('btn-import-content').click();`);
+    await wait(500);
+    const brokenStatus = await evalJs(`document.getElementById('import-status').textContent`);
+    const titleAfterBroken = await evalJs(`document.querySelector('#preview .ws-title')?.textContent || ''`);
+    journeyChecks.push({
+      label: 'importing a broken content file reports it and changes nothing',
+      ok: brokenStatus === 'The selected file is not valid JSON.' && titleAfterBroken === titleBeforeImport,
+      note: `status="${brokenStatus}", worksheet ${titleAfterBroken === titleBeforeImport ? 'unchanged' : 'CHANGED'}`
+    });
+
+    await setImportFiles('#import-json-input', [packPath]);
+    await setImportFiles('#import-images-input', [importedImagePath]);
+    await evalJs(`document.getElementById('btn-import-content').click();`);
+    await wait(800);
+    const importStatus = await evalJs(`document.getElementById('import-status').textContent`);
+    await evalJs(`
+      (function() {
+        document.getElementById('theme-select').value = 'stories';
+        document.getElementById('theme-select').dispatchEvent(new Event('change', { bubbles: true }));
+        document.getElementById('level-select').value = '1';
+        document.getElementById('level-select').dispatchEvent(new Event('change', { bubbles: true }));
+      })();
+    `);
+    await wait(100);
+    const candidateText = await evalJs(`document.getElementById('candidate-count').textContent`);
+    await evalJs(`document.getElementById('btn-create').click();`);
+    await waitForFit();
+    await wait(300);
+    const importedTitle = await evalJs(`document.querySelector('#preview .ws-title')?.textContent || ''`);
+    const importedImageSrc = await evalJs(`document.querySelector('#preview .ws-image')?.src || ''`);
+    const importOk = importStatus === 'Imported 1 text(s) for English.'
+      && candidateText === 'Available: 1'
+      && importedTitle === 'Offline Import Check'
+      && importedImageSrc.startsWith('data:image/');
+    journeyChecks.push({
+      label: 'importing a content pack with a new image replaces the language\'s texts for the session',
+      ok: importOk,
+      note: importOk
+        ? 'status, candidate count, rendered title and imported image all as expected'
+        : `status="${importStatus}", candidates="${candidateText}", title="${importedTitle}", image=${importedImageSrc.slice(0, 20)}`
+    });
   } finally {
     chrome.kill();
     // Give Chromium a moment to actually release its profile-directory file
