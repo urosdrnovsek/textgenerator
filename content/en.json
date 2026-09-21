@@ -992,6 +992,186 @@
         "syllablesReviewed": true,
         "imageAccuracy": "verified"
       }
+    },
+    {
+      "id": "amazing_science_rainbow_1",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 1,
+      "title": "After the Rain",
+      "body": "The rain stops. The sun comes out. A rainbow shines in the sky. Red is on the outside. Violet is on the inside. Stand with your back to the sun to see it.",
+      "syllable_body": "The rain stops. The sun comes out. A rain|bow shines in the sky. Red is on the out|side. Vi|o|let is on the in|side. Stand with your back to the sun to see it.",
+      "imageId": "mavrica",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_echo_1",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 1,
+      "title": "The Echo",
+      "body": "Tom shouts at the big rock. A moment later he hears his own voice again. That is an echo. The sound flies to the rock, bounces off and comes back to his ears.",
+      "syllable_body": "Tom shouts at the big rock. A mo|ment la|ter he hears his own voice a|gain. That is an ech|o. The sound flies to the rock, bounc|es off and comes back to his ears.",
+      "imageId": "odmev_gore",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_gravity_2",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 2,
+      "title": "Why Everything Falls Down",
+      "body": "Tom throws a ball into the air. It comes back down. An apple falls from the tree. Raindrops fall from the cloud. Why does everything fall down? The Earth pulls everything towards its middle. This pull is called gravity. It holds us on the ground. That is why people on the other side of the world do not fall off.",
+      "syllable_body": "Tom throws a ball in|to the air. It comes back down. An ap|ple falls from the tree. Rain|drops fall from the cloud. Why does ev|ery|thing fall down? The Earth pulls ev|ery|thing to|wards its mid|dle. This pull is called grav|i|ty. It holds us on the ground. That is why peo|ple on the oth|er side of the world do not fall off.",
+      "imageId": "gravitacija_jabolko",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_first_ice_2",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 2,
+      "title": "The First Ice",
+      "body": "Last night was cold. Now the puddle has a lid of ice. Water turns into ice when it gets colder than zero degrees. Ice takes up more room than water, so it floats. Tom presses the ice with his boot. It cracks with a snap. A puddle is a safe place to test ice. Never step onto the ice of a pond or river alone.",
+      "syllable_body": "Last night was cold. Now the pud|dle has a lid of ice. Wa|ter turns in|to ice when it gets cold|er than ze|ro de|grees. Ice takes up more room than wa|ter, so it floats. Tom press|es the ice with his boot. It cracks with a snap. A pud|dle is a safe place to test ice. Nev|er step on|to the ice of a pond or riv|er a|lone.",
+      "imageId": "prvi_led",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_rainbow_3",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 3,
+      "title": "How a Rainbow Is Made",
+      "body": "Sunlight looks white, but it is really a mixture of all the colours. When a ray of sunlight enters a raindrop, it bends a little. It bounces off the back of the drop and bends again on its way out. Each colour bends by a slightly different amount, so the colours spread out into a band: red, orange, yellow, green, blue, indigo and violet. A rainbow always appears on the side of the sky opposite the sun. It is really a full circle, but the ground hides the lower half.",
+      "syllable_body": "Sun|light looks white, but it is real|ly a mix|ture of all the col|ours. When a ray of sun|light en|ters a rain|drop, it bends a lit|tle. It bounc|es off the back of the drop and bends a|gain on its way out. Each col|our bends by a slight|ly dif|fer|ent a|mount, so the col|ours spread out in|to a band: red, or|ange, yel|low, green, blue, in|di|go and vi|o|let. A rain|bow al|ways ap|pears on the side of the sky op|po|site the sun. It is real|ly a full cir|cle, but the ground hides the low|er half.",
+      "imageId": "mavrica_kaplja",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_sundial_3",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 3,
+      "title": "A Clock Made of Shadow",
+      "body": "Long before there were clocks, people told the time by the sun. A sundial is the simplest clock of all: a stick standing in the ground. As the sun moves across the sky, the shadow of the stick moves too. In the morning the shadow is long and points west. At midday it is at its shortest. Stones around the edge mark the hours. The Egyptians used shadow clocks more than three thousand years ago. A sundial has one weakness, though: it cannot tell you the time at night or on a cloudy day.",
+      "syllable_body": "Long be|fore there were clocks, peo|ple told the time by the sun. A sun|di|al is the sim|plest clock of all: a stick stand|ing in the ground. As the sun moves a|cross the sky, the shad|ow of the stick moves too. In the morn|ing the shad|ow is long and points west. At mid|day it is at its short|est. Stones a|round the edge mark the hours. The E|gyp|tians used shad|ow clocks more than three thou|sand years a|go. A sun|di|al has one weak|ness, though: it can|not tell you the time at night or on a cloud|y day.",
+      "imageId": "sundial",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_tide_pool_4",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 4,
+      "title": "Life Between the Tides",
+      "body": "Twice a day the sea rises up the shore, and twice a day it slides back again. These movements are called tides. They are caused mainly by the Moon, whose gravity pulls the water of the oceans towards it as the Earth turns.\n\nWhen the tide goes out, some water stays behind in hollows between the rocks. These are tide pools, full of life. A sea anemone looks like a flower, but it is an animal; its soft arms catch tiny creatures that drift too close. Crabs hide under stones, snails scrape green weed off the rocks, and small fish dart between them.\n\nLife in a tide pool is not easy. For hours the water grows warm in the sun, then the waves crash back. The anemone pulls in its arms, the mussels close their shells tight, and everyone waits until the sea returns.",
+      "syllable_body": "Twice a day the sea ris|es up the shore, and twice a day it slides back a|gain. These move|ments are called tides. They are caused main|ly by the Moon, whose grav|i|ty pulls the wa|ter of the o|ceans to|wards it as the Earth turns.\n\nWhen the tide goes out, some wa|ter stays be|hind in hol|lows be|tween the rocks. These are tide pools, full of life. A sea a|nem|o|ne looks like a flow|er, but it is an an|i|mal; its soft arms catch ti|ny crea|tures that drift too close. Crabs hide un|der stones, snails scrape green weed off the rocks, and small fish dart be|tween them.\n\nLife in a tide pool is not eas|y. For hours the wa|ter grows warm in the sun, then the waves crash back. The a|nem|o|ne pulls in its arms, the mus|sels close their shells tight, and ev|ery|one waits un|til the sea re|turns.",
+      "imageId": "tide_pool",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_pyramid_ramps_4",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 4,
+      "title": "Moving a Mountain of Stone",
+      "body": "The Great Pyramid of Egypt is made of more than two million blocks of stone. Many of them weigh as much as two cars. The builders had no cranes and no machines. How did they do it?\n\nThe blocks were cut in a quarry and laid on wooden sledges. Teams of workers pulled the sledges with thick ropes. A worker in front poured water on the sand. Wet sand is firm and smooth, so the sledge slid along much more easily. To lift the blocks higher as the pyramid grew, the builders made long ramps of earth for the sledges. With wooden levers they nudged each block into its final place.\n\nA ramp, a lever and a sledge are simple machines: they make heavy work easier. The Egyptians used them so well that their pyramid has stood for four and a half thousand years.",
+      "syllable_body": "The Great Pyr|a|mid of E|gypt is made of more than two mil|lion blocks of stone. Man|y of them weigh as much as two cars. The build|ers had no cranes and no ma|chines. How did they do it?\n\nThe blocks were cut in a quar|ry and laid on wood|en sledg|es. Teams of work|ers pulled the sledg|es with thick ropes. A work|er in front poured wa|ter on the sand. Wet sand is firm and smooth, so the sledge slid a|long much more eas|i|ly. To lift the blocks high|er as the pyr|a|mid grew, the build|ers made long ramps of earth for the sledg|es. With wood|en le|vers they nudged each block in|to its fi|nal place.\n\nA ramp, a le|ver and a sledge are sim|ple ma|chines: they make heav|y work eas|i|er. The E|gyp|tians used them so well that their pyr|a|mid has stood for four and a half thou|sand years.",
+      "imageId": "piramide_klancina",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_river_5",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 5,
+      "title": "The Journey of a River",
+      "body": "High in the mountains, where the snow melts, a river is born. At first it is only a trickle between the rocks. Other trickles join it, and soon a young stream is racing downhill, leaping down as a waterfall and carrying stones, sand and mud.\n\nAll this rushing water is hard at work. Year after year it grinds away at the rock and cuts a valley deeper and deeper. The stones it carries are rolled and knocked together into smooth, round pebbles.\n\nIn the flat lowlands the river slows down and begins to wander in curves. Here it drops much of the sand and mud it has carried, and the land beside it becomes rich soil for fields. People build villages and bridges along its banks, and herons wait in the shallows for fish.\n\nAt last the river reaches the sea. Fresh water mixes with salt water, and the last of the sand settles into a beach. The sun lifts water from the sea as vapour, the wind carries it back to the mountains as clouds, and there it falls as rain and snow. The journey begins again.",
+      "syllable_body": "High in the moun|tains, where the snow melts, a riv|er is born. At first it is on|ly a trick|le be|tween the rocks. Oth|er trick|les join it, and soon a young stream is rac|ing down|hill, leap|ing down as a wa|ter|fall and car|ry|ing stones, sand and mud.\n\nAll this rush|ing wa|ter is hard at work. Year af|ter year it grinds a|way at the rock and cuts a val|ley deep|er and deep|er. The stones it car|ries are rolled and knocked to|geth|er in|to smooth, round peb|bles.\n\nIn the flat low|lands the riv|er slows down and be|gins to wan|der in curves. Here it drops much of the sand and mud it has car|ried, and the land be|side it be|comes rich soil for fields. Peo|ple build vil|lag|es and bridg|es a|long its banks, and her|ons wait in the shal|lows for fish.\n\nAt last the riv|er reach|es the sea. Fresh wa|ter mix|es with salt wa|ter, and the last of the sand set|tles in|to a beach. The sun lifts wa|ter from the sea as va|pour, the wind car|ries it back to the moun|tains as clouds, and there it falls as rain and snow. The jour|ney be|gins a|gain.",
+      "imageId": "reka",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_frozen_river_5",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 5,
+      "title": "Why Ice Floats",
+      "body": "When winter comes, the pond freezes first, then the lake, and last of all the river. Moving water is hard to freeze. It freezes at the edges, where it flows slowly, and the ice creeps out from the banks a little further each cold night. Where the current is strong, the river stays open, and sheets of ice break off and float away downstream.\n\nWhy do they float? Ice is lighter than water. Almost everything gets smaller and heavier when it turns solid, but water is different: as it freezes, its tiny particles line up in an open pattern, so ice takes up more room and floats on top. The ice on a river forms a lid that keeps the water underneath from freezing, and fish and frogs survive the winter below it.\n\nTom and his dog watch the ice drift past. River ice is never safe to walk on. It may look thick, but water moves under it and wears it thin in places. In spring the sun warms it, the ice cracks with loud bangs, and the river carries the broken pieces away to the sea.",
+      "syllable_body": "When win|ter comes, the pond freez|es first, then the lake, and last of all the riv|er. Mov|ing wa|ter is hard to freeze. It freez|es at the edg|es, where it flows slow|ly, and the ice creeps out from the banks a lit|tle fur|ther each cold night. Where the cur|rent is strong, the riv|er stays o|pen, and sheets of ice break off and float a|way down|stream.\n\nWhy do they float? Ice is light|er than wa|ter. Al|most ev|ery|thing gets small|er and heav|i|er when it turns sol|id, but wa|ter is dif|fer|ent: as it freez|es, its ti|ny par|ti|cles line up in an o|pen pat|tern, so ice takes up more room and floats on top. The ice on a riv|er forms a lid that keeps the wa|ter un|der|neath from freez|ing, and fish and frogs sur|vive the win|ter be|low it.\n\nTom and his dog watch the ice drift past. Riv|er ice is nev|er safe to walk on. It may look thick, but wa|ter moves un|der it and wears it thin in plac|es. In spring the sun warms it, the ice cracks with loud bangs, and the riv|er car|ries the bro|ken piec|es a|way to the sea.",
+      "imageId": "frozen_river",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
     }
   ]
 }

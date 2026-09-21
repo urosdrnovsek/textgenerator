@@ -79,8 +79,17 @@ summarizes what shipped and what was verified; the commit messages in
   they are wrong (Uluru is not "higher than the tallest skyscraper"; the
   red-eyed tree frog is Central American, so the Amazon text just says
   "tree frogs"). All fifteen `around_the_world` titles fit one page at
-  default settings in real Chromium. Remaining: amazing_science,
-  nature_seasons.
+  default settings in real Chromium.
+- **English amazing science: three texts per level** (2026-09-21). Ten
+  original texts (33–188 words): a rainbow at level 1 and how a raindrop
+  makes one at level 3, the echo, gravity, the first ice on a puddle
+  (with the "never test pond ice alone" note the picture asks for), the
+  sundial, tide pools, how the pyramid blocks were moved (wet sand,
+  sledges, ramps, levers), the journey of a river, and why ice floats.
+  The planned third rainbow picture was swapped for `reka` — all four
+  bundled rainbow pictures are the same scene, and the river picture
+  tells its own story. All fifteen `amazing_science` titles fit one
+  page at default settings in real Chromium. Remaining: nature_seasons.
 - **Title picker and predictable "Create text"** (upgrade blueprint v3,
   workstream I7, unblocked by the above). When a theme and level offer
   more than one text, a "Text" list above the button shows every title;
