@@ -452,6 +452,456 @@
         "syllablesReviewed": true,
         "imageAccuracy": "plausible"
       }
+    },
+    {
+      "id": "stories_chaton_mouille_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Le chaton mouillé",
+      "body": "Il pleut. Sous le banc, un petit chat tremble. Chloé le prend dans ses bras. Le chaton ronronne. À la maison, il a du lait chaud et une couverture. Il n'est plus seul.",
+      "syllable_body": "Il pleut. Sous le banc, un pe|tit chat trem|ble. Chlo|é le prend dans ses bras. Le cha|ton ron|ron|ne. À la mai|son, il a du lait chaud et u|ne cou|ver|tu|re. Il n'est plus seul.",
+      "imageId": "moker_muc",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_oeuf_blanc_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "L'œuf blanc",
+      "body": "Chloé passe l'été à la ferme de sa grand-mère. Dans un nid bien chaud, il y a un œuf blanc. « Il faut être patiente », dit la grand-mère. Alors Chloé attend. Un matin, elle entend un petit bruit dans l'œuf. Toc, toc. La coquille se fend, et un poussin sort la tête. Il est jaune, doux et tout petit. Chloé rit de joie.",
+      "syllable_body": "Chlo|é pas|se l'é|té à la fer|me de sa grand-mè|re. Dans un nid bien chaud, il y a un œuf blanc. « Il faut ê|tre pa|tien|te », dit la grand-mè|re. A|lors Chlo|é at|tend. Un ma|tin, el|le en|tend un pe|tit bruit dans l'œuf. Toc, toc. La co|quil|le se fend, et un pous|sin sort la tê|te. Il est jau|ne, doux et tout pe|tit. Chlo|é rit de joie.",
+      "imageId": "piscancek_gnezdo",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_escargot_course_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Léon l'escargot fait la course",
+      "body": "Dans la forêt, on organise une grande course. Tout le monde rit de Léon l'escargot, qui arrive lentement sur la ligne de départ. « Tu n'arriveras jamais ! » crient les autres. Au signal, tous filent comme des flèches. Léon, lui, avance à son rythme, pas à pas. Le lièvre s'arrête en chemin et s'endort sous un arbre. L'écureuil part ramasser des noisettes. Léon ne s'arrête pas. Il rampe, il rampe encore. Quand le soleil se couche, c'est lui qui franchit la ligne d'arrivée le premier. Lentement, mais sûrement : cela a suffi.",
+      "syllable_body": "Dans la fo|rêt, on or|ga|ni|se u|ne gran|de cour|se. Tout le mon|de rit de Lé|on l'es|car|got, qui ar|ri|ve len|te|ment sur la li|gne de dé|part. « Tu n'ar|ri|ve|ras ja|mais ! » crient les au|tres. Au si|gnal, tous fi|lent com|me des flè|ches. Lé|on, lui, a|van|ce à son ryth|me, pas à pas. Le liè|vre s'ar|rê|te en che|min et s'en|dort sous un ar|bre. L'é|cu|reuil part ra|mas|ser des noi|set|tes. Lé|on ne s'ar|rê|te pas. Il ram|pe, il ram|pe en|co|re. Quand le so|leil se cou|che, c'est lui qui fran|chit la li|gne d'ar|ri|vée le pre|mier. Len|te|ment, mais sû|re|ment : ce|la a suf|fi.",
+      "imageId": "polz_dirka",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_bruit_grange_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Un bruit dans la grange",
+      "body": "Chloé passe l'été à la ferme de sa grand-mère, où chaque jour apporte une nouvelle aventure. Mais ce qui l'intéresse le plus, c'est un petit œuf blanc, posé dans un nid de paille au fond de la grange.\n\n« Il y a un poussin à l'intérieur », explique la grand-mère. « Il sortira quand il sera prêt. Ces choses-là ne se commandent pas. » Chaque matin, Chloé court à la grange et se penche sur le nid. Mais l'œuf reste immobile, jour après jour.\n\nUn matin, tout change. Un petit toc-toc sort de l'œuf, puis la coquille se fend. Un bec minuscule apparaît, et bientôt un poussin jaune et tout ébouriffé se dresse dans la paille. Il est mouillé et fragile, mais bien vivant. Chloé se penche vers lui et promet d'en prendre grand soin.",
+      "syllable_body": "Chlo|é pas|se l'é|té à la fer|me de sa grand-mè|re, où cha|que jour ap|por|te u|ne nou|vel|le a|ven|tu|re. Mais ce qui l'in|té|res|se le plus, c'est un pe|tit œuf blanc, po|sé dans un nid de pail|le au fond de la gran|ge.\n\n« Il y a un pous|sin à l'in|té|rieur », ex|pli|que la grand-mè|re. « Il sor|ti|ra quand il se|ra prêt. Ces cho|ses-là ne se com|man|dent pas. » Cha|que ma|tin, Chlo|é court à la gran|ge et se pen|che sur le nid. Mais l'œuf res|te im|mo|bi|le, jour a|près jour.\n\nUn ma|tin, tout chan|ge. Un pe|tit toc-toc sort de l'œuf, puis la co|quil|le se fend. Un bec mi|nus|cu|le ap|pa|raît, et bien|tôt un pous|sin jau|ne et tout é|bou|rif|fé se dres|se dans la pail|le. Il est mouil|lé et fra|gi|le, mais bien vi|vant. Chlo|é se pen|che vers lui et pro|met d'en pren|dre grand soin.",
+      "imageId": "piscancek_skedenj",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_chaton_maison_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Le chaton qui a trouvé une maison",
+      "body": "Un après-midi de pluie, Chloé rentre de l'école. L'eau tambourine sur les toits, et les passants courent sous leurs parapluies. Juste devant sa maison, Chloé s'arrête net. Tout près, quelque chose miaule faiblement.\n\nElle se penche et découvre, sous un banc, un chaton gris. Il est trempé, maigre et si effrayé qu'il tremble. Quand Chloé s'accroupit et lui parle tout bas, il la regarde de ses grands yeux ronds, mais ne s'enfuit pas. Doucement, elle le prend dans ses mains et le glisse sous sa veste, au chaud et au sec.\n\nÀ la maison, elle fait d'abord chauffer du lait et le verse dans une petite écuelle. Le chaton a si faim qu'il lape tout en un instant. Puis il se blottit dans la couverture que Chloé a posée dans un panier, se roule en boule et se met à ronronner.\n\nDehors, il pleut toujours, mais dans la chambre il fait bon. Ce soir-là, pour la première fois depuis longtemps, le chaton s'endort tranquille. Depuis ce jour, Chloé et le petit chat gris ne se quittent plus, dans les beaux jours comme dans les mauvais.",
+      "syllable_body": "Un a|près-mi|di de pluie, Chlo|é ren|tre de l'é|co|le. L'eau tam|bou|ri|ne sur les toits, et les pas|sants cou|rent sous leurs pa|ra|pluies. Jus|te de|vant sa mai|son, Chlo|é s'ar|rê|te net. Tout près, quel|que cho|se miau|le fai|ble|ment.\n\nEl|le se pen|che et dé|cou|vre, sous un banc, un cha|ton gris. Il est trem|pé, mai|gre et si ef|fra|yé qu'il trem|ble. Quand Chlo|é s'ac|crou|pit et lui par|le tout bas, il la re|gar|de de ses grands yeux ronds, mais ne s'en|fuit pas. Dou|ce|ment, el|le le prend dans ses mains et le glis|se sous sa ves|te, au chaud et au sec.\n\nÀ la mai|son, el|le fait d'a|bord chauf|fer du lait et le ver|se dans u|ne pe|ti|te é|cuel|le. Le cha|ton a si faim qu'il la|pe tout en un ins|tant. Puis il se blot|tit dans la cou|ver|tu|re que Chlo|é a po|sée dans un pa|nier, se rou|le en bou|le et se met à ron|ron|ner.\n\nDe|hors, il pleut tou|jours, mais dans la cham|bre il fait bon. Ce soir-là, pour la pre|miè|re fois de|puis long|temps, le cha|ton s'en|dort tran|quil|le. De|puis ce jour, Chlo|é et le pe|tit chat gris ne se quit|tent plus, dans les beaux jours com|me dans les mau|vais.",
+      "imageId": "muc_dom",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_chouette_1",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 1,
+      "title": "La chouette la nuit",
+      "body": "La chouette est un oiseau de nuit. Elle a de grands yeux. Sa tête tourne très loin. Elle vole sans bruit. Ainsi, elle attrape les souris dans le noir. Le jour, la chouette dort.",
+      "syllable_body": "La chouet|te est un oi|seau de nuit. El|le a de grands yeux. Sa tê|te tour|ne très loin. El|le vo|le sans bruit. Ain|si, el|le at|tra|pe les sou|ris dans le noir. Le jour, la chouet|te dort.",
+      "imageId": "sova_veja",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_abeille_2",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 2,
+      "title": "L'abeille travailleuse",
+      "body": "L'abeille nous donne du miel. Elle vole de fleur en fleur et récolte un jus sucré : le nectar. En volant, elle transporte du pollen, et grâce à elle, les arbres donnent des fruits. Les abeilles vivent ensemble dans une ruche, par milliers. Chacune a son travail, et toutes s'occupent de leur reine. Sans les abeilles, nous aurions moins de fruits et de fleurs.",
+      "syllable_body": "L'a|beil|le nous don|ne du miel. El|le vo|le de fleur en fleur et ré|col|te un jus su|cré : le nec|tar. En vo|lant, el|le trans|por|te du pol|len, et grâ|ce à el|le, les ar|bres don|nent des fruits. Les a|beil|les vi|vent en|sem|ble dans u|ne ru|che, par mil|liers. Cha|cu|ne a son tra|vail, et tou|tes s'oc|cu|pent de leur rei|ne. Sans les a|beil|les, nous au|rions moins de fruits et de fleurs.",
+      "imageId": "cebela_cvet",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_dauphin_nom_3",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 3,
+      "title": "Le dauphin a un nom",
+      "body": "Le dauphin est l'un des animaux les plus intelligents de la mer. Il vit dans l'eau et nage très bien, mais ce n'est pas un poisson : c'est un mammifère. Il ne peut donc pas respirer sous l'eau et doit souvent remonter à la surface pour prendre de l'air. Les dauphins vivent en groupes. Ils se parlent avec des sifflements aigus, et chaque dauphin a même son propre sifflement, une sorte de nom. Ils sont aussi connus pour s'entraider. Quand l'un d'eux est malade, les autres le poussent vers la surface pour qu'il puisse respirer.",
+      "syllable_body": "Le dau|phin est l'un des a|ni|maux les plus in|tel|li|gents de la mer. Il vit dans l'eau et na|ge très bien, mais ce n'est pas un pois|son : c'est un mam|mi|fè|re. Il ne peut donc pas res|pi|rer sous l'eau et doit sou|vent re|mon|ter à la sur|fa|ce pour pren|dre de l'air. Les dau|phins vi|vent en grou|pes. Ils se par|lent a|vec des sif|fle|ments ai|gus, et cha|que dau|phin a mê|me son pro|pre sif|fle|ment, u|ne sor|te de nom. Ils sont aus|si con|nus pour s'en|trai|der. Quand l'un d'eux est ma|la|de, les au|tres le pous|sent vers la sur|fa|ce pour qu'il puis|se res|pi|rer.",
+      "imageId": "delfin_jata",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_pieuvre_4",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 4,
+      "title": "La pieuvre et le bocal",
+      "body": "La pieuvre a huit bras couverts de ventouses et pas un seul os dans le corps. Elle peut donc se glisser dans un trou à peine plus grand qu'une pièce de monnaie. Elle a trois cœurs, et son sang est bleu.\n\nMais ce qui étonne le plus, c'est son intelligence. Dans les aquariums, on a vu des pieuvres dévisser le couvercle d'un bocal pour attraper la nourriture cachée à l'intérieur. Certaines ouvrent même le bocal de l'intérieur quand on les enferme dedans.\n\nLa pieuvre sait aussi se cacher. En un instant, sa peau change de couleur et de texture pour ressembler au rocher ou au sable. Elle peut imiter une algue, une pierre, presque tout. Beaucoup de savants pensent que c'est l'animal le plus intelligent de la mer.",
+      "syllable_body": "La pieu|vre a huit bras cou|verts de ven|tou|ses et pas un seul os dans le corps. El|le peut donc se glis|ser dans un trou à pei|ne plus grand qu'u|ne piè|ce de mon|naie. El|le a trois cœurs, et son sang est bleu.\n\nMais ce qui é|ton|ne le plus, c'est son in|tel|li|gen|ce. Dans les a|qua|riums, on a vu des pieu|vres dé|vis|ser le cou|ver|cle d'un bo|cal pour at|tra|per la nour|ri|tu|re ca|chée à l'in|té|rieur. Cer|tai|nes ou|vrent mê|me le bo|cal de l'in|té|rieur quand on les en|fer|me de|dans.\n\nLa pieu|vre sait aus|si se ca|cher. En un ins|tant, sa peau chan|ge de cou|leur et de tex|tu|re pour res|sem|bler au ro|cher ou au sa|ble. El|le peut i|mi|ter u|ne al|gue, u|ne pier|re, pres|que tout. Beau|coup de sa|vants pen|sent que c'est l'a|ni|mal le plus in|tel|li|gent de la mer.",
+      "imageId": "octopus_camouflage",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_dauphins_secrets_5",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 5,
+      "title": "Les secrets des dauphins",
+      "body": "Le dauphin est l'un des animaux les plus intelligents du monde. Il passe toute sa vie dans la mer et nage plus vite que bien des poissons, mais il n'est pas un poisson : c'est un mammifère. Il aspire l'air par un trou situé sur le haut de sa tête, et doit souvent remonter à la surface.\n\nLes dauphins sont très sociables et vivent en groupes. Dans le groupe, ils veillent les uns sur les autres, chassent et se défendent ensemble. Ils se parlent avec des sifflements, des clics et des cris. Chaque dauphin a même son propre sifflement, que ses compagnons reconnaissent : une sorte de nom qu'il garde toute sa vie.\n\nLe plus étonnant, c'est qu'ils voient avec le son. Le dauphin envoie des clics rapides qui voyagent dans l'eau. Quand le son touche un poisson, un rocher ou une épave, il rebondit et revient. Grâce à cet écho, le dauphin sait exactement où est l'objet et quelle est sa taille, même dans le noir complet. On appelle cela l'écholocation. Elle l'aide à trouver sa nourriture et à éviter les dangers.",
+      "syllable_body": "Le dau|phin est l'un des a|ni|maux les plus in|tel|li|gents du mon|de. Il pas|se tou|te sa vie dans la mer et na|ge plus vi|te que bien des pois|sons, mais il n'est pas un pois|son : c'est un mam|mi|fè|re. Il as|pi|re l'air par un trou si|tué sur le haut de sa tê|te, et doit sou|vent re|mon|ter à la sur|fa|ce.\n\nLes dau|phins sont très so|cia|bles et vi|vent en grou|pes. Dans le grou|pe, ils veil|lent les uns sur les au|tres, chas|sent et se dé|fen|dent en|sem|ble. Ils se par|lent a|vec des sif|fle|ments, des clics et des cris. Cha|que dau|phin a mê|me son pro|pre sif|fle|ment, que ses com|pa|gnons re|con|nais|sent : u|ne sor|te de nom qu'il gar|de tou|te sa vie.\n\nLe plus é|ton|nant, c'est qu'ils voient a|vec le son. Le dau|phin en|voie des clics ra|pi|des qui vo|ya|gent dans l'eau. Quand le son tou|che un pois|son, un ro|cher ou u|ne é|pa|ve, il re|bon|dit et re|vient. Grâ|ce à cet é|cho, le dau|phin sait e|xac|te|ment où est l'ob|jet et quel|le est sa tail|le, mê|me dans le noir com|plet. On ap|pel|le ce|la l'é|cho|lo|ca|tion. El|le l'ai|de à trou|ver sa nour|ri|tu|re et à é|vi|ter les dan|gers.",
+      "imageId": "delfin_morje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_pyramides_1",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 1,
+      "title": "Les pyramides d'Égypte",
+      "body": "En Égypte, il y a de grandes pyramides. Elles ont été construites il y a très longtemps. Elles sont faites de pierres lourdes. C'étaient les tombeaux des rois. Elles sont toujours là, dans le désert.",
+      "syllable_body": "En É|gyp|te, il y a de gran|des py|ra|mi|des. El|les ont é|té cons|trui|tes il y a très long|temps. El|les sont fai|tes de pier|res lour|des. C'é|taient les tom|beaux des rois. El|les sont tou|jours là, dans le dé|sert.",
+      "imageId": "piramide_giza",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_pyramides_2",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 2,
+      "title": "Des montagnes de pierre",
+      "body": "En Égypte, le pays des déserts, se dressent de puissantes pyramides. Elles ont été construites il y a plusieurs milliers d'années. Les ouvriers empilaient d'énormes blocs les uns sur les autres, jusqu'à former une haute pyramide. On y enterrait les rois, qu'on appelait les pharaons. Les pyramides sont si solides qu'elles tiennent debout aujourd'hui. Ce sont parmi les plus vieux bâtiments du monde.",
+      "syllable_body": "En É|gyp|te, le pays des dé|serts, se dres|sent de puis|san|tes py|ra|mi|des. El|les ont é|té cons|trui|tes il y a plu|sieurs mil|liers d'an|nées. Les ou|vriers em|pi|laient d'é|nor|mes blocs les uns sur les au|tres, jus|qu'à for|mer u|ne hau|te py|ra|mi|de. On y en|ter|rait les rois, qu'on ap|pe|lait les pha|raons. Les py|ra|mi|des sont si so|li|des qu'el|les tien|nent de|bout au|jourd'hui. Ce sont par|mi les plus vieux bâ|ti|ments du mon|de.",
+      "imageId": "piramide_bloki",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_pyramides_3",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 3,
+      "title": "Le secret des pyramides",
+      "body": "En Égypte, le pays des déserts brûlants, de puissantes pyramides s'élèvent vers le ciel. Les plus célèbres se trouvent près de la ville de Gizeh. Les hommes les ont construites il y a plus de quatre mille ans, sans aucune des machines que nous connaissons aujourd'hui. Depuis la carrière, ils tiraient d'énormes blocs de pierre et les empilaient les uns sur les autres. Dans les pyramides, on enterrait les pharaons, les rois d'Égypte. On croyait que le roi aurait besoin de ses richesses après sa mort ; on les enterrait donc avec lui.",
+      "syllable_body": "En É|gyp|te, le pays des dé|serts brû|lants, de puis|san|tes py|ra|mi|des s'é|lè|vent vers le ciel. Les plus cé|lè|bres se trou|vent près de la vil|le de Gi|zeh. Les hom|mes les ont cons|trui|tes il y a plus de qua|tre mil|le ans, sans au|cu|ne des ma|chi|nes que nous con|nais|sons au|jourd'hui. De|puis la car|riè|re, ils ti|raient d'é|nor|mes blocs de pier|re et les em|pi|laient les uns sur les au|tres. Dans les py|ra|mi|des, on en|ter|rait les pha|raons, les rois d'É|gyp|te. On cro|yait que le roi au|rait be|soin de ses ri|ches|ses a|près sa mort ; on les en|ter|rait donc a|vec lui.",
+      "imageId": "piramide_kamnolom",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_pyramides_4",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 4,
+      "title": "Comment on a construit les pyramides",
+      "body": "En Égypte, le pays des déserts brûlants et du Nil, de puissantes pyramides s'élèvent vers le ciel. Les hommes les ont construites il y a plus de quatre mille ans, quand il n'existait ni machines ni grues.\n\nComment déplaçaient-ils des pierres aussi lourdes ? Depuis la carrière, les ouvriers tiraient sur des traîneaux d'énormes blocs, chacun plus lourd qu'une voiture, et les faisaient monter le long de rampes. Pour une seule pyramide, il fallait des milliers de bras et des années de travail.\n\nDans les pyramides, on enterrait les pharaons, les rois d'Égypte. On croyait que le roi aurait encore besoin de ses richesses après la mort ; on les cachait donc au cœur de la pyramide. La plus grande est restée pendant des milliers d'années le plus haut bâtiment du monde.",
+      "syllable_body": "En É|gyp|te, le pays des dé|serts brû|lants et du Nil, de puis|san|tes py|ra|mi|des s'é|lè|vent vers le ciel. Les hom|mes les ont cons|trui|tes il y a plus de qua|tre mil|le ans, quand il n'e|xis|tait ni ma|chi|nes ni grues.\n\nCom|ment dé|pla|çaient-ils des pier|res aus|si lour|des ? De|puis la car|riè|re, les ou|vriers ti|raient sur des traî|neaux d'é|nor|mes blocs, cha|cun plus lourd qu'u|ne voi|tu|re, et les fai|saient mon|ter le long de ram|pes. Pour u|ne seu|le py|ra|mi|de, il fal|lait des mil|liers de bras et des an|nées de tra|vail.\n\nDans les py|ra|mi|des, on en|ter|rait les pha|raons, les rois d'É|gyp|te. On cro|yait que le roi au|rait en|co|re be|soin de ses ri|ches|ses a|près la mort ; on les ca|chait donc au cœur de la py|ra|mi|de. La plus gran|de est res|tée pen|dant des mil|liers d'an|nées le plus haut bâ|ti|ment du mon|de.",
+      "imageId": "piramide_klancina",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_venise_5",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 5,
+      "title": "Une promenade à Venise",
+      "body": "Venise est l'une des villes les plus étranges et les plus belles du monde. Elle se trouve en Italie, bâtie sur plus de cent petites îles au milieu d'une lagune peu profonde.\n\nCe qu'on remarque tout de suite : il n'y a pas de voitures. À la place des rues, la ville a des canaux ; à la place des voitures, des bateaux. Entre les hautes maisons anciennes serpentent d'étroits chemins d'eau, enjambés par des centaines de petits ponts. Les plus célèbres de tous les bateaux sont les gondoles, fines, noires et élégantes.\n\nMais comment construit-on une ville sur l'eau ? Il y a très longtemps, les habitants ont enfoncé dans la vase des milliers de longs pieux de bois, serrés les uns contre les autres. Sur ces pieux, ils ont posé les maisons, les églises et les grandes places. La plus belle est la place Saint-Marc, où se promènent des milliers de pigeons.\n\nBien des siècles ont passé, et Venise tient toujours. Chaque année, des millions de visiteurs du monde entier viennent admirer la ville sans rues : la ville qui vit sur l'eau.",
+      "syllable_body": "Ve|ni|se est l'u|ne des vil|les les plus é|tran|ges et les plus bel|les du mon|de. El|le se trou|ve en I|ta|lie, bâ|tie sur plus de cent pe|ti|tes î|les au mi|lieu d'u|ne la|gu|ne peu pro|fon|de.\n\nCe qu'on re|mar|que tout de sui|te : il n'y a pas de voi|tu|res. À la pla|ce des rues, la vil|le a des ca|naux ; à la pla|ce des voi|tu|res, des ba|teaux. En|tre les hau|tes mai|sons an|cien|nes ser|pen|tent d'é|troits che|mins d'eau, en|jam|bés par des cen|tai|nes de pe|tits ponts. Les plus cé|lè|bres de tous les ba|teaux sont les gon|do|les, fi|nes, noi|res et é|lé|gan|tes.\n\nMais com|ment cons|truit-on u|ne vil|le sur l'eau ? Il y a très long|temps, les ha|bi|tants ont en|fon|cé dans la va|se des mil|liers de longs pieux de bois, ser|rés les uns con|tre les au|tres. Sur ces pieux, ils ont po|sé les mai|sons, les é|gli|ses et les gran|des pla|ces. La plus bel|le est la pla|ce Saint-Marc, où se pro|mè|nent des mil|liers de pi|geons.\n\nBien des siè|cles ont pas|sé, et Ve|ni|se tient tou|jours. Cha|que an|née, des mil|lions de vi|si|teurs du mon|de en|tier vien|nent ad|mi|rer la vil|le sans rues : la vil|le qui vit sur l'eau.",
+      "imageId": "benetke_trg",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_arc_en_ciel_1",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 1,
+      "title": "L'arc-en-ciel",
+      "body": "Après la pluie, un arc-en-ciel apparaît. Il se forme quand le soleil brille sur la pluie. L'arc-en-ciel a sept couleurs. Elles sont toujours dans le même ordre. Le rouge est en haut, le violet en bas.",
+      "syllable_body": "A|près la pluie, un arc-en-ciel ap|pa|raît. Il se for|me quand le so|leil bril|le sur la pluie. L'arc-en-ciel a sept cou|leurs. El|les sont tou|jours dans le mê|me or|dre. Le rou|ge est en haut, le vio|let en bas.",
+      "imageId": "mavrica",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_gravite_2",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 2,
+      "title": "Pourquoi tout tombe",
+      "body": "Lance une balle en l'air : elle retombe toujours. Pourquoi ? À cause d'une force invisible qu'on appelle la gravité. Avec cette force, la Terre attire tout vers elle. C'est pour cela que la pomme tombe de l'arbre et que la pluie tombe du ciel. La gravité nous garde aussi les pieds sur le sol : sans elle, nous flotterions dans les airs.",
+      "syllable_body": "Lan|ce u|ne bal|le en l'air : el|le re|tom|be tou|jours. Pour|quoi ? À cau|se d'u|ne for|ce in|vi|si|ble qu'on ap|pel|le la gra|vi|té. A|vec cet|te for|ce, la Ter|re at|ti|re tout vers el|le. C'est pour ce|la que la pom|me tom|be de l'ar|bre et que la pluie tom|be du ciel. La gra|vi|té nous gar|de aus|si les pieds sur le sol : sans el|le, nous flot|te|rions dans les airs.",
+      "imageId": "gravitacija_jabolko",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_arc_en_ciel_3",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 3,
+      "title": "Comment naît un arc-en-ciel",
+      "body": "L'arc-en-ciel est l'une des plus belles choses du ciel. Il apparaît quand le soleil brille et qu'il pleut en même temps. La lumière du soleil nous semble blanche, mais en réalité elle est faite de nombreuses couleurs mélangées. Quand un rayon de soleil traverse une petite goutte de pluie, il se plie à l'intérieur et se sépare en couleurs. Comme des milliers de gouttes font la même chose en même temps, nous voyons un grand arc coloré. Les couleurs se suivent toujours dans le même ordre, du rouge en haut au violet en bas.",
+      "syllable_body": "L'arc-en-ciel est l'u|ne des plus bel|les cho|ses du ciel. Il ap|pa|raît quand le so|leil bril|le et qu'il pleut en mê|me temps. La lu|miè|re du so|leil nous sem|ble blan|che, mais en ré|a|li|té el|le est fai|te de nom|breu|ses cou|leurs mé|lan|gées. Quand un ra|yon de so|leil tra|ver|se u|ne pe|ti|te gout|te de pluie, il se plie à l'in|té|rieur et se sé|pa|re en cou|leurs. Com|me des mil|liers de gout|tes font la mê|me cho|se en mê|me temps, nous vo|yons un grand arc co|lo|ré. Les cou|leurs se sui|vent tou|jours dans le mê|me or|dre, du rou|ge en haut au vio|let en bas.",
+      "imageId": "mavrica_kaplja",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_chasse_arc_4",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 4,
+      "title": "À la chasse à l'arc-en-ciel",
+      "body": "L'arc-en-ciel est l'une des plus belles choses qu'on peut voir dans le ciel. Il apparaît quand le soleil brille et qu'il pleut en même temps.\n\nLa lumière du soleil nous paraît blanche, mais elle est faite de nombreuses couleurs cachées l'une dans l'autre. Quand un rayon traverse une goutte de pluie, il se plie à l'intérieur et se sépare en toutes ces couleurs. Comme des milliers de gouttes le font en même temps, un grand arc apparaît dans le ciel.\n\nLes couleurs se suivent toujours dans le même ordre : du rouge en haut au violet en bas. Pour voir un arc-en-ciel, il faut avoir le soleil dans le dos et la pluie devant soi. Et souviens-toi : plus tu essaies de t'en approcher, plus il s'éloigne. On ne peut jamais l'attraper.",
+      "syllable_body": "L'arc-en-ciel est l'u|ne des plus bel|les cho|ses qu'on peut voir dans le ciel. Il ap|pa|raît quand le so|leil bril|le et qu'il pleut en mê|me temps.\n\nLa lu|miè|re du so|leil nous pa|raît blan|che, mais el|le est fai|te de nom|breu|ses cou|leurs ca|chées l'u|ne dans l'au|tre. Quand un ra|yon tra|ver|se u|ne gout|te de pluie, il se plie à l'in|té|rieur et se sé|pa|re en tou|tes ces cou|leurs. Com|me des mil|liers de gout|tes le font en mê|me temps, un grand arc ap|pa|raît dans le ciel.\n\nLes cou|leurs se sui|vent tou|jours dans le mê|me or|dre : du rou|ge en haut au vio|let en bas. Pour voir un arc-en-ciel, il faut a|voir le so|leil dans le dos et la pluie de|vant soi. Et sou|viens-toi : plus tu es|saies de t'en ap|pro|cher, plus il s'é|loi|gne. On ne peut ja|mais l'at|tra|per.",
+      "imageId": "mavrica_lok",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_arc_secret_5",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 5,
+      "title": "Le secret de l'arc coloré",
+      "body": "L'arc-en-ciel est l'une des plus belles choses du ciel. Il apparaît quand le soleil brille et qu'il pleut en même temps.\n\nLa lumière du soleil nous paraît toute blanche, mais elle est en réalité composée de nombreuses couleurs cachées l'une dans l'autre. Quand un rayon traverse une fine goutte de pluie, il se plie à l'intérieur et se sépare en toutes ces couleurs. Chaque gouttelette agit comme un minuscule prisme de verre qui étale la lumière blanche en une bande colorée. Comme des milliers de gouttes le font en même temps, un grand arc de couleurs apparaît dans le ciel.\n\nLes couleurs se suivent toujours exactement dans le même ordre : rouge, orange, jaune, vert, bleu et violet. Le rouge est toujours à l'extérieur de l'arc, et le violet à l'intérieur.\n\nSi tu veux attraper un arc-en-ciel du regard, retiens une règle simple : le soleil doit être dans ton dos, et la pluie devant toi. Et même si l'arc-en-ciel ressemble à un pont de couleurs, on ne peut jamais le toucher. Plus tu t'en approches, plus il s'éloigne.",
+      "syllable_body": "L'arc-en-ciel est l'u|ne des plus bel|les cho|ses du ciel. Il ap|pa|raît quand le so|leil bril|le et qu'il pleut en mê|me temps.\n\nLa lu|miè|re du so|leil nous pa|raît tou|te blan|che, mais el|le est en ré|a|li|té com|po|sée de nom|breu|ses cou|leurs ca|chées l'u|ne dans l'au|tre. Quand un ra|yon tra|ver|se u|ne fi|ne gout|te de pluie, il se plie à l'in|té|rieur et se sé|pa|re en tou|tes ces cou|leurs. Cha|que gout|te|let|te a|git com|me un mi|nus|cu|le pris|me de ver|re qui é|ta|le la lu|miè|re blan|che en u|ne ban|de co|lo|rée. Com|me des mil|liers de gout|tes le font en mê|me temps, un grand arc de cou|leurs ap|pa|raît dans le ciel.\n\nLes cou|leurs se sui|vent tou|jours e|xac|te|ment dans le mê|me or|dre : rou|ge, o|ran|ge, jau|ne, vert, bleu et vio|let. Le rou|ge est tou|jours à l'ex|té|rieur de l'arc, et le vio|let à l'in|té|rieur.\n\nSi tu veux at|tra|per un arc-en-ciel du re|gard, re|tiens u|ne rè|gle sim|ple : le so|leil doit ê|tre dans ton dos, et la pluie de|vant toi. Et mê|me si l'arc-en-ciel res|sem|ble à un pont de cou|leurs, on ne peut ja|mais le tou|cher. Plus tu t'en ap|pro|ches, plus il s'é|loi|gne.",
+      "imageId": "mavrica_polje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_graine_1",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 1,
+      "title": "De la graine à la plante",
+      "body": "On met une graine dans la terre. La graine reçoit de l'eau et du soleil. Une petite pousse sort de la terre. La pousse grandit. D'une graine naît une fleur ou un arbre.",
+      "syllable_body": "On met u|ne grai|ne dans la ter|re. La grai|ne re|çoit de l'eau et du so|leil. U|ne pe|ti|te pous|se sort de la ter|re. La pous|se gran|dit. D'u|ne grai|ne naît u|ne fleur ou un ar|bre.",
+      "imageId": "seme_kalica",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_pluie_2",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 2,
+      "title": "Pourquoi il pleut",
+      "body": "La pluie est très importante pour la nature. Sans elle, les plantes ne pourraient pas pousser. La pluie naît dans les nuages. Un nuage contient des milliers de minuscules gouttes d'eau. Quand ces gouttes se rassemblent en gouttes plus grosses, elles deviennent trop lourdes et tombent sur la terre. On dit alors qu'il pleut. La pluie abreuve la terre, et les plantes s'en réjouissent.",
+      "syllable_body": "La pluie est très im|por|tan|te pour la na|tu|re. Sans el|le, les plan|tes ne pour|raient pas pous|ser. La pluie naît dans les nu|a|ges. Un nu|a|ge con|tient des mil|liers de mi|nus|cu|les gout|tes d'eau. Quand ces gout|tes se ras|sem|blent en gout|tes plus gros|ses, el|les de|vien|nent trop lour|des et tom|bent sur la ter|re. On dit a|lors qu'il pleut. La pluie a|breu|ve la ter|re, et les plan|tes s'en ré|jouis|sent.",
+      "imageId": "dez_kaplje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_vent_3",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 3,
+      "title": "Le vent qu'on ne voit pas",
+      "body": "On ne peut pas voir le vent, mais on peut le sentir et l'entendre. Il caresse notre visage, balance les branches et pousse les nuages. Le vent, c'est de l'air qui bouge. Quand une partie de l'air se réchauffe et qu'une autre reste froide, l'air se met en mouvement. Parfois le vent est doux et agréable ; il sèche le linge et apporte le parfum des fleurs. D'autres fois, il est si fort qu'il casse des branches. Le vent est aussi utile : il transporte les graines des plantes et fait tourner les moulins.",
+      "syllable_body": "On ne peut pas voir le vent, mais on peut le sen|tir et l'en|ten|dre. Il ca|res|se no|tre vi|sa|ge, ba|lan|ce les bran|ches et pous|se les nu|a|ges. Le vent, c'est de l'air qui bou|ge. Quand u|ne par|tie de l'air se ré|chauf|fe et qu'u|ne au|tre res|te froi|de, l'air se met en mou|ve|ment. Par|fois le vent est doux et a|gré|a|ble ; il sè|che le lin|ge et ap|por|te le par|fum des fleurs. D'au|tres fois, il est si fort qu'il cas|se des bran|ches. Le vent est aus|si u|ti|le : il trans|por|te les grai|nes des plan|tes et fait tour|ner les mou|lins.",
+      "imageId": "veter",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_feuilles_4",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 4,
+      "title": "Pourquoi l'arbre perd ses feuilles",
+      "body": "Chaque automne, quelque chose de merveilleux se produit. Les feuilles des arbres passent du vert au rouge feu, à l'orange et au jaune doré.\n\nPendant l'été, les feuilles sont pleines d'une matière verte. Grâce à elle, l'arbre fabrique sa nourriture à partir de la lumière du soleil, de l'eau et de l'air. Ce vert cache toutes les autres couleurs de la feuille.\n\nEn automne, les jours raccourcissent et il fait plus froid. L'arbre sent que l'hiver arrive. Il arrête de fabriquer la matière verte, qui pâlit peu à peu. Alors seulement apparaissent les jaunes et les rouges qui se cachaient sous le vert.\n\nEnfin, l'arbre laisse tomber ses feuilles pour économiser son eau et ses forces pendant l'hiver. Les arbres nus se reposent, jusqu'à ce que le soleil du printemps vienne les réveiller.",
+      "syllable_body": "Cha|que au|tom|ne, quel|que cho|se de mer|veil|leux se pro|duit. Les feuil|les des ar|bres pas|sent du vert au rou|ge feu, à l'o|ran|ge et au jau|ne do|ré.\n\nPen|dant l'é|té, les feuil|les sont plei|nes d'u|ne ma|tiè|re ver|te. Grâ|ce à el|le, l'ar|bre fa|bri|que sa nour|ri|tu|re à par|tir de la lu|miè|re du so|leil, de l'eau et de l'air. Ce vert ca|che tou|tes les au|tres cou|leurs de la feuil|le.\n\nEn au|tom|ne, les jours rac|cour|cis|sent et il fait plus froid. L'ar|bre sent que l'hi|ver ar|ri|ve. Il ar|rê|te de fa|bri|quer la ma|tiè|re ver|te, qui pâ|lit peu à peu. A|lors seu|le|ment ap|pa|rais|sent les jau|nes et les rou|ges qui se ca|chaient sous le vert.\n\nEn|fin, l'ar|bre lais|se tom|ber ses feuil|les pour é|co|no|mi|ser son eau et ses for|ces pen|dant l'hi|ver. Les ar|bres nus se re|po|sent, jus|qu'à ce que le so|leil du prin|temps vien|ne les ré|veil|ler.",
+      "imageId": "jesensko_listje_drevo",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_saisons_5",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 5,
+      "title": "Le grand voyage de l'année",
+      "body": "T'es-tu déjà demandé pourquoi il fait chaud en été et froid en hiver ? C'est parce que l'année voyage à travers quatre saisons, toujours dans le même ordre : le printemps, l'été, l'automne et l'hiver.\n\nAu printemps, la nature se réveille de son long sommeil d'hiver. Les arbres se couvrent de jeunes feuilles vertes, les prés se parent de fleurs, et les oiseaux reviennent des pays chauds pour construire leurs nids.\n\nEn été, la chaleur s'installe. Le soleil se lève tôt et se couche tard : les journées sont longues. C'est la saison où mûrissent le plus de fruits et de légumes.\n\nEn automne, les jours raccourcissent et l'air devient plus frais. Les feuilles se colorent de rouge, d'orange et de jaune, puis s'envolent au vent jusqu'au sol.\n\nEn hiver, la nature se tait et se repose. La neige recouvre souvent le paysage, les jours sont courts et les nuits longues et glacées. Bien des animaux dorment tout l'hiver. Et quand on croit que tout est fini, la grande roue de l'année se remet à tourner : un nouveau printemps commence.",
+      "syllable_body": "T'es-tu dé|jà de|man|dé pour|quoi il fait chaud en é|té et froid en hi|ver ? C'est par|ce que l'an|née vo|ya|ge à tra|vers qua|tre sai|sons, tou|jours dans le mê|me or|dre : le prin|temps, l'é|té, l'au|tom|ne et l'hi|ver.\n\nAu prin|temps, la na|tu|re se ré|veil|le de son long som|meil d'hi|ver. Les ar|bres se cou|vrent de jeu|nes feuil|les ver|tes, les prés se pa|rent de fleurs, et les oi|seaux re|vien|nent des pays chauds pour cons|trui|re leurs nids.\n\nEn é|té, la cha|leur s'ins|tal|le. Le so|leil se lè|ve tôt et se cou|che tard : les jour|nées sont lon|gues. C'est la sai|son où mû|ris|sent le plus de fruits et de lé|gu|mes.\n\nEn au|tom|ne, les jours rac|cour|cis|sent et l'air de|vient plus frais. Les feuil|les se co|lo|rent de rou|ge, d'o|ran|ge et de jau|ne, puis s'en|vo|lent au vent jus|qu'au sol.\n\nEn hi|ver, la na|tu|re se tait et se re|po|se. La nei|ge re|cou|vre sou|vent le pay|sa|ge, les jours sont courts et les nuits lon|gues et gla|cées. Bien des a|ni|maux dor|ment tout l'hi|ver. Et quand on croit que tout est fi|ni, la gran|de roue de l'an|née se re|met à tour|ner : un nou|veau prin|temps com|men|ce.",
+      "imageId": "letni_casi_pokrajina",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
     }
   ]
 }

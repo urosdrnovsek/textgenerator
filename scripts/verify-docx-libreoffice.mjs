@@ -111,7 +111,7 @@ class CdpClient {
  * and sentence-per-line each exercised at least once.
  */
 // entryId pins the text when a theme/level cell holds more than one (the
-// English pack has three per stories cell since 2026-09-20). Without it a
+// English pack has three or four per cell, French two since 2026-09-21). Without it a
 // case gets the cell's first text in pack order — "Create text" is
 // deterministic (catalog.js chooseEntry) — which is fine for a case that
 // only needs *a* worksheet, but a boundary case that exists because of one
@@ -121,7 +121,7 @@ const CASES = [
   { label: 'sl-andika-level5-readcopy-stress', language: 'sl', theme: 'stories', level: 5, fontId: 'andika', writingMode: 'read-copy' },
   { label: 'en-lexend-level3-trace', language: 'en', theme: 'stories', level: 3, entryId: 'stories_piscancek_3', fontId: 'lexend', writingMode: 'trace' },
   { label: 'de-opendyslexic-level3-readonly-tint', language: 'de', theme: 'stories', level: 3, fontId: 'opendyslexic', writingMode: 'read-only', tintId: 'cream', printTint: true },
-  { label: 'fr-comicneue-level3-readcopy-sentenceperline', language: 'fr', theme: 'stories', level: 3, fontId: 'comicneue', writingMode: 'read-copy', sentencePerLine: true },
+  { label: 'fr-comicneue-level3-readcopy-sentenceperline', language: 'fr', theme: 'stories', level: 3, entryId: 'stories_velo_bleu_3', fontId: 'comicneue', writingMode: 'read-copy', sentencePerLine: true },
   { label: 'es-andika-level5-readcopy-stress', language: 'es', theme: 'stories', level: 5, fontId: 'andika', writingMode: 'read-copy' },
   // Regression coverage for a real bug: every DE/FR level-5 entry used to
   // overflow the page under default settings (fixed by trimming the
@@ -129,7 +129,7 @@ const CASES = [
   // stay right at the edge of the budget, so keep them as permanent
   // boundary cases rather than trusting they'll never regress silently.
   { label: 'de-andika-level5-readcopy-stress', language: 'de', theme: 'amazing_science', level: 5, fontId: 'andika', writingMode: 'read-copy' },
-  { label: 'fr-andika-level5-readcopy-stress', language: 'fr', theme: 'nature_seasons', level: 5, fontId: 'andika', writingMode: 'read-copy' },
+  { label: 'fr-andika-level5-readcopy-stress', language: 'fr', theme: 'nature_seasons', level: 5, entryId: 'nature_seasons_bourgeon_printemps_5', fontId: 'andika', writingMode: 'read-copy' },
   // Word spacing (extraWordSpacePt) is now exported to DOCX (workstream
   // D3) — this exercises the full path at the maximum setting. pdftotext
   // can't see character spacing (it's a rendering-only visual effect), so

@@ -216,7 +216,18 @@ From `npm run content-status`:
   the drop that fitted a cell is used; five story-like pictures (music
   rehearsal, fire station, vegetable soup, winter postman, lighthouse
   keeper) remain unbundled.
-- **English (original 25), German, French, Spanish:** 25 entries each, all `reviewed`
+- **French:** 50 entries — the 25 below plus, from 2026-09-21, one
+  original French text per theme × level cell on the topic and picture
+  of the matching Slovene entry (the kitten, the egg, the snail race,
+  the owl, the bee, the dolphins, the pyramids at four levels, Venice,
+  the rainbow at four levels, gravity, the seed, the rain, the wind, the
+  autumn leaves, the seasons; the one exception is animal L4, where the
+  pack already had the bat, so the octopus-and-jar picture is used).
+  Written in plain French and syllabified with the project's
+  *syllabes écrites* splitter (`Instructions/tools/fr.py`, gitignored),
+  then reviewed word by word; `ée` kept whole per the convention.
+  `imageAccuracy: verified`, `nativeSpeaker: false`.
+- **English (original 25), German, French (original 25), Spanish:** 25 entries each, all `reviewed`
   by an AI editorial pass on 2026-09-19 (`nativeSpeaker: false`,
   `syllablesReviewed: true`; 3 German and 3 French syllable breaks were
   fixed in that pass). A second, word-by-word syllable pass on 2026-09-20
@@ -225,7 +236,7 @@ From `npm run content-status`:
   second opinion) corrected 62 more breaks in 28 entries: 1 Spanish, 2
   German, 18 French (mostly `feu|il|le`-type words), 41 English. Native-
   speaker review: **0 of 100.**
-- **Images:** 91 of 193 `verified` (the four illustrations generated for
+- **Images:** 116 of 218 `verified` (the four illustrations generated for
   the mismatched Neuschwanstein, Uluru, Easter Island and Pont du Gard
   entries, the axolotl illustration bundled for the five Spanish ajolote
   entries, the fifty new English texts, the twelve story pictures

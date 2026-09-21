@@ -7,6 +7,21 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
+- **French: two texts per theme and level** (2026-09-21). Twenty-five
+  original French texts, one per cell, each on the topic and picture of
+  the matching Slovene entry — so the French pack now tells the same
+  stories and explains the same things as the Slovene one (Chloé and the
+  wet kitten, the white egg, Léon the snail, the barn, the kitten's new
+  home; the owl, the bee, the dolphins' names and echolocation; the
+  pyramids at four levels and a walk through Venice; the rainbow at four
+  levels and gravity; the seed, the rain, the wind, the autumn leaves and
+  the four seasons). Exception: the animal level-4 cell already had the
+  bat on that picture, so the octopus and the jar is used there instead.
+  Written syllables follow the pack's French convention (`ée` whole,
+  `cons|trui|tes`, `mer|veil|leux`, `cro|yait`). Every French title fits
+  one page at default settings in real Chromium; the two French
+  `verify-docx` cases are pinned to the texts they were written for.
+  Native-speaker review: still none (0 of 193 non-Slovene entries).
 - **A fourth English story per level** (2026-09-21, round 2 batch 1).
   Five original stories written for pictures from the owner's new
   drop, now bundled (`storm_dog`, `blanket_fort`, `library_map`,
