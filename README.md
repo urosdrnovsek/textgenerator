@@ -12,7 +12,7 @@ five difficulty levels; English has three or four texts for every theme
 and level (93 entries), Slovene three (75), French, German and Spanish
 two (50 each) — 318 texts in all.
 Current version:
-`0.8.1-rc.1` — a release candidate; see "Status" below for what's still
+`0.9.0-rc.1` — a release candidate; see "Status" below for what's still
 open.
 
 ## Quick start

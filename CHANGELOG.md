@@ -7,6 +7,14 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
+(nothing yet)
+
+## 0.9.0-rc.1 — 2026-09-21 (content: 318 texts, name field removed)
+
+The beta build handed to tester teachers. Everything below happened on
+2026-09-21 unless dated otherwise; the app itself is 0.8.1's with one
+user-visible change (no "Child's name" field) and much more content.
+
 - **Slovene: three texts per theme and level** (2026-09-21). Fifty texts
   curated from the raw Slovene pool (`Texts collection/sl_texts.json`),
   two per cell, after a Slovene teacher reviewed the pool and their
