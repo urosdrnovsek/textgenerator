@@ -452,6 +452,456 @@
         "syllablesReviewed": true,
         "imageAccuracy": "plausible"
       }
+    },
+    {
+      "id": "stories_nasses_kaetzchen_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Das nasse Kätzchen",
+      "body": "Draußen regnet es. Unter der Bank sitzt ein kleines Kätzchen. Lena nimmt es auf den Arm. Das Kätzchen schnurrt leise. Zu Hause bekommt es warme Milch und eine Decke. Jetzt ist es nicht mehr allein.",
+      "syllable_body": "Drau|ßen reg|net es. Un|ter der Bank sitzt ein klei|nes Kätz|chen. Le|na nimmt es auf den Arm. Das Kätz|chen schnurrt lei|se. Zu Hau|se be|kommt es war|me Milch und ei|ne De|cke. Jetzt ist es nicht mehr al|lein.",
+      "imageId": "moker_muc",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_weisses_ei_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Das weiße Ei",
+      "body": "Lena verbringt den Sommer bei ihrer Oma auf dem Bauernhof. In einem warmen Nest liegt ein weißes Ei. „Du musst geduldig sein“, sagt die Oma. Also wartet Lena. Eines Morgens hört sie ein leises Klopfen aus dem Ei. Langsam bricht die Schale auf, und ein kleines Küken schaut heraus. Es ist gelb, weich und winzig. Lena lacht vor Freude.",
+      "syllable_body": "Le|na ver|bringt den Som|mer bei ih|rer O|ma auf dem Bau|ern|hof. In ei|nem war|men Nest liegt ein wei|ßes Ei. „Du musst ge|dul|dig sein“, sagt die O|ma. Al|so war|tet Le|na. Ei|nes Mor|gens hört sie ein lei|ses Klop|fen aus dem Ei. Lang|sam bricht die Scha|le auf, und ein klei|nes Kü|ken schaut her|aus. Es ist gelb, weich und win|zig. Le|na lacht vor Freu|de.",
+      "imageId": "piscancek_gnezdo",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_schnecke_wettrennen_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Theo die Schnecke beim Wettrennen",
+      "body": "Im Wald gab es ein großes Wettrennen. Alle lachten über Theo die Schnecke, die langsam an die Startlinie kroch. „Du kommst nie ans Ziel!“, riefen sie. Beim Startschuss schossen alle davon. Theo aber ging seinen eigenen Weg, Schritt für Schritt. Der Weg war lang, und die anderen waren längst außer Sicht. Der Hase machte unterwegs Pause und schlief ein. Das Eichhörnchen lief los, um Nüsse zu sammeln. Theo kroch weiter und blieb nicht stehen. Er schaute nicht zurück. Als die Sonne unterging, kam gerade er als Erster ans Ziel. Langsam, aber beharrlich: Das hat gereicht.",
+      "syllable_body": "Im Wald gab es ein gro|ßes Wett|ren|nen. Al|le lach|ten ü|ber The|o die Schne|cke, die lang|sam an die Start|li|nie kroch. „Du kommst nie ans Ziel!“, rie|fen sie. Beim Start|schuss schos|sen al|le da|von. The|o a|ber ging sei|nen ei|ge|nen Weg, Schritt für Schritt. Der Weg war lang, und die an|de|ren wa|ren längst au|ßer Sicht. Der Ha|se mach|te un|ter|wegs Pau|se und schlief ein. Das Eich|hörn|chen lief los, um Nüs|se zu sam|meln. The|o kroch wei|ter und blieb nicht ste|hen. Er schau|te nicht zu|rück. Als die Son|ne un|ter|ging, kam ge|ra|de er als Ers|ter ans Ziel. Lang|sam, a|ber be|harr|lich: Das hat ge|reicht.",
+      "imageId": "polz_dirka",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_klopfen_scheune_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Ein Klopfen in der Scheune",
+      "body": "Lena verbrachte den Sommer bei ihrer Oma auf dem Bauernhof, wo jeder Tag ein neues Abenteuer brachte. Am meisten aber beschäftigte sie ein kleines weißes Ei, das in einem warmen Nest in der Ecke der Scheune lag.\n\nDie Oma erklärte ihr, dass in dem Ei ein Küken steckte, das schlüpfen würde, wenn es bereit war. „Geduld“, sagte sie und lächelte. „So etwas kann man nicht beeilen.“ Jeden Morgen rannte Lena in die Scheune und schaute ins Nest, doch das Ei blieb stur liegen.\n\nEines Morgens war alles anders. Aus dem Ei kam ein leises Klopfen, dann bekam die Schale einen Riss. Ein kleiner Schnabel schob sich heraus, und bald schaute ein winziges gelbes Küken in die Welt. Es war nass und hilflos, aber voller Leben. Lena beugte sich hinunter und versprach, gut für es zu sorgen.",
+      "syllable_body": "Le|na ver|brach|te den Som|mer bei ih|rer O|ma auf dem Bau|ern|hof, wo je|der Tag ein neu|es A|ben|teu|er brach|te. Am meis|ten a|ber be|schäf|tig|te sie ein klei|nes wei|ßes Ei, das in ei|nem war|men Nest in der E|cke der Scheu|ne lag.\n\nDie O|ma er|klär|te ihr, dass in dem Ei ein Kü|ken steck|te, das schlüp|fen wür|de, wenn es be|reit war. „Ge|duld“, sag|te sie und lä|chel|te. „So et|was kann man nicht be|ei|len.“ Je|den Mor|gen rann|te Le|na in die Scheu|ne und schau|te ins Nest, doch das Ei blieb stur lie|gen.\n\nEi|nes Mor|gens war al|les an|ders. Aus dem Ei kam ein lei|ses Klop|fen, dann be|kam die Scha|le ei|nen Riss. Ein klei|ner Schna|bel schob sich her|aus, und bald schau|te ein win|zi|ges gel|bes Kü|ken in die Welt. Es war nass und hilf|los, a|ber vol|ler Le|ben. Le|na beug|te sich hin|un|ter und ver|sprach, gut für es zu sor|gen.",
+      "imageId": "piscancek_skedenj",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_kaetzchen_zuhause_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Das Kätzchen, das ein Zuhause fand",
+      "body": "An einem verregneten Nachmittag geht Lena von der Schule nach Hause. Der Regen prasselt auf die Dächer. Kurz vor ihrem Haus bleibt Lena plötzlich stehen. Ganz in der Nähe miaut etwas.\n\nSie bückt sich und entdeckt unter einer Bank ein kleines graues Kätzchen. Es ist völlig durchnässt, dünn und so verängstigt, dass es zittert. Als Lena sich hinkniet und leise mit ihm spricht, schaut es sie mit großen Augen an, läuft aber nicht weg. Vorsichtig nimmt sie es auf und steckt es unter ihre Jacke, wo es warm und trocken ist.\n\nZu Hause wärmt sie zuerst etwas Milch und gießt sie in ein Schälchen. Das Kätzchen ist so hungrig, dass es alles auftrinkt. Dann kuschelt es sich in die weiche Decke, die Lena in einen Korb gelegt hat, rollt sich zusammen und schnurrt zufrieden.\n\nDraußen regnet es immer noch, doch im warmen Zimmer ist es gemütlich. An diesem Abend schläft das Kätzchen zum ersten Mal seit langem ruhig ein. Von diesem Tag an sind Lena und das kleine graue Kätzchen unzertrennlich, an guten und an schlechten Tagen.",
+      "syllable_body": "An ei|nem ver|reg|ne|ten Nach|mit|tag geht Le|na von der Schu|le nach Hau|se. Der Re|gen pras|selt auf die Dä|cher. Kurz vor ih|rem Haus bleibt Le|na plötz|lich ste|hen. Ganz in der Nä|he mi|aut et|was.\n\nSie bückt sich und ent|deckt un|ter ei|ner Bank ein klei|nes grau|es Kätz|chen. Es ist völ|lig durch|nässt, dünn und so ver|ängs|tigt, dass es zit|tert. Als Le|na sich hin|kniet und lei|se mit ihm spricht, schaut es sie mit gro|ßen Au|gen an, läuft a|ber nicht weg. Vor|sich|tig nimmt sie es auf und steckt es un|ter ih|re Ja|cke, wo es warm und tro|cken ist.\n\nZu Hau|se wärmt sie zu|erst et|was Milch und gießt sie in ein Schäl|chen. Das Kätz|chen ist so hung|rig, dass es al|les auf|trinkt. Dann ku|schelt es sich in die wei|che De|cke, die Le|na in ei|nen Korb ge|legt hat, rollt sich zu|sam|men und schnurrt zu|frie|den.\n\nDrau|ßen reg|net es im|mer noch, doch im war|men Zim|mer ist es ge|müt|lich. An die|sem A|bend schläft das Kätz|chen zum ers|ten Mal seit lan|gem ru|hig ein. Von die|sem Tag an sind Le|na und das klei|ne grau|e Kätz|chen un|zer|trenn|lich, an gu|ten und an schlech|ten Ta|gen.",
+      "imageId": "muc_dom",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_eule_1",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 1,
+      "title": "Die Eule in der Nacht",
+      "body": "Die Eule ist nachts wach. Sie hat große runde Augen. Ihren Kopf kann sie sehr weit drehen. Sie fliegt ganz leise. So fängt sie im Dunkeln Mäuse. Am Tag schläft die Eule.",
+      "syllable_body": "Die Eu|le ist nachts wach. Sie hat gro|ße run|de Au|gen. Ih|ren Kopf kann sie sehr weit dre|hen. Sie fliegt ganz lei|se. So fängt sie im Dun|keln Mäu|se. Am Tag schläft die Eu|le.",
+      "imageId": "sova_veja",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_biene_2",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 2,
+      "title": "Die fleißige Biene",
+      "body": "Die Biene ist ein kleines Tier, das uns Honig schenkt. Sie fliegt von Blüte zu Blüte und sammelt süßen Nektar. Dabei trägt sie Blütenstaub weiter, und so können die Bäume Früchte tragen. Bienen leben zusammen in einem Bienenstock, viele Tausend auf einmal. Jede hat ihre Aufgabe, und alle zusammen kümmern sich um ihre Königin. Ohne Bienen hätten wir viel weniger Obst und Blumen.",
+      "syllable_body": "Die Bie|ne ist ein klei|nes Tier, das uns Ho|nig schenkt. Sie fliegt von Blü|te zu Blü|te und sam|melt sü|ßen Nek|tar. Da|bei trägt sie Blü|ten|staub wei|ter, und so kön|nen die Bäu|me Früch|te tra|gen. Bie|nen le|ben zu|sam|men in ei|nem Bie|nen|stock, vie|le Tau|send auf ein|mal. Je|de hat ih|re Auf|ga|be, und al|le zu|sam|men küm|mern sich um ih|re Kö|ni|gin. Oh|ne Bie|nen hät|ten wir viel we|ni|ger Obst und Blu|men.",
+      "imageId": "cebela_cvet",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_delfin_name_3",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 3,
+      "title": "Der Delfin hat einen Namen",
+      "body": "Der Delfin ist eines der klügsten Tiere im Meer. Er lebt im Wasser und schwimmt ausgezeichnet, doch er ist kein Fisch, sondern ein Säugetier, genau wie ein Hund oder ein Mensch. Deshalb kann er unter Wasser nicht atmen und muss oft an die Oberfläche kommen, um Luft zu holen. Delfine leben in Gruppen, die man Schulen nennt. Sie verständigen sich mit hohen Pfiffen, und jeder Delfin hat sogar seinen eigenen besonderen Pfiff, eine Art Namen. Bekannt sind sie auch dafür, dass sie einander helfen. Ist einer krank, schieben ihn die anderen an die Oberfläche, damit er atmen kann.",
+      "syllable_body": "Der Del|fin ist ei|nes der klügs|ten Tie|re im Meer. Er lebt im Was|ser und schwimmt aus|ge|zeich|net, doch er ist kein Fisch, son|dern ein Säu|ge|tier, ge|nau wie ein Hund o|der ein Mensch. Des|halb kann er un|ter Was|ser nicht at|men und muss oft an die O|ber|flä|che kom|men, um Luft zu ho|len. Del|fi|ne le|ben in Grup|pen, die man Schu|len nennt. Sie ver|stän|di|gen sich mit ho|hen Pfif|fen, und je|der Del|fin hat so|gar sei|nen ei|ge|nen be|son|de|ren Pfiff, ei|ne Art Na|men. Be|kannt sind sie auch da|für, dass sie ein|an|der hel|fen. Ist ei|ner krank, schie|ben ihn die an|de|ren an die O|ber|flä|che, da|mit er at|men kann.",
+      "imageId": "delfin_jata",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_fledermaus_4",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 4,
+      "title": "Die Fledermaus jagt im Dunkeln",
+      "body": "Die Fledermaus ist kein Vogel, sondern das einzige Säugetier, das wirklich fliegen kann. Ihre Flügel sind nicht mit Federn bedeckt, sondern mit dünner Haut, die zwischen langen Fingern gespannt ist.\n\nDie meisten Fledermäuse schlafen am Tag und gehen in der Dämmerung auf die Jagd. Sie hängen mit dem Kopf nach unten in Höhlen, auf Dachböden oder in hohlen Bäumen. Wenn es dunkel wird, fliegen sie los und fangen Insekten.\n\nAm erstaunlichsten ist, wie sich die Fledermaus im Dunkeln zurechtfindet. Sie stößt Laute aus, die so hoch sind, dass unser Ohr sie nicht hört. Diese prallen von Hindernissen und Insekten ab und kommen zurück. Aus dem Echo weiß die Fledermaus genau, wo das Futter ist und wohin sie fliegen muss.",
+      "syllable_body": "Die Fle|der|maus ist kein Vo|gel, son|dern das ein|zi|ge Säu|ge|tier, das wirk|lich flie|gen kann. Ih|re Flü|gel sind nicht mit Fe|dern be|deckt, son|dern mit dün|ner Haut, die zwi|schen lan|gen Fin|gern ge|spannt ist.\n\nDie meis|ten Fle|der|mäu|se schla|fen am Tag und ge|hen in der Däm|me|rung auf die Jagd. Sie hän|gen mit dem Kopf nach un|ten in Höh|len, auf Dach|bö|den o|der in hoh|len Bäu|men. Wenn es dun|kel wird, flie|gen sie los und fan|gen In|sek|ten.\n\nAm er|staun|lichs|ten ist, wie sich die Fle|der|maus im Dun|keln zu|recht|fin|det. Sie stößt Lau|te aus, die so hoch sind, dass un|ser Ohr sie nicht hört. Die|se pral|len von Hin|der|nis|sen und In|sek|ten ab und kom|men zu|rück. Aus dem E|cho weiß die Fle|der|maus ge|nau, wo das Fut|ter ist und wo|hin sie flie|gen muss.",
+      "imageId": "netopir",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_delfine_geheimnisse_5",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 5,
+      "title": "Die Geheimnisse der Delfine",
+      "body": "Der Delfin gilt als eines der klügsten Tiere der Welt. Obwohl er sein ganzes Leben im Meer verbringt und schneller schwimmt als mancher Fisch, ist er selbst kein Fisch, sondern ein Säugetier. Er holt Luft durch ein Atemloch oben auf dem Kopf und muss alle paar Minuten an die Oberfläche.\n\nDelfine sind gesellige Tiere und leben in Gruppen. In der Gruppe sorgen sie füreinander, jagen und verteidigen sich gemeinsam. Sie verständigen sich mit Pfiffen, Klicklauten und Quieken. Jeder Delfin hat sogar seinen eigenen Pfiff, an dem ihn die anderen erkennen: eine Art Namen, den er sein ganzes Leben behält.\n\nAm erstaunlichsten ist ihre Fähigkeit, mit Schall zu sehen. Der Delfin sendet schnelle Klicklaute aus, die durch das Wasser wandern. Trifft der Schall auf einen Fisch, einen Felsen oder ein Wrack, prallt er ab und kommt zurück. Aus diesem Echo erkennt der Delfin genau, wie weit der Gegenstand entfernt und wie groß er ist, selbst in völliger Dunkelheit. Diese Fähigkeit heißt Echoortung.",
+      "syllable_body": "Der Del|fin gilt als ei|nes der klügs|ten Tie|re der Welt. Ob|wohl er sein gan|zes Le|ben im Meer ver|bringt und schnel|ler schwimmt als man|cher Fisch, ist er selbst kein Fisch, son|dern ein Säu|ge|tier. Er holt Luft durch ein A|tem|loch o|ben auf dem Kopf und muss al|le paar Mi|nu|ten an die O|ber|flä|che.\n\nDel|fi|ne sind ge|sel|li|ge Tie|re und le|ben in Grup|pen. In der Grup|pe sor|gen sie für|ein|an|der, ja|gen und ver|tei|di|gen sich ge|mein|sam. Sie ver|stän|di|gen sich mit Pfif|fen, Klick|lau|ten und Quie|ken. Je|der Del|fin hat so|gar sei|nen ei|ge|nen Pfiff, an dem ihn die an|de|ren er|ken|nen: ei|ne Art Na|men, den er sein gan|zes Le|ben be|hält.\n\nAm er|staun|lichs|ten ist ih|re Fä|hig|keit, mit Schall zu se|hen. Der Del|fin sen|det schnel|le Klick|lau|te aus, die durch das Was|ser wan|dern. Trifft der Schall auf ei|nen Fisch, ei|nen Fel|sen o|der ein Wrack, prallt er ab und kommt zu|rück. Aus die|sem E|cho er|kennt der Del|fin ge|nau, wie weit der Ge|gen|stand ent|fernt und wie groß er ist, selbst in völ|li|ger Dun|kel|heit. Die|se Fä|hig|keit heißt E|cho|or|tung.",
+      "imageId": "delfin_morje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_pyramiden_1",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 1,
+      "title": "Die Pyramiden in Ägypten",
+      "body": "In Ägypten stehen große Pyramiden. Sie wurden vor sehr langer Zeit gebaut. Sie bestehen aus schweren Steinen. Die Pyramiden waren die Gräber der Könige. Noch heute stehen sie in der Wüste.",
+      "syllable_body": "In Ä|gyp|ten ste|hen gro|ße Py|ra|mi|den. Sie wur|den vor sehr lan|ger Zeit ge|baut. Sie be|ste|hen aus schwe|ren Stei|nen. Die Py|ra|mi|den wa|ren die Grä|ber der Kö|ni|ge. Noch heu|te ste|hen sie in der Wüs|te.",
+      "imageId": "piramide_giza",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_pyramiden_2",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 2,
+      "title": "Berge aus Stein",
+      "body": "In Ägypten, dem Land der Wüsten, stehen mächtige Pyramiden. Sie wurden vor mehreren tausend Jahren gebaut. Die Menschen stapelten riesige Blöcke aus schwerem Stein aufeinander, bis eine hohe Pyramide entstand. Darin begrub man die Könige, die man Pharaonen nannte. Die Pyramiden sind so fest, dass sie noch heute stehen. Sie gehören zu den ältesten Bauwerken der Welt.",
+      "syllable_body": "In Ä|gyp|ten, dem Land der Wüs|ten, ste|hen mäch|ti|ge Py|ra|mi|den. Sie wur|den vor meh|re|ren tau|send Jah|ren ge|baut. Die Men|schen sta|pel|ten rie|si|ge Blö|cke aus schwe|rem Stein auf|ein|an|der, bis ei|ne ho|he Py|ra|mi|de ent|stand. Dar|in be|grub man die Kö|ni|ge, die man Pha|ra|o|nen nann|te. Die Py|ra|mi|den sind so fest, dass sie noch heu|te ste|hen. Sie ge|hö|ren zu den äl|tes|ten Bau|wer|ken der Welt.",
+      "imageId": "piramide_bloki",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_pyramiden_3",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 3,
+      "title": "Das Geheimnis der Pyramiden",
+      "body": "In Ägypten, dem Land der heißen Wüsten, ragen mächtige Pyramiden in den Himmel. Die berühmtesten stehen bei der Stadt Gizeh. Die Menschen bauten sie vor mehr als viertausend Jahren, und zwar ohne Maschinen, wie wir sie heute kennen. Aus dem Steinbruch zogen sie riesige Steinblöcke, so schwer wie ein Auto, und stapelten sie aufeinander, immer höher und höher. In den Pyramiden begrub man die Pharaonen, die Könige Ägyptens. Man glaubte, der Herrscher werde seine Schätze auch nach dem Tod brauchen, darum begrub man sie mit ihm. Kein Wunder, dass die Pyramiden noch heute die Fantasie anregen.",
+      "syllable_body": "In Ä|gyp|ten, dem Land der hei|ßen Wüs|ten, ra|gen mäch|ti|ge Py|ra|mi|den in den Him|mel. Die be|rühm|tes|ten ste|hen bei der Stadt Gi|zeh. Die Men|schen bau|ten sie vor mehr als vier|tau|send Jah|ren, und zwar oh|ne Ma|schi|nen, wie wir sie heu|te ken|nen. Aus dem Stein|bruch zo|gen sie rie|si|ge Stein|blö|cke, so schwer wie ein Au|to, und sta|pel|ten sie auf|ein|an|der, im|mer hö|her und hö|her. In den Py|ra|mi|den be|grub man die Pha|ra|o|nen, die Kö|ni|ge Ä|gyp|tens. Man glaub|te, der Herr|scher wer|de sei|ne Schät|ze auch nach dem Tod brau|chen, dar|um be|grub man sie mit ihm. Kein Wun|der, dass die Py|ra|mi|den noch heu|te die Fan|ta|sie an|re|gen.",
+      "imageId": "piramide_kamnolom",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_pyramiden_4",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 4,
+      "title": "Wie die Pyramiden gebaut wurden",
+      "body": "In Ägypten, dem Land der heißen Wüsten und des Flusses Nil, ragen mächtige Pyramiden in den Himmel. Die Menschen bauten sie vor mehr als viertausend Jahren, als es noch keine Maschinen und keine Kräne gab.\n\nWie bewegten sie also so schwere Steine? Die Arbeiter zogen riesige Blöcke auf Schlitten aus dem Steinbruch, jeder schwerer als ein Auto, und schleppten sie über Rampen langsam immer höher. Für einen einzigen solchen Bau brauchte man Tausende Hände und viele Jahre Arbeit.\n\nIn den Pyramiden begrub man die Pharaonen, die Könige Ägyptens. Man glaubte, der Herrscher reise nach dem Tod weiter und werde seine Schätze brauchen, darum versteckte man sie tief in der Pyramide. Die größte von ihnen war viele tausend Jahre lang das höchste Bauwerk der Welt.",
+      "syllable_body": "In Ä|gyp|ten, dem Land der hei|ßen Wüs|ten und des Flus|ses Nil, ra|gen mäch|ti|ge Py|ra|mi|den in den Him|mel. Die Men|schen bau|ten sie vor mehr als vier|tau|send Jah|ren, als es noch kei|ne Ma|schi|nen und kei|ne Krä|ne gab.\n\nWie be|weg|ten sie al|so so schwe|re Stei|ne? Die Ar|bei|ter zo|gen rie|si|ge Blö|cke auf Schlit|ten aus dem Stein|bruch, je|der schwe|rer als ein Au|to, und schlepp|ten sie ü|ber Ram|pen lang|sam im|mer hö|her. Für ei|nen ein|zi|gen sol|chen Bau brauch|te man Tau|sen|de Hän|de und vie|le Jah|re Ar|beit.\n\nIn den Py|ra|mi|den be|grub man die Pha|ra|o|nen, die Kö|ni|ge Ä|gyp|tens. Man glaub|te, der Herr|scher rei|se nach dem Tod wei|ter und wer|de sei|ne Schät|ze brau|chen, dar|um ver|steck|te man sie tief in der Py|ra|mi|de. Die größ|te von ih|nen war vie|le tau|send Jah|re lang das höchs|te Bau|werk der Welt.",
+      "imageId": "piramide_klancina",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_venedig_5",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 5,
+      "title": "Ein Spaziergang durch Venedig",
+      "body": "Venedig ist eine der ungewöhnlichsten und schönsten Städte der Welt. Sie liegt in Italien und ist auf mehr als hundert kleinen Inseln mitten in einer flachen Lagune gebaut.\n\nWas man sofort bemerkt, wenn man nach Venedig kommt: Es gibt keine Autos. Statt Straßen hat die Stadt Kanäle, statt Autos Boote. Zwischen den alten Häusern schlängeln sich schmale Wasserwege mit Hunderten kleiner Brücken. Die berühmtesten Boote sind die Gondeln, schlank, schwarz und elegant.\n\nAber wie baut man überhaupt eine Stadt auf dem Wasser? Vor langer Zeit rammten die Bewohner unzählige lange Holzpfähle in den schlammigen Meeresboden. Auf diese Pfähle setzten sie Häuser, Brücken, Kirchen und große Plätze. Der schönste ist der Markusplatz, auf dem Tausende Tauben spazieren.\n\nViele Jahrhunderte sind seither vergangen, doch Venedig steht noch immer. Jedes Jahr kommen Millionen Menschen aus aller Welt, um die Stadt ohne Straßen zu bewundern: die Stadt, die auf dem Wasser lebt.",
+      "syllable_body": "Ve|ne|dig ist ei|ne der un|ge|wöhn|lichs|ten und schöns|ten Städ|te der Welt. Sie liegt in I|ta|li|en und ist auf mehr als hun|dert klei|nen In|seln mit|ten in ei|ner fla|chen La|gu|ne ge|baut.\n\nWas man so|fort be|merkt, wenn man nach Ve|ne|dig kommt: Es gibt kei|ne Au|tos. Statt Stra|ßen hat die Stadt Ka|nä|le, statt Au|tos Boo|te. Zwi|schen den al|ten Häu|sern schlän|geln sich schma|le Was|ser|we|ge mit Hun|der|ten klei|ner Brü|cken. Die be|rühm|tes|ten Boo|te sind die Gon|deln, schlank, schwarz und e|le|gant.\n\nA|ber wie baut man ü|ber|haupt ei|ne Stadt auf dem Was|ser? Vor lan|ger Zeit ramm|ten die Be|woh|ner un|zäh|li|ge lan|ge Holz|pfäh|le in den schlam|mi|gen Mee|res|bo|den. Auf die|se Pfäh|le setz|ten sie Häu|ser, Brü|cken, Kir|chen und gro|ße Plät|ze. Der schöns|te ist der Mar|kus|platz, auf dem Tau|sen|de Tau|ben spa|zie|ren.\n\nVie|le Jahr|hun|der|te sind seit|her ver|gan|gen, doch Ve|ne|dig steht noch im|mer. Je|des Jahr kom|men Mil|li|o|nen Men|schen aus al|ler Welt, um die Stadt oh|ne Stra|ßen zu be|wun|dern: die Stadt, die auf dem Was|ser lebt.",
+      "imageId": "benetke_trg",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_regenbogen_1",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 1,
+      "title": "Der Regenbogen",
+      "body": "Nach dem Regen leuchtet manchmal ein Regenbogen. Er entsteht, wenn die Sonne durch die Regentropfen scheint. Der Regenbogen hat viele Farben. Sie kommen immer in derselben Reihenfolge. Oben ist Rot, unten ist Violett.",
+      "syllable_body": "Nach dem Re|gen leuch|tet manch|mal ein Re|gen|bo|gen. Er ent|steht, wenn die Son|ne durch die Re|gen|trop|fen scheint. Der Re|gen|bo|gen hat vie|le Far|ben. Sie kom|men im|mer in der|sel|ben Rei|hen|fol|ge. O|ben ist Rot, un|ten ist Vi|o|lett.",
+      "imageId": "mavrica",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_schwerkraft_2",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 2,
+      "title": "Warum alles zu Boden fällt",
+      "body": "Wirf einen Ball in die Luft, und er fällt immer wieder zu Boden. Warum ist das so? Schuld ist eine unsichtbare Kraft, die wir Schwerkraft nennen. Mit dieser Kraft zieht die Erde alle Dinge zu sich. Deshalb fällt der Apfel vom Baum und der Regen vom Himmel. Die Schwerkraft hält auch uns auf dem Boden, damit wir nicht in die Luft davonschweben.",
+      "syllable_body": "Wirf ei|nen Ball in die Luft, und er fällt im|mer wie|der zu Bo|den. War|um ist das so? Schuld ist ei|ne un|sicht|ba|re Kraft, die wir Schwer|kraft nen|nen. Mit die|ser Kraft zieht die Er|de al|le Din|ge zu sich. Des|halb fällt der Ap|fel vom Baum und der Re|gen vom Him|mel. Die Schwer|kraft hält auch uns auf dem Bo|den, da|mit wir nicht in die Luft da|von|schwe|ben.",
+      "imageId": "gravitacija_jabolko",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_regenbogen_3",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 3,
+      "title": "Wie ein Regenbogen entsteht",
+      "body": "Der Regenbogen ist eine der schönsten Erscheinungen am Himmel. Er zeigt sich, wenn zugleich die Sonne scheint und es regnet. Obwohl uns das Sonnenlicht weiß erscheint, besteht es in Wirklichkeit aus vielen Farben, die ineinander verborgen sind. Fällt ein Sonnenstrahl durch einen winzigen Regentropfen, wird er darin gebrochen und in alle diese Farben zerlegt. Die Tropfen wirken wie kleine Fensterchen, die das Licht auffächern. Weil das Tausende Tropfen gleichzeitig tun, sehen wir am Himmel einen großen bunten Bogen. Die Farben folgen im Regenbogen immer in derselben Reihenfolge, von Rot oben bis Violett unten.",
+      "syllable_body": "Der Re|gen|bo|gen ist ei|ne der schöns|ten Er|schei|nun|gen am Him|mel. Er zeigt sich, wenn zu|gleich die Son|ne scheint und es reg|net. Ob|wohl uns das Son|nen|licht weiß er|scheint, be|steht es in Wirk|lich|keit aus vie|len Far|ben, die in|ein|an|der ver|bor|gen sind. Fällt ein Son|nen|strahl durch ei|nen win|zi|gen Re|gen|trop|fen, wird er dar|in ge|bro|chen und in al|le die|se Far|ben zer|legt. Die Trop|fen wir|ken wie klei|ne Fens|ter|chen, die das Licht auf|fä|chern. Weil das Tau|sen|de Trop|fen gleich|zei|tig tun, se|hen wir am Him|mel ei|nen gro|ßen bun|ten Bo|gen. Die Far|ben fol|gen im Re|gen|bo|gen im|mer in der|sel|ben Rei|hen|fol|ge, von Rot o|ben bis Vi|o|lett un|ten.",
+      "imageId": "mavrica_kaplja",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_regenbogen_jagd_4",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 4,
+      "title": "Die Jagd nach dem Regenbogen",
+      "body": "Der Regenbogen ist eine der schönsten Erscheinungen, die man am Himmel sehen kann. Er zeigt sich, wenn zugleich die Sonne scheint und es regnet.\n\nObwohl uns das Sonnenlicht weiß erscheint, besteht es in Wirklichkeit aus vielen Farben, die ineinander verborgen sind. Fällt ein Sonnenstrahl durch einen winzigen Regentropfen, wird er darin gebrochen und in alle diese Farben zerlegt. Weil das Tausende Tropfen gleichzeitig tun, sehen wir am Himmel einen großen farbigen Bogen.\n\nDie Farben folgen im Regenbogen immer in derselben Reihenfolge: von Rot oben bis Violett unten. Wer einen Regenbogen sehen will, muss die Sonne im Rücken haben und den Regen vor sich. Und merke dir: Je näher du ihm kommen willst, desto weiter rückt er von dir weg, denn festhalten kann man ihn nicht.",
+      "syllable_body": "Der Re|gen|bo|gen ist ei|ne der schöns|ten Er|schei|nun|gen, die man am Him|mel se|hen kann. Er zeigt sich, wenn zu|gleich die Son|ne scheint und es reg|net.\n\nOb|wohl uns das Son|nen|licht weiß er|scheint, be|steht es in Wirk|lich|keit aus vie|len Far|ben, die in|ein|an|der ver|bor|gen sind. Fällt ein Son|nen|strahl durch ei|nen win|zi|gen Re|gen|trop|fen, wird er dar|in ge|bro|chen und in al|le die|se Far|ben zer|legt. Weil das Tau|sen|de Trop|fen gleich|zei|tig tun, se|hen wir am Him|mel ei|nen gro|ßen far|bi|gen Bo|gen.\n\nDie Far|ben fol|gen im Re|gen|bo|gen im|mer in der|sel|ben Rei|hen|fol|ge: von Rot o|ben bis Vi|o|lett un|ten. Wer ei|nen Re|gen|bo|gen se|hen will, muss die Son|ne im Rü|cken ha|ben und den Re|gen vor sich. Und mer|ke dir: Je nä|her du ihm kom|men willst, des|to wei|ter rückt er von dir weg, denn fest|hal|ten kann man ihn nicht.",
+      "imageId": "mavrica_lok",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_bunter_bogen_5",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 5,
+      "title": "Das Geheimnis des bunten Bogens",
+      "body": "Der Regenbogen ist eine der schönsten Erscheinungen, die man am Himmel sehen kann. Er zeigt sich, wenn zugleich die Sonne scheint und es regnet.\n\nObwohl uns das Sonnenlicht ganz weiß erscheint, besteht es in Wirklichkeit aus vielen Farben, die ineinander verborgen sind. Fällt ein Sonnenstrahl durch einen winzigen Regentropfen, wird er darin gebrochen und in alle diese Farben zerlegt. Jedes Tröpfchen wirkt wie ein winziges Glasprisma, das das weiße Licht zu einem bunten Band auffächert. Weil das Tausende Tropfen gleichzeitig tun, sehen wir am Himmel einen großen farbigen Bogen.\n\nDie Farben folgen im Regenbogen immer in genau derselben Reihenfolge: Rot, Orange, Gelb, Grün, Blau und Violett. Rot liegt stets außen am Bogen, Violett innen.\n\nWer einen Regenbogen mit den Augen einfangen will, merke sich eine einfache Regel: Die Sonne muss im Rücken stehen, der Regen vor dir. Und obwohl der Regenbogen wie eine bunte Brücke aussieht, kann man ihn nie berühren. Je näher du ihm kommst, desto weiter rückt er weg.",
+      "syllable_body": "Der Re|gen|bo|gen ist ei|ne der schöns|ten Er|schei|nun|gen, die man am Him|mel se|hen kann. Er zeigt sich, wenn zu|gleich die Son|ne scheint und es reg|net.\n\nOb|wohl uns das Son|nen|licht ganz weiß er|scheint, be|steht es in Wirk|lich|keit aus vie|len Far|ben, die in|ein|an|der ver|bor|gen sind. Fällt ein Son|nen|strahl durch ei|nen win|zi|gen Re|gen|trop|fen, wird er dar|in ge|bro|chen und in al|le die|se Far|ben zer|legt. Je|des Tröpf|chen wirkt wie ein win|zi|ges Glas|pris|ma, das das wei|ße Licht zu ei|nem bun|ten Band auf|fä|chert. Weil das Tau|sen|de Trop|fen gleich|zei|tig tun, se|hen wir am Him|mel ei|nen gro|ßen far|bi|gen Bo|gen.\n\nDie Far|ben fol|gen im Re|gen|bo|gen im|mer in ge|nau der|sel|ben Rei|hen|fol|ge: Rot, O|ran|ge, Gelb, Grün, Blau und Vi|o|lett. Rot liegt stets au|ßen am Bo|gen, Vi|o|lett in|nen.\n\nWer ei|nen Re|gen|bo|gen mit den Au|gen ein|fan|gen will, mer|ke sich ei|ne ein|fa|che Re|gel: Die Son|ne muss im Rü|cken ste|hen, der Re|gen vor dir. Und ob|wohl der Re|gen|bo|gen wie ei|ne bun|te Brü|cke aus|sieht, kann man ihn nie be|rüh|ren. Je nä|her du ihm kommst, des|to wei|ter rückt er weg.",
+      "imageId": "mavrica_polje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_samen_1",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 1,
+      "title": "Aus dem Samen wächst",
+      "body": "Wir stecken einen kleinen Samen in die Erde. Der Samen bekommt Wasser und Sonne. Aus ihm wächst ein kleiner Keim. Der Keim wächst immer höher. Aus einem Samen wird eine Blume oder ein Baum.",
+      "syllable_body": "Wir ste|cken ei|nen klei|nen Sa|men in die Er|de. Der Sa|men be|kommt Was|ser und Son|ne. Aus ihm wächst ein klei|ner Keim. Der Keim wächst im|mer hö|her. Aus ei|nem Sa|men wird ei|ne Blu|me o|der ein Baum.",
+      "imageId": "seme_kalica",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_regen_2",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 2,
+      "title": "Warum es regnet",
+      "body": "Regen ist für die Natur sehr wichtig. Ohne ihn könnten die Pflanzen nicht wachsen. Regen entsteht in den Wolken hoch am Himmel. In einer Wolke schweben Tausende winziger Wassertröpfchen. Wenn sich diese Tröpfchen zu größeren verbinden, werden sie zu schwer und fallen zu Boden. Dann sagen wir: Es regnet. Der Regen tränkt die Erde, und die Pflanzen freuen sich darüber.",
+      "syllable_body": "Re|gen ist für die Na|tur sehr wich|tig. Oh|ne ihn könn|ten die Pflan|zen nicht wach|sen. Re|gen ent|steht in den Wol|ken hoch am Him|mel. In ei|ner Wol|ke schwe|ben Tau|sen|de win|zi|ger Was|ser|tröpf|chen. Wenn sich die|se Tröpf|chen zu grö|ße|ren ver|bin|den, wer|den sie zu schwer und fal|len zu Bo|den. Dann sa|gen wir: Es reg|net. Der Re|gen tränkt die Er|de, und die Pflan|zen freu|en sich dar|ü|ber.",
+      "imageId": "dez_kaplje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_wind_3",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 3,
+      "title": "Der Wind, den wir nicht sehen",
+      "body": "Den Wind können wir nicht sehen, aber wir können ihn fühlen und hören. Er streicht uns über das Gesicht, wiegt die Zweige und jagt die Wolken über den Himmel. Wind ist Luft, die sich bewegt. Wenn sich ein Teil der Luft erwärmt und ein anderer kalt bleibt, beginnt die Luft sich zu bewegen. Manchmal ist der Wind sanft und angenehm: Er trocknet die Wäsche und trägt den Duft der Blumen. Ein anderes Mal ist er so stark, dass er Äste abbricht. Der Wind ist auch nützlich: Er verbreitet die Samen der Pflanzen und treibt Windräder an.",
+      "syllable_body": "Den Wind kön|nen wir nicht se|hen, a|ber wir kön|nen ihn füh|len und hö|ren. Er streicht uns ü|ber das Ge|sicht, wiegt die Zwei|ge und jagt die Wol|ken ü|ber den Him|mel. Wind ist Luft, die sich be|wegt. Wenn sich ein Teil der Luft er|wärmt und ein an|de|rer kalt bleibt, be|ginnt die Luft sich zu be|we|gen. Manch|mal ist der Wind sanft und an|ge|nehm: Er trock|net die Wä|sche und trägt den Duft der Blu|men. Ein an|de|res Mal ist er so stark, dass er Äs|te ab|bricht. Der Wind ist auch nütz|lich: Er ver|brei|tet die Sa|men der Pflan|zen und treibt Wind|rä|der an.",
+      "imageId": "veter",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_herbstblaetter_4",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 4,
+      "title": "Warum der Baum seine Blätter abwirft",
+      "body": "Jeden Herbst geschieht etwas Wunderbares. Die Blätter an den Bäumen färben sich von Grün in feuriges Rot, Orange und goldenes Gelb.\n\nIm Sommer sind die Blätter voll von grünem Farbstoff. Mit seiner Hilfe stellt der Baum aus Sonnenlicht, Wasser und Luft seine Nahrung her. Das Grün deckt alle anderen Farben im Blatt zu.\n\nWenn im Herbst die Tage kürzer werden und es kühler wird, spürt der Baum, dass der Winter kommt. Er stellt den grünen Farbstoff nicht mehr her, und das Grün verblasst langsam. Erst jetzt kommen die gelben und roten Töne zum Vorschein, die unter dem Grün verborgen waren.\n\nZuletzt wirft der Baum die Blätter ab, um über den Winter Wasser und Kraft zu sparen. Die kahlen Bäume ruhen dann still, bis sie im Frühling die warme Sonne wieder aufweckt.",
+      "syllable_body": "Je|den Herbst ge|schieht et|was Wun|der|ba|res. Die Blät|ter an den Bäu|men fär|ben sich von Grün in feu|ri|ges Rot, O|ran|ge und gol|de|nes Gelb.\n\nIm Som|mer sind die Blät|ter voll von grü|nem Farb|stoff. Mit sei|ner Hil|fe stellt der Baum aus Son|nen|licht, Was|ser und Luft sei|ne Nah|rung her. Das Grün deckt al|le an|de|ren Far|ben im Blatt zu.\n\nWenn im Herbst die Ta|ge kür|zer wer|den und es küh|ler wird, spürt der Baum, dass der Win|ter kommt. Er stellt den grü|nen Farb|stoff nicht mehr her, und das Grün ver|blasst lang|sam. Erst jetzt kom|men die gel|ben und ro|ten Tö|ne zum Vor|schein, die un|ter dem Grün ver|bor|gen wa|ren.\n\nZu|letzt wirft der Baum die Blät|ter ab, um ü|ber den Win|ter Was|ser und Kraft zu spa|ren. Die kah|len Bäu|me ru|hen dann still, bis sie im Früh|ling die war|me Son|ne wie|der auf|weckt.",
+      "imageId": "jesensko_listje_drevo",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_jahreszeiten_5",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 5,
+      "title": "Die große Reise des Jahres",
+      "body": "Hast du dich schon einmal gefragt, warum es im Sommer heiß und im Winter kalt ist? Die Antwort: Das Jahr reist durch vier Jahreszeiten: Frühling, Sommer, Herbst und Winter.\n\nIm Frühling erwacht die Natur aus dem langen Winterschlaf. Die Bäume treiben frische Blätter, die Wiesen kleiden sich in bunte Blumen, und die Vögel kehren aus dem Süden zurück und bauen ihre Nester.\n\nIm Sommer herrscht die Wärme. Die Sonne geht früh auf und spät unter, die Tage sind lang. Jetzt reifen auf Bäumen und Feldern die meisten Früchte und Gemüse.\n\nIm Herbst werden die Tage langsam kürzer und die Luft kühler. Die Blätter färben sich rot, orange und gelb und segeln dann im Wind zu Boden. Die Tiere bereiten sich auf die Kälte vor.\n\nIm Winter wird die Natur still und ruht sich aus. Schnee deckt oft die Landschaft zu, die Tage sind kurz, die Nächte lang und kalt. Manches Tier verschläft den ganzen Winter. Und wenn es scheint, als wäre alles zu Ende, dreht sich das große Rad des Jahres weiter, und ein neuer Frühling beginnt.",
+      "syllable_body": "Hast du dich schon ein|mal ge|fragt, war|um es im Som|mer heiß und im Win|ter kalt ist? Die Ant|wort: Das Jahr reist durch vier Jah|res|zei|ten: Früh|ling, Som|mer, Herbst und Win|ter.\n\nIm Früh|ling er|wacht die Na|tur aus dem lan|gen Win|ter|schlaf. Die Bäu|me trei|ben fri|sche Blät|ter, die Wie|sen klei|den sich in bun|te Blu|men, und die Vö|gel keh|ren aus dem Sü|den zu|rück und bau|en ih|re Nes|ter.\n\nIm Som|mer herrscht die Wär|me. Die Son|ne geht früh auf und spät un|ter, die Ta|ge sind lang. Jetzt rei|fen auf Bäu|men und Fel|dern die meis|ten Früch|te und Ge|mü|se.\n\nIm Herbst wer|den die Ta|ge lang|sam kür|zer und die Luft küh|ler. Die Blät|ter fär|ben sich rot, o|ran|ge und gelb und se|geln dann im Wind zu Bo|den. Die Tie|re be|rei|ten sich auf die Käl|te vor.\n\nIm Win|ter wird die Na|tur still und ruht sich aus. Schnee deckt oft die Land|schaft zu, die Ta|ge sind kurz, die Näch|te lang und kalt. Man|ches Tier ver|schläft den gan|zen Win|ter. Und wenn es scheint, als wä|re al|les zu En|de, dreht sich das gro|ße Rad des Jah|res wei|ter, und ein neu|er Früh|ling be|ginnt.",
+      "imageId": "letni_casi_pokrajina",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
     }
   ]
 }

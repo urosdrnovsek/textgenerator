@@ -227,7 +227,19 @@ From `npm run content-status`:
   *syllabes écrites* splitter (`Instructions/tools/fr.py`, gitignored),
   then reviewed word by word; `ée` kept whole per the convention.
   `imageAccuracy: verified`, `nativeSpeaker: false`.
-- **English (original 25), German, French (original 25), Spanish:** 25 entries each, all `reviewed`
+- **German:** 50 entries — the 25 below plus, from 2026-09-21, one
+  original German text per cell on the Slovene topics and pictures, the
+  same way as French (Lena and the kitten, the egg, Theo the snail; the
+  owl, the bee, the dolphins, the bat; the pyramids at four levels and
+  Venice; the rainbow at four levels and gravity; seed, rain, wind,
+  autumn leaves, seasons). Syllabified with the Duden-pattern splitter
+  (`Instructions/tools/de.py`) plus a short override list where the
+  patterns disagree with the pack's rules (`ein|an|der`, `E|cho`,
+  `E|cke`, `Pha|ra|o|nen`, `Vi|o|lett`, `dar|ü|ber`), then reviewed.
+  German level-5 texts are kept to ~150–175 words because German words
+  are long — one Venice text had to be trimmed after it ran to a second
+  page in the fit check.
+- **English (original 25), German (original 25), French (original 25), Spanish:** 25 entries each, all `reviewed`
   by an AI editorial pass on 2026-09-19 (`nativeSpeaker: false`,
   `syllablesReviewed: true`; 3 German and 3 French syllable breaks were
   fixed in that pass). A second, word-by-word syllable pass on 2026-09-20
@@ -236,7 +248,7 @@ From `npm run content-status`:
   second opinion) corrected 62 more breaks in 28 entries: 1 Spanish, 2
   German, 18 French (mostly `feu|il|le`-type words), 41 English. Native-
   speaker review: **0 of 100.**
-- **Images:** 116 of 218 `verified` (the four illustrations generated for
+- **Images:** 141 of 243 `verified` (the four illustrations generated for
   the mismatched Neuschwanstein, Uluru, Easter Island and Pont du Gard
   entries, the axolotl illustration bundled for the five Spanish ajolote
   entries, the fifty new English texts, the twelve story pictures

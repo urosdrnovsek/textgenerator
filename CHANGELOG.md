@@ -7,6 +7,17 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
+- **German: two texts per theme and level** (2026-09-21). Twenty-five
+  original German texts on the Slovene topics and pictures, as for
+  French the same day (Lena and the wet kitten, the white egg, Theo the
+  snail's race, the barn, the kitten's new home; the owl, the bee, the
+  dolphins, the bat; the pyramids at four levels and Venice; the
+  rainbow at four levels and gravity; seed, rain, wind, autumn leaves,
+  the seasons). Written syllables follow the pack's Duden convention.
+  Every German title fits one page at default settings in real Chromium
+  (the Venice text was trimmed once to get there); the two German
+  `verify-docx` cases are pinned to the texts they were written for.
+  Native-speaker review: still none (0 of 218 non-Slovene entries).
 - **French: two texts per theme and level** (2026-09-21). Twenty-five
   original French texts, one per cell, each on the topic and picture of
   the matching Slovene entry — so the French pack now tells the same
