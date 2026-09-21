@@ -9,7 +9,7 @@ or an editable Word (`.docx`) file. It runs entirely offline — open
 
 Five languages (Slovene, English, German, French, Spanish), five themes,
 five difficulty levels; the English pack has three or four texts for
-every theme and level (85 entries and growing), the other languages one.
+every theme and level (90 entries and growing), the other languages one.
 Current version:
 `0.8.1-rc.1` — a release candidate; see "Status" below for what's still
 open.
@@ -74,7 +74,7 @@ Still open, deliberately: a native speaker's review of the English, German,
 French and Spanish content (they've had a careful editorial pass, not a
 native speaker's read — 0 of 100 entries native-reviewed); an
 image-accuracy pass over the entries whose pictures were reassigned on
-topic rather than drawn for the text (83 of 185 verified, the rest
+topic rather than drawn for the text (88 of 190 verified, the rest
 plausible, no known mismatch). Both numbers come from the per-entry review record and are
 printed by `npm run content-status`, so progress is measurable rather
 than asserted (see `docs/content-guide.md`). Also open: country-specific

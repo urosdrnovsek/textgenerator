@@ -1084,6 +1084,56 @@
       "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
       "source": "Generated with ChatGPT (OpenAI)",
       "attribution": "Uros Drnovsek"
+    },
+    {
+      "id": "solar_oven",
+      "mime": "image/jpeg",
+      "path": "assets/images/solar_oven.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
+      "source": "Generated with ChatGPT (OpenAI)",
+      "attribution": "Uros Drnovsek"
+    },
+    {
+      "id": "electric_circuit",
+      "mime": "image/jpeg",
+      "path": "assets/images/electric_circuit.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
+      "source": "Generated with ChatGPT (OpenAI)",
+      "attribution": "Uros Drnovsek"
+    },
+    {
+      "id": "ammonite_fossil",
+      "mime": "image/jpeg",
+      "path": "assets/images/ammonite_fossil.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
+      "source": "Generated with ChatGPT (OpenAI)",
+      "attribution": "Uros Drnovsek"
+    },
+    {
+      "id": "backyard_telescope",
+      "mime": "image/jpeg",
+      "path": "assets/images/backyard_telescope.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
+      "source": "Generated with ChatGPT (OpenAI)",
+      "attribution": "Uros Drnovsek"
+    },
+    {
+      "id": "mars_rover",
+      "mime": "image/jpeg",
+      "path": "assets/images/mars_rover.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
+      "source": "Generated with ChatGPT (OpenAI)",
+      "attribution": "Uros Drnovsek"
     }
   ]
 }

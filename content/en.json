@@ -1532,6 +1532,96 @@
         "syllablesReviewed": true,
         "imageAccuracy": "verified"
       }
+    },
+    {
+      "id": "amazing_science_solar_oven_1",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 1,
+      "title": "An Oven Made of Sunshine",
+      "body": "Mia has made an oven from a box. Inside it is shiny foil. The foil catches the sunlight. Under the lid it gets hotter and hotter. Soon the biscuits are ready. The sun has baked them.",
+      "syllable_body": "Mi|a has made an ov|en from a box. In|side it is shi|ny foil. The foil catch|es the sun|light. Un|der the lid it gets hot|ter and hot|ter. Soon the bis|cuits are read|y. The sun has baked them.",
+      "imageId": "solar_oven",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_circuit_2",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 2,
+      "title": "The Light Goes On",
+      "body": "Mia and Tom have a battery, wires, a switch and a bulb. They join the wires from the battery to the bulb. The wires make a path for the electricity. It is called a circuit. When Tom presses the switch, the circuit is closed and the bulb lights up. When he lets go, the light goes out. Electricity only flows in a closed circuit.",
+      "syllable_body": "Mi|a and Tom have a bat|ter|y, wires, a switch and a bulb. They join the wires from the bat|ter|y to the bulb. The wires make a path for the e|lec|tric|i|ty. It is called a cir|cuit. When Tom press|es the switch, the cir|cuit is closed and the bulb lights up. When he lets go, the light goes out. E|lec|tric|i|ty on|ly flows in a closed cir|cuit.",
+      "imageId": "electric_circuit",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_fossil_3",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 3,
+      "title": "A Sea Shell on the Mountain",
+      "body": "On a dry, rocky slope, Mia and Tom are brushing dust from a stone. A spiral as big as a bicycle wheel appears. It is an ammonite, the shell of a sea creature from the time of the dinosaurs. But how did it get up here, so far from the sea? Long ago, this land lay under the water. When the animal died, it sank into the mud, which slowly turned to stone. Over millions of years the land rose. Wind and rain wore the rock away, and the shell came to light.",
+      "syllable_body": "On a dry, rock|y slope, Mi|a and Tom are brush|ing dust from a stone. A spi|ral as big as a bi|cy|cle wheel ap|pears. It is an am|mo|nite, the shell of a sea crea|ture from the time of the di|no|saurs. But how did it get up here, so far from the sea? Long a|go, this land lay un|der the wa|ter. When the an|i|mal died, it sank in|to the mud, which slow|ly turned to stone. O|ver mil|lions of years the land rose. Wind and rain wore the rock a|way, and the shell came to light.",
+      "imageId": "ammonite_fossil",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_saturn_4",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 4,
+      "title": "The Star That Does Not Twinkle",
+      "body": "On a clear night, far from the city lights, Mia and Tom set up a telescope in the garden. Above them the sky is thick with stars, and a pale band runs right across it: the Milky Way, the galaxy our Sun belongs to.\n\nTom points the telescope at a bright yellow “star” that does not twinkle. It is Saturn, a planet with rings around it, so far away that its light takes more than an hour to reach the Earth. The rings are made of countless pieces of ice and rock, from grains of sand to blocks as big as a house.\n\nHow can you tell a planet from a star? Stars twinkle, because the air bends their light. Planets shine with a steadier light. The ancient Greeks noticed this and called them “wanderers”. That is what the word planet means.",
+      "syllable_body": "On a clear night, far from the cit|y lights, Mi|a and Tom set up a tel|e|scope in the gar|den. A|bove them the sky is thick with stars, and a pale band runs right a|cross it: the Milk|y Way, the gal|ax|y our Sun be|longs to.\n\nTom points the tel|e|scope at a bright yel|low “star” that does not twin|kle. It is Sat|urn, a plan|et with rings a|round it, so far a|way that its light takes more than an hour to reach the Earth. The rings are made of count|less piec|es of ice and rock, from grains of sand to blocks as big as a house.\n\nHow can you tell a plan|et from a star? Stars twin|kle, be|cause the air bends their light. Plan|ets shine with a stead|i|er light. The an|cient Greeks no|ticed this and called them “wan|der|ers”. That is what the word plan|et means.",
+      "imageId": "backyard_telescope",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_mars_rover_5",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 5,
+      "title": "A Robot on Mars",
+      "body": "On a cold, red desert, a small six-wheeled car rolls slowly forward. Nobody is driving it: this desert is on Mars, more than fifty million kilometres from the nearest human being.\n\nThe car is a rover, a robot sent to explore where people cannot yet go. It has cameras for eyes, a long arm with tools, and a drill that can bore a hole into a rock and scoop up the dust. The rover works on its own for most of the day, because a message from Earth takes up to twenty minutes to arrive.\n\nWhy all this trouble for a few stones? Because the rocks remember. The layers in the cliff behind the rover were laid down by water, long ago when Mars had rivers and lakes. If anything ever lived in those lakes, its traces might still be in the stone. Rovers have already found riverbeds and minerals that only form in water.\n\nMars today is dry and cold. But every picture the rover sends home brings closer the day when people will stand where it stands and look up at a tiny blue star: the Earth.",
+      "syllable_body": "On a cold, red des|ert, a small six-wheeled car rolls slow|ly for|ward. No|bod|y is driv|ing it: this des|ert is on Mars, more than fif|ty mil|lion kil|o|me|tres from the near|est hu|man be|ing.\n\nThe car is a ro|ver, a ro|bot sent to ex|plore where peo|ple can|not yet go. It has cam|er|as for eyes, a long arm with tools, and a drill that can bore a hole in|to a rock and scoop up the dust. The ro|ver works on its own for most of the day, be|cause a mes|sage from Earth takes up to twen|ty min|utes to ar|rive.\n\nWhy all this trou|ble for a few stones? Be|cause the rocks re|mem|ber. The lay|ers in the cliff be|hind the ro|ver were laid down by wa|ter, long a|go when Mars had riv|ers and lakes. If an|y|thing ev|er lived in those lakes, its trac|es might still be in the stone. Ro|vers have al|read|y found riv|er|beds and min|er|als that on|ly form in wa|ter.\n\nMars to|day is dry and cold. But ev|ery pic|ture the ro|ver sends home brings clos|er the day when peo|ple will stand where it stands and look up at a ti|ny blue star: the Earth.",
+      "imageId": "mars_rover",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
     }
   ]
 }

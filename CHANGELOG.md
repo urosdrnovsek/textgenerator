@@ -26,8 +26,16 @@ summarizes what shipped and what was verified; the commit messages in
   mother, the forests being cut), and the humpback's migration with its
   calf (born car-length, hundreds of litres of milk a day, the mother
   fasting, the males' songs). All fit one page at default settings in
-  real Chromium. Round 2 continues with science and a few nature /
-  around-the-world cells.
+  real Chromium.
+- **A fourth English science text per level** (round 2 batch 3). Five
+  more pictures bundled (`solar_oven`, `electric_circuit`,
+  `ammonite_fossil`, `backyard_telescope`, `mars_rover`): biscuits
+  baked in a foil-lined box, a battery-switch-bulb circuit, an ammonite
+  on a mountainside and how it got there, Saturn through a garden
+  telescope (why planets don't twinkle, "wanderers"), and a rover on
+  Mars (cameras, drill, the twenty-minute signal delay, rocks laid down
+  by water). All fit one page at default settings in real Chromium.
+  Round 2 finishes with a few nature / around-the-world cells.
 - **Story pictures now match the child in the text.** Every story
   picture was compared with every text that uses it (16 pictures, 35
   entries, five languages). Eight entries had the wrong gender: the three
