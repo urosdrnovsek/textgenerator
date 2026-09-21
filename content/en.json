@@ -1172,6 +1172,186 @@
         "syllablesReviewed": true,
         "imageAccuracy": "verified"
       }
+    },
+    {
+      "id": "nature_seasons_seed_1",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 1,
+      "title": "From Seed to Sunflower",
+      "body": "A seed lies in the dark soil. Water wakes it up. A root grows down. A stem grows up. Leaves open to the light. In summer a big sunflower turns its face to the sun.",
+      "syllable_body": "A seed lies in the dark soil. Wa|ter wakes it up. A root grows down. A stem grows up. Leaves o|pen to the light. In sum|mer a big sun|flow|er turns its face to the sun.",
+      "imageId": "seme_kalica",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_wind_1",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 1,
+      "title": "The Wind",
+      "body": "We cannot see the wind. But we can see what it does. It pushes the clouds across the sky. It turns the big white wind turbines on the hill. They make electricity for the village.",
+      "syllable_body": "We can|not see the wind. But we can see what it does. It push|es the clouds a|cross the sky. It turns the big white wind tur|bines on the hill. They make e|lec|tric|i|ty for the vil|lage.",
+      "imageId": "wind_turbines",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_squirrel_2",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 2,
+      "title": "The Squirrel’s Winter Store",
+      "body": "In autumn the red squirrel is very busy. It collects acorns, nuts and seeds and buries them in the ground. It hides them in many different places. In winter there is little to eat, so the squirrel digs up its stores. It does not remember every hiding place. Some nuts stay in the ground. In spring they grow into new oak trees.",
+      "syllable_body": "In au|tumn the red squir|rel is ver|y bus|y. It col|lects a|corns, nuts and seeds and bur|ies them in the ground. It hides them in man|y dif|fer|ent plac|es. In win|ter there is lit|tle to eat, so the squir|rel digs up its stores. It does not re|mem|ber ev|ery hid|ing place. Some nuts stay in the ground. In spring they grow in|to new oak trees.",
+      "imageId": "veverica",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_arctic_fox_2",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 2,
+      "title": "White in Winter",
+      "body": "The arctic fox lives in the far north. Its fur is thick and warm. In summer the fur is brown or grey. In winter it turns white, so the fox is hard to see in the snow. When it is very cold, the fox wraps its bushy tail around its body like a scarf. Above it, the northern lights glow in the sky.",
+      "syllable_body": "The arc|tic fox lives in the far north. Its fur is thick and warm. In sum|mer the fur is brown or grey. In win|ter it turns white, so the fox is hard to see in the snow. When it is ver|y cold, the fox wraps its bush|y tail a|round its bod|y like a scarf. A|bove it, the north|ern lights glow in the sky.",
+      "imageId": "arctic_fox_winter",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_rain_3",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 3,
+      "title": "Where Rain Comes From",
+      "body": "Where does rain come from? When the sun warms a lake or the sea, some of the water turns into vapour and rises into the air. High up it is cold, and the vapour turns back into tiny drops of water. Millions of drops make a cloud. Inside the cloud they bump into each other and join up. When a drop has grown big and heavy enough, the air can no longer hold it, and it falls as rain. The rain soaks into the soil, where the plants are waiting for it.",
+      "syllable_body": "Where does rain come from? When the sun warms a lake or the sea, some of the wa|ter turns in|to va|pour and ris|es in|to the air. High up it is cold, and the va|pour turns back in|to ti|ny drops of wa|ter. Mil|lions of drops make a cloud. In|side the cloud they bump in|to each oth|er and join up. When a drop has grown big and heav|y e|nough, the air can no long|er hold it, and it falls as rain. The rain soaks in|to the soil, where the plants are wait|ing for it.",
+      "imageId": "dez_kaplje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_geese_3",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 3,
+      "title": "Flying South",
+      "body": "Every autumn, when the days grow shorter and the first frost comes, the wild geese leave. They fly in a long line shaped like the letter V. The bird at the front works hardest, because it cuts through the air for the others. When it gets tired, it drops back and another goose takes the lead. They travel thousands of kilometres to warmer lands, where they can find food all winter. In spring, when the snow melts at home, they fly all the way back to the same lakes and fields.",
+      "syllable_body": "Ev|ery au|tumn, when the days grow short|er and the first frost comes, the wild geese leave. They fly in a long line shaped like the let|ter V. The bird at the front works hard|est, be|cause it cuts through the air for the oth|ers. When it gets tired, it drops back and an|oth|er goose takes the lead. They trav|el thou|sands of kil|o|me|tres to warm|er lands, where they can find food all win|ter. In spring, when the snow melts at home, they fly all the way back to the same lakes and fields.",
+      "imageId": "ptice_selivke",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_hedgehog_4",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 4,
+      "title": "The Hedgehog’s Long Sleep",
+      "body": "When the sun goes down, the hedgehog wakes up. All night it snuffles through the garden looking for beetles, worms, snails and slugs. A gardener is glad to have one, because it eats the slugs that eat the lettuce.\n\nA hedgehog has about five thousand spines on its back. They are stiff, and when a fox comes too close, the hedgehog rolls itself into a tight ball. Only the spines point outwards. Most foxes give up.\n\nIn late autumn the hedgehog eats as much as it can and grows fat. Then it builds a nest of dry leaves under a hedge or a pile of wood and falls into a deep winter sleep. Its heart slows down from nearly two hundred beats a minute to about twenty, and its body grows cold. It sleeps like this until spring, living only on its fat.",
+      "syllable_body": "When the sun goes down, the hedge|hog wakes up. All night it snuf|fles through the gar|den look|ing for bee|tles, worms, snails and slugs. A gar|den|er is glad to have one, be|cause it eats the slugs that eat the let|tuce.\n\nA hedge|hog has a|bout five thou|sand spines on its back. They are stiff, and when a fox comes too close, the hedge|hog rolls it|self in|to a tight ball. On|ly the spines point out|wards. Most fox|es give up.\n\nIn late au|tumn the hedge|hog eats as much as it can and grows fat. Then it builds a nest of dry leaves un|der a hedge or a pile of wood and falls in|to a deep win|ter sleep. Its heart slows down from near|ly two hun|dred beats a min|ute to a|bout twen|ty, and its bod|y grows cold. It sleeps like this un|til spring, liv|ing on|ly on its fat.",
+      "imageId": "jez",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_autumn_4",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 4,
+      "title": "Why Leaves Change Colour",
+      "body": "In autumn the days grow shorter and the nights turn cold. All summer the leaves have been green, because they are full of a green colouring called chlorophyll, which uses sunlight to make food for the tree. Now the tree stops making it. As the green fades, the yellow and orange that were hiding in the leaf all along come out, and some trees make a fiery red as well.\n\nAutumn is also harvest time. The apples are ripe, red and sweet. Mia and Tom carry a full basket home across the old wooden bridge, while a squirrel on the railing stuffs its cheeks with acorns for the winter.\n\nSoon the leaves will let go and drift down onto the stream. The tree does not need them any more. It will rest through the winter and grow new ones when spring returns.",
+      "syllable_body": "In au|tumn the days grow short|er and the nights turn cold. All sum|mer the leaves have been green, be|cause they are full of a green col|our|ing called chlo|ro|phyll, which us|es sun|light to make food for the tree. Now the tree stops mak|ing it. As the green fades, the yel|low and or|ange that were hid|ing in the leaf all a|long come out, and some trees make a fi|er|y red as well.\n\nAu|tumn is al|so har|vest time. The ap|ples are ripe, red and sweet. Mi|a and Tom car|ry a full bas|ket home a|cross the old wood|en bridge, while a squir|rel on the rail|ing stuffs its cheeks with a|corns for the win|ter.\n\nSoon the leaves will let go and drift down on|to the stream. The tree does not need them an|y more. It will rest through the win|ter and grow new ones when spring re|turns.",
+      "imageId": "autumn_apples",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_fungi_5",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 5,
+      "title": "The Web Beneath the Forest",
+      "body": "After a few days of autumn rain, mushrooms appear in the forest as if by magic: brown ones with fat stems, and the famous red one with white spots. But a mushroom is only the tip of something much bigger.\n\nUnder the leaves and soil, the real fungus spreads out as a web of fine white threads. The mushroom is just its fruit, pushed up above the ground to scatter tiny spores on the wind.\n\nThe threads do a job the forest could not manage without. They wrap around the roots of the trees and trade with them: the fungus passes the tree water and minerals from the soil, and the tree pays with sugar it has made in its leaves. Many trees in a forest are linked to each other through the same fungus, so scientists sometimes call it the wood wide web. Fungi also break down dead leaves and fallen trunks, turning them back into soil.\n\nSome mushrooms are delicious and some are deadly. The red one in the picture is poisonous. Never eat a wild mushroom unless an expert has checked it.",
+      "syllable_body": "Af|ter a few days of au|tumn rain, mush|rooms ap|pear in the for|est as if by mag|ic: brown ones with fat stems, and the fa|mous red one with white spots. But a mush|room is on|ly the tip of some|thing much big|ger.\n\nUn|der the leaves and soil, the real fun|gus spreads out as a web of fine white threads. The mush|room is just its fruit, pushed up a|bove the ground to scat|ter ti|ny spores on the wind.\n\nThe threads do a job the for|est could not man|age with|out. They wrap a|round the roots of the trees and trade with them: the fun|gus pass|es the tree wa|ter and min|er|als from the soil, and the tree pays with sug|ar it has made in its leaves. Man|y trees in a for|est are linked to each oth|er through the same fun|gus, so sci|en|tists some|times call it the wood wide web. Fun|gi al|so break down dead leaves and fall|en trunks, turn|ing them back in|to soil.\n\nSome mush|rooms are de|li|cious and some are dead|ly. The red one in the pic|ture is poi|son|ous. Nev|er eat a wild mush|room un|less an ex|pert has checked it.",
+      "imageId": "forest_mushrooms",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_why_seasons_5",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 5,
+      "title": "Why We Have Seasons",
+      "body": "Spring, summer, autumn, winter, and then spring again. But why do we have seasons at all?\n\nThe Earth travels around the Sun once a year. As it goes, it spins like a top, but the top is tilted a little to one side. So for part of the year, the northern half of the Earth leans towards the Sun. The Sun then climbs high in the sky, the days are long, and its rays hit the ground almost straight on, so they warm it strongly. That is our summer. Half a year later the same half leans away from the Sun. The Sun stays low, the days are short, and its rays arrive at a slant and spread their warmth thinly. That is winter.\n\nBecause the two halves of the Earth lean in opposite directions, the seasons are swapped: when children in Europe build snowmen, children in Australia are at the beach. Near the equator, in the middle, the tilt makes little difference, and it is warm all year round. Spring and autumn are the in-between times, when neither half leans much towards the Sun.",
+      "syllable_body": "Spring, sum|mer, au|tumn, win|ter, and then spring a|gain. But why do we have sea|sons at all?\n\nThe Earth trav|els a|round the Sun once a year. As it goes, it spins like a top, but the top is tilt|ed a lit|tle to one side. So for part of the year, the north|ern half of the Earth leans to|wards the Sun. The Sun then climbs high in the sky, the days are long, and its rays hit the ground al|most straight on, so they warm it strong|ly. That is our sum|mer. Half a year la|ter the same half leans a|way from the Sun. The Sun stays low, the days are short, and its rays ar|rive at a slant and spread their warmth thin|ly. That is win|ter.\n\nBe|cause the two halves of the Earth lean in op|po|site di|rec|tions, the sea|sons are swapped: when chil|dren in Eu|rope build snow|men, chil|dren in Aus|tra|lia are at the beach. Near the e|qua|tor, in the mid|dle, the tilt makes lit|tle dif|fer|ence, and it is warm all year round. Spring and au|tumn are the in-be|tween times, when nei|ther half leans much to|wards the Sun.",
+      "imageId": "letni_casi_pokrajina",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
     }
   ]
 }

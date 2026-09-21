@@ -192,7 +192,7 @@ Rules of thumb:
 - Set `imageAccuracy` independently of the text review; it's a different
   check, and often a different person.
 
-### Where the content stands (2026-09-20)
+### Where the content stands (2026-09-21)
 
 From `npm run content-status`:
 
@@ -200,11 +200,13 @@ From `npm run content-status`:
   never formally reviewed, because it was written by the project owner
   rather than reviewed after the fact. Images: `plausible` (drawn for the
   texts, never checked one by one).
-- **English:** 65 entries — the 25 below plus ten original stories
-  (2026-09-20) and ten each of animal facts, around the world and
-  amazing science (2026-09-21), two per level each, `imageAccuracy:
-  verified` because each text was written for the picture it is paired
-  with. Only nature_seasons still has one text per cell.
+- **English:** 75 entries — three per theme × level cell. The 25 below
+  plus fifty original texts (ten per theme, two per level; stories on
+  2026-09-20, the other four themes on 2026-09-21), each written for the
+  picture it is paired with (`imageAccuracy: verified`). Five of those
+  pictures were bundled from the owner's 2026-09-20 image drop
+  (`bicycle_repair`, `wind_turbines`, `arctic_fox_winter`,
+  `autumn_apples`; the rest were already in the bundle).
 - **English (original 25), German, French, Spanish:** 25 entries each, all `reviewed`
   by an AI editorial pass on 2026-09-19 (`nativeSpeaker: false`,
   `syllablesReviewed: true`; 3 German and 3 French syllable breaks were
@@ -214,10 +216,10 @@ From `npm run content-status`:
   second opinion) corrected 62 more breaks in 28 entries: 1 Spanish, 2
   German, 18 French (mostly `feu|il|le`-type words), 41 English. Native-
   speaker review: **0 of 100.**
-- **Images:** 61 of 165 `verified` (the four illustrations generated for
+- **Images:** 71 of 175 `verified` (the four illustrations generated for
   the mismatched Neuschwanstein, Uluru, Easter Island and Pont du Gard
   entries, the axolotl illustration bundled for the five Spanish ajolote
-  entries, the forty new English texts, and the twelve story pictures
+  entries, the fifty new English texts, and the twelve story pictures
   checked against their texts on 2026-09-21 — see below); 102
   `plausible`; **2 `mismatch`**: the German "Das Licht im alten Haus"
   pair (`stories_leuchtturmfenster_2/4`, a girl and her father finding a

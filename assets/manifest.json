@@ -944,6 +944,36 @@
       "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
       "source": "Generated with ChatGPT (OpenAI)",
       "attribution": "Uros Drnovsek"
+    },
+    {
+      "id": "wind_turbines",
+      "mime": "image/jpeg",
+      "path": "assets/images/wind_turbines.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
+      "source": "Generated with ChatGPT (OpenAI)",
+      "attribution": "Uros Drnovsek"
+    },
+    {
+      "id": "arctic_fox_winter",
+      "mime": "image/jpeg",
+      "path": "assets/images/arctic_fox_winter.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
+      "source": "Generated with ChatGPT (OpenAI)",
+      "attribution": "Uros Drnovsek"
+    },
+    {
+      "id": "autumn_apples",
+      "mime": "image/jpeg",
+      "path": "assets/images/autumn_apples.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
+      "source": "Generated with ChatGPT (OpenAI)",
+      "attribution": "Uros Drnovsek"
     }
   ]
 }

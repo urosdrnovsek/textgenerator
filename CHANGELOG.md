@@ -89,7 +89,20 @@ summarizes what shipped and what was verified; the commit messages in
   The planned third rainbow picture was swapped for `reka` — all four
   bundled rainbow pictures are the same scene, and the river picture
   tells its own story. All fifteen `amazing_science` titles fit one
-  page at default settings in real Chromium. Remaining: nature_seasons.
+  page at default settings in real Chromium.
+- **English nature and seasons: three texts per level — the English
+  pack is complete at 75 entries** (2026-09-21). Ten original texts
+  (35–185 words): from seed to sunflower, the wind we cannot see, the
+  squirrel's winter store, the arctic fox's white coat, where rain
+  comes from, geese flying south, the hedgehog's winter sleep, why
+  leaves change colour (Mia and Tom carrying apples), the fungus web
+  under the forest (with the "never eat a wild mushroom unchecked"
+  note the fly agaric in the picture asks for), and why we have
+  seasons. Three pictures were bundled from the owner's new image drop
+  because they fit better than the planned ones: `wind_turbines`,
+  `arctic_fox_winter`, `autumn_apples` (+~240 KB). Every English theme ×
+  level cell now offers three titles; all fifteen `nature_seasons`
+  titles fit one page at default settings in real Chromium.
 - **Title picker and predictable "Create text"** (upgrade blueprint v3,
   workstream I7, unblocked by the above). When a theme and level offer
   more than one text, a "Text" list above the button shows every title;
