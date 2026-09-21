@@ -72,8 +72,8 @@ Still open, deliberately: a native speaker's review of the English, German,
 French and Spanish content (they've had a careful editorial pass, not a
 native speaker's read — 0 of 100 entries native-reviewed); an
 image-accuracy pass over the entries whose pictures were reassigned on
-topic rather than drawn for the text (9 of 125 verified, the rest
-plausible). Both numbers come from the per-entry review record and are
+topic rather than drawn for the text (41 of 145 verified, 2 known
+mismatches, the rest plausible). Both numbers come from the per-entry review record and are
 printed by `npm run content-status`, so progress is measurable rather
 than asserted (see `docs/content-guide.md`). Also open: country-specific
 handwriting rulings (blocked on real classroom samples); fonts are declared

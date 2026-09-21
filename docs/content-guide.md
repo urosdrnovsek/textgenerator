@@ -214,10 +214,24 @@ From `npm run content-status`:
   second opinion) corrected 62 more breaks in 28 entries: 1 Spanish, 2
   German, 18 French (mostly `feu|il|le`-type words), 41 English. Native-
   speaker review: **0 of 100.**
-- **Images:** 29 of 145 `verified` (the four illustrations generated for
+- **Images:** 41 of 145 `verified` (the four illustrations generated for
   the mismatched Neuschwanstein, Uluru, Easter Island and Pont du Gard
   entries, the axolotl illustration bundled for the five Spanish ajolote
-  entries, and the twenty new English texts); the other 116 `plausible`;
-  none `mismatch`.
+  entries, the twenty new English texts, and the twelve story pictures
+  checked against their texts on 2026-09-21 — see below); 102
+  `plausible`; **2 `mismatch`**: the German "Das Licht im alten Haus"
+  pair (`stories_leuchtturmfenster_2/4`, a girl and her father finding a
+  glass that reflects the sun) sits on the treehouse picture and no
+  bundled or raw image fits — it needs a new illustration.
+- **Story pictures vs the child in the text (2026-09-21):** every story
+  picture was compared with every text that uses it. The three Slovene
+  "Tom" stories (`piscancek_2`, `piscancek_4`, `muc_5`) were illustrated
+  with a girl, so the texts are now about Mia with feminine verb forms
+  (version 3); English `kite_in_tree_1` became Mia and Grandpa; German
+  `wollmuetze_1/3` now follow the picture (Leon finds a red mitten, a girl
+  comes for it — "Der rote Handschuh"); French `boite_a_musique_1/2` are
+  about Léa, `clef_minuscule_4` about Noé; the French bike story got a
+  bundled bicycle picture (`bicycle_repair`). Rule for new texts: **look
+  at the picture first and match the child's gender to it.**
 
 That 0/100 is the reason the version is still a release candidate.

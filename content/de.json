@@ -5,12 +5,12 @@
   "entries": [
     {
       "id": "stories_wollmuetze_1",
-      "version": 1,
+      "version": 2,
       "theme": "stories",
       "level": 1,
-      "title": "Die wandernde Wollmütze",
-      "body": "Leni findet eine gelbe Mütze im Park. Sie legt sie gut sichtbar auf die Bank. Ein Junge sucht danach. Leni zeigt auf die Bank. Er freut sich.",
-      "syllable_body": "Le|ni fin|det ei|ne gel|be Müt|ze im Park. Sie legt sie gut sicht|bar auf die Bank. Ein Jun|ge sucht da|nach. Le|ni zeigt auf die Bank. Er freut sich.",
+      "title": "Der rote Handschuh",
+      "body": "Leon findet einen roten Handschuh im Park. Er legt ihn gut sichtbar auf die Bank. Ein Mädchen sucht danach. Leon zeigt auf die Bank. Das Mädchen freut sich.",
+      "syllable_body": "Le|on fin|det ei|nen ro|ten Hand|schuh im Park. Er legt ihn gut sicht|bar auf die Bank. Ein Mäd|chen sucht da|nach. Le|on zeigt auf die Bank. Das Mäd|chen freut sich.",
       "imageId": "red_mitten_bench",
       "review": {
         "status": "reviewed",
@@ -18,7 +18,7 @@
         "date": "2026-09-19",
         "nativeSpeaker": false,
         "syllablesReviewed": true,
-        "imageAccuracy": "plausible"
+        "imageAccuracy": "verified"
       }
     },
     {
@@ -36,17 +36,17 @@
         "date": "2026-09-19",
         "nativeSpeaker": false,
         "syllablesReviewed": true,
-        "imageAccuracy": "plausible"
+        "imageAccuracy": "mismatch"
       }
     },
     {
       "id": "stories_wollmuetze_3",
-      "version": 2,
+      "version": 3,
       "theme": "stories",
       "level": 3,
-      "title": "Die wandernde Wollmütze",
-      "body": "Eine gelbe Wollmütze liegt auf einer Parkbank. Leni hängt sie gut sichtbar an einen niedrigen Ast. Vom Weg aus ist der gelbe Stoff gut zu erkennen, und Leni hofft, dass jemand bald danach sucht. Ein Windstoß lässt die Mütze am Ast schaukeln, doch Leni hält sie fest, bevor sie fortfliegt. Leni wartet mit der Mütze im Park, bis ein Junge mit kalten Ohren freudig auf sie zuläuft. Zur Sicherheit näht seine Mutter ein Schild mit Namen und Telefonnummer in die Mütze.",
-      "syllable_body": "Ei|ne gel|be Woll|müt|ze liegt auf ei|ner Park|bank. Le|ni hängt sie gut sicht|bar an ei|nen nied|ri|gen Ast. Vom Weg aus ist der gel|be Stoff gut zu er|ken|nen, und Le|ni hofft, dass je|mand bald da|nach sucht. Ein Wind|stoß lässt die Müt|ze am Ast schau|keln, doch Le|ni hält sie fest, be|vor sie fort|fliegt. Le|ni war|tet mit der Müt|ze im Park, bis ein Jun|ge mit kal|ten Oh|ren freu|dig auf sie zu|läuft. Zur Si|cher|heit näht sei|ne Mut|ter ein Schild mit Na|men und Te|le|fon|num|mer in die Müt|ze.",
+      "title": "Der rote Handschuh",
+      "body": "Ein roter Handschuh liegt auf einer Parkbank. Leon hebt ihn auf und legt ihn gut sichtbar auf die Lehne. Vom Weg aus ist der rote Stoff gut zu erkennen, und Leon hofft, dass jemand bald danach sucht. Ein Windstoß lässt den Handschuh von der Lehne rutschen, doch Leon hält ihn fest, bevor er fortfliegt. Leon wartet mit dem Handschuh im Park, bis ein Mädchen mit kalten Händen freudig auf ihn zuläuft. Zur Sicherheit näht ihre Mutter ein Schild mit Namen und Telefonnummer in den Handschuh.",
+      "syllable_body": "Ein ro|ter Hand|schuh liegt auf ei|ner Park|bank. Le|on hebt ihn auf und legt ihn gut sicht|bar auf die Leh|ne. Vom Weg aus ist der ro|te Stoff gut zu er|ken|nen, und Le|on hofft, dass je|mand bald da|nach sucht. Ein Wind|stoß lässt den Hand|schuh von der Leh|ne rut|schen, doch Le|on hält ihn fest, be|vor er fort|fliegt. Le|on war|tet mit dem Hand|schuh im Park, bis ein Mäd|chen mit kal|ten Hän|den freu|dig auf ihn zu|läuft. Zur Si|cher|heit näht ih|re Mut|ter ein Schild mit Na|men und Te|le|fon|num|mer in den Hand|schuh.",
       "imageId": "red_mitten_bench",
       "review": {
         "status": "reviewed",
@@ -54,7 +54,7 @@
         "date": "2026-09-19",
         "nativeSpeaker": false,
         "syllablesReviewed": true,
-        "imageAccuracy": "plausible"
+        "imageAccuracy": "verified"
       }
     },
     {
@@ -72,7 +72,7 @@
         "date": "2026-09-19",
         "nativeSpeaker": false,
         "syllablesReviewed": true,
-        "imageAccuracy": "plausible"
+        "imageAccuracy": "mismatch"
       }
     },
     {

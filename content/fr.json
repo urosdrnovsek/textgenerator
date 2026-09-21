@@ -95,12 +95,12 @@
     },
     {
       "id": "stories_boite_a_musique_1",
-      "version": 1,
+      "version": 2,
       "theme": "stories",
       "level": 1,
       "title": "La boîte à musique",
-      "body": "Noé tourne la clé de sa boîte à musique. Rien ne bouge. Sa tante retire un ruban coincé. Le petit danseur tourne enfin au son de la musique.",
-      "syllable_body": "No|é tour|ne la clé de sa boî|te à mu|si|que. Rien ne bou|ge. Sa tan|te re|ti|re un ru|ban coin|cé. Le pe|tit dan|seur tour|ne en|fin au son de la mu|si|que.",
+      "body": "Léa tourne la clé de sa boîte à musique. Rien ne bouge. Sa tante retire un ruban coincé. Le petit danseur tourne enfin au son de la musique.",
+      "syllable_body": "Lé|a tour|ne la clé de sa boî|te à mu|si|que. Rien ne bou|ge. Sa tan|te re|ti|re un ru|ban coin|cé. Le pe|tit dan|seur tour|ne en|fin au son de la mu|si|que.",
       "imageId": "stara_skrinja",
       "review": {
         "status": "reviewed",
@@ -113,12 +113,12 @@
     },
     {
       "id": "stories_boite_a_musique_2",
-      "version": 1,
+      "version": 2,
       "theme": "stories",
       "level": 2,
       "title": "La boîte à musique",
-      "body": "Noé tourne la clé de sa boîte à musique. Rien ne bouge. Sa tante retire un ruban coincé. Noé pose la boîte sur un tissu doux. Sa tante éclaire l’intérieur. Il regarde les petites roues et attend avant de tourner la clé de nouveau. Le petit danseur tourne enfin au son de la musique.",
-      "syllable_body": "No|é tour|ne la clé de sa boî|te à mu|si|que. Rien ne bou|ge. Sa tan|te re|ti|re un ru|ban coin|cé. No|é po|se la boî|te sur un tis|su doux. Sa tan|te é|clai|re l’in|té|rieur. Il re|gar|de les pe|ti|tes roues et at|tend a|vant de tour|ner la clé de nou|veau. Le pe|tit dan|seur tour|ne en|fin au son de la mu|si|que.",
+      "body": "Léa tourne la clé de sa boîte à musique. Rien ne bouge. Sa tante retire un ruban coincé. Léa pose la boîte sur un tissu doux. Sa tante éclaire l’intérieur. Elle regarde les petites roues et attend avant de tourner la clé de nouveau. Le petit danseur tourne enfin au son de la musique.",
+      "syllable_body": "Lé|a tour|ne la clé de sa boî|te à mu|si|que. Rien ne bou|ge. Sa tan|te re|ti|re un ru|ban coin|cé. Lé|a po|se la boî|te sur un tis|su doux. Sa tan|te é|clai|re l’in|té|rieur. El|le re|gar|de les pe|ti|tes roues et at|tend a|vant de tour|ner la clé de nou|veau. Le pe|tit dan|seur tour|ne en|fin au son de la mu|si|que.",
       "imageId": "stara_skrinja",
       "review": {
         "status": "reviewed",
@@ -131,13 +131,13 @@
     },
     {
       "id": "stories_velo_bleu_3",
-      "version": 1,
+      "version": 2,
       "theme": "stories",
       "level": 3,
       "title": "Le vélo bleu",
       "body": "Amir apprend à rouler sur un vieux vélo bleu. Au début, il zigzague et pose souvent un pied par terre. Sa sœur dessine un cercle jaune pour marquer l’arrivée, sans lui demander d’aller vite. Sur une large piste tracée à la craie, sa sœur l’encourage à lever les yeux et à prendre son temps. Après plusieurs essais, Amir atteint le grand cercle jaune sans quitter la piste. Il ne va pas encore très vite, mais son sourire montre qu’il a gagné quelque chose de plus précieux.",
       "syllable_body": "A|mir ap|prend à rou|ler sur un vieux vé|lo bleu. Au dé|but, il zig|za|gue et po|se sou|vent un pied par ter|re. Sa sœur des|si|ne un cer|cle jau|ne pour mar|quer l’ar|ri|vée, sans lui de|man|der d’al|ler vi|te. Sur u|ne lar|ge pis|te tra|cée à la craie, sa sœur l’en|cou|ra|ge à le|ver les yeux et à pren|dre son temps. A|près plu|sieurs es|sais, A|mir at|teint le grand cer|cle jau|ne sans quit|ter la pis|te. Il ne va pas en|co|re très vi|te, mais son sou|ri|re mon|tre qu’il a ga|gné quel|que cho|se de plus pré|cieux.",
-      "imageId": "kite_chase",
+      "imageId": "bicycle_repair",
       "review": {
         "status": "reviewed",
         "reviewer": "Claude (AI editorial pass, not a native speaker)",
@@ -149,12 +149,12 @@
     },
     {
       "id": "stories_clef_minuscule_4",
-      "version": 2,
+      "version": 3,
       "theme": "stories",
       "level": 4,
       "title": "La clé minuscule",
-      "body": "Zoé trouve une clé minuscule sous un pot de fleurs. Elle essaie la serrure de sa boîte à crayons, mais la clé est trop petite. Zoé pose d’abord la clé sur la table pour ne pas la perdre à nouveau. Sa mamie propose de chercher dans la vieille maison de poupée rangée au grenier. Elles examinent ensemble le petit meuble. Une rainure dessine une porte si bien cachée que Zoé la prenait pour une décoration. Zoé essaie la clé dans la minuscule serrure et découvre qu’elle tourne sans le moindre effort. Derrière cette porte se trouve un tiroir contenant les graines préférées de son arrière-grand-mère. Zoé les sème dans une jardinière et garde la petite clé comme souvenir de cette découverte.",
-      "syllable_body": "Zo|é trou|ve u|ne clé mi|nus|cu|le sous un pot de fleurs. El|le es|saie la ser|ru|re de sa boî|te à cra|yons, mais la clé est trop pe|ti|te. Zo|é po|se d’a|bord la clé sur la ta|ble pour ne pas la per|dre à nou|veau. Sa ma|mie pro|po|se de cher|cher dans la vieil|le mai|son de pou|pée ran|gée au gre|nier. El|les e|xa|mi|nent en|sem|ble le pe|tit meu|ble. U|ne rai|nu|re des|si|ne u|ne por|te si bien ca|chée que Zo|é la pre|nait pour u|ne dé|co|ra|tion. Zo|é es|saie la clé dans la mi|nus|cu|le ser|ru|re et dé|cou|vre qu’el|le tour|ne sans le moin|dre ef|fort. Der|riè|re cet|te por|te se trou|ve un ti|roir con|te|nant les grai|nes pré|fé|rées de son ar|riè|re-grand-mè|re. Zo|é les sè|me dans u|ne jar|di|niè|re et gar|de la pe|ti|te clé com|me sou|ve|nir de cet|te dé|cou|ver|te.",
+      "body": "Noé trouve une clé minuscule sous un pot de fleurs. Il essaie la serrure de sa boîte à crayons, mais la clé est trop petite. Noé pose d’abord la clé sur la table pour ne pas la perdre à nouveau. Sa mamie propose de chercher dans la vieille maison de poupée rangée au grenier. Ils examinent ensemble le petit meuble. Une rainure dessine une porte si bien cachée que Noé la prenait pour une décoration. Noé essaie la clé dans la minuscule serrure et découvre qu’elle tourne sans le moindre effort. Derrière cette porte se trouve un tiroir contenant les graines préférées de son arrière-grand-mère. Noé les sème dans une jardinière et garde la petite clé comme souvenir de cette découverte.",
+      "syllable_body": "No|é trou|ve u|ne clé mi|nus|cu|le sous un pot de fleurs. Il es|saie la ser|ru|re de sa boî|te à cra|yons, mais la clé est trop pe|ti|te. No|é po|se d’a|bord la clé sur la ta|ble pour ne pas la per|dre à nou|veau. Sa ma|mie pro|po|se de cher|cher dans la vieil|le mai|son de pou|pée ran|gée au gre|nier. Ils e|xa|mi|nent en|sem|ble le pe|tit meu|ble. U|ne rai|nu|re des|si|ne u|ne por|te si bien ca|chée que No|é la pre|nait pour u|ne dé|co|ra|tion. No|é es|saie la clé dans la mi|nus|cu|le ser|ru|re et dé|cou|vre qu’el|le tour|ne sans le moin|dre ef|fort. Der|riè|re cet|te por|te se trou|ve un ti|roir con|te|nant les grai|nes pré|fé|rées de son ar|riè|re-grand-mè|re. No|é les sè|me dans u|ne jar|di|niè|re et gar|de la pe|ti|te clé com|me sou|ve|nir de cet|te dé|cou|ver|te.",
       "imageId": "silver_key_garden",
       "review": {
         "status": "reviewed",

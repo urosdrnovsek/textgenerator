@@ -934,6 +934,16 @@
       "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
       "source": "Generated with ChatGPT (OpenAI)",
       "attribution": "Uros Drnovsek"
+    },
+    {
+      "id": "bicycle_repair",
+      "mime": "image/jpeg",
+      "path": "assets/images/bicycle_repair.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
+      "source": "Generated with ChatGPT (OpenAI)",
+      "attribution": "Uros Drnovsek"
     }
   ]
 }

@@ -5,12 +5,12 @@
   "entries": [
     {
       "id": "stories_kite_in_tree_1",
-      "version": 1,
+      "version": 2,
       "theme": "stories",
       "level": 1,
       "title": "The Patient Kite",
-      "body": "Noah’s kite is in a tree. He sees a nest nearby. A gardener helps him lower the kite. The nest stays safe on its branch.",
-      "syllable_body": "No|ah’s kite is in a tree. He sees a nest near|by. A gar|den|er helps him low|er the kite. The nest stays safe on its branch.",
+      "body": "Mia’s kite is in a tree. She sees a nest nearby. Grandpa helps her lower the kite. The nest stays safe on its branch.",
+      "syllable_body": "Mi|a’s kite is in a tree. She sees a nest near|by. Grand|pa helps her low|er the kite. The nest stays safe on its branch.",
       "imageId": "kite_in_tree",
       "review": {
         "status": "reviewed",
@@ -18,7 +18,7 @@
         "date": "2026-09-19",
         "nativeSpeaker": false,
         "syllablesReviewed": true,
-        "imageAccuracy": "plausible"
+        "imageAccuracy": "verified"
       }
     },
     {
@@ -36,7 +36,7 @@
         "date": "2026-09-19",
         "nativeSpeaker": false,
         "syllablesReviewed": true,
-        "imageAccuracy": "plausible"
+        "imageAccuracy": "verified"
       }
     },
     {
@@ -54,7 +54,7 @@
         "date": "2026-09-20",
         "nativeSpeaker": false,
         "syllablesReviewed": true,
-        "imageAccuracy": "plausible"
+        "imageAccuracy": "verified"
       }
     },
     {
@@ -72,7 +72,7 @@
         "date": "2026-09-20",
         "nativeSpeaker": false,
         "syllablesReviewed": true,
-        "imageAccuracy": "plausible"
+        "imageAccuracy": "verified"
       }
     },
     {
@@ -90,7 +90,7 @@
         "date": "2026-09-20",
         "nativeSpeaker": false,
         "syllablesReviewed": true,
-        "imageAccuracy": "plausible"
+        "imageAccuracy": "verified"
       }
     },
     {

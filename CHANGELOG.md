@@ -7,6 +7,28 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
+- **Story pictures now match the child in the text.** Every story
+  picture was compared with every text that uses it (16 pictures, 35
+  entries, five languages). Eight entries had the wrong gender: the three
+  Slovene "Tom" stories were illustrated with a girl (the pictures were
+  drawn for these texts; "Tom" came from the 0.8 default-name decision),
+  so they are now about Mia with feminine verb forms (*preživljala,
+  čakala, sklonila, Deklica*…; version 3, wording otherwise untouched);
+  English "The Patient Kite" is Mia and Grandpa (was Noah and a
+  gardener); German "Die wandernde Wollmütze" is now "Der rote
+  Handschuh" — Leon finds a red mitten and a girl comes for it, as the
+  picture shows (was Leni, a yellow hat and a boy); French "La boîte à
+  musique" is about Léa (was Noé) and "La clé minuscule" about Noé (was
+  Zoé). The French bike story (a boy and his sister) sat on a girl-with-
+  kite picture; it now has a bundled bicycle picture (`bicycle_repair`,
+  owner-generated like the rest, +81 KB). Two German entries ("Das Licht
+  im alten Haus", `stories_leuchtturmfenster_2/4`) are recorded as
+  `imageAccuracy: mismatch` — nothing in the image pools fits, they need
+  a new illustration. Twelve story pictures that do match are now
+  `verified` (41 of 145 overall). Verified: all five languages' story
+  cells cycled through the real app (every text fits one page, no
+  console errors), `npm test`, `verify-docx` 11/11 (incl. the edited
+  Slovene level 5 and French level 3), `verify-offline`, `verify-firefox`.
 - **Child-name field removed.** The sidebar's "Child's name (optional)"
   box and the `{name}` placeholder behind it are gone. Only the 11 story
   entries (7 English, 4 Slovene) ever used it, and a typed name of the
