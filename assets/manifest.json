@@ -1134,6 +1134,36 @@
       "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
       "source": "Generated with ChatGPT (OpenAI)",
       "attribution": "Uros Drnovsek"
+    },
+    {
+      "id": "sunflower_planting",
+      "mime": "image/jpeg",
+      "path": "assets/images/sunflower_planting.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
+      "source": "Generated with ChatGPT (OpenAI)",
+      "attribution": "Uros Drnovsek"
+    },
+    {
+      "id": "tree_frog",
+      "mime": "image/jpeg",
+      "path": "assets/images/tree_frog.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
+      "source": "Generated with ChatGPT (OpenAI)",
+      "attribution": "Uros Drnovsek"
+    },
+    {
+      "id": "roman_mosaic",
+      "mime": "image/jpeg",
+      "path": "assets/images/roman_mosaic.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
+      "source": "Generated with ChatGPT (OpenAI)",
+      "attribution": "Uros Drnovsek"
     }
   ]
 }

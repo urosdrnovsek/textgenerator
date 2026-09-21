@@ -35,7 +35,13 @@ summarizes what shipped and what was verified; the commit messages in
   telescope (why planets don't twinkle, "wanderers"), and a rover on
   Mars (cameras, drill, the twenty-minute signal delay, rocks laid down
   by water). All fit one page at default settings in real Chromium.
-  Round 2 finishes with a few nature / around-the-world cells.
+- **Round 2 complete** (batch 4): three last pictures bundled
+  (`sunflower_planting`, `tree_frog`, `roman_mosaic`) for the cells they
+  fit — planting a sunflower and waiting (nature L2), a tree frog and the
+  wet and dry seasons where there is no winter (nature L3), and a Roman
+  mosaic workshop with the Pompeii "Beware of the dog" floor (around
+  the world L4). The English pack now has 93 entries. The 19 pictures
+  bundled since 0.8.1 add about 1.5 MB to the download (ZIP now ~10.2 MB).
 - **Story pictures now match the child in the text.** Every story
   picture was compared with every text that uses it (16 pictures, 35
   entries, five languages). Eight entries had the wrong gender: the three

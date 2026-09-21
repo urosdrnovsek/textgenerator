@@ -200,8 +200,9 @@ From `npm run content-status`:
   never formally reviewed, because it was written by the project owner
   rather than reviewed after the fact. Images: `plausible` (drawn for the
   texts, never checked one by one).
-- **English:** 90 entries — three per theme × level cell, four in the
-  story, animal and science cells. The 25 below plus fifty original texts (ten per
+- **English:** 93 entries — three per theme × level cell, four in the
+  story, animal and science cells and in three more (nature L2/L3,
+  around the world L4). The 25 below plus fifty original texts (ten per
   theme, two per level; stories on 2026-09-20, the other four themes on
   2026-09-21), each written for the picture it is paired with
   (`imageAccuracy: verified`); then a second round (from 2026-09-21) adds
@@ -210,8 +211,11 @@ From `npm run content-status`:
   `mountain_camping`), then animals (`hummingbird`, `red_panda`,
   `sea_turtle_cleaners`, `orangutan`, `humpback_calf`) and science
   (`solar_oven`, `electric_circuit`, `ammonite_fossil`,
-  `backyard_telescope`, `mars_rover`); a few nature and around-the-world
-  cells to follow.
+  `backyard_telescope`, `mars_rover`), and finally `sunflower_planting`,
+  `tree_frog` and `roman_mosaic`. Round 2 is complete: every picture in
+  the drop that fitted a cell is used; five story-like pictures (music
+  rehearsal, fire station, vegetable soup, winter postman, lighthouse
+  keeper) remain unbundled.
 - **English (original 25), German, French, Spanish:** 25 entries each, all `reviewed`
   by an AI editorial pass on 2026-09-19 (`nativeSpeaker: false`,
   `syllablesReviewed: true`; 3 German and 3 French syllable breaks were
@@ -221,7 +225,7 @@ From `npm run content-status`:
   second opinion) corrected 62 more breaks in 28 entries: 1 Spanish, 2
   German, 18 French (mostly `feu|il|le`-type words), 41 English. Native-
   speaker review: **0 of 100.**
-- **Images:** 88 of 190 `verified` (the four illustrations generated for
+- **Images:** 91 of 193 `verified` (the four illustrations generated for
   the mismatched Neuschwanstein, Uluru, Easter Island and Pont du Gard
   entries, the axolotl illustration bundled for the five Spanish ajolote
   entries, the fifty new English texts, the twelve story pictures
