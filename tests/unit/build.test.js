@@ -29,7 +29,6 @@ const BASE_SETTINGS = {
   syllableMode: 'colors',
   syllableColors: ['#1D4ED8', '#B45309'],
   header: { nameLine: true, date: true, title: true },
-  personalization: { name: '' },
   marginMm: 20
 };
 
@@ -113,7 +112,6 @@ test('buildWorksheet returns settings that do not alias the caller\'s object (a 
   live.letterColors.b = '#000000'; // in-place mutation of a nested map
   live.letterColors = { z: '#111111' }; // and reassignment
   live.syllableColors.push('#222222'); // in-place mutation of a nested array
-  live.personalization.name = 'Eva';
 
   assert.deepEqual(model.settings, reference);
   assert.notDeepEqual(model.settings, live);

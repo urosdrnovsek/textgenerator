@@ -108,7 +108,7 @@ class CdpClient {
  * not an exhaustive permutation: every language once, every font once,
  * every writing mode once, the near-max-content level-5 boundary case
  * (twice — once per script author's higher-risk languages), tint,
- * sentence-per-line, and personalization each exercised at least once.
+ * and sentence-per-line each exercised at least once.
  */
 // entryId pins the text when a theme/level cell holds more than one (the
 // English pack has three per stories cell since 2026-09-20). Without it a
@@ -117,7 +117,7 @@ class CdpClient {
 // only needs *a* worksheet, but a boundary case that exists because of one
 // specific text must say which one.
 const CASES = [
-  { label: 'sl-andika-level1-readcopy-colors-name', language: 'sl', theme: 'stories', level: 1, fontId: 'andika', writingMode: 'read-copy', letterColors: true, syllableColors: true, name: 'Maja' },
+  { label: 'sl-andika-level1-readcopy-colors', language: 'sl', theme: 'stories', level: 1, fontId: 'andika', writingMode: 'read-copy', letterColors: true, syllableColors: true },
   { label: 'sl-andika-level5-readcopy-stress', language: 'sl', theme: 'stories', level: 5, fontId: 'andika', writingMode: 'read-copy' },
   { label: 'en-lexend-level3-trace', language: 'en', theme: 'stories', level: 3, entryId: 'stories_piscancek_3', fontId: 'lexend', writingMode: 'trace' },
   { label: 'de-opendyslexic-level3-readonly-tint', language: 'de', theme: 'stories', level: 3, fontId: 'opendyslexic', writingMode: 'read-only', tintId: 'cream', printTint: true },
@@ -269,8 +269,6 @@ async function main() {
           document.getElementById('tint-select').dispatchEvent(new Event('change', { bubbles: true }));
           document.getElementById('print-tint-toggle').checked = ${Boolean(testCase.printTint)};
           document.getElementById('print-tint-toggle').dispatchEvent(new Event('change', { bubbles: true }));
-          document.getElementById('name-input').value = ${JSON.stringify(testCase.name ?? '')};
-          document.getElementById('name-input').dispatchEvent(new Event('change', { bubbles: true }));
           ${testCase.wordSpacingPt !== undefined ? `
           document.getElementById('word-spacing-input').value = '${testCase.wordSpacingPt}';
           document.getElementById('word-spacing-input').dispatchEvent(new Event('change', { bubbles: true }));

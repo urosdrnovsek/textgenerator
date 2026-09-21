@@ -73,11 +73,9 @@ teacher import.
   "theme": "stories",
   "level": 2,
   "title": "The White Egg",
-  "body": "{name} was spending the summer at Grandma's farm. …",
-  "syllable_body": "{name} was spend|ing the sum|mer at Grand|ma's farm. …",
-  "name_default": "Mia",
-  "name_default_syllables": "Mi|a",
-  "imageId": "piscancek_lupina",
+  "body": "Mia was spending the summer at Grandma's farm. …",
+  "syllable_body": "Mi|a was spend|ing the sum|mer at Grand|ma's farm. …",
+  "imageId": "piscancek_gnezdo",
   "review": {
     "status": "reviewed",
     "reviewer": "Claude (AI editorial pass, not a native speaker)",
@@ -96,23 +94,22 @@ teacher import.
 | `theme` | yes | One of the five theme ids above. |
 | `level` | yes | Integer 1–5. |
 | `title` | yes | Printed as the worksheet heading (when the header's title field is on). |
-| `body` | yes | The passage, as one flowing text (the bundled entries use no line breaks). The only placeholder allowed is `{name}`. |
+| `body` | yes | The passage, as one flowing text (the bundled entries use no line breaks). No placeholders — a `{…}` in the text is rejected. |
 | `syllable_body` | no | `body` with `\|` between syllables (`sum\|mer`). With the separators removed it must reproduce `body` *exactly*, character for character — the app checks this. Needed for the syllable-colour and syllable-separator supports; without it those supports render the entry unmarked. |
-| `name_default` | when `body` contains `{name}` | The child's name used when the teacher leaves the name field empty. Project rule: **Tom for a boy, Mia for a girl.** Must not contain `\|`, `{` or `}`. |
-| `name_default_syllables` | no | `name_default` with syllable separators (`Mi\|a`), so the default name takes part in syllable colouring. Must reproduce `name_default` with `\|` removed. |
 | `sentences` | no | The body split into sentences. Joined with single spaces they must reproduce `body` exactly. Validated and carried through, but the app does not use it yet: "one sentence per line" currently splits `body` on sentence punctuation. Leave it out. |
 | `imageId` | yes | The id of an image in `assets/manifest.json` (for teacher imports: the image filename without extension). Every entry has a picture. |
 | `review` | yes | Review provenance — see below. |
 
-### `{name}` and the default name
+### The child in a story
 
-A text that addresses the child uses `{name}` in `body` (and in
-`syllable_body` and `sentences`, identically). At render time it is
-replaced with the teacher's name field, or with `name_default` when that
-is empty — a worksheet never prints a literal `{name}`. Write the sentence
-so it works with any short name; don't rely on the name's gender or
-grammatical case beyond what `name_default` shows, because a teacher can
-type anything.
+A story that follows a child names the child in the text like any other
+word. Project rule: **Tom for a boy, Mia for a girl** (syllables `Tom`,
+`Mi|a`). Until 0.8.1 the packs used a `{name}` placeholder that a teacher
+could fill in from a "Child's name" field; that was removed because a
+name of the other gender made the text wrong — pronouns in English, and
+gendered verb and adjective forms in Slovene (*je preživljal*, *je
+čakal*), which no substitution can fix. Older entries with `{name}` and
+`name_default` are rejected by the validator; write the name out.
 
 ### Syllable breaks — the convention per language
 

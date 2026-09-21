@@ -23,7 +23,7 @@
  * unverified without the real cross-application "compatibility gate"
  * testing (actual Word, actual LibreOffice, actual content) the blueprint
  * calls for, which is a separate, later effort. Everything else about the
- * passage (text, colors, personalization, sentence-per-line, trace,
+ * passage (text, colors, sentence-per-line, trace,
  * tint) still exports correctly; only the striped background is skipped.
  */
 

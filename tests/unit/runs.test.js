@@ -45,7 +45,7 @@ test('syllable runs alternate per syllable and reset at each word', () => {
   );
 });
 
-test('a name substituted as a single unsplit chunk (as resolvePersonalization does for a teacher-typed name) still alternates correctly around it', () => {
+test('a word with no syllable marks of its own (a one-syllable name) still alternates correctly around it', () => {
   // "Zgod"(0) "ba"(1) " "(base) "o"(0, word boundary reset) " "(base) "Eva."(0, its own word — one chunk, not split into syllables)
   const syllableBody = 'Zgod|ba o Eva.';
   const runs = buildSyllableRuns(syllableBody, { syllableColors: ['#111111', '#222222'] });

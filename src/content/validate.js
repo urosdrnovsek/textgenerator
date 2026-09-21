@@ -18,7 +18,10 @@ const KNOWN_IMAGE_ACCURACIES = new Set(['verified', 'plausible', 'mismatch']);
 // YYYY-MM-DD only — a review date is a label for humans and
 // `content-status`, never parsed as a timestamp.
 const ISO_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
-const ALLOWED_PLACEHOLDERS = new Set(['name']);
+// Texts carry no placeholders. `{name}` used to be one (a teacher-typed
+// child name, removed in 0.8.1 because a name of the other gender made the
+// story ungrammatical); a body that still contains `{...}` is rejected
+// rather than printed with literal braces.
 const PLACEHOLDER_PATTERN = /\{([a-zA-Z_]+)\}/g;
 
 /**
@@ -30,8 +33,6 @@ const PLACEHOLDER_PATTERN = /\{([a-zA-Z_]+)\}/g;
  * @property {string} title
  * @property {string} body
  * @property {string} [syllable_body]
- * @property {string} [name_default] required whenever body contains `{name}` — the name used when the teacher leaves the name field empty
- * @property {string} [name_default_syllables] optional syllable-marked form of name_default, so the default name can take part in syllable coloring
  * @property {string[]} [sentences] must join with single spaces to reproduce body exactly
  * @property {string} imageId
  * @property {EntryReview} review
@@ -77,18 +78,12 @@ function isNonEmptyString(value) {
 }
 
 /**
- * Checks that only the `{name}` placeholder is used in a text field.
+ * Lists every `{placeholder}` in a text field — none are supported.
  * @param {string} text
- * @returns {string[]} unknown placeholder names found
+ * @returns {string[]} placeholder names found
  */
-function findUnknownPlaceholders(text) {
-  const unknown = [];
-  for (const match of text.matchAll(PLACEHOLDER_PATTERN)) {
-    if (!ALLOWED_PLACEHOLDERS.has(match[1])) {
-      unknown.push(match[1]);
-    }
-  }
-  return unknown;
+function findPlaceholders(text) {
+  return [...text.matchAll(PLACEHOLDER_PATTERN)].map((match) => match[1]);
 }
 
 /**
@@ -138,9 +133,9 @@ function validateEntry(raw, assetIds, seenIds) {
     push('MISSING_FIELD', 'body', 'body is required');
   } else {
     body = normalize(entry.body);
-    const unknown = findUnknownPlaceholders(body);
-    if (unknown.length > 0) {
-      push('UNKNOWN_PLACEHOLDER', 'body', `unsupported placeholder(s): ${unknown.join(', ')}`);
+    const placeholders = findPlaceholders(body);
+    if (placeholders.length > 0) {
+      push('UNKNOWN_PLACEHOLDER', 'body', `unsupported placeholder(s): ${placeholders.join(', ')} — texts are printed as written`);
     }
   }
 
@@ -157,42 +152,6 @@ function validateEntry(raw, assetIds, seenIds) {
           'syllable_body with "|" removed must exactly reproduce body'
         );
       }
-    }
-  }
-
-  // A {name} placeholder needs a default name to fall back to when the
-  // teacher leaves the name field empty (blueprint v3, workstream B) —
-  // required, not optional, so a content author can never ship an entry
-  // that silently deletes the placeholder at render time.
-  let nameDefault = null;
-  const requiresNameDefault = body !== null && body.includes('{name}');
-  if (requiresNameDefault) {
-    if (!isNonEmptyString(entry.name_default)) {
-      push('MISSING_NAME_DEFAULT', 'name_default', 'name_default is required when body contains {name}');
-    } else {
-      const candidate = normalize(entry.name_default);
-      if (candidate.includes('|') || candidate.includes('{') || candidate.includes('}')) {
-        push('INVALID_NAME_DEFAULT', 'name_default', 'name_default must not contain "|", "{", or "}"');
-      } else {
-        nameDefault = candidate;
-      }
-    }
-  }
-
-  if (entry.name_default_syllables !== undefined) {
-    if (typeof entry.name_default_syllables !== 'string' || entry.name_default_syllables.length === 0) {
-      push('INVALID_FIELD', 'name_default_syllables', 'name_default_syllables must be a non-empty string when present');
-    } else if (nameDefault !== null) {
-      const stripped = normalize(entry.name_default_syllables).replaceAll('|', '');
-      if (stripped !== nameDefault) {
-        push(
-          'SYLLABLE_MISMATCH',
-          'name_default_syllables',
-          'name_default_syllables with "|" removed must exactly reproduce name_default'
-        );
-      }
-    } else {
-      push('INVALID_FIELD', 'name_default_syllables', 'name_default_syllables requires a valid name_default to check against');
     }
   }
 
@@ -258,8 +217,6 @@ function validateEntry(raw, assetIds, seenIds) {
       title: entry.title,
       body,
       syllable_body: typeof entry.syllable_body === 'string' ? normalize(entry.syllable_body) : undefined,
-      name_default: nameDefault ?? undefined,
-      name_default_syllables: typeof entry.name_default_syllables === 'string' ? normalize(entry.name_default_syllables) : undefined,
       sentences: Array.isArray(entry.sentences) ? entry.sentences.map((s) => normalize(s)) : undefined,
       imageId: entry.imageId,
       review: {

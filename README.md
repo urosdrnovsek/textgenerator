@@ -46,8 +46,6 @@ to a school.
   Dyslexia-friendly starting point.
 - **Writing modes:** read & copy (ruled handwriting lines), trace (light
   text to trace over), read only.
-- **Personalization:** texts that address the child by name use a typed
-  name, or a built-in default when the field is left empty.
 - **Header fields** (name line, date, title), each on/off; an optional
   custom image per worksheet.
 - **Export:** Print / Save as PDF (keeps the layout exactly as previewed)
@@ -88,7 +86,7 @@ Texts live in `content/<language>.json`, one file per language, validated
 by `src/content/validate.js` and gated at build time by
 `scripts/validate-content.mjs`. `docs/content-guide.md` is the maintainer's
 reference: the five level definitions and word bands, every entry field
-(including `{name}` and `name_default`), and how to record a review so
+and how to record a review so
 `npm run content-status` can count it. The teacher-facing way to add texts
 (no rebuild) is described in `docs/teacher-guide.md`; the permanent way is
 to edit the JSON and run `npm run build`.

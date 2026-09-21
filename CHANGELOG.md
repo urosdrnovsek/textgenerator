@@ -7,6 +7,23 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
+- **Child-name field removed.** The sidebar's "Child's name (optional)"
+  box and the `{name}` placeholder behind it are gone. Only the 11 story
+  entries (7 English, 4 Slovene) ever used it, and a typed name of the
+  other gender made the text wrong: English stories say "she", and
+  Slovene puts gender into the verbs and adjectives themselves (*je
+  preživljal*, *je čakal*, *naj bo potrpežljiv*), so "Ana je poletje
+  preživljal" was one keystroke away. Fixing that properly means a second,
+  fully authored version of every story, forever; the owner chose to
+  drop the field instead. The 11 texts now carry the name they already
+  showed by default (Mia/Tom) written out — the rendered worksheet is
+  unchanged, so no `version` bump — and `name_default` /
+  `name_default_syllables` are no longer part of the schema (an entry
+  that still has them is accepted and the fields ignored; a body that
+  still contains `{name}` is rejected). Saved setups never held the name,
+  so nothing stored by a teacher is affected. Removed with it:
+  `resolvePersonalization`, `DEFAULT_CHILD_NAME`, two locale strings in
+  each language, the `name` step in `verify-docx`.
 - **English stories: three texts per level.** Ten original English
   stories (two per level, 34–185 words) written for pictures already in
   the bundle — the wet kitten, the leaf boat, the kite in the oak, the

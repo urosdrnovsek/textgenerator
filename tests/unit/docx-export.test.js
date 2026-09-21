@@ -27,7 +27,6 @@ const SETTINGS = {
   syllableMode: 'colors',
   syllableColors: ['#1D4ED8', '#B45309'],
   header: { nameLine: true, date: true, title: true },
-  personalization: { name: '' },
   marginMm: 20
 };
 

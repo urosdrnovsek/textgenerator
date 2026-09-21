@@ -78,61 +78,26 @@ test('a failing entry does not throw — it returns structured errors', async ()
   assert.doesNotThrow(() => validatePack(pack, ASSET_IDS));
 });
 
-test('accepts a valid name_default/name_default_syllables pair and carries it through to the entry', async () => {
+test('rejects a body that still contains the retired {name} placeholder', async () => {
   const pack = await loadSlPack();
   pack.entries[0].body = 'Zgodba o {name} in zmaju.';
   pack.entries[0].syllable_body = 'Zgod|ba o {name} in zma|ju.';
-  pack.entries[0].name_default = 'Tom';
-  pack.entries[0].name_default_syllables = 'Tom';
-  const result = validatePack(pack, ASSET_IDS);
-  assert.equal(result.ok, true);
-  assert.equal(result.pack.entries[0].name_default, 'Tom');
-  assert.equal(result.pack.entries[0].name_default_syllables, 'Tom');
-});
-
-test('rejects a {name} body with no name_default at all', async () => {
-  const pack = await loadSlPack();
-  pack.entries[0].body = 'Zgodba o {name} in zmaju.';
-  pack.entries[0].syllable_body = 'Zgod|ba o {name} in zma|ju.';
-  // entries[0] is a real starter entry that already carries its own
-  // name_default — remove it so this test actually exercises the "missing"
-  // case rather than inheriting a valid default from the fixture.
-  delete pack.entries[0].name_default;
-  delete pack.entries[0].name_default_syllables;
   const result = validatePack(pack, ASSET_IDS);
   assert.equal(result.ok, false);
-  assert.ok(result.errors.some((e) => e.code === 'MISSING_NAME_DEFAULT' && e.field === 'name_default'));
+  assert.ok(result.errors.some((e) => e.code === 'UNKNOWN_PLACEHOLDER' && e.field === 'body'));
 });
 
-test('rejects a name_default that contains "|", "{", or "}"', async () => {
+test('drops fields from older schemas (name_default, name_default_syllables, neutral_body) instead of carrying them through', async () => {
   const pack = await loadSlPack();
-  pack.entries[0].body = 'Zgodba o {name}.';
-  pack.entries[0].syllable_body = 'Zgod|ba o {name}.';
-  pack.entries[0].name_default = 'To|m';
-  const result = validatePack(pack, ASSET_IDS);
-  assert.equal(result.ok, false);
-  assert.ok(result.errors.some((e) => e.code === 'INVALID_NAME_DEFAULT' && e.field === 'name_default'));
-});
-
-test('rejects a name_default_syllables that does not reproduce name_default', async () => {
-  const pack = await loadSlPack();
-  pack.entries[0].body = 'Zgodba o {name}.';
-  pack.entries[0].syllable_body = 'Zgod|ba o {name}.';
-  pack.entries[0].name_default = 'Mia';
-  pack.entries[0].name_default_syllables = 'Mi|a|a';
-  const result = validatePack(pack, ASSET_IDS);
-  assert.equal(result.ok, false);
-  assert.ok(result.errors.some((e) => e.code === 'SYLLABLE_MISMATCH' && e.field === 'name_default_syllables'));
-});
-
-test('an entry with no {name} placeholder does not require name_default, and a stray neutral_body field is dropped rather than carried through', async () => {
-  const pack = await loadSlPack();
-  const entry = pack.entries.find((e) => !e.body.includes('{name}'));
+  const entry = pack.entries[0];
+  entry.name_default = 'Tom';
+  entry.name_default_syllables = 'Tom';
   entry.neutral_body = 'left over from an older schema';
   const result = validatePack(pack, ASSET_IDS);
   assert.equal(result.ok, true);
   const resultEntry = result.pack.entries.find((e) => e.id === entry.id);
   assert.equal(resultEntry.name_default, undefined);
+  assert.equal(resultEntry.name_default_syllables, undefined);
   assert.equal(resultEntry.neutral_body, undefined);
 });
 

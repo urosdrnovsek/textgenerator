@@ -103,7 +103,7 @@ export function init({
     applyPresetSettings(DYSLEXIA_FORMATTING, { keepSelection: true });
   }
 
-  /** Everything a preset should capture. Deliberately excludes personalization.name — presets are reusable setups shared across children, not tied to one child's saved worksheet (blueprint 8.10, section 15). */
+  /** Everything a preset should capture. */
   function extractPresetSettings() {
     const s = state.settings;
     return {
@@ -192,7 +192,6 @@ export function init({
       lineStripes: full.lineStripes ?? false,
       printStripes: full.printStripes ?? false,
       marginMm: full.marginMm
-      // personalization is left untouched — loading a setup must not erase a name already typed in
     }));
 
     els.themeSelect.value = state.filter.theme;

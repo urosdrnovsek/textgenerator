@@ -83,12 +83,6 @@ afterward.
 - **Trace** — the text shown lightly, for tracing over.
 - **Read only** — just the text and picture, no handwriting lines.
 
-**Child's name** (optional) personalizes a text that supports it. Type any
-name and it's used exactly as typed. Leave it blank and the text uses its
-own built-in default name instead (shown as the box's example text, e.g.
-"e.g. Mia") — texts never print with the name missing. A name you type is
-inserted exactly as written, with no grammar adjustment, so pick one that
-fits the sentence if the wording reads a little oddly with an unusual name.
 **Custom image** lets you swap in your own picture (PNG or JPEG) for this
 one worksheet; it's not saved anywhere and resets the next time you create
 a new text.
@@ -107,8 +101,8 @@ setup you saved yourself restores everything it was saved with, including
 the language and the theme/level, and creates a text for them — that's
 what saving a setup is for.
 
-A saved setup does **not** include a child's name or a custom image — those
-stay specific to the one worksheet you were making, not the reusable setup.
+A saved setup does **not** include a custom image — that stays specific to
+the one worksheet you were making, not the reusable setup.
 
 ### Backing up and restoring your setups
 
@@ -155,11 +149,8 @@ content) can add new texts without changing any code:
 1. Prepare a JSON file describing one or more texts for a single language,
    following the same structure as the files already bundled in
    `content/*.json` — copy an existing entry as a starting point (every
-   field is explained in `docs/content-guide.md`). If your
-   text should address the child by name, use `{name}` in the text exactly
-   like the bundled examples do, and also fill in `name_default` (the name
-   used whenever a teacher leaves the name field blank) — an entry using
-   `{name}` without a `name_default` is rejected on import.
+   field is explained in `docs/content-guide.md`). Write any child's name
+   out in the text itself — there is no name placeholder.
 2. If the new texts use pictures that aren't already in `assets/images/`,
    select those image files too (PNG or JPEG). Each new text's `imageId`
    in the JSON should match its image's filename without the extension

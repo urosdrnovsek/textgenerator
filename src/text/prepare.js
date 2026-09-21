@@ -1,52 +1,13 @@
 /**
- * Personalization and canonical text resolution.
+ * Canonical text helpers with no browser or storage dependency.
  *
- * Resolves the `{name}` placeholder against a validated ContentEntry.
- * Owns no browser or storage dependency.
+ * Until 0.8.1 this module also resolved a `{name}` placeholder against a
+ * teacher-typed child name. That feature was removed (see CHANGELOG): the
+ * story texts now carry a fixed child name, because a typed name of the
+ * "other" gender produced ungrammatical text — pronouns in English, and
+ * gendered verb and adjective forms in Slovene, which no substitution can
+ * fix without a second, fully authored version of every story.
  */
-
-const NAME_PLACEHOLDER = '{name}';
-
-/**
- * @typedef {object} ResolvedText
- * @property {string} body
- * @property {string | undefined} syllableBody syllable markers survive
- *   personalization in every case — either the entry's authored boundaries
- *   (no {name} used), or with the name substituted as its own chunk
- * @property {boolean} personalized true only when the teacher typed a name;
- *   false when the entry's name_default was used instead
- */
-
-/**
- * Resolves the `{name}` placeholder. An entry that uses `{name}` always has
- * a validated `name_default` (enforced by content/validate.js) — there is no
- * "blank" state: an empty name field falls back to that default rather than
- * deleting the placeholder (upgrade blueprint v3, workstream B — the old
- * blind-removal fallback produced broken sentences like "Was spending the
- * summer..." and is deliberately not kept, not even as an option).
- * @param {{ body: string, syllable_body?: string, name_default?: string, name_default_syllables?: string }} entry
- * @param {string | undefined} name teacher-supplied child name, already trimmed and stripped of "|{}" by the caller's UI layer
- * @returns {ResolvedText}
- */
-export function resolvePersonalization(entry, name) {
-  if (!entry.body.includes(NAME_PLACEHOLDER)) {
-    return { body: entry.body, syllableBody: entry.syllable_body, personalized: false };
-  }
-
-  const typedName = (name ?? '').trim();
-  const usingTypedName = typedName.length > 0;
-  const effectiveName = usingTypedName ? typedName : entry.name_default;
-  // A teacher-typed name has no authored syllable boundaries, so it is
-  // inserted as a single unsplit chunk; the default name may have its own
-  // authored boundaries (name_default_syllables) and uses those instead.
-  const effectiveSyllables = usingTypedName ? typedName : (entry.name_default_syllables ?? entry.name_default);
-
-  return {
-    body: entry.body.replaceAll(NAME_PLACEHOLDER, effectiveName),
-    syllableBody: entry.syllable_body?.replaceAll(NAME_PLACEHOLDER, effectiveSyllables),
-    personalized: usingTypedName
-  };
-}
 
 /**
  * Splits on a paragraph break, or a run of non-terminator characters
@@ -65,7 +26,7 @@ const CLOSING_MARKS = '»«"\'“”‘’)\\]';
 const SENTENCE_PATTERN = new RegExp(`[^.!?]+[.!?]+[${CLOSING_MARKS}]*(?=\\s|$)|[^.!?]+$`, 'g');
 
 /**
- * @param {string} text already-resolved body text (post-personalization)
+ * @param {string} text the entry's body text
  * @returns {string[]} one entry per sentence, trimmed, empty ones dropped
  */
 export function splitIntoSentences(text) {

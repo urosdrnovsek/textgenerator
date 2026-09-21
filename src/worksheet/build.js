@@ -5,7 +5,7 @@
  * section 3's module responsibility table).
  */
 
-import { resolvePersonalization, splitIntoSentences } from '../text/prepare.js';
+import { splitIntoSentences } from '../text/prepare.js';
 import { buildStyledRuns, splitRunsIntoSentences, lightenParagraphs, countWords } from '../text/runs.js';
 
 /**
@@ -35,7 +35,6 @@ import { buildStyledRuns, splitRunsIntoSentences, lightenParagraphs, countWords 
  * @property {boolean} [lineStripes] alternating faint background per real measured visual line — HTML/PDF only, see src/export/docx.js's header comment for why
  * @property {boolean} [printStripes] whether stripes also show when printed (default off, to save ink)
  * @property {{ nameLine: boolean, date: boolean, title: boolean }} header
- * @property {{ name?: string }} [personalization]
  * @property {number} marginMm
  * @property {number} pageWidthMm
  * @property {number} pageHeightMm
@@ -61,7 +60,10 @@ import { buildStyledRuns, splitRunsIntoSentences, lightenParagraphs, countWords 
  * @returns {WorksheetModel}
  */
 export function buildWorksheet(entry, settings, assets, localeForWordCount) {
-  const resolvedText = resolvePersonalization(entry, settings.personalization?.name);
+  // The entry's text is used as authored — there is no placeholder
+  // substitution step any more (the child-name feature was removed; see
+  // src/text/prepare.js).
+  const resolvedText = { body: entry.body, syllableBody: entry.syllable_body };
 
   const bodyRuns = buildStyledRuns(resolvedText, {
     letterColors: settings.letterColors,
