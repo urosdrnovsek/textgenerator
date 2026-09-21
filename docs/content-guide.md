@@ -216,15 +216,15 @@ From `npm run content-status`:
   second opinion) corrected 62 more breaks in 28 entries: 1 Spanish, 2
   German, 18 French (mostly `feu|il|le`-type words), 41 English. Native-
   speaker review: **0 of 100.**
-- **Images:** 71 of 175 `verified` (the four illustrations generated for
+- **Images:** 73 of 175 `verified` (the four illustrations generated for
   the mismatched Neuschwanstein, Uluru, Easter Island and Pont du Gard
   entries, the axolotl illustration bundled for the five Spanish ajolote
-  entries, the fifty new English texts, and the twelve story pictures
-  checked against their texts on 2026-09-21 — see below); 102
-  `plausible`; **2 `mismatch`**: the German "Das Licht im alten Haus"
-  pair (`stories_leuchtturmfenster_2/4`, a girl and her father finding a
-  glass that reflects the sun) sits on the treehouse picture and no
-  bundled or raw image fits — it needs a new illustration.
+  entries, the fifty new English texts, the twelve story pictures
+  checked against their texts on 2026-09-21 — see below — and the
+  German "Das Licht im alten Haus" pair, which got its own illustration
+  the same day: `light_old_house`, a girl and her father in an old room
+  with a glass on the windowsill throwing a spot of sunlight on the
+  wall); 102 `plausible`; none `mismatch`.
 - **Story pictures vs the child in the text (2026-09-21):** every story
   picture was compared with every text that uses it. The three Slovene
   "Tom" stories (`piscancek_2`, `piscancek_4`, `muc_5`) were illustrated

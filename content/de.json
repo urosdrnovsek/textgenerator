@@ -23,20 +23,20 @@
     },
     {
       "id": "stories_leuchtturmfenster_2",
-      "version": 1,
+      "version": 2,
       "theme": "stories",
       "level": 2,
       "title": "Das Licht im alten Haus",
       "body": "Nora sieht ein Licht im alten Haus. Ihr Vater geht mit ihr nachsehen. Ein Glas spiegelt die Sonne. Sie betrachten das Glas vom erlaubten Zugang aus. Der helle Fleck wandert, wenn sich der Blickwinkel ändert. Nora beobachtet den Fleck und schaut nie direkt in die Sonne. Das Licht kommt nicht von einer Lampe.",
       "syllable_body": "No|ra sieht ein Licht im al|ten Haus. Ihr Va|ter geht mit ihr nach|se|hen. Ein Glas spie|gelt die Son|ne. Sie be|trach|ten das Glas vom er|laub|ten Zu|gang aus. Der hel|le Fleck wan|dert, wenn sich der Blick|win|kel än|dert. No|ra be|ob|ach|tet den Fleck und schaut nie di|rekt in die Son|ne. Das Licht kommt nicht von ei|ner Lam|pe.",
-      "imageId": "hisica_drevo",
+      "imageId": "light_old_house",
       "review": {
         "status": "reviewed",
         "reviewer": "Claude (AI editorial pass, not a native speaker)",
         "date": "2026-09-19",
         "nativeSpeaker": false,
         "syllablesReviewed": true,
-        "imageAccuracy": "mismatch"
+        "imageAccuracy": "verified"
       }
     },
     {
@@ -59,20 +59,20 @@
     },
     {
       "id": "stories_leuchtturmfenster_4",
-      "version": 1,
+      "version": 2,
       "theme": "stories",
       "level": 4,
       "title": "Das Licht im alten Haus",
       "body": "Nora sieht jeden Abend ein kleines Licht im verlassenen Bahnwärterhaus. Mit ihrem Vater möchte sie am nächsten Abend herausfinden, woher dieser geheimnisvolle helle Fleck kommt. Der Vater kennt die Person, die das alte Haus betreut, und fragt nach einer Erlaubnis für den Besuch. Sie gehen nicht einfach in ein verlassenes Gebäude hinein. Bei ihrem erlaubten Besuch entdecken sie ein Glas nahe am Fenster. Die Sonne fällt so darauf, dass ein heller Fleck auf einer anderen Fläche entsteht. Nora hatte ihn von draußen für eine kleine Lampe gehalten. Die tief stehende Sonne liefert das Licht, das von der glatten Glasfläche in eine andere Richtung geworfen wird. Sie verändern den Winkel und lassen den hellen Fleck über die Zimmerwand wandern. Aus einem vermeintlichen Geheimnis wird ein einfaches Experiment mit Licht.",
       "syllable_body": "No|ra sieht je|den A|bend ein klei|nes Licht im ver|las|se|nen Bahn|wär|ter|haus. Mit ih|rem Va|ter möch|te sie am nächs|ten A|bend her|aus|fin|den, wo|her die|ser ge|heim|nis|vol|le hel|le Fleck kommt. Der Va|ter kennt die Per|son, die das al|te Haus be|treut, und fragt nach ei|ner Er|laub|nis für den Be|such. Sie ge|hen nicht ein|fach in ein ver|las|se|nes Ge|bäu|de hin|ein. Bei ih|rem er|laub|ten Be|such ent|de|cken sie ein Glas na|he am Fens|ter. Die Son|ne fällt so dar|auf, dass ein hel|ler Fleck auf ei|ner an|de|ren Flä|che ent|steht. No|ra hat|te ihn von drau|ßen für ei|ne klei|ne Lam|pe ge|hal|ten. Die tief ste|hen|de Son|ne lie|fert das Licht, das von der glat|ten Glas|flä|che in ei|ne an|de|re Rich|tung ge|wor|fen wird. Sie ver|än|dern den Win|kel und las|sen den hel|len Fleck ü|ber die Zim|mer|wand wan|dern. Aus ei|nem ver|meint|li|chen Ge|heim|nis wird ein ein|fa|ches Ex|pe|ri|ment mit Licht.",
-      "imageId": "hisica_drevo",
+      "imageId": "light_old_house",
       "review": {
         "status": "reviewed",
         "reviewer": "Claude (AI editorial pass, not a native speaker)",
         "date": "2026-09-19",
         "nativeSpeaker": false,
         "syllablesReviewed": true,
-        "imageAccuracy": "mismatch"
+        "imageAccuracy": "verified"
       }
     },
     {

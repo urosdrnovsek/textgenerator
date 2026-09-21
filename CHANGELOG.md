@@ -21,11 +21,14 @@ summarizes what shipped and what was verified; the commit messages in
   musique" is about Léa (was Noé) and "La clé minuscule" about Noé (was
   Zoé). The French bike story (a boy and his sister) sat on a girl-with-
   kite picture; it now has a bundled bicycle picture (`bicycle_repair`,
-  owner-generated like the rest, +81 KB). Two German entries ("Das Licht
-  im alten Haus", `stories_leuchtturmfenster_2/4`) are recorded as
-  `imageAccuracy: mismatch` — nothing in the image pools fits, they need
-  a new illustration. Twelve story pictures that do match are now
-  `verified` (41 of 145 overall). Verified: all five languages' story
+  owner-generated like the rest, +81 KB). The two German entries "Das
+  Licht im alten Haus" (`stories_leuchtturmfenster_2/4`) sat on the
+  treehouse picture with nothing in the pools to replace it; the owner
+  generated a new illustration the same day — a girl and her father in
+  an old room, a glass on the windowsill throwing a spot of sunlight on
+  the wall — bundled as `light_old_house` (cropped square and reduced to
+  512 px like the rest), so no `mismatch` remains. Twelve story pictures
+  that do match are now `verified`. Verified: all five languages' story
   cells cycled through the real app (every text fits one page, no
   console errors), `npm test`, `verify-docx` 11/11 (incl. the edited
   Slovene level 5 and French level 3), `verify-offline`, `verify-firefox`.
