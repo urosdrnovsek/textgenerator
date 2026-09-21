@@ -347,12 +347,12 @@
     },
     {
       "id": "nature_seasons_hojas_otono_5",
-      "version": 1,
+      "version": 2,
       "theme": "nature_seasons",
       "level": 5,
       "title": "¿Por qué cambian las hojas?",
-      "body": "Las hojas verdes contienen mucha clorofila, que ayuda a captar energía de la luz. En otoño, los días se acortan y algunos árboles dejan de producir tanta clorofila. Al desaparecer el verde, se hacen visibles pigmentos amarillos y anaranjados que ya estaban presentes. En ciertas especies también se forman colores rojos bajo condiciones determinadas. Finalmente, una capa especial cierra la unión y la hoja cae sin dejar una herida abierta. El verde domina mientras hay suficiente clorofila en las hojas. Cuando ese pigmento disminuye, otros colores pueden hacerse más visibles. No todos aparecen por exactamente el mismo proceso: algunos pigmentos estaban presentes y otros se forman bajo ciertas condiciones. Antes de perder la hoja, el árbol recupera parte de sus sustancias útiles. Después se desarrolla una zona que permite separarla y proteger la unión con la rama. Por eso el cambio no consiste simplemente en que el frío pinte la hoja desde fuera. Recoger unas hojas que ya estén en el suelo permite comparar colores y formas sin arrancar nada.",
-      "syllable_body": "Las ho|jas ver|des con|tie|nen mu|cha clo|ro|fi|la, que a|yu|da a cap|tar e|ner|gí|a de la luz. En o|to|ño, los dí|as se a|cor|tan y al|gu|nos ár|bo|les de|jan de pro|du|cir tan|ta clo|ro|fi|la. Al de|sa|pa|re|cer el ver|de, se ha|cen vi|si|bles pig|men|tos a|ma|ri|llos y a|na|ran|ja|dos que ya es|ta|ban pre|sen|tes. En cier|tas es|pe|cies tam|bién se for|man co|lo|res ro|jos ba|jo con|di|cio|nes de|ter|mi|na|das. Fi|nal|men|te, u|na ca|pa es|pe|cial cie|rra la u|nión y la ho|ja ca|e sin de|jar u|na he|ri|da a|bier|ta. El ver|de do|mi|na mien|tras hay su|fi|cien|te clo|ro|fi|la en las ho|jas. Cuan|do e|se pig|men|to dis|mi|nu|ye, o|tros co|lo|res pue|den ha|cer|se más vi|si|bles. No to|dos a|pa|re|cen por e|xac|ta|men|te el mis|mo pro|ce|so: al|gu|nos pig|men|tos es|ta|ban pre|sen|tes y o|tros se for|man ba|jo cier|tas con|di|cio|nes. An|tes de per|der la ho|ja, el ár|bol re|cu|pe|ra par|te de sus sus|tan|cias ú|ti|les. Des|pués se de|sa|rro|lla u|na zo|na que per|mi|te se|pa|rar|la y pro|te|ger la u|nión con la ra|ma. Por e|so el cam|bio no con|sis|te sim|ple|men|te en que el frí|o pin|te la ho|ja des|de fue|ra. Re|co|ger u|nas ho|jas que ya es|tén en el sue|lo per|mi|te com|pa|rar co|lo|res y for|mas sin a|rran|car na|da.",
+      "body": "Las hojas verdes contienen mucha clorofila, que ayuda a captar energía de la luz. En otoño, los días se acortan y algunos árboles dejan de producir tanta clorofila. Al desaparecer el verde, se hacen visibles pigmentos amarillos y anaranjados que ya estaban presentes. En ciertas especies también se forman colores rojos bajo condiciones determinadas. Finalmente, una capa especial cierra la unión y la hoja cae sin dejar una herida abierta. El verde domina mientras hay suficiente clorofila en las hojas. Cuando ese pigmento disminuye, otros colores pueden hacerse más visibles. Antes de perder la hoja, el árbol recupera parte de sus sustancias útiles. Después se desarrolla una zona que permite separarla y proteger la unión con la rama. Por eso el cambio no consiste simplemente en que el frío pinte la hoja desde fuera. Recoger unas hojas que ya estén en el suelo permite comparar colores y formas sin arrancar nada.",
+      "syllable_body": "Las ho|jas ver|des con|tie|nen mu|cha clo|ro|fi|la, que a|yu|da a cap|tar e|ner|gí|a de la luz. En o|to|ño, los dí|as se a|cor|tan y al|gu|nos ár|bo|les de|jan de pro|du|cir tan|ta clo|ro|fi|la. Al de|sa|pa|re|cer el ver|de, se ha|cen vi|si|bles pig|men|tos a|ma|ri|llos y a|na|ran|ja|dos que ya es|ta|ban pre|sen|tes. En cier|tas es|pe|cies tam|bién se for|man co|lo|res ro|jos ba|jo con|di|cio|nes de|ter|mi|na|das. Fi|nal|men|te, u|na ca|pa es|pe|cial cie|rra la u|nión y la ho|ja ca|e sin de|jar u|na he|ri|da a|bier|ta. El ver|de do|mi|na mien|tras hay su|fi|cien|te clo|ro|fi|la en las ho|jas. Cuan|do e|se pig|men|to dis|mi|nu|ye, o|tros co|lo|res pue|den ha|cer|se más vi|si|bles. An|tes de per|der la ho|ja, el ár|bol re|cu|pe|ra par|te de sus sus|tan|cias ú|ti|les. Des|pués se de|sa|rro|lla u|na zo|na que per|mi|te se|pa|rar|la y pro|te|ger la u|nión con la ra|ma. Por e|so el cam|bio no con|sis|te sim|ple|men|te en que el frí|o pin|te la ho|ja des|de fue|ra. Re|co|ger u|nas ho|jas que ya es|tén en el sue|lo per|mi|te com|pa|rar co|lo|res y for|mas sin a|rran|car na|da.",
       "imageId": "jesensko_listje_drevo",
       "review": {
         "status": "reviewed",
@@ -451,6 +451,456 @@
         "nativeSpeaker": false,
         "syllablesReviewed": true,
         "imageAccuracy": "plausible"
+      }
+    },
+    {
+      "id": "stories_gatito_mojado_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "El gatito mojado",
+      "body": "Llueve. Debajo del banco hay un gatito pequeño. Está todo mojado. Sofía lo toma en brazos. El gatito ronronea. En casa le dan leche caliente y una manta. Ya no está solo.",
+      "syllable_body": "Llue|ve. De|ba|jo del ban|co hay un ga|ti|to pe|que|ño. Es|tá to|do mo|ja|do. So|fí|a lo to|ma en bra|zos. El ga|ti|to ron|ro|ne|a. En ca|sa le dan le|che ca|lien|te y u|na man|ta. Ya no es|tá so|lo.",
+      "imageId": "moker_muc",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_huevo_blanco_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "El huevo blanco",
+      "body": "Sofía pasa el verano en la granja de su abuela. En un nido calentito hay un huevo blanco. «Tienes que tener paciencia», dice la abuela. Y Sofía espera. Una mañana oye un golpecito dentro del huevo. Toc, toc. La cáscara se rompe despacio y asoma un pollito. Es amarillo, suave y muy pequeño. Sofía se ríe de alegría.",
+      "syllable_body": "So|fí|a pa|sa el ve|ra|no en la gran|ja de su a|bue|la. En un ni|do ca|len|ti|to hay un hue|vo blan|co. «Tie|nes que te|ner pa|cien|cia», di|ce la a|bue|la. Y So|fí|a es|pe|ra. U|na ma|ña|na o|ye un gol|pe|ci|to den|tro del hue|vo. Toc, toc. La cás|ca|ra se rom|pe des|pa|cio y a|so|ma un po|lli|to. Es a|ma|ri|llo, sua|ve y muy pe|que|ño. So|fí|a se rí|e de a|le|grí|a.",
+      "imageId": "piscancek_gnezdo",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_caracol_carrera_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "El caracol Tito en la carrera",
+      "body": "En el bosque organizan una gran carrera. Todos se ríen del caracol Tito, que llega despacio a la línea de salida. «¡Tú no vas a llegar a ninguna parte!», le gritan. Al oír la señal, todos salen disparados. Tito, en cambio, sigue su propio camino, paso a paso. La liebre se para a descansar y se queda dormida. La ardilla se va a buscar avellanas. Tito no se detiene. Sigue y sigue. Cuando el sol se pone, es él quien cruza la meta el primero. Despacio, pero sin parar: con eso bastó.",
+      "syllable_body": "En el bos|que or|ga|ni|zan u|na gran ca|rre|ra. To|dos se rí|en del ca|ra|col Ti|to, que lle|ga des|pa|cio a la lí|ne|a de sa|li|da. «¡Tú no vas a lle|gar a nin|gu|na par|te!», le gri|tan. Al o|ír la se|ñal, to|dos sa|len dis|pa|ra|dos. Ti|to, en cam|bio, si|gue su pro|pio ca|mi|no, pa|so a pa|so. La lie|bre se pa|ra a des|can|sar y se que|da dor|mi|da. La ar|di|lla se va a bus|car a|ve|lla|nas. Ti|to no se de|tie|ne. Si|gue y si|gue. Cuan|do el sol se po|ne, es él quien cru|za la me|ta el pri|me|ro. Des|pa|cio, pe|ro sin pa|rar: con e|so bas|tó.",
+      "imageId": "polz_dirka",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_ruido_granero_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Un ruido en el granero",
+      "body": "Sofía pasa el verano en la granja de su abuela, donde cada día trae una aventura nueva. Pero lo que más le interesa es un pequeño huevo blanco que descansa en un nido de paja, en un rincón del granero.\n\n«Dentro hay un pollito», le explica la abuela. «Saldrá cuando esté listo. Estas cosas no se pueden apurar». Cada mañana, Sofía corre al granero y se asoma al nido. Pero el huevo sigue quieto, día tras día.\n\nUna mañana, todo cambia. Del huevo sale un toc-toc suave, y luego la cáscara se raja. Aparece un pico diminuto, y pronto un pollito amarillo y despeinado se levanta en la paja. Está mojado y débil, pero lleno de vida. Sofía se inclina hacia él y promete cuidarlo muy bien.",
+      "syllable_body": "So|fí|a pa|sa el ve|ra|no en la gran|ja de su a|bue|la, don|de ca|da dí|a tra|e u|na a|ven|tu|ra nue|va. Pe|ro lo que más le in|te|re|sa es un pe|que|ño hue|vo blan|co que des|can|sa en un ni|do de pa|ja, en un rin|cón del gra|ne|ro.\n\n«Den|tro hay un po|lli|to», le ex|pli|ca la a|bue|la. «Sal|drá cuan|do es|té lis|to. Es|tas co|sas no se pue|den a|pu|rar». Ca|da ma|ña|na, So|fí|a co|rre al gra|ne|ro y se a|so|ma al ni|do. Pe|ro el hue|vo si|gue quie|to, dí|a tras dí|a.\n\nU|na ma|ña|na, to|do cam|bia. Del hue|vo sa|le un toc-toc sua|ve, y lue|go la cás|ca|ra se ra|ja. A|pa|re|ce un pi|co di|mi|nu|to, y pron|to un po|lli|to a|ma|ri|llo y des|pei|na|do se le|van|ta en la pa|ja. Es|tá mo|ja|do y dé|bil, pe|ro lle|no de vi|da. So|fí|a se in|cli|na ha|cia él y pro|me|te cui|dar|lo muy bien.",
+      "imageId": "piscancek_skedenj",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_gatito_hogar_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "El gatito que encontró un hogar",
+      "body": "Una tarde de lluvia, Sofía vuelve a casa de la escuela. El agua golpea los tejados y la gente corre bajo los paraguas. Justo delante de su casa, Sofía se detiene de golpe. Muy cerca, algo maúlla con voz débil.\n\nSe agacha y descubre, bajo un banco, un gatito gris. Está empapado, flaco y tan asustado que tiembla. Cuando Sofía se pone de rodillas y le habla en voz baja, el gatito la mira con sus ojos grandes, pero no huye. Con cuidado, ella lo toma en las manos y lo esconde bajo la chaqueta, donde hace calor y no llueve.\n\nEn casa, primero calienta un poco de leche y la sirve en un cuenco pequeño. El gatito tiene tanta hambre que se la bebe en un momento. Después se acurruca en la manta que Sofía ha puesto en una cesta, se hace una bola y empieza a ronronear.\n\nFuera sigue lloviendo, pero en la habitación se está bien. Esa noche, por primera vez en mucho tiempo, el gatito se duerme tranquilo. Desde ese día, Sofía y el gatito gris son inseparables, en los días buenos y en los malos.",
+      "syllable_body": "U|na tar|de de llu|via, So|fí|a vuel|ve a ca|sa de la es|cue|la. El a|gua gol|pe|a los te|ja|dos y la gen|te co|rre ba|jo los pa|ra|guas. Jus|to de|lan|te de su ca|sa, So|fí|a se de|tie|ne de gol|pe. Muy cer|ca, al|go ma|ú|lla con voz dé|bil.\n\nSe a|ga|cha y des|cu|bre, ba|jo un ban|co, un ga|ti|to gris. Es|tá em|pa|pa|do, fla|co y tan a|sus|ta|do que tiem|bla. Cuan|do So|fí|a se po|ne de ro|di|llas y le ha|bla en voz ba|ja, el ga|ti|to la mi|ra con sus o|jos gran|des, pe|ro no hu|ye. Con cui|da|do, e|lla lo to|ma en las ma|nos y lo es|con|de ba|jo la cha|que|ta, don|de ha|ce ca|lor y no llue|ve.\n\nEn ca|sa, pri|me|ro ca|lien|ta un po|co de le|che y la sir|ve en un cuen|co pe|que|ño. El ga|ti|to tie|ne tan|ta ham|bre que se la be|be en un mo|men|to. Des|pués se a|cu|rru|ca en la man|ta que So|fí|a ha pues|to en u|na ces|ta, se ha|ce u|na bo|la y em|pie|za a ron|ro|ne|ar.\n\nFue|ra si|gue llo|vien|do, pe|ro en la ha|bi|ta|ción se es|tá bien. E|sa no|che, por pri|me|ra vez en mu|cho tiem|po, el ga|ti|to se duer|me tran|qui|lo. Des|de e|se dí|a, So|fí|a y el ga|ti|to gris son in|se|pa|ra|bles, en los dí|as bue|nos y en los ma|los.",
+      "imageId": "muc_dom",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_lechuza_1",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 1,
+      "title": "La lechuza de noche",
+      "body": "La lechuza es un ave de noche. Tiene los ojos grandes y redondos. Puede girar mucho la cabeza. Vuela sin hacer ruido. Así atrapa ratones en la oscuridad. De día, la lechuza duerme.",
+      "syllable_body": "La le|chu|za es un a|ve de no|che. Tie|ne los o|jos gran|des y re|don|dos. Pue|de gi|rar mu|cho la ca|be|za. Vue|la sin ha|cer rui|do. A|sí a|tra|pa ra|to|nes en la os|cu|ri|dad. De dí|a, la le|chu|za duer|me.",
+      "imageId": "sova_veja",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_abeja_2",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 2,
+      "title": "La abeja trabajadora",
+      "body": "La abeja nos da la miel. Vuela de flor en flor y recoge un jugo dulce: el néctar. Al volar, lleva polen de una flor a otra, y gracias a eso los árboles dan fruta. Las abejas viven juntas en una colmena, a miles. Cada una tiene su trabajo, y todas cuidan a su reina. Sin las abejas tendríamos mucha menos fruta y menos flores.",
+      "syllable_body": "La a|be|ja nos da la miel. Vue|la de flor en flor y re|co|ge un ju|go dul|ce: el néc|tar. Al vo|lar, lle|va po|len de u|na flor a o|tra, y gra|cias a e|so los ár|bo|les dan fru|ta. Las a|be|jas vi|ven jun|tas en u|na col|me|na, a mi|les. Ca|da u|na tie|ne su tra|ba|jo, y to|das cui|dan a su rei|na. Sin las a|be|jas ten|drí|a|mos mu|cha me|nos fru|ta y me|nos flo|res.",
+      "imageId": "cebela_cvet",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_delfin_nombre_3",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 3,
+      "title": "El delfín tiene nombre",
+      "body": "El delfín es uno de los animales más inteligentes del mar. Vive en el agua y nada muy bien, pero no es un pez: es un mamífero. Por eso no puede respirar bajo el agua y tiene que subir a menudo a la superficie a tomar aire. Los delfines viven en grupos. Se hablan con silbidos agudos, y cada delfín tiene incluso su propio silbido, una especie de nombre. También son famosos por ayudarse entre ellos. Cuando uno está enfermo, los demás lo empujan hacia la superficie para que pueda respirar.",
+      "syllable_body": "El del|fín es u|no de los a|ni|ma|les más in|te|li|gen|tes del mar. Vi|ve en el a|gua y na|da muy bien, pe|ro no es un pez: es un ma|mí|fe|ro. Por e|so no pue|de res|pi|rar ba|jo el a|gua y tie|ne que su|bir a me|nu|do a la su|per|fi|cie a to|mar ai|re. Los del|fi|nes vi|ven en gru|pos. Se ha|blan con sil|bi|dos a|gu|dos, y ca|da del|fín tie|ne in|clu|so su pro|pio sil|bi|do, u|na es|pe|cie de nom|bre. Tam|bién son fa|mo|sos por a|yu|dar|se en|tre e|llos. Cuan|do u|no es|tá en|fer|mo, los de|más lo em|pu|jan ha|cia la su|per|fi|cie pa|ra que pue|da res|pi|rar.",
+      "imageId": "delfin_jata",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_murcielago_4",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 4,
+      "title": "El murciélago caza en la oscuridad",
+      "body": "El murciélago es el único animal con alas que vuela de verdad y, sin embargo, no es un ave: es un mamífero. Sus alas no están cubiertas de plumas, sino de una piel fina estirada entre unos dedos muy largos.\n\nLa mayoría de los murciélagos duermen de día y salen a cazar al anochecer. Cuelgan cabeza abajo en cuevas, en desvanes o en árboles huecos. Cuando llega la oscuridad, vuelan y cazan insectos, entre ellos mosquitos.\n\nLo más asombroso es cómo se orienta el murciélago en la oscuridad. Emite sonidos tan agudos que nuestro oído no los oye. Esos sonidos rebotan en los obstáculos y en los insectos y vuelven. Por el eco, el murciélago sabe exactamente dónde está la comida y hacia dónde volar. Por eso no choca con nada ni en la noche más negra.",
+      "syllable_body": "El mur|cié|la|go es el ú|ni|co a|ni|mal con a|las que vue|la de ver|dad y, sin em|bar|go, no es un a|ve: es un ma|mí|fe|ro. Sus a|las no es|tán cu|bier|tas de plu|mas, si|no de u|na piel fi|na es|ti|ra|da en|tre u|nos de|dos muy lar|gos.\n\nLa ma|yo|rí|a de los mur|cié|la|gos duer|men de dí|a y sa|len a ca|zar al a|no|che|cer. Cuel|gan ca|be|za a|ba|jo en cue|vas, en des|va|nes o en ár|bo|les hue|cos. Cuan|do lle|ga la os|cu|ri|dad, vue|lan y ca|zan in|sec|tos, en|tre e|llos mos|qui|tos.\n\nLo más a|som|bro|so es có|mo se o|rien|ta el mur|cié|la|go en la os|cu|ri|dad. E|mi|te so|ni|dos tan a|gu|dos que nues|tro o|í|do no los o|ye. E|sos so|ni|dos re|bo|tan en los obs|tá|cu|los y en los in|sec|tos y vuel|ven. Por el e|co, el mur|cié|la|go sa|be e|xac|ta|men|te dón|de es|tá la co|mi|da y ha|cia dón|de vo|lar. Por e|so no cho|ca con na|da ni en la no|che más ne|gra.",
+      "imageId": "netopir",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_delfines_secretos_5",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 5,
+      "title": "Los secretos de los delfines",
+      "body": "El delfín es uno de los animales más inteligentes del mundo. Aunque pasa toda la vida en el mar y nada más rápido que muchos peces, no es un pez: es un mamífero. Toma aire por un orificio que tiene en la parte alta de la cabeza, y cada pocos minutos debe volver a la superficie.\n\nLos delfines son muy sociables y viven en grupos. En el grupo se cuidan unos a otros, cazan juntos y juntos se defienden del peligro. Se comunican con silbidos, chasquidos y chillidos. Cada delfín tiene incluso su propio silbido, con el que los demás lo reconocen: una especie de nombre que conserva toda la vida.\n\nLo más asombroso es que pueden ver con el sonido. El delfín emite chasquidos rápidos que viajan por el agua. Cuando el sonido choca con un pez, una roca o un barco hundido, rebota y vuelve. Por ese eco, el delfín sabe exactamente a qué distancia está el objeto y cuánto mide, incluso en la oscuridad total. A esta habilidad se le llama ecolocalización.",
+      "syllable_body": "El del|fín es u|no de los a|ni|ma|les más in|te|li|gen|tes del mun|do. Aun|que pa|sa to|da la vi|da en el mar y na|da más rá|pi|do que mu|chos pe|ces, no es un pez: es un ma|mí|fe|ro. To|ma ai|re por un o|ri|fi|cio que tie|ne en la par|te al|ta de la ca|be|za, y ca|da po|cos mi|nu|tos de|be vol|ver a la su|per|fi|cie.\n\nLos del|fi|nes son muy so|cia|bles y vi|ven en gru|pos. En el gru|po se cui|dan u|nos a o|tros, ca|zan jun|tos y jun|tos se de|fien|den del pe|li|gro. Se co|mu|ni|can con sil|bi|dos, chas|qui|dos y chi|lli|dos. Ca|da del|fín tie|ne in|clu|so su pro|pio sil|bi|do, con el que los de|más lo re|co|no|cen: u|na es|pe|cie de nom|bre que con|ser|va to|da la vi|da.\n\nLo más a|som|bro|so es que pue|den ver con el so|ni|do. El del|fín e|mi|te chas|qui|dos rá|pi|dos que via|jan por el a|gua. Cuan|do el so|ni|do cho|ca con un pez, u|na ro|ca o un bar|co hun|di|do, re|bo|ta y vuel|ve. Por e|se e|co, el del|fín sa|be e|xac|ta|men|te a qué dis|tan|cia es|tá el ob|je|to y cuán|to mi|de, in|clu|so en la os|cu|ri|dad to|tal. A es|ta ha|bi|li|dad se le lla|ma e|co|lo|ca|li|za|ción.",
+      "imageId": "delfin_morje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_piramides_1",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 1,
+      "title": "Las pirámides de Egipto",
+      "body": "En Egipto hay pirámides enormes. Se construyeron hace muchísimo tiempo. Están hechas de piedras muy pesadas. Las pirámides eran las tumbas de los reyes. Todavía hoy siguen en pie en el desierto.",
+      "syllable_body": "En E|gip|to hay pi|rá|mi|des e|nor|mes. Se cons|tru|ye|ron ha|ce mu|chí|si|mo tiem|po. Es|tán he|chas de pie|dras muy pe|sa|das. Las pi|rá|mi|des e|ran las tum|bas de los re|yes. To|da|ví|a hoy si|guen en pie en el de|sier|to.",
+      "imageId": "piramide_giza",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_piramides_2",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 2,
+      "title": "Montañas de piedra",
+      "body": "En Egipto, la tierra de los desiertos, se alzan unas pirámides imponentes. Se construyeron hace varios miles de años. La gente apilaba bloques de piedra gigantescos, uno sobre otro, hasta formar una pirámide muy alta. Dentro enterraban a los reyes, a los que llamaban faraones. Las pirámides son tan sólidas que siguen en pie todavía hoy. Están entre los edificios más antiguos del mundo.",
+      "syllable_body": "En E|gip|to, la tie|rra de los de|sier|tos, se al|zan u|nas pi|rá|mi|des im|po|nen|tes. Se cons|tru|ye|ron ha|ce va|rios mi|les de a|ños. La gen|te a|pi|la|ba blo|ques de pie|dra gi|gan|tes|cos, u|no so|bre o|tro, has|ta for|mar u|na pi|rá|mi|de muy al|ta. Den|tro en|te|rra|ban a los re|yes, a los que lla|ma|ban fa|ra|o|nes. Las pi|rá|mi|des son tan só|li|das que si|guen en pie to|da|ví|a hoy. Es|tán en|tre los e|di|fi|cios más an|ti|guos del mun|do.",
+      "imageId": "piramide_bloki",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_piramides_3",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 3,
+      "title": "El secreto de las pirámides",
+      "body": "En Egipto, la tierra de los desiertos ardientes, unas pirámides imponentes se alzan hacia el cielo. Las más famosas están junto a la ciudad de Guiza. La gente las construyó hace más de cuatro mil años, y sin ninguna de las máquinas que conocemos hoy. Desde la cantera arrastraban enormes bloques de piedra y los apilaban uno sobre otro, cada vez más alto. En las pirámides enterraban a los faraones, los reyes de Egipto. Creían que el rey necesitaría sus riquezas también después de la muerte, así que las enterraban con él.",
+      "syllable_body": "En E|gip|to, la tie|rra de los de|sier|tos ar|dien|tes, u|nas pi|rá|mi|des im|po|nen|tes se al|zan ha|cia el cie|lo. Las más fa|mo|sas es|tán jun|to a la ciu|dad de Gui|za. La gen|te las cons|tru|yó ha|ce más de cua|tro mil a|ños, y sin nin|gu|na de las má|qui|nas que co|no|ce|mos hoy. Des|de la can|te|ra a|rras|tra|ban e|nor|mes blo|ques de pie|dra y los a|pi|la|ban u|no so|bre o|tro, ca|da vez más al|to. En las pi|rá|mi|des en|te|rra|ban a los fa|ra|o|nes, los re|yes de E|gip|to. Cre|í|an que el rey ne|ce|si|ta|rí|a sus ri|que|zas tam|bién des|pués de la muer|te, a|sí que las en|te|rra|ban con él.",
+      "imageId": "piramide_kamnolom",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_piramides_4",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 4,
+      "title": "Cómo se construyeron las pirámides",
+      "body": "En Egipto, la tierra de los desiertos ardientes y del río Nilo, unas pirámides imponentes se alzan hacia el cielo. La gente las construyó hace más de cuatro mil años, cuando no existían ni máquinas ni grúas.\n\n¿Cómo movían entonces piedras tan pesadas? Los trabajadores sacaban de la cantera bloques gigantescos sobre trineos, cada uno más pesado que un coche, y los subían despacio por rampas. Para una sola pirámide hacían falta miles de brazos y muchos años de trabajo.\n\nEn las pirámides enterraban a los faraones, los reyes de Egipto. Creían que el rey seguía su viaje después de la muerte y que necesitaría sus riquezas, así que las escondían en lo más profundo de la pirámide. La más grande fue durante miles de años el edificio más alto del mundo.",
+      "syllable_body": "En E|gip|to, la tie|rra de los de|sier|tos ar|dien|tes y del rí|o Ni|lo, u|nas pi|rá|mi|des im|po|nen|tes se al|zan ha|cia el cie|lo. La gen|te las cons|tru|yó ha|ce más de cua|tro mil a|ños, cuan|do no e|xis|tí|an ni má|qui|nas ni grú|as.\n\n¿Có|mo mo|ví|an en|ton|ces pie|dras tan pe|sa|das? Los tra|ba|ja|do|res sa|ca|ban de la can|te|ra blo|ques gi|gan|tes|cos so|bre tri|ne|os, ca|da u|no más pe|sa|do que un co|che, y los su|bí|an des|pa|cio por ram|pas. Pa|ra u|na so|la pi|rá|mi|de ha|cí|an fal|ta mi|les de bra|zos y mu|chos a|ños de tra|ba|jo.\n\nEn las pi|rá|mi|des en|te|rra|ban a los fa|ra|o|nes, los re|yes de E|gip|to. Cre|í|an que el rey se|guí|a su via|je des|pués de la muer|te y que ne|ce|si|ta|rí|a sus ri|que|zas, a|sí que las es|con|dí|an en lo más pro|fun|do de la pi|rá|mi|de. La más gran|de fue du|ran|te mi|les de a|ños el e|di|fi|cio más al|to del mun|do.",
+      "imageId": "piramide_klancina",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_venecia_5",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 5,
+      "title": "Un paseo por Venecia",
+      "body": "Venecia es una de las ciudades más raras y más bonitas del mundo. Está en Italia, construida sobre más de cien islas pequeñas en medio de una laguna poco profunda.\n\nLo primero que llama la atención al llegar es algo extraño: no hay coches. En lugar de calles, la ciudad tiene canales; en lugar de coches, barcas. Entre las casas altas y antiguas serpentean estrechos caminos de agua, cruzados por cientos de puentes pequeños. Las barcas más famosas son las góndolas, finas, negras y elegantes.\n\nPero ¿cómo se construye una ciudad sobre el agua? Hace muchísimo tiempo, los habitantes clavaron en el fondo de barro incontables postes de madera, muy juntos. Sobre esos postes levantaron casas, puentes, iglesias y grandes plazas. La más bonita es la plaza de San Marcos, por la que pasean miles de palomas.\n\nHan pasado muchos siglos, y Venecia sigue en pie. Cada año la visitan millones de personas de todo el mundo para admirar la ciudad sin calles: la ciudad que vive sobre el agua.",
+      "syllable_body": "Ve|ne|cia es u|na de las ciu|da|des más ra|ras y más bo|ni|tas del mun|do. Es|tá en I|ta|lia, cons|trui|da so|bre más de cien is|las pe|que|ñas en me|dio de u|na la|gu|na po|co pro|fun|da.\n\nLo pri|me|ro que lla|ma la a|ten|ción al lle|gar es al|go ex|tra|ño: no hay co|ches. En lu|gar de ca|lles, la ciu|dad tie|ne ca|na|les; en lu|gar de co|ches, bar|cas. En|tre las ca|sas al|tas y an|ti|guas ser|pen|te|an es|tre|chos ca|mi|nos de a|gua, cru|za|dos por cien|tos de puen|tes pe|que|ños. Las bar|cas más fa|mo|sas son las gón|do|las, fi|nas, ne|gras y e|le|gan|tes.\n\nPe|ro ¿có|mo se cons|tru|ye u|na ciu|dad so|bre el a|gua? Ha|ce mu|chí|si|mo tiem|po, los ha|bi|tan|tes cla|va|ron en el fon|do de ba|rro in|con|ta|bles pos|tes de ma|de|ra, muy jun|tos. So|bre e|sos pos|tes le|van|ta|ron ca|sas, puen|tes, i|gle|sias y gran|des pla|zas. La más bo|ni|ta es la pla|za de San Mar|cos, por la que pa|se|an mi|les de pa|lo|mas.\n\nHan pa|sa|do mu|chos si|glos, y Ve|ne|cia si|gue en pie. Ca|da a|ño la vi|si|tan mi|llo|nes de per|so|nas de to|do el mun|do pa|ra ad|mi|rar la ciu|dad sin ca|lles: la ciu|dad que vi|ve so|bre el a|gua.",
+      "imageId": "benetke_trg",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_arcoiris_1",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 1,
+      "title": "El arcoíris",
+      "body": "Después de la lluvia, a veces sale el arcoíris. Aparece cuando el sol brilla sobre la lluvia. Tiene muchos colores. Siempre van en el mismo orden. Arriba está el rojo y abajo el violeta.",
+      "syllable_body": "Des|pués de la llu|via, a ve|ces sa|le el ar|co|í|ris. A|pa|re|ce cuan|do el sol bri|lla so|bre la llu|via. Tie|ne mu|chos co|lo|res. Siem|pre van en el mis|mo or|den. A|rri|ba es|tá el ro|jo y a|ba|jo el vio|le|ta.",
+      "imageId": "mavrica",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_gravedad_2",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 2,
+      "title": "Por qué todo cae al suelo",
+      "body": "Lanza una pelota al aire y siempre vuelve a caer al suelo. ¿Por qué? La culpa es de una fuerza invisible que llamamos gravedad. Con esa fuerza, la Tierra atrae todas las cosas hacia ella. Por eso la manzana cae del árbol y la lluvia cae del cielo. La gravedad también nos mantiene con los pies en el suelo: sin ella, flotaríamos por el aire.",
+      "syllable_body": "Lan|za u|na pe|lo|ta al ai|re y siem|pre vuel|ve a ca|er al sue|lo. ¿Por qué? La cul|pa es de u|na fuer|za in|vi|si|ble que lla|ma|mos gra|ve|dad. Con e|sa fuer|za, la Tie|rra a|tra|e to|das las co|sas ha|cia e|lla. Por e|so la man|za|na ca|e del ár|bol y la llu|via ca|e del cie|lo. La gra|ve|dad tam|bién nos man|tie|ne con los pies en el sue|lo: sin e|lla, flo|ta|rí|a|mos por el ai|re.",
+      "imageId": "gravitacija_jabolko",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_arcoiris_3",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 3,
+      "title": "Cómo nace un arcoíris",
+      "body": "El arcoíris es una de las cosas más bonitas del cielo. Aparece cuando el sol brilla y llueve al mismo tiempo. Aunque la luz del sol nos parece blanca, en realidad está hecha de muchos colores escondidos unos dentro de otros. Cuando un rayo de sol atraviesa una gota de lluvia diminuta, se dobla y se separa en todos esos colores. Como miles de gotas lo hacen a la vez, vemos en el cielo un gran arco de colores. En el arcoíris, los colores siempre van en el mismo orden, del rojo arriba al violeta abajo.",
+      "syllable_body": "El ar|co|í|ris es u|na de las co|sas más bo|ni|tas del cie|lo. A|pa|re|ce cuan|do el sol bri|lla y llue|ve al mis|mo tiem|po. Aun|que la luz del sol nos pa|re|ce blan|ca, en re|a|li|dad es|tá he|cha de mu|chos co|lo|res es|con|di|dos u|nos den|tro de o|tros. Cuan|do un ra|yo de sol a|tra|vie|sa u|na go|ta de llu|via di|mi|nu|ta, se do|bla y se se|pa|ra en to|dos e|sos co|lo|res. Co|mo mi|les de go|tas lo ha|cen a la vez, ve|mos en el cie|lo un gran ar|co de co|lo|res. En el ar|co|í|ris, los co|lo|res siem|pre van en el mis|mo or|den, del ro|jo a|rri|ba al vio|le|ta a|ba|jo.",
+      "imageId": "mavrica_kaplja",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_caza_arcoiris_4",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 4,
+      "title": "A la caza del arcoíris",
+      "body": "El arcoíris es una de las cosas más bonitas que se pueden ver en el cielo. Aparece cuando el sol brilla y llueve al mismo tiempo.\n\nAunque la luz del sol nos parece blanca, en realidad está hecha de muchos colores escondidos unos dentro de otros. Cuando un rayo de sol atraviesa una gota de lluvia diminuta, se dobla dentro de ella y se separa en todos esos colores. Como miles de gotas lo hacen a la vez, vemos en el cielo un gran arco de colores.\n\nEn el arcoíris, los colores siempre van en el mismo orden: del rojo arriba al violeta abajo. Si quieres ver un arcoíris, debes tener el sol a la espalda y la lluvia delante. Y recuerda: cuanto más intentas acercarte, más se aleja, porque el arcoíris no se puede atrapar.",
+      "syllable_body": "El ar|co|í|ris es u|na de las co|sas más bo|ni|tas que se pue|den ver en el cie|lo. A|pa|re|ce cuan|do el sol bri|lla y llue|ve al mis|mo tiem|po.\n\nAun|que la luz del sol nos pa|re|ce blan|ca, en re|a|li|dad es|tá he|cha de mu|chos co|lo|res es|con|di|dos u|nos den|tro de o|tros. Cuan|do un ra|yo de sol a|tra|vie|sa u|na go|ta de llu|via di|mi|nu|ta, se do|bla den|tro de e|lla y se se|pa|ra en to|dos e|sos co|lo|res. Co|mo mi|les de go|tas lo ha|cen a la vez, ve|mos en el cie|lo un gran ar|co de co|lo|res.\n\nEn el ar|co|í|ris, los co|lo|res siem|pre van en el mis|mo or|den: del ro|jo a|rri|ba al vio|le|ta a|ba|jo. Si quie|res ver un ar|co|í|ris, de|bes te|ner el sol a la es|pal|da y la llu|via de|lan|te. Y re|cuer|da: cuan|to más in|ten|tas a|cer|car|te, más se a|le|ja, por|que el ar|co|í|ris no se pue|de a|tra|par.",
+      "imageId": "mavrica_lok",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_arco_secreto_5",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 5,
+      "title": "El secreto del arco de colores",
+      "body": "El arcoíris es una de las cosas más bonitas del cielo. Aparece cuando el sol brilla y llueve al mismo tiempo.\n\nAunque la luz del sol nos parece del todo blanca, en realidad está formada por muchos colores escondidos unos dentro de otros. Cuando un rayo de sol atraviesa una gota de lluvia diminuta, se dobla dentro de ella y se separa en todos esos colores. Cada gotita funciona como un pequeño prisma de cristal que abre la luz blanca en una franja de colores. Como miles de gotas lo hacen a la vez, vemos en el cielo un gran arco de colores.\n\nEn el arcoíris, los colores siempre van exactamente en el mismo orden: rojo, naranja, amarillo, verde, azul y violeta. El rojo está siempre en la parte de fuera del arco, y el violeta en la de dentro.\n\nSi quieres atrapar un arcoíris con la mirada, recuerda una regla sencilla: el sol tiene que estar a tu espalda y la lluvia delante de ti. Y aunque el arcoíris parece un puente de colores, nunca se puede tocar. Cuanto más te acercas, más se aleja.",
+      "syllable_body": "El ar|co|í|ris es u|na de las co|sas más bo|ni|tas del cie|lo. A|pa|re|ce cuan|do el sol bri|lla y llue|ve al mis|mo tiem|po.\n\nAun|que la luz del sol nos pa|re|ce del to|do blan|ca, en re|a|li|dad es|tá for|ma|da por mu|chos co|lo|res es|con|di|dos u|nos den|tro de o|tros. Cuan|do un ra|yo de sol a|tra|vie|sa u|na go|ta de llu|via di|mi|nu|ta, se do|bla den|tro de e|lla y se se|pa|ra en to|dos e|sos co|lo|res. Ca|da go|ti|ta fun|cio|na co|mo un pe|que|ño pris|ma de cris|tal que a|bre la luz blan|ca en u|na fran|ja de co|lo|res. Co|mo mi|les de go|tas lo ha|cen a la vez, ve|mos en el cie|lo un gran ar|co de co|lo|res.\n\nEn el ar|co|í|ris, los co|lo|res siem|pre van e|xac|ta|men|te en el mis|mo or|den: ro|jo, na|ran|ja, a|ma|ri|llo, ver|de, a|zul y vio|le|ta. El ro|jo es|tá siem|pre en la par|te de fue|ra del ar|co, y el vio|le|ta en la de den|tro.\n\nSi quie|res a|tra|par un ar|co|í|ris con la mi|ra|da, re|cuer|da u|na re|gla sen|ci|lla: el sol tie|ne que es|tar a tu es|pal|da y la llu|via de|lan|te de ti. Y aun|que el ar|co|í|ris pa|re|ce un puen|te de co|lo|res, nun|ca se pue|de to|car. Cuan|to más te a|cer|cas, más se a|le|ja.",
+      "imageId": "mavrica_polje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_semilla_1",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 1,
+      "title": "De la semilla a la planta",
+      "body": "Ponemos una semilla pequeña en la tierra. La semilla recibe agua y sol. De ella sale un brote pequeño. El brote crece y crece. De una semilla nace una flor o un árbol.",
+      "syllable_body": "Po|ne|mos u|na se|mi|lla pe|que|ña en la tie|rra. La se|mi|lla re|ci|be a|gua y sol. De e|lla sa|le un bro|te pe|que|ño. El bro|te cre|ce y cre|ce. De u|na se|mi|lla na|ce u|na flor o un ár|bol.",
+      "imageId": "seme_kalica",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_lluvia_2",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 2,
+      "title": "Por qué llueve",
+      "body": "La lluvia es muy importante para la naturaleza. Sin ella, las plantas no podrían crecer. La lluvia nace en las nubes, en el cielo. En una nube hay miles de gotitas de agua diminutas. Cuando esas gotitas se juntan y forman gotas más grandes, pesan demasiado y caen al suelo. Entonces decimos que llueve. La lluvia empapa la tierra, y las plantas se alegran.",
+      "syllable_body": "La llu|via es muy im|por|tan|te pa|ra la na|tu|ra|le|za. Sin e|lla, las plan|tas no po|drí|an cre|cer. La llu|via na|ce en las nu|bes, en el cie|lo. En u|na nu|be hay mi|les de go|ti|tas de a|gua di|mi|nu|tas. Cuan|do e|sas go|ti|tas se jun|tan y for|man go|tas más gran|des, pe|san de|ma|sia|do y ca|en al sue|lo. En|ton|ces de|ci|mos que llue|ve. La llu|via em|pa|pa la tie|rra, y las plan|tas se a|le|gran.",
+      "imageId": "dez_kaplje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_viento_3",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 3,
+      "title": "El viento que no vemos",
+      "body": "El viento no se puede ver, pero sí se puede sentir y oír. Nos acaricia la cara, mece las ramas de los árboles y empuja las nubes por el cielo. El viento es aire que se mueve. Cuando una parte del aire se calienta y otra sigue fría, el aire empieza a moverse. A veces el viento es suave y agradable: seca la ropa y trae el olor de las flores. Otras veces es tan fuerte que rompe ramas. El viento también es útil: reparte las semillas de las plantas y mueve los molinos.",
+      "syllable_body": "El vien|to no se pue|de ver, pe|ro sí se pue|de sen|tir y o|ír. Nos a|ca|ri|cia la ca|ra, me|ce las ra|mas de los ár|bo|les y em|pu|ja las nu|bes por el cie|lo. El vien|to es ai|re que se mue|ve. Cuan|do u|na par|te del ai|re se ca|lien|ta y o|tra si|gue frí|a, el ai|re em|pie|za a mo|ver|se. A ve|ces el vien|to es sua|ve y a|gra|da|ble: se|ca la ro|pa y tra|e el o|lor de las flo|res. O|tras ve|ces es tan fuer|te que rom|pe ra|mas. El vien|to tam|bién es ú|til: re|par|te las se|mi|llas de las plan|tas y mue|ve los mo|li|nos.",
+      "imageId": "veter",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_ardilla_4",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 4,
+      "title": "La ardilla se prepara para el invierno",
+      "body": "En otoño, la ardilla roja no descansa ni un momento. Recoge bellotas, nueces y semillas, y las entierra en el suelo, en muchos escondites distintos. Está guardando comida para el invierno, cuando en el bosque casi no habrá nada que comer.\n\nLa ardilla no duerme todo el invierno como el erizo o el oso. En los días más fríos se queda en su nido, en lo alto de un árbol, envuelta en su cola espesa como en una manta. Pero cuando sale el sol, baja a buscar sus provisiones. Tiene una memoria excelente, aunque no recuerda todos sus escondites.\n\nY eso es una suerte para el bosque. Las bellotas y las nueces olvidadas bajo la tierra germinan en primavera y se convierten en robles y nogales nuevos. Sin saberlo, la ardilla planta el bosque del futuro.",
+      "syllable_body": "En o|to|ño, la ar|di|lla ro|ja no des|can|sa ni un mo|men|to. Re|co|ge be|llo|tas, nue|ces y se|mi|llas, y las en|tie|rra en el sue|lo, en mu|chos es|con|di|tes dis|tin|tos. Es|tá guar|dan|do co|mi|da pa|ra el in|vier|no, cuan|do en el bos|que ca|si no ha|brá na|da que co|mer.\n\nLa ar|di|lla no duer|me to|do el in|vier|no co|mo el e|ri|zo o el o|so. En los dí|as más frí|os se que|da en su ni|do, en lo al|to de un ár|bol, en|vuel|ta en su co|la es|pe|sa co|mo en u|na man|ta. Pe|ro cuan|do sa|le el sol, ba|ja a bus|car sus pro|vi|sio|nes. Tie|ne u|na me|mo|ria ex|ce|len|te, aun|que no re|cuer|da to|dos sus es|con|di|tes.\n\nY e|so es u|na suer|te pa|ra el bos|que. Las be|llo|tas y las nue|ces ol|vi|da|das ba|jo la tie|rra ger|mi|nan en pri|ma|ve|ra y se con|vier|ten en ro|bles y no|ga|les nue|vos. Sin sa|ber|lo, la ar|di|lla plan|ta el bos|que del fu|tu|ro.",
+      "imageId": "veverica",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_estaciones_5",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 5,
+      "title": "El gran viaje del año",
+      "body": "¿Te has preguntado alguna vez por qué en verano hace calor y en invierno frío? La respuesta es que el año viaja por cuatro estaciones, siempre en el mismo orden: primavera, verano, otoño e invierno.\n\nEn primavera, la naturaleza despierta de su largo sueño de invierno. Los árboles sacan hojas nuevas, los prados se llenan de flores, y los pájaros vuelven de los países cálidos y construyen sus nidos.\n\nEn verano manda el calor. El sol sale temprano y se pone tarde, así que los días son largos. Es la estación en la que maduran más frutas y verduras.\n\nEn otoño, los días se acortan y el aire se vuelve más fresco. Las hojas de los árboles se tiñen de rojo, naranja y amarillo, y luego vuelan con el viento hasta el suelo. Los animales se preparan para el frío.\n\nEn invierno, la naturaleza calla y descansa. La nieve cubre a menudo el paisaje, los días son cortos y las noches largas y frías. Muchos animales duermen todo el invierno. Y cuando parece que todo ha terminado, la gran rueda del año vuelve a girar y llega una nueva primavera.",
+      "syllable_body": "¿Te has pre|gun|ta|do al|gu|na vez por qué en ve|ra|no ha|ce ca|lor y en in|vier|no frí|o? La res|pues|ta es que el a|ño via|ja por cua|tro es|ta|cio|nes, siem|pre en el mis|mo or|den: pri|ma|ve|ra, ve|ra|no, o|to|ño e in|vier|no.\n\nEn pri|ma|ve|ra, la na|tu|ra|le|za des|pier|ta de su lar|go sue|ño de in|vier|no. Los ár|bo|les sa|can ho|jas nue|vas, los pra|dos se lle|nan de flo|res, y los pá|ja|ros vuel|ven de los pa|í|ses cá|li|dos y cons|tru|yen sus ni|dos.\n\nEn ve|ra|no man|da el ca|lor. El sol sa|le tem|pra|no y se po|ne tar|de, a|sí que los dí|as son lar|gos. Es la es|ta|ción en la que ma|du|ran más fru|tas y ver|du|ras.\n\nEn o|to|ño, los dí|as se a|cor|tan y el ai|re se vuel|ve más fres|co. Las ho|jas de los ár|bo|les se ti|ñen de ro|jo, na|ran|ja y a|ma|ri|llo, y lue|go vue|lan con el vien|to has|ta el sue|lo. Los a|ni|ma|les se pre|pa|ran pa|ra el frí|o.\n\nEn in|vier|no, la na|tu|ra|le|za ca|lla y des|can|sa. La nie|ve cu|bre a me|nu|do el pai|sa|je, los dí|as son cor|tos y las no|ches lar|gas y frí|as. Mu|chos a|ni|ma|les duer|men to|do el in|vier|no. Y cuan|do pa|re|ce que to|do ha ter|mi|na|do, la gran rue|da del a|ño vuel|ve a gi|rar y lle|ga u|na nue|va pri|ma|ve|ra.",
+      "imageId": "letni_casi_pokrajina",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
       }
     }
   ]

@@ -7,6 +7,22 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
+- **Spanish: two texts per theme and level** (2026-09-21). Twenty-five
+  original Spanish texts on the Slovene topics and pictures, as for
+  French and German (Sofía and the wet kitten, the white egg, Tito the
+  snail's race, the barn, the kitten's new home; the owl, the bee, the
+  dolphins, the bat; the pyramids at four levels and Venice; the rainbow
+  at four levels and gravity; seed, rain, wind, the seasons). Exception:
+  the Spanish pack already had the autumn-leaves topic in every nature
+  cell, so nature level 4 is the red squirrel's winter store instead.
+  Syllables per the RAE rules. Every Spanish title fits one page at
+  default settings in real Chromium — running that check over the whole
+  Spanish pack for the first time also caught the existing level-5
+  autumn-leaves text spilling onto a second page; a sentence that
+  repeated an earlier one was removed (version 2). The same sweep found
+  the Slovene Venice text (level 5) doing the same; it is recorded for
+  the owner, not changed. The Spanish `verify-docx` case is pinned.
+  Native-speaker review: still none (0 of 243 non-Slovene entries).
 - **German: two texts per theme and level** (2026-09-21). Twenty-five
   original German texts on the Slovene topics and pictures, as for
   French the same day (Lena and the wet kitten, the white egg, Theo the

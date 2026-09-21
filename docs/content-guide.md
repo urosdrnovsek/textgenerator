@@ -239,7 +239,22 @@ From `npm run content-status`:
   German level-5 texts are kept to ~150–175 words because German words
   are long — one Venice text had to be trimmed after it ran to a second
   page in the fit check.
-- **English (original 25), German (original 25), French (original 25), Spanish:** 25 entries each, all `reviewed`
+- **Spanish:** 50 entries — the 25 below plus, from 2026-09-21, one
+  original Spanish text per cell on the Slovene topics and pictures, as
+  for French and German (Sofía and the kitten, the egg, Tito the snail;
+  owl, bee, dolphins, bat; pyramids at four levels and Venice; rainbow at
+  four levels and gravity; seed, rain, wind, the squirrel's winter store
+  — the pack already had the autumn leaves in every nature cell — and
+  the seasons). Syllabified with the RAE splitter
+  (`Instructions/tools/es.py`), which agrees with the reviewed pack on
+  every word. The first run of the one-page fit check over the Spanish
+  pack found the existing `nature_seasons_hojas_otono_5` running to a
+  second page; one redundant sentence was removed (version 2).
+- **Known:** the Slovene `around_the_world_benetke_5` (191 words, four
+  paragraphs) runs to a second page at default settings — found on
+  2026-09-21 when the fit check was first run over every pack. Slovene is
+  the teacher-reviewed pack, so it was left for the owner to trim.
+- **English (original 25), German (original 25), French (original 25), Spanish (original 25):** 25 entries each, all `reviewed`
   by an AI editorial pass on 2026-09-19 (`nativeSpeaker: false`,
   `syllablesReviewed: true`; 3 German and 3 French syllable breaks were
   fixed in that pass). A second, word-by-word syllable pass on 2026-09-20
@@ -248,7 +263,7 @@ From `npm run content-status`:
   second opinion) corrected 62 more breaks in 28 entries: 1 Spanish, 2
   German, 18 French (mostly `feu|il|le`-type words), 41 English. Native-
   speaker review: **0 of 100.**
-- **Images:** 141 of 243 `verified` (the four illustrations generated for
+- **Images:** 166 of 268 `verified` (the four illustrations generated for
   the mismatched Neuschwanstein, Uluru, Easter Island and Pont du Gard
   entries, the axolotl illustration bundled for the five Spanish ajolote
   entries, the fifty new English texts, the twelve story pictures
