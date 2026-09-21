@@ -812,6 +812,186 @@
         "syllablesReviewed": true,
         "imageAccuracy": "verified"
       }
+    },
+    {
+      "id": "around_the_world_pyramids_1",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 1,
+      "title": "The Pyramids of Egypt",
+      "body": "In Egypt three huge pyramids stand in the desert. People built them more than four thousand years ago. Each stone is heavier than a car. Camels walk past in the hot sand.",
+      "syllable_body": "In E|gypt three huge pyr|a|mids stand in the des|ert. Peo|ple built them more than four thou|sand years a|go. Each stone is heav|i|er than a car. Cam|els walk past in the hot sand.",
+      "imageId": "piramide_giza",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_windmills_1",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 1,
+      "title": "Windmills and Tulips",
+      "body": "This is the Netherlands. The land is flat and low. Windmills help to keep the fields dry. Cows eat the grass there. In spring the fields are full of red, yellow and pink tulips.",
+      "syllable_body": "This is the Neth|er|lands. The land is flat and low. Wind|mills help to keep the fields dry. Cows eat the grass there. In spring the fields are full of red, yel|low and pink tu|lips.",
+      "imageId": "nizozemska_mlin",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_venice_2",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 2,
+      "title": "A City on the Water",
+      "body": "Venice is a city in Italy. It is built on many small islands. Instead of streets it has canals, and instead of cars it has boats. A gondola is a long, thin boat. The gondolier stands at the back and pushes it along with one long oar. Hundreds of bridges join the islands. People cross them on foot, because no car can drive in Venice.",
+      "syllable_body": "Ven|ice is a cit|y in It|a|ly. It is built on man|y small is|lands. In|stead of streets it has ca|nals, and in|stead of cars it has boats. A gon|do|la is a long, thin boat. The gon|do|lier stands at the back and push|es it a|long with one long oar. Hun|dreds of bridg|es join the is|lands. Peo|ple cross them on foot, be|cause no car can drive in Ven|ice.",
+      "imageId": "benetke_most",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_castle_2",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 2,
+      "title": "A Castle on the Hill",
+      "body": "Long ago, kings and knights lived in castles. This castle stands on a hill above a river. From the towers guards could see far across the valley. Thick stone walls kept enemies out. A heavy gate closed the only way in. Inside there were stables, a kitchen, a well and a great hall. Today many castles are museums, and children can climb the towers.",
+      "syllable_body": "Long a|go, kings and knights lived in cas|tles. This cas|tle stands on a hill a|bove a riv|er. From the tow|ers guards could see far a|cross the val|ley. Thick stone walls kept en|e|mies out. A heav|y gate closed the on|ly way in. In|side there were sta|bles, a kitch|en, a well and a great hall. To|day man|y cas|tles are mu|se|ums, and chil|dren can climb the tow|ers.",
+      "imageId": "castle",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_aqueduct_3",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 3,
+      "title": "The Bridge That Carries Water",
+      "body": "Two thousand years ago the Romans ruled a huge empire. Their cities needed fresh water for fountains, baths and drinking. So Roman builders made aqueducts: long stone channels that carried water from springs in the hills down into the towns. Where the channel met a valley, they built a bridge for it, with rows of arches stacked one above the other. The water flowed gently downhill the whole way, without any pump. Some aqueducts are still standing today. The one in the picture, in the south of France, is almost fifty metres high.",
+      "syllable_body": "Two thou|sand years a|go the Ro|mans ruled a huge em|pire. Their cit|ies need|ed fresh wa|ter for foun|tains, baths and drink|ing. So Ro|man build|ers made aq|ue|ducts: long stone chan|nels that car|ried wa|ter from springs in the hills down in|to the towns. Where the chan|nel met a val|ley, they built a bridge for it, with rows of arch|es stacked one a|bove the oth|er. The wa|ter flowed gen|tly down|hill the whole way, with|out an|y pump. Some aq|ue|ducts are still stand|ing to|day. The one in the pic|ture, in the south of France, is al|most fif|ty me|tres high.",
+      "imageId": "roman_aqueduct",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_sahara_3",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 3,
+      "title": "Life in the Sahara",
+      "body": "The Sahara is the largest hot desert in the world. It stretches across the north of Africa and is almost as big as the whole of Europe. By day the sun burns down and the sand gets too hot to touch. At night the heat escapes quickly, and it can become bitterly cold. Rain hardly ever falls. Life finds a way. A fennec fox has huge ears that give off heat. Lizards hide under rocks. Small flowers bloom after a rare shower. People cross the desert with camels, which can walk for days without drinking.",
+      "syllable_body": "The Sa|ha|ra is the larg|est hot des|ert in the world. It stretch|es a|cross the north of Af|ri|ca and is al|most as big as the whole of Eu|rope. By day the sun burns down and the sand gets too hot to touch. At night the heat es|capes quick|ly, and it can be|come bit|ter|ly cold. Rain hard|ly ev|er falls. Life finds a way. A fen|nec fox has huge ears that give off heat. Liz|ards hide un|der rocks. Small flow|ers bloom af|ter a rare show|er. Peo|ple cross the des|ert with cam|els, which can walk for days with|out drink|ing.",
+      "imageId": "sahara_landscape",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_rapa_nui_4",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 4,
+      "title": "The Stone Faces of Rapa Nui",
+      "body": "Far out in the Pacific Ocean, far from any other land, lies a small island called Rapa Nui. Most people know it as Easter Island. Along its green coast stand hundreds of huge stone figures with long faces and heavy brows. They are called moai.\n\nThe people of Rapa Nui carved them from volcanic rock many centuries ago, using only stone tools. Some moai are taller than a house and weigh more than ten elephants. How were they moved across the island? Nobody knows for certain. Many islanders say the statues “walked”. Scientists have shown that people with ropes can rock a standing statue forward step by step, so perhaps the old stories are true.\n\nToday the moai stand quietly with their backs to the sea, looking over the island as they have done for hundreds of years.",
+      "syllable_body": "Far out in the Pa|cif|ic O|cean, far from an|y oth|er land, lies a small is|land called Ra|pa Nu|i. Most peo|ple know it as Eas|ter Is|land. A|long its green coast stand hun|dreds of huge stone fig|ures with long fac|es and heav|y brows. They are called mo|ai.\n\nThe peo|ple of Ra|pa Nu|i carved them from vol|can|ic rock man|y cen|tu|ries a|go, us|ing on|ly stone tools. Some mo|ai are tall|er than a house and weigh more than ten el|e|phants. How were they moved a|cross the is|land? No|bod|y knows for cer|tain. Man|y is|land|ers say the stat|ues “walked”. Sci|en|tists have shown that peo|ple with ropes can rock a stand|ing stat|ue for|ward step by step, so per|haps the old sto|ries are true.\n\nTo|day the mo|ai stand qui|et|ly with their backs to the sea, look|ing o|ver the is|land as they have done for hun|dreds of years.",
+      "imageId": "moai_statues",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_uluru_4",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 4,
+      "title": "The Red Rock in the Desert",
+      "body": "In the middle of Australia, a giant red rock rises out of the flat desert. Its name is Uluru. It is more than three kilometres long and higher than the Eiffel Tower, and most of it is still hidden under the ground, like an iceberg in the sea.\n\nUluru changes colour with the light. At sunrise and sunset it glows deep orange and red; in the rain it turns silver-grey, and waterfalls pour down its sides. Around its base grow desert oaks and grasses, and there are waterholes where birds and kangaroos come to drink.\n\nFor the Anangu, the Aboriginal people who have lived here for tens of thousands of years, Uluru is a sacred place. Visitors are no longer allowed to climb it; they walk around the rock instead and listen to the stories of the people who know it best.",
+      "syllable_body": "In the mid|dle of Aus|tra|lia, a gi|ant red rock ris|es out of the flat des|ert. Its name is U|lu|ru. It is more than three kil|o|me|tres long and high|er than the Eif|fel Tow|er, and most of it is still hid|den un|der the ground, like an ice|berg in the sea.\n\nU|lu|ru chang|es col|our with the light. At sun|rise and sun|set it glows deep or|ange and red; in the rain it turns sil|ver-grey, and wa|ter|falls pour down its sides. A|round its base grow des|ert oaks and grass|es, and there are wa|ter|holes where birds and kan|ga|roos come to drink.\n\nFor the A|nan|gu, the Ab|o|rig|i|nal peo|ple who have lived here for tens of thou|sands of years, U|lu|ru is a sa|cred place. Vis|i|tors are no long|er al|lowed to climb it; they walk a|round the rock in|stead and lis|ten to the sto|ries of the peo|ple who know it best.",
+      "imageId": "red_rock_monolith",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_venice_5",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 5,
+      "title": "A City Standing on a Forest",
+      "body": "Imagine a city where the streets are made of water. That city is Venice, in the north of Italy. It is built on more than a hundred islands in a shallow lagoon, and about four hundred bridges tie the islands together.\n\nHow can heavy stone houses stand on soft, muddy islands? Long ago the Venetians drove millions of wooden poles into the mud, close together like the bristles of a brush, and built on top of them. The mud kept the air away from the wood, so it never rotted. Over the centuries it became almost as hard as stone. Venice is standing on a forest turned upside down.\n\nThere are no cars in Venice. People walk, or they take a boat. The water buses are called vaporetti; ambulances and fire engines are boats, and even the rubbish is collected by boat. The famous black gondolas are mostly for visitors today.\n\nVenice has one big worry: the sea. Several times a year high tides flood the lowest squares, and the city is slowly sinking. Huge gates at the entrance to the lagoon now close when a flood is coming.",
+      "syllable_body": "I|mag|ine a cit|y where the streets are made of wa|ter. That cit|y is Ven|ice, in the north of It|a|ly. It is built on more than a hun|dred is|lands in a shal|low la|goon, and a|bout four hun|dred bridg|es tie the is|lands to|geth|er.\n\nHow can heav|y stone hous|es stand on soft, mud|dy is|lands? Long a|go the Ve|ne|tians drove mil|lions of wood|en poles in|to the mud, close to|geth|er like the bris|tles of a brush, and built on top of them. The mud kept the air a|way from the wood, so it nev|er rot|ted. O|ver the cen|tu|ries it be|came al|most as hard as stone. Ven|ice is stand|ing on a for|est turned up|side down.\n\nThere are no cars in Ven|ice. Peo|ple walk, or they take a boat. The wa|ter bus|es are called va|po|ret|ti; am|bu|lanc|es and fire en|gines are boats, and e|ven the rub|bish is col|lect|ed by boat. The fa|mous black gon|do|las are most|ly for vis|i|tors to|day.\n\nVen|ice has one big wor|ry: the sea. Sev|er|al times a year high tides flood the low|est squares, and the cit|y is slow|ly sink|ing. Huge gates at the en|trance to the la|goon now close when a flood is com|ing.",
+      "imageId": "benetke_trg",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_amazon_5",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 5,
+      "title": "The Amazon Rainforest",
+      "body": "The Amazon rainforest is the largest forest on Earth. It covers a huge part of South America, across nine countries, and through it winds the Amazon River, which carries more water than any other river in the world.\n\nIt is warm and wet here all year round. Rain falls almost every day. The tallest trees rise sixty metres above the ground and form a green roof called the canopy. Most of the forest’s animals live up there rather than on the dark forest floor.\n\nNowhere else on Earth are there so many kinds of living things. Monkeys swing through the branches, toucans crack fruit with their enormous beaks, and scarlet macaws fly screeching over the treetops. Bright blue butterflies as large as a hand drift between the trunks, tiny tree frogs cling to the leaves, and the jaguar, the biggest cat in the Americas, hunts silently below.\n\nThe forest matters to the whole world. Its billions of trees take in carbon dioxide and give out oxygen, and they help to make rain that falls far away. That is why so many people are working to protect it.",
+      "syllable_body": "The Am|a|zon rain|for|est is the larg|est for|est on Earth. It cov|ers a huge part of South A|mer|i|ca, a|cross nine coun|tries, and through it winds the Am|a|zon Riv|er, which car|ries more wa|ter than an|y oth|er riv|er in the world.\n\nIt is warm and wet here all year round. Rain falls al|most ev|ery day. The tall|est trees rise six|ty me|tres a|bove the ground and form a green roof called the can|o|py. Most of the for|est’s an|i|mals live up there rath|er than on the dark for|est floor.\n\nNo|where else on Earth are there so man|y kinds of liv|ing things. Mon|keys swing through the branch|es, tou|cans crack fruit with their e|nor|mous beaks, and scar|let ma|caws fly screech|ing o|ver the tree|tops. Bright blue but|ter|flies as large as a hand drift be|tween the trunks, ti|ny tree frogs cling to the leaves, and the jag|uar, the big|gest cat in the A|mer|i|cas, hunts si|lent|ly be|low.\n\nThe for|est mat|ters to the whole world. Its bil|lions of trees take in car|bon di|ox|ide and give out ox|y|gen, and they help to make rain that falls far a|way. That is why so man|y peo|ple are work|ing to pro|tect it.",
+      "imageId": "amazonski_pragozd",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
     }
   ]
 }

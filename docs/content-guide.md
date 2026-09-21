@@ -200,11 +200,11 @@ From `npm run content-status`:
   never formally reviewed, because it was written by the project owner
   rather than reviewed after the fact. Images: `plausible` (drawn for the
   texts, never checked one by one).
-- **English:** 45 entries — the 25 below plus ten original stories
-  (2026-09-20) and ten original animal-fact texts (2026-09-21), two per
-  level each, `imageAccuracy: verified` because each text was written for
-  the picture it is paired with. Three themes still have one text per
-  cell.
+- **English:** 55 entries — the 25 below plus ten original stories
+  (2026-09-20), ten animal-fact and ten around-the-world texts
+  (2026-09-21), two per level each, `imageAccuracy: verified` because
+  each text was written for the picture it is paired with. Two themes
+  still have one text per cell.
 - **English (original 25), German, French, Spanish:** 25 entries each, all `reviewed`
   by an AI editorial pass on 2026-09-19 (`nativeSpeaker: false`,
   `syllablesReviewed: true`; 3 German and 3 French syllable breaks were
@@ -214,10 +214,10 @@ From `npm run content-status`:
   second opinion) corrected 62 more breaks in 28 entries: 1 Spanish, 2
   German, 18 French (mostly `feu|il|le`-type words), 41 English. Native-
   speaker review: **0 of 100.**
-- **Images:** 41 of 145 `verified` (the four illustrations generated for
+- **Images:** 51 of 155 `verified` (the four illustrations generated for
   the mismatched Neuschwanstein, Uluru, Easter Island and Pont du Gard
   entries, the axolotl illustration bundled for the five Spanish ajolote
-  entries, the twenty new English texts, and the twelve story pictures
+  entries, the thirty new English texts, and the twelve story pictures
   checked against their texts on 2026-09-21 — see below); 102
   `plausible`; **2 `mismatch`**: the German "Das Licht im alten Haus"
   pair (`stories_leuchtturmfenster_2/4`, a girl and her father finding a
