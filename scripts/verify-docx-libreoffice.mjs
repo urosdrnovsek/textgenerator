@@ -111,14 +111,14 @@ class CdpClient {
  * and sentence-per-line each exercised at least once.
  */
 // entryId pins the text when a theme/level cell holds more than one (the
-// English pack has three or four per cell, French, German and Spanish two since 2026-09-21). Without it a
+// English pack has three or four per cell, French, German and Spanish two, Slovene three since 2026-09-21). Without it a
 // case gets the cell's first text in pack order — "Create text" is
 // deterministic (catalog.js chooseEntry) — which is fine for a case that
 // only needs *a* worksheet, but a boundary case that exists because of one
 // specific text must say which one.
 const CASES = [
-  { label: 'sl-andika-level1-readcopy-colors', language: 'sl', theme: 'stories', level: 1, fontId: 'andika', writingMode: 'read-copy', letterColors: true, syllableColors: true },
-  { label: 'sl-andika-level5-readcopy-stress', language: 'sl', theme: 'stories', level: 5, fontId: 'andika', writingMode: 'read-copy' },
+  { label: 'sl-andika-level1-readcopy-colors', language: 'sl', theme: 'stories', level: 1, entryId: 'stories_muc_1', fontId: 'andika', writingMode: 'read-copy', letterColors: true, syllableColors: true },
+  { label: 'sl-andika-level5-readcopy-stress', language: 'sl', theme: 'stories', level: 5, entryId: 'stories_muc_5', fontId: 'andika', writingMode: 'read-copy' },
   { label: 'en-lexend-level3-trace', language: 'en', theme: 'stories', level: 3, entryId: 'stories_piscancek_3', fontId: 'lexend', writingMode: 'trace' },
   { label: 'de-opendyslexic-level3-readonly-tint', language: 'de', theme: 'stories', level: 3, entryId: 'stories_wollmuetze_3', fontId: 'opendyslexic', writingMode: 'read-only', tintId: 'cream', printTint: true },
   { label: 'fr-comicneue-level3-readcopy-sentenceperline', language: 'fr', theme: 'stories', level: 3, entryId: 'stories_velo_bleu_3', fontId: 'comicneue', writingMode: 'read-copy', sentencePerLine: true },

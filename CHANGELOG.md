@@ -7,6 +7,25 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
+- **Slovene: three texts per theme and level** (2026-09-21). Fifty texts
+  curated from the raw Slovene pool (`Texts collection/sl_texts.json`),
+  two per cell, after a Slovene teacher reviewed the pool and their
+  corrections were applied: the lost kite, the key under the mint (at
+  five levels, with its chest of postcards), the red mitten, the bell on
+  the path, the moonlit picnic, the forest concert, the hidden bench;
+  hedgehog, hummingbird, fox, beaver, octopus, owl, chameleon, sea
+  turtle, wolves; the Eiffel Tower and the Sahara at several levels,
+  Venice's canals, the Great Wall, Machu Picchu; magnets, echoes,
+  bridges, seeds, the Moon's phases; snowflakes, the water cycle, bird
+  migration, snow as a blanket, fungi, forest layers, thunderstorms,
+  pollination, animals in winter. Seventeen pictures bundled from the
+  raw image pool (+1.2 MB; ZIP now 11.4 MB). Slovene words are long:
+  the eight non-story level-5 texts and the original Venice text each
+  lost one to three sentences to fit a page — every text in every pack
+  now fits one page at default settings. Every pack now has at least
+  two texts in every cell (318 in all); the two Slovene `verify-docx`
+  cases are pinned, and the "one text hides the title list" behaviour is
+  now checked through the teacher import flow in `verify-offline`.
 - **Spanish: two texts per theme and level** (2026-09-21). Twenty-five
   original Spanish texts on the Slovene topics and pictures, as for
   French and German (Sofía and the wet kitten, the white egg, Tito the

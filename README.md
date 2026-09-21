@@ -8,9 +8,9 @@ or an editable Word (`.docx`) file. It runs entirely offline — open
 `index.html`; no server, no install, no internet connection at any point.
 
 Five languages (Slovene, English, German, French, Spanish), five themes,
-five difficulty levels; the English pack has three or four texts for
-every theme and level (93 entries), French, German and Spanish two,
-Slovene one.
+five difficulty levels; English has three or four texts for every theme
+and level (93 entries), Slovene three (75), French, German and Spanish
+two (50 each) — 318 texts in all.
 Current version:
 `0.8.1-rc.1` — a release candidate; see "Status" below for what's still
 open.
@@ -36,7 +36,7 @@ to a school.
 
 - **Pick language, theme, level; click "Create text."** The app shows a
   reviewed passage with a matching picture in a live preview; where a
-  theme and level have several texts (every English cell has at least three, every French, German and Spanish cell two), a
+  theme and level have several texts (every cell has at least two), a
   title list lets the teacher pick one, and "Create text" moves on to the
   next in order. One page is the default target; a worksheet that needs
   more says so ("will print on N pages") and stays fully
@@ -75,7 +75,7 @@ Still open, deliberately: a native speaker's review of the English, German,
 French and Spanish content (they've had a careful editorial pass, not a
 native speaker's read — 0 of 243 non-Slovene entries native-reviewed); an
 image-accuracy pass over the entries whose pictures were reassigned on
-topic rather than drawn for the text (166 of 268 verified, the rest
+topic rather than drawn for the text (209 of 318 verified, the rest
 plausible, no known mismatch). Both numbers come from the per-entry review record and are
 printed by `npm run content-status`, so progress is measurable rather
 than asserted (see `docs/content-guide.md`). Also open: country-specific

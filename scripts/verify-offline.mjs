@@ -462,6 +462,10 @@ async function main() {
     `);
     await wait(100);
     const candidateText = await evalJs(`document.getElementById('candidate-count').textContent`);
+    // Every bundled pack now offers several texts per cell, so an imported
+    // pack with one text per cell is the only place left to see the title
+    // list hide itself (catalog.js chooseEntry / main.js populateTextSelect).
+    const pickerHiddenForSingleText = await evalJs(`(() => { const s = document.getElementById('text-select'); return s.hidden && getComputedStyle(s).display === 'none'; })()`);
     await evalJs(`document.getElementById('btn-create').click();`);
     await waitForFit();
     await wait(300);
@@ -469,14 +473,15 @@ async function main() {
     const importedImageSrc = await evalJs(`document.querySelector('#preview .ws-image')?.src || ''`);
     const importOk = importStatus === 'Imported 2 text(s) for English.'
       && candidateText === 'Available: 1'
+      && pickerHiddenForSingleText
       && importedTitle === 'Offline Import Check'
       && importedImageSrc.startsWith('data:image/');
     journeyChecks.push({
-      label: 'importing a content pack with a new image replaces the language\'s texts for the session',
+      label: 'importing a content pack with a new image replaces the language\'s texts for the session (and a single-text cell hides the title list)',
       ok: importOk,
       note: importOk
-        ? 'status, candidate count, rendered title and imported image all as expected'
-        : `status="${importStatus}", candidates="${candidateText}", title="${importedTitle}", image=${importedImageSrc.slice(0, 20)}`
+        ? 'status, candidate count, hidden title list, rendered title and imported image all as expected'
+        : `status="${importStatus}", candidates="${candidateText}", pickerHidden=${pickerHiddenForSingleText}, title="${importedTitle}", image=${importedImageSrc.slice(0, 20)}`
     });
 
     console.log('Checking that an unbreakable word still reports WIDTH_OVERFLOW...');

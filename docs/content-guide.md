@@ -196,10 +196,21 @@ Rules of thumb:
 
 From `npm run content-status`:
 
-- **Slovene:** 25 entries, the original curated selection, `draft` —
-  never formally reviewed, because it was written by the project owner
-  rather than reviewed after the fact. Images: `plausible` (drawn for the
-  texts, never checked one by one).
+- **Slovene:** 75 entries. The original 25 (`draft` — written by the
+  project owner, never formally reviewed; their story pictures were
+  checked on 2026-09-21) plus 50 curated on 2026-09-21 from the raw pool
+  `Texts collection/sl_texts.json`, two per cell, after a Slovene teacher
+  had reviewed that pool and their corrections were applied (`d9c1183`).
+  Those 50 are `reviewed`, `nativeSpeaker: false` (the teacher's review
+  covered the pool, not these entries as such, and only part of the pool
+  for certain), `syllablesReviewed: false` (the pool's syllable breaks
+  were never separately checked). Pictures: 33 already bundled, 17
+  bundled from the raw `Images/` pool for this; the science texts, which
+  have no pool pictures at all, were matched to bundled pictures by
+  topic (magnets, echo, arch bridge, seed, moon phases). The eight
+  non-story level-5 texts (and the owner's Venice text) each lost one to
+  three sentences to fit one page — Slovene words are long, and the
+  level-5 pool texts ran to 1,050–1,170 characters.
 - **English:** 93 entries — three per theme × level cell, four in the
   story, animal and science cells and in three more (nature L2/L3,
   around the world L4). The 25 below plus fifty original texts (ten per
@@ -250,10 +261,9 @@ From `npm run content-status`:
   every word. The first run of the one-page fit check over the Spanish
   pack found the existing `nature_seasons_hojas_otono_5` running to a
   second page; one redundant sentence was removed (version 2).
-- **Known:** the Slovene `around_the_world_benetke_5` (191 words, four
-  paragraphs) runs to a second page at default settings — found on
-  2026-09-21 when the fit check was first run over every pack. Slovene is
-  the teacher-reviewed pack, so it was left for the owner to trim.
+- The Slovene `around_the_world_benetke_5` (191 words) ran to a second
+  page at default settings; two sentences were removed on 2026-09-21
+  (version 2) and every entry in every pack now fits one page.
 - **English (original 25), German (original 25), French (original 25), Spanish (original 25):** 25 entries each, all `reviewed`
   by an AI editorial pass on 2026-09-19 (`nativeSpeaker: false`,
   `syllablesReviewed: true`; 3 German and 3 French syllable breaks were
@@ -263,7 +273,7 @@ From `npm run content-status`:
   second opinion) corrected 62 more breaks in 28 entries: 1 Spanish, 2
   German, 18 French (mostly `feu|il|le`-type words), 41 English. Native-
   speaker review: **0 of 100.**
-- **Images:** 166 of 268 `verified` (the four illustrations generated for
+- **Images:** 209 of 318 `verified` (the four illustrations generated for
   the mismatched Neuschwanstein, Uluru, Easter Island and Pont du Gard
   entries, the axolotl illustration bundled for the five Spanish ajolote
   entries, the fifty new English texts, the twelve story pictures
