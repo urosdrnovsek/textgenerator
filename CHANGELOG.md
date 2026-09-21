@@ -16,8 +16,18 @@ summarizes what shipped and what was verified; the commit messages in
   Grandpa's pottery wheel, and a sunrise nobody else meant to wake up
   for. Children named to match the pictures (Mia; Mia and Tom). All
   fit one page at default settings in real Chromium; the title list
-  simply shows four entries now. Round 2 continues with animals,
-  science and a few nature / around-the-world cells.
+  simply shows four entries now.
+- **A fourth English animal text per level** (round 2 batch 2). Five
+  more pictures bundled from the drop (`hummingbird`, `red_panda`,
+  `sea_turtle_cleaners`, `orangutan`, `humpback_calf`): the humming
+  bird that hovers and flies backwards, the red panda and its tail, the
+  turtle's "car wash" at a reef cleaning station, the orang-utan as
+  "person of the forest" (arm span, nightly nests, seven years with its
+  mother, the forests being cut), and the humpback's migration with its
+  calf (born car-length, hundreds of litres of milk a day, the mother
+  fasting, the males' songs). All fit one page at default settings in
+  real Chromium. Round 2 continues with science and a few nature /
+  around-the-world cells.
 - **Story pictures now match the child in the text.** Every story
   picture was compared with every text that uses it (16 pictures, 35
   entries, five languages). Eight entries had the wrong gender: the three

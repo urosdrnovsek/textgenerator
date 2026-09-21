@@ -1442,6 +1442,96 @@
         "syllablesReviewed": true,
         "imageAccuracy": "verified"
       }
+    },
+    {
+      "id": "animal_facts_hummingbird_1",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 1,
+      "title": "The Humming Bird",
+      "body": "A hummingbird is a tiny bird. Its wings beat so fast that they hum. It can hover like a helicopter. It can even fly backwards. With its long beak it drinks sweet nectar from flowers.",
+      "syllable_body": "A hum|ming|bird is a ti|ny bird. Its wings beat so fast that they hum. It can hov|er like a hel|i|cop|ter. It can e|ven fly back|wards. With its long beak it drinks sweet nec|tar from flow|ers.",
+      "imageId": "hummingbird",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_red_panda_2",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 2,
+      "title": "The Red Panda",
+      "body": "The red panda lives high in the mountains of Asia, in forests full of bamboo. It is about as big as a cat. Its long tail has rings. Bamboo leaves are its favourite food. When it sleeps in a tree, it wraps the fluffy tail around itself to keep warm. Despite its name, it is not a close relative of the giant panda.",
+      "syllable_body": "The red pan|da lives high in the moun|tains of A|sia, in for|ests full of bam|boo. It is a|bout as big as a cat. Its long tail has rings. Bam|boo leaves are its fa|vour|ite food. When it sleeps in a tree, it wraps the fluff|y tail a|round it|self to keep warm. De|spite its name, it is not a close rel|a|tive of the gi|ant pan|da.",
+      "imageId": "red_panda",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_sea_turtle_3",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 3,
+      "title": "The Turtle’s Car Wash",
+      "body": "A sea turtle spends almost its whole life in the sea, but it cannot clean itself. Algae and tiny creatures settle on its shell and skin, and it has no hands to scrub them off. So the turtle swims to a reef where small fish are waiting. The fish nibble the shell clean. The turtle gets a wash, and the fish get a meal. Both sides win, so the turtle comes back again and again. Some sea turtles live for seventy years or more.",
+      "syllable_body": "A sea tur|tle spends al|most its whole life in the sea, but it can|not clean it|self. Al|gae and ti|ny crea|tures set|tle on its shell and skin, and it has no hands to scrub them off. So the tur|tle swims to a reef where small fish are wait|ing. The fish nib|ble the shell clean. The tur|tle gets a wash, and the fish get a meal. Both sides win, so the tur|tle comes back a|gain and a|gain. Some sea tur|tles live for sev|en|ty years or more.",
+      "imageId": "sea_turtle_cleaners",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_orangutan_4",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 4,
+      "title": "Person of the Forest",
+      "body": "In the rainforests of Borneo and Sumatra lives a red-haired ape called the orangutan. Its name comes from the Malay words for “person of the forest”: an orangutan spends almost its whole life in the trees.\n\nIt is the biggest animal that lives in the treetops. Its arms are longer than its legs and can stretch wider than a door, so it swings from branch to branch, picking fruit as it goes. Every evening it bends leafy branches together to make a fresh bed for the night, and when it rains it holds a large leaf over its head like an umbrella.\n\nA young orangutan stays with its mother for about seven years, longer than almost any other animal, learning where to find food. Today the forests are being cut down, and orangutans have become rare. Protecting their trees is the only way to protect them.",
+      "syllable_body": "In the rain|for|ests of Bor|ne|o and Su|ma|tra lives a red-haired ape called the o|rang|u|tan. Its name comes from the Ma|lay words for “per|son of the for|est”: an o|rang|u|tan spends al|most its whole life in the trees.\n\nIt is the big|gest an|i|mal that lives in the tree|tops. Its arms are long|er than its legs and can stretch wid|er than a door, so it swings from branch to branch, pick|ing fruit as it goes. Ev|ery eve|ning it bends leaf|y branch|es to|geth|er to make a fresh bed for the night, and when it rains it holds a large leaf o|ver its head like an um|brel|la.\n\nA young o|rang|u|tan stays with its moth|er for a|bout sev|en years, long|er than al|most an|y oth|er an|i|mal, learn|ing where to find food. To|day the for|ests are be|ing cut down, and o|rang|u|tans have be|come rare. Pro|tect|ing their trees is the on|ly way to pro|tect them.",
+      "imageId": "orangutan",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_humpback_5",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 5,
+      "title": "The Longest Journey",
+      "body": "Every year, the humpback whales make one of the longest journeys of any mammal on Earth. In summer they feed in the cold seas near the poles, full of krill and small fish. When autumn comes, they set off towards the warm seas near the equator, thousands of kilometres away.\n\nThat is where the calves are born. A newborn humpback is already as long as a car, and it grows fast: it drinks hundreds of litres of its mother’s rich milk every day. The mother herself eats nothing for months. She lives on the fat she stored in the summer and spends all her strength keeping her calf safe and close.\n\nIn spring, mother and calf swim north together. The calf stays beside her, often touching her with its long white flipper. It learns the way as it goes, and years later it will make the same journey on its own.\n\nHumpbacks are famous for two more things. They leap almost completely out of the water and crash back in a mountain of spray. And the males sing: long, strange songs that travel for many kilometres through the sea.",
+      "syllable_body": "Ev|ery year, the hump|back whales make one of the long|est jour|neys of an|y mam|mal on Earth. In sum|mer they feed in the cold seas near the poles, full of krill and small fish. When au|tumn comes, they set off to|wards the warm seas near the e|qua|tor, thou|sands of kil|o|me|tres a|way.\n\nThat is where the calves are born. A new|born hump|back is al|read|y as long as a car, and it grows fast: it drinks hun|dreds of li|tres of its moth|er’s rich milk ev|ery day. The moth|er her|self eats noth|ing for months. She lives on the fat she stored in the sum|mer and spends all her strength keep|ing her calf safe and close.\n\nIn spring, moth|er and calf swim north to|geth|er. The calf stays be|side her, of|ten touch|ing her with its long white flip|per. It learns the way as it goes, and years la|ter it will make the same jour|ney on its own.\n\nHump|backs are fa|mous for two more things. They leap al|most com|plete|ly out of the wa|ter and crash back in a moun|tain of spray. And the males sing: long, strange songs that trav|el for man|y kil|o|me|tres through the sea.",
+      "imageId": "humpback_calf",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
     }
   ]
 }
