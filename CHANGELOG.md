@@ -7,6 +7,17 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
+- **A fourth English story per level** (2026-09-21, round 2 batch 1).
+  Five original stories written for pictures from the owner's new
+  drop, now bundled (`storm_dog`, `blanket_fort`, `library_map`,
+  `pottery_wheel`, `mountain_camping`, ~80 KB each): a thunderstorm
+  counted out under a blanket, a fort of chairs and Grandma's quilt, a
+  treasure map that turns out to show the playground, a first bowl on
+  Grandpa's pottery wheel, and a sunrise nobody else meant to wake up
+  for. Children named to match the pictures (Mia; Mia and Tom). All
+  fit one page at default settings in real Chromium; the title list
+  simply shows four entries now. Round 2 continues with animals,
+  science and a few nature / around-the-world cells.
 - **Story pictures now match the child in the text.** Every story
   picture was compared with every text that uses it (16 pictures, 35
   entries, five languages). Eight entries had the wrong gender: the three
