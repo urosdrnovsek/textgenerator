@@ -632,6 +632,186 @@
         "syllablesReviewed": true,
         "imageAccuracy": "verified"
       }
+    },
+    {
+      "id": "animal_facts_owl_1",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 1,
+      "title": "The Owl at Night",
+      "body": "An owl hunts at night. Its big eyes see in the dark. Its soft feathers make no sound. The mouse does not hear it. By day the owl sleeps in a hole in a tree.",
+      "syllable_body": "An owl hunts at night. Its big eyes see in the dark. Its soft feath|ers make no sound. The mouse does not hear it. By day the owl sleeps in a hole in a tree.",
+      "imageId": "sova_veja",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_tortoise_1",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 1,
+      "title": "A House on Its Back",
+      "body": "A tortoise has a hard shell. The shell is its house. In danger it pulls its head and legs inside. A tortoise lives on land. Its cousin the sea turtle swims in the sea.",
+      "syllable_body": "A tor|toise has a hard shell. The shell is its house. In dan|ger it pulls its head and legs in|side. A tor|toise lives on land. Its cous|in the sea tur|tle swims in the sea.",
+      "imageId": "zelva",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_bee_2",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 2,
+      "title": "Busy Bees",
+      "body": "A bee flies from flower to flower. It drinks sweet nectar and collects pollen on its back legs. Then it flies home to the hive. Inside, thousands of bees work together. They turn the nectar into honey and store it in little wax rooms. Bees help the apple trees too. The flowers they visit turn into apples.",
+      "syllable_body": "A bee flies from flow|er to flow|er. It drinks sweet nec|tar and col|lects pol|len on its back legs. Then it flies home to the hive. In|side, thou|sands of bees work to|geth|er. They turn the nec|tar in|to hon|ey and store it in lit|tle wax rooms. Bees help the ap|ple trees too. The flow|ers they vis|it turn in|to ap|ples.",
+      "imageId": "cebela_cvet",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_giraffe_2",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 2,
+      "title": "The Tallest Animal",
+      "body": "The giraffe is the tallest animal on land. It can be as tall as a house with two floors. With its long neck it reaches leaves that no other animal can get. Its tongue is dark and almost half a metre long. Sharp thorns do not hurt it. Every giraffe has its own pattern of spots, just like we all have different fingerprints.",
+      "syllable_body": "The gi|raffe is the tall|est an|i|mal on land. It can be as tall as a house with two floors. With its long neck it reach|es leaves that no oth|er an|i|mal can get. Its tongue is dark and al|most half a me|tre long. Sharp thorns do not hurt it. Ev|ery gi|raffe has its own pat|tern of spots, just like we all have dif|fer|ent fin|ger|prints.",
+      "imageId": "zirafa",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_dolphin_3",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 3,
+      "title": "The Dolphin’s Whistle",
+      "body": "Dolphins look like fish, but they are not. They are mammals, like us. A dolphin breathes air through a hole on top of its head, so it must come up to the surface every few minutes. Dolphins live in groups called pods. They leap out of the water and chase each other. They talk with clicks and whistles. Every dolphin has its own special whistle, which works like a name. When a mother calls, her calf knows the whistle and swims to her. Even when it sleeps, a dolphin keeps one half of its brain awake.",
+      "syllable_body": "Dol|phins look like fish, but they are not. They are mam|mals, like us. A dol|phin breathes air through a hole on top of its head, so it must come up to the sur|face ev|ery few min|utes. Dol|phins live in groups called pods. They leap out of the wa|ter and chase each oth|er. They talk with clicks and whis|tles. Ev|ery dol|phin has its own spe|cial whis|tle, which works like a name. When a moth|er calls, her calf knows the whis|tle and swims to her. E|ven when it sleeps, a dol|phin keeps one half of its brain a|wake.",
+      "imageId": "delfin_jata",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_octopus_3",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 3,
+      "title": "The Octopus and the Jar",
+      "body": "An octopus has eight arms, and each arm is covered with suckers. It has no bones at all, so it can squeeze through a very small gap. It has three hearts, and its blood is blue. But the most surprising thing about an octopus is how clever it is. In aquariums, people have watched an octopus unscrew the lid of a jar to reach the food inside. It can also change the colour of its skin in a moment to hide among the rocks. It may be the cleverest animal in the sea.",
+      "syllable_body": "An oc|to|pus has eight arms, and each arm is cov|ered with suck|ers. It has no bones at all, so it can squeeze through a ver|y small gap. It has three hearts, and its blood is blue. But the most sur|pris|ing thing a|bout an oc|to|pus is how clev|er it is. In a|quar|i|ums, peo|ple have watched an oc|to|pus un|screw the lid of a jar to reach the food in|side. It can al|so change the col|our of its skin in a mo|ment to hide a|mong the rocks. It may be the clev|er|est an|i|mal in the sea.",
+      "imageId": "octopus_camouflage",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_bat_4",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 4,
+      "title": "Hunting in the Dark",
+      "body": "Bats are the only mammals that can truly fly. Their wings are not made of feathers but of thin skin, stretched between very long fingers. By day, bats sleep hanging upside down in caves or hollow trees. When the sun goes down, they wake up and set off to hunt.\n\nIt is dark, but a bat does not need much light. As it flies, it sends out short, high calls. The sounds are so high that our ears cannot hear them. When a call hits a moth or a mosquito, an echo bounces back. From the echo the bat knows exactly where the insect is, how big it is and which way it is moving. Then it snaps it up in the air.\n\nA small bat can catch hundreds of insects in a single night. Every one of them might have bitten you.",
+      "syllable_body": "Bats are the on|ly mam|mals that can tru|ly fly. Their wings are not made of feath|ers but of thin skin, stretched be|tween ver|y long fin|gers. By day, bats sleep hang|ing up|side down in caves or hol|low trees. When the sun goes down, they wake up and set off to hunt.\n\nIt is dark, but a bat does not need much light. As it flies, it sends out short, high calls. The sounds are so high that our ears can|not hear them. When a call hits a moth or a mos|qui|to, an ech|o bounc|es back. From the ech|o the bat knows ex|act|ly where the in|sect is, how big it is and which way it is mov|ing. Then it snaps it up in the air.\n\nA small bat can catch hun|dreds of in|sects in a sin|gle night. Ev|ery one of them might have bit|ten you.",
+      "imageId": "netopir",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_axolotl_4",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 4,
+      "title": "The Smiling Axolotl",
+      "body": "The axolotl is a salamander that lives in only one place in the wild: lakes and canals near Mexico City. Its wide mouth looks like a smile, and on each side of its head it wears a crown of feathery gills.\n\nMost salamanders change as they grow up. They lose their gills, leave the water and live on land. The axolotl never does. It keeps its gills and its tail all its life and stays in the water, like a tadpole that never becomes a frog.\n\nIt has another amazing talent. If an axolotl loses a leg, it simply grows a new one. It can even repair parts of its heart and brain. In the wild axolotls are dark brown and very rare today. The pink ones, like the one in the picture, are bred by people and kept in aquariums.",
+      "syllable_body": "The ax|o|lotl is a sal|a|man|der that lives in on|ly one place in the wild: lakes and ca|nals near Mex|i|co Cit|y. Its wide mouth looks like a smile, and on each side of its head it wears a crown of feath|er|y gills.\n\nMost sal|a|man|ders change as they grow up. They lose their gills, leave the wa|ter and live on land. The ax|o|lotl nev|er does. It keeps its gills and its tail all its life and stays in the wa|ter, like a tad|pole that nev|er be|comes a frog.\n\nIt has an|oth|er a|maz|ing tal|ent. If an ax|o|lotl los|es a leg, it sim|ply grows a new one. It can e|ven re|pair parts of its heart and brain. In the wild ax|o|lotls are dark brown and ver|y rare to|day. The pink ones, like the one in the pic|ture, are bred by peo|ple and kept in a|quar|i|ums.",
+      "imageId": "axolotl",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_dolphin_5",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 5,
+      "title": "Seeing with Sound",
+      "body": "Deep water is often dark and cloudy, and eyes are not much help there. Yet dolphins find fish with ease, even at night. Their secret is sound.\n\nA dolphin sends out fast clicks from the front of its head. The clicks travel through the water, hit whatever lies ahead and bounce back as echoes. From these echoes the dolphin builds a picture of its surroundings: a rock, a sunken ship, a shoal of fish. It can tell how far away a fish is, how big it is and in which direction it is swimming. It is a little like seeing with your ears.\n\nDolphins also hunt as a team. A pod will circle a shoal of fish and drive it together into a tight ball, so that every dolphin can dart in and grab a meal.\n\nBecause a dolphin is a mammal, it breathes air. It comes up, blows out a puff of spray through the hole on top of its head, takes a quick breath and dives again. A dolphin can stay under for around ten minutes, but usually it comes up far sooner.",
+      "syllable_body": "Deep wa|ter is of|ten dark and cloud|y, and eyes are not much help there. Yet dol|phins find fish with ease, e|ven at night. Their se|cret is sound.\n\nA dol|phin sends out fast clicks from the front of its head. The clicks trav|el through the wa|ter, hit what|ev|er lies a|head and bounce back as ech|oes. From these ech|oes the dol|phin builds a pic|ture of its sur|round|ings: a rock, a sunk|en ship, a shoal of fish. It can tell how far a|way a fish is, how big it is and in which di|rec|tion it is swim|ming. It is a lit|tle like see|ing with your ears.\n\nDol|phins al|so hunt as a team. A pod will cir|cle a shoal of fish and drive it to|geth|er in|to a tight ball, so that ev|ery dol|phin can dart in and grab a meal.\n\nBe|cause a dol|phin is a mam|mal, it breathes air. It comes up, blows out a puff of spray through the hole on top of its head, takes a quick breath and dives a|gain. A dol|phin can stay un|der for a|round ten min|utes, but u|su|al|ly it comes up far soon|er.",
+      "imageId": "delfin_morje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_blue_whale_5",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 5,
+      "title": "The Largest Animal of All",
+      "body": "The blue whale is the largest animal that has ever lived, heavier than any dinosaur. A grown blue whale can be thirty metres long, longer than two buses in a row. Its heart is the size of a small car, and its tongue alone weighs as much as an elephant.\n\nYou might think such a giant eats giant food. In fact it eats some of the smallest creatures in the sea: krill, tiny shrimp-like animals no longer than your finger. The whale swims into a swarm of krill with its mouth wide open, takes in a huge gulp of water and pushes it out again through the comb-like plates in its mouth. The krill stay behind and are swallowed. In one day a blue whale can eat around four tonnes of them.\n\nWhen it comes up to breathe, the whale blows a cloud of spray high into the air, as high as a house with three floors. People on whale-watching boats often see this spout long before they see the whale itself.\n\nBlue whales sing too. Their deep, slow songs travel hundreds of kilometres through the ocean.",
+      "syllable_body": "The blue whale is the larg|est an|i|mal that has ev|er lived, heav|i|er than an|y di|no|saur. A grown blue whale can be thir|ty me|tres long, long|er than two bus|es in a row. Its heart is the size of a small car, and its tongue a|lone weighs as much as an el|e|phant.\n\nYou might think such a gi|ant eats gi|ant food. In fact it eats some of the small|est crea|tures in the sea: krill, ti|ny shrimp-like an|i|mals no long|er than your fin|ger. The whale swims in|to a swarm of krill with its mouth wide o|pen, takes in a huge gulp of wa|ter and push|es it out a|gain through the comb-like plates in its mouth. The krill stay be|hind and are swal|lowed. In one day a blue whale can eat a|round four tonnes of them.\n\nWhen it comes up to breathe, the whale blows a cloud of spray high in|to the air, as high as a house with three floors. Peo|ple on whale-watch|ing boats of|ten see this spout long be|fore they see the whale it|self.\n\nBlue whales sing too. Their deep, slow songs trav|el hun|dreds of kil|o|me|tres through the o|cean.",
+      "imageId": "modri_kit",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-21",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
     }
   ]
 }

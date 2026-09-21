@@ -32,6 +32,21 @@ summarizes what shipped and what was verified; the commit messages in
   without new assets. Each fits one page at default settings (checked in
   real Chromium), follows the English syllable convention, and is marked
   `imageAccuracy: verified`. The other four themes follow.
+- **English animal facts: three texts per level** (2026-09-21). Ten
+  original texts (34–187 words) for bundled pictures: the owl at night,
+  the tortoise's shell, busy bees, the giraffe's tongue, the dolphin's
+  signature whistle, the octopus that opens a jar (what the
+  `octopus_camouflage` picture actually shows), how bats hunt with
+  echoes, the axolotl that never grows up, how dolphins see with sound,
+  and the blue whale. Facts checked against standard references (blue
+  whale ≈ 30 m and ~4 tonnes of krill a day, giraffe tongue ≈ 45 cm,
+  dolphin dives up to ~10 minutes, axolotl range and regeneration, wild
+  axolotls dark / pink ones captive-bred). Same checks as the stories:
+  every one of the fifteen `animal_facts` titles fits one page at
+  default settings in real Chromium, syllable breaks follow the English
+  convention, `imageAccuracy: verified`. Written without the `{name}`
+  placeholder (removed the same day). Remaining: around_the_world,
+  amazing_science, nature_seasons.
 - **Title picker and predictable "Create text"** (upgrade blueprint v3,
   workstream I7, unblocked by the above). When a theme and level offer
   more than one text, a "Text" list above the button shows every title;

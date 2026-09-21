@@ -200,9 +200,11 @@ From `npm run content-status`:
   never formally reviewed, because it was written by the project owner
   rather than reviewed after the fact. Images: `plausible` (drawn for the
   texts, never checked one by one).
-- **English:** 35 entries — the 25 below plus ten original stories
-  (2026-09-20, two per level, `imageAccuracy: verified` because each
-  text was written for the picture it is paired with).
+- **English:** 45 entries — the 25 below plus ten original stories
+  (2026-09-20) and ten original animal-fact texts (2026-09-21), two per
+  level each, `imageAccuracy: verified` because each text was written for
+  the picture it is paired with. Three themes still have one text per
+  cell.
 - **English (original 25), German, French, Spanish:** 25 entries each, all `reviewed`
   by an AI editorial pass on 2026-09-19 (`nativeSpeaker: false`,
   `syllablesReviewed: true`; 3 German and 3 French syllable breaks were
@@ -212,9 +214,10 @@ From `npm run content-status`:
   second opinion) corrected 62 more breaks in 28 entries: 1 Spanish, 2
   German, 18 French (mostly `feu|il|le`-type words), 41 English. Native-
   speaker review: **0 of 100.**
-- **Images:** 9 of 125 `verified` (the four illustrations generated for
+- **Images:** 29 of 145 `verified` (the four illustrations generated for
   the mismatched Neuschwanstein, Uluru, Easter Island and Pont du Gard
-  entries, and the axolotl illustration bundled for the five Spanish
-  ajolote entries); the other 116 `plausible`; none `mismatch`.
+  entries, the axolotl illustration bundled for the five Spanish ajolote
+  entries, and the twenty new English texts); the other 116 `plausible`;
+  none `mismatch`.
 
 That 0/100 is the reason the version is still a release candidate.

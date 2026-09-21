@@ -9,7 +9,7 @@ or an editable Word (`.docx`) file. It runs entirely offline — open
 
 Five languages (Slovene, English, German, French, Spanish), five themes,
 five difficulty levels; the English pack is being grown to three texts per
-theme and level (stories done, the other themes in progress). Current version: `0.8.1-rc.1` — a release
+theme and level (stories and animal facts done, three themes in progress). Current version: `0.8.1-rc.1` — a release
 candidate; see "Status" below for what's still open.
 
 ## Quick start
@@ -33,7 +33,7 @@ to a school.
 
 - **Pick language, theme, level; click "Create text."** The app shows a
   reviewed passage with a matching picture in a live preview; where a
-  theme and level have several texts (English stories have three each), a
+  theme and level have several texts (English stories and animal facts have three each), a
   title list lets the teacher pick one, and "Create text" moves on to the
   next in order. One page is the default target; a worksheet that needs
   more says so ("will print on N pages") and stays fully
