@@ -3,17 +3,27 @@
  * syllable coloring, built once and consumed by both the HTML renderer and
  * the DOCX exporter so the two outputs cannot visually drift apart.
  *
- * Style precedence (blueprint 8.6): confused-letter colors override
- * syllable colors on the same glyph.
+ * One function decides every glyph's style (styleText, upgrade blueprint
+ * §11.5.2); before 0.10 there were two builders (plain letters and
+ * syllables) with the precedence written out twice. Precedence, highest
+ * first: confused-letter colour > alternating syllable colour > base.
+ *
+ * Runs carry metadata so later features can address words and syllables
+ * (click targets, arcs): a run never crosses a word or syllable boundary.
  */
+
+import { tokenize, wordIndexByOffset } from './tokenize.js';
 
 /**
  * @typedef {object} StyledRun
  * @property {string} text
  * @property {string} color six-digit hex, e.g. "#B42318"
- * @property {'sep'} [kind] 'sep' marks an inserted syllable-separator mark,
- *   which is not part of the source text — splitRunsIntoSentences must not
- *   count it when cutting runs at source-text offsets
+ * @property {number} [w] index of the word this run belongs to (src/text/tokenize.js); present on every run inside a word, including a separator mark inside it
+ * @property {number} [syl] syllable index within the word; present on word letters when the text has syllable data
+ * @property {'space' | 'punct' | 'sep'} [kind] absent = letters of a word.
+ *   'sep' marks an inserted syllable-separator mark, which is not part of
+ *   the source text — splitRunsIntoSentences must not count it when
+ *   cutting runs at source-text offsets
  */
 
 const HEX_COLOR_PATTERN = /^#[0-9a-fA-F]{6}$/;
@@ -45,30 +55,6 @@ function colorForChar(char, letterColors, uppercaseAlso) {
   return letterColors[lower];
 }
 
-/**
- * Merges a stream of (character, color-or-null[, kind]) pairs into runs,
- * filling null with baseColor. Preserves every character exactly. A pair
- * with a kind (an inserted separator) never merges with a pair without
- * one, so the mark stays identifiable as not being source text.
- * @param {Array<[string, string | null, ('sep' | undefined)?]>} pairs
- * @param {string} baseColor
- * @returns {StyledRun[]}
- */
-function mergePairsIntoRuns(pairs, baseColor) {
-  /** @type {StyledRun[]} */
-  const runs = [];
-  for (const [text, color, kind] of pairs) {
-    const resolved = color ?? baseColor;
-    const previous = runs.at(-1);
-    if (previous && previous.color === resolved && previous.kind === kind) {
-      previous.text += text;
-    } else {
-      runs.push(kind ? { text, color: resolved, kind } : { text, color: resolved });
-    }
-  }
-  return runs;
-}
-
 /** Between-syllable mark for 'separators'/'both' mode (blueprint brief section 5: "separating words into syllables and/or alternating syllable colors" — both are independently available, not either/or). */
 const SYLLABLE_SEPARATOR = '·'; // middle dot
 
@@ -82,42 +68,30 @@ const SYLLABLE_SEPARATOR = '·'; // middle dot
  * @property {string} [baseColor]
  */
 
-/**
- * Builds styled runs for plain text (no syllable coloring), applying only
- * confused-letter coloring.
- * @param {string} text
- * @param {StyleOptions} options
- * @returns {StyledRun[]}
- */
-export function buildLetterRuns(text, options = {}) {
-  const { letterColors = {}, uppercaseAlso = false, baseColor = '#202020' } = options;
-  for (const color of Object.values(letterColors)) assertValidColor(color);
-  assertValidColor(baseColor);
-
-  /** @type {Array<[string, string | null]>} */
-  const pairs = [];
-  for (const char of text) {
-    pairs.push([char, colorForChar(char, letterColors, uppercaseAlso)]);
-  }
-  return mergePairsIntoRuns(pairs, baseColor);
+/** Two styled pieces merge into one run only when everything a consumer may read from them is equal. */
+function sameStyle(a, b) {
+  return a.color === b.color && a.kind === b.kind && a.w === b.w && a.syl === b.syl;
 }
 
 /**
- * Builds styled runs from a syllable-marked source (`syllable_body`),
- * applying syllable-alternation coloring with confused-letter colors
- * overriding on the same glyph. Alternation resets at each word.
- * @param {string} syllableBody text with `|` between syllables; removing
- *   all `|` must exactly reproduce the entry's `body` (validated upstream)
+ * The single styling function: every glyph's colour and every run's
+ * metadata are decided here, nowhere else.
+ *
+ * Syllable alternation counts syllables per whitespace-separated token
+ * (so trailing punctuation takes the colour of the last syllable, "ny,"),
+ * exactly as the pre-0.10 builders did; the golden test
+ * (tests/unit/golden-runs.test.js) holds this function to that output.
+ * @param {import('./tokenize.js').TextDoc} doc
  * @param {StyleOptions} options
  * @returns {StyledRun[]}
  */
-export function buildSyllableRuns(syllableBody, options = {}) {
+export function styleText(doc, options = {}) {
   const {
     letterColors = {},
     uppercaseAlso = false,
     syllableColors = ['#1D4ED8', '#B45309'],
     separatorColor = '#64748B',
-    syllableMode = 'colors',
+    syllableMode = 'off',
     baseColor = '#202020'
   } = options;
   for (const color of Object.values(letterColors)) assertValidColor(color);
@@ -125,48 +99,85 @@ export function buildSyllableRuns(syllableBody, options = {}) {
   assertValidColor(separatorColor);
   assertValidColor(baseColor);
 
-  const showColors = syllableMode === 'colors' || syllableMode === 'both';
-  const showSeparators = syllableMode === 'separators' || syllableMode === 'both';
+  const { body, words, syllableBreaks, hasSyllables } = doc;
+  const usesSyllables = hasSyllables && syllableMode !== 'off';
+  const showColors = usesSyllables && (syllableMode === 'colors' || syllableMode === 'both');
+  const showSeparators = usesSyllables && (syllableMode === 'separators' || syllableMode === 'both');
+  const wordAt = wordIndexByOffset(doc);
+  const isSpace = (char) => /\s/.test(char);
 
-  /** @type {Array<[string, string | null]>} */
-  const pairs = [];
-  const tokens = syllableBody.split(/(\s+)/);
+  /** @type {StyledRun[]} */
+  const runs = [];
+  const push = (piece) => {
+    const previous = runs.at(-1);
+    if (previous && sameStyle(previous, piece)) previous.text += piece.text;
+    else runs.push(piece);
+  };
+  const separatorAt = (offset) => {
+    const piece = { text: SYLLABLE_SEPARATOR, color: separatorColor, kind: 'sep' };
+    const w = offset < body.length ? wordAt[offset] : -1;
+    if (w >= 0 && offset > words[w].start) piece.w = w;
+    push(piece);
+  };
 
-  for (const token of tokens) {
-    if (token.length === 0) continue;
-    if (/^\s+$/.test(token)) {
-      for (const char of token) pairs.push([char, null]);
-      continue;
+  let nextBreak = 0; // index into syllableBreaks
+  let tokenSyllable = 0; // syllable index within the current whitespace token
+  let offset = 0;
+  while (offset < body.length) {
+    const char = String.fromCodePoint(body.codePointAt(offset));
+    const space = isSpace(char);
+    if (space) tokenSyllable = 0;
+
+    // Every break at this offset: advances the token's syllable count, and
+    // draws a separator when it sits inside or at the edge of a token.
+    while (nextBreak < syllableBreaks.length && syllableBreaks[nextBreak] === offset) {
+      const touchesToken = !space || (offset > 0 && !isSpace(body[offset - 1]));
+      if (showSeparators && touchesToken) separatorAt(offset);
+      if (!space) tokenSyllable += 1;
+      nextBreak += 1;
     }
-    const syllables = token.split('|');
-    syllables.forEach((syllable, index) => {
-      if (index > 0 && showSeparators) {
-        pairs.push([SYLLABLE_SEPARATOR, separatorColor, 'sep']);
-      }
-      const syllableColor = showColors ? syllableColors[index % syllableColors.length] : null;
-      for (const char of syllable) {
-        const letterColor = colorForChar(char, letterColors, uppercaseAlso);
-        pairs.push([char, letterColor ?? syllableColor]);
-      }
-    });
-  }
 
-  return mergePairsIntoRuns(pairs, baseColor);
+    /** @type {StyledRun} */
+    const piece = { text: char, color: baseColor };
+    const w = wordAt[offset];
+    if (space) {
+      piece.kind = 'space';
+    } else {
+      piece.color = colorForChar(char, letterColors, uppercaseAlso)
+        ?? (showColors ? syllableColors[tokenSyllable % syllableColors.length] : baseColor);
+      if (w >= 0) {
+        piece.w = w;
+        if (hasSyllables) {
+          const starts = words[w].syllableStarts;
+          let syl = 0;
+          while (syl + 1 < starts.length && starts[syl + 1] <= offset) syl++;
+          piece.syl = syl;
+        }
+      } else {
+        piece.kind = 'punct';
+      }
+    }
+    push(piece);
+    offset += char.length;
+  }
+  // A break at the very end of the text (a trailing `|`).
+  while (nextBreak < syllableBreaks.length && syllableBreaks[nextBreak] === body.length) {
+    if (showSeparators && body.length > 0 && !isSpace(body[body.length - 1])) separatorAt(body.length);
+    nextBreak += 1;
+  }
+  return runs;
 }
 
 /**
- * Selects the appropriate run builder for the given settings, choosing
- * syllable coloring only when both requested and available.
+ * Styles an entry's text for the worksheet: tokenizes it and applies
+ * styleText. Syllable styling applies only when requested and the text has
+ * syllable data.
  * @param {{ body: string, syllableBody: string | undefined }} resolvedText
  * @param {StyleOptions} options
  * @returns {StyledRun[]}
  */
 export function buildStyledRuns(resolvedText, options = {}) {
-  const usesSyllables = options.syllableMode && options.syllableMode !== 'off';
-  if (usesSyllables && resolvedText.syllableBody) {
-    return buildSyllableRuns(resolvedText.syllableBody, options);
-  }
-  return buildLetterRuns(resolvedText.body, options);
+  return styleText(tokenize({ body: resolvedText.body, syllable_body: resolvedText.syllableBody }), options);
 }
 
 /**
@@ -205,7 +216,7 @@ export function splitRunsIntoSentences(runs, sentences) {
       }
       const availableInRun = run.text.length - offsetInRun;
       const take = Math.min(remaining, availableInRun);
-      paragraphRuns.push({ text: run.text.slice(offsetInRun, offsetInRun + take), color: run.color });
+      paragraphRuns.push({ ...run, text: run.text.slice(offsetInRun, offsetInRun + take) });
       offsetInRun += take;
       remaining -= take;
       if (offsetInRun >= run.text.length) {

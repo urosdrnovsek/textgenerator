@@ -3,7 +3,22 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
-import { buildLetterRuns, buildSyllableRuns, buildStyledRuns, splitRunsIntoSentences, countWords } from '../../src/text/runs.js';
+import { buildStyledRuns, splitRunsIntoSentences, countWords } from '../../src/text/runs.js';
+
+// The pre-0.10 builders (plain letters / syllables) became one styleText
+// function; these helpers keep the tests' original vocabulary.
+const buildLetterRuns = (text, options = {}) => buildStyledRuns({ body: text, syllableBody: undefined }, { ...options, syllableMode: 'off' });
+const buildSyllableRuns = (syllableBody, options = {}) =>
+  buildStyledRuns({ body: syllableBody.replaceAll('|', ''), syllableBody }, { syllableMode: 'colors', ...options });
+/** What a reader sees: adjacent same-colour runs merged, metadata dropped — runs now also split at word/syllable boundaries. */
+const byColor = (runs) => {
+  const merged = [];
+  for (const { text, color } of runs) {
+    if (merged.length > 0 && merged.at(-1)[1] === color) merged.at(-1)[0] += text;
+    else merged.push([text, color]);
+  }
+  return merged;
+};
 import { splitIntoSentences } from '../../src/text/prepare.js';
 
 test('colors b/d while preserving the exact passage, including Slovene diacritics', () => {
@@ -14,7 +29,7 @@ test('colors b/d while preserving the exact passage, including Slovene diacritic
   assert.equal(runs.map((run) => run.text).join(''), source);
   assert.ok(runs.some((run) => run.text === 'b' && run.color === '#B42318'));
   assert.ok(runs.some((run) => run.text === 'd' && run.color === '#166534'));
-  assert.ok(runs.some((run) => run.text.includes('č š ž')));
+  assert.ok(byColor(runs).some(([text]) => text.includes('č š ž')));
 });
 
 test('uppercase letters are not colored unless uppercaseAlso is set', () => {
@@ -34,7 +49,7 @@ test('syllable runs alternate per syllable and reset at each word', () => {
   assert.equal(runs.map((r) => r.text).join(''), syllableBody.replaceAll('|', ''));
   // "Ma"(0) "ja"(1) " "(base) "i"(0, reset at word boundary) "ma"(1)
   assert.deepEqual(
-    runs.map((r) => [r.text, r.color]),
+    byColor(runs),
     [
       ['Ma', '#111111'],
       ['ja', '#222222'],
@@ -51,7 +66,7 @@ test('a word with no syllable marks of its own (a one-syllable name) still alter
   const runs = buildSyllableRuns(syllableBody, { syllableColors: ['#111111', '#222222'] });
   assert.equal(runs.map((r) => r.text).join(''), syllableBody.replaceAll('|', ''));
   assert.deepEqual(
-    runs.map((r) => [r.text, r.color]),
+    byColor(runs),
     [
       ['Zgod', '#111111'],
       ['ba', '#222222'],
@@ -79,7 +94,7 @@ test('both mode combines separators and alternating colors', () => {
   const syllableBody = 'Ma|ja';
   const runs = buildSyllableRuns(syllableBody, { syllableMode: 'both', syllableColors: ['#111111', '#222222'] });
   assert.equal(runs.map((r) => r.text).join(''), 'Ma·ja');
-  assert.deepEqual(runs.map((r) => [r.text, r.color]), [
+  assert.deepEqual(byColor(runs), [
     ['Ma', '#111111'],
     ['·', '#64748B'],
     ['ja', '#222222']
@@ -142,10 +157,9 @@ test('splitRunsIntoSentences cuts a flat run array into one array per sentence, 
 });
 
 test('splitRunsIntoSentences splits correctly even when a sentence boundary falls inside a merged run', () => {
-  // No letterColors at all -> the whole text is one single merged run.
+  // One single run holding the whole text, so every boundary falls inside it.
   const text = 'Ena. Dve. Tri.';
-  const runs = buildLetterRuns(text, {});
-  assert.equal(runs.length, 1, 'sanity check: the whole text merged into one run');
+  const runs = [{ text, color: '#202020' }];
   const paragraphs = splitRunsIntoSentences(runs, splitIntoSentences(text));
   assert.deepEqual(paragraphs.map((p) => p.map((r) => r.text).join('')), ['Ena.', 'Dve.', 'Tri.']);
 });

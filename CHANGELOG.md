@@ -7,7 +7,21 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
-(nothing yet)
+Work on branch `upgrade/activities` (new worksheet activities and reading
+supports).
+
+- **One tokenizer and one styling function (no visible change).**
+  `src/text/tokenize.js` is now the single definition of a word, a
+  sentence and a syllable boundary, and one `styleText` function replaces
+  the two separate run builders. Styled runs carry word and syllable ids,
+  and the preview spans carry them as `data-w` / `data-syl`: the basis for
+  clicking words (gap-fill, choosing a sentence) and syllable arcs.
+  Checked three ways: a new golden test fingerprints the exact characters
+  and colours of all 318 texts in 32 styling combinations and matches
+  exactly; all 318 texts measured in real Chromium, in default settings
+  and with separators + sentence-per-line + stripes, give identical
+  height, page count, line count and text length before and after; and
+  the full browser/LibreOffice/Firefox suite passes.
 
 ## 0.9.0-rc.2 — 2026-09-24 (beta hotfix)
 

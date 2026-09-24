@@ -41,20 +41,30 @@ export function splitIntoParagraphs(text) {
 }
 
 /**
+ * The one sentence rule of the app, as offsets: sentence-per-line, the
+ * tokenizer's sentence index for each word (src/text/tokenize.js) and any
+ * later sentence-based activity all derive from this, so they can't
+ * disagree about where a sentence starts and ends.
+ * @param {string} text
+ * @returns {Array<{ start: number, end: number }>} trimmed sentence ranges in `text` (UTF-16 offsets, end exclusive), in order; a paragraph break always ends a sentence
+ */
+export function splitSentenceRanges(text) {
+  const ranges = [];
+  for (const paragraph of text.matchAll(/[^\n]+/g)) {
+    for (const match of paragraph[0].matchAll(SENTENCE_PATTERN)) {
+      const start = paragraph.index + match.index;
+      let end = start + match[0].length;
+      while (end > start && /\s/.test(text[end - 1])) end--;
+      if (end > start) ranges.push({ start, end });
+    }
+  }
+  return ranges;
+}
+
+/**
  * @param {string} text the entry's body text
  * @returns {string[]} one entry per sentence, trimmed, empty ones dropped
  */
 export function splitIntoSentences(text) {
-  const paragraphs = text.split(/\n+/);
-  const sentences = [];
-  for (const paragraph of paragraphs) {
-    const trimmedParagraph = paragraph.trim();
-    if (trimmedParagraph.length === 0) continue;
-    const matches = trimmedParagraph.match(SENTENCE_PATTERN) ?? [trimmedParagraph];
-    for (const match of matches) {
-      const sentence = match.trim();
-      if (sentence.length > 0) sentences.push(sentence);
-    }
-  }
-  return sentences;
+  return splitSentenceRanges(text).map(({ start, end }) => text.slice(start, end));
 }

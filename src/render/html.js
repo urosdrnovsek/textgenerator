@@ -15,6 +15,10 @@ const SVG_NS = 'http://www.w3.org/2000/svg';
 const DEFAULT_LABELS = { nameLine: 'Ime:', date: 'Datum:', pageBreak: (n) => `Stran ${n}` };
 
 /**
+ * One span per run. Word and syllable ids (src/text/tokenize.js) go on as
+ * `data-w` / `data-syl`, numbers only, so later features can find a word or
+ * syllable in the rendered page (click targets, arcs) without re-deriving
+ * anything from the text.
  * @param {import('../text/runs.js').StyledRun[]} runs
  * @param {HTMLElement} container
  */
@@ -24,6 +28,8 @@ export function renderRuns(runs, container) {
     const span = document.createElement('span');
     span.textContent = run.text;
     span.style.color = run.color;
+    if (run.w !== undefined) span.dataset.w = String(run.w);
+    if (run.syl !== undefined) span.dataset.syl = String(run.syl);
     fragment.append(span);
   }
   container.replaceChildren(fragment);
