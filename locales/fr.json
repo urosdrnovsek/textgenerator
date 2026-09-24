@@ -15,6 +15,7 @@
     "fit.suggestion.reduce-image": "réduire l'image",
     "fit.suggestion.read-only": "lecture seule",
     "export.failed": "Échec de l'export : {message}. Voir la console du navigateur.",
+    "fit.internalError": "La fiche n'a pas pu être préparée : {message}. L'impression est désactivée. Voir la console du navigateur.",
     "field.language": "Langue",
     "language.sl": "Slovenščina",
     "language.en": "English",

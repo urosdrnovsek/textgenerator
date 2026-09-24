@@ -15,6 +15,7 @@
     "fit.suggestion.reduce-image": "reducir la imagen",
     "fit.suggestion.read-only": "solo lectura",
     "export.failed": "La exportación falló: {message}. Consulta la consola del navegador para más detalles.",
+    "fit.internalError": "No se pudo preparar la ficha: {message}. La impresión está desactivada. Consulta la consola del navegador para más detalles.",
     "field.language": "Idioma",
     "language.sl": "Slovenščina",
     "language.en": "English",

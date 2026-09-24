@@ -411,38 +411,59 @@ function showFit(model, result) {
   }
 }
 
+/** Nothing printable: clears the preview, the print surface and lastGood, and disables every output. */
+function clearPrintableWorksheet() {
+  state.lastGood = null;
+  els.printButton.disabled = true;
+  els.docxButton.disabled = true;
+  els.preview.replaceChildren();
+  els.printSurface.replaceChildren();
+  updatePacketControls();
+}
+
 async function requestRender() {
   const revision = ++state.revision;
-  const entry = CATALOG.byId.get(state.contentId);
-  // A teacher-uploaded image overrides only this entry's mapping, for this
-  // render — the shared IMAGES_BY_ID map itself is never mutated.
-  const imagesById = state.customImage
-    ? new Map(IMAGES_BY_ID).set(entry.imageId, state.customImage)
-    : IMAGES_BY_ID;
-  const model = buildWorksheet(entry, state.settings, { imagesById }, entry.language);
+  try {
+    const entry = CATALOG.byId.get(state.contentId);
+    // A teacher-uploaded image overrides only this entry's mapping, for this
+    // render — the shared IMAGES_BY_ID map itself is never mutated.
+    const imagesById = state.customImage
+      ? new Map(IMAGES_BY_ID).set(entry.imageId, state.customImage)
+      : IMAGES_BY_ID;
+    const model = buildWorksheet(entry, state.settings, { imagesById }, entry.language);
 
-  const result = await measureWorksheet(model, revision);
-  if (revision !== state.revision) return; // stale async result, discard
+    const result = await measureWorksheet(model, revision);
+    if (revision !== state.revision) return; // stale async result, discard
 
-  showFit(model, result);
-  els.printButton.disabled = !isPrintReady(result);
-  els.docxButton.disabled = !isPrintReady(result);
+    showFit(model, result);
+    els.printButton.disabled = !isPrintReady(result);
+    els.docxButton.disabled = !isPrintReady(result);
 
-  if (result.status === 'blocked') {
-    state.lastGood = null;
-    els.preview.replaceChildren();
-    els.printSurface.replaceChildren();
+    if (result.status === 'blocked') {
+      clearPrintableWorksheet();
+      return;
+    }
+
+    const labels = { nameLine: t('header.nameLine'), date: t('header.date'), pageBreak: (n) => t('preview.pageBreak', { n }) };
+    // previewMode (page-break markers) only in #preview — never the print
+    // surface or a packet sheet (upgrade blueprint v3, workstream A).
+    renderWorksheet(model, result.layout, els.preview, labels, true);
+    renderWorksheet(model, result.layout, els.printSurface, labels);
+    state.lastGood = { model, layout: result.layout, pageCount: result.pageCount };
     updatePacketControls();
-    return;
+  } catch (error) {
+    // Before 0.10 an exception here left the previous worksheet on screen
+    // with Print still enabled and only a console message — a sheet that
+    // failed to build must never stay printable.
+    if (revision !== state.revision) return;
+    // eslint-disable-next-line no-console
+    console.error('Worksheet could not be prepared:', error);
+    clearPrintableWorksheet();
+    els.fitIndicator.classList.add('is-overflow');
+    els.fitIndicator.classList.remove('is-extends');
+    els.fitIndicator.dataset.pageCount = '';
+    els.fitIndicator.textContent = t('fit.internalError', { message: error.message });
   }
-
-  const labels = { nameLine: t('header.nameLine'), date: t('header.date'), pageBreak: (n) => t('preview.pageBreak', { n }) };
-  // previewMode (page-break markers) only in #preview — never the print
-  // surface or a packet sheet (upgrade blueprint v3, workstream A).
-  renderWorksheet(model, result.layout, els.preview, labels, true);
-  renderWorksheet(model, result.layout, els.printSurface, labels);
-  state.lastGood = { model, layout: result.layout, pageCount: result.pageCount };
-  updatePacketControls();
 }
 
 function dataUrlToUint8Array(dataUrl) {

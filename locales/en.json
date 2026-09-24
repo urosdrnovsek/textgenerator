@@ -15,6 +15,7 @@
     "fit.suggestion.reduce-image": "reduce image",
     "fit.suggestion.read-only": "read only",
     "export.failed": "Export failed: {message}. See browser console for details.",
+    "fit.internalError": "The worksheet could not be prepared: {message}. Printing is disabled. See browser console for details.",
     "field.language": "Language",
     "language.sl": "Slovenščina",
     "language.en": "English",

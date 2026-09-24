@@ -136,13 +136,22 @@ export function init({ state, els, getT }) {
    */
   function handlePrintPacket() {
     if (state.packet.length === 0) return;
-    const fragment = document.createDocumentFragment();
+    // Each sheet is rendered into a container that is already attached to
+    // the (off-screen, laid-out) print surface. Overlays such as line
+    // stripes measure real line boxes, and a detached node measures as
+    // zero, so until 0.10 every packet printed without its stripes even
+    // when printStripes was on (reproduced in Chromium: 7 stripes on the
+    // single print surface, 0 in the packet).
+    els.printSurface.replaceChildren();
     for (const sheet of state.packet) {
       const container = document.createElement('div');
+      els.printSurface.append(container);
       renderWorksheet(sheet.model, sheet.layout, container, sheet.labels);
-      fragment.append(...container.children);
+      // Unwrap, so each .ws-page is a direct child of #print-surface —
+      // styles/print.css's `.ws-page:last-child { break-after: auto }`
+      // depends on that.
+      container.replaceWith(...container.children);
     }
-    els.printSurface.replaceChildren(fragment);
     printWorksheet();
     // Restore the print surface to the currently displayed single worksheet
     // so a subsequent plain "Print" click reflects what's on screen again.

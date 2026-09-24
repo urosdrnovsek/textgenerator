@@ -15,6 +15,7 @@
     "fit.suggestion.reduce-image": "Bild verkleinern",
     "fit.suggestion.read-only": "nur Lesen",
     "export.failed": "Export fehlgeschlagen: {message}. Details in der Browser-Konsole.",
+    "fit.internalError": "Das Arbeitsblatt konnte nicht erstellt werden: {message}. Drucken ist deaktiviert. Details in der Browser-Konsole.",
     "field.language": "Sprache",
     "language.sl": "Slovenščina",
     "language.en": "English",

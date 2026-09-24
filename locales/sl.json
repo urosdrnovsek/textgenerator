@@ -15,6 +15,7 @@
     "fit.suggestion.reduce-image": "zmanjšajte sliko",
     "fit.suggestion.read-only": "samo za branje",
     "export.failed": "Izvoz ni uspel: {message}. Podrobnosti v konzoli brskalnika.",
+    "fit.internalError": "Delovnega lista ni bilo mogoče pripraviti: {message}. Tiskanje je onemogočeno. Podrobnosti v konzoli brskalnika.",
     "field.language": "Jezik",
     "language.sl": "Slovenščina",
     "language.en": "English",

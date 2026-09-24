@@ -7,7 +7,30 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
-(nothing yet)
+Work on branch `upgrade/activities` (new worksheet activities and reading
+supports). Groundwork first:
+
+- **Printed packets keep their line stripes.** A packet sheet was rendered
+  into a detached element, where line boxes measure as zero, so every
+  packet printed without stripes even with "print stripes" on. Reproduced
+  in real Chromium (7 stripes on the single print surface, 0 in the
+  packet) and fixed by rendering each sheet into the laid-out print
+  surface. Now 7 and 7. The same mechanism will carry syllable arcs and
+  line numbers.
+- **A worksheet that fails to build is never left printable.** Before, an
+  exception while building or measuring left the previous sheet on screen
+  with Print enabled. Now the preview clears, Print/Word/Add to packet are
+  disabled, and the fit line explains (new `fit.internalError` string in
+  all five languages). Checked by forcing a font-load failure in the real
+  app.
+- `docx` is pinned to exactly 9.7.1, the version the lockfile already
+  installed. It is bundled into the release, and a minor update can
+  change Word output.
+- **Known and not yet fixed:** paragraph breaks inside a text (73 of 318
+  entries) are lost in all three outputs. HTML collapses the `\n\n` to a
+  space, and DOCX puts it inside one `w:t`, which LibreOffice prints as
+  two spaces. Reproduced in Chromium and LibreOffice. The fix changes the
+  layout of those 73 texts and is being measured separately.
 
 ## 0.9.0-rc.1 — 2026-09-21 (content: 318 texts, name field removed)
 
