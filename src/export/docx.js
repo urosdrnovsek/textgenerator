@@ -83,6 +83,100 @@ function toWordRuns(runs, { fontFamily, fontSizePt, characterSpacingTwips, wordS
 }
 
 /**
+ * @typedef {object} BlockWriteContext
+ * @property {import('../worksheet/build.js').WorksheetModel} model
+ * @property {{ nameLine: string, date: string }} labels
+ * @property {Uint8Array | Buffer | undefined} imageBytes
+ * @property {string} fontFamily
+ * @property {object | undefined} shading paragraph shading when the tint prints, else undefined
+ * @property {number} characterSpacingTwips
+ * @property {number} wordSpacingTwips
+ */
+
+/**
+ * One writer per block type (upgrade blueprint §11.5.3), each returning
+ * the Word paragraphs/tables for its block. Must stay in step with
+ * render/html.js BLOCK_RENDERERS (a unit test compares the key sets).
+ * @type {Record<string, (block: any, context: BlockWriteContext) => (Paragraph | Table)[]>}
+ */
+export const BLOCK_WRITERS = {
+  header: (block, { labels, fontFamily, shading }) => {
+    const parts = [];
+    if (block.nameLine) {
+      parts.push(new TextRun({ text: `${labels.nameLine} _______________________`, font: fontFamily, size: 22 }));
+    }
+    if (block.date) {
+      parts.push(new TextRun({ text: `          ${labels.date} ________________`, font: fontFamily, size: 22 }));
+    }
+    return [new Paragraph({ children: parts, spacing: { after: 200 }, shading })];
+  },
+
+  title: (block, { model, fontFamily, shading }) => [
+    new Paragraph({
+      children: [
+        new TextRun({ text: block.text, bold: true, font: fontFamily, size: Math.round((model.settings.fontSizePt + 4) * 2) })
+      ],
+      spacing: { after: 200 },
+      shading
+    })
+  ],
+
+  image: (block, { model, imageBytes, shading }) => {
+    if (!imageBytes) return [];
+    // Contains the image at its real aspect ratio within the same 60x45mm
+    // slot the HTML preview uses (object-fit: contain) — previously a fixed
+    // 60x45 forced every image (all bundled art is 512x512) into a
+    // stretched 4:3 box (workstream D1).
+    const { widthMm, heightMm } = computeContainedImageSizeMm(model.image.width, model.image.height);
+    return [
+      new Paragraph({
+        alignment: AlignmentType.CENTER,
+        children: [
+          new ImageRun({
+            type: 'jpg',
+            data: imageBytes,
+            transformation: { width: Math.round(mmToPx(widthMm)), height: Math.round(mmToPx(heightMm)) }
+          })
+        ],
+        spacing: { after: 200 },
+        shading
+      })
+    ];
+  },
+
+  passage: (block, { model, fontFamily, shading, characterSpacingTwips, wordSpacingTwips }) => {
+    const s = model.settings;
+    // Line spacing must be EXACT, in twips of the font size, to mean the same
+    // thing as the preview's CSS `line-height: <multiplier>` (a multiple of
+    // the font size). The default "auto" rule multiplies the font's own
+    // natural line height instead, which for Andika is 1.61em (Lexend
+    // 1.25em) — so with the real fonts installed, 1.4x came out as 2.25em
+    // per line, 60% taller than the preview, and every read-copy worksheet
+    // that filled the page spilled its copy lines onto a second page. The
+    // development machine had none of the bundled fonts installed and
+    // LibreOffice's Liberation Sans substitute (1.15em) happened to fit, so
+    // verify-docx passed until CI installed the real fonts (0.8.1, F4).
+    const lineTwips = Math.round((s.lineHeightMultiplier ?? 1.5) * s.fontSizePt * TWIPS_PER_PT);
+    // Same gap as the preview's `.ws-body.ws-sentence-per-line .ws-sentence {
+    // margin-bottom: 0.25em }`, which applies whenever there is more than one
+    // paragraph (sentence-per-line or authored paragraph breaks). DOCX had no
+    // gap at all before 0.10, so it ran slightly shorter than the preview.
+    const paragraphGapTwips = block.paragraphs.length > 1 ? Math.round(0.25 * s.fontSizePt * TWIPS_PER_PT) : 0;
+    return block.paragraphs.map(
+      (paragraphRuns) =>
+        new Paragraph({
+          alignment: AlignmentType.LEFT,
+          spacing: paragraphGapTwips > 0
+            ? { line: lineTwips, lineRule: LineRuleType.EXACT, after: paragraphGapTwips }
+            : { line: lineTwips, lineRule: LineRuleType.EXACT },
+          children: toWordRuns(paragraphRuns, { fontFamily, fontSizePt: s.fontSizePt, characterSpacingTwips, wordSpacingTwips }),
+          shading
+        })
+    );
+  }
+};
+
+/**
  * @param {import('../worksheet/build.js').WorksheetModel} model
  * @param {{ copyBlocks: number[] }} layout the fit-checked layout decision from layout/measure.js — one entry in copyBlocks per copy-practice block (a second entry means a page break is needed before it)
  * @param {Uint8Array | Buffer | undefined} imageBytes decoded bytes of model.image
@@ -111,78 +205,12 @@ export async function exportDocx(model, layout, imageBytes, labels = DEFAULT_LAB
   const tintHex = s.tintId && s.tintId !== 'none' ? TINTS_BY_ID[s.tintId] : undefined;
   const shading = s.printTint && tintHex ? { type: ShadingType.CLEAR, fill: tintHex.replace('#', '') } : undefined;
 
-  if (model.header.nameLine || model.header.date) {
-    const parts = [];
-    if (model.header.nameLine) {
-      parts.push(new TextRun({ text: `${labels.nameLine} _______________________`, font: fontFamily, size: 22 }));
-    }
-    if (model.header.date) {
-      parts.push(new TextRun({ text: `          ${labels.date} ________________`, font: fontFamily, size: 22 }));
-    }
-    children.push(new Paragraph({ children: parts, spacing: { after: 200 }, shading }));
-  }
-
-  if (model.header.title) {
-    children.push(
-      new Paragraph({
-        children: [
-          new TextRun({ text: model.header.titleText, bold: true, font: fontFamily, size: Math.round((s.fontSizePt + 4) * 2) })
-        ],
-        spacing: { after: 200 },
-        shading
-      })
-    );
-  }
-
-  if (imageBytes) {
-    // Contains the image at its real aspect ratio within the same 60x45mm
-    // slot the HTML preview uses (object-fit: contain) — previously a fixed
-    // 60x45 forced every image (all bundled art is 512x512) into a
-    // stretched 4:3 box (workstream D1).
-    const { widthMm, heightMm } = computeContainedImageSizeMm(model.image.width, model.image.height);
-    children.push(
-      new Paragraph({
-        alignment: AlignmentType.CENTER,
-        children: [
-          new ImageRun({
-            type: 'jpg',
-            data: imageBytes,
-            transformation: { width: Math.round(mmToPx(widthMm)), height: Math.round(mmToPx(heightMm)) }
-          })
-        ],
-        spacing: { after: 200 },
-        shading
-      })
-    );
-  }
-
-  // Line spacing must be EXACT, in twips of the font size, to mean the same
-  // thing as the preview's CSS `line-height: <multiplier>` (a multiple of
-  // the font size). The default "auto" rule multiplies the font's own
-  // natural line height instead, which for Andika is 1.61em (Lexend
-  // 1.25em) — so with the real fonts installed, 1.4x came out as 2.25em
-  // per line, 60% taller than the preview, and every read-copy worksheet
-  // that filled the page spilled its copy lines onto a second page. The
-  // development machine had none of the bundled fonts installed and
-  // LibreOffice's Liberation Sans substitute (1.15em) happened to fit, so
-  // verify-docx passed until CI installed the real fonts (0.8.1, F4).
-  const lineTwips = Math.round((s.lineHeightMultiplier ?? 1.5) * s.fontSizePt * TWIPS_PER_PT);
-  // Same gap as the preview's `.ws-body.ws-sentence-per-line .ws-sentence {
-  // margin-bottom: 0.25em }`, which applies whenever there is more than one
-  // paragraph (sentence-per-line or authored paragraph breaks). DOCX had no
-  // gap at all before 0.10, so it ran slightly shorter than the preview.
-  const paragraphGapTwips = model.bodyParagraphs.length > 1 ? Math.round(0.25 * s.fontSizePt * TWIPS_PER_PT) : 0;
-  for (const paragraphRuns of model.bodyParagraphs) {
-    children.push(
-      new Paragraph({
-        alignment: AlignmentType.LEFT,
-        spacing: paragraphGapTwips > 0
-          ? { line: lineTwips, lineRule: LineRuleType.EXACT, after: paragraphGapTwips }
-          : { line: lineTwips, lineRule: LineRuleType.EXACT },
-        children: toWordRuns(paragraphRuns, { fontFamily, fontSizePt: s.fontSizePt, characterSpacingTwips, wordSpacingTwips }),
-        shading
-      })
-    );
+  /** @type {BlockWriteContext} */
+  const context = { model, labels, imageBytes, fontFamily, shading, characterSpacingTwips, wordSpacingTwips };
+  for (const block of model.blocks) {
+    const write = BLOCK_WRITERS[block.type];
+    if (!write) throw new Error(`UNKNOWN_BLOCK: "${block.type}"`);
+    children.push(...write(block, context));
   }
 
   // Copy-practice lines: a single-column table with one row per line.
@@ -201,7 +229,7 @@ export async function exportDocx(model, layout, imageBytes, labels = DEFAULT_LAB
   // .ws-copy-block--new-page; a Word page break is inserted before it
   // rather than relying on the table simply overflowing, so Word's own
   // pagination matches the app's.
-  if (s.writingMode === 'read-copy' && layout?.copyBlocks?.length > 0) {
+  if (model.task === 'lines' && layout?.copyBlocks?.length > 0) {
     const rowHeightTwips = mmToTwips(s.guideHeightMm ?? 10);
     const noBorder = { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' };
     layout.copyBlocks.forEach((rowCount, blockIndex) => {

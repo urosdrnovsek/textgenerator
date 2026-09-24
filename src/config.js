@@ -4,6 +4,8 @@
  * at their own boundary (blueprint section 5).
  */
 
+import { ACTIVITIES } from './worksheet/activities.js';
+
 export const PAGE_WIDTH_MM = 210;
 export const PAGE_HEIGHT_MM = 297;
 export const DEFAULT_MARGIN_MM = 20;
@@ -97,7 +99,8 @@ export const SETTINGS_LIMITS = {
   marginMm: { min: 10, max: 30 }
 };
 
-export const KNOWN_WRITING_MODES = new Set(['read-copy', 'trace', 'read-only']);
+/** One source for the writing modes: the activities table (src/worksheet/activities.js). */
+export const KNOWN_WRITING_MODES = new Set(Object.keys(ACTIVITIES));
 export const KNOWN_SYLLABLE_MODES = new Set(['off', 'colors', 'separators', 'both']);
 
 /**

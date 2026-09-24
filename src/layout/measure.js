@@ -70,7 +70,7 @@ async function waitForImage(img) {
  * @typedef {object} PageLayout
  * @property {import('./rulings.js').RulingDefinition} ruling
  * @property {number} contentWidthMm
- * @property {number[]} copyBlocks rows per copy-practice block; empty outside read-copy mode
+ * @property {number[]} copyBlocks rows per copy-practice block; empty unless the model's task is 'lines'
  * @property {number[]} pageBreaksMm cumulative height (mm, from the top of the flowed page content) at each point a new page starts
  */
 
@@ -98,14 +98,16 @@ async function waitForImage(img) {
  * @returns {boolean}
  */
 function hasHorizontalOverflow(page) {
-  return [...page.querySelectorAll('.ws-title, .ws-sentence')].some((el) => el.scrollWidth > el.clientWidth + 1);
+  // Every element holding shaped text carries .ws-text (render/html.js BLOCK_RENDERERS).
+  return [...page.querySelectorAll('.ws-text')].some((el) => el.scrollWidth > el.clientWidth + 1);
 }
 
 /**
- * Collects the atomic blocks above the copy area — header, title, image
- * (each present/absent per settings), then every real measured body line
- * box — in document order, from an already-rendered, already-attached
- * page.
+ * Collects the atomic layout units above the copy area, in document order,
+ * from an already-rendered, already-attached page: every model block
+ * (`[data-block]`, see render/html.js) is one unit, except a passage,
+ * which contributes one unit per real measured line box (it may break
+ * between lines).
  *
  * Each block's heightMm is derived from the gap between its own top and
  * the next block's top (or the page's own bottom, for the last block) —
@@ -125,14 +127,13 @@ function collectContentBlocks(page) {
   const pageTopPx = page.getBoundingClientRect().top;
   /** @type {number[]} */
   const topsMm = [];
-  for (const selector of ['.ws-header', '.ws-title', '.ws-image-wrap']) {
-    const el = page.querySelector(selector);
-    if (el) topsMm.push(pxToMm(el.getBoundingClientRect().top - pageTopPx));
-  }
-  const bodyEl = page.querySelector('.ws-body');
-  const bodyTopMm = pxToMm(bodyEl.getBoundingClientRect().top - pageTopPx);
-  for (const line of measureBodyLineBoxes(bodyEl)) {
-    topsMm.push(bodyTopMm + line.topMm);
+  for (const el of page.querySelectorAll(':scope > [data-block]')) {
+    const topMm = pxToMm(el.getBoundingClientRect().top - pageTopPx);
+    if (el.dataset.block === 'passage') {
+      for (const line of measureBodyLineBoxes(el)) topsMm.push(topMm + line.topMm);
+    } else {
+      topsMm.push(topMm);
+    }
   }
   const pageBottomMm = pxToMm(page.getBoundingClientRect().height);
   return topsMm.map((topMm, i) => ({
@@ -196,7 +197,7 @@ export async function measureWorksheet(model, revision) {
     const totalContentHeightMm = blocks.reduce((sum, b) => sum + b.heightMm, 0);
     const { pageCount, breaksMm, lastPageUsedMm } = paginateBlocks(blocks, budgetMm);
 
-    if (s.writingMode !== 'read-copy') {
+    if (model.task !== 'lines') {
       return {
         status: pageCount === 1 ? 'fits' : 'extends',
         revision,

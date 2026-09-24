@@ -7,6 +7,7 @@
 
 import { splitIntoSentences, splitIntoParagraphs } from '../text/prepare.js';
 import { buildStyledRuns, splitRunsIntoSentences, lightenParagraphs, countWords } from '../text/runs.js';
+import { ACTIVITIES } from './activities.js';
 
 /**
  * @typedef {object} ImageAsset
@@ -47,9 +48,22 @@ import { buildStyledRuns, splitRunsIntoSentences, lightenParagraphs, countWords 
  * @property {import('../text/runs.js').StyledRun[][]} bodyParagraphs one array of runs per paragraph — one per sentence when settings.sentencePerLine is on, otherwise one per authored paragraph of the body
  * @property {number} wordCount
  * @property {number} level
- * @property {ImageAsset} image
+ * @property {ImageAsset} image the sheet's picture asset (an image block, when present, shows this one)
  * @property {WorksheetSettings} settings
- * @property {{ nameLine: boolean, date: boolean, title: boolean, titleText: string }} header
+ * @property {Block[]} blocks the page's content in order, above the task region (upgrade blueprint §11.5.3)
+ * @property {'lines' | 'none'} task what follows the blocks: ruled copy rows filling the rest of the page, or nothing — a layout decision made by layout/measure.js, not a block
+ */
+
+/**
+ * One piece of the page. Both adapters (render/html.js BLOCK_RENDERERS,
+ * export/docx.js BLOCK_WRITERS) handle exactly these types, and a test
+ * holds their key sets equal.
+ * @typedef {(
+ *   | { type: 'header', nameLine: boolean, date: boolean }
+ *   | { type: 'title', text: string }
+ *   | { type: 'image' }
+ *   | { type: 'passage', paragraphs: import('../text/runs.js').StyledRun[][] }
+ * )} Block
  */
 
 /**
@@ -81,9 +95,14 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount) {
     ? splitRunsIntoSentences(bodyRuns, splitIntoSentences(resolvedText.body))
     : splitRunsIntoSentences(bodyRuns, splitIntoParagraphs(resolvedText.body));
 
+  const activity = ACTIVITIES[settings.writingMode];
+  if (!activity) {
+    throw new Error(`UNKNOWN_WRITING_MODE: "${settings.writingMode}"`);
+  }
+
   // Trace: light solid text (blueprint 8.7) — computed once here so HTML
   // and DOCX render identical colors, never two implementations of "light".
-  const bodyParagraphs = settings.writingMode === 'trace'
+  const bodyParagraphs = activity.passage === 'traced'
     ? lightenParagraphs(sentenceParagraphs)
     : sentenceParagraphs;
 
@@ -108,11 +127,27 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount) {
     // frozen layout/page count described the old settings — the real cause
     // of what was mis-documented in 0.8 as a Chromium print-engine bug.
     settings: structuredClone(settings),
-    header: {
-      nameLine: settings.header.nameLine,
-      date: settings.header.date,
-      title: settings.header.title,
-      titleText: entry.title
-    }
+    blocks: buildBlocks(entry, settings, bodyParagraphs),
+    task: activity.task
   };
+}
+
+/**
+ * The page's blocks in order. Only this function decides what appears on
+ * the page and where; the adapters and the fit check just walk the list.
+ * @param {import('../content/validate.js').ContentEntry} entry
+ * @param {WorksheetSettings} settings
+ * @param {import('../text/runs.js').StyledRun[][]} paragraphs
+ * @returns {Block[]}
+ */
+function buildBlocks(entry, settings, paragraphs) {
+  /** @type {Block[]} */
+  const blocks = [];
+  if (settings.header.nameLine || settings.header.date) {
+    blocks.push({ type: 'header', nameLine: settings.header.nameLine, date: settings.header.date });
+  }
+  if (settings.header.title) blocks.push({ type: 'title', text: entry.title });
+  blocks.push({ type: 'image' });
+  blocks.push({ type: 'passage', paragraphs });
+  return blocks;
 }

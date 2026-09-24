@@ -22,6 +22,18 @@ supports).
   and with separators + sentence-per-line + stripes, give identical
   height, page count, line count and text length before and after; and
   the full browser/LibreOffice/Firefox suite passes.
+- **The page is a list of blocks (no visible change).** The worksheet
+  model now lists its content as blocks (header, title, picture,
+  passage), and the preview/print renderer and the Word exporter each
+  draw them from one table. The fit check walks the same list. The page
+  order used to be written out three times (renderer, fit check, Word
+  exporter). The writing modes are rows of one activities table, which
+  decides whether the passage is traced and whether copy lines follow.
+  New activities will add a row, not `if` branches. Checked:
+  `document.xml` is byte-identical for all 318 texts in 5 setting
+  combinations, and the rendered preview and print markup, fit line,
+  height and page count are identical for all 318 texts in 4 browser
+  configurations.
 
 ## 0.9.0-rc.2 — 2026-09-24 (beta hotfix)
 

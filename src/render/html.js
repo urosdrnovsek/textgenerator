@@ -181,6 +181,55 @@ function renderPageBreakMarkers(page, pageBreaksMm, pageBreakLabel) {
 }
 
 /**
+ * @typedef {object} BlockRenderContext
+ * @property {import('../worksheet/build.js').WorksheetModel} model
+ * @property {typeof DEFAULT_LABELS} labels
+ */
+
+/**
+ * One renderer per block type (upgrade blueprint §11.5.3). Each returns
+ * the block's element; renderWorksheet appends it and tags it with
+ * `data-block`. Elements holding shaped text carry the `ws-text` class,
+ * which the fit check's width-overflow test looks for. Must stay in step
+ * with export/docx.js BLOCK_WRITERS (a unit test compares the key sets).
+ * @type {Record<string, (block: any, context: BlockRenderContext) => HTMLElement>}
+ */
+export const BLOCK_RENDERERS = {
+  header: (block, { labels }) => renderHeaderFields(block, labels),
+  title: (block) => {
+    const title = document.createElement('h1');
+    title.className = 'ws-title ws-text';
+    title.textContent = block.text;
+    return title;
+  },
+  image: (block, { model }) => {
+    const imageWrap = document.createElement('div');
+    imageWrap.className = 'ws-image-wrap';
+    const img = document.createElement('img');
+    img.className = 'ws-image';
+    img.src = model.image.path;
+    img.alt = '';
+    imageWrap.append(img);
+    return imageWrap;
+  },
+  passage: (block) => {
+    const bodyWrap = document.createElement('div');
+    bodyWrap.className = 'ws-body';
+    // More than one paragraph (sentence-per-line, or a text with authored
+    // paragraph breaks) gets the same small gap between paragraphs; the DOCX
+    // exporter applies the matching spacing-after.
+    bodyWrap.classList.toggle('ws-sentence-per-line', block.paragraphs.length > 1);
+    for (const paragraphRuns of block.paragraphs) {
+      const paragraph = document.createElement('p');
+      paragraph.className = 'ws-sentence ws-text';
+      renderRuns(paragraphRuns, paragraph);
+      bodyWrap.append(paragraph);
+    }
+    return bodyWrap;
+  }
+};
+
+/**
  * Renders the complete worksheet page into `container`, replacing its
  * children. `layout.copyBlocks` (rows per block; empty outside read-copy
  * mode) and `layout.pageBreaksMm` are layout decisions made upstream by
@@ -211,40 +260,16 @@ export function renderWorksheet(model, layout, container, labels = DEFAULT_LABEL
     page.classList.toggle('ws-page--print-tint', Boolean(model.settings.printTint));
   }
 
-  const headerEl = renderHeaderFields(model.header, labels);
-  if (headerEl) page.append(headerEl);
-
-  if (model.header.title) {
-    const title = document.createElement('h1');
-    title.className = 'ws-title';
-    title.textContent = model.header.titleText;
-    page.append(title);
+  for (const block of model.blocks) {
+    const render = BLOCK_RENDERERS[block.type];
+    if (!render) throw new Error(`UNKNOWN_BLOCK: "${block.type}"`);
+    const el = render(block, { model, labels });
+    // layout/measure.js finds blocks by this attribute, never by class names.
+    el.dataset.block = block.type;
+    page.append(el);
   }
 
-  const imageWrap = document.createElement('div');
-  imageWrap.className = 'ws-image-wrap';
-  const img = document.createElement('img');
-  img.className = 'ws-image';
-  img.src = model.image.path;
-  img.alt = '';
-  imageWrap.append(img);
-  page.append(imageWrap);
-
-  const bodyWrap = document.createElement('div');
-  bodyWrap.className = 'ws-body';
-  // More than one paragraph (sentence-per-line, or a text with authored
-  // paragraph breaks) gets the same small gap between paragraphs; the DOCX
-  // exporter applies the matching spacing-after.
-  bodyWrap.classList.toggle('ws-sentence-per-line', model.bodyParagraphs.length > 1);
-  for (const paragraphRuns of model.bodyParagraphs) {
-    const paragraph = document.createElement('p');
-    paragraph.className = 'ws-sentence';
-    renderRuns(paragraphRuns, paragraph);
-    bodyWrap.append(paragraph);
-  }
-  page.append(bodyWrap);
-
-  if (model.settings.writingMode === 'read-copy' && layout.copyBlocks?.length > 0) {
+  if (model.task === 'lines' && layout.copyBlocks?.length > 0) {
     const copyArea = document.createElement('div');
     copyArea.className = 'ws-copy-area';
     layout.copyBlocks.forEach((rows, index) => {
@@ -268,10 +293,11 @@ export function renderWorksheet(model, layout, container, labels = DEFAULT_LABEL
 
   // Must run after the page is attached (above) — measuring line boxes on
   // detached nodes returns all-zero rects, since there's no layout yet.
-  if (model.settings.lineStripes) {
+  const passageEl = page.querySelector(':scope > [data-block="passage"]');
+  if (model.settings.lineStripes && passageEl) {
     page.classList.add('ws-page--striped');
     page.classList.toggle('ws-page--print-stripes', Boolean(model.settings.printStripes));
-    applyLineStripes(bodyWrap);
+    applyLineStripes(passageEl);
   }
 
   if (previewMode && layout.pageBreaksMm?.length > 0) {
