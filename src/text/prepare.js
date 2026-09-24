@@ -23,7 +23,22 @@
  * the entire quoted sentence before this was added.
  */
 const CLOSING_MARKS = '»«"\'“”‘’)\\]';
-const SENTENCE_PATTERN = new RegExp(`[^.!?]+[.!?]+[${CLOSING_MARKS}]*(?=\\s|$)|[^.!?]+$`, 'g');
+// A sentence runs lazily from a non-space character to the first terminator
+// run (plus closing marks) that is followed by whitespace or the end of the
+// paragraph. A terminator followed by anything else ("Ziel!“, riefen sie")
+// stays inside the sentence. The older pattern could not match such a
+// quoted exclamation at all, so the regex skipped it and the words vanished
+// from sentence-per-line sheets (found 2026-09-24 in a German and a Spanish
+// story). Everything between two matches is now whitespace by construction.
+const SENTENCE_PATTERN = new RegExp(`\\S[\\s\\S]*?(?:[.!?]+[${CLOSING_MARKS}]*(?=\\s|$)|$)`, 'g');
+
+/**
+ * @param {string} text the entry's body text
+ * @returns {string[]} one entry per authored paragraph (split on newlines), trimmed, empty ones dropped
+ */
+export function splitIntoParagraphs(text) {
+  return text.split(/\n+/).map((paragraph) => paragraph.trim()).filter((paragraph) => paragraph.length > 0);
+}
 
 /**
  * @param {string} text the entry's body text

@@ -174,3 +174,12 @@ test('removing presentation styles never changes the underlying text (property c
     assert.equal(runs.map((r) => r.text).join(''), text);
   }
 });
+
+test('splitRunsIntoSentences does not count inserted syllable separators as source text', async () => {
+  const { splitIntoSentences } = await import('../../src/text/prepare.js');
+  const body = 'Maja ima muco. Muca spi.';
+  const runs = buildSyllableRuns('Ma|ja i|ma mu|co. Mu|ca spi.', { syllableMode: 'both' });
+  const texts = splitRunsIntoSentences(runs, splitIntoSentences(body)).map((p) => p.map((r) => r.text).join(''));
+  // Before 0.10 this was ["Ma·ja i·ma mu·", "co. Mu·ca"] — cut short, and "spi." lost.
+  assert.deepEqual(texts, ['Ma·ja i·ma mu·co.', 'Mu·ca spi.']);
+});

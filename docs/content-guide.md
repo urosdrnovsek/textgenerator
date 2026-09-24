@@ -57,7 +57,9 @@ still fit on one page — the German and French level-5 entries had to be
 trimmed once for exactly that reason, and two of them are permanent cases
 in `scripts/verify-docx-libreoffice.mjs`. Longer texts are allowed (the
 worksheet extends to a second page and says so), but one page is the
-target for bundled content.
+target for bundled content. Count paragraph breaks when checking fit: a
+new paragraph starts a new line, so a level-5 text with paragraphs needs
+more height than the same words run together.
 
 ## Entry schema
 
@@ -264,6 +266,15 @@ From `npm run content-status`:
 - The Slovene `around_the_world_benetke_5` (191 words) ran to a second
   page at default settings; two sentences were removed on 2026-09-21
   (version 2) and every entry in every pack now fits one page.
+- **Paragraph breaks now print (0.10, 2026-09-24).** 73 entries contain
+  authored paragraph breaks (`\n\n` in `body`). Until 0.10 they were
+  lost in every output, so the one-page checks above measured the texts
+  without them. With paragraphs shown, 17 level-5 entries still fit
+  their *text* on page 1 in read-and-copy mode, but fewer than three copy
+  lines remain, so the copy lines move to a second page and the app says
+  "will print on 2 pages". The owner accepted this on 2026-09-24 rather
+  than trimming the texts. Read-only and trace sheets are unaffected by
+  the copy-line rule.
 - **English (original 25), German (original 25), French (original 25), Spanish (original 25):** 25 entries each, all `reviewed`
   by an AI editorial pass on 2026-09-19 (`nativeSpeaker: false`,
   `syllablesReviewed: true`; 3 German and 3 French syllable breaks were

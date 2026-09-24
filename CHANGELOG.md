@@ -26,11 +26,27 @@ supports). Groundwork first:
 - `docx` is pinned to exactly 9.7.1, the version the lockfile already
   installed. It is bundled into the release, and a minor update can
   change Word output.
-- **Known and not yet fixed:** paragraph breaks inside a text (73 of 318
-  entries) are lost in all three outputs. HTML collapses the `\n\n` to a
-  space, and DOCX puts it inside one `w:t`, which LibreOffice prints as
-  two spaces. Reproduced in Chromium and LibreOffice. The fix changes the
-  layout of those 73 texts and is being measured separately.
+- **Paragraph breaks print again.** 73 of 318 texts contain authored
+  paragraph breaks, and all three outputs lost them. HTML collapsed the
+  newlines to a space, and DOCX kept them inside one run, which
+  LibreOffice printed as two spaces. Each paragraph is now its own
+  paragraph in the model, the preview, print and Word, with the same
+  small gap in both (DOCX never had the gap before). Checked in Chromium
+  (the Mosaic text shows 3 paragraphs) and LibreOffice. **Consequence,
+  accepted by the owner:** 17 level-5 texts in read-and-copy mode still
+  fit their text on page 1 but now have fewer than three copy lines
+  left, so the copy lines move to a second page ("will print on 2
+  pages"). No other page counts changed.
+- **Sentence-per-line lost text in two situations; both fixed.**
+  (1) With syllable separators on, the inserted `·` marks were counted
+  as text when cutting sentences. Every sentence was cut short, and the
+  passage's last words were dropped ("Muca spi." printed as "Mu·ca").
+  (2) The sentence splitter skipped a quoted exclamation that the
+  sentence continues past (`„Du kommst nie ans Ziel!“, riefen sie.`), so
+  those words vanished from the German snail race and the Spanish
+  caracol story. A new test rebuilds every bundled text in every
+  paragraph/syllable combination and requires every character back.
+  With the old code, the test fails.
 
 ## 0.9.0-rc.1 — 2026-09-21 (content: 318 texts, name field removed)
 

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
-import { splitIntoSentences } from '../../src/text/prepare.js';
+import { splitIntoSentences, splitIntoParagraphs } from '../../src/text/prepare.js';
 
 test('splitIntoSentences splits on terminal punctuation', () => {
   assert.deepEqual(
@@ -38,5 +38,33 @@ test('splitIntoSentences: every character of every real content entry survives t
     const rejoinedNonWhitespace = sentences.join(' ').replace(/\s+/g, '');
     const originalNonWhitespace = entry.body.replace(/\s+/g, '');
     assert.equal(rejoinedNonWhitespace, originalNonWhitespace, `${entry.id}: non-whitespace content must be preserved`);
+  }
+});
+
+test('splitIntoParagraphs splits on authored newlines, trimming and dropping empty ones', () => {
+  assert.deepEqual(splitIntoParagraphs('One. Two.\n\nThree.\n  \nFour. '), ['One. Two.', 'Three.', 'Four.']);
+  assert.deepEqual(splitIntoParagraphs('No breaks here.'), ['No breaks here.']);
+});
+
+test('splitIntoSentences keeps a quoted exclamation that the sentence continues past (nothing is skipped)', () => {
+  // Before 0.10 the quoted part could not be matched and silently vanished.
+  assert.deepEqual(
+    splitIntoSentences('Tom lief los. „Du kommst nie ans Ziel!“, riefen sie. Er lief weiter.'),
+    ['Tom lief los.', '„Du kommst nie ans Ziel!“, riefen sie.', 'Er lief weiter.']
+  );
+  assert.deepEqual(
+    splitIntoSentences('«¡Tú no vas a llegar!», le gritan. Tito sigue.'),
+    ['«¡Tú no vas a llegar!», le gritan.', 'Tito sigue.']
+  );
+});
+
+test('splitIntoSentences covers every bundled text completely: only whitespace falls between sentences', async () => {
+  const root = path.dirname(path.dirname(path.dirname(fileURLToPath(import.meta.url))));
+  for (const language of ['sl', 'en', 'de', 'fr', 'es']) {
+    const pack = JSON.parse(await readFile(path.join(root, `content/${language}.json`), 'utf8'));
+    for (const entry of pack.entries) {
+      const joined = splitIntoSentences(entry.body).join('').replace(/\s+/g, '');
+      assert.equal(joined, entry.body.replace(/\s+/g, ''), `${language}:${entry.id}`);
+    }
   }
 });

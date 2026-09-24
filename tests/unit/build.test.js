@@ -116,3 +116,36 @@ test('buildWorksheet returns settings that do not alias the caller\'s object (a 
   assert.deepEqual(model.settings, reference);
   assert.notDeepEqual(model.settings, live);
 });
+
+test('authored paragraph breaks become separate paragraphs, with every character except the breaks kept', () => {
+  const entry = { ...ENTRY, body: 'Maja ima muco.\n\nMuca spi.', syllable_body: 'Ma|ja i|ma mu|co.\n\nMu|ca spi.' };
+  for (const syllableMode of ['off', 'colors', 'both']) {
+    const model = buildWorksheet(entry, { ...BASE_SETTINGS, syllableMode }, ASSETS, 'sl');
+    const texts = model.bodyParagraphs.map((p) => p.map((r) => r.text).join(''));
+    assert.equal(texts.length, 2, syllableMode);
+    assert.equal(texts[0].replaceAll('·', ''), 'Maja ima muco.');
+    assert.equal(texts[1].replaceAll('·', ''), 'Muca spi.');
+  }
+});
+
+test('every bundled text survives every paragraph/syllable combination with no character lost, added or reordered', async () => {
+  // Guards two bugs found on 2026-09-24: inserted syllable separators were
+  // counted as source text when cutting sentences (cutting them short and
+  // dropping the passage's end), and the sentence splitter skipped a quoted
+  // exclamation that the sentence continued past.
+  const { readFile } = await import('node:fs/promises');
+  const root = new URL('../../', import.meta.url);
+  for (const language of ['sl', 'en', 'de', 'fr', 'es']) {
+    const pack = JSON.parse(await readFile(new URL(`content/${language}.json`, root), 'utf8'));
+    for (const entry of pack.entries) {
+      const assets = { imagesById: new Map([[entry.imageId, { id: entry.imageId, path: '' }]]) };
+      for (const sentencePerLine of [false, true]) {
+        for (const syllableMode of ['off', 'colors', 'separators', 'both']) {
+          const model = buildWorksheet({ ...entry, language }, { ...BASE_SETTINGS, sentencePerLine, syllableMode }, assets, language);
+          const text = model.bodyParagraphs.map((p) => p.filter((r) => r.kind !== 'sep').map((r) => r.text).join('')).join(' ');
+          assert.equal(text.replace(/\s+/g, ''), entry.body.replace(/\s+/g, ''), `${language}:${entry.id} sentencePerLine=${sentencePerLine} ${syllableMode}`);
+        }
+      }
+    }
+  }
+});

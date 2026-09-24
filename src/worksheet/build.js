@@ -5,7 +5,7 @@
  * section 3's module responsibility table).
  */
 
-import { splitIntoSentences } from '../text/prepare.js';
+import { splitIntoSentences, splitIntoParagraphs } from '../text/prepare.js';
 import { buildStyledRuns, splitRunsIntoSentences, lightenParagraphs, countWords } from '../text/runs.js';
 
 /**
@@ -44,7 +44,7 @@ import { buildStyledRuns, splitRunsIntoSentences, lightenParagraphs, countWords 
  * @typedef {object} WorksheetModel
  * @property {{ language: string, id: string, version: number }} contentKey
  * @property {string} title
- * @property {import('../text/runs.js').StyledRun[][]} bodyParagraphs one array of runs per line — a single element unless settings.sentencePerLine is on
+ * @property {import('../text/runs.js').StyledRun[][]} bodyParagraphs one array of runs per paragraph — one per sentence when settings.sentencePerLine is on, otherwise one per authored paragraph of the body
  * @property {number} wordCount
  * @property {number} level
  * @property {ImageAsset} image
@@ -71,9 +71,15 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount) {
     syllableColors: settings.syllableColors
   });
 
+  // Authored paragraph breaks ("\n\n" in body) become separate paragraphs.
+  // Until 0.10 the whole body went into one paragraph, where HTML collapsed
+  // the newlines to a space and DOCX kept them inside one w:t (printed as
+  // spaces by LibreOffice), so 73 texts lost their paragraphing in every
+  // output. splitRunsIntoSentences cuts at any list of trimmed segments,
+  // so it serves paragraphs as well as sentences.
   const sentenceParagraphs = settings.sentencePerLine
     ? splitRunsIntoSentences(bodyRuns, splitIntoSentences(resolvedText.body))
-    : [bodyRuns];
+    : splitRunsIntoSentences(bodyRuns, splitIntoParagraphs(resolvedText.body));
 
   // Trace: light solid text (blueprint 8.7) — computed once here so HTML
   // and DOCX render identical colors, never two implementations of "light".

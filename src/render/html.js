@@ -226,6 +226,9 @@ export function renderWorksheet(model, layout, container, labels = DEFAULT_LABEL
 
   const bodyWrap = document.createElement('div');
   bodyWrap.className = 'ws-body';
+  // More than one paragraph (sentence-per-line, or a text with authored
+  // paragraph breaks) gets the same small gap between paragraphs; the DOCX
+  // exporter applies the matching spacing-after.
   bodyWrap.classList.toggle('ws-sentence-per-line', model.bodyParagraphs.length > 1);
   for (const paragraphRuns of model.bodyParagraphs) {
     const paragraph = document.createElement('p');

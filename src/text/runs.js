@@ -11,6 +11,9 @@
  * @typedef {object} StyledRun
  * @property {string} text
  * @property {string} color six-digit hex, e.g. "#B42318"
+ * @property {'sep'} [kind] 'sep' marks an inserted syllable-separator mark,
+ *   which is not part of the source text — splitRunsIntoSentences must not
+ *   count it when cutting runs at source-text offsets
  */
 
 const HEX_COLOR_PATTERN = /^#[0-9a-fA-F]{6}$/;
@@ -43,22 +46,24 @@ function colorForChar(char, letterColors, uppercaseAlso) {
 }
 
 /**
- * Merges a stream of (character, color-or-null) pairs into runs, filling
- * null with baseColor. Preserves every character exactly.
- * @param {Array<[string, string | null]>} pairs
+ * Merges a stream of (character, color-or-null[, kind]) pairs into runs,
+ * filling null with baseColor. Preserves every character exactly. A pair
+ * with a kind (an inserted separator) never merges with a pair without
+ * one, so the mark stays identifiable as not being source text.
+ * @param {Array<[string, string | null, ('sep' | undefined)?]>} pairs
  * @param {string} baseColor
  * @returns {StyledRun[]}
  */
 function mergePairsIntoRuns(pairs, baseColor) {
   /** @type {StyledRun[]} */
   const runs = [];
-  for (const [text, color] of pairs) {
+  for (const [text, color, kind] of pairs) {
     const resolved = color ?? baseColor;
     const previous = runs.at(-1);
-    if (previous && previous.color === resolved) {
+    if (previous && previous.color === resolved && previous.kind === kind) {
       previous.text += text;
     } else {
-      runs.push({ text, color: resolved });
+      runs.push(kind ? { text, color: resolved, kind } : { text, color: resolved });
     }
   }
   return runs;
@@ -136,7 +141,7 @@ export function buildSyllableRuns(syllableBody, options = {}) {
     const syllables = token.split('|');
     syllables.forEach((syllable, index) => {
       if (index > 0 && showSeparators) {
-        pairs.push([SYLLABLE_SEPARATOR, separatorColor]);
+        pairs.push([SYLLABLE_SEPARATOR, separatorColor, 'sep']);
       }
       const syllableColor = showColors ? syllableColors[index % syllableColors.length] : null;
       for (const char of syllable) {
@@ -188,6 +193,16 @@ export function splitRunsIntoSentences(runs, sentences) {
     let remaining = sentence.length;
     while (remaining > 0 && runIndex < runs.length) {
       const run = runs[runIndex];
+      if (run.kind === 'sep') {
+        // An inserted syllable mark is not in the source text, so it
+        // consumes none of the sentence's length. Counting it (before
+        // 0.10) cut every sentence short with separators on and dropped
+        // the passage's last characters entirely.
+        paragraphRuns.push(run);
+        runIndex++;
+        offsetInRun = 0;
+        continue;
+      }
       const availableInRun = run.text.length - offsetInRun;
       const take = Math.min(remaining, availableInRun);
       paragraphRuns.push({ text: run.text.slice(offsetInRun, offsetInRun + take), color: run.color });
@@ -237,7 +252,7 @@ function lightenColor(hexColor, amount) {
  * @returns {StyledRun[][]}
  */
 export function lightenParagraphs(paragraphs, amount = 0.65) {
-  return paragraphs.map((runs) => runs.map((run) => ({ text: run.text, color: lightenColor(run.color, amount) })));
+  return paragraphs.map((runs) => runs.map((run) => ({ ...run, color: lightenColor(run.color, amount) })));
 }
 
 /**

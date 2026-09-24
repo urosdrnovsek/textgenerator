@@ -202,3 +202,24 @@ test('exportDocx uses the caller-supplied header labels instead of the hardcoded
     await rm(tmpDir, { recursive: true, force: true });
   }
 });
+
+test('exportDocx writes authored paragraph breaks as separate paragraphs with the preview\'s gap, never as newlines inside a run', async (t) => {
+  // animal_facts_delfin_5 has "\n\n" paragraph breaks. Before 0.10 they went
+  // into a single w:t and LibreOffice printed them as two spaces.
+  const entryId = 'animal_facts_delfin_5';
+  const model = await buildModel(entryId);
+  assert.ok(model.bodyParagraphs.length > 1, 'sanity check: the fixture has authored paragraphs');
+  const blob = await exportDocx(model, { copyBlocks: [] }, await imageBytesFor(entryId));
+  const buffer = Buffer.from(await blob.arrayBuffer());
+  const tmpDir = await mkdtemp(path.join(os.tmpdir(), 'worksheet-docx-test-'));
+  const docxPath = path.join(tmpDir, 'worksheet.docx');
+  await import('node:fs/promises').then((fs) => fs.writeFile(docxPath, buffer));
+  t.after(() => rm(tmpDir, { recursive: true, force: true }));
+  const documentXml = await unzipEntry(docxPath, 'word/document.xml');
+
+  const runTexts = [...documentXml.matchAll(/<w:t[^>]*>([^<]*)<\/w:t>/g)].map((m) => m[1]);
+  assert.ok(runTexts.every((text) => !text.includes('\n')), 'no run may carry a raw newline');
+  // 0.25 × 20 pt font size × 20 twips/pt = 100 twips after each body paragraph.
+  const gaps = documentXml.match(/<w:spacing w:after="100"/g) ?? [];
+  assert.equal(gaps.length, model.bodyParagraphs.length);
+});

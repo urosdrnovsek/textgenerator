@@ -167,11 +167,18 @@ export async function exportDocx(model, layout, imageBytes, labels = DEFAULT_LAB
   // LibreOffice's Liberation Sans substitute (1.15em) happened to fit, so
   // verify-docx passed until CI installed the real fonts (0.8.1, F4).
   const lineTwips = Math.round((s.lineHeightMultiplier ?? 1.5) * s.fontSizePt * TWIPS_PER_PT);
+  // Same gap as the preview's `.ws-body.ws-sentence-per-line .ws-sentence {
+  // margin-bottom: 0.25em }`, which applies whenever there is more than one
+  // paragraph (sentence-per-line or authored paragraph breaks). DOCX had no
+  // gap at all before 0.10, so it ran slightly shorter than the preview.
+  const paragraphGapTwips = model.bodyParagraphs.length > 1 ? Math.round(0.25 * s.fontSizePt * TWIPS_PER_PT) : 0;
   for (const paragraphRuns of model.bodyParagraphs) {
     children.push(
       new Paragraph({
         alignment: AlignmentType.LEFT,
-        spacing: { line: lineTwips, lineRule: LineRuleType.EXACT },
+        spacing: paragraphGapTwips > 0
+          ? { line: lineTwips, lineRule: LineRuleType.EXACT, after: paragraphGapTwips }
+          : { line: lineTwips, lineRule: LineRuleType.EXACT },
         children: toWordRuns(paragraphRuns, { fontFamily, fontSizePt: s.fontSizePt, characterSpacingTwips, wordSpacingTwips }),
         shading
       })
