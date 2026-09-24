@@ -7,8 +7,14 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
-Work on branch `upgrade/activities` (new worksheet activities and reading
-supports). Groundwork first:
+(nothing yet)
+
+## 0.9.0-rc.2 — 2026-09-24 (beta hotfix)
+
+A bug-fix build for the tester teachers. It has no new features and no
+content changes. The fixes were found while preparing the activities
+upgrade (branch `upgrade/activities`) and moved to the beta because two
+of them lost text on printed sheets.
 
 - **Printed packets keep their line stripes.** A packet sheet was rendered
   into a detached element, where line boxes measure as zero, so every

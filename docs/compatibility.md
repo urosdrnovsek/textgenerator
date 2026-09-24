@@ -279,7 +279,7 @@ that the packaged ZIP extracts and runs standalone (see "Fresh-machine /
 offline test" above) — this was tested against the actual ZIP artifact,
 not just the repo's `release/` folder.
 
-Current version is `0.9.0-rc.1` — a release *candidate*, not a final
+Current version is `0.9.0-rc.2` — a release *candidate*, not a final
 `1.0.0`: the image-license and native-language-content-review gaps above
 are real, open, user-facing-risk items, not paperwork. Don't bump to
 `1.0.0` until those are resolved.
