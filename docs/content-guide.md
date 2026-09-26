@@ -194,11 +194,11 @@ Rules of thumb:
 - Set `imageAccuracy` independently of the text review; it's a different
   check, and often a different person.
 
-### Where the content stands (2026-09-21)
+### Where the content stands (2026-09-26)
 
 From `npm run content-status`:
 
-- **Slovene:** 75 entries. The original 25 (`draft` — written by the
+- **Slovene:** 80 entries. The original 25 (`draft` — written by the
   project owner, never formally reviewed; their story pictures were
   checked on 2026-09-21) plus 50 curated on 2026-09-21 from the raw pool
   `Texts collection/sl_texts.json`, two per cell, after a Slovene teacher
@@ -213,7 +213,20 @@ From `npm run content-status`:
   non-story level-5 texts (and the owner's Venice text) each lost one to
   three sentences to fit one page — Slovene words are long, and the
   level-5 pool texts ran to 1,050–1,170 characters.
-- **English:** 93 entries — three per theme × level cell, four in the
+- **A fifth round of stories, every language (2026-09-26):** five
+  pictures drawn for the owner were bundled (`family_soup`,
+  `winter_postman`, `music_rehearsal`, `lighthouse_rescue`,
+  `fire_station`) and every language got one original story per level
+  on them, in that order from level 1 to 5 (the lighthouse is level 4
+  because English level 5 already had one). Each text was written for
+  its picture (`imageAccuracy: verified`) and fits one page in
+  read-and-copy mode. The Slovene five are `draft` until the owner has
+  read them; the English, German, French and Spanish five are recorded
+  like those languages' earlier rounds (`reviewed`, not a native
+  speaker). German level 5 had to lose a paragraph break to keep its
+  copy lines on page 1. Generators: `Instructions/tools/*-round3-stories.py`
+  (gitignored).
+- **English:** 98 entries — three per theme × level cell, four in the
   story, animal and science cells and in three more (nature L2/L3,
   around the world L4). The 25 below plus fifty original texts (ten per
   theme, two per level; stories on 2026-09-20, the other four themes on
@@ -226,10 +239,11 @@ From `npm run content-status`:
   (`solar_oven`, `electric_circuit`, `ammonite_fossil`,
   `backyard_telescope`, `mars_rover`), and finally `sunflower_planting`,
   `tree_frog` and `roman_mosaic`. Round 2 is complete: every picture in
-  the drop that fitted a cell is used; five story-like pictures (music
-  rehearsal, fire station, vegetable soup, winter postman, lighthouse
-  keeper) remain unbundled.
-- **French:** 50 entries — the 25 below plus, from 2026-09-21, one
+  the drop that fitted a cell is used; the five story-like pictures left
+  over (music rehearsal, fire station, vegetable soup, winter postman,
+  lighthouse keeper) were bundled in the fifth round above, so English
+  stories now have five texts per level.
+- **French:** 55 entries (with the fifth round above) — the 25 below plus, from 2026-09-21, one
   original French text per theme × level cell on the topic and picture
   of the matching Slovene entry (the kitten, the egg, the snail race,
   the owl, the bee, the dolphins, the pyramids at four levels, Venice,
@@ -240,7 +254,7 @@ From `npm run content-status`:
   *syllabes écrites* splitter (`Instructions/tools/fr.py`, gitignored),
   then reviewed word by word; `ée` kept whole per the convention.
   `imageAccuracy: verified`, `nativeSpeaker: false`.
-- **German:** 50 entries — the 25 below plus, from 2026-09-21, one
+- **German:** 55 entries (with the fifth round above) — the 25 below plus, from 2026-09-21, one
   original German text per cell on the Slovene topics and pictures, the
   same way as French (Lena and the kitten, the egg, Theo the snail; the
   owl, the bee, the dolphins, the bat; the pyramids at four levels and
@@ -252,7 +266,7 @@ From `npm run content-status`:
   German level-5 texts are kept to ~150–175 words because German words
   are long — one Venice text had to be trimmed after it ran to a second
   page in the fit check.
-- **Spanish:** 50 entries — the 25 below plus, from 2026-09-21, one
+- **Spanish:** 55 entries (with the fifth round above) — the 25 below plus, from 2026-09-21, one
   original Spanish text per cell on the Slovene topics and pictures, as
   for French and German (Sofía and the kitten, the egg, Tito the snail;
   owl, bee, dolphins, bat; pyramids at four levels and Venice; rainbow at
@@ -284,15 +298,16 @@ From `npm run content-status`:
   second opinion) corrected 62 more breaks in 28 entries: 1 Spanish, 2
   German, 18 French (mostly `feu|il|le`-type words), 41 English. Native-
   speaker review: **0 of 100.**
-- **Images:** 209 of 318 `verified` (the four illustrations generated for
+- **Images:** 234 of 343 `verified` (the four illustrations generated for
   the mismatched Neuschwanstein, Uluru, Easter Island and Pont du Gard
   entries, the axolotl illustration bundled for the five Spanish ajolote
-  entries, the fifty new English texts, the twelve story pictures
+  entries, the fifty new English texts, the twenty-five fifth-round
+  stories, the twelve story pictures
   checked against their texts on 2026-09-21 — see below — and the
   German "Das Licht im alten Haus" pair, which got its own illustration
   the same day: `light_old_house`, a girl and her father in an old room
   with a glass on the windowsill throwing a spot of sunlight on the
-  wall); 102 `plausible`; none `mismatch`.
+  wall); 109 `plausible`; none `mismatch`.
 - **Story pictures vs the child in the text (2026-09-21):** every story
   picture was compared with every text that uses it. The three Slovene
   "Tom" stories (`piscancek_2`, `piscancek_4`, `muc_5`) were illustrated
