@@ -103,7 +103,8 @@ body {
   font-weight: 600;
 }
 
-.settings-panel input[type='number'] {
+.settings-panel input[type='number'],
+.settings-panel input[type='text'] {
   display: block;
   width: 100%;
   padding: 5px;

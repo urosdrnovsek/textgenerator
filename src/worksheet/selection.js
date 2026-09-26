@@ -9,7 +9,7 @@
  * text never lands on a different or changed text.
  */
 
-import { CLOZE } from '../config.js';
+import { CLOZE, QUESTIONS } from '../config.js';
 
 /**
  * @typedef {object} Selection
@@ -17,6 +17,7 @@ import { CLOZE } from '../config.js';
  * @property {number[]} blanks word indices (tokenize.js), ascending, distinct
  * @property {number | null} sentence the sentence to copy (copy target 'sentence')
  * @property {boolean} showAnswers print the answer key: gaps show their word
+ * @property {string[]} questions the teacher's own questions about this text (0–QUESTIONS.max)
  */
 
 /**
@@ -32,7 +33,7 @@ export function keyFor(entry) {
  * @returns {Selection}
  */
 export function emptySelection(key) {
-  return { key, blanks: [], sentence: null, showAnswers: false };
+  return { key, blanks: [], sentence: null, showAnswers: false, questions: [] };
 }
 
 /**
@@ -108,7 +109,7 @@ export function chooseSentence(selection, sentence) {
 export function selectionFor(selection, key, doc) {
   if (!selection) return { selection: emptySelection(key), reset: false };
   if (selection.key !== key) {
-    const hadChoices = selection.blanks.length > 0 || selection.sentence !== null;
+    const hadChoices = selection.blanks.length > 0 || selection.sentence !== null || (selection.questions?.length ?? 0) > 0;
     return { selection: emptySelection(key), reset: hadChoices };
   }
   const blanks = [...new Set(selection.blanks)]
@@ -118,7 +119,22 @@ export function selectionFor(selection, key, doc) {
   const sentence = Number.isInteger(selection.sentence) && selection.sentence >= 0 && selection.sentence < doc.sentences.length
     ? selection.sentence
     : null;
-  return { selection: { key, blanks, sentence, showAnswers: Boolean(selection.showAnswers) }, reset: false };
+  return { selection: { key, blanks, sentence, showAnswers: Boolean(selection.showAnswers), questions: cleanQuestions(selection.questions) }, reset: false };
+}
+
+/**
+ * The teacher's questions as typed: trimmed, empty ones dropped, at most
+ * QUESTIONS.max, each cut to QUESTIONS.maxLength characters.
+ * @param {unknown} questions
+ * @returns {string[]}
+ */
+export function cleanQuestions(questions) {
+  if (!Array.isArray(questions)) return [];
+  return questions
+    .filter((q) => typeof q === 'string')
+    .map((q) => q.trim().slice(0, QUESTIONS.maxLength))
+    .filter((q) => q.length > 0)
+    .slice(0, QUESTIONS.max);
 }
 
 /**

@@ -68,6 +68,8 @@ to a school.
   continue the text (the first two sentences, then lines to write on).
   The last two print a short instruction for the child, which can be
   switched off.
+- **Your own questions:** up to three questions typed for the text on
+  screen, printed after it with lines to answer on.
 - **Picture on the sheet:** the text's picture, an empty drawing box after
   the text ("read it, then draw it"), or no picture.
 - **Header fields** (name line, date, title), each on/off; an optional

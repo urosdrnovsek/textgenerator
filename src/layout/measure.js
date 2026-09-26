@@ -136,9 +136,9 @@ function collectContentBlocks(page) {
     const topMm = pxToMm(el.getBoundingClientRect().top - pageTopPx);
     if (el.dataset.block === 'passage') {
       for (const line of measureBodyLineBoxes(el)) topsMm.push(topMm + line.topMm);
-    } else if (el.dataset.block === 'sequence') {
-      // "Put in order": each sentence item is a unit (never split), and a
-      // page may break between two items.
+    } else if (el.dataset.block === 'sequence' || el.dataset.block === 'questions') {
+      // "Put in order" items and the teacher's questions (with their answer
+      // lines): each is a unit (never split), and a page may break between two.
       for (const item of el.children) topsMm.push(pxToMm(item.getBoundingClientRect().top - pageTopPx));
     } else {
       topsMm.push(topMm);

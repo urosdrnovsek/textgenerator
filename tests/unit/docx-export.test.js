@@ -414,3 +414,18 @@ test('"Continue the text" in Word: the instruction, only the first sentences, th
   assert.ok(full.startsWith(kept) && kept.length < full.length, 'the beginning of the text only');
   assert.equal((xml.match(/<w:tbl>/g) ?? []).length, 1, 'the lines');
 });
+
+test('the teacher\'s questions in Word: numbered, kept with their ruled answer lines, not merged with the copy lines', async (t) => {
+  const { keyFor } = await import('../../src/worksheet/selection.js');
+  const plain = await buildModel(TEST_ENTRY_ID);
+  const raw = JSON.parse(await readFile(path.join(root, 'content/sl.json'), 'utf8'));
+  const { imagesById } = await loadManifestAssets();
+  const entry = { ...raw.entries.find((e) => e.id === TEST_ENTRY_ID), language: 'sl' };
+  const model = buildWorksheet(entry, SETTINGS, { imagesById }, 'sl', { key: keyFor(plain.contentKey), blanks: [], sentence: null, showAnswers: false, questions: ['Kdo ima muco?', 'Kakšna je muca?'] });
+  const xml = await documentXmlOf(model, { copyBlocks: [4] }, t);
+  const questions = paragraphsOf(xml).filter((p) => /[12]\. K/.test(p));
+  assert.equal(questions.length, 2);
+  for (const p of questions) assert.match(p, /<w:keepNext\/>/);
+  assert.equal((xml.match(/<w:tbl>/g) ?? []).length, 3, 'two answer tables and the copy lines');
+  assert.doesNotMatch(xml, /<\/w:tbl><w:tbl>/, 'no two tables touch (Word would merge them)');
+});

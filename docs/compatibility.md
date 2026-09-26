@@ -198,6 +198,8 @@ For at least one exported `.docx` per language and per writing mode (3 × 5 = 15
 - [ ] Answer key (gap-fill with "Show the answers"): the "Answers" tag at
       the top right, and each answer in bold in the middle of its
       underline.
+- [ ] Your own questions: numbered after the text, each with its two
+      ruled answer lines on the same page as the question.
 - [ ] Continue the text: the instruction line, only the first two
       sentences, then ruled lines.
 - [ ] Write about the picture: the instruction line under the title, the

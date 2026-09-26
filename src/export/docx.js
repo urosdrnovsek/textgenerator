@@ -53,6 +53,51 @@ import { markedParagraphs } from '../worksheet/copyMark.js';
 import { computeContainedImageSizeMm, IMAGE_BOX_LARGE } from '../layout/imageBox.js';
 
 /**
+ * Ruled handwriting lines as Word draws them reliably: a one-column table,
+ * one exact-height row per line with a bottom border (copy lines, answer
+ * lines). keepTogether keeps all rows on one page (answer lines stay with
+ * their question); the copy lines don't need it.
+ * @param {number} rowCount
+ * @param {number} rowHeightTwips
+ * @param {number} contentWidthTwips
+ * @param {boolean} [keepTogether]
+ * @returns {Table}
+ */
+function ruledLines(rowCount, rowHeightTwips, contentWidthTwips, keepTogether = false) {
+  const noBorder = { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' };
+  const rows = [];
+  for (let i = 0; i < rowCount; i++) {
+    rows.push(
+      new TableRow({
+        height: { value: rowHeightTwips, rule: HeightRule.EXACT },
+        cantSplit: true,
+        children: [
+          new TableCell({
+            width: { size: contentWidthTwips, type: WidthType.DXA },
+            margins: { top: 0, bottom: 0, left: 0, right: 0 },
+            verticalAlign: VerticalAlign.BOTTOM,
+            borders: { top: noBorder, left: noBorder, right: noBorder, bottom: { style: BorderStyle.SINGLE, size: 6, color: '333333' } },
+            children: [new Paragraph({ spacing: { before: 0, after: 0 }, children: [], ...(keepTogether && i < rowCount - 1 ? { keepNext: true } : {}) })]
+          })
+        ]
+      })
+    );
+  }
+  return new Table({
+    width: { size: contentWidthTwips, type: WidthType.DXA },
+    borders: {
+      top: noBorder,
+      bottom: noBorder,
+      left: noBorder,
+      right: noBorder,
+      insideHorizontal: noBorder,
+      insideVertical: noBorder
+    },
+    rows
+  });
+}
+
+/**
  * The copy mark as Word can draw it: a left border on a whole paragraph.
  * Checked in LibreOffice: it sits left of the text and doesn't move it.
  */
@@ -345,6 +390,26 @@ export const BLOCK_WRITERS = {
     ];
   },
 
+  // The teacher's own questions: each question (kept with its lines), then
+  // its ruled answer lines; a small paragraph at the end so Word doesn't
+  // merge the last table with the copy lines that may follow.
+  questions: (block, { model, fontFamily, contentWidthTwips, unnumbered }) => {
+    const s = model.settings;
+    const lineTwips = Math.round((s.lineHeightMultiplier ?? 1.5) * s.fontSizePt * TWIPS_PER_PT);
+    return [
+      ...block.items.flatMap((question, i) => [
+        new Paragraph({
+          keepNext: true,
+          spacing: { before: i === 0 ? mmToTwips(4) : 0, after: mmToTwips(1), line: lineTwips, lineRule: LineRuleType.EXACT },
+          children: [new TextRun({ text: `${i + 1}. ${question}`, font: fontFamily, size: Math.round(s.fontSizePt * 2) })],
+          ...unnumbered
+        }),
+        ruledLines(block.linesEach, mmToTwips(s.guideHeightMm ?? 10), contentWidthTwips, true),
+        new Paragraph({ spacing: { before: 0, after: 0, line: mmToTwips(3), lineRule: LineRuleType.EXACT }, children: [], ...unnumbered })
+      ])
+    ];
+  },
+
   // A table, like the copy lines, because a row's exact height is the one
   // height Word and LibreOffice both honour. The first, borderless row is
   // the gap above the box (the preview's margin-top). The small paragraph
@@ -438,43 +503,11 @@ export async function exportDocx(model, layout, imageBytes, labels = DEFAULT_LAB
   // pagination matches the app's.
   if (model.task === 'lines' && layout?.copyBlocks?.length > 0) {
     const rowHeightTwips = mmToTwips(s.guideHeightMm ?? 10);
-    const noBorder = { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' };
     layout.copyBlocks.forEach((rowCount, blockIndex) => {
       if (blockIndex > 0) {
         children.push(new Paragraph({ children: [], pageBreakBefore: true, ...unnumbered }));
       }
-      const rows = [];
-      for (let i = 0; i < rowCount; i++) {
-        rows.push(
-          new TableRow({
-            height: { value: rowHeightTwips, rule: HeightRule.EXACT },
-            cantSplit: true,
-            children: [
-              new TableCell({
-                width: { size: contentWidthTwips, type: WidthType.DXA },
-                margins: { top: 0, bottom: 0, left: 0, right: 0 },
-                verticalAlign: VerticalAlign.BOTTOM,
-                borders: { top: noBorder, left: noBorder, right: noBorder, bottom: { style: BorderStyle.SINGLE, size: 6, color: '333333' } },
-                children: [new Paragraph({ spacing: { before: 0, after: 0 }, children: [] })]
-              })
-            ]
-          })
-        );
-      }
-      children.push(
-        new Table({
-          width: { size: contentWidthTwips, type: WidthType.DXA },
-          borders: {
-            top: noBorder,
-            bottom: noBorder,
-            left: noBorder,
-            right: noBorder,
-            insideHorizontal: noBorder,
-            insideVertical: noBorder
-          },
-          rows
-        })
-      );
+      children.push(ruledLines(rowCount, rowHeightTwips, contentWidthTwips));
     });
   }
 

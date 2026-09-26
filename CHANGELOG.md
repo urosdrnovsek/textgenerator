@@ -7,6 +7,12 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
+- **Your own questions about a text.** A new "Questions about this text"
+  panel takes up to three questions. They are printed after the text,
+  numbered, each with two ruled lines to answer on (a question and its
+  lines never split across pages). They belong to the text on screen, like
+  the gaps: another text starts with empty boxes, and they are not saved
+  in setups. Works with every writing mode.
 - **Continue the text (story starters).** A new writing mode: the title,
   the picture, the instruction "Read the beginning and continue in your
   own words.", the first two sentences of the text, and ruled lines for

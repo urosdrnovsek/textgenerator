@@ -11,7 +11,7 @@ import { tokenize } from '../text/tokenize.js';
 import { keyFor, selectionFor, blankWidthEm } from './selection.js';
 import { seededDerangement, sequenceLength } from './sequence.js';
 import { ACTIVITIES } from './activities.js';
-import { DRAWING_BOX_HEIGHT_MM, ARC_COLOR, STARTER_SENTENCES } from '../config.js';
+import { DRAWING_BOX_HEIGHT_MM, ARC_COLOR, STARTER_SENTENCES, QUESTIONS } from '../config.js';
 
 /**
  * @typedef {object} ImageAsset
@@ -80,6 +80,7 @@ import { DRAWING_BOX_HEIGHT_MM, ARC_COLOR, STARTER_SENTENCES } from '../config.j
  *   | { type: 'image', size: 'normal' | 'large' }
  *   | { type: 'passage', paragraphs: import('../text/runs.js').StyledRun[][], lineNumbers: boolean, blankWidthEm: number, showAnswers: boolean, copyMark: { firstW: number, lastW: number } | null, arcColor: string | null } arcColor: syllable arcs are drawn, in this colour (null: none) blankWidthEm: every gap's width (0 = no gaps); showAnswers: the answer key (gaps show their word)
  *   | { type: 'drawingBox', heightMm: number }
+ *   | { type: 'questions', items: string[], linesEach: number } the teacher's own questions, each followed by ruled answer lines
  *   | { type: 'sequence', items: Array<{ runs: import('../text/runs.js').StyledRun[], position: number }>, sentenceCount: number, showAnswers: boolean } items: shuffled, position = the sentence's place in the text (1-based); no items when the text has too few sentences
  * )} Block
  */
@@ -185,7 +186,7 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
     hasSyllableData: doc.hasSyllables,
     copyTarget: target.kind,
     copyTargetText: target.text,
-    blocks: buildBlocks(entry, settings, activity, bodyParagraphs, blanks.length > 0 ? blankWidthEm(doc, blanks) : 0, answerKey, target, sequence, arcColor),
+    blocks: buildBlocks(entry, settings, activity, bodyParagraphs, blanks.length > 0 ? blankWidthEm(doc, blanks) : 0, answerKey, target, sequence, arcColor, chosen.selection.questions),
     task: activity.task
   };
 }
@@ -202,9 +203,10 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
  * @param {CopyTarget} target
  * @param {{ items: Array<{ runs: import('../text/runs.js').StyledRun[], position: number }>, sentenceCount: number } | null} sequence
  * @param {string | null} arcColor
+ * @param {string[]} questions the teacher's own questions (already cleaned)
  * @returns {Block[]}
  */
-function buildBlocks(entry, settings, activity, paragraphs, gapWidthEm, answerKey, target, sequence, arcColor) {
+function buildBlocks(entry, settings, activity, paragraphs, gapWidthEm, answerKey, target, sequence, arcColor, questions) {
   /** @type {Block[]} */
   const blocks = [];
   // First, whatever else is switched off: a key must never pass for a student sheet.
@@ -222,6 +224,8 @@ function buildBlocks(entry, settings, activity, paragraphs, gapWidthEm, answerKe
     blocks.push({ type: 'passage', paragraphs, lineNumbers: Boolean(settings.lineNumbers), blankWidthEm: gapWidthEm, showAnswers: answerKey, copyMark: target.words, arcColor });
   }
   if (sequence) blocks.push({ type: 'sequence', ...sequence, showAnswers: answerKey });
+  // Straight after the text they are about, before a drawing box or copy lines.
+  if (questions.length > 0) blocks.push({ type: 'questions', items: questions, linesEach: QUESTIONS.linesEach });
   // After the passage: the child draws what they have just read.
   if (imageSlot === 'drawing-box') blocks.push({ type: 'drawingBox', heightMm: DRAWING_BOX_HEIGHT_MM });
   return blocks;

@@ -429,6 +429,23 @@ async function main() {
     await evalJs(`const el = document.getElementById('writing-mode-select'); el.value = 'read-copy'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
     await waitForFit();
 
+    // The teacher's own questions on the same sheet: a question and its
+    // answer lines never split; the print must paginate as measured.
+    console.log('\nTeacher\'s questions in the real Firefox print...');
+    await evalJs(`document.querySelectorAll('.question-input').forEach((input, i) => { input.value = ['Who is the story about?', 'What happens at the end?', 'Would you like it?'][i]; input.dispatchEvent(new Event('change', { bubbles: true })); });`);
+    await driver.sleep(500);
+    await waitForFit();
+    const questionPages = await reportedPages();
+    const questionPdfPath = path.join(downloadDir, 'questions-worksheet.pdf');
+    await writeFile(questionPdfPath, Buffer.from(await driver.printPage(), 'base64'));
+    const questionPrintedPages = Number((execFileSync('pdfinfo', [questionPdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
+    const questionPdf = squash(execFileSync('pdftotext', [questionPdfPath, '-']).toString());
+    check(`teacher's questions page count agrees (${pagesNote(questionPrintedPages, questionPages)}), all three printed`,
+      pagesAgree(questionPrintedPages, questionPages) && ['1.Whoisthestoryabout?', '2.Whathappensattheend?', '3.Wouldyoulikeit?'].every((q) => questionPdf.includes(q)));
+    await evalJs(`document.querySelectorAll('.question-input').forEach((input) => { input.value = ''; input.dispatchEvent(new Event('change', { bubbles: true })); });`);
+    await driver.sleep(500);
+    await waitForFit();
+
     // Reset back to defaults — the language loop below checks for the
     // localized "fits" wording specifically, which these settings would
     // break for languages whose content doesn't also extend at max size.

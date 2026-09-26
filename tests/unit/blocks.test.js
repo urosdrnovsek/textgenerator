@@ -104,7 +104,7 @@ test('fill the gaps: an instruction line, and gaps only in this mode, with one g
   const readCopy = buildWorksheet(ENTRY, SETTINGS, ASSETS, 'sl', selection);
   assert.ok(readCopy.bodyParagraphs.flat().every((r) => !r.blank), 'the clicks are kept but not applied in other modes');
   assert.equal(readCopy.blocks.at(-1).blankWidthEm, 0);
-  assert.deepEqual(readCopy.selection, selection, 'the selection travels in the model');
+  assert.deepEqual(readCopy.selection, { ...selection, questions: [] }, 'the selection travels in the model');
 });
 
 test('a selection made for another text version is ignored and flagged', () => {
@@ -127,4 +127,13 @@ test('the answer key: an "Answers" tag first on the page and the answers shown, 
   assert.ok(!types(noGaps).includes('answerTag'), 'nothing to answer: not a key');
   const otherMode = buildWorksheet(ENTRY, SETTINGS, ASSETS, 'sl', selection([1], true));
   assert.ok(!types(otherMode).includes('answerTag'), 'answers belong to the gap-fill only');
+});
+
+test('the teacher\'s questions follow the text (before a drawing box), in any mode; none without questions', () => {
+  const selection = (questions) => ({ key: 'sl:t@1', blanks: [], sentence: null, showAnswers: false, questions });
+  const model = buildWorksheet(ENTRY, { ...SETTINGS, imageSlot: 'drawing-box' }, ASSETS, 'sl', selection(['Kdo ima muco?', 'Kakšna je?']));
+  assert.deepEqual(types(model), ['header', 'title', 'passage', 'questions', 'drawingBox']);
+  assert.deepEqual(model.blocks[3], { type: 'questions', items: ['Kdo ima muco?', 'Kakšna je?'], linesEach: 2 });
+  assert.ok(types(buildWorksheet(ENTRY, { ...SETTINGS, writingMode: 'read-only' }, ASSETS, 'sl', selection(['Kdo?']))).includes('questions'));
+  assert.ok(!types(buildWorksheet(ENTRY, SETTINGS, ASSETS, 'sl', selection([]))).includes('questions'));
 });

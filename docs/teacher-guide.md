@@ -121,6 +121,10 @@ into its answer key, marked "Answers" at the top. To print a class set
 and its key together: add the sheet to the packet, tick Show the answers,
 and add it again.
 
+**Questions about this text** — type up to three questions of your own;
+they are printed after the text, numbered, each with two lines to answer
+on. They are for the text on screen only (another text starts empty).
+
 **Picture on the sheet** chooses the text's picture, an empty **drawing
 box** after the text ("read it, then draw it"), or no picture.
 
@@ -146,7 +150,7 @@ the language and the theme/level, and creates a text for them — that's
 what saving a setup is for.
 
 A saved setup does **not** include a custom image, the gaps or sentence
-you clicked, or Show the answers — those stay specific to the one
+you clicked, your questions, or Show the answers — those stay specific to the one
 worksheet you were making, not the reusable setup.
 
 ### Backing up and restoring your setups

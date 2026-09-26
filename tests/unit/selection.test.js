@@ -42,7 +42,7 @@ test('every Nth word: the first sentence stays whole, counting starts with the s
 
 test('selectionFor: a selection for another text or version is dropped and reported; stale indices are dropped', () => {
   const sel = { key: KEY, blanks: [1, 1, 40, -2, 3], sentence: 9, showAnswers: true };
-  assert.deepEqual(selectionFor(sel, KEY, doc), { selection: { key: KEY, blanks: [1, 3], sentence: null, showAnswers: true }, reset: false });
+  assert.deepEqual(selectionFor(sel, KEY, doc), { selection: { key: KEY, blanks: [1, 3], sentence: null, showAnswers: true, questions: [] }, reset: false });
   assert.deepEqual(selectionFor(sel, 'sl:t@2', doc), { selection: emptySelection('sl:t@2'), reset: true });
   assert.deepEqual(selectionFor(emptySelection(KEY), 'sl:t@2', doc).reset, false, 'nothing chosen: nothing to report');
   assert.deepEqual(selectionFor(undefined, KEY, doc), { selection: emptySelection(KEY), reset: false });
@@ -62,4 +62,13 @@ test('a gap is one run for the whole word in the base colour; punctuation and sy
   assert.deepEqual(gaps.map((r) => [r.text, r.w, r.color]), [['Rada', 0, '#202020'], ['soncu', 3, '#202020']]);
   const shown = runs.map((r) => (r.blank ? '[gap]' : r.text)).join('');
   assert.equal(shown, '[gap] spi na [gap], ko si·je.', 'no separator inside a gap, the comma stays, later syllables still marked');
+});
+
+test('the teacher\'s questions: trimmed, empty ones dropped, at most 3, each at most 200 characters', async () => {
+  const { cleanQuestions } = await import('../../src/worksheet/selection.js');
+  assert.deepEqual(cleanQuestions(['  Kdo je Maja? ', '', '   ', 'Kaj je muca?']), ['Kdo je Maja?', 'Kaj je muca?']);
+  assert.deepEqual(cleanQuestions(['a', 'b', 'c', 'd']), ['a', 'b', 'c']);
+  assert.equal(cleanQuestions(['x'.repeat(250)])[0].length, 200);
+  assert.deepEqual(cleanQuestions('Kdo?'), [], 'not a list');
+  assert.deepEqual(cleanQuestions([3, 'Kdo?']), ['Kdo?']);
 });

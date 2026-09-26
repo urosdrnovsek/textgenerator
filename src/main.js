@@ -33,7 +33,7 @@ import { init as initContentImportUi } from './ui/contentImport.js';
 import { init as initSettingsPanelUi } from './ui/settingsPanel.js';
 import { init as initWordPickerUi } from './ui/wordPicker.js';
 import { init as initClozeUi } from './ui/clozeControls.js';
-import { emptySelection, keyFor, chooseSentence } from './worksheet/selection.js';
+import { emptySelection, keyFor, chooseSentence, cleanQuestions } from './worksheet/selection.js';
 import { ACTIVITIES } from './worksheet/activities.js';
 import { sequenceLength } from './worksheet/sequence.js';
 import { tokenize } from './text/tokenize.js';
@@ -169,6 +169,7 @@ const els = {
   clozeClearButton: document.getElementById('btn-cloze-clear'),
   answersRow: document.getElementById('answers-row'),
   showAnswersToggle: document.getElementById('show-answers-toggle'),
+  questionInputs: [...document.querySelectorAll('.question-input')],
   clozeStatus: document.getElementById('cloze-status'),
   previewHint: document.getElementById('preview-hint'),
   candidateCount: document.getElementById('candidate-count'),
@@ -292,12 +293,24 @@ function syncPicking() {
   // on adds the key as its own sheet, next to the student sheet.
   els.answersRow.hidden = !(state.selection && ACTIVITIES[state.settings.writingMode]?.answers);
   els.showAnswersToggle.checked = Boolean(state.selection?.showAnswers);
+  // The questions belong to the text on screen: a new text shows empty boxes.
+  const questions = state.selection?.questions ?? [];
+  els.questionInputs.forEach((input, i) => {
+    if (document.activeElement !== input) input.value = questions[i] ?? '';
+  });
   // "Put in order" needs 3 sentences: otherwise disabled, with the reason.
   const doc = currentDoc();
   const option = els.writingModeSelect.querySelector('option[value="sequence"]');
   const tooFew = doc !== null && sequenceLength(doc.sentences.length) === 0;
   option.disabled = tooFew;
   option.textContent = tooFew ? t('writingMode.sequenceTooFew', { count: doc.sentences.length }) : t('writingMode.sequence');
+}
+
+/** The teacher's own questions, from the three boxes (empty ones are skipped). */
+function updateQuestions() {
+  if (!state.selection) return;
+  state.selection = { ...state.selection, questions: cleanQuestions(els.questionInputs.map((input) => input.value)) };
+  requestRender();
 }
 
 function updateShowAnswers(enabled) {
@@ -663,6 +676,7 @@ els.writingModeSelect.addEventListener('change', (event) => updateWritingMode(ev
 els.imageSlotSelect.addEventListener('change', (event) => updateImageSlot(event.target.value));
 els.copyTargetSelect.addEventListener('change', (event) => updateCopyTarget(event.target.value));
 els.showAnswersToggle.addEventListener('change', (event) => updateShowAnswers(event.target.checked));
+for (const input of els.questionInputs) input.addEventListener('change', updateQuestions);
 els.printButton.addEventListener('click', printWorksheet);
 els.docxButton.addEventListener('click', handleExportDocx);
 

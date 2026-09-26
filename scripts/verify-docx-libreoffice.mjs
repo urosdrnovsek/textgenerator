@@ -203,6 +203,9 @@ const CASES = [
   // "Continue the text" (story starter): the first two sentences, then
   // lines. 'sl'+level-2 is otherwise unused.
   { label: 'sl-andika-level2-starter', language: 'sl', theme: 'stories', level: 2, entryId: 'stories_piscancek_2', fontId: 'andika', writingMode: 'starter' },
+  // The teacher's own questions: two, each with ruled answer lines, before
+  // the copy lines. 'fr'+level-1 is otherwise unused.
+  { label: 'fr-andika-level1-readcopy-questions', language: 'fr', theme: 'stories', level: 1, entryId: 'stories_boite_a_musique_1', fontId: 'andika', writingMode: 'read-copy', questions: ['Où est le chaton ?', 'Que fait la fille ?'] },
   { label: 'es-andika-level2-readcopy-drawingbox', language: 'es', theme: 'stories', level: 2, entryId: 'stories_huevo_blanco_2', fontId: 'andika', writingMode: 'read-copy', fontSizePt: 24, lineHeightMultiplier: 1.8, imageSlot: 'drawing-box' }
 ];
 
@@ -345,6 +348,15 @@ async function main() {
         })();`);
         await wait(500); // the fit line still shows the pre-gap result until the new render settles
       }
+      if (testCase.questions) {
+        // The teacher's own questions, typed into the sidebar boxes.
+        await waitForFit();
+        await evalJs(`(() => {
+          const texts = ${JSON.stringify(testCase.questions)};
+          document.querySelectorAll('.question-input').forEach((input, i) => { input.value = texts[i] ?? ''; input.dispatchEvent(new Event('change', { bubbles: true })); });
+        })();`);
+        await wait(500);
+      }
       if (testCase.showAnswers) {
         // The answer key (gap-fill or "Put in order").
         await waitForFit();
@@ -380,7 +392,7 @@ async function main() {
       const renderedTag = await evalJs(`document.querySelector('#preview .ws-answer-tag')?.textContent ?? ''`);
       // "Put in order": each sentence item, checked on its own (in the key,
       // the box numbers sit between them in the extracted text).
-      const renderedItems = await evalJs(`[...document.querySelectorAll('#preview .ws-sequence-text')].map((p) => p.textContent)`);
+      const renderedItems = await evalJs(`[...document.querySelectorAll('#preview .ws-sequence-text, #preview .ws-question-text')].map((p) => p.textContent)`);
       const renderedInstruction = await evalJs(`document.querySelector('#preview .ws-instruction')?.textContent ?? ''`);
       const previewLineNumbers = await evalJs(`document.querySelectorAll('#preview .ws-line-number').length`);
 
@@ -528,7 +540,7 @@ async function main() {
       const ok = pagesOk && bodyOk && titleOk && instructionOk && tagOk && itemsOk && lineNumbersOk;
       allOk = allOk && ok;
       const textNote = bodyOk && titleOk && instructionOk
-        ? `${matched.renderedBody ? 'full passage' : 'no passage; title'}${matched.renderedInstruction ? ' and instruction' : ''}${matched.renderedItems.length ? `, ${matched.renderedItems.length} sentence items` : ''}${matched.renderedTag ? ` and "${matched.renderedTag}" tag` : ''} present`
+        ? `${matched.renderedBody ? 'full passage' : 'no passage; title'}${matched.renderedInstruction ? ' and instruction' : ''}${matched.renderedItems.length ? `, ${matched.renderedItems.length} items (sentences or questions)` : ''}${matched.renderedTag ? ` and "${matched.renderedTag}" tag` : ''} present`
         : `text MISMATCH (title ${titleOk ? 'ok' : 'missing'}, body ${bodyOk ? 'ok' : 'incomplete'}, instruction ${instructionOk ? 'ok' : 'missing'}, tag ${tagOk ? 'ok' : 'missing'}, items ${itemsOk ? 'ok' : 'missing'})`;
       console.log(`  ${ok ? 'PASS' : 'FAIL'}  ${label}  pages=${pages} (expected ${expectedPages}${toleratedDelta ? ` ±${toleratedDelta}` : ''})  ${textNote}${lineNumbersNote}`);
     } catch (error) {

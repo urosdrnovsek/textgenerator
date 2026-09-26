@@ -293,6 +293,20 @@
   letter-spacing: 0.05em;
 }
 
+/* The teacher's own questions, each with its answer lines. */
+.ws-questions {
+  margin-top: 4mm;
+}
+
+.ws-question {
+  break-inside: avoid;
+  margin-bottom: 3mm;
+}
+
+.ws-question-text {
+  margin: 0 0 1mm 0;
+}
+
 /* "Put in order": a column of items, box then sentence. */
 .ws-sequence-item {
   display: grid;

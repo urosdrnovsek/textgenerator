@@ -5,8 +5,8 @@
  * textContent, never innerHTML (blueprint 8.6).
  */
 
-import { buildRulingRows } from '../layout/rulings.js';
-import { ptToMm, pxToMm, FONT_FAMILIES, COPY_AREA_GAP_MM, TINTS_BY_ID, LINE_NUMBER_GUTTER_MM, DRAWING_BOX_GAP_MM, COPY_MARK_COLOR, SEQUENCE_BOX_FACTOR } from '../config.js';
+import { buildRulingRows, getRuling } from '../layout/rulings.js';
+import { contentWidthMm, ptToMm, pxToMm, FONT_FAMILIES, COPY_AREA_GAP_MM, TINTS_BY_ID, LINE_NUMBER_GUTTER_MM, DRAWING_BOX_GAP_MM, COPY_MARK_COLOR, SEQUENCE_BOX_FACTOR } from '../config.js';
 import { IMAGE_BOX_MAX_WIDTH_MM, IMAGE_BOX_MAX_HEIGHT_MM, IMAGE_BOX_LARGE } from '../layout/imageBox.js';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
@@ -408,6 +408,25 @@ export const BLOCK_RENDERERS = {
       row.append(box, text);
       list.append(row);
     }
+    return list;
+  },
+  // The teacher's own questions: each numbered, then ruled answer lines
+  // drawn like the copy lines. A question and its lines are one unit for
+  // the fit check (layout/measure.js), never split across pages.
+  questions: (block, { model }) => {
+    const s = model.settings;
+    const ruling = getRuling(s.rulingId, s.guideHeightMm);
+    const list = document.createElement('div');
+    list.className = 'ws-questions';
+    block.items.forEach((question, i) => {
+      const item = document.createElement('div');
+      item.className = 'ws-question';
+      const text = document.createElement('p');
+      text.className = 'ws-question-text ws-text';
+      text.textContent = `${i + 1}. ${question}`;
+      item.append(text, renderRulingSvg(ruling, block.linesEach, contentWidthMm(s.marginMm)));
+      list.append(item);
+    });
     return list;
   },
   drawingBox: (block) => {

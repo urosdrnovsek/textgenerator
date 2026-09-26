@@ -650,6 +650,33 @@ async function main() {
       note: starterOk ? `"${starter.text}"` : JSON.stringify({ starter, fullText })
     });
 
+    // The teacher's own questions: typed in the sidebar, printed after the
+    // text, numbered, each with its answer lines, the same in print;
+    // cleared when another text is shown.
+    console.log('Driving the teacher\'s own questions...');
+    const questionState = `(() => ({
+      preview: [...document.querySelectorAll('#preview .ws-question')].map((q) => [q.querySelector('.ws-question-text').textContent, q.querySelectorAll('svg').length]),
+      print: document.querySelectorAll('#print-surface .ws-question').length,
+      inputs: [...document.querySelectorAll('.question-input')].map((i) => i.value),
+      afterText: (() => { const q = document.querySelector('#preview [data-block="questions"]'); return q ? q.previousElementSibling?.dataset.block : null; })()
+    }))()`;
+    await evalJs(`(() => { const [a, , c] = document.querySelectorAll('.question-input'); a.value = ' First question? '; a.dispatchEvent(new Event('change', { bubbles: true })); c.value = 'Third box'; c.dispatchEvent(new Event('change', { bubbles: true })); })()`);
+    await wait(300);
+    await waitForFit();
+    const typed = await evalJs(questionState);
+    await evalJs(`document.getElementById('btn-create').click()`);
+    await wait(300);
+    await waitForFit();
+    const cleared = await evalJs(questionState);
+    const questionsOk = JSON.stringify(typed.preview) === JSON.stringify([['1. First question?', 1], ['2. Third box', 1]])
+      && typed.print === 2 && typed.afterText === 'passage'
+      && cleared.preview.length === 0 && cleared.inputs.every((v) => v === '');
+    journeyChecks.push({
+      label: 'the teacher\'s own questions: numbered after the text with answer lines, same in print, cleared for another text',
+      ok: questionsOk,
+      note: questionsOk ? 'two questions, then cleared' : JSON.stringify({ typed, cleared })
+    });
+
     // The answer key (U3b): "Show the answers" adds the "Answers" tag to the
     // preview and the print surface and prints the answers; the key goes
     // into the packet as its own sheet; off again, no tag.

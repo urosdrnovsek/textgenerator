@@ -145,6 +145,11 @@ export const SEQUENCE_SENTENCES = { min: 3, max: 6 };
  * the text has, so there is something left to write.
  */
 export const STARTER_SENTENCES = 2;
+/**
+ * The teacher's own questions about a text: printed after it, each with
+ * ruled answer lines. Per text, never saved (worksheet/selection.js).
+ */
+export const QUESTIONS = { max: 3, maxLength: 200, linesEach: 2 };
 /** The number box beside each sentence: this many times the font size, square. */
 export const SEQUENCE_BOX_FACTOR = 1.4;
 
