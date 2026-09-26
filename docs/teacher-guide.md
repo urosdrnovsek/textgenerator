@@ -194,8 +194,19 @@ it now."
 
 ## Adding your own texts
 
-Under **Add new content**, a teacher (or whoever maintains the school's
-content) can add new texts without changing any code:
+The quick way is the **Your own text** panel: type a title and the text,
+leave **With a picture** ticked (or untick it for none), and click **Add
+text**. The text goes into the theme you have selected, at the level its
+length suggests (the word counts shown in the Level list), and appears at
+once, at the end of that theme and level's list of titles. Every writing
+mode and support works with it, except the syllable ones (the app never
+guesses where syllables break). You can replace the picture with
+**Custom image**. Your texts are kept in this browser — not sent anywhere
+— and **Delete this text** removes the one on screen.
+
+For a set of texts to share with colleagues, use **Add new content**
+instead: a teacher (or whoever maintains the school's content) can add new
+texts without changing any code:
 
 1. Prepare a JSON file describing one or more texts for a single language,
    following the same structure as the files already bundled in

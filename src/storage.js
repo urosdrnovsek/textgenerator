@@ -10,6 +10,7 @@
  * uses, so tests never depend on a real browser's localStorage.
  */
 
+import { isOwnText } from './content/ownText.js';
 import { validatePresetSettings } from './worksheet/validateSettings.js';
 
 const STORAGE_KEY = 'worksheet-presets-v1';
@@ -17,7 +18,8 @@ const STORAGE_KEY = 'worksheet-presets-v1';
 const FAVORITES_STORAGE_KEY = 'worksheet-favorites-v1';
 const CAPABILITY_TEST_KEY = 'worksheet-storage-check';
 /** Every key this application writes to localStorage — resetAllData() must clear exactly these and nothing else (blueprint 13: "deletes only this application's keys, never every key in localStorage"). */
-const ALL_APP_KEYS = [STORAGE_KEY, FAVORITES_STORAGE_KEY];
+const OWN_TEXTS_STORAGE_KEY = 'worksheet-own-texts-v1';
+const ALL_APP_KEYS = [STORAGE_KEY, FAVORITES_STORAGE_KEY, OWN_TEXTS_STORAGE_KEY];
 
 /** Date.now() alone collides when two presets are saved within the same millisecond. */
 function generatePresetId() {
@@ -175,6 +177,37 @@ export function importPresetsFromJson(jsonText, storage = defaultStorage()) {
   const deduped = valid.map((p) => (existingIds.has(p.id) ? { ...p, id: generatePresetId() } : p));
   const ok = writePresets([...existing, ...deduped], storage);
   return ok ? { ok: true, imported: deduped.length, skipped } : { ok: false, error: 'STORAGE_UNAVAILABLE' };
+}
+
+/**
+ * The teacher's own texts, kept in this browser only (never sent
+ * anywhere). Malformed stored items are ignored, not trusted.
+ * @param {Storage} [storage]
+ * @returns {import('./content/ownText.js').OwnText[]} empty when storage is unavailable
+ */
+export function listOwnTexts(storage = defaultStorage()) {
+  if (!checkStorageCapability(storage)) return [];
+  try {
+    const parsed = JSON.parse(storage.getItem(OWN_TEXTS_STORAGE_KEY) ?? '[]');
+    return Array.isArray(parsed) ? parsed.filter(isOwnText) : [];
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * @param {import('./content/ownText.js').OwnText[]} texts
+ * @param {Storage} [storage]
+ * @returns {boolean} true if the write actually succeeded
+ */
+export function writeOwnTexts(texts, storage = defaultStorage()) {
+  if (!checkStorageCapability(storage)) return false;
+  try {
+    storage.setItem(OWN_TEXTS_STORAGE_KEY, JSON.stringify(texts));
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 /**

@@ -25,7 +25,8 @@ import { measureWorksheet } from './layout/measure.js';
 import { isPrintReady, printWorksheet } from './export/print.js';
 import { exportDocx } from './export/docx.js';
 import { createTranslator, sheetLabels } from './i18n.js';
-import { checkStorageCapability } from './storage.js';
+import { checkStorageCapability, listOwnTexts, writeOwnTexts } from './storage.js';
+import { checkOwnText, makeOwnText, ownTextEntry } from './content/ownText.js';
 import { readImageFile } from './import.js';
 import { init as initPacketUi } from './ui/packet.js';
 import { init as initPresetsUi } from './ui/presets.js';
@@ -73,7 +74,20 @@ function validateAndBuildCatalog(language) {
 // (below) has somewhere to install a replacement catalog.
 /** @type {Record<string, import('./content/catalog.js').CatalogIndex>} */
 const CATALOGS = {};
-for (const language of LANGUAGES) CATALOGS[language] = validateAndBuildCatalog(language);
+/** Each language's texts before the teacher's own are added: bundled, or a session import. */
+const BASE_ENTRIES = {};
+/** The teacher's own texts, from this browser's storage (content/ownText.js). */
+let OWN_TEXTS = listOwnTexts();
+
+/** A language's catalog: its base texts, then the teacher's own at the end of each cell. */
+function catalogWithOwnTexts(language) {
+  return buildCatalogIndex([...BASE_ENTRIES[language], ...OWN_TEXTS.filter((own) => own.language === language).map(ownTextEntry)]);
+}
+
+for (const language of LANGUAGES) {
+  BASE_ENTRIES[language] = validateAndBuildCatalog(language).entries;
+  CATALOGS[language] = catalogWithOwnTexts(language);
+}
 
 let CATALOG = CATALOGS[DEFAULT_LANGUAGE];
 let THEMES = listThemes(CATALOG);
@@ -87,7 +101,8 @@ let THEMES = listThemes(CATALOG);
  * @param {import('./content/catalog.js').CatalogIndex} catalog
  */
 function installCatalog(language, catalog) {
-  CATALOGS[language] = catalog;
+  BASE_ENTRIES[language] = catalog.entries.filter((entry) => !entry.own);
+  CATALOGS[language] = catalogWithOwnTexts(language);
   if (language === state.language) {
     CATALOG = CATALOGS[language];
     THEMES = listThemes(CATALOG);
@@ -172,6 +187,12 @@ const els = {
   answersRow: document.getElementById('answers-row'),
   showAnswersToggle: document.getElementById('show-answers-toggle'),
   questionInputs: [...document.querySelectorAll('.question-input')],
+  ownTitleInput: document.getElementById('own-title-input'),
+  ownBodyInput: document.getElementById('own-body-input'),
+  ownPictureToggle: document.getElementById('own-picture-toggle'),
+  ownAddButton: document.getElementById('btn-own-add'),
+  ownDeleteButton: document.getElementById('btn-own-delete'),
+  ownStatus: document.getElementById('own-status'),
   clozeStatus: document.getElementById('cloze-status'),
   previewHint: document.getElementById('preview-hint'),
   candidateCount: document.getElementById('candidate-count'),
@@ -300,6 +321,8 @@ function syncPicking() {
   els.questionInputs.forEach((input, i) => {
     if (document.activeElement !== input) input.value = questions[i] ?? '';
   });
+  // Only the teacher's own texts can be deleted.
+  els.ownDeleteButton.hidden = !(state.contentId && CATALOG.byId.get(state.contentId)?.own);
   // "Put in order" needs 3 sentences: otherwise disabled, with the reason.
   const doc = currentDoc();
   const option = els.writingModeSelect.querySelector('option[value="sequence"]');
@@ -445,6 +468,54 @@ function chooseTextById(id) {
 function updateFilter(partial) {
   Object.assign(state.filter, partial);
   updateCandidateCount();
+}
+
+/**
+ * "Your own text": the text goes into the theme selected now, at the level
+ * its length gives (the level menu's word bands), and is shown at once.
+ * Kept in this browser (storage.js); if the browser won't store it, it
+ * stays for this session and the status says so.
+ */
+function addOwnText() {
+  const checked = checkOwnText({ title: els.ownTitleInput.value, body: els.ownBodyInput.value });
+  els.ownStatus.classList.toggle('is-refused', !checked.ok);
+  if (!checked.ok) {
+    els.ownStatus.textContent = t(`ownText.${checked.code}`);
+    return;
+  }
+  const own = makeOwnText(checked, {
+    id: `own_${Date.now().toString(36)}${Math.floor(Math.random() * 1296).toString(36)}`,
+    language: state.language,
+    theme: state.filter.theme,
+    picture: els.ownPictureToggle.checked
+  });
+  OWN_TEXTS = [...OWN_TEXTS, own];
+  const saved = writeOwnTexts(OWN_TEXTS);
+  installCatalog(state.language, CATALOG);
+  state.filter.level = own.level;
+  els.themeSelect.value = own.theme;
+  els.levelSelect.value = String(own.level);
+  updateCandidateCount();
+  els.ownTitleInput.value = '';
+  els.ownBodyInput.value = '';
+  els.ownStatus.textContent = t(saved ? 'ownText.added' : 'ownText.addedSession', { theme: t(`theme.${own.theme}`), level: own.level });
+  showEntry(CATALOG.byId.get(own.id));
+}
+
+/** Deletes the own text on screen, here and in storage, and moves on to the next text of the cell. */
+function deleteOwnText() {
+  const entry = CATALOG.byId.get(state.contentId);
+  if (!entry?.own) return;
+  OWN_TEXTS = OWN_TEXTS.filter((own) => own.id !== entry.id);
+  writeOwnTexts(OWN_TEXTS);
+  installCatalog(state.language, CATALOG);
+  updateCandidateCount();
+  els.ownStatus.classList.remove('is-refused');
+  els.ownStatus.textContent = t('ownText.deleted');
+  state.contentId = null;
+  const next = chooseEntry(findCandidates(CATALOG, state.filter), null);
+  if (next) showEntry(next);
+  else clearPrintableWorksheet();
 }
 
 function createText() {
@@ -647,7 +718,7 @@ async function handleExportDocx() {
   if (!state.lastGood) return;
   try {
     const { model, layout } = state.lastGood;
-    const imageBytes = dataUrlToUint8Array(model.image.path);
+    const imageBytes = model.image ? dataUrlToUint8Array(model.image.path) : undefined;
     const labels = sheetLabels(t);
     const blob = await exportDocx(model, layout, imageBytes, labels);
     const url = URL.createObjectURL(blob);
@@ -679,6 +750,8 @@ els.imageSlotSelect.addEventListener('change', (event) => updateImageSlot(event.
 els.copyTargetSelect.addEventListener('change', (event) => updateCopyTarget(event.target.value));
 els.showAnswersToggle.addEventListener('change', (event) => updateShowAnswers(event.target.checked));
 for (const input of els.questionInputs) input.addEventListener('change', updateQuestions);
+els.ownAddButton.addEventListener('click', addOwnText);
+els.ownDeleteButton.addEventListener('click', deleteOwnText);
 els.printButton.addEventListener('click', printWorksheet);
 els.docxButton.addEventListener('click', handleExportDocx);
 

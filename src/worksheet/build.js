@@ -58,7 +58,7 @@ import { DRAWING_BOX_HEIGHT_MM, ARC_COLOR, STARTER_SENTENCES, QUESTIONS } from '
  * @property {import('../text/runs.js').StyledRun[][]} bodyParagraphs one array of runs per paragraph — one per sentence when settings.sentencePerLine is on, otherwise one per authored paragraph of the body
  * @property {number} wordCount
  * @property {number} level
- * @property {ImageAsset} image the sheet's picture asset (an image block, when present, shows this one)
+ * @property {ImageAsset | null} image the sheet's picture asset (an image block, when present, shows this one); null for an own text without a picture
  * @property {WorksheetSettings} settings
  * @property {Block[]} blocks the page's content in order, above the task region (upgrade blueprint §11.5.3)
  * @property {import('./selection.js').Selection} selection the clicks this model was built with (a snapshot)
@@ -162,8 +162,11 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
     ? resolveCopyTarget(settings.copyTarget ?? 'passage', doc, chosen.selection, entry.title)
     : { kind: 'passage', text: '', words: null };
 
-  const image = assets.imagesById.get(entry.imageId);
-  if (!image) {
+  // An own text may have no picture (imageId null): then there is no image
+  // block, unless the teacher uploaded a custom image for it. For any other
+  // entry a missing asset is a bug.
+  const image = assets.imagesById.get(entry.imageId) ?? null;
+  if (!image && entry.imageId !== null) {
     throw new Error(`MISSING_IMAGE: no asset registered for imageId "${entry.imageId}"`);
   }
 
@@ -189,7 +192,7 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
     copyTarget: target.kind,
     copyTargetText: target.text,
     blocks: buildBlocks(entry, settings, activity, bodyParagraphs, blanks.length > 0 ? blankWidthEm(doc, blanks) : 0, answerKey, target, sequence, arcColor, printedQuestions(chosen.selection.questions),
-      settings.clozeWordBank && blanks.length > 0 ? wordBank(doc, blanks, entry.language ?? localeForWordCount) : null),
+      settings.clozeWordBank && blanks.length > 0 ? wordBank(doc, blanks, entry.language ?? localeForWordCount) : null, image !== null),
     task: activity.task
   };
 }
@@ -208,9 +211,10 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
  * @param {string | null} arcColor
  * @param {string[]} questions the teacher's own questions (already cleaned)
  * @param {string[] | null} bankWords gap-fill word bank, or null for none
+ * @param {boolean} hasPicture the text has a picture (an own text may not)
  * @returns {Block[]}
  */
-function buildBlocks(entry, settings, activity, paragraphs, gapWidthEm, answerKey, target, sequence, arcColor, questions, bankWords) {
+function buildBlocks(entry, settings, activity, paragraphs, gapWidthEm, answerKey, target, sequence, arcColor, questions, bankWords, hasPicture) {
   /** @type {Block[]} */
   const blocks = [];
   // First, whatever else is switched off: a key must never pass for a student sheet.
@@ -223,7 +227,7 @@ function buildBlocks(entry, settings, activity, paragraphs, gapWidthEm, answerKe
     blocks.push({ type: 'instruction', key: activity.instruction });
   }
   const imageSlot = settings.imageSlot ?? 'picture';
-  if (imageSlot === 'picture') blocks.push({ type: 'image', size: activity.imageSize ?? 'normal' });
+  if (imageSlot === 'picture' && hasPicture) blocks.push({ type: 'image', size: activity.imageSize ?? 'normal' });
   // Above the text: the child reads the words first, then fills them in.
   if (bankWords) blocks.push({ type: 'wordBank', words: bankWords });
   if (activity.passage !== 'hidden') {

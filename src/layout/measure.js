@@ -16,6 +16,7 @@ import { renderWorksheet, measureBodyLineBoxes } from '../render/html.js';
 import { getRuling, countFullRows } from './rulings.js';
 import { paginateBlocks } from './paginate.js';
 import { advise } from '../worksheet/advice.js';
+import { ACTIVITIES } from '../worksheet/activities.js';
 import { estimateCopyRows } from './copyEstimate.js';
 import { FONT_FAMILIES, contentWidthMm, contentHeightMm, FIT_SAFETY_MM, MIN_COPY_ROWS, COPY_AREA_GAP_MM, pxToMm } from '../config.js';
 
@@ -82,7 +83,7 @@ async function waitForImage(img) {
  * @property {number} revision
  * @property {number} [pageCount] present unless 'blocked'; 1 when status is 'fits'
  * @property {PageLayout} [layout] present unless 'blocked'
- * @property {string} [code] 'blocked' only: 'WIDTH_OVERFLOW' | 'BLOCK_TOO_TALL' | 'TOO_FEW_SENTENCES'
+ * @property {string} [code] 'blocked' only: 'WIDTH_OVERFLOW' | 'BLOCK_TOO_TALL' | 'TOO_FEW_SENTENCES' | 'NO_PICTURE'
  * @property {object} [details]
  * @property {string[]} [suggestions]
  * @property {Record<string, number>} [heightsMm]
@@ -182,6 +183,13 @@ export async function measureWorksheet(model, revision, labels) {
   const sequence = model.blocks.find((block) => block.type === 'sequence');
   if (sequence && sequence.items.length === 0) {
     return blocked(revision, 'TOO_FEW_SENTENCES', { sentences: sequence.sentenceCount }, ['choose-longer-text']);
+  }
+
+  // "Write about the picture" with no picture and no drawing box (an own
+  // text without one) would print "Look at the picture" over nothing.
+  const needsPicture = ACTIVITIES[s.writingMode]?.imageSize === 'large';
+  if (needsPicture && !model.blocks.some((block) => block.type === 'image' || block.type === 'drawingBox')) {
+    return blocked(revision, 'NO_PICTURE', {}, ['choose-other-mode']);
   }
 
   const surface = createMeasureSurface();

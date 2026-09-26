@@ -7,6 +7,19 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
+- **Your own text.** A new "Your own text" panel: type a title and a
+  text, choose whether it gets a picture, and click "Add text". It goes
+  into the theme that is selected, at the level its length gives (the
+  same word bands the level menu shows), at the end of that theme and
+  level's list, and it is shown at once — every writing mode and support
+  works with it. The picture is a new default picture drawn for own texts
+  (a desk with an open book and a notebook); the "Custom image" upload can
+  replace it, and with no picture the sheet simply has none ("Write about
+  the picture" then says it needs one). Own texts are kept in this
+  browser only (like saved setups; never sent anywhere), survive a
+  reload, and can be deleted; "reset all data" removes them. They have no
+  syllable data — the app never guesses syllables — so syllable colours,
+  separators and arcs don't apply to them, and the sidebar says so.
 - **Word bank for gap-fill.** In "Fill the gaps", a new checkbox prints the
   missing words in a box above the text, in alphabetical order (so the
   order gives nothing away; a word gapped twice is listed twice), for

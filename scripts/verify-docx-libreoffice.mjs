@@ -209,6 +209,10 @@ const CASES = [
   // Gap-fill with the word bank: the missing words in a bordered box above
   // the text. 'es'+level-1 is otherwise unused.
   { label: 'es-andika-level1-cloze-wordbank', language: 'es', theme: 'stories', level: 1, entryId: 'stories_cometa_verde_1', fontId: 'andika', writingMode: 'cloze', clozeEveryNth: 4, wordBank: true },
+  // The teacher's own text, without a picture (and so without an image in
+  // the Word file): an original ~126-word Spanish text, which its length
+  // places at level 4 — 'es'+level-4 is the last unused pair.
+  { label: 'es-andika-level4-owntext-nopicture', language: 'es', theme: 'stories', level: 4, fontId: 'andika', writingMode: 'read-copy', ownText: { title: 'El mercado del sábado', body: "El sábado por la mañana, Lucía y su abuelo fueron al mercado del pueblo. Llevaban una cesta grande y una lista escrita con letra redonda. Primero compraron tomates rojos, pimientos verdes y una calabaza tan pesada que el abuelo tuvo que llevarla en brazos.\n\nDespués pasaron por el puesto de la señora Rosa, que vendía queso y miel. Rosa les dejó probar un poco de miel de romero, dulce y espesa, y Lucía sonrió con los ojos cerrados. Al final compraron un tarro pequeño para el desayuno.\n\nCuando volvieron a casa, prepararon juntos una sopa de verduras. Lucía lavó los tomates y el abuelo cortó la calabaza en trozos. Por la tarde, toda la familia se sentó a la mesa y la sopa se terminó enseguida.", picture: false } },
   { label: 'es-andika-level2-readcopy-drawingbox', language: 'es', theme: 'stories', level: 2, entryId: 'stories_huevo_blanco_2', fontId: 'andika', writingMode: 'read-copy', fontSizePt: 24, lineHeightMultiplier: 1.8, imageSlot: 'drawing-box' }
 ];
 
@@ -352,6 +356,18 @@ async function main() {
           document.getElementById('btn-cloze-every-nth').click();
         })();`);
         await wait(500); // the fit line still shows the pre-gap result until the new render settles
+      }
+      if (testCase.ownText) {
+        // The teacher's own text: typed into the panel and added; the app
+        // places it at the level its length gives and shows it.
+        await waitForFit();
+        await evalJs(`(() => {
+          document.getElementById('own-title-input').value = ${JSON.stringify(testCase.ownText.title)};
+          document.getElementById('own-body-input').value = ${JSON.stringify(testCase.ownText.body)};
+          document.getElementById('own-picture-toggle').checked = ${Boolean(testCase.ownText.picture)};
+          document.getElementById('btn-own-add').click();
+        })();`);
+        await wait(800);
       }
       if (testCase.questions) {
         // The teacher's own questions, typed into the sidebar boxes.

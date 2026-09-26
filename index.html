@@ -240,6 +240,22 @@
         <div id="packet-status" class="storage-status"></div>
       </details>
 
+      <details class="settings-panel" id="own-text-panel">
+        <summary data-label="ownText.panel">Lastno besedilo</summary>
+        <div class="candidate-count" data-label="ownText.hint">Shrani se le v tem brskalniku. Barve zlogov in ločila med zlogi pri njem ne delujejo (aplikacija zlogov ne ugiba).</div>
+        <label for="own-title-input" data-label="ownText.title">Naslov</label>
+        <input type="text" id="own-title-input" maxlength="80" />
+        <label for="own-body-input" data-label="ownText.body">Besedilo</label>
+        <textarea id="own-body-input" rows="6" maxlength="2000"></textarea>
+        <label class="checkbox-label">
+          <input type="checkbox" id="own-picture-toggle" checked />
+          <span data-label="ownText.picture">S sliko (zamenjate jo lahko z lastno sliko)</span>
+        </label>
+        <button id="btn-own-add" type="button" data-label="ownText.add">Dodaj besedilo</button>
+        <button id="btn-own-delete" type="button" data-label="ownText.delete" hidden>Izbriši to besedilo</button>
+        <div id="own-status" class="cloze-status" role="status"></div>
+      </details>
+
       <details class="settings-panel">
         <summary data-label="field.importContent">Dodaj novo vsebino</summary>
 

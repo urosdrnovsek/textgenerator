@@ -146,6 +146,15 @@ export const SEQUENCE_SENTENCES = { min: 3, max: 6 };
  */
 export const STARTER_SENTENCES = 2;
 /**
+ * The teacher's own texts (content/ownText.js): the default picture drawn
+ * for them (assets/images/own_text_default.jpg), limits, and the word
+ * bands that place a text at a level — the same bands the level menu
+ * shows ("about 20–40 words", …). Below the first band is level 1, above
+ * the last is level 5.
+ */
+export const OWN_TEXT = { imageId: 'own_text_default', titleMax: 80, bodyMax: 2000 };
+export const LEVEL_WORD_BANDS = [[20, 40], [40, 70], [70, 110], [110, 160], [160, 220]];
+/**
  * The teacher's own questions about a text: printed after it, each with
  * ruled answer lines. Per text, never saved (worksheet/selection.js).
  */

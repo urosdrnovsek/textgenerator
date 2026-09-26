@@ -462,6 +462,21 @@ async function main() {
     await driver.sleep(500);
     await waitForFit();
 
+    // The teacher's own text, without a picture, on the same (max) settings.
+    console.log('\nAn own text in the real Firefox print...');
+    await evalJs(`document.getElementById('own-title-input').value = 'Our Class Garden'; document.getElementById('own-body-input').value = 'Our class has a small garden. We grow beans and sunflowers. Every morning two children water the plants.'; document.getElementById('own-picture-toggle').checked = false; document.getElementById('btn-own-add').click();`);
+    await driver.sleep(800);
+    await waitForFit();
+    const ownTextPages = await reportedPages();
+    const ownTextTitle = await evalJs(`return document.querySelector('#preview .ws-title')?.textContent ?? ''`);
+    const ownTextPdfPath = path.join(downloadDir, 'own-text-worksheet.pdf');
+    await writeFile(ownTextPdfPath, Buffer.from(await driver.printPage(), 'base64'));
+    const ownTextPrinted = Number((execFileSync('pdfinfo', [ownTextPdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
+    check(`own text without a picture ("${ownTextTitle}") page count agrees (${pagesNote(ownTextPrinted, ownTextPages)})`, ownTextTitle === 'Our Class Garden' && pagesAgree(ownTextPrinted, ownTextPages));
+    await evalJs(`document.getElementById('btn-own-delete').click();`);
+    await driver.sleep(800);
+    await waitForFit();
+
     // Reset back to defaults — the language loop below checks for the
     // localized "fits" wording specifically, which these settings would
     // break for languages whose content doesn't also extend at max size.

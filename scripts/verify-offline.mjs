@@ -1070,6 +1070,52 @@ async function main() {
       ok: wideBlocked,
       note: wideBlocked ? 'blocked as expected' : `fit="${wideFitText}", pageCount="${widePageCount}", print ${widePrintDisabled ? 'disabled' : 'ENABLED'}`
     });
+    // The teacher's own text (last: it reloads the page). Added in the
+    // selected theme at the level its length gives, shown with the default
+    // picture, kept after a reload (browser storage), and deleted again.
+    console.log('Adding, reloading and deleting an own text...');
+    await evalJs(`(() => {
+      document.getElementById('language-select').value = 'en'; document.getElementById('language-select').dispatchEvent(new Event('change', { bubbles: true }));
+      document.getElementById('theme-select').value = 'stories'; document.getElementById('theme-select').dispatchEvent(new Event('change', { bubbles: true }));
+      document.getElementById('own-title-input').value = 'Our Class Garden';
+      document.getElementById('own-body-input').value = 'Our class has a small garden. We grow beans and sunflowers. Every morning two children water the plants.';
+      document.getElementById('own-picture-toggle').checked = true;
+      document.getElementById('btn-own-add').click();
+    })()`);
+    await wait(500);
+    await waitForFit();
+    const ownTextState = `(() => ({
+      title: document.querySelector('#preview .ws-title')?.textContent ?? null,
+      picture: Boolean(document.querySelector('#preview img.ws-image')),
+      level: document.getElementById('level-select').value,
+      titles: [...document.getElementById('text-select').options].map((o) => o.textContent),
+      canDelete: !document.getElementById('btn-own-delete').hidden,
+      printable: !document.getElementById('btn-print').disabled
+    }))()`;
+    const ownTextAdded = await evalJs(ownTextState);
+    await cdp.send('Page.reload');
+    await wait(2000);
+    await evalJs(`(() => {
+      document.getElementById('language-select').value = 'en'; document.getElementById('language-select').dispatchEvent(new Event('change', { bubbles: true }));
+      document.getElementById('theme-select').value = 'stories'; document.getElementById('theme-select').dispatchEvent(new Event('change', { bubbles: true }));
+      document.getElementById('level-select').value = '1'; document.getElementById('level-select').dispatchEvent(new Event('change', { bubbles: true }));
+      const s = document.getElementById('text-select'); s.value = [...s.options].find((o) => o.textContent === 'Our Class Garden')?.value ?? ''; s.dispatchEvent(new Event('change', { bubbles: true }));
+    })()`);
+    await wait(500);
+    await waitForFit();
+    const ownTextReloaded = await evalJs(ownTextState);
+    await evalJs(`document.getElementById('btn-own-delete').click()`);
+    await wait(500);
+    await waitForFit();
+    const ownTextDeleted = await evalJs(ownTextState);
+    const ownTextOk = ownTextAdded.title === 'Our Class Garden' && ownTextAdded.picture && ownTextAdded.level === '1' && ownTextAdded.canDelete && ownTextAdded.printable
+      && ownTextReloaded.title === 'Our Class Garden' && ownTextReloaded.titles.includes('Our Class Garden')
+      && !ownTextDeleted.titles.includes('Our Class Garden') && ownTextDeleted.title !== 'Our Class Garden' && !ownTextDeleted.canDelete;
+    journeyChecks.push({
+      label: 'an own text: added at its length\'s level with the default picture, kept after a reload, deleted again',
+      ok: ownTextOk,
+      note: ownTextOk ? `level ${ownTextAdded.level}; ${ownTextReloaded.titles.length} titles after reload` : JSON.stringify({ ownTextAdded, ownTextReloaded, ownTextDeleted })
+    });
   } finally {
     chrome.kill();
     // Give Chromium a moment to actually release its profile-directory file

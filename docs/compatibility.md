@@ -200,6 +200,8 @@ For at least one exported `.docx` per language and per writing mode (3 × 5 = 15
       underline.
 - [ ] Word bank (gap-fill): a bordered box above the text with the
       missing words, well spaced, in alphabetical order.
+- [ ] Your own text: the default picture (or no picture) and the text as
+      typed, paragraphs kept.
 - [ ] Your own questions: numbered after the text, each with its two
       ruled answer lines on the same page as the question.
 - [ ] Continue the text: the instruction line, only the first two

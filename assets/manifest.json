@@ -1334,6 +1334,16 @@
       "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
       "source": "Generated with ChatGPT (OpenAI)",
       "attribution": "Uros Drnovsek"
+    },
+    {
+      "id": "own_text_default",
+      "mime": "image/jpeg",
+      "path": "assets/images/own_text_default.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "Original vector illustration drawn for this project (the default picture for a teacher's own text); all rights reserved by the project owner. Bundled for use within this project only.",
+      "source": "Drawn as SVG for this project with Claude Code (Anthropic) and rendered to JPEG; no third-party material",
+      "attribution": "Uros Drnovsek"
     }
   ]
 }

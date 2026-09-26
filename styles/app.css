@@ -222,6 +222,20 @@ body {
   align-items: center;
 }
 
+#own-text-panel textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px;
+  font: inherit;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+#btn-own-delete[hidden] {
+  display: none;
+}
+
 #copy-target-row[hidden],
 #answers-row[hidden] {
   display: none !important;
