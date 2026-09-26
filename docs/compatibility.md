@@ -246,6 +246,10 @@ own hardware. Checklist:
       printed in grayscale — the blueprint is explicit that red/green "must
       not be the only way the interface communicates meaning," and a
       grayscale print is exactly the scenario where that matters most.
+- [ ] On the grayscale printer, print a sheet with two or more highlighted
+      letter groups: the groups' colors are close in grey by design (four
+      readable hues can't be far apart), so check that the bold weight
+      alone still makes each highlighted group stand out from the text.
 - [ ] Compare that grayscale print with the app's grayscale preview: the
       preview uses CSS `grayscale()`, which a printer driver may not match.
       With the default colors the preview's grey-collision notice appears

@@ -115,6 +115,17 @@ export const SETTINGS_LIMITS = {
 /** One source for the writing modes: the activities table (src/worksheet/activities.js). */
 export const KNOWN_WRITING_MODES = new Set(Object.keys(ACTIVITIES));
 export const KNOWN_SYLLABLE_MODES = new Set(['off', 'colors', 'separators', 'both']);
+/**
+ * "Highlight letters" (settings.graphemes, text/graphemes.js). Each group
+ * gets the colour at its position, and is bold as well, which is what
+ * keeps it visible on a black-and-white printer: four readable hues can't
+ * all be 0.05 apart in grey (GRAY_MIN_LUMINANCE_DELTA) without one of them
+ * going near-black. Ordered so the first two are far apart in grey
+ * (luminance 0.051, 0.142, 0.094, 0.178).
+ */
+export const GRAPHEME_LIMITS = { maxGroups: 4, maxLength: 4 };
+export const GRAPHEME_COLORS = ['#1E3A8A', '#0F766E', '#9A3412', '#DB2777'];
+
 /** What the sheet's image slot holds: the text's picture, an empty box to draw in, or nothing. */
 export const KNOWN_IMAGE_SLOTS = new Set(['picture', 'drawing-box', 'none']);
 

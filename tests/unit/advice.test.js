@@ -67,3 +67,10 @@ test('every notice code has a notice.<CODE> string in all five locales', () => {
     }
   }
 });
+
+test('highlighted letter groups are compared in grey with the letter colours', () => {
+  // Navy (0.051) against a b colour of nearly the same grey.
+  const graphemes = [{ text: 'ma', color: '#1E3A8A' }];
+  assert.deepEqual(advise(sheet({ graphemes })), []);
+  assert.deepEqual(advise(sheet({ graphemes, letterColors: { b: '#1E3A8B' } })), ['GRAY_COLLISION']);
+});

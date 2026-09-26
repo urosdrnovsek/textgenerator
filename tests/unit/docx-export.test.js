@@ -298,3 +298,15 @@ test('an instruction without the locale\'s labels is an error, never a silent fa
   const model = await buildModel(TEST_ENTRY_ID, { ...SETTINGS, writingMode: 'write-own' });
   await assert.rejects(exportDocx(model, { copyBlocks: [] }, await imageBytesFor(TEST_ENTRY_ID)), /MISSING_LABEL: sheet\.instruction\.write-own/);
 });
+
+test('highlighted letter groups are bold (w:b) and in their colour; nothing else is bold in the passage', async (t) => {
+  const { GRAPHEME_COLORS } = await import('../../src/config.js');
+  const model = await buildModel(TEST_ENTRY_ID, { ...SETTINGS, header: { nameLine: false, date: false, title: false }, graphemes: [{ text: 'mu', color: GRAPHEME_COLORS[0] }] });
+  const xml = await documentXmlOf(model, { copyBlocks: [] }, t);
+  const boldRuns = [...xml.matchAll(/<w:r><w:rPr>([\s\S]*?)<\/w:rPr><w:t[^>]*>([^<]*)<\/w:t><\/w:r>/g)].filter((m) => m[1].includes('<w:b/>'));
+  assert.ok(boldRuns.length > 0);
+  for (const [, props, text] of boldRuns) {
+    assert.equal(text.toLowerCase(), 'mu');
+    assert.match(props, new RegExp(`w:val="${GRAPHEME_COLORS[0].slice(1)}"`));
+  }
+});

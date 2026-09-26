@@ -285,6 +285,20 @@ async function main() {
     await evalJs(`const el = document.getElementById('writing-mode-select'); el.value = 'read-copy'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
     await waitForFit();
 
+    // Highlighted letter groups (B6): bold highlights rewrap the passage;
+    // Firefox must still paginate it as the app measured.
+    console.log('\nHighlighted letter groups in the real Firefox print...');
+    await evalJs(`const el = document.getElementById('graphemes-input'); el.value = 'a, e, i, o'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await waitForFit();
+    const groupPages = Number(await evalJs(`return document.getElementById('fit-indicator').dataset.pageCount`));
+    const groupBold = Number(await evalJs(`return [...document.querySelectorAll('#preview .ws-sentence span')].filter((s) => s.style.fontWeight === '700').length`));
+    const groupPdfPath = path.join(downloadDir, 'letter-groups-worksheet.pdf');
+    await writeFile(groupPdfPath, Buffer.from(await driver.printPage(), 'base64'));
+    const groupPrintedPages = Number((execFileSync('pdfinfo', [groupPdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
+    check(`letter-group worksheet (${groupBold} bold runs) prints as exactly ${groupPages} pages (got ${groupPrintedPages})`, groupBold > 0 && groupPrintedPages === groupPages);
+    await evalJs(`const el = document.getElementById('graphemes-input'); el.value = ''; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await waitForFit();
+
     // Reset back to defaults — the language loop below checks for the
     // localized "fits" wording specifically, which these settings would
     // break for languages whose content doesn't also extend at max size.

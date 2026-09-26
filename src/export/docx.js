@@ -79,6 +79,7 @@ function toWordRuns(runs, { fontFamily, fontSizePt, characterSpacingTwips, wordS
         new TextRun({
           text: segment,
           color: run.color.replace('#', ''),
+          bold: run.bold,
           font: fontFamily,
           size: Math.round(fontSizePt * 2),
           characterSpacing: spacingTwips || undefined

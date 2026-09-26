@@ -355,6 +355,40 @@ async function main() {
       note: slotOk ? `box ${slotBox.preview.boxHeightMm} mm, copy rows ${slotBox.preview.copyAfterBox ? 'after it' : 'not on this sheet'}` : JSON.stringify({ slotBox, slotNone, slotPicture })
     });
 
+    // Highlight letters (B6): valid groups are bold and coloured in the
+    // preview and print surface; invalid input shows a message and changes
+    // nothing; an empty field clears them.
+    console.log('Driving the "Highlight letters" field...');
+    const groupState = `(() => {
+      const read = (root) => [...document.querySelectorAll(root + ' .ws-sentence span')]
+        .filter((s) => s.style.fontWeight === '700')
+        .map((s) => s.textContent.toLowerCase() + '|' + s.style.color);
+      return {
+        preview: read('#preview'), print: read('#print-surface'),
+        field: document.getElementById('graphemes-input').value,
+        message: document.getElementById('graphemes-status').textContent
+      };
+    })()`;
+    const typeGroups = async (value) => {
+      await evalJs(`(() => { const el = document.getElementById('graphemes-input'); el.value = ${JSON.stringify(value)}; el.dispatchEvent(new Event('change', { bubbles: true })); })()`);
+      await wait(300);
+      await waitForFit();
+      return evalJs(groupState);
+    };
+    const groupsOn = await typeGroups(' A, E ');
+    const groupsInvalid = await typeGroups('a, e1');
+    const groupsCleared = await typeGroups('');
+    const onlyAE = (list) => list.length > 0 && list.every((x) => /^(a\|rgb\(30, 58, 138\)|e\|rgb\(15, 118, 110\))$/.test(x));
+    const groupsOk = onlyAE(groupsOn.preview) && JSON.stringify(groupsOn.print) === JSON.stringify(groupsOn.preview)
+      && groupsOn.field === 'a, e' && groupsOn.message === ''
+      && groupsInvalid.message.includes('e1') && JSON.stringify(groupsInvalid.preview) === JSON.stringify(groupsOn.preview)
+      && groupsCleared.preview.length === 0 && groupsCleared.message === '';
+    journeyChecks.push({
+      label: '"Highlight letters": groups bold and coloured in preview and print; invalid input changes nothing and says why; empty clears',
+      ok: groupsOk,
+      note: groupsOk ? `${groupsOn.preview.length} highlighted runs; message "${groupsInvalid.message}"` : JSON.stringify({ groupsOn, groupsInvalid, groupsCleared })
+    });
+
     // Write about the picture (A4) + the instruction line: title, the
     // locale's instruction, the large picture, no passage, copy rows. Its
     // select disables "None", and choosing the mode while "None" is set

@@ -43,7 +43,9 @@ to a school.
   printable/exportable rather than being blocked.
 - **Reading supports, each independently switchable:** four bundled fonts
   (Andika, Lexend, OpenDyslexic, Comic Neue); font size, line, letter and
-  word spacing; confused-letter colors (b/d/p/q); syllable colors and/or
+  word spacing; confused-letter colors (b/d/p/q); highlighted letter
+  groups the teacher types in (up to four, such as `ch, sch, š`, colored
+  and bold); syllable colors and/or
   separators; one sentence per line; background tint and alternate-line
   stripes (both print-optional, off by default to save ink); line numbers
   down the left of the passage (in Word too, as Word's own numbering); a one-click

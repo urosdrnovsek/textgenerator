@@ -75,6 +75,7 @@ export function init({
     printStripes: false,
     lineNumbers: false,
     imageSlot: 'picture',
+    graphemes: [],
     marginMm: 20
   };
 
@@ -131,6 +132,7 @@ export function init({
       printStripes: s.printStripes,
       lineNumbers: s.lineNumbers,
       imageSlot: s.imageSlot,
+      graphemes: s.graphemes,
       marginMm: s.marginMm
     };
   }
@@ -197,6 +199,7 @@ export function init({
       printStripes: full.printStripes ?? false,
       lineNumbers: full.lineNumbers ?? false,
       imageSlot: full.imageSlot ?? 'picture',
+      graphemes: full.graphemes ?? [],
       marginMm: full.marginMm
     }));
 

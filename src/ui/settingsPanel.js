@@ -8,10 +8,12 @@
  * controls.
  *
  * Takes everything through `ctx` and never imports another ui/* module.
- * No translated text is produced here, so no translator is needed.
+ * The one translated text produced here is the "Highlight letters"
+ * field's inline error, through `getT`.
  */
 
 import { SETTINGS_LIMITS, FONT_FAMILIES } from '../config.js';
+import { parseGraphemeInput } from '../text/graphemes.js';
 
 /**
  * @param {object} ctx
@@ -19,9 +21,10 @@ import { SETTINGS_LIMITS, FONT_FAMILIES } from '../config.js';
  * @param {Record<string, HTMLElement>} ctx.els
  * @param {Record<string, string>} ctx.defaultLetterColors restored when the letter-colours toggle is switched back on
  * @param {() => void} ctx.requestRender
+ * @param {() => (key: string, vars?: object) => string} ctx.getT a getter: main.js reassigns its translator on a language switch
  * @returns {{ populateFontSelect: () => void, applySettingsLimits: () => void, syncSettingsControlsFromState: () => void }}
  */
-export function init({ state, els, defaultLetterColors: DEFAULT_LETTER_COLORS, requestRender }) {
+export function init({ state, els, defaultLetterColors: DEFAULT_LETTER_COLORS, requestRender, getT }) {
   /** Font names (Andika, Lexend, ...) are proper nouns — shown as-is, not translated. */
   function populateFontSelect() {
     els.fontSelect.replaceChildren(
@@ -62,6 +65,8 @@ export function init({ state, els, defaultLetterColors: DEFAULT_LETTER_COLORS, r
     els.letterSpacingInput.value = s.letterSpacingPt;
     els.wordSpacingInput.value = s.extraWordSpacePt;
     els.letterColorsToggle.checked = Object.keys(s.letterColors).length > 0;
+    els.graphemesInput.value = (s.graphemes ?? []).map((g) => g.text).join(', ');
+    els.graphemesStatus.textContent = '';
     els.syllableColorsToggle.checked = s.syllableMode === 'colors' || s.syllableMode === 'both';
     els.syllableSeparatorsToggle.checked = s.syllableMode === 'separators' || s.syllableMode === 'both';
     els.sentencePerLineToggle.checked = Boolean(s.sentencePerLine);
@@ -95,6 +100,26 @@ export function init({ state, els, defaultLetterColors: DEFAULT_LETTER_COLORS, r
 
   function updateLetterColorsEnabled(enabled) {
     state.settings.letterColors = enabled ? DEFAULT_LETTER_COLORS : {};
+    if (state.contentId) requestRender();
+  }
+
+  /**
+   * "Highlight letters": applied only when the whole field is valid.
+   * Invalid input changes nothing (the previous groups stay on the sheet)
+   * and says why, next to the field (handbook §11.6 B6). Empty clears them.
+   */
+  function updateGraphemes(input) {
+    const t = getT();
+    const result = parseGraphemeInput(input);
+    if (!result.ok) {
+      els.graphemesStatus.textContent = result.code === 'GRAPHEME_TOO_MANY'
+        ? t('graphemes.tooMany', { max: result.max })
+        : t('graphemes.invalid', { group: result.group });
+      return;
+    }
+    els.graphemesStatus.textContent = '';
+    state.settings.graphemes = result.groups;
+    els.graphemesInput.value = result.groups.map((g) => g.text).join(', ');
     if (state.contentId) requestRender();
   }
 
@@ -150,6 +175,7 @@ export function init({ state, els, defaultLetterColors: DEFAULT_LETTER_COLORS, r
   els.letterSpacingInput.addEventListener('change', (e) => updateNumericSetting('letterSpacingPt', SETTINGS_LIMITS.letterSpacingPt, e.target));
   els.wordSpacingInput.addEventListener('change', (e) => updateNumericSetting('extraWordSpacePt', SETTINGS_LIMITS.extraWordSpacePt, e.target));
   els.letterColorsToggle.addEventListener('change', (e) => updateLetterColorsEnabled(e.target.checked));
+  els.graphemesInput.addEventListener('change', (e) => updateGraphemes(e.target.value));
   els.syllableColorsToggle.addEventListener('change', updateSyllableMode);
   els.syllableSeparatorsToggle.addEventListener('change', updateSyllableMode);
   els.sentencePerLineToggle.addEventListener('change', (e) => updateSentencePerLine(e.target.checked));

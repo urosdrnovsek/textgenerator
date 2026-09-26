@@ -118,6 +118,7 @@ const state = {
     printStripes: false,
     lineNumbers: false,
     imageSlot: 'picture',
+    graphemes: [],
     marginMm: 20
   },
   // How the preview is viewed, never what is printed: not in settings,
@@ -157,6 +158,8 @@ const els = {
   letterSpacingInput: document.getElementById('letter-spacing-input'),
   wordSpacingInput: document.getElementById('word-spacing-input'),
   letterColorsToggle: document.getElementById('letter-colors-toggle'),
+  graphemesInput: document.getElementById('graphemes-input'),
+  graphemesStatus: document.getElementById('graphemes-status'),
   syllableColorsToggle: document.getElementById('syllable-colors-toggle'),
   syllableSeparatorsToggle: document.getElementById('syllable-separators-toggle'),
   sentencePerLineToggle: document.getElementById('sentence-per-line-toggle'),
@@ -203,7 +206,8 @@ const { populateFontSelect, applySettingsLimits, syncSettingsControlsFromState }
   state,
   els,
   defaultLetterColors: DEFAULT_LETTER_COLORS,
-  requestRender
+  requestRender,
+  getT: () => t
 });
 const { populatePresetSelect } = initPresetsUi({
   state,

@@ -73,6 +73,18 @@ supports).
   row of exact height, like the copy lines. Saved setups include the
   choice; setups saved by 0.9 keep the picture. The owner checked the
   Slovene labels.
+- **Highlight letters.** A new "Highlight letters" field takes up to
+  four letter groups, separated by commas (for example `ch, sch, š`).
+  Wherever a group occurs inside a word, it is printed in its own colour
+  and in bold, in the preview, the print and the Word file. Longer groups
+  win (`sch` in *Schule*), matching ignores case, and a group never
+  crosses from one word into the next. The highlight takes precedence
+  over the b/d/p/q and syllable colours. Invalid input (digits,
+  punctuation, a group longer than four letters, more than four groups)
+  shows a message next to the field and changes nothing. Saved setups
+  include the groups. The four colours are navy, teal, rust and pink;
+  they can't all be far apart in grey, which is why the groups are also
+  bold. The grayscale check compares them with the letter colours.
 - **Write about the picture.** A new writing mode: the title, a short
   instruction for the child ("Look at the picture and write about it."),
   the picture in a larger 120 × 90 mm box, and ruled lines for the rest

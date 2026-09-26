@@ -36,7 +36,8 @@ function hasGrayCollision(colors) {
 
 /**
  * GRAY_COLLISION compares the colours the sheet uses *to tell things
- * apart*: the letter colours among themselves, and the two syllable
+ * apart*: the letter colours and the highlighted letter groups' colours
+ * as one group (they sit side by side in the same words), and the two syllable
  * colours when they print (colours mode on and the text has syllable
  * data). Identical colours in one group are not a collision — they were
  * never meant to be told apart.
@@ -45,7 +46,8 @@ function hasGrayCollision(colors) {
 function grayCollision(model) {
   const s = model.settings;
   const letterColors = Object.values(s.letterColors ?? {});
-  if (hasGrayCollision(letterColors)) return true;
+  const groupColors = (s.graphemes ?? []).map((g) => g.color);
+  if (hasGrayCollision([...letterColors, ...groupColors])) return true;
   const syllableColorsShown = (s.syllableMode === 'colors' || s.syllableMode === 'both')
     && model.bodyParagraphs.some((runs) => runs.some((run) => run.syl !== undefined));
   return syllableColorsShown && hasGrayCollision(s.syllableColors ?? DEFAULT_SYLLABLE_COLORS);

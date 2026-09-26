@@ -37,6 +37,7 @@ export function renderRuns(runs, container) {
     const span = document.createElement('span');
     span.textContent = run.text;
     span.style.color = run.color;
+    if (run.bold) span.style.fontWeight = '700';
     if (run.w !== undefined) span.dataset.w = String(run.w);
     if (run.syl !== undefined) span.dataset.syl = String(run.syl);
     fragment.append(span);

@@ -4,7 +4,8 @@
  * or a malformed export — this is the boundary that stops that.
  */
 
-import { FONT_FAMILIES, SETTINGS_LIMITS, KNOWN_WRITING_MODES, KNOWN_SYLLABLE_MODES, KNOWN_IMAGE_SLOTS, TINTS_BY_ID } from '../config.js';
+import { FONT_FAMILIES, SETTINGS_LIMITS, KNOWN_WRITING_MODES, KNOWN_SYLLABLE_MODES, KNOWN_IMAGE_SLOTS, TINTS_BY_ID, GRAPHEME_LIMITS, GRAPHEME_COLORS } from '../config.js';
+import { isValidGroupText } from '../text/graphemes.js';
 import { RULINGS_BY_ID } from '../layout/rulings.js';
 import { KNOWN_LANGUAGES, KNOWN_THEMES } from '../content/validate.js';
 
@@ -140,6 +141,19 @@ export function validateSettings(settings) {
 
   if (settings.imageSlot !== undefined && !KNOWN_IMAGE_SLOTS.has(settings.imageSlot)) {
     push('imageSlot', `unknown imageSlot "${settings.imageSlot}" — known: ${[...KNOWN_IMAGE_SLOTS].join(', ')}`);
+  }
+
+  if (settings.graphemes !== undefined) {
+    const groups = settings.graphemes;
+    const valid = Array.isArray(groups)
+      && groups.length <= GRAPHEME_LIMITS.maxGroups
+      && groups.every((g) => g && typeof g.text === 'string'
+        && g.text === g.text.normalize('NFC').toLowerCase() && isValidGroupText(g.text)
+        && GRAPHEME_COLORS.includes(g.color))
+      && new Set(groups.map((g) => g.text)).size === groups.length;
+    if (!valid) {
+      push('graphemes', `graphemes must be at most ${GRAPHEME_LIMITS.maxGroups} distinct { text, color } groups: 1–${GRAPHEME_LIMITS.maxLength} lowercase NFC letters, a colour from GRAPHEME_COLORS`);
+    }
   }
 
   // Writing about the picture with no picture would print an empty sheet

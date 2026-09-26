@@ -90,6 +90,7 @@ test('buildWorksheet returns settings that do not alias the caller\'s object (a 
   live.printStripes = false;
   live.lineNumbers = false;
   live.imageSlot = 'picture';
+  live.graphemes = [{ text: 'ma', color: '#1E3A8A' }];
   const model = buildWorksheet(ENTRY, live, ASSETS, 'sl');
   const reference = structuredClone(model.settings);
 
@@ -110,6 +111,7 @@ test('buildWorksheet returns settings that do not alias the caller\'s object (a 
   live.printStripes = true;
   live.lineNumbers = true;
   live.imageSlot = 'none';
+  live.graphemes.push({ text: 'ja', color: '#0F766E' }); // in-place mutation of a nested array
   live.header.nameLine = false;
   live.header.date = false;
   live.header.title = false;

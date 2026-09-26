@@ -37,6 +37,7 @@ import { DRAWING_BOX_HEIGHT_MM } from '../config.js';
  * @property {boolean} [lineStripes] alternating faint background per real measured visual line — HTML/PDF only, see src/export/docx.js's header comment for why
  * @property {boolean} [printStripes] whether stripes also show when printed (default off, to save ink)
  * @property {boolean} [lineNumbers] numbers every passage line, continuously across pages (default off)
+ * @property {import('../text/graphemes.js').GraphemeGroup[]} [graphemes] letter groups highlighted in colour and bold (default none)
  * @property {'picture' | 'drawing-box' | 'none'} [imageSlot] the text's picture above the passage, an empty drawing box after it, or neither (default 'picture')
  * @property {{ nameLine: boolean, date: boolean, title: boolean, instructions?: boolean }} header instructions: the activity's instruction line, when it has one (absent = on)
  * @property {number} marginMm
@@ -87,7 +88,8 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount) {
   const bodyRuns = buildStyledRuns(resolvedText, {
     letterColors: settings.letterColors,
     syllableMode: settings.syllableMode,
-    syllableColors: settings.syllableColors
+    syllableColors: settings.syllableColors,
+    graphemes: settings.graphemes ?? []
   });
 
   // Authored paragraph breaks ("\n\n" in body) become separate paragraphs.

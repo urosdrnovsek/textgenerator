@@ -189,3 +189,17 @@ test('header.instructions is optional, and a boolean when present', () => {
   assert.equal(validateSettings({ ...VALID_SETTINGS, header: { ...VALID_SETTINGS.header, instructions: false } }).ok, true);
   assert.equal(validateSettings({ ...VALID_SETTINGS, header: { ...VALID_SETTINGS.header, instructions: 'yes' } }).ok, false);
 });
+
+test('graphemes: up to 4 distinct lowercase NFC letter groups with palette colours; anything else is rejected', async () => {
+  const { GRAPHEME_COLORS: C } = await import('../../src/config.js');
+  const ok = (graphemes) => validateSettings({ ...VALID_SETTINGS, graphemes }).ok;
+  assert.equal(ok([]), true);
+  assert.equal(ok([{ text: 'sch', color: C[0] }, { text: 'š', color: C[1] }]), true);
+  assert.equal(ok([{ text: 'SCH', color: C[0] }]), false, 'not lowercase');
+  assert.equal(ok([{ text: 's\u030C', color: C[0] }]), false, 'not NFC');
+  assert.equal(ok([{ text: 'ch', color: '#000000' }]), false, 'colour outside the palette');
+  assert.equal(ok([{ text: 'ch', color: C[0] }, { text: 'ch', color: C[1] }]), false, 'duplicate');
+  assert.equal(ok([{ text: 'abcde', color: C[0] }]), false, 'too long');
+  assert.equal(ok(['a', 'b', 'c', 'd', 'e'].map((text, i) => ({ text, color: C[i % 4] }))), false, 'too many');
+  assert.equal(ok('ch'), false, 'not an array');
+});

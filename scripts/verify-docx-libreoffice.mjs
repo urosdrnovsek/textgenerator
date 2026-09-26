@@ -172,6 +172,10 @@ const CASES = [
   // Write about the picture (A4): the instruction line and the large
   // picture, no passage, copy rows after. 'de'+level-2 is otherwise unused.
   { label: 'de-andika-level2-writeown', language: 'de', theme: 'stories', level: 2, entryId: 'stories_leuchtturmfenster_2', fontId: 'andika', writingMode: 'write-own' },
+  // Highlighted letter groups (B6): bold, so wider than regular text; the
+  // page count and the full passage must still hold. 'fr'+level-4 is an
+  // otherwise-unused pair.
+  { label: 'fr-andika-level4-readcopy-lettergroups', language: 'fr', theme: 'stories', level: 4, entryId: 'stories_clef_minuscule_4', fontId: 'andika', writingMode: 'read-copy', graphemes: 'ou, on, eau' },
   { label: 'es-andika-level2-readcopy-drawingbox', language: 'es', theme: 'stories', level: 2, entryId: 'stories_huevo_blanco_2', fontId: 'andika', writingMode: 'read-copy', fontSizePt: 24, lineHeightMultiplier: 1.8, imageSlot: 'drawing-box' }
 ];
 
@@ -285,6 +289,8 @@ async function main() {
           document.getElementById('line-numbers-toggle').dispatchEvent(new Event('change', { bubbles: true }));
           document.getElementById('image-slot-select').value = '${testCase.imageSlot ?? 'picture'}';
           document.getElementById('image-slot-select').dispatchEvent(new Event('change', { bubbles: true }));
+          document.getElementById('graphemes-input').value = ${JSON.stringify(testCase.graphemes ?? '')};
+          document.getElementById('graphemes-input').dispatchEvent(new Event('change', { bubbles: true }));
           ${testCase.wordSpacingPt !== undefined ? `
           document.getElementById('word-spacing-input').value = '${testCase.wordSpacingPt}';
           document.getElementById('word-spacing-input').dispatchEvent(new Event('change', { bubbles: true }));

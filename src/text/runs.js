@@ -13,11 +13,13 @@
  */
 
 import { tokenize, wordIndexByOffset } from './tokenize.js';
+import { findGraphemeSpans } from './graphemes.js';
 
 /**
  * @typedef {object} StyledRun
  * @property {string} text
  * @property {string} color six-digit hex, e.g. "#B42318"
+ * @property {true} [bold] a highlighted letter group (settings.graphemes): bold so it survives a mono printer; absent otherwise
  * @property {number} [w] index of the word this run belongs to (src/text/tokenize.js); present on every run inside a word, including a separator mark inside it
  * @property {number} [syl] syllable index within the word; present on word letters when the text has syllable data
  * @property {'space' | 'punct' | 'sep'} [kind] absent = letters of a word.
@@ -69,11 +71,12 @@ const SYLLABLE_SEPARATOR = '·'; // middle dot
  * @property {string} [separatorColor] color of the middle-dot mark in 'separators'/'both' mode
  * @property {'off' | 'colors' | 'separators' | 'both'} [syllableMode]
  * @property {string} [baseColor]
+ * @property {import('./graphemes.js').GraphemeGroup[]} [graphemes] letter groups to highlight (colour + bold), above every other colour
  */
 
 /** Two styled pieces merge into one run only when everything a consumer may read from them is equal. */
 function sameStyle(a, b) {
-  return a.color === b.color && a.kind === b.kind && a.w === b.w && a.syl === b.syl;
+  return a.color === b.color && a.bold === b.bold && a.kind === b.kind && a.w === b.w && a.syl === b.syl;
 }
 
 /**
@@ -95,7 +98,8 @@ export function styleText(doc, options = {}) {
     syllableColors = DEFAULT_SYLLABLE_COLORS,
     separatorColor = '#64748B',
     syllableMode = 'off',
-    baseColor = '#202020'
+    baseColor = '#202020',
+    graphemes = []
   } = options;
   for (const color of Object.values(letterColors)) assertValidColor(color);
   for (const color of syllableColors) assertValidColor(color);
@@ -108,6 +112,9 @@ export function styleText(doc, options = {}) {
   const showSeparators = usesSyllables && (syllableMode === 'separators' || syllableMode === 'both');
   const wordAt = wordIndexByOffset(doc);
   const isSpace = (char) => /\s/.test(char);
+  /** @type {Array<string | undefined>} highlight colour per body offset */
+  const graphemeAt = new Array(body.length);
+  for (const span of findGraphemeSpans(doc, graphemes)) graphemeAt.fill(span.color, span.start, span.end);
 
   /** @type {StyledRun[]} */
   const runs = [];
@@ -146,7 +153,12 @@ export function styleText(doc, options = {}) {
     if (space) {
       piece.kind = 'space';
     } else {
-      piece.color = colorForChar(char, letterColors, uppercaseAlso)
+      // Precedence: the teacher's letter groups, then b/d/p/q, then
+      // syllable alternation, then the base colour (handbook §11.5.2).
+      const highlight = graphemeAt[offset];
+      if (highlight) piece.bold = true;
+      piece.color = highlight
+        ?? colorForChar(char, letterColors, uppercaseAlso)
         ?? (showColors ? syllableColors[tokenSyllable % syllableColors.length] : baseColor);
       if (w >= 0) {
         piece.w = w;
