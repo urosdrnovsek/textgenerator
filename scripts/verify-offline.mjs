@@ -87,11 +87,12 @@ class CdpClient {
   }
 }
 
+/** @returns {Promise<{ indexPath: string, stageDir: string | null }>} stageDir: the ZIP's extraction, removed at the end */
 async function resolveIndexPath() {
   const unzipArgIndex = process.argv.indexOf('--unzip');
   if (unzipArgIndex === -1) {
     console.log('No --unzip <path-to-zip> given — testing repo release/ directly.');
-    return path.join(root, 'release/index.html');
+    return { indexPath: path.join(root, 'release/index.html'), stageDir: null };
   }
   const zipPath = process.argv[unzipArgIndex + 1];
   if (!zipPath) throw new Error('--unzip requires a path to a .zip file');
@@ -100,11 +101,11 @@ async function resolveIndexPath() {
   execFileSync('unzip', ['-q', zipPath, '-d', stageDir]);
   const entries = await (await import('node:fs/promises')).readdir(stageDir);
   const extractedRoot = path.join(stageDir, entries[0]);
-  return path.join(extractedRoot, 'index.html');
+  return { indexPath: path.join(extractedRoot, 'index.html'), stageDir };
 }
 
 async function main() {
-  const indexPath = await resolveIndexPath();
+  const { indexPath, stageDir } = await resolveIndexPath();
   const profileDir = await mkdtemp(path.join(os.tmpdir(), 'worksheet-offline-profile-'));
   const downloadDir = await mkdtemp(path.join(os.tmpdir(), 'worksheet-offline-downloads-'));
 
@@ -1080,6 +1081,8 @@ async function main() {
       console.log(`(cleanup note: couldn't remove ${profileDir}: ${error.message})`);
     });
     await rm(downloadDir, { recursive: true, force: true }).catch(() => {});
+    // The extracted ZIP (--unzip): 16 MB on a RAM-backed /tmp otherwise left behind.
+    if (stageDir) await rm(stageDir, { recursive: true, force: true }).catch(() => {});
   }
 
   console.log('\nResults:');
