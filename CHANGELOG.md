@@ -7,8 +7,182 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
-Work on branch `upgrade/activities` (new worksheet activities and reading
-supports).
+
+## 0.10.0-rc.1 — 2026-09-26 (activities and reading supports)
+
+The activities upgrade (branch `upgrade/activities`), for the tester
+teachers. Four new writing modes (write about the picture, fill the gaps,
+put in order, and a choice of what to copy in read & copy), answer keys,
+a drawing box, and five new reading supports. Every existing worksheet
+prints exactly as in 0.9.0-rc.2: the Word files and the preview/print
+output of all 318 texts were compared before and after every step (the
+two fixes below are the only changes, and they are listed).
+
+Worth knowing before handing it out:
+
+- **Saved setups between 0.9 and this version.** Setups saved with 0.9
+  load here with every new option off. A setup saved here loads in 0.9
+  only if it uses one of 0.9's writing modes (the new options are then
+  simply dropped); one saved in a new mode (fill the gaps, put in order,
+  write about the picture) is refused by 0.9 as invalid. Checked against
+  0.9.0-rc.2's own validator.
+- **A new "About N lines are needed" notice** now appears on many longer
+  read & copy sheets that copy the whole text: an estimate of the
+  handwriting lines the copy needs, compared with the lines on the sheet.
+  It never adds pages.
+- As in 0.9, real Microsoft Word, desktop Firefox/Safari and physical
+  printers are not tested yet (`docs/compatibility.md` has the checklists,
+  now including every new feature).
+
+### New activities
+
+- **Write about the picture.** A new writing mode: the title, a short
+  instruction for the child ("Look at the picture and write about it."),
+  the picture in a larger 120 × 90 mm box, and ruled lines for the rest
+  of the page; the text itself is not printed. It can use the drawing box
+  instead of the picture, but not "no picture" (that option is disabled
+  while the mode is chosen). The instruction line is a new header option,
+  on by default, and only activities that have an instruction print one,
+  so the other modes print exactly as before. The instruction is written
+  in all five languages; the owner checked the Slovene, and none of the
+  others has had a native-speaker review.
+- **Drawing box ("read it, then draw it").** A new "Picture on the
+  sheet" choice: the text's picture (as before), a drawing box, or no
+  picture. The drawing box is an empty 9 cm bordered box after the text;
+  in read & copy the copy lines fill whatever room is left, and move to a
+  fresh page when too little is left, as before. In Word it is a table
+  row of exact height, like the copy lines. Saved setups include the
+  choice; setups saved by 0.9 keep the picture. The owner checked the
+  Slovene labels.
+- **Fill the gaps.** A new writing mode makes a gap-fill sheet. The
+  teacher clicks words in the preview to turn them into gaps (or back),
+  or uses "Gap every Nth word" (N from 3 to 10, 7 by default), which
+  leaves the first sentence whole, as the classic cloze procedure does.
+  Words can also be chosen with the keyboard (arrow keys, then Space or
+  Enter). All gaps on a sheet have the same width, sized for a child to
+  write the longest missing word, so a gap's length doesn't give the
+  answer away. The preview shows each answer faintly inside its gap; the
+  printed sheet and the Word file don't have them. At most 40% of a
+  text's words can be gaps. The sheet prints "Fill in the missing
+  words." under the title. The gaps belong to the text on screen:
+  choosing another text starts with none, and gaps are never saved. A
+  notice says when a gap-fill sheet has no gaps yet. In the Word file a
+  gap is an underlined run of spaces, an estimate of the preview's width.
+- **Answer keys.** In "Fill the gaps", a "Show the answers" checkbox
+  turns the sheet into its answer key: every gap shows its word in bold
+  (in the preview, the print and the Word file), and an "Answers" tag
+  sits at the top right so the key isn't handed out by mistake. The
+  choice belongs to the text on screen, like the gaps. "Add to packet"
+  once with it off and once with it on puts the student sheet and its
+  key in one print run.
+- **Put in order.** A new writing mode: the title, the picture, the
+  instruction "Number the sentences in the right order.", and the text's
+  sentences shuffled, each with an empty square box for the child's
+  number. It uses all the sentences of a text with 3 to 6, and the first
+  6 of a longer one (contiguous sentences keep the story coherent). The
+  shuffle is fixed per text — the same sheet comes out in the same order
+  every year — and no sentence stays in its own place. "Show the
+  answers" makes the key: each box shows the sentence's place in the
+  text, with the "Answers" tag. For a text with fewer than 3 sentences
+  the option is unavailable and says why. Reading supports (letter
+  colours, syllables, highlighted letters) apply to the sentences. The
+  "Show the answers" checkbox now sits under the writing mode and serves
+  both gap-fill and put in order.
+- **Choose what to copy.** In read & copy, a new "Copy:" choice: the
+  whole text (as before), the first two sentences, one sentence (click it
+  in the preview), or the title only. The chosen part is marked with a
+  thin grey bar beside its lines; nothing on the sheet moves. The Word
+  file marks it too when it covers whole paragraphs (the title, or
+  sentences with "One sentence per line" on); otherwise a notice says the
+  mark is in the print only. The app now also estimates how many
+  handwriting lines the chosen part needs and says so when the sheet has
+  fewer ("About 24 lines are needed…; the sheet has 6") — an estimate,
+  labelled as one, that never adds pages. This notice will now appear on
+  many longer read & copy sheets that copy the whole text. The choice is
+  saved in setups; the clicked sentence belongs to the text on screen.
+
+### Reading supports
+
+- **Highlight letters.** A new "Highlight letters" field takes up to
+  four letter groups, separated by commas (for example `ch, sch, š`).
+  Wherever a group occurs inside a word, it is printed in its own colour
+  and in bold, in the preview, the print and the Word file. Longer groups
+  win (`sch` in *Schule*), matching ignores case, and a group never
+  crosses from one word into the next. The highlight takes precedence
+  over the b/d/p/q and syllable colours. Invalid input (digits,
+  punctuation, a group longer than four letters, more than four groups)
+  shows a message next to the field and changes nothing. Saved setups
+  include the groups. The four colours are navy, teal, rust and pink;
+  they can't all be far apart in grey, which is why the groups are also
+  bold. The grayscale check compares them with the letter colours.
+- **Visible word spaces.** A new checkbox puts a faint grey `_` in every
+  space between two words of a sentence ("Maja _ ima _ muco."), for
+  children still learning where one word ends. There is none between
+  sentences, where the full stop and capital already mark the break. The
+  mark is a real character, so the Word file has it too and the page
+  check measures the extra width. It stays with the word before it, so
+  a line may end with a mark but never starts with one. The planned
+  mark (␣) turned out to exist in only one of the four fonts; the owner
+  chose the underscore, which all four have.
+- **Syllable arcs.** A new "Syllable arcs" checkbox draws a small curve
+  under each syllable (one-syllable words too), in dark grey so it
+  prints on a black-and-white printer; in trace mode the arcs are light
+  like the text. They work together with syllable colours and
+  separators, or on their own. Below line spacing 1.6 they crowd the next
+  line (checked with all four fonts; OpenDyslexic is the tightest), and
+  the app says so instead of changing the spacing. Word has no such
+  shape, so the Word file leaves the arcs out and a notice says so; a new
+  notice now also says that the Word file leaves out alternate-line
+  stripes, which it always did without saying. A text without syllable
+  data (possible for an imported text) now gets a notice when a syllable
+  support is switched on, instead of silently showing nothing.
+- **Line numbers.** A new "Line numbers" checkbox numbers every line of
+  the passage, small and grey, down its left side, in one count across
+  pages (the title, picture and copy lines are not numbered). The numbers
+  sit in an 8 mm gutter inside the page, so the text rewraps a little
+  narrower and the page-count check sees it. The Word file uses Word's
+  own line numbering, with the passage indented by the same 8 mm. Saved
+  setups include the option; setups saved by 0.9 load with it off.
+- **Grayscale preview.** A new "Preview in grayscale (black-and-white
+  printer)" checkbox greys the on-screen preview only; it is not saved in
+  setups and never reaches the printed sheet or the Word file. While it
+  is on, a notice appears when two colours that tell things apart (the
+  confused-letter colours among themselves, or the two syllable colours
+  when they print) come out almost the same grey. The notice is computed
+  for every sheet but held back while the preview is in colour, because
+  the default red b / green d always trigger it (owner decision). The
+  wording is written in all five languages; the owner checked the
+  Slovene. Checked: unit tests (the default b/d pair is
+  detected; syllable colours count only when the text has syllable data;
+  every notice has a string in all five languages), and the offline
+  journey drives the checkbox in Chromium: the preview gets
+  `grayscale(1)`, the print surface stays unfiltered, the notice shows
+  only while the view is on, and it goes when letter colours are off.
+
+### Fixes
+
+- **Word files: no more lines pushed to the next page (bug fix).** Word
+  and LibreOffice keep at least two lines of a paragraph together on a
+  page by default ("widow/orphan control"); the app's preview allows a
+  single line, as its page count assumes. When a paragraph's first or
+  last line fell alone at a page break, the Word file moved it and could
+  come out a page longer than the app said. The Word export now switches
+  this off for the passage, as the preview does. Found while testing
+  visible word spaces (a 28pt trace sheet: 4 pages in LibreOffice, 3 in
+  the app; 3 in both after the fix). Nothing else in the files changed.
+- **Sentence splitting fixed in four texts.** A new report
+  (`npm run sentence-report`) lists how every text splits into
+  sentences. It found four texts where a sentence was cut in two: after
+  a dialogue quote followed by the speaker ("»…prideš!« so vpili."),
+  after an ordinal number ("v 15. stoletju"), and after a French closing
+  guillemet, which French writes with a space ("… ! » crient les
+  autres.", "… pas. » Chaque matin"). "One sentence per line" showed
+  these as broken lines. The rule now keeps a sentence going when the
+  next word starts in lowercase, and keeps a spaced French » with the
+  sentence it closes. Only those four texts change, and only with one
+  sentence per line.
+
+### Under the hood (no visible change)
 
 - **One tokenizer and one styling function (no visible change).**
   `src/text/tokenize.js` is now the single definition of a word, a
@@ -43,91 +217,6 @@ supports).
   asserts the line is hidden on a plain sheet; and a temporary probe build
   that always returned one notice showed exactly one visible item with no
   console errors (not committed).
-- **Grayscale preview.** A new "Preview in grayscale (black-and-white
-  printer)" checkbox greys the on-screen preview only; it is not saved in
-  setups and never reaches the printed sheet or the Word file. While it
-  is on, a notice appears when two colours that tell things apart (the
-  confused-letter colours among themselves, or the two syllable colours
-  when they print) come out almost the same grey. The notice is computed
-  for every sheet but held back while the preview is in colour, because
-  the default red b / green d always trigger it (owner decision). The
-  wording is written in all five languages; the owner checked the
-  Slovene. Checked: unit tests (the default b/d pair is
-  detected; syllable colours count only when the text has syllable data;
-  every notice has a string in all five languages), and the offline
-  journey drives the checkbox in Chromium: the preview gets
-  `grayscale(1)`, the print surface stays unfiltered, the notice shows
-  only while the view is on, and it goes when letter colours are off.
-- **Line numbers.** A new "Line numbers" checkbox numbers every line of
-  the passage, small and grey, down its left side, in one count across
-  pages (the title, picture and copy lines are not numbered). The numbers
-  sit in an 8 mm gutter inside the page, so the text rewraps a little
-  narrower and the page-count check sees it. The Word file uses Word's
-  own line numbering, with the passage indented by the same 8 mm. Saved
-  setups include the option; setups saved by 0.9 load with it off.
-- **Drawing box ("read it, then draw it").** A new "Picture on the
-  sheet" choice: the text's picture (as before), a drawing box, or no
-  picture. The drawing box is an empty 9 cm bordered box after the text;
-  in read & copy the copy lines fill whatever room is left, and move to a
-  fresh page when too little is left, as before. In Word it is a table
-  row of exact height, like the copy lines. Saved setups include the
-  choice; setups saved by 0.9 keep the picture. The owner checked the
-  Slovene labels.
-- **Syllable arcs.** A new "Syllable arcs" checkbox draws a small curve
-  under each syllable (one-syllable words too), in dark grey so it
-  prints on a black-and-white printer; in trace mode the arcs are light
-  like the text. They work together with syllable colours and
-  separators, or on their own. Below line spacing 1.6 they crowd the next
-  line (checked with all four fonts; OpenDyslexic is the tightest), and
-  the app says so instead of changing the spacing. Word has no such
-  shape, so the Word file leaves the arcs out and a notice says so; a new
-  notice now also says that the Word file leaves out alternate-line
-  stripes, which it always did without saying. A text without syllable
-  data (possible for an imported text) now gets a notice when a syllable
-  support is switched on, instead of silently showing nothing.
-- **Put in order.** A new writing mode: the title, the picture, the
-  instruction "Number the sentences in the right order.", and the text's
-  sentences shuffled, each with an empty square box for the child's
-  number. It uses all the sentences of a text with 3 to 6, and the first
-  6 of a longer one (contiguous sentences keep the story coherent). The
-  shuffle is fixed per text — the same sheet comes out in the same order
-  every year — and no sentence stays in its own place. "Show the
-  answers" makes the key: each box shows the sentence's place in the
-  text, with the "Answers" tag. For a text with fewer than 3 sentences
-  the option is unavailable and says why. Reading supports (letter
-  colours, syllables, highlighted letters) apply to the sentences. The
-  "Show the answers" checkbox now sits under the writing mode and serves
-  both gap-fill and put in order.
-- **Sentence splitting fixed in four texts.** A new report
-  (`npm run sentence-report`) lists how every text splits into
-  sentences. It found four texts where a sentence was cut in two: after
-  a dialogue quote followed by the speaker ("»…prideš!« so vpili."),
-  after an ordinal number ("v 15. stoletju"), and after a French closing
-  guillemet, which French writes with a space ("… ! » crient les
-  autres.", "… pas. » Chaque matin"). "One sentence per line" showed
-  these as broken lines. The rule now keeps a sentence going when the
-  next word starts in lowercase, and keeps a spaced French » with the
-  sentence it closes. Only those four texts change, and only with one
-  sentence per line.
-- **Choose what to copy.** In read & copy, a new "Copy:" choice: the
-  whole text (as before), the first two sentences, one sentence (click it
-  in the preview), or the title only. The chosen part is marked with a
-  thin grey bar beside its lines; nothing on the sheet moves. The Word
-  file marks it too when it covers whole paragraphs (the title, or
-  sentences with "One sentence per line" on); otherwise a notice says the
-  mark is in the print only. The app now also estimates how many
-  handwriting lines the chosen part needs and says so when the sheet has
-  fewer ("About 24 lines are needed…; the sheet has 6") — an estimate,
-  labelled as one, that never adds pages. This notice will now appear on
-  many longer read & copy sheets that copy the whole text. The choice is
-  saved in setups; the clicked sentence belongs to the text on screen.
-- **Answer keys.** In "Fill the gaps", a "Show the answers" checkbox
-  turns the sheet into its answer key: every gap shows its word in bold
-  (in the preview, the print and the Word file), and an "Answers" tag
-  sits at the top right so the key isn't handed out by mistake. The
-  choice belongs to the text on screen, like the gaps. "Add to packet"
-  once with it off and once with it on puts the student sheet and its
-  key in one print run.
 - **Page count and its safety margin (documented, unchanged).** The page
   check keeps 4 mm in reserve at the bottom of every page, so it may say
   one page more than a sheet actually prints when the content ends
@@ -135,60 +224,6 @@ supports).
   printed in Chromium and Firefox). It never says fewer. The owner chose
   to keep the margin; the tests now tell this known over-count apart
   from a real mismatch.
-- **Fill the gaps.** A new writing mode makes a gap-fill sheet. The
-  teacher clicks words in the preview to turn them into gaps (or back),
-  or uses "Gap every Nth word" (N from 3 to 10, 7 by default), which
-  leaves the first sentence whole, as the classic cloze procedure does.
-  Words can also be chosen with the keyboard (arrow keys, then Space or
-  Enter). All gaps on a sheet have the same width, sized for a child to
-  write the longest missing word, so a gap's length doesn't give the
-  answer away. The preview shows each answer faintly inside its gap; the
-  printed sheet and the Word file don't have them. At most 40% of a
-  text's words can be gaps. The sheet prints "Fill in the missing
-  words." under the title. The gaps belong to the text on screen:
-  choosing another text starts with none, and gaps are never saved. A
-  notice says when a gap-fill sheet has no gaps yet. In the Word file a
-  gap is an underlined run of spaces, an estimate of the preview's width.
-- **Word files: no more lines pushed to the next page (bug fix).** Word
-  and LibreOffice keep at least two lines of a paragraph together on a
-  page by default ("widow/orphan control"); the app's preview allows a
-  single line, as its page count assumes. When a paragraph's first or
-  last line fell alone at a page break, the Word file moved it and could
-  come out a page longer than the app said. The Word export now switches
-  this off for the passage, as the preview does. Found while testing
-  visible word spaces (a 28pt trace sheet: 4 pages in LibreOffice, 3 in
-  the app; 3 in both after the fix). Nothing else in the files changed.
-- **Highlight letters.** A new "Highlight letters" field takes up to
-  four letter groups, separated by commas (for example `ch, sch, š`).
-  Wherever a group occurs inside a word, it is printed in its own colour
-  and in bold, in the preview, the print and the Word file. Longer groups
-  win (`sch` in *Schule*), matching ignores case, and a group never
-  crosses from one word into the next. The highlight takes precedence
-  over the b/d/p/q and syllable colours. Invalid input (digits,
-  punctuation, a group longer than four letters, more than four groups)
-  shows a message next to the field and changes nothing. Saved setups
-  include the groups. The four colours are navy, teal, rust and pink;
-  they can't all be far apart in grey, which is why the groups are also
-  bold. The grayscale check compares them with the letter colours.
-- **Visible word spaces.** A new checkbox puts a faint grey `_` in every
-  space between two words of a sentence ("Maja _ ima _ muco."), for
-  children still learning where one word ends. There is none between
-  sentences, where the full stop and capital already mark the break. The
-  mark is a real character, so the Word file has it too and the page
-  check measures the extra width. It stays with the word before it, so
-  a line may end with a mark but never starts with one. The planned
-  mark (␣) turned out to exist in only one of the four fonts; the owner
-  chose the underscore, which all four have.
-- **Write about the picture.** A new writing mode: the title, a short
-  instruction for the child ("Look at the picture and write about it."),
-  the picture in a larger 120 × 90 mm box, and ruled lines for the rest
-  of the page; the text itself is not printed. It can use the drawing box
-  instead of the picture, but not "no picture" (that option is disabled
-  while the mode is chosen). The instruction line is a new header option,
-  on by default, and only activities that have an instruction print one,
-  so the other modes print exactly as before. The instruction is written
-  in all five languages; the owner checked the Slovene, and none of the
-  others has had a native-speaker review.
 
 ## 0.9.0-rc.2 — 2026-09-24 (beta hotfix)
 

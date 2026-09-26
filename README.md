@@ -12,7 +12,7 @@ five difficulty levels; English has three or four texts for every theme
 and level (93 entries), Slovene three (75), French, German and Spanish
 two (50 each) — 318 texts in all.
 Current version:
-`0.9.0-rc.2` — a release candidate; see "Status" below for what's still
+`0.10.0-rc.1` — a release candidate; see "Status" below for what's still
 open.
 
 ## Quick start
@@ -93,14 +93,17 @@ project owner's own hardware.
 
 Still open, deliberately: a native speaker's review of the English, German,
 French and Spanish content (they've had a careful editorial pass, not a
-native speaker's read — 0 of 243 non-Slovene entries native-reviewed); an
+native speaker's read — 0 of 243 non-Slovene entries native-reviewed, and
+the same goes for the short instruction lines printed on the new activity
+sheets); an
 image-accuracy pass over the entries whose pictures were reassigned on
 topic rather than drawn for the text (209 of 318 verified, the rest
 plausible, no known mismatch). Both numbers come from the per-entry review record and are
 printed by `npm run content-status`, so progress is measurable rather
 than asserted (see `docs/content-guide.md`). Also open: country-specific
 handwriting rulings (blocked on real classroom samples); fonts are declared
-but not embedded in `.docx`; zebra striping is screen/PDF only. The
+but not embedded in `.docx`; zebra striping and syllable arcs are
+screen/PDF only (the app says so when they are on). The
 project's development history is in `CHANGELOG.md`.
 
 ## Adding content

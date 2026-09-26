@@ -64,13 +64,28 @@ Open **Text settings** to adjust:
 - **Font size, line spacing, letter spacing, extra word spacing.**
 - **Confused-letter colors (b/d/p/q)** — colors commonly mirrored letters
   so children can tell them apart at a glance.
-- **Syllable colors** and/or **syllable separators** (Ma·ja) — shown
-  independently, so you can use either, both, or neither.
+- **Highlight letters** — type up to four letter groups the class is
+  practising, separated by commas (for example `ch, sch, š`). Wherever
+  they occur in a word they are printed in color and bold. If something
+  isn't a letter group, the field says so and nothing changes.
+- **Syllable colors**, **syllable separators** (Ma·ja) and **syllable
+  arcs** (a small curve under each syllable) — shown independently, so you
+  can use any of them together or none. Arcs need line spacing of at
+  least 1.6, and the Word file leaves them out; the sidebar tells you both.
+- **Visible spaces between words** — a faint `_` in each gap between the
+  words of a sentence, for children still learning where a word ends.
+- **Line numbers** — small numbers down the left of the text, counting on
+  across pages (in the Word file too).
 - **One sentence per line** — helps a child keep their place.
 - **Background color** and **alternate-line stripes** — both screen
   options you can also choose to print (off by default, to save ink).
-- **Header fields** — turn the name line, date, and title on or off
+- **Header fields** — turn the name line, date, title, and the short
+  instruction for the child (on the new activity sheets) on or off
   independently.
+- **Preview in grayscale** — shows the preview roughly as a
+  black-and-white printer would print it (the printed sheet itself is
+  unchanged). While it is on, the sidebar also tells you when two colors
+  come out almost the same grey.
 - **Handwriting line height** — how tall each ruled line is in read & copy
   mode.
 
@@ -80,8 +95,35 @@ afterward.
 
 **Writing mode**, just above Text settings, switches between:
 - **Read & copy** — the text at the top, ruled handwriting lines below.
+  **Copy:** chooses what the child copies — the whole text, the first two
+  sentences, one sentence (click it in the preview), or the title only;
+  a thin grey bar marks it. The sidebar estimates how many handwriting
+  lines the copy needs and tells you when the sheet has fewer (it never
+  adds pages by itself).
 - **Trace** — the text shown lightly, for tracing over.
 - **Read only** — just the text and picture, no handwriting lines.
+- **Write about the picture** — the title, a larger picture and ruled
+  lines; the text itself isn't printed.
+- **Fill the gaps** — click words in the preview to turn them into gaps
+  (click again to undo; the arrow keys and Space work too), or use **Gap
+  every Nth word**, which leaves the first sentence whole. All gaps are
+  the same width, so the length doesn't give the answer away. The preview
+  shows the answers faintly; the printed sheet doesn't.
+- **Put in order** — the text's first sentences (3 to 6) in a shuffled
+  order, each with an empty box for the child's number. The same text is
+  always shuffled the same way. A text with fewer than 3 sentences can't
+  be used, and the option says so.
+
+**Show the answers** (for Fill the gaps and Put in order) turns the sheet
+into its answer key, marked "Answers" at the top. To print a class set
+and its key together: add the sheet to the packet, tick Show the answers,
+and add it again.
+
+**Picture on the sheet** chooses the text's picture, an empty **drawing
+box** after the text ("read it, then draw it"), or no picture.
+
+The gaps you clicked, the sentence you chose to copy and Show the answers
+belong to the text on screen: choosing another text starts fresh.
 
 **Custom image** lets you swap in your own picture (PNG or JPEG) for this
 one worksheet; it's not saved anywhere and resets the next time you create
@@ -101,8 +143,9 @@ setup you saved yourself restores everything it was saved with, including
 the language and the theme/level, and creates a text for them — that's
 what saving a setup is for.
 
-A saved setup does **not** include a custom image — that stays specific to
-the one worksheet you were making, not the reusable setup.
+A saved setup does **not** include a custom image, the gaps or sentence
+you clicked, or Show the answers — those stay specific to the one
+worksheet you were making, not the reusable setup.
 
 ### Backing up and restoring your setups
 
