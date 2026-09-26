@@ -7,16 +7,46 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
-- **A new story per level in every language, on five new pictures**
-  (2026-09-26): a family cooking vegetable soup (level 1), a postman
-  bringing a parcel in the snow (2), a grandmother's music rehearsal (3),
-  a lighthouse keeper guiding a rescue boat (4), and a class visit to the
-  fire station (5). Each language has its own text, not a translation.
-  English first: five stories, so English now has five per level.
-  Slovene: five stories (marked draft until the owner has read them).
-  German: five stories.
-  French: five stories.
-  Spanish: five stories.
+## 0.10.0-rc.2 — 2026-09-26 (story starters, your own questions and texts, word bank)
+
+Everything since 0.10.0-rc.1, in one release for the tester teachers: a
+new writing mode (continue the text), the teacher's own questions and
+texts, a word bank for gap-fill sheets, a fifth story per level in every
+language, and one fix. Existing worksheets print as in 0.10.0-rc.1: the
+Word files and the preview/print output of every earlier text were
+compared before and after each feature.
+
+Worth knowing before handing it out:
+
+- **Your own texts stay in the browser they were typed in.** They are not
+  sent anywhere and not part of saved setups; on another computer or
+  browser they are not there, and "reset all data" removes them.
+- **Saved setups and 0.10.0-rc.1.** A setup saved here in the new
+  "Continue the text" mode is refused by 0.10.0-rc.1 and 0.9 as invalid
+  (a mode they don't have); other setups load there, without the word
+  bank. Questions are never part of a setup.
+- As before, real Microsoft Word, desktop Firefox/Safari and physical
+  printers are not tested yet (`docs/compatibility.md` has the checklists).
+
+### New
+
+- **Continue the text (story starters).** A new writing mode: the title,
+  the picture, the instruction "Read the beginning and continue in your
+  own words.", the first two sentences of the text, and ruled lines for
+  the rest of the page. Every text works with it (at least one sentence is
+  always left to write on from), and all reading supports apply to the
+  beginning. Worded to suit the fact texts too.
+- **Your own questions about a text.** A new "Questions about this text"
+  panel takes up to three questions. They are printed after the text,
+  numbered, each with two ruled lines to answer on (a question and its
+  lines never split across pages). They belong to the text on screen, like
+  the gaps: another text starts with empty boxes, and they are not saved
+  in setups. Works with every writing mode.
+- **Word bank for gap-fill.** In "Fill the gaps", a new checkbox prints the
+  missing words in a box above the text, in alphabetical order (so the
+  order gives nothing away; a word gapped twice is listed twice), for
+  children who need the support. Saved in setups. The answer key keeps
+  the box.
 - **Your own text.** A new "Your own text" panel: type a title and a
   text, choose whether it gets a picture, and click "Add text". It goes
   into the theme that is selected, at the level its length gives (the
@@ -30,23 +60,18 @@ summarizes what shipped and what was verified; the commit messages in
   reload, and can be deleted; "reset all data" removes them. They have no
   syllable data — the app never guesses syllables — so syllable colours,
   separators and arcs don't apply to them, and the sidebar says so.
-- **Word bank for gap-fill.** In "Fill the gaps", a new checkbox prints the
-  missing words in a box above the text, in alphabetical order (so the
-  order gives nothing away; a word gapped twice is listed twice), for
-  children who need the support. Saved in setups. The answer key keeps
-  the box.
-- **Your own questions about a text.** A new "Questions about this text"
-  panel takes up to three questions. They are printed after the text,
-  numbered, each with two ruled lines to answer on (a question and its
-  lines never split across pages). They belong to the text on screen, like
-  the gaps: another text starts with empty boxes, and they are not saved
-  in setups. Works with every writing mode.
-- **Continue the text (story starters).** A new writing mode: the title,
-  the picture, the instruction "Read the beginning and continue in your
-  own words.", the first two sentences of the text, and ruled lines for
-  the rest of the page. Every text works with it (at least one sentence is
-  always left to write on from), and all reading supports apply to the
-  beginning. Worded to suit the fact texts too.
+- **A new story per level in every language, on five new pictures.** A
+  family cooking vegetable soup (level 1), a postman bringing a parcel in
+  the snow (2), a grandmother's music rehearsal (3), a lighthouse keeper
+  guiding a rescue boat (4), and a class visit to the fire station (5),
+  in all five languages — 25 new texts, 343 in all. Each language has its
+  own text, written for the picture, not a translation, and every one
+  fits one page. English stories now have five texts per level, Slovene
+  four, the others three. The five Slovene stories are marked draft until
+  the owner has read them.
+
+### Fixes
+
 - **"Write about the picture" no longer claims lines are needed to copy
   (bug fix).** Its sheet has handwriting lines but nothing to copy, yet
   the copy-lines estimate used the whole (hidden) text and could say
