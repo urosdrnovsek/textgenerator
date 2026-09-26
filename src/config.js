@@ -160,6 +160,19 @@ export const CLOZE = {
 export const WORD_SPACE_MARK = '_';
 export const WORD_SPACE_MARK_COLOR = '#94A3B8';
 
+/**
+ * "Copy:" in read & copy (settings.copyTarget, handbook §11.6 A3): what
+ * the child copies onto the lines. The target is marked with a thin bar
+ * of COPY_MARK_COLOR next to its lines; the layout never changes.
+ * HANDWRITING_CHAR_WIDTH_RATIO — the average handwritten character width
+ * as a share of the guide height — drives layout/copyEstimate.js, a
+ * heuristic labelled as such ("About N lines"); calibrate it from the
+ * testers' ruled-paper photos (§8).
+ */
+export const KNOWN_COPY_TARGETS = new Set(['passage', 'first-sentences', 'sentence', 'title']);
+export const COPY_MARK_COLOR = '#9CA3AF';
+export const HANDWRITING_CHAR_WIDTH_RATIO = 0.55;
+
 /** What the sheet's image slot holds: the text's picture, an empty box to draw in, or nothing. */
 export const KNOWN_IMAGE_SLOTS = new Set(['picture', 'drawing-box', 'none']);
 

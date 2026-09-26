@@ -221,6 +221,10 @@ body {
   align-items: center;
 }
 
+#copy-target-row[hidden] {
+  display: none;
+}
+
 /* Above the sheet while the teacher picks words (gap-fill): screen only,
    outside #preview and #print-surface, so it is never on paper. */
 .preview-hint {

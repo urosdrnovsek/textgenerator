@@ -73,9 +73,7 @@ export function init({ state, els, getT, getDoc, requestRender }) {
     const t = getT();
     const picking = isPicking();
     els.clozeControls.hidden = !picking;
-    els.previewHint.hidden = !picking;
     if (!picking) return;
-    els.previewHint.textContent = t('cloze.hint');
     els.clozeShowAnswersToggle.checked = state.selection.showAnswers;
     const doc = getDoc();
     els.clozeStatus.classList.toggle('is-refused', refusal !== '');

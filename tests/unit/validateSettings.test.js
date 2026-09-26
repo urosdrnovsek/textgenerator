@@ -209,3 +209,10 @@ test('accepts wordSpaceMarks on, off or absent, and rejects a non-boolean', () =
   assert.equal(validateSettings({ ...VALID_SETTINGS, wordSpaceMarks: false }).ok, true);
   assert.equal(validateSettings({ ...VALID_SETTINGS, wordSpaceMarks: 1 }).ok, false);
 });
+
+test('accepts each copy target or none given, and rejects an unknown one', () => {
+  for (const copyTarget of ['passage', 'first-sentences', 'sentence', 'title']) {
+    assert.equal(validateSettings({ ...VALID_SETTINGS, copyTarget }).ok, true, copyTarget);
+  }
+  assert.equal(validateSettings({ ...VALID_SETTINGS, copyTarget: 'paragraph' }).ok, false);
+});

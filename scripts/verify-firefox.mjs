@@ -368,6 +368,20 @@ async function main() {
     await evalJs(`const el = document.getElementById('writing-mode-select'); el.value = 'read-copy'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
     await waitForFit();
 
+    // Copy target (A3) on the same sheet: the marks are overlays, so the
+    // print must still paginate as the app measured.
+    console.log('\nCopy target marks in the real Firefox print...');
+    await evalJs(`const el = document.getElementById('copy-target-select'); el.value = 'first-sentences'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await waitForFit();
+    const copyPages = await reportedPages();
+    const copyBars = Number(await evalJs(`return document.querySelectorAll('#print-surface .ws-copy-mark-bar').length`));
+    const copyPdfPath = path.join(downloadDir, 'copy-target-worksheet.pdf');
+    await writeFile(copyPdfPath, Buffer.from(await driver.printPage(), 'base64'));
+    const copyPrintedPages = Number((execFileSync('pdfinfo', [copyPdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
+    check(`copy-target worksheet (${copyBars} marked lines) page count agrees (${pagesNote(copyPrintedPages, copyPages)})`, copyBars > 0 && pagesAgree(copyPrintedPages, copyPages));
+    await evalJs(`const el = document.getElementById('copy-target-select'); el.value = 'passage'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await waitForFit();
+
     // Reset back to defaults — the language loop below checks for the
     // localized "fits" wording specifically, which these settings would
     // break for languages whose content doesn't also extend at max size.

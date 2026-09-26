@@ -13,6 +13,8 @@
  *   fit policy in layout/measure.js) | 'none'
  * - imageSize: 'large' for the 120 × 90 mm picture box
  *   (layout/imageBox.js); absent = the normal 60 × 45 mm one
+ * - copyTarget: true when the teacher may choose what to copy
+ *   (settings.copyTarget); only read & copy has copy lines to fill
  * - instruction: the key of the line printed under the title for the
  *   child (locale `sheet.instruction.<key>`); absent = no line, so the
  *   older modes print exactly as they always have
@@ -21,11 +23,11 @@
  * it without a cycle.
  */
 
-/** @typedef {{ passage: 'text' | 'traced' | 'hidden' | 'cloze', task: 'lines' | 'none', imageSize?: 'large', instruction?: string }} Activity */
+/** @typedef {{ passage: 'text' | 'traced' | 'hidden' | 'cloze', task: 'lines' | 'none', imageSize?: 'large', instruction?: string, copyTarget?: true }} Activity */
 
 /** @type {Readonly<Record<string, Readonly<Activity>>>} */
 export const ACTIVITIES = Object.freeze({
-  'read-copy': Object.freeze({ passage: 'text', task: 'lines' }),
+  'read-copy': Object.freeze({ passage: 'text', task: 'lines', copyTarget: true }),
   trace: Object.freeze({ passage: 'traced', task: 'none' }),
   'read-only': Object.freeze({ passage: 'text', task: 'none' }),
   'write-own': Object.freeze({ passage: 'hidden', task: 'lines', imageSize: 'large', instruction: 'write-own' }),

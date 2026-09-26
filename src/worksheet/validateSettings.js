@@ -4,7 +4,7 @@
  * or a malformed export — this is the boundary that stops that.
  */
 
-import { FONT_FAMILIES, SETTINGS_LIMITS, KNOWN_WRITING_MODES, KNOWN_SYLLABLE_MODES, KNOWN_IMAGE_SLOTS, TINTS_BY_ID, GRAPHEME_LIMITS, GRAPHEME_COLORS } from '../config.js';
+import { FONT_FAMILIES, SETTINGS_LIMITS, KNOWN_WRITING_MODES, KNOWN_SYLLABLE_MODES, KNOWN_IMAGE_SLOTS, KNOWN_COPY_TARGETS, TINTS_BY_ID, GRAPHEME_LIMITS, GRAPHEME_COLORS } from '../config.js';
 import { isValidGroupText } from '../text/graphemes.js';
 import { RULINGS_BY_ID } from '../layout/rulings.js';
 import { KNOWN_LANGUAGES, KNOWN_THEMES } from '../content/validate.js';
@@ -137,6 +137,10 @@ export function validateSettings(settings) {
 
   if (settings.lineNumbers !== undefined && typeof settings.lineNumbers !== 'boolean') {
     push('lineNumbers', 'lineNumbers must be a boolean when present');
+  }
+
+  if (settings.copyTarget !== undefined && !KNOWN_COPY_TARGETS.has(settings.copyTarget)) {
+    push('copyTarget', `unknown copyTarget "${settings.copyTarget}" — known: ${[...KNOWN_COPY_TARGETS].join(', ')}`);
   }
 
   if (settings.wordSpaceMarks !== undefined && typeof settings.wordSpaceMarks !== 'boolean') {

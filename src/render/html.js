@@ -6,7 +6,7 @@
  */
 
 import { buildRulingRows } from '../layout/rulings.js';
-import { ptToMm, pxToMm, FONT_FAMILIES, COPY_AREA_GAP_MM, TINTS_BY_ID, LINE_NUMBER_GUTTER_MM, DRAWING_BOX_GAP_MM } from '../config.js';
+import { ptToMm, pxToMm, FONT_FAMILIES, COPY_AREA_GAP_MM, TINTS_BY_ID, LINE_NUMBER_GUTTER_MM, DRAWING_BOX_GAP_MM, COPY_MARK_COLOR } from '../config.js';
 import { IMAGE_BOX_MAX_WIDTH_MM, IMAGE_BOX_MAX_HEIGHT_MM, IMAGE_BOX_LARGE } from '../layout/imageBox.js';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
@@ -207,6 +207,31 @@ export function applyLineNumbers(bodyElement) {
 }
 
 /**
+ * Marks what the child copies (handbook §11.6 A3): a thin bar beside every
+ * measured line that holds a word of the target. An overlay, positioned
+ * from the same line boxes as the stripes, so the layout doesn't change.
+ * @param {HTMLElement} bodyElement already attached to the document
+ * @param {{ firstW: number, lastW: number }} range
+ */
+export function applyCopyMark(bodyElement, { firstW, lastW }) {
+  const bodyTop = bodyElement.getBoundingClientRect().top;
+  const targetTops = [...bodyElement.querySelectorAll('.ws-sentence [data-w]')]
+    .filter((span) => Number(span.dataset.w) >= firstW && Number(span.dataset.w) <= lastW)
+    .flatMap((span) => [...span.getClientRects()].map((rect) => pxToMm((rect.top + rect.bottom) / 2 - bodyTop)));
+  const overlay = document.createElement('div');
+  overlay.className = 'ws-copy-marks';
+  for (const line of measureBodyLineBoxes(bodyElement)) {
+    if (!targetTops.some((middle) => middle >= line.topMm && middle <= line.topMm + line.heightMm)) continue;
+    const bar = document.createElement('div');
+    bar.className = 'ws-copy-mark-bar';
+    bar.style.top = `${line.topMm}mm`;
+    bar.style.height = `${line.heightMm}mm`;
+    overlay.append(bar);
+  }
+  bodyElement.append(overlay);
+}
+
+/**
  * Absolutely-positioned dashed markers showing where the model expects a
  * page break — screen-only preview aid (upgrade blueprint v3, workstream
  * A), never rendered into the print surface or a packet sheet. `.ws-page`
@@ -255,6 +280,7 @@ export const BLOCK_RENDERERS = {
   title: (block) => {
     const title = document.createElement('h1');
     title.className = 'ws-title ws-text';
+    title.classList.toggle('ws-copy-mark', Boolean(block.copyMark));
     title.textContent = block.text;
     return title;
   },
@@ -334,6 +360,8 @@ export function renderWorksheet(model, layout, container, labels = DEFAULT_LABEL
   // Same box the DOCX exporter contains the image within (src/layout/imageBox.js) — one source for the slot size (workstream D1).
   page.style.setProperty('--ws-image-max-width-mm', `${IMAGE_BOX_MAX_WIDTH_MM}mm`);
   page.style.setProperty('--ws-image-max-height-mm', `${IMAGE_BOX_MAX_HEIGHT_MM}mm`);
+  // Only on a sheet with a copy mark, so every other page's markup is unchanged.
+  if (model.blocks.some((block) => block.copyMark)) page.style.setProperty('--ws-copy-mark-color', COPY_MARK_COLOR);
 
   const tintId = model.settings.tintId ?? 'none';
   if (tintId !== 'none') {
@@ -381,8 +409,12 @@ export function renderWorksheet(model, layout, container, labels = DEFAULT_LABEL
     page.classList.toggle('ws-page--print-stripes', Boolean(model.settings.printStripes));
     applyLineStripes(passageEl);
   }
-  if (passageEl && model.blocks.some((block) => block.type === 'passage' && block.lineNumbers)) {
+  const passageBlock = model.blocks.find((block) => block.type === 'passage');
+  if (passageEl && passageBlock?.lineNumbers) {
     applyLineNumbers(passageEl);
+  }
+  if (passageEl && passageBlock?.copyMark) {
+    applyCopyMark(passageEl, passageBlock.copyMark);
   }
 
   if (previewMode && layout.pageBreaksMm?.length > 0) {

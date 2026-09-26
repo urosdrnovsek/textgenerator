@@ -73,6 +73,18 @@ supports).
   row of exact height, like the copy lines. Saved setups include the
   choice; setups saved by 0.9 keep the picture. The owner checked the
   Slovene labels.
+- **Choose what to copy.** In read & copy, a new "Copy:" choice: the
+  whole text (as before), the first two sentences, one sentence (click it
+  in the preview), or the title only. The chosen part is marked with a
+  thin grey bar beside its lines; nothing on the sheet moves. The Word
+  file marks it too when it covers whole paragraphs (the title, or
+  sentences with "One sentence per line" on); otherwise a notice says the
+  mark is in the print only. The app now also estimates how many
+  handwriting lines the chosen part needs and says so when the sheet has
+  fewer ("About 24 lines are needed…; the sheet has 6") — an estimate,
+  labelled as one, that never adds pages. This notice will now appear on
+  many longer read & copy sheets that copy the whole text. The choice is
+  saved in setups; the clicked sentence belongs to the text on screen.
 - **Answer keys.** In "Fill the gaps", a "Show the answers" checkbox
   turns the sheet into its answer key: every gap shows its word in bold
   (in the preview, the print and the Word file), and an "Answers" tag

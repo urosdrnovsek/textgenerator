@@ -59,6 +59,8 @@ import { DRAWING_BOX_HEIGHT_MM } from '../config.js';
  * @property {WorksheetSettings} settings
  * @property {Block[]} blocks the page's content in order, above the task region (upgrade blueprint §11.5.3)
  * @property {import('./selection.js').Selection} selection the clicks this model was built with (a snapshot)
+ * @property {'passage' | 'first-sentences' | 'sentence' | 'title'} copyTarget what the child copies (always 'passage' outside read & copy)
+ * @property {string} copyTargetText that text, for layout/copyEstimate.js ('' while "one sentence" has none chosen)
  * @property {boolean} selectionReset a selection for another text or version was ignored (worksheet/advice.js SELECTION_RESET)
  * @property {'lines' | 'none'} task what follows the blocks: ruled copy rows filling the rest of the page, or nothing — a layout decision made by layout/measure.js, not a block
  */
@@ -70,10 +72,10 @@ import { DRAWING_BOX_HEIGHT_MM } from '../config.js';
  * @typedef {(
  *   | { type: 'answerTag' } an answer-key sheet's "Answers" tag (labels.answers), first on the page
  *   | { type: 'header', nameLine: boolean, date: boolean }
- *   | { type: 'title', text: string }
+ *   | { type: 'title', text: string, copyMark: boolean } copyMark: the title is what the child copies
  *   | { type: 'instruction', key: string } text: labels.instruction(key), in the sheet's language
  *   | { type: 'image', size: 'normal' | 'large' }
- *   | { type: 'passage', paragraphs: import('../text/runs.js').StyledRun[][], lineNumbers: boolean, blankWidthEm: number, showAnswers: boolean } blankWidthEm: every gap's width (0 = no gaps); showAnswers: the answer key (gaps show their word)
+ *   | { type: 'passage', paragraphs: import('../text/runs.js').StyledRun[][], lineNumbers: boolean, blankWidthEm: number, showAnswers: boolean, copyMark: { firstW: number, lastW: number } | null } blankWidthEm: every gap's width (0 = no gaps); showAnswers: the answer key (gaps show their word)
  *   | { type: 'drawingBox', heightMm: number }
  * )} Block
  */
@@ -130,6 +132,8 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
     ? lightenParagraphs(sentenceParagraphs)
     : sentenceParagraphs;
 
+  const target = resolveCopyTarget(activity.copyTarget ? (settings.copyTarget ?? 'passage') : 'passage', doc, chosen.selection, entry.title);
+
   const image = assets.imagesById.get(entry.imageId);
   if (!image) {
     throw new Error(`MISSING_IMAGE: no asset registered for imageId "${entry.imageId}"`);
@@ -153,7 +157,9 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
     settings: structuredClone(settings),
     selection: chosen.selection,
     selectionReset: chosen.reset,
-    blocks: buildBlocks(entry, settings, activity, bodyParagraphs, blanks.length > 0 ? blankWidthEm(doc, blanks) : 0, blanks.length > 0 && chosen.selection.showAnswers),
+    copyTarget: target.kind,
+    copyTargetText: target.text,
+    blocks: buildBlocks(entry, settings, activity, bodyParagraphs, blanks.length > 0 ? blankWidthEm(doc, blanks) : 0, blanks.length > 0 && chosen.selection.showAnswers, target),
     task: activity.task
   };
 }
@@ -167,9 +173,10 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
  * @param {import('../text/runs.js').StyledRun[][]} paragraphs
  * @param {number} gapWidthEm the one width of every gap (0 without gaps)
  * @param {boolean} answerKey the gaps show their words, and the sheet says it is the key
+ * @param {CopyTarget} target
  * @returns {Block[]}
  */
-function buildBlocks(entry, settings, activity, paragraphs, gapWidthEm, answerKey) {
+function buildBlocks(entry, settings, activity, paragraphs, gapWidthEm, answerKey, target) {
   /** @type {Block[]} */
   const blocks = [];
   // First, whatever else is switched off: a key must never pass for a student sheet.
@@ -177,16 +184,52 @@ function buildBlocks(entry, settings, activity, paragraphs, gapWidthEm, answerKe
   if (settings.header.nameLine || settings.header.date) {
     blocks.push({ type: 'header', nameLine: settings.header.nameLine, date: settings.header.date });
   }
-  if (settings.header.title) blocks.push({ type: 'title', text: entry.title });
+  if (settings.header.title) blocks.push({ type: 'title', text: entry.title, copyMark: target.kind === 'title' });
   if (activity.instruction && settings.header.instructions !== false) {
     blocks.push({ type: 'instruction', key: activity.instruction });
   }
   const imageSlot = settings.imageSlot ?? 'picture';
   if (imageSlot === 'picture') blocks.push({ type: 'image', size: activity.imageSize ?? 'normal' });
   if (activity.passage !== 'hidden') {
-    blocks.push({ type: 'passage', paragraphs, lineNumbers: Boolean(settings.lineNumbers), blankWidthEm: gapWidthEm, showAnswers: answerKey });
+    blocks.push({ type: 'passage', paragraphs, lineNumbers: Boolean(settings.lineNumbers), blankWidthEm: gapWidthEm, showAnswers: answerKey, copyMark: target.words });
   }
   // After the passage: the child draws what they have just read.
   if (imageSlot === 'drawing-box') blocks.push({ type: 'drawingBox', heightMm: DRAWING_BOX_HEIGHT_MM });
   return blocks;
+}
+
+/**
+ * @typedef {object} CopyTarget
+ * @property {'passage' | 'first-sentences' | 'sentence' | 'title'} kind
+ * @property {string} text what the child copies ('' when nothing is chosen yet)
+ * @property {{ firstW: number, lastW: number } | null} words the passage words to mark (null: none — the whole text, the title, or nothing chosen)
+ */
+
+/**
+ * What the child copies in read & copy (handbook §11.6 A3), resolved on
+ * the text: "the first two sentences" (one, if that is all there is), the
+ * sentence the teacher clicked, the title, or the whole text (unmarked).
+ * @param {'passage' | 'first-sentences' | 'sentence' | 'title'} kind
+ * @param {import('../text/tokenize.js').TextDoc} doc
+ * @param {import('./selection.js').Selection} selection
+ * @param {string} title
+ * @returns {CopyTarget}
+ */
+function resolveCopyTarget(kind, doc, selection, title) {
+  const sentenceRange = (from, to) => {
+    const words = doc.words.filter((word) => word.sentence >= from && word.sentence <= to);
+    if (words.length === 0) return null;
+    return { firstW: words[0].w, lastW: words.at(-1).w };
+  };
+  if (kind === 'title') return { kind, text: title, words: null };
+  if (kind === 'first-sentences') {
+    const last = Math.min(1, doc.sentences.length - 1);
+    return { kind, text: doc.body.slice(doc.sentences[0].start, doc.sentences[last].end), words: sentenceRange(0, last) };
+  }
+  if (kind === 'sentence') {
+    const s = selection.sentence;
+    if (s === null) return { kind, text: '', words: null };
+    return { kind, text: doc.body.slice(doc.sentences[s].start, doc.sentences[s].end), words: sentenceRange(s, s) };
+  }
+  return { kind: 'passage', text: doc.body, words: null };
 }

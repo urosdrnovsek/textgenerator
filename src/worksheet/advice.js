@@ -10,9 +10,10 @@
 import { GRAY_MIN_LUMINANCE_DELTA } from '../config.js';
 import { DEFAULT_SYLLABLE_COLORS } from '../text/runs.js';
 import { ACTIVITIES } from './activities.js';
+import { markedParagraphs } from './copyMark.js';
 
 /** Every code advise() can return; each needs a `notice.<CODE>` string in all five locales. */
-export const NOTICE_CODES = ['GRAY_COLLISION', 'SELECTION_RESET', 'NO_GAPS'];
+export const NOTICE_CODES = ['GRAY_COLLISION', 'SELECTION_RESET', 'NO_GAPS', 'COPY_TARGET_UNCHOSEN', 'COPY_SPACE_SHORT', 'DOCX_OMITS_COPY_MARK'];
 
 /**
  * WCAG relative luminance of a six-digit hex colour.
@@ -56,15 +57,23 @@ function grayCollision(model) {
 
 /**
  * @param {import('./build.js').WorksheetModel} model
+ * @param {{ copyRows?: number, copyRowsNeeded?: number }} [layoutFacts] from the fit check (read & copy):
+ *   the copy rows on the sheet, and layout/copyEstimate.js's estimate of the rows the target needs
  * @returns {string[]} notice codes, in display order; empty when there is nothing to say
  */
-export function advise(model) {
+export function advise(model, layoutFacts = {}) {
   /** @type {string[]} */
   const notices = [];
   // Gaps chosen for a text that has since changed (a content import) were dropped.
   if (model.selectionReset) notices.push('SELECTION_RESET');
   // A gap-fill sheet with no gaps would print the whole text under "Fill in the missing words".
   if (ACTIVITIES[model.settings.writingMode]?.passage === 'cloze' && (model.selection?.blanks.length ?? 0) === 0) notices.push('NO_GAPS');
+  // "One sentence" with none clicked yet: the whole text is still there to copy, unmarked.
+  if (model.copyTarget === 'sentence' && model.selection?.sentence === null) notices.push('COPY_TARGET_UNCHOSEN');
+  // The estimate is a heuristic; it informs, it never adds pages.
+  if (layoutFacts.copyRowsNeeded > layoutFacts.copyRows) notices.push('COPY_SPACE_SHORT');
+  const passage = model.blocks.find((block) => block.type === 'passage');
+  if (passage && markedParagraphs(passage).partial) notices.push('DOCX_OMITS_COPY_MARK');
   if (grayCollision(model)) notices.push('GRAY_COLLISION');
   return notices;
 }

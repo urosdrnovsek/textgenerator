@@ -47,8 +47,15 @@ import {
   UnderlineType,
   convertMillimetersToTwip
 } from 'docx';
-import { FONT_FAMILIES, TWIPS_PER_PT, mmToPx, mmToTwips, TINTS_BY_ID, contentWidthMm, LINE_NUMBER_GUTTER_MM, DRAWING_BOX_GAP_MM, CLOZE } from '../config.js';
+import { FONT_FAMILIES, TWIPS_PER_PT, mmToPx, mmToTwips, TINTS_BY_ID, contentWidthMm, LINE_NUMBER_GUTTER_MM, DRAWING_BOX_GAP_MM, CLOZE, COPY_MARK_COLOR } from '../config.js';
+import { markedParagraphs } from '../worksheet/copyMark.js';
 import { computeContainedImageSizeMm, IMAGE_BOX_LARGE } from '../layout/imageBox.js';
+
+/**
+ * The copy mark as Word can draw it: a left border on a whole paragraph.
+ * Checked in LibreOffice: it sits left of the text and doesn't move it.
+ */
+const COPY_MARK_BORDER = { left: { style: BorderStyle.SINGLE, size: 12, color: COPY_MARK_COLOR.slice(1), space: 4 } };
 
 /** Matches src/render/html.js DEFAULT_LABELS — used only when a caller doesn't pass the active locale's translated labels. */
 const DEFAULT_LABELS = {
@@ -166,6 +173,7 @@ export const BLOCK_WRITERS = {
       ],
       spacing: { after: 200 },
       shading,
+      ...(block.copyMark ? { border: COPY_MARK_BORDER } : {}),
       ...unnumbered
     })
   ],
@@ -233,8 +241,10 @@ export const BLOCK_WRITERS = {
     // the width the fit check measured. Word draws its numbers left of the
     // text column itself (section lnNumType, set in exportDocx).
     const gutter = block.lineNumbers ? { indent: { left: mmToTwips(LINE_NUMBER_GUTTER_MM) } } : {};
+    // Only paragraphs the copy target covers whole can carry the mark here.
+    const marked = markedParagraphs(block).whole;
     return block.paragraphs.map(
-      (paragraphRuns) =>
+      (paragraphRuns, i) =>
         new Paragraph({
           alignment: AlignmentType.LEFT,
           spacing: paragraphGapTwips > 0
@@ -247,6 +257,7 @@ export const BLOCK_WRITERS = {
           // keep two lines together by default, which moved a lone line to
           // the next page and could add a page the app never reported.
           widowControl: false,
+          ...(marked.has(i) ? { border: COPY_MARK_BORDER } : {}),
           ...gutter
         })
     );

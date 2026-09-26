@@ -77,6 +77,7 @@ export function init({
     imageSlot: 'picture',
     graphemes: [],
     wordSpaceMarks: false,
+    copyTarget: 'passage',
     marginMm: 20
   };
 
@@ -135,6 +136,7 @@ export function init({
       imageSlot: s.imageSlot,
       graphemes: s.graphemes,
       wordSpaceMarks: s.wordSpaceMarks,
+      copyTarget: s.copyTarget,
       marginMm: s.marginMm
     };
   }
@@ -203,6 +205,7 @@ export function init({
       imageSlot: full.imageSlot ?? 'picture',
       graphemes: full.graphemes ?? [],
       wordSpaceMarks: full.wordSpaceMarks ?? false,
+      copyTarget: full.copyTarget ?? 'passage',
       marginMm: full.marginMm
     }));
 

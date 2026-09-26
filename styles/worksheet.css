@@ -185,6 +185,37 @@
   padding-left: var(--ws-line-number-gutter-mm);
 }
 
+/* What the child copies (read & copy, "Copy:"): a thin bar just left of
+   the target's lines, or of the title. Positioned outside the text so the
+   layout is the same with or without it; it bleeds into the margin like
+   the stripes do. */
+.ws-copy-marks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ws-copy-mark-bar {
+  position: absolute;
+  left: -3mm;
+  width: 0.8mm;
+  background: var(--ws-copy-mark-color);
+}
+
+.ws-title.ws-copy-mark {
+  position: relative;
+}
+
+.ws-title.ws-copy-mark::before {
+  content: '';
+  position: absolute;
+  left: -3mm;
+  top: 0.15em;
+  bottom: 0.15em;
+  width: 0.8mm;
+  background: var(--ws-copy-mark-color);
+}
+
 .ws-line-numbers {
   position: absolute;
   top: 0;

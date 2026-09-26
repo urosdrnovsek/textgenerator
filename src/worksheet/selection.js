@@ -86,6 +86,17 @@ export function clearBlanks(selection) {
 }
 
 /**
+ * The sentence to copy (copy target "one sentence"): clicking the chosen
+ * sentence again un-chooses it.
+ * @param {Selection} selection
+ * @param {number} sentence index into TextDoc.sentences
+ * @returns {Selection}
+ */
+export function chooseSentence(selection, sentence) {
+  return { ...selection, sentence: selection.sentence === sentence ? null : sentence };
+}
+
+/**
  * The selection a model may use for this entry: the given one when its key
  * matches (with out-of-range or duplicate indices dropped), otherwise an
  * empty one — and `reset` says a non-empty selection was thrown away.

@@ -16,6 +16,7 @@ import { renderWorksheet, measureBodyLineBoxes } from '../render/html.js';
 import { getRuling, countFullRows } from './rulings.js';
 import { paginateBlocks } from './paginate.js';
 import { advise } from '../worksheet/advice.js';
+import { estimateCopyRows } from './copyEstimate.js';
 import { FONT_FAMILIES, contentWidthMm, contentHeightMm, FIT_SAFETY_MM, MIN_COPY_ROWS, COPY_AREA_GAP_MM, pxToMm } from '../config.js';
 
 /**
@@ -87,6 +88,7 @@ async function waitForImage(img) {
  * @property {Record<string, number>} [heightsMm]
  * @property {number} [pageCountWithoutMargin] diagnostic only: the content's page count at the full page height (no FIT_SAFETY_MM); the reported pageCount may exceed it by one, never fall below it
  * @property {string[]} notices advisory codes from worksheet/advice.js; always empty when 'blocked'
+ * @property {Record<string, Record<string, number>>} [noticeVars] numbers a notice's text needs, by code (COPY_SPACE_SHORT: { needed, rows })
  */
 
 /**
@@ -272,6 +274,8 @@ export async function measureWorksheet(model, revision, labels) {
     }
 
     const finalPageCount = pageCount + (extraPage ? 1 : 0);
+    const copyRows = copyBlocksRows.reduce((sum, rows) => sum + rows, 0);
+    const copyRowsNeeded = model.copyTargetText ? estimateCopyRows(model.copyTargetText, s.guideHeightMm, widthMm) : 0;
 
     return {
       status: finalPageCount === 1 ? 'fits' : 'extends',
@@ -280,7 +284,8 @@ export async function measureWorksheet(model, revision, labels) {
       layout: { ruling, contentWidthMm: widthMm, copyBlocks: copyBlocksRows, pageBreaksMm: [...breaksMm, ...copyBreaksMm] },
       heightsMm: { used: totalContentHeightMm, final: cursorMm, budget: budgetMm },
       suggestions: finalPageCount === 1 ? undefined : ['choose-shorter-text', 'reduce-image', 'read-only'],
-      notices: advise(model)
+      notices: advise(model, { copyRows, copyRowsNeeded }),
+      noticeVars: { COPY_SPACE_SHORT: { needed: copyRowsNeeded, rows: copyRows } }
     };
   } finally {
     surface.remove();

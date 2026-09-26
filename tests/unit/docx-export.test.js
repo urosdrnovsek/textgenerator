@@ -371,3 +371,16 @@ test('the answer key in Word: the "Answers" tag, and each answer bold in the mid
     assert.match(side.props, /<w:u w:val="single"\/>/);
   }
 });
+
+test('the copy mark in Word: a left border on the title, or on the passage paragraphs the target covers whole', async (t) => {
+  const { COPY_MARK_COLOR } = await import('../../src/config.js');
+  const border = `<w:left w:val="single" w:color="${COPY_MARK_COLOR.slice(1)}" w:sz="12" w:space="4"/>`;
+  const title = await documentXmlOf(await buildModel(TEST_ENTRY_ID, { ...SETTINGS, copyTarget: 'title' }), { copyBlocks: [] }, t);
+  const bordered = paragraphsOf(title).filter((p) => p.includes(border));
+  assert.equal(bordered.length, 1);
+  assert.match(bordered[0], /Moker muc/);
+  const split = await documentXmlOf(await buildModel(TEST_ENTRY_ID, { ...SETTINGS, copyTarget: 'first-sentences', sentencePerLine: true }), { copyBlocks: [] }, t);
+  assert.equal(paragraphsOf(split).filter((p) => p.includes(border)).length, 2, 'the first two sentence paragraphs');
+  const whole = await documentXmlOf(await buildModel(TEST_ENTRY_ID), { copyBlocks: [] }, t);
+  assert.doesNotMatch(whole, /<w:pBdr>/);
+});

@@ -190,6 +190,10 @@ const CASES = [
   // in the middle of each underline — and the "Corrigé" tag. The PDF must
   // contain the passage with its answers. 'fr'+level-2 is otherwise unused.
   { label: 'fr-andika-level2-cloze-answerkey', language: 'fr', theme: 'stories', level: 2, entryId: 'stories_boite_a_musique_2', fontId: 'andika', writingMode: 'cloze', clozeEveryNth: 5, showAnswers: true },
+  // Copy target (A3): the first two sentences, one per line, so each is a
+  // whole paragraph and the Word file marks them with a left border. The
+  // border must not change the page count. 'de'+level-1 is otherwise unused.
+  { label: 'de-andika-level1-readcopy-copytarget', language: 'de', theme: 'stories', level: 1, entryId: 'stories_wollmuetze_1', fontId: 'andika', writingMode: 'read-copy', sentencePerLine: true, copyTarget: 'first-sentences' },
   { label: 'es-andika-level2-readcopy-drawingbox', language: 'es', theme: 'stories', level: 2, entryId: 'stories_huevo_blanco_2', fontId: 'andika', writingMode: 'read-copy', fontSizePt: 24, lineHeightMultiplier: 1.8, imageSlot: 'drawing-box' }
 ];
 
@@ -301,6 +305,8 @@ async function main() {
           document.getElementById('print-tint-toggle').dispatchEvent(new Event('change', { bubbles: true }));
           document.getElementById('line-numbers-toggle').checked = ${Boolean(testCase.lineNumbers)};
           document.getElementById('line-numbers-toggle').dispatchEvent(new Event('change', { bubbles: true }));
+          document.getElementById('copy-target-select').value = '${testCase.copyTarget ?? 'passage'}';
+          document.getElementById('copy-target-select').dispatchEvent(new Event('change', { bubbles: true }));
           document.getElementById('image-slot-select').value = '${testCase.imageSlot ?? 'picture'}';
           document.getElementById('image-slot-select').dispatchEvent(new Event('change', { bubbles: true }));
           document.getElementById('word-space-marks-toggle').checked = ${Boolean(testCase.wordSpaceMarks)};

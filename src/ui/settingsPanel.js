@@ -14,6 +14,7 @@
 
 import { SETTINGS_LIMITS, FONT_FAMILIES } from '../config.js';
 import { parseGraphemeInput } from '../text/graphemes.js';
+import { ACTIVITIES } from '../worksheet/activities.js';
 
 /**
  * @param {object} ctx
@@ -84,6 +85,9 @@ export function init({ state, els, defaultLetterColors: DEFAULT_LETTER_COLORS, r
     // Absent in setups saved before 0.10: on.
     els.headerInstructionsToggle.checked = s.header.instructions !== false;
     els.imageSlotSelect.value = s.imageSlot ?? 'picture';
+    // "Copy:" only where there are copy lines to fill.
+    els.copyTargetRow.hidden = !ACTIVITIES[s.writingMode]?.copyTarget;
+    els.copyTargetSelect.value = s.copyTarget ?? 'passage';
     els.imageSlotSelect.querySelector('option[value="none"]').disabled = s.writingMode === 'write-own';
     els.guideHeightInput.value = s.guideHeightMm;
   }

@@ -54,7 +54,10 @@ to a school.
 - **Grayscale preview:** shows the preview as a black-and-white printer
   would roughly print it (the printed sheet is unaffected). While it is on,
   a notice says when two marking colors come out almost the same grey.
-- **Writing modes:** read & copy (ruled handwriting lines), trace (light
+- **Writing modes:** read & copy (ruled handwriting lines; "Copy:" chooses
+  the whole text, the first two sentences, one clicked sentence or the
+  title, marked with a thin bar, and the app estimates whether the lines
+  are enough), trace (light
   text to trace over), read only, write about the picture (a large
   picture and ruled lines, no text), and fill the gaps (click words in the
   preview, or let the app gap every Nth word, to make a gap-fill sheet;

@@ -490,6 +490,55 @@ async function main() {
     // switches back to the picture. Other modes print no instruction.
     // (A square picture fills 90 × 90 of the large 120 × 90 mm box, and
     // 45 × 45 of the normal 60 × 45 mm one.)
+    // Copy target (A3), in read & copy: each choice marks its lines (or the
+    // title) in preview and print without moving anything; "One sentence"
+    // asks for a click, then marks that sentence; the row estimate, when
+    // shown, names both numbers.
+    console.log('Driving "Copy:"...');
+    const copyState = `(() => {
+      const bars = (root) => document.querySelectorAll(root + ' .ws-copy-mark-bar').length;
+      return {
+        row: !document.getElementById('copy-target-row').hidden,
+        bars: bars('#preview'), printBars: bars('#print-surface'),
+        titleMark: document.querySelector('#preview .ws-title')?.classList.contains('ws-copy-mark') ?? false,
+        printTitleMark: document.querySelector('#print-surface .ws-title')?.classList.contains('ws-copy-mark') ?? false,
+        hint: document.getElementById('preview-hint').hidden ? null : document.getElementById('preview-hint').textContent,
+        picking: document.getElementById('preview').classList.contains('is-picking'),
+        notices: [...document.querySelectorAll('#fit-notices li')].map((l) => ({ code: l.dataset.notice, text: l.textContent })),
+        // Relative to the sheet: the hint bar above the preview moves the whole page on screen.
+        firstLineTop: document.querySelector('#preview .ws-sentence').getBoundingClientRect().top - document.querySelector('#preview .ws-page').getBoundingClientRect().top,
+        used: document.getElementById('fit-indicator').dataset.usedMm
+      };
+    })()`;
+    await setSelect('writing-mode-select', 'read-copy');
+    const copyWhole = await evalJs(copyState);
+    await setSelect('copy-target-select', 'first-sentences');
+    const copyFirst = await evalJs(copyState);
+    await setSelect('copy-target-select', 'title');
+    const copyTitle = await evalJs(copyState);
+    await setSelect('copy-target-select', 'sentence');
+    const copyUnchosen = await evalJs(copyState);
+    await evalJs(`document.querySelector('#preview .ws-sentence [data-w="0"]').click()`);
+    await wait(300);
+    await waitForFit();
+    const copyChosen = await evalJs(copyState);
+    await setSelect('copy-target-select', 'passage');
+    const copyBack = await evalJs(copyState);
+    const shortNotice = [copyWhole, copyFirst, copyTitle, copyChosen].flatMap((st) => st.notices).find((n) => n.code === 'COPY_SPACE_SHORT');
+    const copyOk = copyWhole.row && copyWhole.bars === 0 && !copyWhole.titleMark && !copyWhole.picking
+      && copyFirst.bars > 0 && copyFirst.printBars === copyFirst.bars
+      && copyTitle.titleMark && copyTitle.printTitleMark && copyTitle.bars === 0
+      && copyUnchosen.picking && copyUnchosen.hint && copyUnchosen.bars === 0 && copyUnchosen.notices.some((n) => n.code === 'COPY_TARGET_UNCHOSEN')
+      && copyChosen.bars > 0 && copyChosen.printBars === copyChosen.bars && !copyChosen.notices.some((n) => n.code === 'COPY_TARGET_UNCHOSEN')
+      && [copyFirst, copyTitle, copyUnchosen, copyChosen].every((st) => st.firstLineTop === copyWhole.firstLineTop && st.used === copyWhole.used)
+      && (!shortNotice || (shortNotice.text.match(/\d+/g) ?? []).length >= 2)
+      && copyBack.bars === 0 && !copyBack.picking;
+    journeyChecks.push({
+      label: '"Copy:" marks the first sentences, a clicked sentence or the title in preview and print, asks for a click, and moves nothing',
+      ok: copyOk,
+      note: copyOk ? `bars ${copyFirst.bars} / ${copyChosen.bars}; estimate notice ${shortNotice ? `"${shortNotice.text}"` : 'not needed here'}` : JSON.stringify({ copyWhole, copyFirst, copyTitle, copyUnchosen, copyChosen, copyBack })
+    });
+
     // The answer key (U3b): "Show the answers" adds the "Answers" tag to the
     // preview and the print surface and prints the answers; the key goes
     // into the packet as its own sheet; off again, no tag.

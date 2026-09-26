@@ -33,7 +33,8 @@ import { init as initContentImportUi } from './ui/contentImport.js';
 import { init as initSettingsPanelUi } from './ui/settingsPanel.js';
 import { init as initWordPickerUi } from './ui/wordPicker.js';
 import { init as initClozeUi } from './ui/clozeControls.js';
-import { emptySelection, keyFor } from './worksheet/selection.js';
+import { emptySelection, keyFor, chooseSentence } from './worksheet/selection.js';
+import { ACTIVITIES } from './worksheet/activities.js';
 import { tokenize } from './text/tokenize.js';
 
 /** blueprint 8.1: "The interface starts in Slovene for the pilot." */
@@ -124,6 +125,7 @@ const state = {
     imageSlot: 'picture',
     graphemes: [],
     wordSpaceMarks: false,
+    copyTarget: 'passage',
     marginMm: 20
   },
   // How the preview is viewed, never what is printed: not in settings,
@@ -157,6 +159,8 @@ const els = {
   levelSelect: document.getElementById('level-select'),
   writingModeSelect: document.getElementById('writing-mode-select'),
   imageSlotSelect: document.getElementById('image-slot-select'),
+  copyTargetRow: document.getElementById('copy-target-row'),
+  copyTargetSelect: document.getElementById('copy-target-select'),
   clozeControls: document.getElementById('cloze-controls'),
   clozeEveryNthInput: document.getElementById('cloze-every-nth-input'),
   clozeEveryNthButton: document.getElementById('btn-cloze-every-nth'),
@@ -245,7 +249,38 @@ function currentDoc() {
   return entry ? tokenize({ body: entry.body, syllable_body: entry.syllable_body }) : null;
 }
 const clozeUi = initClozeUi({ state, els, getT: () => t, getDoc: currentDoc, requestRender });
-const wordPicker = initWordPickerUi({ els, onWord: (w) => clozeUi.onWord(w) });
+
+/**
+ * What a picked word means right now: a gap (fill the gaps), the sentence
+ * to copy (read & copy, "One sentence"), or nothing.
+ * @returns {'gaps' | 'sentence' | null}
+ */
+function pickingMode() {
+  if (clozeUi.isPicking()) return 'gaps';
+  if (state.selection && ACTIVITIES[state.settings.writingMode]?.copyTarget && state.settings.copyTarget === 'sentence') return 'sentence';
+  return null;
+}
+
+function onWordPicked(w) {
+  const mode = pickingMode();
+  if (mode === 'gaps') clozeUi.onWord(w);
+  if (mode === 'sentence') {
+    const doc = currentDoc();
+    if (!doc || !doc.words[w]) return;
+    state.selection = chooseSentence(state.selection, doc.words[w].sentence);
+    requestRender();
+  }
+}
+const wordPicker = initWordPickerUi({ els, onWord: onWordPicked });
+
+/** Picking and its hint above the preview follow the mode; call after every render and mode change. */
+function syncPicking() {
+  const mode = pickingMode();
+  wordPicker.refresh(mode !== null);
+  els.previewHint.hidden = mode === null;
+  if (mode) els.previewHint.textContent = t(mode === 'gaps' ? 'cloze.hint' : 'copyTarget.hint');
+  clozeUi.sync();
+}
 
 /** Applies t() to every element carrying a data-label (text) or data-placeholder (input placeholder) key. */
 function applyStaticLabels() {
@@ -386,7 +421,13 @@ function updateWritingMode(mode) {
   // sheet (handbook §11.6 A4). The select's "None" is disabled meanwhile.
   if (mode === 'write-own' && state.settings.imageSlot === 'none') state.settings.imageSlot = 'picture';
   syncSettingsControlsFromState();
-  clozeUi.sync();
+  syncPicking();
+  if (state.contentId) requestRender();
+}
+
+function updateCopyTarget(target) {
+  state.settings.copyTarget = target;
+  syncPicking();
   if (state.contentId) requestRender();
 }
 
@@ -460,11 +501,12 @@ function showFit(model, result) {
       suggestions
     });
   }
-  showNotices(result.notices);
+  showNotices(result.notices, result.noticeVars);
 }
 
-/** The last sheet's notice codes, unfiltered — re-shown when the view changes. */
+/** The last sheet's notice codes (unfiltered) and their numbers — re-shown when the view changes. */
 let currentNoticeCodes = [];
+let currentNoticeVars = {};
 
 /**
  * Advisory notices (worksheet/advice.js), one line each under the fit
@@ -473,15 +515,17 @@ let currentNoticeCodes = [];
  * owner's palette always triggers it (b/d), and it is the moment the
  * teacher is asking how the sheet prints in grey (handbook §11.15).
  * @param {string[]} codes
+ * @param {Record<string, Record<string, number>>} [vars] numbers for a notice's text, by code
  */
-function showNotices(codes) {
+function showNotices(codes, vars = {}) {
   currentNoticeCodes = codes;
+  currentNoticeVars = vars;
   const shown = codes.filter((code) => code !== 'GRAY_COLLISION' || state.view.grayscale);
   els.fitNotices.replaceChildren(
     ...shown.map((code) => {
       const li = document.createElement('li');
       li.dataset.notice = code;
-      li.textContent = t(`notice.${code}`);
+      li.textContent = t(`notice.${code}`, vars[code]);
       return li;
     })
   );
@@ -492,7 +536,7 @@ function showNotices(codes) {
 function updateGrayscalePreview(enabled) {
   state.view.grayscale = enabled;
   els.preview.classList.toggle('is-grayscale', enabled);
-  showNotices(currentNoticeCodes);
+  showNotices(currentNoticeCodes, currentNoticeVars);
 }
 
 /** Nothing printable: clears the preview, the print surface and lastGood, and disables every output. */
@@ -535,8 +579,7 @@ async function requestRender() {
     renderWorksheet(model, result.layout, els.printSurface, labels);
     state.lastGood = { model, layout: result.layout, pageCount: result.pageCount };
     updatePacketControls();
-    wordPicker.refresh(clozeUi.isPicking());
-    clozeUi.sync();
+    syncPicking();
   } catch (error) {
     // Before 0.10 an exception here left the previous worksheet on screen
     // with Print still enabled and only a console message — a sheet that
@@ -594,6 +637,7 @@ els.createButton.addEventListener('click', createText);
 els.textSelect.addEventListener('change', () => chooseTextById(els.textSelect.value));
 els.writingModeSelect.addEventListener('change', (event) => updateWritingMode(event.target.value));
 els.imageSlotSelect.addEventListener('change', (event) => updateImageSlot(event.target.value));
+els.copyTargetSelect.addEventListener('change', (event) => updateCopyTarget(event.target.value));
 els.printButton.addEventListener('click', printWorksheet);
 els.docxButton.addEventListener('click', handleExportDocx);
 
