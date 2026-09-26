@@ -127,6 +127,24 @@ export const GRAPHEME_LIMITS = { maxGroups: 4, maxLength: 4 };
 export const GRAPHEME_COLORS = ['#1E3A8A', '#0F766E', '#9A3412', '#DB2777'];
 
 /**
+ * Gap-fill ("Fill the gaps", worksheet/selection.js). Every nth word:
+ * default 7, 3–10. At most 40% of a text's words may be gaps. Every gap on
+ * a sheet has the same width, sized for a child writing the longest
+ * answer: max(minGapEm, charWidthEm × longest word's letters ×
+ * handwritingFactor) em. docxNbspEm is the width of one no-break space in
+ * the bundled fonts, used to build gaps in the Word file (an estimate:
+ * 0.25–0.3 em).
+ */
+export const CLOZE = {
+  everyNth: { min: 3, max: 10, default: 7 },
+  maxGapShare: 0.4,
+  minGapEm: 4,
+  charWidthEm: 0.55,
+  handwritingFactor: 1.6,
+  docxNbspEm: 0.27
+};
+
+/**
  * Visible word spaces (settings.wordSpaceMarks). The glyph must exist in
  * all four bundled fonts (no fallback font): ␣ ˽ ⸱ fail that check
  * (Instructions/tools/cmap.mjs), and U+00B7 is already the syllable

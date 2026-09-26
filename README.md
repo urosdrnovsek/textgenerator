@@ -55,9 +55,11 @@ to a school.
   would roughly print it (the printed sheet is unaffected). While it is on,
   a notice says when two marking colors come out almost the same grey.
 - **Writing modes:** read & copy (ruled handwriting lines), trace (light
-  text to trace over), read only, and write about the picture (a large
-  picture and ruled lines, no text, with a short instruction for the
-  child that can be switched off).
+  text to trace over), read only, write about the picture (a large
+  picture and ruled lines, no text), and fill the gaps (click words in the
+  preview, or let the app gap every Nth word, to make a gap-fill sheet).
+  The last two print a short instruction for the child, which can be
+  switched off.
 - **Picture on the sheet:** the text's picture, an empty drawing box after
   the text ("read it, then draw it"), or no picture.
 - **Header fields** (name line, date, title), each on/off; an optional

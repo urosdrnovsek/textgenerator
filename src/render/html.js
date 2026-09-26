@@ -28,12 +28,28 @@ const DEFAULT_LABELS = {
  * `data-w` / `data-syl`, numbers only, so later features can find a word or
  * syllable in the rendered page (click targets, arcs) without re-deriving
  * anything from the text.
+ * A gap (run.blank) is an inline-block of the sheet's one gap width with
+ * the answer inside it; CSS paints the answer faintly on screen and hides
+ * it in print, so the box — and the layout — is the same in both.
  * @param {import('../text/runs.js').StyledRun[]} runs
  * @param {HTMLElement} container
+ * @param {number} [blankWidthEm] the width of every gap (passage block)
  */
-export function renderRuns(runs, container) {
+export function renderRuns(runs, container, blankWidthEm = 0) {
   const fragment = document.createDocumentFragment();
   for (const run of runs) {
+    if (run.blank) {
+      const gap = document.createElement('span');
+      gap.className = 'ws-blank';
+      gap.style.width = `${blankWidthEm}em`;
+      gap.dataset.w = String(run.w);
+      const answer = document.createElement('span');
+      answer.className = 'ws-blank-answer';
+      answer.textContent = run.text;
+      gap.append(answer);
+      fragment.append(gap);
+      continue;
+    }
     const span = document.createElement('span');
     span.textContent = run.text;
     span.style.color = run.color;
@@ -270,7 +286,7 @@ export const BLOCK_RENDERERS = {
     for (const paragraphRuns of block.paragraphs) {
       const paragraph = document.createElement('p');
       paragraph.className = 'ws-sentence ws-text';
-      renderRuns(paragraphRuns, paragraph);
+      renderRuns(paragraphRuns, paragraph, block.blankWidthEm);
       bodyWrap.append(paragraph);
     }
     return bodyWrap;

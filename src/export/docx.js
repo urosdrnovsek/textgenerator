@@ -44,9 +44,10 @@ import {
   VerticalAlign,
   ShadingType,
   LineNumberRestartFormat,
+  UnderlineType,
   convertMillimetersToTwip
 } from 'docx';
-import { FONT_FAMILIES, TWIPS_PER_PT, mmToPx, mmToTwips, TINTS_BY_ID, contentWidthMm, LINE_NUMBER_GUTTER_MM, DRAWING_BOX_GAP_MM } from '../config.js';
+import { FONT_FAMILIES, TWIPS_PER_PT, mmToPx, mmToTwips, TINTS_BY_ID, contentWidthMm, LINE_NUMBER_GUTTER_MM, DRAWING_BOX_GAP_MM, CLOZE } from '../config.js';
 import { computeContainedImageSizeMm, IMAGE_BOX_LARGE } from '../layout/imageBox.js';
 
 /** Matches src/render/html.js DEFAULT_LABELS — used only when a caller doesn't pass the active locale's translated labels. */
@@ -65,12 +66,27 @@ const DEFAULT_LABELS = {
  * letter-spacing/word-spacing gives the HTML preview, previously missing
  * from DOCX export entirely (upgrade blueprint v3, workstream D3).
  * @param {import('../text/runs.js').StyledRun[]} runs
- * @param {{ fontFamily: string, fontSizePt: number, characterSpacingTwips: number, wordSpacingTwips: number }} options
+ * A gap (run.blank) becomes one underlined run of no-break spaces about
+ * the sheet's gap width wide (CLOZE.docxNbspEm per space — an estimate;
+ * verify-docx checks the page count), with no letter or word spacing, like
+ * the preview's fixed-width box. The answer is not in the file.
+ * @param {{ fontFamily: string, fontSizePt: number, characterSpacingTwips: number, wordSpacingTwips: number, blankWidthEm?: number }} options
  * @returns {TextRun[]}
  */
-function toWordRuns(runs, { fontFamily, fontSizePt, characterSpacingTwips, wordSpacingTwips }) {
+function toWordRuns(runs, { fontFamily, fontSizePt, characterSpacingTwips, wordSpacingTwips, blankWidthEm = 0 }) {
   const wordRuns = [];
   for (const run of runs) {
+    if (run.blank) {
+      wordRuns.push(
+        new TextRun({
+          text: '\u00A0'.repeat(Math.max(1, Math.round(blankWidthEm / CLOZE.docxNbspEm))),
+          underline: { type: UnderlineType.SINGLE },
+          font: fontFamily,
+          size: Math.round(fontSizePt * 2)
+        })
+      );
+      continue;
+    }
     for (const segment of run.text.split(/(\s+)/)) {
       if (segment.length === 0) continue;
       const isSpace = /^\s+$/.test(segment);
@@ -202,7 +218,7 @@ export const BLOCK_WRITERS = {
           spacing: paragraphGapTwips > 0
             ? { line: lineTwips, lineRule: LineRuleType.EXACT, after: paragraphGapTwips }
             : { line: lineTwips, lineRule: LineRuleType.EXACT },
-          children: toWordRuns(paragraphRuns, { fontFamily, fontSizePt: s.fontSizePt, characterSpacingTwips, wordSpacingTwips }),
+          children: toWordRuns(paragraphRuns, { fontFamily, fontSizePt: s.fontSizePt, characterSpacingTwips, wordSpacingTwips, blankWidthEm: block.blankWidthEm }),
           shading,
           // Same rule as the preview's `orphans: 1; widows: 1` (worksheet.css):
           // the fit check breaks between any two lines. Word and LibreOffice

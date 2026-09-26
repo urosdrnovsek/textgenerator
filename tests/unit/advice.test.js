@@ -74,3 +74,12 @@ test('highlighted letter groups are compared in grey with the letter colours', (
   assert.deepEqual(advise(sheet({ graphemes })), []);
   assert.deepEqual(advise(sheet({ graphemes, letterColors: { b: '#1E3A8B' } })), ['GRAY_COLLISION']);
 });
+
+test('gap-fill notices: NO_GAPS while a gap-fill sheet has none, SELECTION_RESET when stale gaps were dropped', () => {
+  const cloze = { ...SETTINGS, writingMode: 'cloze' };
+  assert.deepEqual(advise(buildWorksheet(ENTRY, cloze, ASSETS, 'sl')), ['NO_GAPS']);
+  const withGap = { key: 'sl:t@1', blanks: [0], sentence: null, showAnswers: false };
+  assert.deepEqual(advise(buildWorksheet(ENTRY, cloze, ASSETS, 'sl', withGap)), []);
+  const stale = { ...withGap, key: 'sl:other@1' };
+  assert.deepEqual(advise(buildWorksheet(ENTRY, cloze, ASSETS, 'sl', stale)), ['SELECTION_RESET', 'NO_GAPS']);
+});

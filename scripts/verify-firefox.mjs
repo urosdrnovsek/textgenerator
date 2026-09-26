@@ -313,6 +313,35 @@ async function main() {
     await evalJs(`document.getElementById('word-space-marks-toggle').click();`);
     await waitForFit();
 
+    // Gap-fill (A1) on the same sheet: gaps print as empty boxes of the
+    // measured size — the passage without its answers is in the PDF, the
+    // passage with them is not — and the page count still matches.
+    console.log('\nGap-fill in the real Firefox print...');
+    await evalJs(`const el = document.getElementById('writing-mode-select'); el.value = 'cloze'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await waitForFit();
+    await evalJs(`document.getElementById('cloze-every-nth-input').value = '4'; document.getElementById('btn-cloze-every-nth').click();`);
+    await driver.sleep(500);
+    await waitForFit();
+    const clozePages = Number(await evalJs(`return document.getElementById('fit-indicator').dataset.pageCount`));
+    const clozeTexts = await evalJs(`return [...document.querySelectorAll('#preview .ws-sentence')].map((p) => {
+      const copy = p.cloneNode(true);
+      const full = copy.textContent;
+      copy.querySelectorAll('.ws-blank-answer').forEach((a) => a.remove());
+      return { full, gapped: copy.textContent, gaps: p.querySelectorAll('.ws-blank').length };
+    })`);
+    const clozePdfPath = path.join(downloadDir, 'cloze-worksheet.pdf');
+    await writeFile(clozePdfPath, Buffer.from(await driver.printPage(), 'base64'));
+    const clozePrintedPages = Number((execFileSync('pdfinfo', [clozePdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
+    const squash = (text) => text.normalize('NFC').replace(/\s+/g, '');
+    // -layout: wide empty gaps make pdftotext's default reading order interleave lines.
+    const clozePdf = squash(execFileSync('pdftotext', ['-layout', clozePdfPath, '-']).toString());
+    const gapCount = clozeTexts.reduce((n, p) => n + p.gaps, 0);
+    check(`gap-fill worksheet (${gapCount} gaps) prints as exactly ${clozePages} pages (got ${clozePrintedPages})`, gapCount > 0 && clozePrintedPages === clozePages);
+    check('the printed gap-fill has the passage without its answers, and not the answers',
+      clozeTexts.every((p) => clozePdf.includes(squash(p.gapped))) && clozeTexts.filter((p) => p.gaps > 0).every((p) => !clozePdf.includes(squash(p.full))));
+    await evalJs(`const el = document.getElementById('writing-mode-select'); el.value = 'read-copy'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await waitForFit();
+
     // Reset back to defaults — the language loop below checks for the
     // localized "fits" wording specifically, which these settings would
     // break for languages whose content doesn't also extend at max size.

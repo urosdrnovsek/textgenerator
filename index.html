@@ -50,6 +50,7 @@
         <option value="trace" data-label="writingMode.trace">Sledi črkam</option>
         <option value="read-only" data-label="writingMode.read-only">Samo branje</option>
         <option value="write-own" data-label="writingMode.write-own">Piši o sliki</option>
+        <option value="cloze" data-label="writingMode.cloze">Dopolni besedilo</option>
       </select>
 
       <label for="image-slot-select" data-label="field.imageSlot">Slika na listu</label>
@@ -58,6 +59,16 @@
         <option value="drawing-box" data-label="imageSlot.drawing-box">Okvir za risanje</option>
         <option value="none" data-label="imageSlot.none">Brez</option>
       </select>
+
+      <div id="cloze-controls" class="cloze-controls" hidden>
+        <div class="cloze-row">
+          <label for="cloze-every-nth-input" data-label="cloze.everyNthLabel">N =</label>
+          <input type="number" id="cloze-every-nth-input" min="3" max="10" step="1" value="7" />
+          <button id="btn-cloze-every-nth" type="button" data-label="cloze.everyNth">Praznina na vsako N-to besedo</button>
+        </div>
+        <button id="btn-cloze-clear" type="button" data-label="cloze.clear">Počisti praznine</button>
+        <div id="cloze-status" class="cloze-status" role="status"></div>
+      </div>
 
       <details class="settings-panel">
         <summary data-label="field.textSettings">Nastavitve besedila</summary>
@@ -215,6 +226,7 @@
       </div>
     </div>
     <div class="preview-scroll">
+      <div id="preview-hint" class="preview-hint" hidden></div>
       <div class="page-frame">
         <div id="preview" role="region" data-aria-label="preview.regionLabel" aria-label="Predogled delovnega lista"></div>
       </div>

@@ -414,6 +414,76 @@ async function main() {
       note: marksOk ? `${marksOn.preview.count} marks` : JSON.stringify({ marksOn, marksOff })
     });
 
+    // Gap-fill (A1): picking words in the preview (click and keyboard),
+    // every Nth word leaving the first sentence whole, the cap, one gap
+    // width, the same boxes in preview and print, answers hidden only in
+    // print media, and nothing clickable once the mode is left.
+    const setSelect = async (id, value) => {
+      await evalJs(`(() => { const el = document.getElementById('${id}'); el.value = '${value}'; el.dispatchEvent(new Event('change', { bubbles: true })); })()`);
+      await waitForFit();
+    };
+    console.log('Driving "Fill the gaps"...');
+    const clozeState = `(() => {
+      const gaps = (root) => [...document.querySelectorAll(root + ' .ws-blank')];
+      const preview = gaps('#preview');
+      const firstGap = preview[0];
+      let before = '';
+      if (firstGap) { const r = document.createRange(); r.setStart(document.querySelector('#preview .ws-sentence'), 0); r.setEndBefore(firstGap); before = r.toString(); }
+      return {
+        answers: preview.map((g) => g.textContent),
+        printAnswers: gaps('#print-surface').map((g) => g.textContent),
+        widths: [...new Set(preview.map((g) => g.offsetWidth))],
+        printWidths: [...new Set(gaps('#print-surface').map((g) => g.offsetWidth))],
+        textBeforeFirstGap: before,
+        hint: !document.getElementById('preview-hint').hidden,
+        controls: !document.getElementById('cloze-controls').hidden,
+        status: document.getElementById('cloze-status').textContent,
+        notices: [...document.querySelectorAll('#fit-notices li')].map((l) => l.dataset.notice),
+        instruction: Boolean(document.querySelector('#preview .ws-instruction')),
+        picking: document.getElementById('preview').classList.contains('is-picking'),
+        focusable: document.querySelectorAll('#preview [tabindex]').length,
+        focusedW: document.activeElement?.dataset?.w ?? null
+      };
+    })()`;
+    await setSelect('writing-mode-select', 'cloze');
+    const clozeOn = await evalJs(clozeState);
+    await evalJs(`document.querySelector('#preview .ws-sentence [data-w="1"]').click()`);
+    await wait(300);
+    await waitForFit();
+    const clozeClicked = await evalJs(clozeState);
+    await evalJs(`(() => { document.getElementById('cloze-every-nth-input').value = '4'; document.getElementById('btn-cloze-every-nth').click(); })()`);
+    await wait(300);
+    await waitForFit();
+    const clozeNth = await evalJs(clozeState);
+    // Print media: the answer is hidden, the gap's border and size are not.
+    await cdp.send('Emulation.setEmulatedMedia', { media: 'print' });
+    const printPaint = await evalJs(`(() => { const g = document.querySelector('#print-surface .ws-blank'); return { answer: getComputedStyle(g.firstElementChild).visibility, border: getComputedStyle(g).borderBottomStyle, width: g.offsetWidth }; })()`);
+    await cdp.send('Emulation.setEmulatedMedia', { media: '' });
+    // Keyboard: the roving tab stop, two words right, Space.
+    await evalJs(`document.getElementById('btn-cloze-clear').click()`);
+    await wait(300);
+    await waitForFit();
+    // The tab stop stays on the last word picked; two words right of it.
+    const tabStopW = Number(await evalJs(`(() => { const el = document.querySelector('#preview [tabindex="0"]'); el.focus(); return el.dataset.w; })()`));
+    for (const key of ['ArrowRight', 'ArrowRight']) await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', key, code: key, windowsVirtualKeyCode: 39 });
+    await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', key: ' ', code: 'Space', windowsVirtualKeyCode: 32 });
+    await wait(300);
+    await waitForFit();
+    const clozeKeyboard = await evalJs(clozeState);
+    await setSelect('writing-mode-select', 'read-copy');
+    const clozeOff = await evalJs(clozeState);
+    const clozeOk = clozeOn.hint && clozeOn.controls && clozeOn.instruction && clozeOn.picking && clozeOn.notices.includes('NO_GAPS') && clozeOn.answers.length === 0
+      && clozeClicked.answers.length === 1 && JSON.stringify(clozeClicked.printAnswers) === JSON.stringify(clozeClicked.answers) && !clozeClicked.notices.includes('NO_GAPS')
+      && clozeNth.answers.length > 1 && clozeNth.widths.length === 1 && JSON.stringify(clozeNth.printWidths) === JSON.stringify(clozeNth.widths) && /[.!?]/.test(clozeNth.textBeforeFirstGap)
+      && printPaint.answer === 'hidden' && printPaint.border === 'solid' && printPaint.width === clozeNth.widths[0]
+      && clozeKeyboard.answers.length === 1 && clozeKeyboard.focusedW === String(tabStopW + 2)
+      && !clozeOff.hint && !clozeOff.controls && !clozeOff.picking && clozeOff.focusable === 0 && clozeOff.answers.length === 0;
+    journeyChecks.push({
+      label: '"Fill the gaps": click and keyboard gaps, every Nth after the first sentence, one width, same boxes in print with answers hidden, off again in read & copy',
+      ok: clozeOk,
+      note: clozeOk ? `${clozeNth.answers.length} gaps at ${clozeNth.widths[0]}px; keyboard gap "${clozeKeyboard.answers[0]}"` : JSON.stringify({ clozeOn, clozeClicked, clozeNth, printPaint, clozeKeyboard, clozeOff })
+    });
+
     // Write about the picture (A4) + the instruction line: title, the
     // locale's instruction, the large picture, no passage, copy rows. Its
     // select disables "None", and choosing the mode while "None" is set
@@ -438,10 +508,6 @@ async function main() {
         slot: slot.value, noneDisabled: slot.querySelector('option[value="none"]').disabled
       };
     })()`;
-    const setSelect = async (id, value) => {
-      await evalJs(`(() => { const el = document.getElementById('${id}'); el.value = '${value}'; el.dispatchEvent(new Event('change', { bubbles: true })); })()`);
-      await waitForFit();
-    };
     await setSelect('image-slot-select', 'none');
     await setSelect('writing-mode-select', 'write-own');
     const own = await evalJs(ownState);

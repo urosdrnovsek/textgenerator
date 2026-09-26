@@ -331,3 +331,21 @@ test('word-space marks export as their own faint runs, and only when switched on
   const plain = await documentXmlOf(await buildModel(TEST_ENTRY_ID), { copyBlocks: [] }, t);
   assert.doesNotMatch(plain, />_<\/w:t>/);
 });
+
+test('a gap is one underlined run of no-break spaces about the gap width wide, and the answer is not in the file', async (t) => {
+  const { CLOZE } = await import('../../src/config.js');
+  const { keyFor } = await import('../../src/worksheet/selection.js');
+  const plain = await buildModel(TEST_ENTRY_ID);
+  const answer = plain.bodyParagraphs.flat().filter((r) => r.w === 3).map((r) => r.text).join('');
+  const selection = { key: keyFor(plain.contentKey), blanks: [3], sentence: null, showAnswers: false };
+  const raw = JSON.parse(await readFile(path.join(root, 'content/sl.json'), 'utf8'));
+  const { imagesById } = await loadManifestAssets();
+  const entry = { ...raw.entries.find((e) => e.id === TEST_ENTRY_ID), language: 'sl' };
+  const gapped = buildWorksheet(entry, { ...SETTINGS, writingMode: 'cloze' }, { imagesById }, 'sl', selection);
+  const labels = { nameLine: 'Ime:', date: 'Datum:', instruction: () => 'Dopolni.' };
+  const xml = await documentXmlOf(gapped, { copyBlocks: [] }, t, labels);
+  const gap = xml.match(/<w:r><w:rPr>(?:(?!<\/w:rPr>)[\s\S])*<w:u w:val="single"\/>(?:(?!<\/w:rPr>)[\s\S])*<\/w:rPr><w:t xml:space="preserve">(\u00A0+)<\/w:t><\/w:r>/);
+  assert.ok(gap, 'an underlined run of no-break spaces');
+  assert.equal(gap[1].length, Math.round(gapped.blocks.at(-1).blankWidthEm / CLOZE.docxNbspEm));
+  assert.doesNotMatch(xml, new RegExp(`>${answer}<`), 'the answer is not in the file');
+});

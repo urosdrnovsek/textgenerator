@@ -9,9 +9,10 @@
 
 import { GRAY_MIN_LUMINANCE_DELTA } from '../config.js';
 import { DEFAULT_SYLLABLE_COLORS } from '../text/runs.js';
+import { ACTIVITIES } from './activities.js';
 
 /** Every code advise() can return; each needs a `notice.<CODE>` string in all five locales. */
-export const NOTICE_CODES = ['GRAY_COLLISION'];
+export const NOTICE_CODES = ['GRAY_COLLISION', 'SELECTION_RESET', 'NO_GAPS'];
 
 /**
  * WCAG relative luminance of a six-digit hex colour.
@@ -60,6 +61,10 @@ function grayCollision(model) {
 export function advise(model) {
   /** @type {string[]} */
   const notices = [];
+  // Gaps chosen for a text that has since changed (a content import) were dropped.
+  if (model.selectionReset) notices.push('SELECTION_RESET');
+  // A gap-fill sheet with no gaps would print the whole text under "Fill in the missing words".
+  if (ACTIVITIES[model.settings.writingMode]?.passage === 'cloze' && (model.selection?.blanks.length ?? 0) === 0) notices.push('NO_GAPS');
   if (grayCollision(model)) notices.push('GRAY_COLLISION');
   return notices;
 }

@@ -20,6 +20,7 @@ import { WORD_SPACE_MARK, WORD_SPACE_MARK_COLOR } from '../config.js';
  * @typedef {object} StyledRun
  * @property {string} text
  * @property {string} color six-digit hex, e.g. "#B42318"
+ * @property {true} [blank] gap-fill: the whole word is one run, and `text` is the hidden answer; absent otherwise
  * @property {true} [bold] a highlighted letter group (settings.graphemes): bold so it survives a mono printer; absent otherwise
  * @property {number} [w] index of the word this run belongs to (src/text/tokenize.js); present on every run inside a word, including a separator mark inside it
  * @property {number} [syl] syllable index within the word; present on word letters when the text has syllable data
@@ -74,11 +75,12 @@ const SYLLABLE_SEPARATOR = '·'; // middle dot
  * @property {string} [baseColor]
  * @property {import('./graphemes.js').GraphemeGroup[]} [graphemes] letter groups to highlight (colour + bold), above every other colour
  * @property {boolean} [wordSpaceMarks] a faint mark in every space between two words of one sentence
+ * @property {number[]} [blanks] word indices that become gaps (worksheet/selection.js)
  */
 
 /** Two styled pieces merge into one run only when everything a consumer may read from them is equal. */
 function sameStyle(a, b) {
-  return a.color === b.color && a.bold === b.bold && a.kind === b.kind && a.w === b.w && a.syl === b.syl;
+  return a.color === b.color && a.bold === b.bold && a.blank === b.blank && a.kind === b.kind && a.w === b.w && a.syl === b.syl;
 }
 
 /**
@@ -102,7 +104,8 @@ export function styleText(doc, options = {}) {
     syllableMode = 'off',
     baseColor = '#202020',
     graphemes = [],
-    wordSpaceMarks = false
+    wordSpaceMarks = false,
+    blanks = []
   } = options;
   for (const color of Object.values(letterColors)) assertValidColor(color);
   for (const color of syllableColors) assertValidColor(color);
@@ -119,6 +122,7 @@ export function styleText(doc, options = {}) {
   const graphemeAt = new Array(body.length);
   for (const span of findGraphemeSpans(doc, graphemes)) graphemeAt.fill(span.color, span.start, span.end);
   const markAt = wordSpaceMarks ? wordSpaceMarkOffsets(doc) : new Set();
+  const blankSet = new Set(blanks);
 
   /** @type {StyledRun[]} */
   const runs = [];
@@ -156,6 +160,22 @@ export function styleText(doc, options = {}) {
     // mark, never start with one), and the real space still lets the line
     // break. Inserted, like a separator, so not part of the source text.
     if (markAt.has(offset)) push({ text: `\u00A0${WORD_SPACE_MARK}`, color: WORD_SPACE_MARK_COLOR, kind: 'mark' });
+
+    // A gap: the whole word becomes one run in the base colour (no letter,
+    // syllable or group styling survives on a word the child must supply),
+    // and any syllable breaks inside it are consumed without a separator.
+    // Punctuation around it stays ("go," → gap + ",").
+    const startsWord = wordAt[offset];
+    if (startsWord >= 0 && blankSet.has(startsWord) && offset === words[startsWord].start) {
+      const word = words[startsWord];
+      push({ text: body.slice(word.start, word.end), color: baseColor, w: startsWord, blank: true });
+      while (nextBreak < syllableBreaks.length && syllableBreaks[nextBreak] < word.end) {
+        tokenSyllable += 1;
+        nextBreak += 1;
+      }
+      offset = word.end;
+      continue;
+    }
 
     /** @type {StyledRun} */
     const piece = { text: char, color: baseColor };

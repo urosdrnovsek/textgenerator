@@ -31,6 +31,10 @@ import { init as initPacketUi } from './ui/packet.js';
 import { init as initPresetsUi } from './ui/presets.js';
 import { init as initContentImportUi } from './ui/contentImport.js';
 import { init as initSettingsPanelUi } from './ui/settingsPanel.js';
+import { init as initWordPickerUi } from './ui/wordPicker.js';
+import { init as initClozeUi } from './ui/clozeControls.js';
+import { emptySelection, keyFor } from './worksheet/selection.js';
+import { tokenize } from './text/tokenize.js';
 
 /** blueprint 8.1: "The interface starts in Slovene for the pilot." */
 const DEFAULT_LANGUAGE = 'sl';
@@ -125,6 +129,9 @@ const state = {
   // How the preview is viewed, never what is printed: not in settings,
   // presets, the model or the print surface (handbook §11.8).
   view: { grayscale: false },
+  // Per-text clicks (gaps, the sentence to copy, answers): reset whenever a
+  // text is shown, never saved, never in presets (handbook §11.8).
+  selection: null,
   customImage: null, // { id: 'custom', path: dataUrl } | null — session-only, never persisted (blueprint 8.8/section 15)
   lastGood: null, // { model, layout }
   packet: [] // ordered PacketSnapshot[] (worksheet/packet.js) — frozen { id, title, language, level, model, layout, labels }, never live references (blueprint 8.10/6)
@@ -150,6 +157,12 @@ const els = {
   levelSelect: document.getElementById('level-select'),
   writingModeSelect: document.getElementById('writing-mode-select'),
   imageSlotSelect: document.getElementById('image-slot-select'),
+  clozeControls: document.getElementById('cloze-controls'),
+  clozeEveryNthInput: document.getElementById('cloze-every-nth-input'),
+  clozeEveryNthButton: document.getElementById('btn-cloze-every-nth'),
+  clozeClearButton: document.getElementById('btn-cloze-clear'),
+  clozeStatus: document.getElementById('cloze-status'),
+  previewHint: document.getElementById('preview-hint'),
   candidateCount: document.getElementById('candidate-count'),
   textSelect: document.getElementById('text-select'),
   textSelectLabel: document.getElementById('text-select-label'),
@@ -224,6 +237,14 @@ const { populatePresetSelect } = initPresetsUi({
   requestRender
 });
 initContentImportUi({ state, els, getT: () => t, imagesById: IMAGES_BY_ID, installCatalog, updateCandidateCount });
+
+/** The displayed text, tokenized (for the word picker's selection operations); null before one is shown. */
+function currentDoc() {
+  const entry = state.contentId ? CATALOG.byId.get(state.contentId) : null;
+  return entry ? tokenize({ body: entry.body, syllable_body: entry.syllable_body }) : null;
+}
+const clozeUi = initClozeUi({ state, els, getT: () => t, getDoc: currentDoc, requestRender });
+const wordPicker = initWordPickerUi({ els, onWord: (w) => clozeUi.onWord(w) });
 
 /** Applies t() to every element carrying a data-label (text) or data-placeholder (input placeholder) key. */
 function applyStaticLabels() {
@@ -335,6 +356,7 @@ function syncTextSelect(candidates = findCandidates(CATALOG, state.filter)) {
 
 function showEntry(entry) {
   state.contentId = entry.id;
+  state.selection = emptySelection(keyFor(entry));
   resetCustomImage(); // a newly created text gets its own paired image, not the previous text's custom one
   syncTextSelect();
   requestRender();
@@ -363,6 +385,7 @@ function updateWritingMode(mode) {
   // sheet (handbook §11.6 A4). The select's "None" is disabled meanwhile.
   if (mode === 'write-own' && state.settings.imageSlot === 'none') state.settings.imageSlot = 'picture';
   syncSettingsControlsFromState();
+  clozeUi.sync();
   if (state.contentId) requestRender();
 }
 
@@ -488,7 +511,7 @@ async function requestRender() {
     const imagesById = state.customImage
       ? new Map(IMAGES_BY_ID).set(entry.imageId, state.customImage)
       : IMAGES_BY_ID;
-    const model = buildWorksheet(entry, state.settings, { imagesById }, entry.language);
+    const model = buildWorksheet(entry, state.settings, { imagesById }, entry.language, state.selection);
 
     const labels = sheetLabels(t);
     const result = await measureWorksheet(model, revision, labels);
@@ -509,6 +532,8 @@ async function requestRender() {
     renderWorksheet(model, result.layout, els.printSurface, labels);
     state.lastGood = { model, layout: result.layout, pageCount: result.pageCount };
     updatePacketControls();
+    wordPicker.refresh(clozeUi.isPicking());
+    clozeUi.sync();
   } catch (error) {
     // Before 0.10 an exception here left the previous worksheet on screen
     // with Print still enabled and only a console message — a sheet that

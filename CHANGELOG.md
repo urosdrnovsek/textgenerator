@@ -73,6 +73,20 @@ supports).
   row of exact height, like the copy lines. Saved setups include the
   choice; setups saved by 0.9 keep the picture. The owner checked the
   Slovene labels.
+- **Fill the gaps.** A new writing mode makes a gap-fill sheet. The
+  teacher clicks words in the preview to turn them into gaps (or back),
+  or uses "Gap every Nth word" (N from 3 to 10, 7 by default), which
+  leaves the first sentence whole, as the classic cloze procedure does.
+  Words can also be chosen with the keyboard (arrow keys, then Space or
+  Enter). All gaps on a sheet have the same width, sized for a child to
+  write the longest missing word, so a gap's length doesn't give the
+  answer away. The preview shows each answer faintly inside its gap; the
+  printed sheet and the Word file don't have them. At most 40% of a
+  text's words can be gaps. The sheet prints "Fill in the missing
+  words." under the title. The gaps belong to the text on screen:
+  choosing another text starts with none, and gaps are never saved. A
+  notice says when a gap-fill sheet has no gaps yet. In the Word file a
+  gap is an underlined run of spaces, an estimate of the preview's width.
 - **Word files: no more lines pushed to the next page (bug fix).** Word
   and LibreOffice keep at least two lines of a paragraph together on a
   page by default ("widow/orphan control"); the app's preview allows a

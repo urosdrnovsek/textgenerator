@@ -184,6 +184,11 @@ For at least one exported `.docx` per language and per writing mode (3 × 5 = 15
 - [ ] The embedded image displays (not a broken-image icon, not a linked/missing external reference).
 - [ ] Read-copy mode: handwriting-line rows are present and evenly spaced; if the app reported a second copy-practice block (a fresh page of rules), confirm Word actually starts it on a new page rather than overflowing the first.
 - [ ] Font: note what Word actually renders each exported font as. Fonts are *not* embedded in the `.docx` (documented, known limitation since Phase 0) — if Andika/Lexend/OpenDyslexic/Comic Neue aren't installed on the test machine, Word will substitute a fallback. Record which fallback Word picks for each, since that's useful information for a school's IT setup instructions.
+- [ ] Fill the gaps: each gap is an underlined stretch of spaces, all the
+      same length and wide enough to write the longest missing word by
+      hand, and no answer is visible anywhere in the file. The gap width is
+      an estimate in the Word file (no-break spaces); check the page count
+      against the app.
 - [ ] Write about the picture: the instruction line under the title, the
       picture noticeably larger than in the other modes (9 cm square for
       the bundled art), no passage, then ruled lines.

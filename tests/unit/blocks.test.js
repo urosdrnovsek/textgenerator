@@ -92,3 +92,24 @@ test('every activity instruction has a sheet.instruction string in all five loca
     for (const key of keys) assert.equal(typeof strings[`sheet.instruction.${key}`], 'string', `${language}: ${key}`);
   }
 });
+
+test('fill the gaps: an instruction line, and gaps only in this mode, with one gap width on the passage block', () => {
+  const selection = { key: 'sl:t@1', blanks: [1], sentence: null, showAnswers: false };
+  const cloze = buildWorksheet(ENTRY, { ...SETTINGS, writingMode: 'cloze' }, ASSETS, 'sl', selection);
+  assert.deepEqual(types(cloze), ['header', 'title', 'instruction', 'image', 'passage']);
+  assert.equal(cloze.blocks[2].key, 'cloze');
+  const passage = cloze.blocks.at(-1);
+  assert.equal(passage.blankWidthEm, 4);
+  assert.deepEqual(passage.paragraphs.flat().filter((r) => r.blank).map((r) => r.text), ['ima']);
+  const readCopy = buildWorksheet(ENTRY, SETTINGS, ASSETS, 'sl', selection);
+  assert.ok(readCopy.bodyParagraphs.flat().every((r) => !r.blank), 'the clicks are kept but not applied in other modes');
+  assert.equal(readCopy.blocks.at(-1).blankWidthEm, 0);
+  assert.deepEqual(readCopy.selection, selection, 'the selection travels in the model');
+});
+
+test('a selection made for another text version is ignored and flagged', () => {
+  const stale = { key: 'sl:t@0', blanks: [1], sentence: null, showAnswers: false };
+  const model = buildWorksheet(ENTRY, { ...SETTINGS, writingMode: 'cloze' }, ASSETS, 'sl', stale);
+  assert.equal(model.selectionReset, true);
+  assert.deepEqual(model.selection.blanks, []);
+});

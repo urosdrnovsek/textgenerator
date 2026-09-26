@@ -180,6 +180,12 @@ const CASES = [
   // gap, so the page count and the full passage (marks included) must
   // hold. 'en'+level-4 is an otherwise-unused pair.
   { label: 'en-andika-level4-trace-wordspacemarks', language: 'en', theme: 'stories', level: 4, entryId: 'stories_treehouse_4', fontId: 'andika', writingMode: 'trace', wordSpaceMarks: true },
+  // Gap-fill (A1): every 5th word after the first sentence is a gap, an
+  // underlined run of no-break spaces in the Word file (an estimate of the
+  // preview's fixed-width gap), so the page count must still match. The
+  // hidden answers are left out of the text compared. 'sl'+level-3 is
+  // otherwise unused.
+  { label: 'sl-andika-level3-cloze', language: 'sl', theme: 'stories', level: 3, entryId: 'stories_polz_tito_3', fontId: 'andika', writingMode: 'cloze', clozeEveryNth: 5 },
   { label: 'es-andika-level2-readcopy-drawingbox', language: 'es', theme: 'stories', level: 2, entryId: 'stories_huevo_blanco_2', fontId: 'andika', writingMode: 'read-copy', fontSizePt: 24, lineHeightMultiplier: 1.8, imageSlot: 'drawing-box' }
 ];
 
@@ -311,6 +317,15 @@ async function main() {
           ` : ''}
         })();
       `);
+      if (testCase.clozeEveryNth) {
+        // Gap-fill: the gaps are chosen after the text is on screen.
+        await waitForFit();
+        await evalJs(`(() => {
+          document.getElementById('cloze-every-nth-input').value = '${testCase.clozeEveryNth}';
+          document.getElementById('btn-cloze-every-nth').click();
+        })();`);
+        await wait(500); // the fit line still shows the pre-gap result until the new render settles
+      }
       const fitText = await waitForFit();
       const docxReady = await evalJs(`!document.getElementById('btn-docx').disabled`);
       if (!docxReady) {
@@ -329,7 +344,13 @@ async function main() {
       const renderedTitle = await evalJs(`document.querySelector('#preview .ws-title')?.textContent ?? ''`);
       // The text paragraphs only: overlays inside .ws-body (line numbers)
       // carry text of their own that isn't part of the passage.
-      const renderedBody = await evalJs(`[...document.querySelectorAll('#preview .ws-body .ws-sentence')].map((p) => p.textContent).join('')`);
+      // Gap answers are hidden on paper (and absent from the Word file), so
+      // they are left out of the text the PDF must contain.
+      const renderedBody = await evalJs(`[...document.querySelectorAll('#preview .ws-body .ws-sentence')].map((p) => {
+        const copy = p.cloneNode(true);
+        copy.querySelectorAll('.ws-blank-answer').forEach((a) => a.remove());
+        return copy.textContent;
+      }).join('')`);
       const renderedInstruction = await evalJs(`document.querySelector('#preview .ws-instruction')?.textContent ?? ''`);
       const previewLineNumbers = await evalJs(`document.querySelectorAll('#preview .ws-line-number').length`);
 
@@ -448,7 +469,10 @@ async function main() {
       // PDF points); the numbers are checked on their own below.
       const marginPt = Math.floor((DEFAULT_MARGIN_MM / MM_PER_INCH) * 72);
       const columnOnly = matched?.testCase.lineNumbers ? ['-x', String(marginPt), '-y', '0', '-W', String(595 - marginPt), '-H', '842'] : [];
-      const text = execFileSync('pdftotext', [...columnOnly, pdfPath, '-']).toString();
+      // Wide empty gaps (gap-fill) make pdftotext's reading-order guess split
+      // a line into columns and interleave lines; -layout keeps line order.
+      const keepLineOrder = matched?.testCase.clozeEveryNth ? ['-layout'] : [];
+      const text = execFileSync('pdftotext', [...keepLineOrder, ...columnOnly, pdfPath, '-']).toString();
       const pdfNormalized = normalizeForCompare(text);
       const bodyOk = matched ? pdfNormalized.includes(normalizeForCompare(matched.renderedBody)) : false;
       const titleOk = matched ? pdfNormalized.includes(normalizeForCompare(matched.renderedTitle)) : false;
@@ -471,7 +495,7 @@ async function main() {
       const ok = pagesOk && bodyOk && titleOk && instructionOk && lineNumbersOk;
       allOk = allOk && ok;
       const textNote = bodyOk && titleOk && instructionOk
-        ? (matched.renderedInstruction ? 'title and instruction present, no passage' : 'full passage present')
+        ? `${matched.renderedBody ? 'full passage' : 'no passage; title'}${matched.renderedInstruction ? ' and instruction' : ''} present`
         : `text MISMATCH (title ${titleOk ? 'ok' : 'missing'}, body ${bodyOk ? 'ok' : 'incomplete'}, instruction ${instructionOk ? 'ok' : 'missing'})`;
       console.log(`  ${ok ? 'PASS' : 'FAIL'}  ${label}  pages=${pages} (expected ${expectedPages}${toleratedDelta ? ` ±${toleratedDelta}` : ''})  ${textNote}${lineNumbersNote}`);
     } catch (error) {

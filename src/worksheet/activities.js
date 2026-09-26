@@ -7,7 +7,8 @@
  * block it needs.
  *
  * - passage: 'text' (as styled) | 'traced' (lightened, for tracing over)
- *   | 'hidden' (not on the sheet at all)
+ *   | 'hidden' (not on the sheet at all) | 'cloze' (as styled, with the
+ *   words the teacher clicked turned into gaps: selection.blanks)
  * - task: 'lines' (ruled copy rows fill the rest of the page, the existing
  *   fit policy in layout/measure.js) | 'none'
  * - imageSize: 'large' for the 120 × 90 mm picture box
@@ -20,12 +21,13 @@
  * it without a cycle.
  */
 
-/** @typedef {{ passage: 'text' | 'traced' | 'hidden', task: 'lines' | 'none', imageSize?: 'large', instruction?: string }} Activity */
+/** @typedef {{ passage: 'text' | 'traced' | 'hidden' | 'cloze', task: 'lines' | 'none', imageSize?: 'large', instruction?: string }} Activity */
 
 /** @type {Readonly<Record<string, Readonly<Activity>>>} */
 export const ACTIVITIES = Object.freeze({
   'read-copy': Object.freeze({ passage: 'text', task: 'lines' }),
   trace: Object.freeze({ passage: 'traced', task: 'none' }),
   'read-only': Object.freeze({ passage: 'text', task: 'none' }),
-  'write-own': Object.freeze({ passage: 'hidden', task: 'lines', imageSize: 'large', instruction: 'write-own' })
+  'write-own': Object.freeze({ passage: 'hidden', task: 'lines', imageSize: 'large', instruction: 'write-own' }),
+  cloze: Object.freeze({ passage: 'cloze', task: 'none', instruction: 'cloze' })
 });

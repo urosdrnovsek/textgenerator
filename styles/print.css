@@ -61,6 +61,11 @@
     display: none !important;
   }
 
+  /* Gap-fill: the gap prints, its answer doesn't (the box keeps its size). */
+  .ws-blank-answer {
+    visibility: hidden;
+  }
+
   * {
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;

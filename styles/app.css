@@ -217,7 +217,87 @@ body {
 .preview-scroll {
   flex: 1;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Above the sheet while the teacher picks words (gap-fill): screen only,
+   outside #preview and #print-surface, so it is never on paper. */
+.preview-hint {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 210mm;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  background: #fef9c3;
+  color: #713f12;
+}
+
+.preview-hint[hidden] {
+  display: none;
+}
+
+.cloze-controls {
+  margin: 8px 0;
+  padding: 8px;
+  border: 1px solid #d6d3d1;
+  border-radius: 4px;
+}
+
+.cloze-controls[hidden] {
+  display: none;
+}
+
+.cloze-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.cloze-row label {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.cloze-row input {
+  width: 3.5em;
+  flex: none;
+  margin: 0;
+}
+
+.cloze-row button {
+  flex: 1;
+}
+
+.cloze-status {
+  font-size: 12px;
+  margin-top: 6px;
+  color: #44403c;
+}
+
+.cloze-status.is-refused {
+  color: #8a1c14;
+}
+
+/* Words are clickable only while picking gaps; the focus ring is for the
+   keyboard path (arrow keys + Enter/Space). */
+#preview.is-picking .ws-sentence [data-w] {
+  cursor: pointer;
+}
+
+#preview.is-picking .ws-sentence [data-w]:hover {
+  background: rgba(37, 99, 235, 0.12);
+}
+
+#preview.is-picking .ws-sentence [data-w]:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 1px;
 }
 
 /* Screen-only simulation of the printed A4 sheet; print.css removes this
