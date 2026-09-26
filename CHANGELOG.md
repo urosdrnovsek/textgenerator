@@ -73,6 +73,19 @@ supports).
   row of exact height, like the copy lines. Saved setups include the
   choice; setups saved by 0.9 keep the picture. The owner checked the
   Slovene labels.
+- **Put in order.** A new writing mode: the title, the picture, the
+  instruction "Number the sentences in the right order.", and the text's
+  sentences shuffled, each with an empty square box for the child's
+  number. It uses all the sentences of a text with 3 to 6, and the first
+  6 of a longer one (contiguous sentences keep the story coherent). The
+  shuffle is fixed per text — the same sheet comes out in the same order
+  every year — and no sentence stays in its own place. "Show the
+  answers" makes the key: each box shows the sentence's place in the
+  text, with the "Answers" tag. For a text with fewer than 3 sentences
+  the option is unavailable and says why. Reading supports (letter
+  colours, syllables, highlighted letters) apply to the sentences. The
+  "Show the answers" checkbox now sits under the writing mode and serves
+  both gap-fill and put in order.
 - **Sentence splitting fixed in four texts.** A new report
   (`npm run sentence-report`) lists how every text splits into
   sentences. It found four texts where a sentence was cut in two: after

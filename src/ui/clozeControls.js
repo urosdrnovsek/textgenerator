@@ -1,8 +1,7 @@
 /**
  * "Fill the gaps" controls (handbook §11.6 A1): toggling a picked word,
- * every Nth word, clearing, the gap count and the refusal past the cap,
- * and "Show the answers" for the answer key (part of the selection, so
- * "Add to packet" with it on puts the key next to the student sheet).
+ * every Nth word, clearing, the gap count and the refusal past the cap.
+ * ("Show the answers" serves every activity with a key; main.js owns it.)
  * Writes exactly one slice of state: `state.selection` (via the pure
  * operations in worksheet/selection.js). Never renders worksheet DOM.
  *
@@ -63,18 +62,12 @@ export function init({ state, els, getT, getDoc, requestRender }) {
     change(clearBlanks(state.selection));
   }
 
-  function showAnswers(enabled) {
-    if (!isPicking()) return;
-    change({ ...state.selection, showAnswers: enabled });
-  }
-
   /** Reflects mode and selection in the controls; call after every render and mode change. */
   function sync() {
     const t = getT();
     const picking = isPicking();
     els.clozeControls.hidden = !picking;
     if (!picking) return;
-    els.clozeShowAnswersToggle.checked = state.selection.showAnswers;
     const doc = getDoc();
     els.clozeStatus.classList.toggle('is-refused', refusal !== '');
     els.clozeStatus.textContent = refusal || (doc ? t('cloze.count', { count: state.selection.blanks.length, max: maxBlanks(doc) }) : '');
@@ -82,7 +75,6 @@ export function init({ state, els, getT, getDoc, requestRender }) {
 
   els.clozeEveryNthButton.addEventListener('click', everyNth);
   els.clozeClearButton.addEventListener('click', clear);
-  els.clozeShowAnswersToggle.addEventListener('change', (e) => showAnswers(e.target.checked));
 
   return { isPicking, onWord, sync };
 }

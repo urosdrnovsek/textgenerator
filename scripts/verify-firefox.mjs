@@ -354,7 +354,7 @@ async function main() {
       clozeTexts.every((p) => clozePdf.includes(squash(p.gapped))) && clozeTexts.filter((p) => p.gaps > 0).every((p) => !clozePdf.includes(squash(p.full))));
     // The answer key (U3b): the same sheet with "Show the answers" prints
     // the passage with its answers and the "Answers" tag.
-    await evalJs(`document.getElementById('cloze-show-answers-toggle').click();`);
+    await evalJs(`document.getElementById('show-answers-toggle').click();`);
     await driver.sleep(500);
     await waitForFit();
     const keyPages = await reportedPages();
@@ -380,6 +380,23 @@ async function main() {
     const copyPrintedPages = Number((execFileSync('pdfinfo', [copyPdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
     check(`copy-target worksheet (${copyBars} marked lines) page count agrees (${pagesNote(copyPrintedPages, copyPages)})`, copyBars > 0 && pagesAgree(copyPrintedPages, copyPages));
     await evalJs(`const el = document.getElementById('copy-target-select'); el.value = 'passage'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await waitForFit();
+
+    // "Put in order" (A2) on the same sheet: the items don't split across
+    // pages, and the print must paginate as the app measured, with every
+    // sentence item in the PDF.
+    console.log('\n"Put in order" in the real Firefox print...');
+    await evalJs(`const el = document.getElementById('writing-mode-select'); el.value = 'sequence'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await waitForFit();
+    const seqPages = await reportedPages();
+    const seqItems = await evalJs(`return [...document.querySelectorAll('#preview .ws-sequence-text')].map((p) => p.textContent)`);
+    const seqPdfPath = path.join(downloadDir, 'sequence-worksheet.pdf');
+    await writeFile(seqPdfPath, Buffer.from(await driver.printPage(), 'base64'));
+    const seqPrintedPages = Number((execFileSync('pdfinfo', [seqPdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
+    const seqPdf = squash(execFileSync('pdftotext', ['-layout', seqPdfPath, '-']).toString());
+    check(`"Put in order" worksheet (${seqItems.length} items) page count agrees (${pagesNote(seqPrintedPages, seqPages)}), every item printed`,
+      seqItems.length >= 3 && pagesAgree(seqPrintedPages, seqPages) && seqItems.every((item) => seqPdf.includes(squash(item))));
+    await evalJs(`const el = document.getElementById('writing-mode-select'); el.value = 'read-copy'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
     await waitForFit();
 
     // Reset back to defaults — the language loop below checks for the

@@ -384,3 +384,22 @@ test('the copy mark in Word: a left border on the title, or on the passage parag
   const whole = await documentXmlOf(await buildModel(TEST_ENTRY_ID), { copyBlocks: [] }, t);
   assert.doesNotMatch(whole, /<w:pBdr>/);
 });
+
+test('"Put in order" in Word: one unsplittable row per sentence, a square box of exact size, its number in the key', async (t) => {
+  const { mmToTwips: toTwips, ptToMm, SEQUENCE_BOX_FACTOR } = await import('../../src/config.js');
+  const { keyFor } = await import('../../src/worksheet/selection.js');
+  const labels = { nameLine: 'Ime:', date: 'Datum:', instruction: () => 'Oštevilči.', answers: 'Rešitve' };
+  const student = await buildModel(TEST_ENTRY_ID, { ...SETTINGS, writingMode: 'sequence' });
+  const xml = await documentXmlOf(student, { copyBlocks: [] }, t, labels);
+  const items = student.blocks.at(-1).items.length;
+  const box = toTwips(ptToMm(SETTINGS.fontSizePt * SEQUENCE_BOX_FACTOR));
+  assert.equal((xml.match(/<w:cantSplit\/>/g) ?? []).length, items);
+  assert.equal((xml.match(new RegExp(`<w:trHeight w:val="${box}" w:hRule="exact"/>`, 'g')) ?? []).length, items, 'one exact square per item');
+  const raw = JSON.parse(await readFile(path.join(root, 'content/sl.json'), 'utf8'));
+  const { imagesById } = await loadManifestAssets();
+  const entry = { ...raw.entries.find((e) => e.id === TEST_ENTRY_ID), language: 'sl' };
+  const key = buildWorksheet(entry, { ...SETTINGS, writingMode: 'sequence' }, { imagesById }, 'sl', { key: keyFor(student.contentKey), blanks: [], sentence: null, showAnswers: true });
+  const keyXml = await documentXmlOf(key, { copyBlocks: [] }, t, labels);
+  const numbers = [...keyXml.matchAll(/<w:jc w:val="center"\/><\/w:pPr><w:r><w:rPr>(?:(?!<\/w:rPr>)[\s\S])*<w:b\/>(?:(?!<\/w:rPr>)[\s\S])*<\/w:rPr><w:t[^>]*>(\d)<\/w:t>/g)].map((m) => Number(m[1]));
+  assert.deepEqual(numbers, key.blocks.at(-1).items.map((i) => i.position));
+});

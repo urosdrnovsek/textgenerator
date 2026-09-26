@@ -13,6 +13,9 @@
  *   fit policy in layout/measure.js) | 'none'
  * - imageSize: 'large' for the 120 × 90 mm picture box
  *   (layout/imageBox.js); absent = the normal 60 × 45 mm one
+ * - sequence: true for "Put in order": the first 3–6 sentences, shuffled,
+ *   each with a box for its number (worksheet/sequence.js)
+ * - answers: true when "Show the answers" makes an answer key
  * - copyTarget: true when the teacher may choose what to copy
  *   (settings.copyTarget); only read & copy has copy lines to fill
  * - instruction: the key of the line printed under the title for the
@@ -23,7 +26,7 @@
  * it without a cycle.
  */
 
-/** @typedef {{ passage: 'text' | 'traced' | 'hidden' | 'cloze', task: 'lines' | 'none', imageSize?: 'large', instruction?: string, copyTarget?: true }} Activity */
+/** @typedef {{ passage: 'text' | 'traced' | 'hidden' | 'cloze', task: 'lines' | 'none', imageSize?: 'large', instruction?: string, copyTarget?: true, sequence?: true, answers?: true }} Activity */
 
 /** @type {Readonly<Record<string, Readonly<Activity>>>} */
 export const ACTIVITIES = Object.freeze({
@@ -31,5 +34,6 @@ export const ACTIVITIES = Object.freeze({
   trace: Object.freeze({ passage: 'traced', task: 'none' }),
   'read-only': Object.freeze({ passage: 'text', task: 'none' }),
   'write-own': Object.freeze({ passage: 'hidden', task: 'lines', imageSize: 'large', instruction: 'write-own' }),
-  cloze: Object.freeze({ passage: 'cloze', task: 'none', instruction: 'cloze' })
+  cloze: Object.freeze({ passage: 'cloze', task: 'none', instruction: 'cloze', answers: true }),
+  sequence: Object.freeze({ passage: 'hidden', task: 'none', instruction: 'sequence', sequence: true, answers: true })
 });

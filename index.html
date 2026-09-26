@@ -51,7 +51,13 @@
         <option value="read-only" data-label="writingMode.read-only">Samo branje</option>
         <option value="write-own" data-label="writingMode.write-own">Piši o sliki</option>
         <option value="cloze" data-label="writingMode.cloze">Dopolni besedilo</option>
+        <option value="sequence" data-label="writingMode.sequence">Razvrsti povedi</option>
       </select>
+
+      <label id="answers-row" class="checkbox-label" hidden>
+        <input type="checkbox" id="show-answers-toggle" />
+        <span data-label="cloze.showAnswers">Pokaži rešitve (list z rešitvami)</span>
+      </label>
 
       <div id="copy-target-row" hidden>
         <label for="copy-target-select" data-label="field.copyTarget">Prepiši:</label>
@@ -77,10 +83,6 @@
           <button id="btn-cloze-every-nth" type="button" data-label="cloze.everyNth">Praznina na vsako N-to besedo</button>
         </div>
         <button id="btn-cloze-clear" type="button" data-label="cloze.clear">Počisti praznine</button>
-        <label class="checkbox-label">
-          <input type="checkbox" id="cloze-show-answers-toggle" />
-          <span data-label="cloze.showAnswers">Pokaži rešitve (list z rešitvami)</span>
-        </label>
         <div id="cloze-status" class="cloze-status" role="status"></div>
       </div>
 

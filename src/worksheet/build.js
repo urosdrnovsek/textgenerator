@@ -9,6 +9,7 @@ import { splitIntoSentences, splitIntoParagraphs } from '../text/prepare.js';
 import { styleText, splitRunsIntoSentences, lightenParagraphs, countWords } from '../text/runs.js';
 import { tokenize } from '../text/tokenize.js';
 import { keyFor, selectionFor, blankWidthEm } from './selection.js';
+import { seededDerangement, sequenceLength } from './sequence.js';
 import { ACTIVITIES } from './activities.js';
 import { DRAWING_BOX_HEIGHT_MM } from '../config.js';
 
@@ -77,6 +78,7 @@ import { DRAWING_BOX_HEIGHT_MM } from '../config.js';
  *   | { type: 'image', size: 'normal' | 'large' }
  *   | { type: 'passage', paragraphs: import('../text/runs.js').StyledRun[][], lineNumbers: boolean, blankWidthEm: number, showAnswers: boolean, copyMark: { firstW: number, lastW: number } | null } blankWidthEm: every gap's width (0 = no gaps); showAnswers: the answer key (gaps show their word)
  *   | { type: 'drawingBox', heightMm: number }
+ *   | { type: 'sequence', items: Array<{ runs: import('../text/runs.js').StyledRun[], position: number }>, sentenceCount: number, showAnswers: boolean } items: shuffled, position = the sentence's place in the text (1-based); no items when the text has too few sentences
  * )} Block
  */
 
@@ -132,6 +134,13 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
     ? lightenParagraphs(sentenceParagraphs)
     : sentenceParagraphs;
 
+  // "Put in order": the first 3–6 sentences, cut from the same styled runs
+  // (so every reading support applies), in a fixed shuffled order.
+  const sequence = activity.sequence ? buildSequence(bodyRuns, resolvedText.body, entry.id) : null;
+  // A key only when there is something to answer: gaps, or sentences to number.
+  const answerKey = chosen.selection.showAnswers && Boolean(activity.answers)
+    && (activity.sequence ? sequence.items.length > 0 : blanks.length > 0);
+
   const target = resolveCopyTarget(activity.copyTarget ? (settings.copyTarget ?? 'passage') : 'passage', doc, chosen.selection, entry.title);
 
   const image = assets.imagesById.get(entry.imageId);
@@ -159,7 +168,7 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
     selectionReset: chosen.reset,
     copyTarget: target.kind,
     copyTargetText: target.text,
-    blocks: buildBlocks(entry, settings, activity, bodyParagraphs, blanks.length > 0 ? blankWidthEm(doc, blanks) : 0, blanks.length > 0 && chosen.selection.showAnswers, target),
+    blocks: buildBlocks(entry, settings, activity, bodyParagraphs, blanks.length > 0 ? blankWidthEm(doc, blanks) : 0, answerKey, target, sequence),
     task: activity.task
   };
 }
@@ -174,9 +183,10 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
  * @param {number} gapWidthEm the one width of every gap (0 without gaps)
  * @param {boolean} answerKey the gaps show their words, and the sheet says it is the key
  * @param {CopyTarget} target
+ * @param {{ items: Array<{ runs: import('../text/runs.js').StyledRun[], position: number }>, sentenceCount: number } | null} sequence
  * @returns {Block[]}
  */
-function buildBlocks(entry, settings, activity, paragraphs, gapWidthEm, answerKey, target) {
+function buildBlocks(entry, settings, activity, paragraphs, gapWidthEm, answerKey, target, sequence) {
   /** @type {Block[]} */
   const blocks = [];
   // First, whatever else is switched off: a key must never pass for a student sheet.
@@ -193,6 +203,7 @@ function buildBlocks(entry, settings, activity, paragraphs, gapWidthEm, answerKe
   if (activity.passage !== 'hidden') {
     blocks.push({ type: 'passage', paragraphs, lineNumbers: Boolean(settings.lineNumbers), blankWidthEm: gapWidthEm, showAnswers: answerKey, copyMark: target.words });
   }
+  if (sequence) blocks.push({ type: 'sequence', ...sequence, showAnswers: answerKey });
   // After the passage: the child draws what they have just read.
   if (imageSlot === 'drawing-box') blocks.push({ type: 'drawingBox', heightMm: DRAWING_BOX_HEIGHT_MM });
   return blocks;
@@ -232,4 +243,16 @@ function resolveCopyTarget(kind, doc, selection, title) {
     return { kind, text: doc.body.slice(doc.sentences[s].start, doc.sentences[s].end), words: sentenceRange(s, s) };
   }
   return { kind: 'passage', text: doc.body, words: null };
+}
+
+/**
+ * @param {import('../text/runs.js').StyledRun[]} bodyRuns
+ * @param {string} body
+ * @param {string} entryId the shuffle's seed (not the version: a corrected text keeps its order)
+ */
+function buildSequence(bodyRuns, body, entryId) {
+  const sentences = splitRunsIntoSentences(bodyRuns, splitIntoSentences(body));
+  const count = sequenceLength(sentences.length);
+  const order = count > 0 ? seededDerangement(count, entryId) : [];
+  return { items: order.map((original) => ({ runs: sentences[original], position: original + 1 })), sentenceCount: sentences.length };
 }

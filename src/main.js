@@ -35,6 +35,7 @@ import { init as initWordPickerUi } from './ui/wordPicker.js';
 import { init as initClozeUi } from './ui/clozeControls.js';
 import { emptySelection, keyFor, chooseSentence } from './worksheet/selection.js';
 import { ACTIVITIES } from './worksheet/activities.js';
+import { sequenceLength } from './worksheet/sequence.js';
 import { tokenize } from './text/tokenize.js';
 
 /** blueprint 8.1: "The interface starts in Slovene for the pilot." */
@@ -165,7 +166,8 @@ const els = {
   clozeEveryNthInput: document.getElementById('cloze-every-nth-input'),
   clozeEveryNthButton: document.getElementById('btn-cloze-every-nth'),
   clozeClearButton: document.getElementById('btn-cloze-clear'),
-  clozeShowAnswersToggle: document.getElementById('cloze-show-answers-toggle'),
+  answersRow: document.getElementById('answers-row'),
+  showAnswersToggle: document.getElementById('show-answers-toggle'),
   clozeStatus: document.getElementById('cloze-status'),
   previewHint: document.getElementById('preview-hint'),
   candidateCount: document.getElementById('candidate-count'),
@@ -273,13 +275,33 @@ function onWordPicked(w) {
 }
 const wordPicker = initWordPickerUi({ els, onWord: onWordPicked });
 
-/** Picking and its hint above the preview follow the mode; call after every render and mode change. */
+/**
+ * The activity controls that depend on the mode and the text: picking and
+ * its hint above the preview, "Show the answers", and whether this text
+ * can be put in order. Call after every render and mode change.
+ */
 function syncPicking() {
   const mode = pickingMode();
   wordPicker.refresh(mode !== null);
   els.previewHint.hidden = mode === null;
   if (mode) els.previewHint.textContent = t(mode === 'gaps' ? 'cloze.hint' : 'copyTarget.hint');
   clozeUi.sync();
+  // "Show the answers": part of the selection, so "Add to packet" with it
+  // on adds the key as its own sheet, next to the student sheet.
+  els.answersRow.hidden = !(state.selection && ACTIVITIES[state.settings.writingMode]?.answers);
+  els.showAnswersToggle.checked = Boolean(state.selection?.showAnswers);
+  // "Put in order" needs 3 sentences: otherwise disabled, with the reason.
+  const doc = currentDoc();
+  const option = els.writingModeSelect.querySelector('option[value="sequence"]');
+  const tooFew = doc !== null && sequenceLength(doc.sentences.length) === 0;
+  option.disabled = tooFew;
+  option.textContent = tooFew ? t('writingMode.sequenceTooFew', { count: doc.sentences.length }) : t('writingMode.sequence');
+}
+
+function updateShowAnswers(enabled) {
+  if (!state.selection) return;
+  state.selection = { ...state.selection, showAnswers: enabled };
+  requestRender();
 }
 
 /** Applies t() to every element carrying a data-label (text) or data-placeholder (input placeholder) key. */
@@ -638,6 +660,7 @@ els.textSelect.addEventListener('change', () => chooseTextById(els.textSelect.va
 els.writingModeSelect.addEventListener('change', (event) => updateWritingMode(event.target.value));
 els.imageSlotSelect.addEventListener('change', (event) => updateImageSlot(event.target.value));
 els.copyTargetSelect.addEventListener('change', (event) => updateCopyTarget(event.target.value));
+els.showAnswersToggle.addEventListener('change', (event) => updateShowAnswers(event.target.checked));
 els.printButton.addEventListener('click', printWorksheet);
 els.docxButton.addEventListener('click', handleExportDocx);
 

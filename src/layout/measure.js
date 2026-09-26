@@ -82,7 +82,7 @@ async function waitForImage(img) {
  * @property {number} revision
  * @property {number} [pageCount] present unless 'blocked'; 1 when status is 'fits'
  * @property {PageLayout} [layout] present unless 'blocked'
- * @property {string} [code] 'blocked' only: 'WIDTH_OVERFLOW' | 'BLOCK_TOO_TALL'
+ * @property {string} [code] 'blocked' only: 'WIDTH_OVERFLOW' | 'BLOCK_TOO_TALL' | 'TOO_FEW_SENTENCES'
  * @property {object} [details]
  * @property {string[]} [suggestions]
  * @property {Record<string, number>} [heightsMm]
@@ -136,6 +136,10 @@ function collectContentBlocks(page) {
     const topMm = pxToMm(el.getBoundingClientRect().top - pageTopPx);
     if (el.dataset.block === 'passage') {
       for (const line of measureBodyLineBoxes(el)) topsMm.push(topMm + line.topMm);
+    } else if (el.dataset.block === 'sequence') {
+      // "Put in order": each sentence item is a unit (never split), and a
+      // page may break between two items.
+      for (const item of el.children) topsMm.push(pxToMm(item.getBoundingClientRect().top - pageTopPx));
     } else {
       topsMm.push(topMm);
     }
@@ -171,6 +175,14 @@ export async function measureWorksheet(model, revision, labels) {
   const budgetMm = contentHeightMm(s.marginMm) - FIT_SAFETY_MM;
   const fontFamily = FONT_FAMILIES[s.fontId] ?? s.fontId;
   const ruling = getRuling(s.rulingId, s.guideHeightMm);
+
+  // "Put in order" needs at least SEQUENCE_SENTENCES.min sentences. The UI
+  // disables the mode for such a text; a saved setup can still reach it,
+  // and then it is blocked, never silently printed as something else.
+  const sequence = model.blocks.find((block) => block.type === 'sequence');
+  if (sequence && sequence.items.length === 0) {
+    return blocked(revision, 'TOO_FEW_SENTENCES', { sentences: sequence.sentenceCount }, ['choose-longer-text']);
+  }
 
   const surface = createMeasureSurface();
   surface.style.width = `${widthMm}mm`;

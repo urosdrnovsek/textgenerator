@@ -539,6 +539,46 @@ async function main() {
       note: copyOk ? `bars ${copyFirst.bars} / ${copyChosen.bars}; estimate notice ${shortNotice ? `"${shortNotice.text}"` : 'not needed here'}` : JSON.stringify({ copyWhole, copyFirst, copyTitle, copyUnchosen, copyChosen, copyBack })
     });
 
+    // "Put in order" (A2): 3–6 shuffled sentences with empty square boxes,
+    // the same in print, none in its original place; the key numbers the
+    // boxes 1…n and adds the tag.
+    console.log('Driving "Put in order"...');
+    const seqState = `(() => {
+      const items = (root) => [...document.querySelectorAll(root + ' .ws-sequence-item')].map((i) => i.querySelector('.ws-sequence-box').textContent);
+      const box = document.querySelector('#preview .ws-sequence-box');
+      return {
+        preview: items('#preview'), print: items('#print-surface'),
+        square: box ? box.offsetWidth === box.offsetHeight && box.offsetWidth > 0 : false,
+        instruction: Boolean(document.querySelector('#preview .ws-instruction')),
+        passage: Boolean(document.querySelector('#preview [data-block="passage"]')),
+        answersRow: !document.getElementById('answers-row').hidden,
+        tag: document.querySelector('#preview .ws-answer-tag')?.textContent ?? null
+      };
+    })()`;
+    await setSelect('writing-mode-select', 'sequence');
+    const seqStudent = await evalJs(seqState);
+    await evalJs(`document.getElementById('show-answers-toggle').click()`);
+    await wait(300);
+    await waitForFit();
+    const seqKey = await evalJs(seqState);
+    await evalJs(`document.getElementById('show-answers-toggle').click()`);
+    await wait(300);
+    await waitForFit();
+    await setSelect('writing-mode-select', 'read-copy');
+    const seqOff = await evalJs(seqState);
+    const n = seqStudent.preview.length;
+    const positions = seqKey.preview.map(Number);
+    const seqOk = n >= 3 && n <= 6 && seqStudent.preview.every((t) => t === '') && seqStudent.print.length === n
+      && seqStudent.square && seqStudent.instruction && !seqStudent.passage && seqStudent.answersRow && seqStudent.tag === null
+      && [...positions].sort().join() === [...Array(n).keys()].map((i) => i + 1).join() && positions.every((p, i) => p !== i + 1)
+      && JSON.stringify(seqKey.print) === JSON.stringify(seqKey.preview) && seqKey.tag
+      && seqOff.preview.length === 0 && !seqOff.answersRow;
+    journeyChecks.push({
+      label: '"Put in order": 3–6 shuffled sentences with square boxes in preview and print, none in place; the key numbers them and adds the tag',
+      ok: seqOk,
+      note: seqOk ? `${n} items, key order ${positions.join(' ')}` : JSON.stringify({ seqStudent, seqKey, seqOff })
+    });
+
     // The answer key (U3b): "Show the answers" adds the "Answers" tag to the
     // preview and the print surface and prints the answers; the key goes
     // into the packet as its own sheet; off again, no tag.
@@ -553,7 +593,7 @@ async function main() {
     await wait(300);
     await waitForFit();
     const keyBefore = await evalJs(keyState);
-    await evalJs(`document.getElementById('cloze-show-answers-toggle').click()`);
+    await evalJs(`document.getElementById('show-answers-toggle').click()`);
     await wait(300);
     await waitForFit();
     const keyOn = await evalJs(keyState);
@@ -563,7 +603,7 @@ async function main() {
     await evalJs(`document.getElementById('btn-add-to-packet').click()`);
     await wait(300);
     const keyPacked = await evalJs(keyState);
-    await evalJs(`document.getElementById('cloze-show-answers-toggle').click()`);
+    await evalJs(`document.getElementById('show-answers-toggle').click()`);
     await wait(300);
     await waitForFit();
     const keyOff = await evalJs(keyState);
@@ -857,6 +897,24 @@ async function main() {
       note: importOk
         ? 'status, candidate count, hidden title list, rendered title and imported image all as expected'
         : `status="${importStatus}", candidates="${candidateText}", pickerHidden=${pickerHiddenForSingleText}, title="${importedTitle}", image=${importedImageSrc.slice(0, 20)}`
+    });
+
+    // "Put in order" on a text with 2 sentences (the imported one above):
+    // the option is disabled and says why; forcing the mode anyway, as a
+    // saved setup could, blocks the sheet with TOO_FEW_SENTENCES.
+    console.log('Checking "Put in order" on a text with too few sentences...');
+    const tooFewOption = await evalJs(`(() => { const o = document.querySelector('#writing-mode-select option[value="sequence"]'); return { disabled: o.disabled, label: o.textContent }; })()`);
+    await evalJs(`(() => { const el = document.getElementById('writing-mode-select'); el.value = 'sequence'; el.dispatchEvent(new Event('change', { bubbles: true })); })()`);
+    const tooFewFit = await waitForFit();
+    await wait(300);
+    const tooFewPrintDisabled = await evalJs(`document.getElementById('btn-print').disabled`);
+    await evalJs(`(() => { const el = document.getElementById('writing-mode-select'); el.value = 'read-copy'; el.dispatchEvent(new Event('change', { bubbles: true })); })()`);
+    await waitForFit();
+    const tooFewOk = tooFewOption.disabled && /: 2\)$/.test(tooFewOption.label) && /TOO_FEW_SENTENCES/.test(tooFewFit) && tooFewPrintDisabled;
+    journeyChecks.push({
+      label: '"Put in order" is disabled with the reason for a 2-sentence text, and blocked (not printable) if forced',
+      ok: tooFewOk,
+      note: tooFewOk ? `option "${tooFewOption.label}"` : JSON.stringify({ tooFewOption, tooFewFit, tooFewPrintDisabled })
     });
 
     console.log('Checking that an unbreakable word still reports WIDTH_OVERFLOW...');

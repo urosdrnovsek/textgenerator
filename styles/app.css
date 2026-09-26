@@ -221,8 +221,9 @@ body {
   align-items: center;
 }
 
-#copy-target-row[hidden] {
-  display: none;
+#copy-target-row[hidden],
+#answers-row[hidden] {
+  display: none !important;
 }
 
 /* Above the sheet while the teacher picks words (gap-fill): screen only,

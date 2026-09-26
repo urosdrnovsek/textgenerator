@@ -45,9 +45,10 @@ import {
   ShadingType,
   LineNumberRestartFormat,
   UnderlineType,
+  TableLayoutType,
   convertMillimetersToTwip
 } from 'docx';
-import { FONT_FAMILIES, TWIPS_PER_PT, mmToPx, mmToTwips, TINTS_BY_ID, contentWidthMm, LINE_NUMBER_GUTTER_MM, DRAWING_BOX_GAP_MM, CLOZE, COPY_MARK_COLOR } from '../config.js';
+import { FONT_FAMILIES, TWIPS_PER_PT, mmToPx, mmToTwips, TINTS_BY_ID, contentWidthMm, LINE_NUMBER_GUTTER_MM, DRAWING_BOX_GAP_MM, CLOZE, COPY_MARK_COLOR, SEQUENCE_BOX_FACTOR, ptToMm } from '../config.js';
 import { markedParagraphs } from '../worksheet/copyMark.js';
 import { computeContainedImageSizeMm, IMAGE_BOX_LARGE } from '../layout/imageBox.js';
 
@@ -261,6 +262,87 @@ export const BLOCK_WRITERS = {
           ...gutter
         })
     );
+  },
+
+  // "Put in order": a borderless two-column table, one row per sentence,
+  // rows never split (cantSplit), like the copy lines. The square box is a
+  // one-cell table of exact height inside the first cell: a cell border
+  // alone would stretch with a sentence that wraps. The answer key puts
+  // the sentence's place in the box.
+  sequence: (block, { model, fontFamily, characterSpacingTwips, wordSpacingTwips, contentWidthTwips, unnumbered }) => {
+    const s = model.settings;
+    const noBorder = { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' };
+    const noBorders = { top: noBorder, bottom: noBorder, left: noBorder, right: noBorder };
+    const line = { style: BorderStyle.SINGLE, size: 6, color: '202020' };
+    const boxTwips = mmToTwips(ptToMm(s.fontSizePt * SEQUENCE_BOX_FACTOR));
+    const gapTwips = mmToTwips(4);
+    const lineTwips = Math.round((s.lineHeightMultiplier ?? 1.5) * s.fontSizePt * TWIPS_PER_PT);
+    // Fixed layout with explicit column widths: without them the grid is the
+    // library's default (100 twips a column) and LibreOffice lays the
+    // columns out its own way — the rows came out taller than the preview.
+    const box = (position) =>
+      new Table({
+        width: { size: boxTwips, type: WidthType.DXA },
+        columnWidths: [boxTwips],
+        layout: TableLayoutType.FIXED,
+        borders: { ...noBorders, insideHorizontal: noBorder, insideVertical: noBorder },
+        rows: [
+          new TableRow({
+            height: { value: boxTwips, rule: HeightRule.EXACT },
+            children: [
+              new TableCell({
+                width: { size: boxTwips, type: WidthType.DXA },
+                margins: { top: 0, bottom: 0, left: 0, right: 0 },
+                verticalAlign: VerticalAlign.CENTER,
+                borders: { top: line, bottom: line, left: line, right: line },
+                children: [
+                  new Paragraph({
+                    alignment: AlignmentType.CENTER,
+                    spacing: { before: 0, after: 0 },
+                    children: position ? [new TextRun({ text: String(position), bold: true, font: fontFamily, size: Math.round(s.fontSizePt * 2) })] : []
+                  })
+                ]
+              })
+            ]
+          })
+        ]
+      });
+    const rows = block.items.map(
+      (item) =>
+        new TableRow({
+          cantSplit: true,
+          children: [
+            new TableCell({
+              width: { size: boxTwips + gapTwips, type: WidthType.DXA },
+              margins: { top: 0, bottom: mmToTwips(3), left: 0, right: gapTwips },
+              borders: noBorders,
+              // A cell must end with a paragraph after a nested table.
+              children: [box(block.showAnswers ? item.position : null), new Paragraph({ spacing: { before: 0, after: 0, line: 20, lineRule: LineRuleType.EXACT }, children: [] })]
+            }),
+            new TableCell({
+              width: { size: contentWidthTwips - boxTwips - gapTwips, type: WidthType.DXA },
+              margins: { top: 0, bottom: mmToTwips(3), left: 0, right: 0 },
+              borders: noBorders,
+              children: [
+                new Paragraph({
+                  spacing: { line: lineTwips, lineRule: LineRuleType.EXACT },
+                  children: toWordRuns(item.runs, { fontFamily, fontSizePt: s.fontSizePt, characterSpacingTwips, wordSpacingTwips })
+                })
+              ]
+            })
+          ]
+        })
+    );
+    return [
+      new Table({
+        width: { size: contentWidthTwips, type: WidthType.DXA },
+        columnWidths: [boxTwips + gapTwips, contentWidthTwips - boxTwips - gapTwips],
+        layout: TableLayoutType.FIXED,
+        borders: { ...noBorders, insideHorizontal: noBorder, insideVertical: noBorder },
+        rows
+      }),
+      new Paragraph({ spacing: { before: 0, after: 0, line: mmToTwips(1), lineRule: LineRuleType.EXACT }, children: [], ...unnumbered })
+    ];
   },
 
   // A table, like the copy lines, because a row's exact height is the one

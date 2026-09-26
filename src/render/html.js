@@ -6,7 +6,7 @@
  */
 
 import { buildRulingRows } from '../layout/rulings.js';
-import { ptToMm, pxToMm, FONT_FAMILIES, COPY_AREA_GAP_MM, TINTS_BY_ID, LINE_NUMBER_GUTTER_MM, DRAWING_BOX_GAP_MM, COPY_MARK_COLOR } from '../config.js';
+import { ptToMm, pxToMm, FONT_FAMILIES, COPY_AREA_GAP_MM, TINTS_BY_ID, LINE_NUMBER_GUTTER_MM, DRAWING_BOX_GAP_MM, COPY_MARK_COLOR, SEQUENCE_BOX_FACTOR } from '../config.js';
 import { IMAGE_BOX_MAX_WIDTH_MM, IMAGE_BOX_MAX_HEIGHT_MM, IMAGE_BOX_LARGE } from '../layout/imageBox.js';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
@@ -325,6 +325,28 @@ export const BLOCK_RENDERERS = {
       bodyWrap.append(paragraph);
     }
     return bodyWrap;
+  },
+  // "Put in order": one item per sentence, a square box for the child's
+  // number, then the sentence. Items don't break across pages (the fit
+  // check measures them one by one, layout/measure.js). In the answer key
+  // the box shows the sentence's place in the text.
+  sequence: (block, { model }) => {
+    const list = document.createElement('div');
+    list.className = 'ws-sequence';
+    list.style.setProperty('--ws-sequence-box-mm', `${ptToMm(model.settings.fontSizePt * SEQUENCE_BOX_FACTOR)}mm`);
+    for (const item of block.items) {
+      const row = document.createElement('div');
+      row.className = 'ws-sequence-item';
+      const box = document.createElement('div');
+      box.className = 'ws-sequence-box';
+      if (block.showAnswers) box.textContent = String(item.position);
+      const text = document.createElement('p');
+      text.className = 'ws-sequence-text ws-text';
+      renderRuns(item.runs, text);
+      row.append(box, text);
+      list.append(row);
+    }
+    return list;
   },
   drawingBox: (block) => {
     const box = document.createElement('div');

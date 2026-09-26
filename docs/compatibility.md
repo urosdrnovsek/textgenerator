@@ -192,6 +192,9 @@ For at least one exported `.docx` per language and per writing mode (3 × 5 = 15
 - [ ] Copy target ("Copy:" set to the title, or to sentences with one
       sentence per line): a thin grey bar left of the marked paragraphs,
       and the text not moved by it.
+- [ ] Put in order: each sentence in its own row with an empty square box
+      on the left, no row split across pages; in the answer key the boxes
+      hold the numbers.
 - [ ] Answer key (gap-fill with "Show the answers"): the "Answers" tag at
       the top right, and each answer in bold in the middle of its
       underline.

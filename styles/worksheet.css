@@ -277,6 +277,32 @@
   letter-spacing: 0.05em;
 }
 
+/* "Put in order": a column of items, box then sentence. */
+.ws-sequence-item {
+  display: grid;
+  grid-template-columns: var(--ws-sequence-box-mm) 1fr;
+  column-gap: 4mm;
+  align-items: start;
+  margin-bottom: 3mm;
+  break-inside: avoid;
+}
+
+.ws-sequence-box {
+  box-sizing: border-box;
+  width: var(--ws-sequence-box-mm);
+  height: var(--ws-sequence-box-mm);
+  border: 0.3mm solid #202020;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.ws-sequence-text {
+  margin: 0;
+}
+
 /* "Read it, then draw it": an empty box after the passage. Its height and
    top gap are set inline from config; border-box keeps the height exact. */
 .ws-drawing-box {
