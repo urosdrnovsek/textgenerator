@@ -91,6 +91,7 @@ test('buildWorksheet returns settings that do not alias the caller\'s object (a 
   live.lineNumbers = false;
   live.imageSlot = 'picture';
   live.graphemes = [{ text: 'ma', color: '#1E3A8A' }];
+  live.wordSpaceMarks = false;
   const model = buildWorksheet(ENTRY, live, ASSETS, 'sl');
   const reference = structuredClone(model.settings);
 
@@ -111,6 +112,7 @@ test('buildWorksheet returns settings that do not alias the caller\'s object (a 
   live.printStripes = true;
   live.lineNumbers = true;
   live.imageSlot = 'none';
+  live.wordSpaceMarks = true;
   live.graphemes.push({ text: 'ja', color: '#0F766E' }); // in-place mutation of a nested array
   live.header.nameLine = false;
   live.header.date = false;
@@ -148,9 +150,18 @@ test('every bundled text survives every paragraph/syllable combination with no c
       const assets = { imagesById: new Map([[entry.imageId, { id: entry.imageId, path: '' }]]) };
       for (const sentencePerLine of [false, true]) {
         for (const syllableMode of ['off', 'colors', 'separators', 'both']) {
-          const model = buildWorksheet({ ...entry, language }, { ...BASE_SETTINGS, sentencePerLine, syllableMode }, assets, language);
-          const text = model.bodyParagraphs.map((p) => p.filter((r) => r.kind !== 'sep').map((r) => r.text).join('')).join(' ');
-          assert.equal(text.replace(/\s+/g, ''), entry.body.replace(/\s+/g, ''), `${language}:${entry.id} sentencePerLine=${sentencePerLine} ${syllableMode}`);
+          for (const wordSpaceMarks of [false, true]) {
+            const label = `${language}:${entry.id} sentencePerLine=${sentencePerLine} ${syllableMode} marks=${wordSpaceMarks}`;
+            const model = buildWorksheet({ ...entry, language }, { ...BASE_SETTINGS, sentencePerLine, syllableMode, wordSpaceMarks }, assets, language);
+            const text = model.bodyParagraphs.map((p) => p.filter((r) => r.kind !== 'sep' && r.kind !== 'mark').map((r) => r.text).join('')).join(' ');
+            assert.equal(text.replace(/\s+/g, ''), entry.body.replace(/\s+/g, ''), label);
+            // A mark never starts or ends a paragraph: it sits between two words.
+            for (const p of model.bodyParagraphs) {
+              assert.notEqual(p[0]?.kind, 'mark', label);
+              assert.notEqual(p.at(-1)?.kind, 'mark', label);
+            }
+            assert.equal(model.bodyParagraphs.flat().some((r) => r.kind === 'mark'), wordSpaceMarks && entry.body.trim().includes(' '), label);
+          }
         }
       }
     }

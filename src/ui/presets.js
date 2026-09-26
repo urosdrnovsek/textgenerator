@@ -76,6 +76,7 @@ export function init({
     lineNumbers: false,
     imageSlot: 'picture',
     graphemes: [],
+    wordSpaceMarks: false,
     marginMm: 20
   };
 
@@ -133,6 +134,7 @@ export function init({
       lineNumbers: s.lineNumbers,
       imageSlot: s.imageSlot,
       graphemes: s.graphemes,
+      wordSpaceMarks: s.wordSpaceMarks,
       marginMm: s.marginMm
     };
   }
@@ -200,6 +202,7 @@ export function init({
       lineNumbers: full.lineNumbers ?? false,
       imageSlot: full.imageSlot ?? 'picture',
       graphemes: full.graphemes ?? [],
+      wordSpaceMarks: full.wordSpaceMarks ?? false,
       marginMm: full.marginMm
     }));
 

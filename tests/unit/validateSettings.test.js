@@ -203,3 +203,9 @@ test('graphemes: up to 4 distinct lowercase NFC letter groups with palette colou
   assert.equal(ok(['a', 'b', 'c', 'd', 'e'].map((text, i) => ({ text, color: C[i % 4] }))), false, 'too many');
   assert.equal(ok('ch'), false, 'not an array');
 });
+
+test('accepts wordSpaceMarks on, off or absent, and rejects a non-boolean', () => {
+  assert.equal(validateSettings({ ...VALID_SETTINGS, wordSpaceMarks: true }).ok, true);
+  assert.equal(validateSettings({ ...VALID_SETTINGS, wordSpaceMarks: false }).ok, true);
+  assert.equal(validateSettings({ ...VALID_SETTINGS, wordSpaceMarks: 1 }).ok, false);
+});

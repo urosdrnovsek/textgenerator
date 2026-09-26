@@ -81,6 +81,7 @@
     "image.replaced": "Image replaced for this worksheet.",
     "field.syllableSeparators": "Syllable separators (Ma·ja)",
     "field.sentencePerLine": "One sentence per line",
+    "field.wordSpaceMarks": "Show spaces between words (Maja _ has)",
     "field.tint": "Background color",
     "field.printTint": "Also print the tinted background",
     "field.lineStripes": "Alternate-line stripes",

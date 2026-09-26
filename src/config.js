@@ -126,6 +126,15 @@ export const KNOWN_SYLLABLE_MODES = new Set(['off', 'colors', 'separators', 'bot
 export const GRAPHEME_LIMITS = { maxGroups: 4, maxLength: 4 };
 export const GRAPHEME_COLORS = ['#1E3A8A', '#0F766E', '#9A3412', '#DB2777'];
 
+/**
+ * Visible word spaces (settings.wordSpaceMarks). The glyph must exist in
+ * all four bundled fonts (no fallback font): ␣ ˽ ⸱ fail that check
+ * (Instructions/tools/cmap.mjs), and U+00B7 is already the syllable
+ * separator, so the owner chose the underscore (2026-09-26).
+ */
+export const WORD_SPACE_MARK = '_';
+export const WORD_SPACE_MARK_COLOR = '#94A3B8';
+
 /** What the sheet's image slot holds: the text's picture, an empty box to draw in, or nothing. */
 export const KNOWN_IMAGE_SLOTS = new Set(['picture', 'drawing-box', 'none']);
 

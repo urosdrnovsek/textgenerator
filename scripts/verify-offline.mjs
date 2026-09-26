@@ -389,6 +389,31 @@ async function main() {
       note: groupsOk ? `${groupsOn.preview.length} highlighted runs; message "${groupsInvalid.message}"` : JSON.stringify({ groupsOn, groupsInvalid, groupsCleared })
     });
 
+    // Visible word spaces (B10): a faint "_" span before each space
+    // between two words of a sentence, the same in preview and print, and
+    // gone when switched off.
+    console.log('Driving the visible word spaces toggle...');
+    const markState = `(() => {
+      const read = (root) => {
+        const marks = [...document.querySelectorAll(root + ' .ws-sentence span')].filter((s) => s.textContent === '\\u00A0_');
+        return { count: marks.length, spaceAfter: marks.every((m) => /^\\s/.test(m.nextElementSibling?.textContent ?? '')) };
+      };
+      return { preview: read('#preview'), print: read('#print-surface') };
+    })()`;
+    await evalJs(`document.getElementById('word-space-marks-toggle').click()`);
+    await waitForFit();
+    const marksOn = await evalJs(markState);
+    await evalJs(`document.getElementById('word-space-marks-toggle').click()`);
+    await waitForFit();
+    const marksOff = await evalJs(markState);
+    const marksOk = marksOn.preview.count > 0 && marksOn.preview.spaceAfter && marksOn.print.count === marksOn.preview.count
+      && marksOff.preview.count === 0 && marksOff.print.count === 0;
+    journeyChecks.push({
+      label: 'visible word spaces: a "_" before each word space in preview and print, gone when switched off',
+      ok: marksOk,
+      note: marksOk ? `${marksOn.preview.count} marks` : JSON.stringify({ marksOn, marksOff })
+    });
+
     // Write about the picture (A4) + the instruction line: title, the
     // locale's instruction, the large picture, no passage, copy rows. Its
     // select disables "None", and choosing the mode while "None" is set

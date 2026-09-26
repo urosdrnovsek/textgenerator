@@ -139,6 +139,10 @@ export function validateSettings(settings) {
     push('lineNumbers', 'lineNumbers must be a boolean when present');
   }
 
+  if (settings.wordSpaceMarks !== undefined && typeof settings.wordSpaceMarks !== 'boolean') {
+    push('wordSpaceMarks', 'wordSpaceMarks must be a boolean when present');
+  }
+
   if (settings.imageSlot !== undefined && !KNOWN_IMAGE_SLOTS.has(settings.imageSlot)) {
     push('imageSlot', `unknown imageSlot "${settings.imageSlot}" — known: ${[...KNOWN_IMAGE_SLOTS].join(', ')}`);
   }

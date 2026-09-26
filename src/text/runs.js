@@ -14,6 +14,7 @@
 
 import { tokenize, wordIndexByOffset } from './tokenize.js';
 import { findGraphemeSpans } from './graphemes.js';
+import { WORD_SPACE_MARK, WORD_SPACE_MARK_COLOR } from '../config.js';
 
 /**
  * @typedef {object} StyledRun
@@ -22,10 +23,10 @@ import { findGraphemeSpans } from './graphemes.js';
  * @property {true} [bold] a highlighted letter group (settings.graphemes): bold so it survives a mono printer; absent otherwise
  * @property {number} [w] index of the word this run belongs to (src/text/tokenize.js); present on every run inside a word, including a separator mark inside it
  * @property {number} [syl] syllable index within the word; present on word letters when the text has syllable data
- * @property {'space' | 'punct' | 'sep'} [kind] absent = letters of a word.
- *   'sep' marks an inserted syllable-separator mark, which is not part of
- *   the source text — splitRunsIntoSentences must not count it when
- *   cutting runs at source-text offsets
+ * @property {'space' | 'punct' | 'sep' | 'mark'} [kind] absent = letters of a word.
+ *   'sep' (a syllable separator) and 'mark' (a visible word space) are
+ *   inserted, not part of the source text — splitRunsIntoSentences must
+ *   not count them when cutting runs at source-text offsets
  */
 
 const HEX_COLOR_PATTERN = /^#[0-9a-fA-F]{6}$/;
@@ -72,6 +73,7 @@ const SYLLABLE_SEPARATOR = '·'; // middle dot
  * @property {'off' | 'colors' | 'separators' | 'both'} [syllableMode]
  * @property {string} [baseColor]
  * @property {import('./graphemes.js').GraphemeGroup[]} [graphemes] letter groups to highlight (colour + bold), above every other colour
+ * @property {boolean} [wordSpaceMarks] a faint mark in every space between two words of one sentence
  */
 
 /** Two styled pieces merge into one run only when everything a consumer may read from them is equal. */
@@ -99,7 +101,8 @@ export function styleText(doc, options = {}) {
     separatorColor = '#64748B',
     syllableMode = 'off',
     baseColor = '#202020',
-    graphemes = []
+    graphemes = [],
+    wordSpaceMarks = false
   } = options;
   for (const color of Object.values(letterColors)) assertValidColor(color);
   for (const color of syllableColors) assertValidColor(color);
@@ -115,6 +118,7 @@ export function styleText(doc, options = {}) {
   /** @type {Array<string | undefined>} highlight colour per body offset */
   const graphemeAt = new Array(body.length);
   for (const span of findGraphemeSpans(doc, graphemes)) graphemeAt.fill(span.color, span.start, span.end);
+  const markAt = wordSpaceMarks ? wordSpaceMarkOffsets(doc) : new Set();
 
   /** @type {StyledRun[]} */
   const runs = [];
@@ -146,6 +150,12 @@ export function styleText(doc, options = {}) {
       if (!space) tokenSyllable += 1;
       nextBreak += 1;
     }
+
+    // A visible word space goes in front of the real space: the no-break
+    // space ties the mark to the word before it (a line may end with the
+    // mark, never start with one), and the real space still lets the line
+    // break. Inserted, like a separator, so not part of the source text.
+    if (markAt.has(offset)) push({ text: `\u00A0${WORD_SPACE_MARK}`, color: WORD_SPACE_MARK_COLOR, kind: 'mark' });
 
     /** @type {StyledRun} */
     const piece = { text: char, color: baseColor };
@@ -184,6 +194,32 @@ export function styleText(doc, options = {}) {
 }
 
 /**
+ * Where the visible word-space marks go: the first whitespace between two
+ * consecutive words of the same sentence (after any punctuation, so
+ * "Maja, ima" gets "Maja,␣ ima"). None between sentences — the full stop
+ * and capital already show that break — and none across a line break.
+ * @param {import('./tokenize.js').TextDoc} doc
+ * @returns {Set<number>} body offsets
+ */
+function wordSpaceMarkOffsets(doc) {
+  const offsets = new Set();
+  for (let i = 1; i < doc.words.length; i++) {
+    const before = doc.words[i - 1];
+    const after = doc.words[i];
+    if (before.sentence !== after.sentence) continue;
+    const gap = doc.body.slice(before.end, after.start);
+    if (gap.includes('\n')) continue;
+    for (let k = 0; k < gap.length; k++) {
+      if (/\s/.test(gap[k])) {
+        offsets.add(before.end + k);
+        break;
+      }
+    }
+  }
+  return offsets;
+}
+
+/**
  * Styles an entry's text for the worksheet: tokenizes it and applies
  * styleText. Syllable styling applies only when requested and the text has
  * syllable data.
@@ -219,8 +255,8 @@ export function splitRunsIntoSentences(runs, sentences) {
     let remaining = sentence.length;
     while (remaining > 0 && runIndex < runs.length) {
       const run = runs[runIndex];
-      if (run.kind === 'sep') {
-        // An inserted syllable mark is not in the source text, so it
+      if (run.kind === 'sep' || run.kind === 'mark') {
+        // An inserted syllable or word-space mark is not in the source text, so it
         // consumes none of the sentence's length. Counting it (before
         // 0.10) cut every sentence short with separators on and dropped
         // the passage's last characters entirely.

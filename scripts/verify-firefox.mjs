@@ -299,6 +299,20 @@ async function main() {
     await evalJs(`const el = document.getElementById('graphemes-input'); el.value = ''; el.dispatchEvent(new Event('change', { bubbles: true }));`);
     await waitForFit();
 
+    // Visible word spaces (B10): the marks widen every gap and rewrap the
+    // passage; Firefox must still paginate it as the app measured.
+    console.log('\nVisible word spaces in the real Firefox print...');
+    await evalJs(`document.getElementById('word-space-marks-toggle').click();`);
+    await waitForFit();
+    const markPages = Number(await evalJs(`return document.getElementById('fit-indicator').dataset.pageCount`));
+    const markPdfPath = path.join(downloadDir, 'word-space-marks-worksheet.pdf');
+    await writeFile(markPdfPath, Buffer.from(await driver.printPage(), 'base64'));
+    const markPrintedPages = Number((execFileSync('pdfinfo', [markPdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
+    const markUnderscores = (execFileSync('pdftotext', [markPdfPath, '-']).toString().match(/_/g) ?? []).length;
+    check(`word-space-mark worksheet prints as exactly ${markPages} pages (got ${markPrintedPages}), with the marks printed (${markUnderscores} "_")`, markPrintedPages === markPages && markUnderscores > 20);
+    await evalJs(`document.getElementById('word-space-marks-toggle').click();`);
+    await waitForFit();
+
     // Reset back to defaults — the language loop below checks for the
     // localized "fits" wording specifically, which these settings would
     // break for languages whose content doesn't also extend at max size.

@@ -119,6 +119,7 @@ const state = {
     lineNumbers: false,
     imageSlot: 'picture',
     graphemes: [],
+    wordSpaceMarks: false,
     marginMm: 20
   },
   // How the preview is viewed, never what is printed: not in settings,
@@ -163,6 +164,7 @@ const els = {
   syllableColorsToggle: document.getElementById('syllable-colors-toggle'),
   syllableSeparatorsToggle: document.getElementById('syllable-separators-toggle'),
   sentencePerLineToggle: document.getElementById('sentence-per-line-toggle'),
+  wordSpaceMarksToggle: document.getElementById('word-space-marks-toggle'),
   tintSelect: document.getElementById('tint-select'),
   printTintToggle: document.getElementById('print-tint-toggle'),
   lineStripesToggle: document.getElementById('line-stripes-toggle'),

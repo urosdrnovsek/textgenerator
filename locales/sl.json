@@ -81,6 +81,7 @@
     "image.replaced": "Slika je bila zamenjana za ta delovni list.",
     "field.syllableSeparators": "Ločila med zlogi (Ma·ja)",
     "field.sentencePerLine": "Ena poved na vrstico",
+    "field.wordSpaceMarks": "Vidni presledki med besedami (Maja _ ima)",
     "field.tint": "Barva ozadja",
     "field.printTint": "Natisni tudi barvno ozadje",
     "field.lineStripes": "Progaste vrstice",

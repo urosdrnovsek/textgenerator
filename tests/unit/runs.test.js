@@ -197,3 +197,18 @@ test('splitRunsIntoSentences does not count inserted syllable separators as sour
   // Before 0.10 this was ["Ma·ja i·ma mu·", "co. Mu·ca"] — cut short, and "spi." lost.
   assert.deepEqual(texts, ['Ma·ja i·ma mu·co.', 'Mu·ca spi.']);
 });
+
+test('word-space marks: one faint "_" before each space between two words of a sentence, none between sentences', async () => {
+  const { WORD_SPACE_MARK_COLOR } = await import('../../src/config.js');
+  const runs = buildStyledRuns({ body: 'Maja, ima muco. Mia spi.', syllableBody: undefined }, { wordSpaceMarks: true });
+  const shown = runs.map((r) => (r.kind === 'mark' ? '[_]' : r.text)).join('');
+  assert.equal(shown, 'Maja,[_] ima[_] muco. Mia[_] spi.');
+  const marks = runs.filter((r) => r.kind === 'mark');
+  assert.ok(marks.every((r) => r.text === ' _' && r.color === WORD_SPACE_MARK_COLOR && r.w === undefined));
+});
+
+test('word-space marks are off by default and never cross a line break', () => {
+  assert.ok(buildLetterRuns('Maja ima muco.').every((r) => r.kind !== 'mark'));
+  const runs = buildStyledRuns({ body: 'Maja ima\nmuco', syllableBody: undefined }, { wordSpaceMarks: true });
+  assert.equal(runs.filter((r) => r.kind === 'mark').length, 1);
+});

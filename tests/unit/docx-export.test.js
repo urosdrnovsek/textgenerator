@@ -321,3 +321,13 @@ test('highlighted letter groups are bold (w:b) and in their colour; nothing else
     assert.match(props, new RegExp(`w:val="${GRAPHEME_COLORS[0].slice(1)}"`));
   }
 });
+
+test('word-space marks export as their own faint runs, and only when switched on', async (t) => {
+  const { WORD_SPACE_MARK_COLOR } = await import('../../src/config.js');
+  const marked = await documentXmlOf(await buildModel(TEST_ENTRY_ID, { ...SETTINGS, wordSpaceMarks: true }), { copyBlocks: [] }, t);
+  const markRuns = [...marked.matchAll(/<w:r><w:rPr>([\s\S]*?)<\/w:rPr><w:t[^>]*>_<\/w:t><\/w:r>/g)];
+  assert.ok(markRuns.length > 3);
+  for (const [, props] of markRuns) assert.match(props, new RegExp(`w:val="${WORD_SPACE_MARK_COLOR.slice(1)}"`));
+  const plain = await documentXmlOf(await buildModel(TEST_ENTRY_ID), { copyBlocks: [] }, t);
+  assert.doesNotMatch(plain, />_<\/w:t>/);
+});

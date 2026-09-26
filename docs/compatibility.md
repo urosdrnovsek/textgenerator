@@ -190,6 +190,9 @@ For at least one exported `.docx` per language and per writing mode (3 × 5 = 15
 - [ ] Drawing box (where chosen): an empty bordered box after the passage,
       about 9 cm high, with nothing in it and the copy rows (if any) below
       it as a separate block, not joined to the box.
+- [ ] Visible word spaces (where enabled): a faint grey `_` in each gap
+      between two words of a sentence, never at the start of a line, and
+      the text still wraps between words.
 - [ ] Line numbers (where enabled): Word numbers every passage line, one
       count across pages; the header, title, picture and copy rows carry no
       number; the numbers sit left of the passage, not over it.

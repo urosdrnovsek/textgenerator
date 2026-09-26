@@ -81,6 +81,7 @@
     "image.replaced": "L'image a été remplacée pour cette fiche.",
     "field.syllableSeparators": "Séparateurs de syllabes (Ma·ja)",
     "field.sentencePerLine": "Une phrase par ligne",
+    "field.wordSpaceMarks": "Montrer les espaces entre les mots (Maja _ a)",
     "field.tint": "Couleur de fond",
     "field.printTint": "Imprimer aussi la couleur de fond",
     "field.lineStripes": "Rayures alternées",

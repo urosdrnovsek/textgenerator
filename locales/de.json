@@ -81,6 +81,7 @@
     "image.replaced": "Das Bild wurde für dieses Arbeitsblatt ersetzt.",
     "field.syllableSeparators": "Silbentrennzeichen (Ma·ja)",
     "field.sentencePerLine": "Ein Satz pro Zeile",
+    "field.wordSpaceMarks": "Wortabstände sichtbar machen (Maja _ hat)",
     "field.tint": "Hintergrundfarbe",
     "field.printTint": "Hintergrundfarbe auch drucken",
     "field.lineStripes": "Zeilenstreifen",

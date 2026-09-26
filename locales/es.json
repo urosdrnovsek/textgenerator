@@ -81,6 +81,7 @@
     "image.replaced": "Imagen reemplazada para esta ficha de trabajo.",
     "field.syllableSeparators": "Separadores de sílabas (Ma·ja)",
     "field.sentencePerLine": "Una frase por línea",
+    "field.wordSpaceMarks": "Mostrar los espacios entre palabras (Maja _ tiene)",
     "field.tint": "Color de fondo",
     "field.printTint": "Imprimir también el fondo de color",
     "field.lineStripes": "Rayas alternas en las líneas",

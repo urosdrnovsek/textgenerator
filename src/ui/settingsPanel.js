@@ -70,6 +70,7 @@ export function init({ state, els, defaultLetterColors: DEFAULT_LETTER_COLORS, r
     els.syllableColorsToggle.checked = s.syllableMode === 'colors' || s.syllableMode === 'both';
     els.syllableSeparatorsToggle.checked = s.syllableMode === 'separators' || s.syllableMode === 'both';
     els.sentencePerLineToggle.checked = Boolean(s.sentencePerLine);
+    els.wordSpaceMarksToggle.checked = Boolean(s.wordSpaceMarks);
     els.tintSelect.value = s.tintId ?? 'none';
     els.printTintToggle.checked = Boolean(s.printTint);
     els.printTintToggle.disabled = (s.tintId ?? 'none') === 'none';
@@ -136,6 +137,11 @@ export function init({ state, els, defaultLetterColors: DEFAULT_LETTER_COLORS, r
     if (state.contentId) requestRender();
   }
 
+  function updateWordSpaceMarks(enabled) {
+    state.settings.wordSpaceMarks = enabled;
+    if (state.contentId) requestRender();
+  }
+
   function updateTint(tintId) {
     state.settings.tintId = tintId;
     els.printTintToggle.disabled = tintId === 'none';
@@ -179,6 +185,7 @@ export function init({ state, els, defaultLetterColors: DEFAULT_LETTER_COLORS, r
   els.syllableColorsToggle.addEventListener('change', updateSyllableMode);
   els.syllableSeparatorsToggle.addEventListener('change', updateSyllableMode);
   els.sentencePerLineToggle.addEventListener('change', (e) => updateSentencePerLine(e.target.checked));
+  els.wordSpaceMarksToggle.addEventListener('change', (e) => updateWordSpaceMarks(e.target.checked));
   els.tintSelect.addEventListener('change', (e) => updateTint(e.target.value));
   els.printTintToggle.addEventListener('change', (e) => updatePrintTint(e.target.checked));
   els.lineStripesToggle.addEventListener('change', (e) => updateLineStripes(e.target.checked));

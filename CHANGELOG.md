@@ -94,6 +94,15 @@ supports).
   include the groups. The four colours are navy, teal, rust and pink;
   they can't all be far apart in grey, which is why the groups are also
   bold. The grayscale check compares them with the letter colours.
+- **Visible word spaces.** A new checkbox puts a faint grey `_` in every
+  space between two words of a sentence ("Maja _ ima _ muco."), for
+  children still learning where one word ends. There is none between
+  sentences, where the full stop and capital already mark the break. The
+  mark is a real character, so the Word file has it too and the page
+  check measures the extra width. It stays with the word before it, so
+  a line may end with a mark but never starts with one. The planned
+  mark (␣) turned out to exist in only one of the four fonts; the owner
+  chose the underscore, which all four have.
 - **Write about the picture.** A new writing mode: the title, a short
   instruction for the child ("Look at the picture and write about it."),
   the picture in a larger 120 × 90 mm box, and ruled lines for the rest
