@@ -33,7 +33,7 @@ import { init as initContentImportUi } from './ui/contentImport.js';
 import { init as initSettingsPanelUi } from './ui/settingsPanel.js';
 import { init as initWordPickerUi } from './ui/wordPicker.js';
 import { init as initClozeUi } from './ui/clozeControls.js';
-import { emptySelection, keyFor, chooseSentence, cleanQuestions } from './worksheet/selection.js';
+import { emptySelection, keyFor, chooseSentence, questionBoxes } from './worksheet/selection.js';
 import { ACTIVITIES } from './worksheet/activities.js';
 import { sequenceLength } from './worksheet/sequence.js';
 import { tokenize } from './text/tokenize.js';
@@ -308,10 +308,10 @@ function syncPicking() {
   option.textContent = tooFew ? t('writingMode.sequenceTooFew', { count: doc.sentences.length }) : t('writingMode.sequence');
 }
 
-/** The teacher's own questions, from the three boxes (empty ones are skipped). */
+/** The teacher's own questions, one per box as typed (empty boxes print nothing). */
 function updateQuestions() {
   if (!state.selection) return;
-  state.selection = { ...state.selection, questions: cleanQuestions(els.questionInputs.map((input) => input.value)) };
+  state.selection = { ...state.selection, questions: questionBoxes(els.questionInputs.map((input) => input.value)) };
   requestRender();
 }
 

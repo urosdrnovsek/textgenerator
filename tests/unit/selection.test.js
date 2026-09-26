@@ -64,11 +64,12 @@ test('a gap is one run for the whole word in the base colour; punctuation and sy
   assert.equal(shown, '[gap] spi na [gap], ko si·je.', 'no separator inside a gap, the comma stays, later syllables still marked');
 });
 
-test('the teacher\'s questions: trimmed, empty ones dropped, at most 3, each at most 200 characters', async () => {
-  const { cleanQuestions } = await import('../../src/worksheet/selection.js');
-  assert.deepEqual(cleanQuestions(['  Kdo je Maja? ', '', '   ', 'Kaj je muca?']), ['Kdo je Maja?', 'Kaj je muca?']);
-  assert.deepEqual(cleanQuestions(['a', 'b', 'c', 'd']), ['a', 'b', 'c']);
-  assert.equal(cleanQuestions(['x'.repeat(250)])[0].length, 200);
-  assert.deepEqual(cleanQuestions('Kdo?'), [], 'not a list');
-  assert.deepEqual(cleanQuestions([3, 'Kdo?']), ['Kdo?']);
+test('the teacher\'s questions: each box as typed (trimmed, capped, empties kept in place); only filled boxes print', async () => {
+  const { questionBoxes, printedQuestions } = await import('../../src/worksheet/selection.js');
+  assert.deepEqual(questionBoxes(['  Kdo je Maja? ', '', 'Kaj je muca?']), ['Kdo je Maja?', '', 'Kaj je muca?'], 'box 3 stays box 3');
+  assert.deepEqual(printedQuestions(['  Kdo je Maja? ', '', 'Kaj je muca?']), ['Kdo je Maja?', 'Kaj je muca?']);
+  assert.deepEqual(questionBoxes(['a', 'b', 'c', 'd']), ['a', 'b', 'c']);
+  assert.equal(questionBoxes(['x'.repeat(250)])[0].length, 200);
+  assert.deepEqual(questionBoxes('Kdo?'), [], 'not a list');
+  assert.deepEqual(questionBoxes([3, 'Kdo?']), ['', 'Kdo?']);
 });

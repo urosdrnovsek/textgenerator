@@ -699,7 +699,10 @@ async function main() {
     await wait(300);
     await waitForFit();
     const cleared = await evalJs(questionState);
+    // The boxes keep what was typed where it was typed (box 3 stays box 3),
+    // trimmed; the sheet numbers the filled ones 1…n.
     const questionsOk = JSON.stringify(typed.preview) === JSON.stringify([['1. First question?', 1], ['2. Third box', 1]])
+      && JSON.stringify(typed.inputs) === JSON.stringify(['First question?', '', 'Third box'])
       && typed.print === 2 && typed.afterText === 'passage'
       && cleared.preview.length === 0 && cleared.inputs.every((v) => v === '');
     journeyChecks.push({

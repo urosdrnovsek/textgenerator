@@ -8,7 +8,7 @@
 import { splitIntoSentences, splitIntoParagraphs } from '../text/prepare.js';
 import { styleText, splitRunsIntoSentences, lightenParagraphs, lightenColor, TRACE_LIGHTEN, countWords } from '../text/runs.js';
 import { tokenize } from '../text/tokenize.js';
-import { keyFor, selectionFor, blankWidthEm } from './selection.js';
+import { keyFor, selectionFor, blankWidthEm, printedQuestions } from './selection.js';
 import { seededDerangement, sequenceLength } from './sequence.js';
 import { ACTIVITIES } from './activities.js';
 import { DRAWING_BOX_HEIGHT_MM, ARC_COLOR, STARTER_SENTENCES, QUESTIONS } from '../config.js';
@@ -188,7 +188,7 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
     hasSyllableData: doc.hasSyllables,
     copyTarget: target.kind,
     copyTargetText: target.text,
-    blocks: buildBlocks(entry, settings, activity, bodyParagraphs, blanks.length > 0 ? blankWidthEm(doc, blanks) : 0, answerKey, target, sequence, arcColor, chosen.selection.questions,
+    blocks: buildBlocks(entry, settings, activity, bodyParagraphs, blanks.length > 0 ? blankWidthEm(doc, blanks) : 0, answerKey, target, sequence, arcColor, printedQuestions(chosen.selection.questions),
       settings.clozeWordBank && blanks.length > 0 ? wordBank(doc, blanks, entry.language ?? localeForWordCount) : null),
     task: activity.task
   };
