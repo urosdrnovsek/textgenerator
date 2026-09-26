@@ -1252,6 +1252,96 @@
         "syllablesReviewed": false,
         "imageAccuracy": "plausible"
       }
+    },
+    {
+      "id": "stories_zelenjavna_juha_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Zelenjavna juha",
+      "body": "Zunaj je že tema. Mama kuha zelenjavno juho. Mia umiva korenje. Tim lušči grah. V kuhinji lepo diši. Kmalu bo juha kuhana. Vsi se veselijo večerje.",
+      "syllable_body": "Zu|naj je že te|ma. Ma|ma ku|ha ze|le|njav|no ju|ho. Mi|a u|mi|va ko|re|nje. Tim lu|šči grah. V ku|hi|nji le|po di|ši. Kma|lu bo ju|ha ku|ha|na. Vsi se ve|se|li|jo ve|čer|je.",
+      "imageId": "family_soup",
+      "review": {
+        "status": "draft",
+        "reviewer": "Claude (original Slovene text, not a native speaker; syllable breaks by the pack's conventions) — for the owner's review",
+        "date": "2026-09-26",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_paket_v_snegu_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Paket v snegu",
+      "body": "Na strehah in na ograji leži sneg. Mia čaka pri vrtnih vratih. Po poti prihaja poštar s težko torbo. Lica ima rdeča od mraza. Nasmehne se in ji poda paket z rdečo pentljo. Paket je od babice! Mia ga stisne k sebi. Z rdečega poštnega nabiralnika ju opazuje majhna taščica.",
+      "syllable_body": "Na stre|hah in na o|gra|ji le|ži sneg. Mi|a ča|ka pri vr|tnih vra|tih. Po po|ti pri|ha|ja po|štar s tež|ko tor|bo. Li|ca i|ma r|de|ča od mra|za. Na|sme|hne se in ji po|da pa|ket z r|de|čo pen|tljo. Pa|ket je od ba|bi|ce! Mi|a ga sti|sne k se|bi. Z r|de|če|ga po|štne|ga na|bi|ral|ni|ka ju o|pa|zu|je maj|hna ta|šči|ca.",
+      "imageId": "winter_postman",
+      "review": {
+        "status": "draft",
+        "reviewer": "Claude (original Slovene text, not a native speaker; syllable breaks by the pack's conventions) — for the owner's review",
+        "date": "2026-09-26",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_babicina_vaja_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Poslušajte drug drugega",
+      "body": "Vsako soboto se babičina dnevna soba spremeni v glasbeno sobo. Mia igra violino, Luka igra flavto, Maja pa drži med koleni velik violončelo. Tim sedi zadaj pri bobnu, ki ga je dobil za rojstni dan. Babica stoji pred njimi in dvigne roke. Ko pokima, začnejo vsi hkrati. Na začetku je boben veliko preglasen, ker ga ima Tim tako rad. »Poslušajte drug drugega,« reče babica. Poskusijo še enkrat, tokrat tiše, in naenkrat glasba zazveni kot ena sama pesem. Babica se nasmehne, skozi odprto okno pa ptice pojejo zraven.",
+      "syllable_body": "Vsa|ko so|bo|to se ba|bi|či|na dnev|na so|ba spre|me|ni v glas|be|no so|bo. Mi|a i|gra vi|o|li|no, Lu|ka i|gra flav|to, Ma|ja pa dr|ži med ko|le|ni ve|lik vi|o|lon|če|lo. Tim se|di za|daj pri bob|nu, ki ga je do|bil za roj|stni dan. Ba|bi|ca sto|ji pred nji|mi in dvi|gne ro|ke. Ko po|ki|ma, zač|ne|jo vsi hkra|ti. Na za|čet|ku je bo|ben ve|li|ko pre|gla|sen, ker ga i|ma Tim ta|ko rad. »Po|slu|šaj|te drug dru|ge|ga,« re|če ba|bi|ca. Po|sku|si|jo še en|krat, to|krat ti|še, in na|en|krat glas|ba za|zve|ni kot e|na sa|ma pe|sem. Ba|bi|ca se na|sme|hne, sko|zi od|pr|to o|kno pa pti|ce po|je|jo zra|ven.",
+      "imageId": "music_rehearsal",
+      "review": {
+        "status": "draft",
+        "reviewer": "Claude (original Slovene text, not a native speaker; syllable breaks by the pack's conventions) — for the owner's review",
+        "date": "2026-09-26",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_svetilnicar_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Antonova svetilka",
+      "body": "Stari Anton je že štirideset let skrbel za svetilnik na pečinah. Vsak večer je prižgal veliko luč, da so ladje vedele, kje so skale.\n\nNekega viharnega večera, ko je sonce zahajalo v oranžnih in vijoličnih barvah, je zagledal majhen ribiški čoln, ki ga je nosilo proti skalam. Motor mu je odpovedal. Anton je poklical reševalce v pristanišču, nato pa vzel staro svetilko, stekel na obalo in z njo mahal visoko nad glavo.\n\nKmalu je skozi valove pridrvel rdeč reševalni čoln. Dva reševalca v rumenih jopičih sta ribičem vrgla vrv in čoln v zadnjem trenutku odvlekla stran od skal. Na poti nazaj sta pomahala staremu možu na obali, nad njim pa je svetilnik mirno svetil čez temneče morje.",
+      "syllable_body": "Sta|ri An|ton je že šti|ri|de|set let skr|bel za sve|til|nik na pe|či|nah. Vsak ve|čer je pri|žgal ve|li|ko luč, da so lad|je ve|de|le, kje so ska|le.\n\nNe|ke|ga vi|har|ne|ga ve|če|ra, ko je son|ce za|ha|ja|lo v o|ranž|nih in vi|jo|lič|nih bar|vah, je za|gle|dal maj|hen ri|bi|ški čoln, ki ga je no|si|lo pro|ti ska|lam. Mo|tor mu je od|po|ve|dal. An|ton je po|kli|cal re|še|val|ce v pri|sta|ni|šču, na|to pa vzel sta|ro sve|til|ko, ste|kel na o|ba|lo in z njo ma|hal vi|so|ko nad gla|vo.\n\nKma|lu je sko|zi va|lo|ve pri|dr|vel r|deč re|še|val|ni čoln. Dva re|še|val|ca v ru|me|nih jo|pi|čih sta ri|bi|čem vr|gla vrv in čoln v zad|njem tre|nut|ku od|vle|kla stran od skal. Na po|ti na|zaj sta po|ma|ha|la sta|re|mu mo|žu na o|ba|li, nad njim pa je sve|til|nik mir|no sve|til čez tem|ne|če mor|je.",
+      "imageId": "lighthouse_rescue",
+      "review": {
+        "status": "draft",
+        "reviewer": "Claude (original Slovene text, not a native speaker; syllable breaks by the pack's conventions) — for the owner's review",
+        "date": "2026-09-26",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_pri_gasilcih_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Obisk pri gasilcih",
+      "body": "V petek zjutraj je Mijin razred odšel na gasilsko postajo na koncu ulice. Velika garažna vrata so bila odprta, v notranjosti pa je stal ogromen rdeč gasilski avto, tako svetleč, da so se otroci v njem videli. Rumen in črn trak ter vrsta oranžnih stožcev sta jih držala na varni razdalji.\n\nGasilec Marko je pokleknil na tla poleg dolge rumene cevi. »Cev moramo tesno zviti,« je razložil, »da jo lahko ob požaru v nekaj sekundah razvijemo.« Pokazal jim je, kako se to naredi, zavoj za zavojem, dokler cev ni ležala na tleh kot ploščato kolo. Za njim sta dva gasilca preverjala opremo na avtu.\n\nTim je vprašal, zakaj so čelade na klopi tako težke. Marko se je zasmejal in mu dovolil, da eno dvigne. Bila je veliko težja, kot je bilo videti! »Ščiti nam glavo, kadar kaj pade,« je rekel Marko.\n\nPreden so odšli, jim je Marko povedal najpomembnejše pravilo: če kdaj zagori, najprej pojdi ven, ostani zunaj in pokliči pomoč.",
+      "syllable_body": "V pe|tek zju|traj je Mi|jin raz|red od|šel na ga|sil|sko po|sta|jo na kon|cu u|li|ce. Ve|li|ka ga|raž|na vra|ta so bi|la od|pr|ta, v no|tra|njo|sti pa je stal o|gro|men r|deč ga|sil|ski av|to, ta|ko sve|tleč, da so se o|tro|ci v njem vi|de|li. Ru|men in črn trak ter vr|sta o|ranž|nih stož|cev sta jih dr|ža|la na var|ni raz|da|lji.\n\nGa|si|lec Mar|ko je po|klek|nil na tla po|leg dol|ge ru|me|ne ce|vi. »Cev mo|ra|mo te|sno zvi|ti,« je raz|lo|žil, »da jo lah|ko ob po|ža|ru v ne|kaj se|kun|dah raz|vi|je|mo.« Po|ka|zal jim je, ka|ko se to na|re|di, za|voj za za|vo|jem, do|kler cev ni le|ža|la na tleh kot plo|šča|to ko|lo. Za njim sta dva ga|sil|ca pre|ver|ja|la o|pre|mo na av|tu.\n\nTim je vpra|šal, za|kaj so če|la|de na klo|pi ta|ko tež|ke. Mar|ko se je za|sme|jal in mu do|vo|lil, da e|no dvi|gne. Bi|la je ve|li|ko tež|ja, kot je bi|lo vi|de|ti! »Šči|ti nam gla|vo, ka|dar kaj pa|de,« je re|kel Mar|ko.\n\nPre|den so od|šli, jim je Mar|ko po|ve|dal naj|po|memb|nej|še pra|vi|lo: če kdaj za|go|ri, naj|prej poj|di ven, o|sta|ni zu|naj in po|kli|či po|moč.",
+      "imageId": "fire_station",
+      "review": {
+        "status": "draft",
+        "reviewer": "Claude (original Slovene text, not a native speaker; syllable breaks by the pack's conventions) — for the owner's review",
+        "date": "2026-09-26",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
     }
   ]
 }

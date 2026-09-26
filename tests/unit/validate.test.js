@@ -19,7 +19,7 @@ test('the real starter sl.json pack validates cleanly', async () => {
   const pack = await loadSlPack();
   const result = validatePack(pack, ASSET_IDS);
   assert.equal(result.ok, true);
-  assert.equal(result.pack.entries.length, 75); // 25 written by the owner + 50 curated from the reviewed pool (2026-09-21)
+  assert.equal(result.pack.entries.length, 80); // 25 written by the owner + 50 curated from the reviewed pool (2026-09-21) + 5 round-3 stories (2026-09-26)
 });
 
 test('rejects a syllable_body that does not reproduce body', async () => {
