@@ -62,7 +62,7 @@ import { DRAWING_BOX_HEIGHT_MM, ARC_COLOR } from '../config.js';
  * @property {Block[]} blocks the page's content in order, above the task region (upgrade blueprint §11.5.3)
  * @property {import('./selection.js').Selection} selection the clicks this model was built with (a snapshot)
  * @property {'passage' | 'first-sentences' | 'sentence' | 'title'} copyTarget what the child copies (always 'passage' outside read & copy)
- * @property {string} copyTargetText that text, for layout/copyEstimate.js ('' while "one sentence" has none chosen)
+ * @property {string} copyTargetText that text, for layout/copyEstimate.js ('' when nothing is copied: another activity, or "one sentence" with none chosen)
  * @property {boolean} hasSyllableData the text has syllable data (syllable colours, separators and arcs need it)
  * @property {boolean} selectionReset a selection for another text or version was ignored (worksheet/advice.js SELECTION_RESET)
  * @property {'lines' | 'none'} task what follows the blocks: ruled copy rows filling the rest of the page, or nothing — a layout decision made by layout/measure.js, not a block
@@ -148,7 +148,13 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
   const answerKey = chosen.selection.showAnswers && Boolean(activity.answers)
     && (activity.sequence ? sequence.items.length > 0 : blanks.length > 0);
 
-  const target = resolveCopyTarget(activity.copyTarget ? (settings.copyTarget ?? 'passage') : 'passage', doc, chosen.selection, entry.title);
+  // Only lines meant for copying have a copy text. Write about the picture
+  // has lines too, but nothing to copy: until 0.10.0-rc.1's fix it fell back
+  // to the whole (hidden) text and was told "About N lines are needed to
+  // copy this".
+  const target = activity.copyTarget
+    ? resolveCopyTarget(settings.copyTarget ?? 'passage', doc, chosen.selection, entry.title)
+    : { kind: 'passage', text: '', words: null };
 
   const image = assets.imagesById.get(entry.imageId);
   if (!image) {

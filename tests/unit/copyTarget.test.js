@@ -48,10 +48,17 @@ test('the copy target resolves on the text: whole (unmarked), first two sentence
   assert.equal(title.copyTargetText, 'Naslov');
 });
 
-test('outside read & copy the copy target is ignored', () => {
+test('outside read & copy the copy target is ignored, and there is nothing to copy', () => {
   const model = sheet({ writingMode: 'read-only', copyTarget: 'title' });
   assert.equal(model.copyTarget, 'passage');
   assert.equal(titleOf(model).copyMark, false);
+  assert.equal(model.copyTargetText, '');
+});
+
+test('write about the picture has lines but nothing to copy: no copy-row estimate (bug in 0.10.0-rc.1)', () => {
+  const model = sheet({ writingMode: 'write-own' });
+  assert.equal(model.copyTargetText, '');
+  assert.deepEqual(advise(model, { copyRows: 8, copyRowsNeeded: 0 }), []);
 });
 
 test('chooseSentence: clicking the chosen sentence again un-chooses it', () => {

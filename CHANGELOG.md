@@ -7,6 +7,11 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
+- **"Write about the picture" no longer claims lines are needed to copy
+  (bug fix).** Its sheet has handwriting lines but nothing to copy, yet
+  the copy-lines estimate used the whole (hidden) text and could say
+  "About 16 lines are needed to copy this". Only read & copy makes that
+  estimate now. Found in 0.10.0-rc.1.
 
 ## 0.10.0-rc.1 — 2026-09-26 (activities and reading supports)
 
