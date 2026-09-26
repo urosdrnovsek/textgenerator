@@ -1344,6 +1344,56 @@
       "license": "Original vector illustration drawn for this project (the default picture for a teacher's own text); all rights reserved by the project owner. Bundled for use within this project only.",
       "source": "Drawn as SVG for this project with Claude Code (Anthropic) and rendered to JPEG; no third-party material",
       "attribution": "Uros Drnovsek"
+    },
+    {
+      "id": "family_soup",
+      "mime": "image/jpeg",
+      "path": "assets/images/family_soup.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
+      "source": "Generated with ChatGPT (OpenAI)",
+      "attribution": "Uros Drnovsek"
+    },
+    {
+      "id": "winter_postman",
+      "mime": "image/jpeg",
+      "path": "assets/images/winter_postman.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
+      "source": "Generated with ChatGPT (OpenAI)",
+      "attribution": "Uros Drnovsek"
+    },
+    {
+      "id": "music_rehearsal",
+      "mime": "image/jpeg",
+      "path": "assets/images/music_rehearsal.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
+      "source": "Generated with ChatGPT (OpenAI)",
+      "attribution": "Uros Drnovsek"
+    },
+    {
+      "id": "fire_station",
+      "mime": "image/jpeg",
+      "path": "assets/images/fire_station.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
+      "source": "Generated with ChatGPT (OpenAI)",
+      "attribution": "Uros Drnovsek"
+    },
+    {
+      "id": "lighthouse_rescue",
+      "mime": "image/jpeg",
+      "path": "assets/images/lighthouse_rescue.jpg",
+      "width": 512,
+      "height": 512,
+      "license": "Original artwork created by the project owner using ChatGPT (OpenAI); all rights reserved. Bundled for use within this project only.",
+      "source": "Generated with ChatGPT (OpenAI)",
+      "attribution": "Uros Drnovsek"
     }
   ]
 }

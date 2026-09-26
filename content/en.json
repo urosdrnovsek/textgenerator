@@ -1676,6 +1676,96 @@
         "syllablesReviewed": true,
         "imageAccuracy": "verified"
       }
+    },
+    {
+      "id": "stories_soup_night_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Soup Night",
+      "body": "It is cold and dark outside. Mum makes vegetable soup. Mia washes the carrots. Tom takes the peas out of their pods. The kitchen smells good. Soon the soup is ready.",
+      "syllable_body": "It is cold and dark out|side. Mum makes veg|e|ta|ble soup. Mi|a wash|es the car|rots. Tom takes the peas out of their pods. The kitch|en smells good. Soon the soup is rea|dy.",
+      "imageId": "family_soup",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-26",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_snow_parcel_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "A Parcel in the Snow",
+      "body": "Snow lies on the roofs and on the fence. Mia waits at the garden gate. Then she sees the postman coming up the lane with his heavy bag. His cheeks are red from the cold. He smiles and hands her a parcel with a red bow. It is from Granny! A little robin watches from the snowy post box.",
+      "syllable_body": "Snow lies on the roofs and on the fence. Mi|a waits at the gar|den gate. Then she sees the post|man com|ing up the lane with his heav|y bag. His cheeks are red from the cold. He smiles and hands her a par|cel with a red bow. It is from Gran|ny! A lit|tle rob|in watch|es from the snow|y post box.",
+      "imageId": "winter_postman",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-26",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_music_room_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Listen to Each Other",
+      "body": "Every Saturday, Grandma’s music room turns into a band room. Mia plays the violin, Leo plays the flute and Ella holds the big cello between her knees. Ben sits at the back with his drum. Grandma stands in front of them and lifts her hands. When she nods, they all begin together. At first the drum is much too loud, because Ben loves it so much. “Listen to each other,” says Grandma. They try again, softer this time, and suddenly the music sounds like one song. Grandma smiles.",
+      "syllable_body": "Ev|er|y Sat|ur|day, Grand|ma’s mu|sic room turns in|to a band room. Mi|a plays the vi|o|lin, Le|o plays the flute and El|la holds the big cel|lo be|tween her knees. Ben sits at the back with his drum. Grand|ma stands in front of them and lifts her hands. When she nods, they all be|gin to|geth|er. At first the drum is much too loud, be|cause Ben loves it so much. “Lis|ten to each oth|er,” says Grand|ma. They try a|gain, soft|er this time, and sud|den|ly the mu|sic sounds like one song. Grand|ma smiles.",
+      "imageId": "music_rehearsal",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-26",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_keepers_lantern_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "The Keeper’s Lantern",
+      "body": "Old Mr Penrose had looked after the lighthouse on the cliffs for forty years. Every evening he lit the great lamp, so that ships would know where the rocks were.\n\nOne stormy evening, as the sun went down in orange and purple, he saw a small fishing boat drifting towards the rocks. Its engine had stopped. He called the rescue station in the harbour, then took his old lantern, hurried down to the shore and waved it high above his head.\n\nSoon a red rescue boat came racing through the waves. Two people in yellow jackets threw a rope to the fishing boat and pulled it away from the rocks just in time. On the way back, they waved to the old man on the shore, and above him the lighthouse beam swept across the darkening sea.",
+      "syllable_body": "Old Mr Pen|rose had looked af|ter the light|house on the cliffs for for|ty years. Ev|er|y eve|ning he lit the great lamp, so that ships would know where the rocks were.\n\nOne storm|y eve|ning, as the sun went down in or|ange and pur|ple, he saw a small fish|ing boat drift|ing to|wards the rocks. Its en|gine had stopped. He called the res|cue sta|tion in the har|bour, then took his old lan|tern, hur|ried down to the shore and waved it high a|bove his head.\n\nSoon a red res|cue boat came rac|ing through the waves. Two peo|ple in yel|low jack|ets threw a rope to the fish|ing boat and pulled it a|way from the rocks just in time. On the way back, they waved to the old man on the shore, and a|bove him the light|house beam swept a|cross the dark|en|ing sea.",
+      "imageId": "lighthouse_rescue",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-26",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_fire_station_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "At the Fire Station",
+      "body": "On Friday morning, Mia’s class walked to the fire station at the end of her street. The big doors of the garage stood open, and inside was the huge red fire engine, so shiny that the children could see their faces in it. A yellow and black tape and a row of orange cones kept them at a safe distance.\n\nA firefighter called Sam knelt on the ground next to a long yellow hose. “A hose has to be rolled up tightly,” he explained, “so that we can unroll it in a few seconds when there is a fire.” He showed them how, turn by turn, until the hose lay like a flat round wheel. Behind him, another firefighter checked the ladders on the engine.\n\nTom asked why the helmets on the bench were so heavy. Sam laughed and let him lift one. It was much heavier than it looked! “It protects our heads when something falls,” said Sam.\n\nBefore they left, Sam told the children the most important rule of all: if there is ever a fire, get out first, stay out and call for help.",
+      "syllable_body": "On Fri|day morn|ing, Mi|a’s class walked to the fire sta|tion at the end of her street. The big doors of the gar|age stood o|pen, and in|side was the huge red fire en|gine, so shin|y that the chil|dren could see their fac|es in it. A yel|low and black tape and a row of or|ange cones kept them at a safe dis|tance.\n\nA fire|fight|er called Sam knelt on the ground next to a long yel|low hose. “A hose has to be rolled up tight|ly,” he ex|plained, “so that we can un|roll it in a few sec|onds when there is a fire.” He showed them how, turn by turn, un|til the hose lay like a flat round wheel. Be|hind him, an|oth|er fire|fight|er checked the lad|ders on the en|gine.\n\nTom asked why the hel|mets on the bench were so heav|y. Sam laughed and let him lift one. It was much heav|i|er than it looked! “It pro|tects our heads when some|thing falls,” said Sam.\n\nBe|fore they left, Sam told the chil|dren the most im|por|tant rule of all: if there is ev|er a fire, get out first, stay out and call for help.",
+      "imageId": "fire_station",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-26",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
     }
   ]
 }

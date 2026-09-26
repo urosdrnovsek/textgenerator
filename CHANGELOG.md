@@ -7,6 +7,12 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
+- **A new story per level in every language, on five new pictures**
+  (2026-09-26): a family cooking vegetable soup (level 1), a postman
+  bringing a parcel in the snow (2), a grandmother's music rehearsal (3),
+  a lighthouse keeper guiding a rescue boat (4), and a class visit to the
+  fire station (5). Each language has its own text, not a translation.
+  English first: five stories, so English now has five per level.
 - **Your own text.** A new "Your own text" panel: type a title and a
   text, choose whether it gets a picture, and click "Add text". It goes
   into the theme that is selected, at the level its length gives (the
