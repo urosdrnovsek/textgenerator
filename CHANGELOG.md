@@ -51,8 +51,8 @@ supports).
   when they print) come out almost the same grey. The notice is computed
   for every sheet but held back while the preview is in colour, because
   the default red b / green d always trigger it (owner decision). The
-  wording is written in all five languages; the Slovene is waiting for
-  the owner's check. Checked: unit tests (the default b/d pair is
+  wording is written in all five languages; the owner checked the
+  Slovene. Checked: unit tests (the default b/d pair is
   detected; syllable colours count only when the text has syllable data;
   every notice has a string in all five languages), and the offline
   journey drives the checkbox in Chromium: the preview gets
@@ -71,8 +71,8 @@ supports).
   in read & copy the copy lines fill whatever room is left, and move to a
   fresh page when too little is left, as before. In Word it is a table
   row of exact height, like the copy lines. Saved setups include the
-  choice; setups saved by 0.9 keep the picture. The Slovene labels are
-  waiting for the owner's check.
+  choice; setups saved by 0.9 keep the picture. The owner checked the
+  Slovene labels.
 - **Write about the picture.** A new writing mode: the title, a short
   instruction for the child ("Look at the picture and write about it."),
   the picture in a larger 120 × 90 mm box, and ruled lines for the rest
@@ -81,8 +81,8 @@ supports).
   while the mode is chosen). The instruction line is a new header option,
   on by default, and only activities that have an instruction print one,
   so the other modes print exactly as before. The instruction is written
-  in all five languages; none has had a native-speaker review, and the
-  Slovene is waiting for the owner's check.
+  in all five languages; the owner checked the Slovene, and none of the
+  others has had a native-speaker review.
 
 ## 0.9.0-rc.2 — 2026-09-24 (beta hotfix)
 
