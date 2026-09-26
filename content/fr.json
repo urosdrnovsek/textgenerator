@@ -902,6 +902,96 @@
         "syllablesReviewed": true,
         "imageAccuracy": "verified"
       }
+    },
+    {
+      "id": "stories_soupe_legumes_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "La soupe du soir",
+      "body": "Dehors, il fait déjà nuit. Maman prépare une soupe de légumes. Inès lave les carottes. Hugo écosse les petits pois. La cuisine sent bon. Bientôt, la soupe sera prête !",
+      "syllable_body": "De|hors, il fait dé|jà nuit. Ma|man pré|pa|re u|ne sou|pe de lé|gu|mes. I|nès la|ve les ca|rot|tes. Hu|go é|cos|se les pe|tits pois. La cui|si|ne sent bon. Bien|tôt, la sou|pe se|ra prê|te !",
+      "imageId": "family_soup",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-26",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_paquet_neige_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Un paquet dans la neige",
+      "body": "La neige couvre les toits et la barrière du jardin. Inès attend devant le portail. Le facteur arrive dans la neige avec son gros sac. Il a les joues rouges à cause du froid. Il sourit et lui tend un paquet avec un ruban rouge. C'est un cadeau de Papi ! Sur la boîte aux lettres rouge, un petit rouge-gorge les regarde.",
+      "syllable_body": "La nei|ge cou|vre les toits et la bar|riè|re du jar|din. I|nès at|tend de|vant le por|tail. Le fac|teur ar|ri|ve dans la nei|ge a|vec son gros sac. Il a les joues rou|ges à cau|se du froid. Il sou|rit et lui tend un pa|quet a|vec un ru|ban rou|ge. C'est un ca|deau de Pa|pi ! Sur la boî|te aux let|tres rou|ge, un pe|tit rou|ge-gor|ge les re|gar|de.",
+      "imageId": "winter_postman",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-26",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_orchestre_samedi_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Le petit orchestre du samedi",
+      "body": "Chaque samedi, le salon de Mamie devient une salle de musique. Inès joue du violon, Hugo joue de la flûte et Léa tient un grand violoncelle entre ses genoux. Sacha est assis au bout, avec son tambour. Mamie se tient devant eux et lève les mains. Quand elle fait oui de la tête, tout le monde commence en même temps. Au début, le tambour est beaucoup trop fort, car Sacha l'adore. « Écoutez-vous les uns les autres », dit Mamie. Ils recommencent, plus doucement cette fois, et soudain, la musique ressemble à une seule chanson. Mamie sourit.",
+      "syllable_body": "Cha|que sa|me|di, le sa|lon de Ma|mie de|vient u|ne sal|le de mu|si|que. I|nès joue du vio|lon, Hu|go joue de la flû|te et Lé|a tient un grand vio|lon|cel|le en|tre ses ge|noux. Sa|cha est as|sis au bout, a|vec son tam|bour. Ma|mie se tient de|vant eux et lè|ve les mains. Quand el|le fait oui de la tê|te, tout le mon|de com|men|ce en mê|me temps. Au dé|but, le tam|bour est beau|coup trop fort, car Sa|cha l'a|do|re. « É|cou|tez-vous les uns les au|tres », dit Ma|mie. Ils re|com|men|cent, plus dou|ce|ment cet|te fois, et sou|dain, la mu|si|que res|sem|ble à u|ne seu|le chan|son. Ma|mie sou|rit.",
+      "imageId": "music_rehearsal",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-26",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_lanterne_joseph_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "La lanterne de Joseph",
+      "body": "Depuis quarante ans, le vieux Joseph garde le phare sur les falaises. Chaque soir, il allume la grande lampe pour que les bateaux voient les rochers.\n\nUn soir de tempête, pendant que le soleil se couche dans un ciel orange et violet, il aperçoit un petit bateau de pêche qui dérive vers les rochers. Son moteur est en panne ! Joseph appelle aussitôt les sauveteurs du port. Puis il prend sa vieille lanterne, descend vers la côte et l'agite bien haut au-dessus de sa tête.\n\nBientôt, un bateau de sauvetage rouge arrive à travers les vagues. Deux sauveteurs en veste jaune lancent une corde aux pêcheurs et tirent leur bateau loin des rochers, juste à temps. Sur le chemin du retour, ils font signe au vieil homme. Au-dessus de lui, la lumière du phare glisse sur la mer sombre.",
+      "syllable_body": "De|puis qua|ran|te ans, le vieux Jo|seph gar|de le pha|re sur les fa|lai|ses. Cha|que soir, il al|lu|me la gran|de lam|pe pour que les ba|teaux voient les ro|chers.\n\nUn soir de tem|pê|te, pen|dant que le so|leil se cou|che dans un ciel o|ran|ge et vio|let, il a|per|çoit un pe|tit ba|teau de pê|che qui dé|ri|ve vers les ro|chers. Son mo|teur est en pan|ne ! Jo|seph ap|pel|le aus|si|tôt les sau|ve|teurs du port. Puis il prend sa vieil|le lan|ter|ne, des|cend vers la cô|te et l'a|gi|te bien haut au-des|sus de sa tê|te.\n\nBien|tôt, un ba|teau de sau|ve|ta|ge rou|ge ar|ri|ve à tra|vers les va|gues. Deux sau|ve|teurs en ves|te jau|ne lan|cent u|ne cor|de aux pê|cheurs et ti|rent leur ba|teau loin des ro|chers, jus|te à temps. Sur le che|min du re|tour, ils font si|gne au vieil hom|me. Au-des|sus de lui, la lu|miè|re du pha|re glis|se sur la mer som|bre.",
+      "imageId": "lighthouse_rescue",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-26",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_caserne_pompiers_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Chez les pompiers",
+      "body": "Vendredi matin, la classe d'Inès va visiter la caserne des pompiers, au bout de la rue. Les grandes portes sont ouvertes, et à l'intérieur brille un énorme camion rouge. Un ruban jaune et noir et une rangée de cônes orange gardent les enfants à bonne distance.\n\nLe pompier Marc est à genoux près d'un long tuyau jaune. « Il faut bien enrouler le tuyau », explique Marc. « Comme ça, on peut le dérouler en quelques secondes s'il y a un feu. » Il leur montre comment faire, tour après tour, jusqu'à ce que le tuyau ressemble à une roue plate. Derrière lui, un autre pompier vérifie le matériel du camion.\n\nHugo demande pourquoi les casques sur la table sont si lourds. Marc rit et le laisse en soulever un. Il est bien plus lourd qu'il n'en a l'air ! « Il nous protège la tête quand quelque chose tombe », dit Marc.\n\nAvant de partir, Marc leur apprend la règle la plus importante : s'il y a le feu, on sort tout de suite, on reste dehors et on appelle à l'aide.",
+      "syllable_body": "Ven|dre|di ma|tin, la clas|se d'I|nès va vi|si|ter la ca|ser|ne des pom|piers, au bout de la rue. Les gran|des por|tes sont ou|ver|tes, et à l'in|té|rieur bril|le un é|nor|me ca|mion rou|ge. Un ru|ban jau|ne et noir et u|ne ran|gée de cô|nes o|ran|ge gar|dent les en|fants à bon|ne dis|tan|ce.\n\nLe pom|pier Marc est à ge|noux près d'un long tu|yau jau|ne. « Il faut bien en|rou|ler le tu|yau », ex|pli|que Marc. « Com|me ça, on peut le dé|rou|ler en quel|ques se|con|des s'il y a un feu. » Il leur mon|tre com|ment fai|re, tour a|près tour, jus|qu'à ce que le tu|yau res|sem|ble à u|ne roue pla|te. Der|riè|re lui, un au|tre pom|pier vé|ri|fie le ma|té|riel du ca|mion.\n\nHu|go de|man|de pour|quoi les cas|ques sur la ta|ble sont si lourds. Marc rit et le lais|se en sou|le|ver un. Il est bien plus lourd qu'il n'en a l'air ! « Il nous pro|tè|ge la tê|te quand quel|que cho|se tom|be », dit Marc.\n\nA|vant de par|tir, Marc leur ap|prend la rè|gle la plus im|por|tan|te : s'il y a le feu, on sort tout de sui|te, on res|te de|hors et on ap|pel|le à l'ai|de.",
+      "imageId": "fire_station",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-26",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
     }
   ]
 }
