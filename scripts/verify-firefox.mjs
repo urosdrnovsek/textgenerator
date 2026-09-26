@@ -200,7 +200,7 @@ async function main() {
       return evalJs(`return (() => { const f = document.getElementById('fit-indicator'); return { pages: Number(f.dataset.pageCount), withoutMargin: Number(f.dataset.pageCountWithoutMargin) }; })()`);
     }
     const pagesAgree = (printed, reported) => printed === reported.pages || (printed === reported.pages - 1 && printed === reported.withoutMargin);
-    const pagesNote = (printed, reported) => `${printed} printed, ${reported.pages} reported${printed === reported.pages ? '' : ` (${reported.withoutMargin} without the 4 mm margin)`}`;
+    const pagesNote = (printed, reported) => `${printed} printed, ${reported.pages} reported${printed === reported.pages ? '' : ` (${reported.withoutMargin || 'n/a'} without the 4 mm margin)`}`;
 
     const title = await evalJs(`return document.title`);
     check('page loaded with a real title', typeof title === 'string' && title.length > 0);
@@ -397,6 +397,22 @@ async function main() {
     check(`"Put in order" worksheet (${seqItems.length} items) page count agrees (${pagesNote(seqPrintedPages, seqPages)}), every item printed`,
       seqItems.length >= 3 && pagesAgree(seqPrintedPages, seqPages) && seqItems.every((item) => seqPdf.includes(squash(item))));
     await evalJs(`const el = document.getElementById('writing-mode-select'); el.value = 'read-copy'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await waitForFit();
+
+    // Syllable arcs (B7): Firefox measures line boxes its own way, so the
+    // arcs must still be one per syllable, and the print (overlays don't
+    // change the layout) must paginate as reported.
+    console.log('\nSyllable arcs in real Firefox...');
+    await evalJs(`document.getElementById('syllable-arcs-toggle').click();`);
+    await waitForFit();
+    const arcCounts = await evalJs(`return { arcs: document.querySelectorAll('#preview .ws-arc').length, printArcs: document.querySelectorAll('#print-surface .ws-arc').length, syllables: new Set([...document.querySelectorAll('#preview .ws-sentence [data-w][data-syl]')].map((s) => s.dataset.w + ':' + s.dataset.syl)).size }`);
+    const arcPages = await reportedPages();
+    const arcPdfPath = path.join(downloadDir, 'arcs-worksheet.pdf');
+    await writeFile(arcPdfPath, Buffer.from(await driver.printPage(), 'base64'));
+    const arcPrintedPages = Number((execFileSync('pdfinfo', [arcPdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
+    check(`syllable arcs: ${arcCounts.arcs} arcs for ${arcCounts.syllables} syllables (print surface ${arcCounts.printArcs}); page count agrees (${pagesNote(arcPrintedPages, arcPages)})`,
+      arcCounts.arcs > 0 && arcCounts.arcs === arcCounts.syllables && arcCounts.printArcs === arcCounts.arcs && pagesAgree(arcPrintedPages, arcPages));
+    await evalJs(`document.getElementById('syllable-arcs-toggle').click();`);
     await waitForFit();
 
     // Reset back to defaults — the language loop below checks for the

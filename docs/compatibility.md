@@ -267,6 +267,9 @@ own hardware. Checklist:
       letter groups: the groups' colors are close in grey by design (four
       readable hues can't be far apart), so check that the bold weight
       alone still makes each highlighted group stand out from the text.
+- [ ] Syllable arcs on the grayscale printer: the thin dark-grey arcs under
+      each syllable should print clearly (they are drawn at 0.3 mm); with
+      line spacing below 1.6 the app warns that they crowd the next line.
 - [ ] Compare that grayscale print with the app's grayscale preview: the
       preview uses CSS `grayscale()`, which a printer driver may not match.
       With the default colors the preview's grey-collision notice appears

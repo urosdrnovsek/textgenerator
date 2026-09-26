@@ -211,4 +211,5 @@ test('a preset file exported by 0.9 still imports, and builds with every newer s
   assert.ok(model.blocks.some((b) => b.type === 'image'), 'the picture, as in 0.9');
   assert.ok(model.bodyParagraphs.flat().every((run) => !run.bold), 'no letter groups highlighted');
   assert.equal(model.copyTarget, 'passage', 'copies the whole text, as in 0.9');
+  assert.equal(model.blocks.find((b) => b.type === 'passage').arcColor, null, 'no syllable arcs');
 });

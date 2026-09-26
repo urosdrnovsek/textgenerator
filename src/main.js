@@ -127,6 +127,7 @@ const state = {
     graphemes: [],
     wordSpaceMarks: false,
     copyTarget: 'passage',
+    syllableArcs: false,
     marginMm: 20
   },
   // How the preview is viewed, never what is printed: not in settings,
@@ -183,6 +184,7 @@ const els = {
   graphemesStatus: document.getElementById('graphemes-status'),
   syllableColorsToggle: document.getElementById('syllable-colors-toggle'),
   syllableSeparatorsToggle: document.getElementById('syllable-separators-toggle'),
+  syllableArcsToggle: document.getElementById('syllable-arcs-toggle'),
   sentencePerLineToggle: document.getElementById('sentence-per-line-toggle'),
   wordSpaceMarksToggle: document.getElementById('word-space-marks-toggle'),
   tintSelect: document.getElementById('tint-select'),

@@ -7,13 +7,14 @@
  * be laid out is a 'blocked' FitResult (layout/measure.js), not a notice.
  */
 
-import { GRAY_MIN_LUMINANCE_DELTA } from '../config.js';
+import { GRAY_MIN_LUMINANCE_DELTA, ARC_MIN_LINE_HEIGHT } from '../config.js';
 import { DEFAULT_SYLLABLE_COLORS } from '../text/runs.js';
 import { ACTIVITIES } from './activities.js';
 import { markedParagraphs } from './copyMark.js';
 
 /** Every code advise() can return; each needs a `notice.<CODE>` string in all five locales. */
-export const NOTICE_CODES = ['GRAY_COLLISION', 'SELECTION_RESET', 'NO_GAPS', 'COPY_TARGET_UNCHOSEN', 'COPY_SPACE_SHORT', 'DOCX_OMITS_COPY_MARK'];
+export const NOTICE_CODES = ['GRAY_COLLISION', 'SELECTION_RESET', 'NO_GAPS', 'COPY_TARGET_UNCHOSEN', 'COPY_SPACE_SHORT', 'DOCX_OMITS_COPY_MARK',
+  'NO_SYLLABLE_DATA', 'ARCS_NEED_LINE_SPACING', 'DOCX_OMITS_ARCS', 'DOCX_OMITS_STRIPES'];
 
 /**
  * WCAG relative luminance of a six-digit hex colour.
@@ -74,6 +75,18 @@ export function advise(model, layoutFacts = {}) {
   if (layoutFacts.copyRowsNeeded > layoutFacts.copyRows) notices.push('COPY_SPACE_SHORT');
   const passage = model.blocks.find((block) => block.type === 'passage');
   if (passage && markedParagraphs(passage).partial) notices.push('DOCX_OMITS_COPY_MARK');
+  // Syllable colours, separators and arcs all need the text's syllable data
+  // (an imported text may have none); without it they silently do nothing.
+  const s = model.settings;
+  if (!model.hasSyllableData && (s.syllableArcs || (s.syllableMode ?? 'off') !== 'off')) notices.push('NO_SYLLABLE_DATA');
+  if (passage?.arcColor) {
+    // In the descender zone arcs crowd the next line at low line spacing; the app never raises it itself.
+    if (s.lineHeightMultiplier < ARC_MIN_LINE_HEIGHT) notices.push('ARCS_NEED_LINE_SPACING');
+    // Word has no syllable-arc shape (owner: the notice is enough).
+    notices.push('DOCX_OMITS_ARCS');
+  }
+  // Stripes were always missing from the Word file without a word about it.
+  if (passage && s.lineStripes) notices.push('DOCX_OMITS_STRIPES');
   if (grayCollision(model)) notices.push('GRAY_COLLISION');
   return notices;
 }

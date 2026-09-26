@@ -579,6 +579,51 @@ async function main() {
       note: seqOk ? `${n} items, key order ${positions.join(' ')}` : JSON.stringify({ seqStudent, seqKey, seqOff })
     });
 
+    // Syllable arcs (B7): one arc per syllable in preview and print; the
+    // line-spacing notice below 1.6 and not at it; the Word-file notices
+    // for arcs and stripes; and a printed packet keeps its arcs (F9).
+    console.log('Driving syllable arcs...');
+    const arcState = `(() => ({
+      arcs: document.querySelectorAll('#preview .ws-arc').length,
+      printArcs: document.querySelectorAll('#print-surface .ws-arc').length,
+      syllables: new Set([...document.querySelectorAll('#preview .ws-sentence [data-w][data-syl]')].map((s) => s.dataset.w + ':' + s.dataset.syl)).size,
+      notices: [...document.querySelectorAll('#fit-notices li')].map((l) => l.dataset.notice)
+    }))()`;
+    const lineHeightBefore = await evalJs(`document.getElementById('line-height-input').value`);
+    await setSelect('line-height-input', '1.4');
+    await evalJs(`document.getElementById('syllable-arcs-toggle').click()`);
+    await wait(300);
+    await waitForFit();
+    const arcsTight = await evalJs(arcState);
+    await setSelect('line-height-input', '1.6');
+    const arcsRoomy = await evalJs(arcState);
+    await evalJs(`document.getElementById('btn-add-to-packet').click()`);
+    await wait(300);
+    await evalJs(`window.__realPrint = window.print; window.print = () => { window.__packetArcs = document.querySelectorAll('#print-surface .ws-arc').length; }`);
+    await evalJs(`document.getElementById('btn-print-packet').click()`);
+    await wait(500);
+    const packetArcs = await evalJs(`window.__packetArcs ?? -1`);
+    await evalJs(`window.print = window.__realPrint`);
+    await evalJs(`document.getElementById('line-stripes-toggle').click()`);
+    await wait(300);
+    await waitForFit();
+    const stripesState = await evalJs(arcState);
+    await evalJs(`document.getElementById('line-stripes-toggle').click()`);
+    await evalJs(`document.getElementById('syllable-arcs-toggle').click()`);
+    await wait(300);
+    await setSelect('line-height-input', lineHeightBefore);
+    const arcsOff = await evalJs(arcState);
+    const arcsOk = arcsTight.arcs > 0 && arcsTight.arcs === arcsTight.syllables && arcsTight.printArcs === arcsTight.arcs
+      && arcsTight.notices.includes('ARCS_NEED_LINE_SPACING') && arcsTight.notices.includes('DOCX_OMITS_ARCS')
+      && arcsRoomy.arcs === arcsRoomy.syllables && !arcsRoomy.notices.includes('ARCS_NEED_LINE_SPACING')
+      && packetArcs >= arcsRoomy.arcs && stripesState.notices.includes('DOCX_OMITS_STRIPES')
+      && arcsOff.arcs === 0 && !arcsOff.notices.includes('DOCX_OMITS_ARCS');
+    journeyChecks.push({
+      label: 'syllable arcs: one per syllable in preview and print and in a printed packet; line-spacing and Word notices',
+      ok: arcsOk,
+      note: arcsOk ? `${arcsTight.arcs} arcs = ${arcsTight.syllables} syllables; packet print ${packetArcs}` : JSON.stringify({ arcsTight, arcsRoomy, packetArcs, stripesState, arcsOff })
+    });
+
     // The answer key (U3b): "Show the answers" adds the "Answers" tag to the
     // preview and the print surface and prints the answers; the key goes
     // into the packet as its own sheet; off again, no tag.
@@ -886,17 +931,19 @@ async function main() {
     await wait(300);
     const importedTitle = await evalJs(`document.querySelector('#preview .ws-title')?.textContent || ''`);
     const importedImageSrc = await evalJs(`document.querySelector('#preview .ws-image')?.src || ''`);
-    const importOk = importStatus === 'Imported 2 text(s) for English.'
+    // The imported text has no syllable_body, and syllable colours are on by default.
+    const importNotices = await evalJs(`[...document.querySelectorAll('#fit-notices li')].map((l) => l.dataset.notice)`);
+    const importOk = importNotices.includes('NO_SYLLABLE_DATA') && importStatus === 'Imported 2 text(s) for English.'
       && candidateText === 'Available: 1'
       && pickerHiddenForSingleText
       && importedTitle === 'Offline Import Check'
       && importedImageSrc.startsWith('data:image/');
     journeyChecks.push({
-      label: 'importing a content pack with a new image replaces the language\'s texts for the session (and a single-text cell hides the title list)',
+      label: 'importing a content pack with a new image replaces the language\'s texts for the session (a single-text cell hides the title list; a text without syllable data says so)',
       ok: importOk,
       note: importOk
         ? 'status, candidate count, hidden title list, rendered title and imported image all as expected'
-        : `status="${importStatus}", candidates="${candidateText}", pickerHidden=${pickerHiddenForSingleText}, title="${importedTitle}", image=${importedImageSrc.slice(0, 20)}`
+        : `status="${importStatus}", candidates="${candidateText}", pickerHidden=${pickerHiddenForSingleText}, title="${importedTitle}", image=${importedImageSrc.slice(0, 20)}, notices=${importNotices}`
     });
 
     // "Put in order" on a text with 2 sentences (the imported one above):

@@ -73,6 +73,18 @@ supports).
   row of exact height, like the copy lines. Saved setups include the
   choice; setups saved by 0.9 keep the picture. The owner checked the
   Slovene labels.
+- **Syllable arcs.** A new "Syllable arcs" checkbox draws a small curve
+  under each syllable (one-syllable words too), in dark grey so it
+  prints on a black-and-white printer; in trace mode the arcs are light
+  like the text. They work together with syllable colours and
+  separators, or on their own. Below line spacing 1.6 they crowd the next
+  line (checked with all four fonts; OpenDyslexic is the tightest), and
+  the app says so instead of changing the spacing. Word has no such
+  shape, so the Word file leaves the arcs out and a notice says so; a new
+  notice now also says that the Word file leaves out alternate-line
+  stripes, which it always did without saying. A text without syllable
+  data (possible for an imported text) now gets a notice when a syllable
+  support is switched on, instead of silently showing nothing.
 - **Put in order.** A new writing mode: the title, the picture, the
   instruction "Number the sentences in the right order.", and the text's
   sentences shuffled, each with an empty square box for the child's

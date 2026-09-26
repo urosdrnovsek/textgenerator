@@ -78,6 +78,7 @@ export function init({
     graphemes: [],
     wordSpaceMarks: false,
     copyTarget: 'passage',
+    syllableArcs: false,
     marginMm: 20
   };
 
@@ -137,6 +138,7 @@ export function init({
       graphemes: s.graphemes,
       wordSpaceMarks: s.wordSpaceMarks,
       copyTarget: s.copyTarget,
+      syllableArcs: s.syllableArcs,
       marginMm: s.marginMm
     };
   }
@@ -206,6 +208,7 @@ export function init({
       graphemes: full.graphemes ?? [],
       wordSpaceMarks: full.wordSpaceMarks ?? false,
       copyTarget: full.copyTarget ?? 'passage',
+      syllableArcs: full.syllableArcs ?? false,
       marginMm: full.marginMm
     }));
 

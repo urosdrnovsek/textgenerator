@@ -46,7 +46,8 @@ to a school.
   word spacing; confused-letter colors (b/d/p/q); highlighted letter
   groups the teacher types in (up to four, such as `ch, sch, š`, colored
   and bold); syllable colors and/or
-  separators; visible spaces between words (a faint `_` in each gap); one
+  separators, and/or arcs under each syllable (in print; the Word file
+  leaves the arcs out and the app says so); visible spaces between words (a faint `_` in each gap); one
   sentence per line; background tint and alternate-line
   stripes (both print-optional, off by default to save ink); line numbers
   down the left of the passage (in Word too, as Word's own numbering); a one-click

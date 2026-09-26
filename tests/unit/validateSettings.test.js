@@ -216,3 +216,8 @@ test('accepts each copy target or none given, and rejects an unknown one', () =>
   }
   assert.equal(validateSettings({ ...VALID_SETTINGS, copyTarget: 'paragraph' }).ok, false);
 });
+
+test('accepts syllableArcs on, off or absent, and rejects a non-boolean', () => {
+  assert.equal(validateSettings({ ...VALID_SETTINGS, syllableArcs: true }).ok, true);
+  assert.equal(validateSettings({ ...VALID_SETTINGS, syllableArcs: 'on' }).ok, false);
+});

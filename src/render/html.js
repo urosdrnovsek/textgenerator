@@ -207,6 +207,68 @@ export function applyLineNumbers(bodyElement) {
 }
 
 /**
+ * Syllable arcs (handbook §11.6 B7): one curve under each syllable —
+ * one-syllable words included — drawn in the descender zone from the
+ * union of that syllable's spans (grouped by data-w + data-syl; no
+ * hyphenation, so a syllable is never split across lines). One small SVG
+ * per measured line, in millimetres and positioned like the stripes. Not
+ * one SVG for the whole passage: an SVG is a single unbreakable box, and
+ * Firefox's print added pages rather than split a tall one (7 printed
+ * where 5 were measured; 5 with the overlay removed).
+ * @param {HTMLElement} bodyElement already attached to the document
+ * @param {string} color
+ */
+export function applySyllableArcs(bodyElement, color) {
+  const bodyRect = bodyElement.getBoundingClientRect();
+  /** @type {Map<string, { left: number, right: number, top: number, bottom: number }>} */
+  const syllables = new Map();
+  for (const span of bodyElement.querySelectorAll('.ws-sentence [data-w][data-syl]')) {
+    for (const rect of span.getClientRects()) {
+      if (rect.width === 0) continue;
+      const key = `${span.dataset.w}:${span.dataset.syl}:${Math.round(rect.top)}`;
+      const box = syllables.get(key);
+      if (box) {
+        box.left = Math.min(box.left, rect.left);
+        box.right = Math.max(box.right, rect.right);
+        box.bottom = Math.max(box.bottom, rect.bottom);
+      } else {
+        syllables.set(key, { left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom });
+      }
+    }
+  }
+  const widthMm = pxToMm(bodyRect.width);
+  const lines = measureBodyLineBoxes(bodyElement).map((line) => ({ ...line, paths: [] }));
+  for (const box of syllables.values()) {
+    const middleMm = pxToMm((box.top + box.bottom) / 2 - bodyRect.top);
+    const line = lines.find((l) => middleMm >= l.topMm && middleMm <= l.topMm + l.heightMm);
+    if (!line) continue;
+    const x1 = pxToMm(box.left - bodyRect.left);
+    const x2 = pxToMm(box.right - bodyRect.left);
+    const h = pxToMm(box.bottom - box.top);
+    const inset = Math.min(0.4, (x2 - x1) * 0.15);
+    const y = pxToMm(box.bottom - bodyRect.top) - line.topMm - h * 0.12;
+    line.paths.push(`M ${x1 + inset} ${y} Q ${(x1 + x2) / 2} ${y + h * 0.2} ${x2 - inset} ${y}`);
+  }
+  for (const line of lines) {
+    if (line.paths.length === 0) continue;
+    const svg = document.createElementNS(SVG_NS, 'svg');
+    svg.setAttribute('class', 'ws-arcs');
+    svg.setAttribute('viewBox', `0 0 ${widthMm} ${line.heightMm}`);
+    svg.style.top = `${line.topMm}mm`;
+    svg.style.width = `${widthMm}mm`;
+    svg.style.height = `${line.heightMm}mm`;
+    svg.style.setProperty('--ws-arc-color', color);
+    for (const d of line.paths) {
+      const path = document.createElementNS(SVG_NS, 'path');
+      path.setAttribute('d', d);
+      path.setAttribute('class', 'ws-arc');
+      svg.append(path);
+    }
+    bodyElement.append(svg);
+  }
+}
+
+/**
  * Marks what the child copies (handbook §11.6 A3): a thin bar beside every
  * measured line that holds a word of the target. An overlay, positioned
  * from the same line boxes as the stripes, so the layout doesn't change.
@@ -437,6 +499,9 @@ export function renderWorksheet(model, layout, container, labels = DEFAULT_LABEL
   }
   if (passageEl && passageBlock?.copyMark) {
     applyCopyMark(passageEl, passageBlock.copyMark);
+  }
+  if (passageEl && passageBlock?.arcColor) {
+    applySyllableArcs(passageEl, passageBlock.arcColor);
   }
 
   if (previewMode && layout.pageBreaksMm?.length > 0) {

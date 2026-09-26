@@ -216,6 +216,22 @@
   background: var(--ws-copy-mark-color);
 }
 
+/* Syllable arcs: one small SVG per line, drawn from the measured spans
+   (render/html.js); top is set inline. */
+.ws-arcs {
+  position: absolute;
+  left: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.ws-arc {
+  fill: none;
+  stroke: var(--ws-arc-color);
+  stroke-width: 0.3;
+  stroke-linecap: round;
+}
+
 .ws-line-numbers {
   position: absolute;
   top: 0;

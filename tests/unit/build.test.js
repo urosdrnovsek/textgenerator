@@ -93,6 +93,7 @@ test('buildWorksheet returns settings that do not alias the caller\'s object (a 
   live.graphemes = [{ text: 'ma', color: '#1E3A8A' }];
   live.wordSpaceMarks = false;
   live.copyTarget = 'passage';
+  live.syllableArcs = false;
   const model = buildWorksheet(ENTRY, live, ASSETS, 'sl');
   const reference = structuredClone(model.settings);
 
@@ -115,6 +116,7 @@ test('buildWorksheet returns settings that do not alias the caller\'s object (a 
   live.imageSlot = 'none';
   live.wordSpaceMarks = true;
   live.copyTarget = 'title';
+  live.syllableArcs = true;
   live.graphemes.push({ text: 'ja', color: '#0F766E' }); // in-place mutation of a nested array
   live.header.nameLine = false;
   live.header.date = false;

@@ -311,12 +311,15 @@ export function splitRunsIntoSentences(runs, sentences) {
   return paragraphs;
 }
 
+/** How far trace mode lightens every colour towards white (0 = unchanged, 1 = white). */
+export const TRACE_LIGHTEN = 0.65;
+
 /**
  * @param {string} hexColor
  * @param {number} amount 0 (unchanged) to 1 (white)
  * @returns {string}
  */
-function lightenColor(hexColor, amount) {
+export function lightenColor(hexColor, amount) {
   const channel = (start) => parseInt(hexColor.slice(start, start + 2), 16);
   const mix = (value) => Math.round(value + (255 - value) * amount);
   const toHex = (value) => value.toString(16).padStart(2, '0');
@@ -333,7 +336,7 @@ function lightenColor(hexColor, amount) {
  * @param {number} [amount]
  * @returns {StyledRun[][]}
  */
-export function lightenParagraphs(paragraphs, amount = 0.65) {
+export function lightenParagraphs(paragraphs, amount = TRACE_LIGHTEN) {
   return paragraphs.map((runs) => runs.map((run) => ({ ...run, color: lightenColor(run.color, amount) })));
 }
 

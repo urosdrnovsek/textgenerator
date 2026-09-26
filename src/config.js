@@ -182,6 +182,16 @@ export const KNOWN_COPY_TARGETS = new Set(['passage', 'first-sentences', 'senten
 export const COPY_MARK_COLOR = '#9CA3AF';
 export const HANDWRITING_CHAR_WIDTH_RATIO = 0.55;
 
+/**
+ * Syllable arcs (settings.syllableArcs): one curve under each syllable, in
+ * the descender zone. Below ARC_MIN_LINE_HEIGHT they crowd the next line,
+ * so the app says so (ARCS_NEED_LINE_SPACING) — it never raises the line
+ * height itself. A dark grey that survives a mono printer; lightened in
+ * trace mode like the text.
+ */
+export const ARC_MIN_LINE_HEIGHT = 1.6;
+export const ARC_COLOR = '#333333';
+
 /** What the sheet's image slot holds: the text's picture, an empty box to draw in, or nothing. */
 export const KNOWN_IMAGE_SLOTS = new Set(['picture', 'drawing-box', 'none']);
 

@@ -6,12 +6,12 @@
  */
 
 import { splitIntoSentences, splitIntoParagraphs } from '../text/prepare.js';
-import { styleText, splitRunsIntoSentences, lightenParagraphs, countWords } from '../text/runs.js';
+import { styleText, splitRunsIntoSentences, lightenParagraphs, lightenColor, TRACE_LIGHTEN, countWords } from '../text/runs.js';
 import { tokenize } from '../text/tokenize.js';
 import { keyFor, selectionFor, blankWidthEm } from './selection.js';
 import { seededDerangement, sequenceLength } from './sequence.js';
 import { ACTIVITIES } from './activities.js';
-import { DRAWING_BOX_HEIGHT_MM } from '../config.js';
+import { DRAWING_BOX_HEIGHT_MM, ARC_COLOR } from '../config.js';
 
 /**
  * @typedef {object} ImageAsset
@@ -40,6 +40,7 @@ import { DRAWING_BOX_HEIGHT_MM } from '../config.js';
  * @property {boolean} [lineStripes] alternating faint background per real measured visual line — HTML/PDF only, see src/export/docx.js's header comment for why
  * @property {boolean} [printStripes] whether stripes also show when printed (default off, to save ink)
  * @property {boolean} [lineNumbers] numbers every passage line, continuously across pages (default off)
+ * @property {boolean} [syllableArcs] a curve under each syllable (HTML/print only; needs syllable data) (default off)
  * @property {boolean} [wordSpaceMarks] a faint "_" in every space between two words of a sentence (default off)
  * @property {import('../text/graphemes.js').GraphemeGroup[]} [graphemes] letter groups highlighted in colour and bold (default none)
  * @property {'picture' | 'drawing-box' | 'none'} [imageSlot] the text's picture above the passage, an empty drawing box after it, or neither (default 'picture')
@@ -62,6 +63,7 @@ import { DRAWING_BOX_HEIGHT_MM } from '../config.js';
  * @property {import('./selection.js').Selection} selection the clicks this model was built with (a snapshot)
  * @property {'passage' | 'first-sentences' | 'sentence' | 'title'} copyTarget what the child copies (always 'passage' outside read & copy)
  * @property {string} copyTargetText that text, for layout/copyEstimate.js ('' while "one sentence" has none chosen)
+ * @property {boolean} hasSyllableData the text has syllable data (syllable colours, separators and arcs need it)
  * @property {boolean} selectionReset a selection for another text or version was ignored (worksheet/advice.js SELECTION_RESET)
  * @property {'lines' | 'none'} task what follows the blocks: ruled copy rows filling the rest of the page, or nothing — a layout decision made by layout/measure.js, not a block
  */
@@ -76,7 +78,7 @@ import { DRAWING_BOX_HEIGHT_MM } from '../config.js';
  *   | { type: 'title', text: string, copyMark: boolean } copyMark: the title is what the child copies
  *   | { type: 'instruction', key: string } text: labels.instruction(key), in the sheet's language
  *   | { type: 'image', size: 'normal' | 'large' }
- *   | { type: 'passage', paragraphs: import('../text/runs.js').StyledRun[][], lineNumbers: boolean, blankWidthEm: number, showAnswers: boolean, copyMark: { firstW: number, lastW: number } | null } blankWidthEm: every gap's width (0 = no gaps); showAnswers: the answer key (gaps show their word)
+ *   | { type: 'passage', paragraphs: import('../text/runs.js').StyledRun[][], lineNumbers: boolean, blankWidthEm: number, showAnswers: boolean, copyMark: { firstW: number, lastW: number } | null, arcColor: string | null } arcColor: syllable arcs are drawn, in this colour (null: none) blankWidthEm: every gap's width (0 = no gaps); showAnswers: the answer key (gaps show their word)
  *   | { type: 'drawingBox', heightMm: number }
  *   | { type: 'sequence', items: Array<{ runs: import('../text/runs.js').StyledRun[], position: number }>, sentenceCount: number, showAnswers: boolean } items: shuffled, position = the sentence's place in the text (1-based); no items when the text has too few sentences
  * )} Block
@@ -134,6 +136,11 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
     ? lightenParagraphs(sentenceParagraphs)
     : sentenceParagraphs;
 
+  // Syllable arcs need syllable data; in trace mode they are lightened like the text.
+  const arcColor = settings.syllableArcs && doc.hasSyllables
+    ? (activity.passage === 'traced' ? lightenColor(ARC_COLOR, TRACE_LIGHTEN) : ARC_COLOR)
+    : null;
+
   // "Put in order": the first 3–6 sentences, cut from the same styled runs
   // (so every reading support applies), in a fixed shuffled order.
   const sequence = activity.sequence ? buildSequence(bodyRuns, resolvedText.body, entry.id) : null;
@@ -166,9 +173,10 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
     settings: structuredClone(settings),
     selection: chosen.selection,
     selectionReset: chosen.reset,
+    hasSyllableData: doc.hasSyllables,
     copyTarget: target.kind,
     copyTargetText: target.text,
-    blocks: buildBlocks(entry, settings, activity, bodyParagraphs, blanks.length > 0 ? blankWidthEm(doc, blanks) : 0, answerKey, target, sequence),
+    blocks: buildBlocks(entry, settings, activity, bodyParagraphs, blanks.length > 0 ? blankWidthEm(doc, blanks) : 0, answerKey, target, sequence, arcColor),
     task: activity.task
   };
 }
@@ -184,9 +192,10 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
  * @param {boolean} answerKey the gaps show their words, and the sheet says it is the key
  * @param {CopyTarget} target
  * @param {{ items: Array<{ runs: import('../text/runs.js').StyledRun[], position: number }>, sentenceCount: number } | null} sequence
+ * @param {string | null} arcColor
  * @returns {Block[]}
  */
-function buildBlocks(entry, settings, activity, paragraphs, gapWidthEm, answerKey, target, sequence) {
+function buildBlocks(entry, settings, activity, paragraphs, gapWidthEm, answerKey, target, sequence, arcColor) {
   /** @type {Block[]} */
   const blocks = [];
   // First, whatever else is switched off: a key must never pass for a student sheet.
@@ -201,7 +210,7 @@ function buildBlocks(entry, settings, activity, paragraphs, gapWidthEm, answerKe
   const imageSlot = settings.imageSlot ?? 'picture';
   if (imageSlot === 'picture') blocks.push({ type: 'image', size: activity.imageSize ?? 'normal' });
   if (activity.passage !== 'hidden') {
-    blocks.push({ type: 'passage', paragraphs, lineNumbers: Boolean(settings.lineNumbers), blankWidthEm: gapWidthEm, showAnswers: answerKey, copyMark: target.words });
+    blocks.push({ type: 'passage', paragraphs, lineNumbers: Boolean(settings.lineNumbers), blankWidthEm: gapWidthEm, showAnswers: answerKey, copyMark: target.words, arcColor });
   }
   if (sequence) blocks.push({ type: 'sequence', ...sequence, showAnswers: answerKey });
   // After the passage: the child draws what they have just read.

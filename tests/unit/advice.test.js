@@ -51,7 +51,8 @@ test('syllable colours count only when they print: colours mode on and the text 
   assert.deepEqual(advise(sheet({ ...close, syllableMode: 'colors' }, SYLLABLE_ENTRY)), ['GRAY_COLLISION']);
   assert.deepEqual(advise(sheet({ ...close, syllableMode: 'both' }, SYLLABLE_ENTRY)), ['GRAY_COLLISION']);
   assert.deepEqual(advise(sheet({ ...close, syllableMode: 'separators' }, SYLLABLE_ENTRY)), []);
-  assert.deepEqual(advise(sheet({ ...close, syllableMode: 'colors' }, ENTRY)), []);
+  // No syllable data: no grey collision, but the teacher is told the support does nothing here.
+  assert.deepEqual(advise(sheet({ ...close, syllableMode: 'colors' }, ENTRY)), ['NO_SYLLABLE_DATA']);
 });
 
 test('the default syllable colours alone are not a collision', () => {
@@ -82,4 +83,19 @@ test('gap-fill notices: NO_GAPS while a gap-fill sheet has none, SELECTION_RESET
   assert.deepEqual(advise(buildWorksheet(ENTRY, cloze, ASSETS, 'sl', withGap)), []);
   const stale = { ...withGap, key: 'sl:other@1' };
   assert.deepEqual(advise(buildWorksheet(ENTRY, cloze, ASSETS, 'sl', stale)), ['SELECTION_RESET', 'NO_GAPS']);
+});
+
+test('syllable arcs: drawn only with syllable data (lightened in trace); notices for line spacing, the Word file, and stripes', async () => {
+  const { ARC_COLOR } = await import('../../src/config.js');
+  const { lightenColor, TRACE_LIGHTEN } = await import('../../src/text/runs.js');
+  const passage = (model) => model.blocks.find((b) => b.type === 'passage');
+  const arcs = { syllableArcs: true, lineHeightMultiplier: 1.4 };
+  assert.equal(passage(sheet(arcs, SYLLABLE_ENTRY)).arcColor, ARC_COLOR);
+  assert.equal(passage(sheet({ ...arcs, writingMode: 'trace' }, SYLLABLE_ENTRY)).arcColor, lightenColor(ARC_COLOR, TRACE_LIGHTEN));
+  assert.equal(passage(sheet(arcs, ENTRY)).arcColor, null, 'no syllable data: no arcs');
+  assert.equal(passage(sheet({}, SYLLABLE_ENTRY)).arcColor, null, 'off by default');
+  assert.deepEqual(advise(sheet(arcs, SYLLABLE_ENTRY)), ['ARCS_NEED_LINE_SPACING', 'DOCX_OMITS_ARCS']);
+  assert.deepEqual(advise(sheet({ ...arcs, lineHeightMultiplier: 1.6 }, SYLLABLE_ENTRY)), ['DOCX_OMITS_ARCS']);
+  assert.deepEqual(advise(sheet(arcs, ENTRY)), ['NO_SYLLABLE_DATA'], 'arcs asked for, but the text has no syllable data');
+  assert.deepEqual(advise(sheet({ lineStripes: true }, SYLLABLE_ENTRY)), ['DOCX_OMITS_STRIPES']);
 });
