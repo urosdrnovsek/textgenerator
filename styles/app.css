@@ -194,6 +194,20 @@ body {
   color: #8a5a00;
 }
 
+/* Advisory notices (worksheet/advice.js): information, never an error. */
+.fit-notices {
+  margin: 6px 0 0;
+  padding: 6px 8px 6px 24px;
+  border-radius: 4px;
+  font-size: 13px;
+  background: #eef2f8;
+  color: #1f3a5f;
+}
+
+.fit-notices[hidden] {
+  display: none;
+}
+
 .preview-scroll {
   flex: 1;
   display: flex;

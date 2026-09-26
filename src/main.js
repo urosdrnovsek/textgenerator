@@ -134,6 +134,7 @@ const els = {
   preview: document.getElementById('preview'),
   printSurface: document.getElementById('print-surface'),
   fitIndicator: document.getElementById('fit-indicator'),
+  fitNotices: document.getElementById('fit-notices'),
   printButton: document.getElementById('btn-print'),
   docxButton: document.getElementById('btn-docx'),
   createButton: document.getElementById('btn-create'),
@@ -409,6 +410,24 @@ function showFit(model, result) {
       suggestions
     });
   }
+  showNotices(result.notices);
+}
+
+/**
+ * Advisory notices (worksheet/advice.js), one line each under the fit
+ * indicator. They never block printing, so they sit outside the fit line.
+ * @param {string[]} codes
+ */
+function showNotices(codes) {
+  els.fitNotices.replaceChildren(
+    ...codes.map((code) => {
+      const li = document.createElement('li');
+      li.dataset.notice = code;
+      li.textContent = t(`notice.${code}`);
+      return li;
+    })
+  );
+  els.fitNotices.hidden = codes.length === 0;
 }
 
 /** Nothing printable: clears the preview, the print surface and lastGood, and disables every output. */
@@ -463,6 +482,7 @@ async function requestRender() {
     els.fitIndicator.classList.remove('is-extends');
     els.fitIndicator.dataset.pageCount = '';
     els.fitIndicator.textContent = t('fit.internalError', { message: error.message });
+    showNotices([]);
   }
 }
 

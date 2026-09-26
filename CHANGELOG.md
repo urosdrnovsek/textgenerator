@@ -34,6 +34,15 @@ supports).
   combinations, and the rendered preview and print markup, fit line,
   height and page count are identical for all 318 texts in 4 browser
   configurations.
+- **A line for advisory notices (nothing shows yet).** A new
+  `src/worksheet/advice.js` looks at the worksheet and returns short
+  notice codes. The fit check passes them on, and they appear as a
+  separate line under the fit indicator. Notices never block printing and
+  never change the layout. No notice exists yet: the grayscale check
+  (next) is the first one. Checked: unit tests; the offline journey now
+  asserts the line is hidden on a plain sheet; and a temporary probe build
+  that always returned one notice showed exactly one visible item with no
+  console errors (not committed).
 
 ## 0.9.0-rc.2 — 2026-09-24 (beta hotfix)
 

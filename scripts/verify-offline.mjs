@@ -237,6 +237,15 @@ async function main() {
       await waitForFit();
       await evalJs(`document.getElementById('btn-add-to-packet').click();`);
     }
+    // No advisory notice applies to a plain sheet, so the notice line
+    // (worksheet/advice.js, shown under the fit indicator) stays hidden.
+    const noticeState = await evalJs(`(() => { const el = document.getElementById('fit-notices'); return el ? { hidden: el.hidden, items: el.children.length } : null; })()`);
+    const noticesHiddenOk = noticeState !== null && noticeState.hidden && noticeState.items === 0;
+    journeyChecks.push({
+      label: 'the notice line exists and is hidden when a sheet has no notices',
+      ok: noticesHiddenOk,
+      note: noticesHiddenOk ? 'hidden, empty' : `state=${JSON.stringify(noticeState)}`
+    });
 
     console.log('Exercising dyslexia-support toggles, presets, and a custom-font switch...');
     await evalJs(`

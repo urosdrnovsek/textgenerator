@@ -15,6 +15,7 @@
 import { renderWorksheet, measureBodyLineBoxes } from '../render/html.js';
 import { getRuling, countFullRows } from './rulings.js';
 import { paginateBlocks } from './paginate.js';
+import { advise } from '../worksheet/advice.js';
 import { FONT_FAMILIES, contentWidthMm, contentHeightMm, FIT_SAFETY_MM, MIN_COPY_ROWS, COPY_AREA_GAP_MM, pxToMm } from '../config.js';
 
 /**
@@ -84,6 +85,7 @@ async function waitForImage(img) {
  * @property {object} [details]
  * @property {string[]} [suggestions]
  * @property {Record<string, number>} [heightsMm]
+ * @property {string[]} notices advisory codes from worksheet/advice.js; always empty when 'blocked'
  */
 
 /**
@@ -149,7 +151,7 @@ function collectContentBlocks(page) {
  * @returns {FitResult}
  */
 function blocked(revision, code, details, suggestions) {
-  return { status: 'blocked', revision, code, details, suggestions };
+  return { status: 'blocked', revision, code, details, suggestions, notices: [] };
 }
 
 /**
@@ -204,7 +206,8 @@ export async function measureWorksheet(model, revision) {
         pageCount,
         layout: { ruling, contentWidthMm: widthMm, copyBlocks: [], pageBreaksMm: breaksMm },
         heightsMm: { used: totalContentHeightMm, budget: budgetMm },
-        suggestions: pageCount === 1 ? undefined : ['choose-shorter-text', 'reduce-image']
+        suggestions: pageCount === 1 ? undefined : ['choose-shorter-text', 'reduce-image'],
+        notices: advise(model)
       };
     }
 
@@ -271,7 +274,8 @@ export async function measureWorksheet(model, revision) {
       pageCount: finalPageCount,
       layout: { ruling, contentWidthMm: widthMm, copyBlocks: copyBlocksRows, pageBreaksMm: [...breaksMm, ...copyBreaksMm] },
       heightsMm: { used: totalContentHeightMm, final: cursorMm, budget: budgetMm },
-      suggestions: finalPageCount === 1 ? undefined : ['choose-shorter-text', 'reduce-image', 'read-only']
+      suggestions: finalPageCount === 1 ? undefined : ['choose-shorter-text', 'reduce-image', 'read-only'],
+      notices: advise(model)
     };
   } finally {
     surface.remove();
