@@ -139,6 +139,12 @@ export const GRAPHEME_COLORS = ['#1E3A8A', '#0F766E', '#9A3412', '#DB2777'];
  * the story coherent); fewer than min and the mode is unavailable.
  */
 export const SEQUENCE_SENTENCES = { min: 3, max: 6 };
+/**
+ * "Continue the text" (story starter): how many sentences of the text the
+ * sheet gives before the child continues. Always at least one fewer than
+ * the text has, so there is something left to write.
+ */
+export const STARTER_SENTENCES = 2;
 /** The number box beside each sentence: this many times the font size, square. */
 export const SEQUENCE_BOX_FACTOR = 1.4;
 

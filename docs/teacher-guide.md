@@ -104,6 +104,8 @@ afterward.
 - **Read only** — just the text and picture, no handwriting lines.
 - **Write about the picture** — the title, a larger picture and ruled
   lines; the text itself isn't printed.
+- **Continue the text** — the first two sentences of the text, then ruled
+  lines for the child to carry on in their own words.
 - **Fill the gaps** — click words in the preview to turn them into gaps
   (click again to undo; the arrow keys and Space work too), or use **Gap
   every Nth word**, which leaves the first sentence whole. All gaps are

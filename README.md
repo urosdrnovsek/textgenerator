@@ -64,7 +64,8 @@ to a school.
   preview, or let the app gap every Nth word, to make a gap-fill sheet;
   "Show the answers" turns it into the answer key, marked "Answers"), and
   put in order (the text's first 3–6 sentences shuffled, a box beside
-  each for the child's number; the key shows the right numbers).
+  each for the child's number; the key shows the right numbers), and
+  continue the text (the first two sentences, then lines to write on).
   The last two print a short instruction for the child, which can be
   switched off.
 - **Picture on the sheet:** the text's picture, an empty drawing box after

@@ -624,6 +624,32 @@ async function main() {
       note: arcsOk ? `${arcsTight.arcs} arcs = ${arcsTight.syllables} syllables; packet print ${packetArcs}` : JSON.stringify({ arcsTight, arcsRoomy, packetArcs, stripesState, arcsOff })
     });
 
+    // "Continue the text" (story starter): the title, the instruction, the
+    // picture, the first sentences of the text (a strict beginning of it),
+    // then copy lines; no copy-row estimate, since nothing is copied.
+    console.log('Driving "Continue the text"...');
+    const passageText = `[...document.querySelectorAll('#preview .ws-body .ws-sentence')].map((p) => p.textContent).join(' ')`;
+    await setSelect('writing-mode-select', 'read-only');
+    const fullText = await evalJs(passageText);
+    await setSelect('writing-mode-select', 'starter');
+    const starter = await evalJs(`(() => ({
+      text: ${passageText},
+      printText: [...document.querySelectorAll('#print-surface .ws-body .ws-sentence')].map((p) => p.textContent).join(' '),
+      instruction: Boolean(document.querySelector('#preview .ws-instruction')),
+      lines: Boolean(document.querySelector('#preview .ws-copy-area')),
+      notices: [...document.querySelectorAll('#fit-notices li')].map((l) => l.dataset.notice)
+    }))()`);
+    await setSelect('writing-mode-select', 'read-copy');
+    const squashText = (t) => t.replace(/\s+/g, ' ').trim();
+    const starterOk = starter.text.length > 0 && squashText(fullText).startsWith(squashText(starter.text)) && starter.text.length < fullText.length
+      && /[.!?»«"”]$/.test(starter.text.trim()) && starter.printText === starter.text
+      && starter.instruction && starter.lines && !starter.notices.includes('COPY_SPACE_SHORT');
+    journeyChecks.push({
+      label: '"Continue the text": the instruction, the first sentences only (same in print), then lines, and no copy estimate',
+      ok: starterOk,
+      note: starterOk ? `"${starter.text}"` : JSON.stringify({ starter, fullText })
+    });
+
     // The answer key (U3b): "Show the answers" adds the "Answers" tag to the
     // preview and the print surface and prints the answers; the key goes
     // into the packet as its own sheet; off again, no tag.

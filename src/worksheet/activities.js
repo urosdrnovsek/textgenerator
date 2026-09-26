@@ -9,6 +9,7 @@
  * - passage: 'text' (as styled) | 'traced' (lightened, for tracing over)
  *   | 'hidden' (not on the sheet at all) | 'cloze' (as styled, with the
  *   words the teacher clicked turned into gaps: selection.blanks)
+ *   | 'starter' (only the first STARTER_SENTENCES sentences, as styled)
  * - task: 'lines' (ruled copy rows fill the rest of the page, the existing
  *   fit policy in layout/measure.js) | 'none'
  * - imageSize: 'large' for the 120 × 90 mm picture box
@@ -26,7 +27,7 @@
  * it without a cycle.
  */
 
-/** @typedef {{ passage: 'text' | 'traced' | 'hidden' | 'cloze', task: 'lines' | 'none', imageSize?: 'large', instruction?: string, copyTarget?: true, sequence?: true, answers?: true }} Activity */
+/** @typedef {{ passage: 'text' | 'traced' | 'hidden' | 'cloze' | 'starter', task: 'lines' | 'none', imageSize?: 'large', instruction?: string, copyTarget?: true, sequence?: true, answers?: true }} Activity */
 
 /** @type {Readonly<Record<string, Readonly<Activity>>>} */
 export const ACTIVITIES = Object.freeze({
@@ -35,5 +36,6 @@ export const ACTIVITIES = Object.freeze({
   'read-only': Object.freeze({ passage: 'text', task: 'none' }),
   'write-own': Object.freeze({ passage: 'hidden', task: 'lines', imageSize: 'large', instruction: 'write-own' }),
   cloze: Object.freeze({ passage: 'cloze', task: 'none', instruction: 'cloze', answers: true }),
-  sequence: Object.freeze({ passage: 'hidden', task: 'none', instruction: 'sequence', sequence: true, answers: true })
+  sequence: Object.freeze({ passage: 'hidden', task: 'none', instruction: 'sequence', sequence: true, answers: true }),
+  starter: Object.freeze({ passage: 'starter', task: 'lines', instruction: 'starter' })
 });

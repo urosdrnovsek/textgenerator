@@ -11,7 +11,7 @@ import { tokenize } from '../text/tokenize.js';
 import { keyFor, selectionFor, blankWidthEm } from './selection.js';
 import { seededDerangement, sequenceLength } from './sequence.js';
 import { ACTIVITIES } from './activities.js';
-import { DRAWING_BOX_HEIGHT_MM, ARC_COLOR } from '../config.js';
+import { DRAWING_BOX_HEIGHT_MM, ARC_COLOR, STARTER_SENTENCES } from '../config.js';
 
 /**
  * @typedef {object} ImageAsset
@@ -132,9 +132,12 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
 
   // Trace: light solid text (blueprint 8.7) — computed once here so HTML
   // and DOCX render identical colors, never two implementations of "light".
+  // A story starter keeps only its first sentences.
   const bodyParagraphs = activity.passage === 'traced'
     ? lightenParagraphs(sentenceParagraphs)
-    : sentenceParagraphs;
+    : activity.passage === 'starter'
+      ? starterParagraphs(bodyRuns, doc, Boolean(settings.sentencePerLine))
+      : sentenceParagraphs;
 
   // Syllable arcs need syllable data; in trace mode they are lightened like the text.
   const arcColor = settings.syllableArcs && doc.hasSyllables
@@ -270,4 +273,24 @@ function buildSequence(bodyRuns, body, entryId) {
   const count = sequenceLength(sentences.length);
   const order = count > 0 ? seededDerangement(count, entryId) : [];
   return { items: order.map((original) => ({ runs: sentences[original], position: original + 1 })), sentenceCount: sentences.length };
+}
+
+/**
+ * "Continue the text": the first STARTER_SENTENCES sentences — fewer when
+ * the text is short, so at least one sentence is left for the child to
+ * write on from (a one-sentence text keeps its sentence). Cut from the
+ * same styled runs, so every reading support applies; one paragraph per
+ * sentence with sentence-per-line, else one paragraph.
+ * @param {import('../text/runs.js').StyledRun[]} bodyRuns
+ * @param {import('../text/tokenize.js').TextDoc} doc
+ * @param {boolean} sentencePerLine
+ * @returns {import('../text/runs.js').StyledRun[][]}
+ */
+function starterParagraphs(bodyRuns, doc, sentencePerLine) {
+  const count = Math.max(1, Math.min(STARTER_SENTENCES, doc.sentences.length - 1));
+  const kept = doc.sentences.slice(0, count);
+  const texts = sentencePerLine
+    ? kept.map(({ start, end }) => doc.body.slice(start, end))
+    : [doc.body.slice(kept[0].start, kept.at(-1).end)];
+  return splitRunsIntoSentences(bodyRuns, texts);
 }

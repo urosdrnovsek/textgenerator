@@ -7,6 +7,12 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
+- **Continue the text (story starters).** A new writing mode: the title,
+  the picture, the instruction "Read the beginning and continue in your
+  own words.", the first two sentences of the text, and ruled lines for
+  the rest of the page. Every text works with it (at least one sentence is
+  always left to write on from), and all reading supports apply to the
+  beginning. Worded to suit the fact texts too.
 - **"Write about the picture" no longer claims lines are needed to copy
   (bug fix).** Its sheet has handwriting lines but nothing to copy, yet
   the copy-lines estimate used the whole (hidden) text and could say

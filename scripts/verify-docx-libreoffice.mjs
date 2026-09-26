@@ -200,6 +200,9 @@ const CASES = [
   // 'es'+level-3 are otherwise unused.
   { label: 'en-andika-level2-sequence', language: 'en', theme: 'stories', level: 2, entryId: 'stories_blue_kite_2', fontId: 'andika', writingMode: 'sequence' },
   { label: 'es-andika-level3-sequence-answerkey', language: 'es', theme: 'stories', level: 3, entryId: 'stories_caracol_carrera_3', fontId: 'andika', writingMode: 'sequence', showAnswers: true },
+  // "Continue the text" (story starter): the first two sentences, then
+  // lines. 'sl'+level-2 is otherwise unused.
+  { label: 'sl-andika-level2-starter', language: 'sl', theme: 'stories', level: 2, entryId: 'stories_piscancek_2', fontId: 'andika', writingMode: 'starter' },
   { label: 'es-andika-level2-readcopy-drawingbox', language: 'es', theme: 'stories', level: 2, entryId: 'stories_huevo_blanco_2', fontId: 'andika', writingMode: 'read-copy', fontSizePt: 24, lineHeightMultiplier: 1.8, imageSlot: 'drawing-box' }
 ];
 

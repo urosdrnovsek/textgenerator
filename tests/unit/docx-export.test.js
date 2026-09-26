@@ -403,3 +403,14 @@ test('"Put in order" in Word: one unsplittable row per sentence, a square box of
   const numbers = [...keyXml.matchAll(/<w:jc w:val="center"\/><\/w:pPr><w:r><w:rPr>(?:(?!<\/w:rPr>)[\s\S])*<w:b\/>(?:(?!<\/w:rPr>)[\s\S])*<\/w:rPr><w:t[^>]*>(\d)<\/w:t>/g)].map((m) => Number(m[1]));
   assert.deepEqual(numbers, key.blocks.at(-1).items.map((i) => i.position));
 });
+
+test('"Continue the text" in Word: the instruction, only the first sentences, then the lines', async (t) => {
+  const model = await buildModel(TEST_ENTRY_ID, { ...SETTINGS, writingMode: 'starter' });
+  const labels = { nameLine: 'Ime:', date: 'Datum:', instruction: () => 'Nadaljuj.' };
+  const xml = await documentXmlOf(model, { copyBlocks: [10] }, t, labels);
+  assert.match(xml, />Nadaljuj\.</);
+  const kept = model.blocks.find((b) => b.type === 'passage').paragraphs.flat().map((r) => r.text).join('');
+  const full = (await buildModel(TEST_ENTRY_ID)).bodyParagraphs.flat().map((r) => r.text).join('');
+  assert.ok(full.startsWith(kept) && kept.length < full.length, 'the beginning of the text only');
+  assert.equal((xml.match(/<w:tbl>/g) ?? []).length, 1, 'the lines');
+});

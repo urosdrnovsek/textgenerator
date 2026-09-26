@@ -415,6 +415,20 @@ async function main() {
     await evalJs(`document.getElementById('syllable-arcs-toggle').click();`);
     await waitForFit();
 
+    // "Continue the text" (story starter) on the same sheet.
+    console.log('\n"Continue the text" in the real Firefox print...');
+    await evalJs(`const el = document.getElementById('writing-mode-select'); el.value = 'starter'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await waitForFit();
+    const starterPages = await reportedPages();
+    const starterText = await evalJs(`return [...document.querySelectorAll('#preview .ws-body .ws-sentence')].map((p) => p.textContent).join(' ')`);
+    const starterPdfPath = path.join(downloadDir, 'starter-worksheet.pdf');
+    await writeFile(starterPdfPath, Buffer.from(await driver.printPage(), 'base64'));
+    const starterPrintedPages = Number((execFileSync('pdfinfo', [starterPdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
+    check(`"Continue the text" page count agrees (${pagesNote(starterPrintedPages, starterPages)}), with its beginning printed`,
+      pagesAgree(starterPrintedPages, starterPages) && squash(execFileSync('pdftotext', [starterPdfPath, '-']).toString()).includes(squash(starterText)));
+    await evalJs(`const el = document.getElementById('writing-mode-select'); el.value = 'read-copy'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await waitForFit();
+
     // Reset back to defaults — the language loop below checks for the
     // localized "fits" wording specifically, which these settings would
     // break for languages whose content doesn't also extend at max size.

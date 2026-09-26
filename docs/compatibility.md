@@ -198,6 +198,8 @@ For at least one exported `.docx` per language and per writing mode (3 × 5 = 15
 - [ ] Answer key (gap-fill with "Show the answers"): the "Answers" tag at
       the top right, and each answer in bold in the middle of its
       underline.
+- [ ] Continue the text: the instruction line, only the first two
+      sentences, then ruled lines.
 - [ ] Write about the picture: the instruction line under the title, the
       picture noticeably larger than in the other modes (9 cm square for
       the bundled art), no passage, then ruled lines.
