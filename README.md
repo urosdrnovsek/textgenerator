@@ -57,7 +57,8 @@ to a school.
 - **Writing modes:** read & copy (ruled handwriting lines), trace (light
   text to trace over), read only, write about the picture (a large
   picture and ruled lines, no text), and fill the gaps (click words in the
-  preview, or let the app gap every Nth word, to make a gap-fill sheet).
+  preview, or let the app gap every Nth word, to make a gap-fill sheet;
+  "Show the answers" turns it into the answer key, marked "Answers").
   The last two print a short instruction for the child, which can be
   switched off.
 - **Picture on the sheet:** the text's picture, an empty drawing box after

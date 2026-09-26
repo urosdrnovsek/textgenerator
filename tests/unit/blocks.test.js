@@ -113,3 +113,18 @@ test('a selection made for another text version is ignored and flagged', () => {
   assert.equal(model.selectionReset, true);
   assert.deepEqual(model.selection.blanks, []);
 });
+
+test('the answer key: an "Answers" tag first on the page and the answers shown, only with gaps and answers on', () => {
+  const cloze = { ...SETTINGS, writingMode: 'cloze', header: { nameLine: false, date: false, title: false } };
+  const selection = (blanks, showAnswers) => ({ key: 'sl:t@1', blanks, sentence: null, showAnswers });
+  const key = buildWorksheet(ENTRY, cloze, ASSETS, 'sl', selection([1], true));
+  assert.deepEqual(types(key), ['answerTag', 'instruction', 'image', 'passage']);
+  assert.equal(key.blocks.at(-1).showAnswers, true);
+  const student = buildWorksheet(ENTRY, cloze, ASSETS, 'sl', selection([1], false));
+  assert.ok(!types(student).includes('answerTag'));
+  assert.equal(student.blocks.at(-1).showAnswers, false);
+  const noGaps = buildWorksheet(ENTRY, cloze, ASSETS, 'sl', selection([], true));
+  assert.ok(!types(noGaps).includes('answerTag'), 'nothing to answer: not a key');
+  const otherMode = buildWorksheet(ENTRY, SETTINGS, ASSETS, 'sl', selection([1], true));
+  assert.ok(!types(otherMode).includes('answerTag'), 'answers belong to the gap-fill only');
+});

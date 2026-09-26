@@ -9,7 +9,14 @@ import { ACTIVITIES } from './worksheet/activities.js';
 export const PAGE_WIDTH_MM = 210;
 export const PAGE_HEIGHT_MM = 297;
 export const DEFAULT_MARGIN_MM = 20;
-/** Rounding/output-difference allowance applied to the vertical fit budget. */
+/**
+ * Rounding/output-difference allowance applied to the vertical fit budget.
+ * It errs one way only: the app may say one page more than a sheet prints
+ * (when the content ends within this margin of a page end), never fewer.
+ * Kept by the owner's decision (2026-09-26); the fit result also reports
+ * the count without it (pageCountWithoutMargin) so checks can tell that
+ * over-count from a real mismatch.
+ */
 export const FIT_SAFETY_MM = 4;
 /** Fewer rows than this makes read-and-copy pointless; treat as insufficient space. */
 export const MIN_COPY_ROWS = 3;

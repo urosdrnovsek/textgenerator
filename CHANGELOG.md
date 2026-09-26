@@ -73,6 +73,20 @@ supports).
   row of exact height, like the copy lines. Saved setups include the
   choice; setups saved by 0.9 keep the picture. The owner checked the
   Slovene labels.
+- **Answer keys.** In "Fill the gaps", a "Show the answers" checkbox
+  turns the sheet into its answer key: every gap shows its word in bold
+  (in the preview, the print and the Word file), and an "Answers" tag
+  sits at the top right so the key isn't handed out by mistake. The
+  choice belongs to the text on screen, like the gaps. "Add to packet"
+  once with it off and once with it on puts the student sheet and its
+  key in one print run.
+- **Page count and its safety margin (documented, unchanged).** The page
+  check keeps 4 mm in reserve at the bottom of every page, so it may say
+  one page more than a sheet actually prints when the content ends
+  within 4 mm of a page end (found on an answer key: 10 reported, 9
+  printed in Chromium and Firefox). It never says fewer. The owner chose
+  to keep the margin; the tests now tell this known over-count apart
+  from a real mismatch.
 - **Fill the gaps.** A new writing mode makes a gap-fill sheet. The
   teacher clicks words in the preview to turn them into gaps (or back),
   or uses "Gap every Nth word" (N from 3 to 10, 7 by default), which

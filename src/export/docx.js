@@ -56,7 +56,8 @@ const DEFAULT_LABELS = {
   date: 'Datum:',
   instruction: (key) => {
     throw new Error(`MISSING_LABEL: sheet.instruction.${key}`);
-  }
+  },
+  answers: 'Rešitve'
 };
 
 /**
@@ -69,22 +70,26 @@ const DEFAULT_LABELS = {
  * A gap (run.blank) becomes one underlined run of no-break spaces about
  * the sheet's gap width wide (CLOZE.docxNbspEm per space — an estimate;
  * verify-docx checks the page count), with no letter or word spacing, like
- * the preview's fixed-width box. The answer is not in the file.
- * @param {{ fontFamily: string, fontSizePt: number, characterSpacingTwips: number, wordSpacingTwips: number, blankWidthEm?: number }} options
+ * the preview's fixed-width box. The answer is not in the file — except in
+ * the answer key (showAnswers), where the word sits bold in the middle of
+ * the underline, padded to about the same width.
+ * @param {{ fontFamily: string, fontSizePt: number, characterSpacingTwips: number, wordSpacingTwips: number, blankWidthEm?: number, showAnswers?: boolean }} options
  * @returns {TextRun[]}
  */
-function toWordRuns(runs, { fontFamily, fontSizePt, characterSpacingTwips, wordSpacingTwips, blankWidthEm = 0 }) {
+function toWordRuns(runs, { fontFamily, fontSizePt, characterSpacingTwips, wordSpacingTwips, blankWidthEm = 0, showAnswers = false }) {
   const wordRuns = [];
+  const gapPart = (text, bold) => new TextRun({ text, bold, underline: { type: UnderlineType.SINGLE }, font: fontFamily, size: Math.round(fontSizePt * 2) });
   for (const run of runs) {
     if (run.blank) {
-      wordRuns.push(
-        new TextRun({
-          text: '\u00A0'.repeat(Math.max(1, Math.round(blankWidthEm / CLOZE.docxNbspEm))),
-          underline: { type: UnderlineType.SINGLE },
-          font: fontFamily,
-          size: Math.round(fontSizePt * 2)
-        })
-      );
+      const spaces = Math.max(1, Math.round(blankWidthEm / CLOZE.docxNbspEm));
+      if (!showAnswers) {
+        wordRuns.push(gapPart('\u00A0'.repeat(spaces)));
+      } else {
+        // The word's own width in no-break-space units, estimated like the gap width.
+        const wordSpaces = Math.round(([...run.text].length * CLOZE.charWidthEm) / CLOZE.docxNbspEm);
+        const pad = '\u00A0'.repeat(Math.max(1, Math.floor((spaces - wordSpaces) / 2)));
+        wordRuns.push(gapPart(pad), gapPart(run.text, true), gapPart(pad));
+      }
       continue;
     }
     for (const segment of run.text.split(/(\s+)/)) {
@@ -126,6 +131,23 @@ function toWordRuns(runs, { fontFamily, fontSizePt, characterSpacingTwips, wordS
  * @type {Record<string, (block: any, context: BlockWriteContext) => (Paragraph | Table)[]>}
  */
 export const BLOCK_WRITERS = {
+  // "Answers", boxed and right-aligned like the preview's tag.
+  answerTag: (block, { labels, unnumbered }) => [
+    new Paragraph({
+      alignment: AlignmentType.RIGHT,
+      spacing: { after: 120 },
+      children: [
+        new TextRun({
+          text: labels.answers ?? DEFAULT_LABELS.answers,
+          bold: true,
+          allCaps: true,
+          size: 22,
+          border: { style: BorderStyle.SINGLE, size: 6, color: '202020', space: 2 }
+        })
+      ],
+      ...unnumbered
+    })
+  ],
   header: (block, { labels, fontFamily, shading, unnumbered }) => {
     const parts = [];
     if (block.nameLine) {
@@ -218,7 +240,7 @@ export const BLOCK_WRITERS = {
           spacing: paragraphGapTwips > 0
             ? { line: lineTwips, lineRule: LineRuleType.EXACT, after: paragraphGapTwips }
             : { line: lineTwips, lineRule: LineRuleType.EXACT },
-          children: toWordRuns(paragraphRuns, { fontFamily, fontSizePt: s.fontSizePt, characterSpacingTwips, wordSpacingTwips, blankWidthEm: block.blankWidthEm }),
+          children: toWordRuns(paragraphRuns, { fontFamily, fontSizePt: s.fontSizePt, characterSpacingTwips, wordSpacingTwips, blankWidthEm: block.blankWidthEm, showAnswers: block.showAnswers }),
           shading,
           // Same rule as the preview's `orphans: 1; widows: 1` (worksheet.css):
           // the fit check breaks between any two lines. Word and LibreOffice

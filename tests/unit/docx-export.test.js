@@ -349,3 +349,25 @@ test('a gap is one underlined run of no-break spaces about the gap width wide, a
   assert.equal(gap[1].length, Math.round(gapped.blocks.at(-1).blankWidthEm / CLOZE.docxNbspEm));
   assert.doesNotMatch(xml, new RegExp(`>${answer}<`), 'the answer is not in the file');
 });
+
+test('the answer key in Word: the "Answers" tag, and each answer bold in the middle of its underline', async (t) => {
+  const { keyFor } = await import('../../src/worksheet/selection.js');
+  const plain = await buildModel(TEST_ENTRY_ID);
+  const answer = plain.bodyParagraphs.flat().filter((r) => r.w === 3).map((r) => r.text).join('');
+  const raw = JSON.parse(await readFile(path.join(root, 'content/sl.json'), 'utf8'));
+  const { imagesById } = await loadManifestAssets();
+  const entry = { ...raw.entries.find((e) => e.id === TEST_ENTRY_ID), language: 'sl' };
+  const selection = { key: keyFor(plain.contentKey), blanks: [3], sentence: null, showAnswers: true };
+  const model = buildWorksheet(entry, { ...SETTINGS, writingMode: 'cloze' }, { imagesById }, 'sl', selection);
+  const labels = { nameLine: 'Ime:', date: 'Datum:', instruction: () => 'Dopolni.', answers: 'Rešitve' };
+  const xml = await documentXmlOf(model, { copyBlocks: [] }, t, labels);
+  assert.match(xml, /<w:caps\/>[\s\S]*?<w:bdr [^>]*\/>[\s\S]*?<w:t[^>]*>Rešitve<\/w:t>/);
+  const runs = [...xml.matchAll(/<w:r><w:rPr>((?:(?!<\/w:rPr>)[\s\S])*)<\/w:rPr><w:t[^>]*>([^<]*)<\/w:t><\/w:r>/g)].map((m) => ({ props: m[1], text: m[2] }));
+  const i = runs.findIndex((r) => r.text === answer);
+  assert.ok(i > 0, 'the answer is in the key');
+  assert.match(runs[i].props, /<w:b\/>[\s\S]*<w:u w:val="single"\/>/);
+  for (const side of [runs[i - 1], runs[i + 1]]) {
+    assert.match(side.text, /^\u00A0+$/);
+    assert.match(side.props, /<w:u w:val="single"\/>/);
+  }
+});

@@ -35,6 +35,7 @@ export function sheetLabels(t) {
     nameLine: t('header.nameLine'),
     date: t('header.date'),
     pageBreak: (n) => t('preview.pageBreak', { n }),
-    instruction: (key) => t(`sheet.instruction.${key}`)
+    instruction: (key) => t(`sheet.instruction.${key}`),
+    answers: t('sheet.answers')
   };
 }

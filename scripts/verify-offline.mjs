@@ -490,6 +490,43 @@ async function main() {
     // switches back to the picture. Other modes print no instruction.
     // (A square picture fills 90 × 90 of the large 120 × 90 mm box, and
     // 45 × 45 of the normal 60 × 45 mm one.)
+    // The answer key (U3b): "Show the answers" adds the "Answers" tag to the
+    // preview and the print surface and prints the answers; the key goes
+    // into the packet as its own sheet; off again, no tag.
+    console.log('Driving the answer key...');
+    const keyState = `(() => ({
+      tag: document.querySelector('#preview .ws-answer-tag')?.textContent ?? null,
+      printTag: document.querySelector('#print-surface .ws-answer-tag')?.textContent ?? null,
+      packet: document.querySelectorAll('#packet-list li').length
+    }))()`;
+    await setSelect('writing-mode-select', 'cloze');
+    await evalJs(`document.getElementById('btn-cloze-every-nth').click()`);
+    await wait(300);
+    await waitForFit();
+    const keyBefore = await evalJs(keyState);
+    await evalJs(`document.getElementById('cloze-show-answers-toggle').click()`);
+    await wait(300);
+    await waitForFit();
+    const keyOn = await evalJs(keyState);
+    await cdp.send('Emulation.setEmulatedMedia', { media: 'print' });
+    const keyPaint = await evalJs(`getComputedStyle(document.querySelector('#print-surface .ws-blank-answer')).visibility`);
+    await cdp.send('Emulation.setEmulatedMedia', { media: '' });
+    await evalJs(`document.getElementById('btn-add-to-packet').click()`);
+    await wait(300);
+    const keyPacked = await evalJs(keyState);
+    await evalJs(`document.getElementById('cloze-show-answers-toggle').click()`);
+    await wait(300);
+    await waitForFit();
+    const keyOff = await evalJs(keyState);
+    await setSelect('writing-mode-select', 'read-copy');
+    const keyOk = keyBefore.tag === null && keyOn.tag && keyOn.printTag === keyOn.tag && keyPaint === 'visible'
+      && keyPacked.packet === keyOn.packet + 1 && keyOff.tag === null && keyOff.printTag === null;
+    journeyChecks.push({
+      label: 'answer key: the tag on preview and print, answers printed, added to the packet, gone when switched off',
+      ok: keyOk,
+      note: keyOk ? `tag "${keyOn.tag}", packet ${keyOn.packet} → ${keyPacked.packet}` : JSON.stringify({ keyBefore, keyOn, keyPaint, keyPacked, keyOff })
+    });
+
     console.log('Driving "write about the picture" and the instruction line...');
     const ownState = `(() => {
       const read = (root) => {

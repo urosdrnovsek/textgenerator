@@ -227,6 +227,25 @@
   color: #9CA3AF;
 }
 
+/* The answer key: the same boxes, the answers in bold (print.css prints them). */
+.ws-body--answers .ws-blank-answer {
+  color: #202020;
+  font-weight: 700;
+}
+
+/* "Answers" on an answer-key sheet, so it isn't handed out by mistake. */
+.ws-answer-tag {
+  margin: 0 0 2mm auto;
+  width: max-content;
+  padding: 0.5mm 2mm;
+  border: 0.3mm solid #202020;
+  font-size: 11pt;
+  font-weight: 700;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
 /* "Read it, then draw it": an empty box after the passage. Its height and
    top gap are set inline from config; border-box keeps the height exact. */
 .ws-drawing-box {

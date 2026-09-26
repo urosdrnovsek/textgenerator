@@ -85,6 +85,7 @@ async function waitForImage(img) {
  * @property {object} [details]
  * @property {string[]} [suggestions]
  * @property {Record<string, number>} [heightsMm]
+ * @property {number} [pageCountWithoutMargin] diagnostic only: the content's page count at the full page height (no FIT_SAFETY_MM); the reported pageCount may exceed it by one, never fall below it
  * @property {string[]} notices advisory codes from worksheet/advice.js; always empty when 'blocked'
  */
 
@@ -200,6 +201,7 @@ export async function measureWorksheet(model, revision, labels) {
 
     const totalContentHeightMm = blocks.reduce((sum, b) => sum + b.heightMm, 0);
     const { pageCount, breaksMm, lastPageUsedMm } = paginateBlocks(blocks, budgetMm);
+    const pageCountWithoutMargin = paginateBlocks(blocks, budgetMm + FIT_SAFETY_MM).pageCount;
 
     if (model.task !== 'lines') {
       return {
@@ -209,6 +211,7 @@ export async function measureWorksheet(model, revision, labels) {
         layout: { ruling, contentWidthMm: widthMm, copyBlocks: [], pageBreaksMm: breaksMm },
         heightsMm: { used: totalContentHeightMm, budget: budgetMm },
         suggestions: pageCount === 1 ? undefined : ['choose-shorter-text', 'reduce-image'],
+        pageCountWithoutMargin,
         notices: advise(model)
       };
     }

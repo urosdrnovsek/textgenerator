@@ -189,6 +189,19 @@ async function main() {
       throw new Error('fit check never settled');
     }
 
+    // The page count the app reports, and its count without the fit
+    // check's 4 mm safety margin (config.FIT_SAFETY_MM). The margin only
+    // ever makes the app say one page MORE than a sheet prints — when its
+    // content ends within 4 mm of a page end — and the owner keeps it
+    // (2026-09-26). So a print agrees when it matches the report, or is one
+    // page shorter AND matches the no-margin count; anything else is a
+    // real mismatch.
+    async function reportedPages() {
+      return evalJs(`return (() => { const f = document.getElementById('fit-indicator'); return { pages: Number(f.dataset.pageCount), withoutMargin: Number(f.dataset.pageCountWithoutMargin) }; })()`);
+    }
+    const pagesAgree = (printed, reported) => printed === reported.pages || (printed === reported.pages - 1 && printed === reported.withoutMargin);
+    const pagesNote = (printed, reported) => `${printed} printed, ${reported.pages} reported${printed === reported.pages ? '' : ` (${reported.withoutMargin} without the 4 mm margin)`}`;
+
     const title = await evalJs(`return document.title`);
     check('page loaded with a real title', typeof title === 'string' && title.length > 0);
 
@@ -238,12 +251,12 @@ async function main() {
     console.log('\nLine numbers across pages in the real Firefox print...');
     await evalJs(`document.getElementById('line-numbers-toggle').click();`);
     await waitForFit();
-    const numberedPages = Number(await evalJs(`return document.getElementById('fit-indicator').dataset.pageCount`));
+    const numberedPages = await reportedPages();
     const previewNumbers = await evalJs(`return [...document.querySelectorAll('#preview .ws-line-number')].map((n) => n.textContent)`);
     const numberedPdfPath = path.join(downloadDir, 'line-numbers-worksheet.pdf');
     await writeFile(numberedPdfPath, Buffer.from(await driver.printPage(), 'base64'));
     const printedPages = Number((execFileSync('pdfinfo', [numberedPdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
-    check(`line-numbered worksheet prints as exactly ${numberedPages} pages (got ${printedPages})`, printedPages === numberedPages);
+    check(`line-numbered worksheet page count agrees (${pagesNote(printedPages, numberedPages)})`, pagesAgree(printedPages, numberedPages));
     const marginPt = (20 / 25.4) * 72;
     const gutterText = execFileSync('pdftotext', ['-x', String(Math.floor(marginPt)), '-y', '0', '-W', String(Math.ceil((8 / 25.4) * 72)), '-H', '842', numberedPdfPath, '-']).toString();
     // The header and title also start at the margin edge, so the strip
@@ -261,11 +274,11 @@ async function main() {
     console.log('\nDrawing box in the real Firefox print...');
     await evalJs(`const el = document.getElementById('image-slot-select'); el.value = 'drawing-box'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
     await waitForFit();
-    const boxPages = Number(await evalJs(`return document.getElementById('fit-indicator').dataset.pageCount`));
+    const boxPages = await reportedPages();
     const boxPdfPath = path.join(downloadDir, 'drawing-box-worksheet.pdf');
     await writeFile(boxPdfPath, Buffer.from(await driver.printPage(), 'base64'));
     const boxPrintedPages = Number((execFileSync('pdfinfo', [boxPdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
-    check(`drawing-box worksheet prints as exactly ${boxPages} pages (got ${boxPrintedPages})`, boxPrintedPages === boxPages);
+    check(`drawing-box worksheet page count agrees (${pagesNote(boxPrintedPages, boxPages)})`, pagesAgree(boxPrintedPages, boxPages));
     await evalJs(`const el = document.getElementById('image-slot-select'); el.value = 'picture'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
     await waitForFit();
 
@@ -274,11 +287,11 @@ async function main() {
     console.log('\nWrite about the picture in the real Firefox print...');
     await evalJs(`const el = document.getElementById('writing-mode-select'); el.value = 'write-own'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
     await waitForFit();
-    const ownPages = Number(await evalJs(`return document.getElementById('fit-indicator').dataset.pageCount`));
+    const ownPages = await reportedPages();
     const ownPdfPath = path.join(downloadDir, 'write-own-worksheet.pdf');
     await writeFile(ownPdfPath, Buffer.from(await driver.printPage(), 'base64'));
     const ownPrintedPages = Number((execFileSync('pdfinfo', [ownPdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
-    check(`write-about-the-picture worksheet prints as exactly ${ownPages} pages (got ${ownPrintedPages})`, ownPrintedPages === ownPages);
+    check(`write-about-the-picture worksheet page count agrees (${pagesNote(ownPrintedPages, ownPages)})`, pagesAgree(ownPrintedPages, ownPages));
     const ownInstruction = await evalJs(`return document.querySelector('#preview .ws-instruction')?.textContent ?? ''`);
     const ownText = execFileSync('pdftotext', [ownPdfPath, '-']).toString().replace(/\s+/g, '');
     check('its printed PDF carries the instruction line', ownInstruction.length > 0 && ownText.includes(ownInstruction.replace(/\s+/g, '')));
@@ -290,12 +303,12 @@ async function main() {
     console.log('\nHighlighted letter groups in the real Firefox print...');
     await evalJs(`const el = document.getElementById('graphemes-input'); el.value = 'a, e, i, o'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
     await waitForFit();
-    const groupPages = Number(await evalJs(`return document.getElementById('fit-indicator').dataset.pageCount`));
+    const groupPages = await reportedPages();
     const groupBold = Number(await evalJs(`return [...document.querySelectorAll('#preview .ws-sentence span')].filter((s) => s.style.fontWeight === '700').length`));
     const groupPdfPath = path.join(downloadDir, 'letter-groups-worksheet.pdf');
     await writeFile(groupPdfPath, Buffer.from(await driver.printPage(), 'base64'));
     const groupPrintedPages = Number((execFileSync('pdfinfo', [groupPdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
-    check(`letter-group worksheet (${groupBold} bold runs) prints as exactly ${groupPages} pages (got ${groupPrintedPages})`, groupBold > 0 && groupPrintedPages === groupPages);
+    check(`letter-group worksheet (${groupBold} bold runs) page count agrees (${pagesNote(groupPrintedPages, groupPages)})`, groupBold > 0 && pagesAgree(groupPrintedPages, groupPages));
     await evalJs(`const el = document.getElementById('graphemes-input'); el.value = ''; el.dispatchEvent(new Event('change', { bubbles: true }));`);
     await waitForFit();
 
@@ -304,12 +317,12 @@ async function main() {
     console.log('\nVisible word spaces in the real Firefox print...');
     await evalJs(`document.getElementById('word-space-marks-toggle').click();`);
     await waitForFit();
-    const markPages = Number(await evalJs(`return document.getElementById('fit-indicator').dataset.pageCount`));
+    const markPages = await reportedPages();
     const markPdfPath = path.join(downloadDir, 'word-space-marks-worksheet.pdf');
     await writeFile(markPdfPath, Buffer.from(await driver.printPage(), 'base64'));
     const markPrintedPages = Number((execFileSync('pdfinfo', [markPdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
     const markUnderscores = (execFileSync('pdftotext', [markPdfPath, '-']).toString().match(/_/g) ?? []).length;
-    check(`word-space-mark worksheet prints as exactly ${markPages} pages (got ${markPrintedPages}), with the marks printed (${markUnderscores} "_")`, markPrintedPages === markPages && markUnderscores > 20);
+    check(`word-space-mark worksheet page count agrees (${pagesNote(markPrintedPages, markPages)}), with the marks printed (${markUnderscores} "_")`, pagesAgree(markPrintedPages, markPages) && markUnderscores > 20);
     await evalJs(`document.getElementById('word-space-marks-toggle').click();`);
     await waitForFit();
 
@@ -322,7 +335,7 @@ async function main() {
     await evalJs(`document.getElementById('cloze-every-nth-input').value = '4'; document.getElementById('btn-cloze-every-nth').click();`);
     await driver.sleep(500);
     await waitForFit();
-    const clozePages = Number(await evalJs(`return document.getElementById('fit-indicator').dataset.pageCount`));
+    const clozePages = await reportedPages();
     const clozeTexts = await evalJs(`return [...document.querySelectorAll('#preview .ws-sentence')].map((p) => {
       const copy = p.cloneNode(true);
       const full = copy.textContent;
@@ -336,9 +349,22 @@ async function main() {
     // -layout: wide empty gaps make pdftotext's default reading order interleave lines.
     const clozePdf = squash(execFileSync('pdftotext', ['-layout', clozePdfPath, '-']).toString());
     const gapCount = clozeTexts.reduce((n, p) => n + p.gaps, 0);
-    check(`gap-fill worksheet (${gapCount} gaps) prints as exactly ${clozePages} pages (got ${clozePrintedPages})`, gapCount > 0 && clozePrintedPages === clozePages);
+    check(`gap-fill worksheet (${gapCount} gaps) page count agrees (${pagesNote(clozePrintedPages, clozePages)})`, gapCount > 0 && pagesAgree(clozePrintedPages, clozePages));
     check('the printed gap-fill has the passage without its answers, and not the answers',
       clozeTexts.every((p) => clozePdf.includes(squash(p.gapped))) && clozeTexts.filter((p) => p.gaps > 0).every((p) => !clozePdf.includes(squash(p.full))));
+    // The answer key (U3b): the same sheet with "Show the answers" prints
+    // the passage with its answers and the "Answers" tag.
+    await evalJs(`document.getElementById('cloze-show-answers-toggle').click();`);
+    await driver.sleep(500);
+    await waitForFit();
+    const keyPages = await reportedPages();
+    const keyTag = await evalJs(`return document.querySelector('#preview .ws-answer-tag')?.textContent ?? ''`);
+    const keyPdfPath = path.join(downloadDir, 'answer-key-worksheet.pdf');
+    await writeFile(keyPdfPath, Buffer.from(await driver.printPage(), 'base64'));
+    const keyPrintedPages = Number((execFileSync('pdfinfo', [keyPdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
+    const keyPdf = squash(execFileSync('pdftotext', ['-layout', keyPdfPath, '-']).toString());
+    check(`answer key page count agrees (${pagesNote(keyPrintedPages, keyPages)}), with the "${keyTag}" tag and every answer`,
+      pagesAgree(keyPrintedPages, keyPages) && keyTag !== '' && keyPdf.toLowerCase().includes(squash(keyTag).toLowerCase()) && clozeTexts.every((p) => keyPdf.includes(squash(p.full))));
     await evalJs(`const el = document.getElementById('writing-mode-select'); el.value = 'read-copy'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
     await waitForFit();
 

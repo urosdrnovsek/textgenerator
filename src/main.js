@@ -161,6 +161,7 @@ const els = {
   clozeEveryNthInput: document.getElementById('cloze-every-nth-input'),
   clozeEveryNthButton: document.getElementById('btn-cloze-every-nth'),
   clozeClearButton: document.getElementById('btn-cloze-clear'),
+  clozeShowAnswersToggle: document.getElementById('cloze-show-answers-toggle'),
   clozeStatus: document.getElementById('cloze-status'),
   previewHint: document.getElementById('preview-hint'),
   candidateCount: document.getElementById('candidate-count'),
@@ -438,6 +439,8 @@ function showFit(model, result) {
   // text (workstream I3) — kept here for the verify-* scripts and debugging.
   el.dataset.usedMm = result.heightsMm ? (result.heightsMm.final ?? result.heightsMm.used).toFixed(1) : '';
   el.dataset.budgetMm = result.heightsMm ? result.heightsMm.budget.toFixed(1) : '';
+  // Only for sheets without copy rows (their row filling depends on the margin too).
+  el.dataset.pageCountWithoutMargin = result.pageCountWithoutMargin ?? '';
 
   const suggestions = (result.suggestions ?? []).map((code) => t(`fit.suggestion.${code}`)).join(', ');
 

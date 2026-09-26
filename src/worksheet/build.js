@@ -68,11 +68,12 @@ import { DRAWING_BOX_HEIGHT_MM } from '../config.js';
  * export/docx.js BLOCK_WRITERS) handle exactly these types, and a test
  * holds their key sets equal.
  * @typedef {(
+ *   | { type: 'answerTag' } an answer-key sheet's "Answers" tag (labels.answers), first on the page
  *   | { type: 'header', nameLine: boolean, date: boolean }
  *   | { type: 'title', text: string }
  *   | { type: 'instruction', key: string } text: labels.instruction(key), in the sheet's language
  *   | { type: 'image', size: 'normal' | 'large' }
- *   | { type: 'passage', paragraphs: import('../text/runs.js').StyledRun[][], lineNumbers: boolean, blankWidthEm: number } blankWidthEm: every gap's width (0 = no gaps)
+ *   | { type: 'passage', paragraphs: import('../text/runs.js').StyledRun[][], lineNumbers: boolean, blankWidthEm: number, showAnswers: boolean } blankWidthEm: every gap's width (0 = no gaps); showAnswers: the answer key (gaps show their word)
  *   | { type: 'drawingBox', heightMm: number }
  * )} Block
  */
@@ -152,7 +153,7 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
     settings: structuredClone(settings),
     selection: chosen.selection,
     selectionReset: chosen.reset,
-    blocks: buildBlocks(entry, settings, activity, bodyParagraphs, blanks.length > 0 ? blankWidthEm(doc, blanks) : 0),
+    blocks: buildBlocks(entry, settings, activity, bodyParagraphs, blanks.length > 0 ? blankWidthEm(doc, blanks) : 0, blanks.length > 0 && chosen.selection.showAnswers),
     task: activity.task
   };
 }
@@ -165,11 +166,14 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
  * @param {import('./activities.js').Activity} activity
  * @param {import('../text/runs.js').StyledRun[][]} paragraphs
  * @param {number} gapWidthEm the one width of every gap (0 without gaps)
+ * @param {boolean} answerKey the gaps show their words, and the sheet says it is the key
  * @returns {Block[]}
  */
-function buildBlocks(entry, settings, activity, paragraphs, gapWidthEm) {
+function buildBlocks(entry, settings, activity, paragraphs, gapWidthEm, answerKey) {
   /** @type {Block[]} */
   const blocks = [];
+  // First, whatever else is switched off: a key must never pass for a student sheet.
+  if (answerKey) blocks.push({ type: 'answerTag' });
   if (settings.header.nameLine || settings.header.date) {
     blocks.push({ type: 'header', nameLine: settings.header.nameLine, date: settings.header.date });
   }
@@ -180,7 +184,7 @@ function buildBlocks(entry, settings, activity, paragraphs, gapWidthEm) {
   const imageSlot = settings.imageSlot ?? 'picture';
   if (imageSlot === 'picture') blocks.push({ type: 'image', size: activity.imageSize ?? 'normal' });
   if (activity.passage !== 'hidden') {
-    blocks.push({ type: 'passage', paragraphs, lineNumbers: Boolean(settings.lineNumbers), blankWidthEm: gapWidthEm });
+    blocks.push({ type: 'passage', paragraphs, lineNumbers: Boolean(settings.lineNumbers), blankWidthEm: gapWidthEm, showAnswers: answerKey });
   }
   // After the passage: the child draws what they have just read.
   if (imageSlot === 'drawing-box') blocks.push({ type: 'drawingBox', heightMm: DRAWING_BOX_HEIGHT_MM });

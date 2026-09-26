@@ -186,6 +186,10 @@ const CASES = [
   // hidden answers are left out of the text compared. 'sl'+level-3 is
   // otherwise unused.
   { label: 'sl-andika-level3-cloze', language: 'sl', theme: 'stories', level: 3, entryId: 'stories_polz_tito_3', fontId: 'andika', writingMode: 'cloze', clozeEveryNth: 5 },
+  // The answer key (U3b): the same gap-fill with the answers shown — bold
+  // in the middle of each underline — and the "Corrigé" tag. The PDF must
+  // contain the passage with its answers. 'fr'+level-2 is otherwise unused.
+  { label: 'fr-andika-level2-cloze-answerkey', language: 'fr', theme: 'stories', level: 2, entryId: 'stories_boite_a_musique_2', fontId: 'andika', writingMode: 'cloze', clozeEveryNth: 5, showAnswers: true },
   { label: 'es-andika-level2-readcopy-drawingbox', language: 'es', theme: 'stories', level: 2, entryId: 'stories_huevo_blanco_2', fontId: 'andika', writingMode: 'read-copy', fontSizePt: 24, lineHeightMultiplier: 1.8, imageSlot: 'drawing-box' }
 ];
 
@@ -324,6 +328,11 @@ async function main() {
           document.getElementById('cloze-every-nth-input').value = '${testCase.clozeEveryNth}';
           document.getElementById('btn-cloze-every-nth').click();
         })();`);
+        if (testCase.showAnswers) {
+          await wait(500);
+          await waitForFit();
+          await evalJs(`document.getElementById('cloze-show-answers-toggle').click();`);
+        }
         await wait(500); // the fit line still shows the pre-gap result until the new render settles
       }
       const fitText = await waitForFit();
@@ -345,12 +354,14 @@ async function main() {
       // The text paragraphs only: overlays inside .ws-body (line numbers)
       // carry text of their own that isn't part of the passage.
       // Gap answers are hidden on paper (and absent from the Word file), so
-      // they are left out of the text the PDF must contain.
+      // they are left out of the text the PDF must contain — unless the
+      // sheet is the answer key, which prints them.
       const renderedBody = await evalJs(`[...document.querySelectorAll('#preview .ws-body .ws-sentence')].map((p) => {
         const copy = p.cloneNode(true);
-        copy.querySelectorAll('.ws-blank-answer').forEach((a) => a.remove());
+        if (!p.closest('.ws-body--answers')) copy.querySelectorAll('.ws-blank-answer').forEach((a) => a.remove());
         return copy.textContent;
       }).join('')`);
+      const renderedTag = await evalJs(`document.querySelector('#preview .ws-answer-tag')?.textContent ?? ''`);
       const renderedInstruction = await evalJs(`document.querySelector('#preview .ws-instruction')?.textContent ?? ''`);
       const previewLineNumbers = await evalJs(`document.querySelectorAll('#preview .ws-line-number').length`);
 
@@ -368,7 +379,7 @@ async function main() {
         downloaded.push({ testCase, ok: false, note: 'docx download never completed' });
         continue;
       }
-      downloaded.push({ testCase, ok: true, guid: completed.guid, fitText, expectedPages, renderedTitle, renderedBody, renderedInstruction, previewLineNumbers });
+      downloaded.push({ testCase, ok: true, guid: completed.guid, fitText, expectedPages, renderedTitle, renderedBody, renderedInstruction, renderedTag, previewLineNumbers });
     }
   } finally {
     chrome.kill();
@@ -478,6 +489,8 @@ async function main() {
       const titleOk = matched ? pdfNormalized.includes(normalizeForCompare(matched.renderedTitle)) : false;
       // Empty for activities without an instruction line.
       const instructionOk = matched ? pdfNormalized.includes(normalizeForCompare(matched.renderedInstruction)) : false;
+      // The answer key's tag (printed in capitals in Word, so compared case-insensitively).
+      const tagOk = matched ? pdfNormalized.toLowerCase().includes(normalizeForCompare(matched.renderedTag).toLowerCase()) : false;
       const pagesOk = pages !== null && Math.abs(pages - expectedPages) <= toleratedDelta;
       // Line numbers: in -layout text each numbered line starts with its
       // number, then a gap. They must run 1…K in order (one count across
@@ -492,11 +505,11 @@ async function main() {
         lineNumbersOk = inOrder && numbers.length === matched.previewLineNumbers;
         lineNumbersNote = `  line numbers 1…${numbers.length}${inOrder ? '' : ' OUT OF ORDER'} (preview ${matched.previewLineNumbers})`;
       }
-      const ok = pagesOk && bodyOk && titleOk && instructionOk && lineNumbersOk;
+      const ok = pagesOk && bodyOk && titleOk && instructionOk && tagOk && lineNumbersOk;
       allOk = allOk && ok;
       const textNote = bodyOk && titleOk && instructionOk
-        ? `${matched.renderedBody ? 'full passage' : 'no passage; title'}${matched.renderedInstruction ? ' and instruction' : ''} present`
-        : `text MISMATCH (title ${titleOk ? 'ok' : 'missing'}, body ${bodyOk ? 'ok' : 'incomplete'}, instruction ${instructionOk ? 'ok' : 'missing'})`;
+        ? `${matched.renderedBody ? 'full passage' : 'no passage; title'}${matched.renderedInstruction ? ' and instruction' : ''}${matched.renderedTag ? ` and "${matched.renderedTag}" tag` : ''} present`
+        : `text MISMATCH (title ${titleOk ? 'ok' : 'missing'}, body ${bodyOk ? 'ok' : 'incomplete'}, instruction ${instructionOk ? 'ok' : 'missing'}, tag ${tagOk ? 'ok' : 'missing'})`;
       console.log(`  ${ok ? 'PASS' : 'FAIL'}  ${label}  pages=${pages} (expected ${expectedPages}${toleratedDelta ? ` ±${toleratedDelta}` : ''})  ${textNote}${lineNumbersNote}`);
     } catch (error) {
       allOk = false;

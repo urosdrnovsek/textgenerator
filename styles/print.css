@@ -66,6 +66,10 @@
     visibility: hidden;
   }
 
+  .ws-body--answers .ws-blank-answer {
+    visibility: visible;
+  }
+
   * {
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;

@@ -20,7 +20,8 @@ const DEFAULT_LABELS = {
   // instruction without the locale's labels is a bug (i18n.sheetLabels).
   instruction: (key) => {
     throw new Error(`MISSING_LABEL: sheet.instruction.${key}`);
-  }
+  },
+  answers: 'Rešitve'
 };
 
 /**
@@ -244,6 +245,12 @@ function renderPageBreakMarkers(page, pageBreaksMm, pageBreakLabel) {
  * @type {Record<string, (block: any, context: BlockRenderContext) => HTMLElement>}
  */
 export const BLOCK_RENDERERS = {
+  answerTag: (block, { labels }) => {
+    const tag = document.createElement('div');
+    tag.className = 'ws-answer-tag ws-text';
+    tag.textContent = labels.answers ?? DEFAULT_LABELS.answers;
+    return tag;
+  },
   header: (block, { labels }) => renderHeaderFields(block, labels),
   title: (block) => {
     const title = document.createElement('h1');
@@ -279,6 +286,8 @@ export const BLOCK_RENDERERS = {
     // paragraph breaks) gets the same small gap between paragraphs; the DOCX
     // exporter applies the matching spacing-after.
     bodyWrap.classList.toggle('ws-sentence-per-line', block.paragraphs.length > 1);
+    // The answer key: gaps show their word (bold, and printed).
+    bodyWrap.classList.toggle('ws-body--answers', Boolean(block.showAnswers));
     if (block.lineNumbers) {
       bodyWrap.classList.add('ws-body--line-numbers');
       bodyWrap.style.setProperty('--ws-line-number-gutter-mm', `${LINE_NUMBER_GUTTER_MM}mm`);
