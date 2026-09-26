@@ -12,7 +12,8 @@
     "verify-docx": "node scripts/verify-docx-libreoffice.mjs",
     "verify-offline": "node scripts/verify-offline.mjs",
     "verify-firefox": "node scripts/verify-firefox.mjs",
-    "package": "node scripts/package-release.mjs"
+    "package": "node scripts/package-release.mjs",
+    "sentence-report": "node scripts/sentence-report.mjs"
   },
   "devDependencies": {
     "docx": "9.7.1",

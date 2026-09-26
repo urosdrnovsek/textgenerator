@@ -134,6 +134,13 @@ export const GRAPHEME_LIMITS = { maxGroups: 4, maxLength: 4 };
 export const GRAPHEME_COLORS = ['#1E3A8A', '#0F766E', '#9A3412', '#DB2777'];
 
 /**
+ * "Put in order" (sentence sequencing): all of a text's sentences when it
+ * has min–max, the first max when it has more (contiguous sentences keep
+ * the story coherent); fewer than min and the mode is unavailable.
+ */
+export const SEQUENCE_SENTENCES = { min: 3, max: 6 };
+
+/**
  * Gap-fill ("Fill the gaps", worksheet/selection.js). Every nth word:
  * default 7, 3–10. At most 40% of a text's words may be gaps. Every gap on
  * a sheet has the same width, sized for a child writing the longest
