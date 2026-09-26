@@ -24,7 +24,7 @@ import { renderWorksheet } from './render/html.js';
 import { measureWorksheet } from './layout/measure.js';
 import { isPrintReady, printWorksheet } from './export/print.js';
 import { exportDocx } from './export/docx.js';
-import { createTranslator } from './i18n.js';
+import { createTranslator, sheetLabels } from './i18n.js';
 import { checkStorageCapability } from './storage.js';
 import { readImageFile } from './import.js';
 import { init as initPacketUi } from './ui/packet.js';
@@ -110,7 +110,7 @@ const state = {
     letterColors: { b: '#B42318', d: '#166534', p: '#7C3AED', q: '#B45309' },
     syllableMode: 'colors',
     syllableColors: ['#1D4ED8', '#B45309'],
-    header: { nameLine: true, date: true, title: true },
+    header: { nameLine: true, date: true, title: true, instructions: true },
     sentencePerLine: false,
     tintId: 'none',
     printTint: false,
@@ -169,6 +169,7 @@ const els = {
   headerNameLineToggle: document.getElementById('header-nameline-toggle'),
   headerDateToggle: document.getElementById('header-date-toggle'),
   headerTitleToggle: document.getElementById('header-title-toggle'),
+  headerInstructionsToggle: document.getElementById('header-instructions-toggle'),
   guideHeightInput: document.getElementById('guide-height-input'),
   dyslexiaPresetButton: document.getElementById('btn-dyslexia-preset'),
   presetSelect: document.getElementById('preset-select'),
@@ -352,6 +353,10 @@ function createText() {
 
 function updateWritingMode(mode) {
   state.settings.writingMode = mode;
+  // Writing about the picture needs one: never silently print an empty
+  // sheet (handbook §11.6 A4). The select's "None" is disabled meanwhile.
+  if (mode === 'write-own' && state.settings.imageSlot === 'none') state.settings.imageSlot = 'picture';
+  syncSettingsControlsFromState();
   if (state.contentId) requestRender();
 }
 
@@ -479,7 +484,8 @@ async function requestRender() {
       : IMAGES_BY_ID;
     const model = buildWorksheet(entry, state.settings, { imagesById }, entry.language);
 
-    const result = await measureWorksheet(model, revision);
+    const labels = sheetLabels(t);
+    const result = await measureWorksheet(model, revision, labels);
     if (revision !== state.revision) return; // stale async result, discard
 
     showFit(model, result);
@@ -491,7 +497,6 @@ async function requestRender() {
       return;
     }
 
-    const labels = { nameLine: t('header.nameLine'), date: t('header.date'), pageBreak: (n) => t('preview.pageBreak', { n }) };
     // previewMode (page-break markers) only in #preview — never the print
     // surface or a packet sheet (upgrade blueprint v3, workstream A).
     renderWorksheet(model, result.layout, els.preview, labels, true);
@@ -527,7 +532,7 @@ async function handleExportDocx() {
   try {
     const { model, layout } = state.lastGood;
     const imageBytes = dataUrlToUint8Array(model.image.path);
-    const labels = { nameLine: t('header.nameLine'), date: t('header.date'), pageBreak: (n) => t('preview.pageBreak', { n }) };
+    const labels = sheetLabels(t);
     const blob = await exportDocx(model, layout, imageBytes, labels);
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -571,7 +576,6 @@ applySettingsLimits();
 syncSettingsControlsFromState();
 // A reload can restore the checkbox's old state; the view always starts in colour.
 els.grayscalePreviewToggle.checked = state.view.grayscale;
-els.imageSlotSelect.value = state.settings.imageSlot;
 populatePresetSelect();
 updatePacketControls();
 renderPacketList();

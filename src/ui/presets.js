@@ -67,7 +67,7 @@ export function init({
     letterColors: DEFAULT_LETTER_COLORS,
     syllableMode: 'colors',
     syllableColors: ['#1D4ED8', '#B45309'],
-    header: { nameLine: true, date: true, title: true },
+    header: { nameLine: true, date: true, title: true, instructions: true },
     sentencePerLine: false,
     tintId: 'none',
     printTint: false,
@@ -203,7 +203,6 @@ export function init({
     els.themeSelect.value = state.filter.theme;
     els.levelSelect.value = String(state.filter.level);
     els.writingModeSelect.value = state.settings.writingMode;
-    els.imageSlotSelect.value = state.settings.imageSlot;
     syncSettingsControlsFromState();
     if (keepSelection) {
       if (state.contentId) requestRender();

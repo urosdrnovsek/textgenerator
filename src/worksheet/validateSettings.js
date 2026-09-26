@@ -110,6 +110,8 @@ export function validateSettings(settings) {
   const header = settings.header;
   if (!header || typeof header !== 'object' || typeof header.nameLine !== 'boolean' || typeof header.date !== 'boolean' || typeof header.title !== 'boolean') {
     push('header', 'header must be an object with boolean nameLine, date, and title fields');
+  } else if (header.instructions !== undefined && typeof header.instructions !== 'boolean') {
+    push('header', 'header.instructions must be a boolean when present');
   }
 
   if (settings.sentencePerLine !== undefined && typeof settings.sentencePerLine !== 'boolean') {
@@ -138,6 +140,13 @@ export function validateSettings(settings) {
 
   if (settings.imageSlot !== undefined && !KNOWN_IMAGE_SLOTS.has(settings.imageSlot)) {
     push('imageSlot', `unknown imageSlot "${settings.imageSlot}" — known: ${[...KNOWN_IMAGE_SLOTS].join(', ')}`);
+  }
+
+  // Writing about the picture with no picture would print an empty sheet
+  // (handbook §11.6 A4); the UI disables the combination, this catches a
+  // hand-edited or imported setup.
+  if (settings.writingMode === 'write-own' && settings.imageSlot === 'none') {
+    push('imageSlot', 'writingMode "write-own" needs a picture or a drawing box, not imageSlot "none"');
   }
 
   if (errors.length > 0) {

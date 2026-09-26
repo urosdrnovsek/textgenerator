@@ -10,6 +10,7 @@
  * the startup language.
  */
 
+import { sheetLabels } from '../i18n.js';
 import { renderWorksheet } from '../render/html.js';
 import { printWorksheet } from '../export/print.js';
 import { PACKET_MAX_SHEETS, addSnapshot, removeSnapshot, moveSnapshot, generateSnapshotId, totalPages } from '../worksheet/packet.js';
@@ -99,7 +100,7 @@ export function init({ state, els, getT }) {
   function handleAddToPacket() {
     if (!state.lastGood) return;
     const { model, layout, pageCount } = state.lastGood;
-    const labels = { nameLine: t('header.nameLine'), date: t('header.date'), pageBreak: (n) => t('preview.pageBreak', { n }) };
+    const labels = sheetLabels(t);
     const result = addSnapshot(state.packet, {
       id: generateSnapshotId(),
       title: model.title,
@@ -156,7 +157,7 @@ export function init({ state, els, getT }) {
     // Restore the print surface to the currently displayed single worksheet
     // so a subsequent plain "Print" click reflects what's on screen again.
     if (state.lastGood) {
-      const labels = { nameLine: t('header.nameLine'), date: t('header.date'), pageBreak: (n) => t('preview.pageBreak', { n }) };
+      const labels = sheetLabels(t);
       renderWorksheet(state.lastGood.model, state.lastGood.layout, els.printSurface, labels);
     }
   }

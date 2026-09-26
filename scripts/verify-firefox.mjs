@@ -269,6 +269,22 @@ async function main() {
     await evalJs(`const el = document.getElementById('image-slot-select'); el.value = 'picture'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
     await waitForFit();
 
+    // Write about the picture (A4) on the same sheet: instruction line,
+    // large picture, copy rows; the real print must match the app's count.
+    console.log('\nWrite about the picture in the real Firefox print...');
+    await evalJs(`const el = document.getElementById('writing-mode-select'); el.value = 'write-own'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await waitForFit();
+    const ownPages = Number(await evalJs(`return document.getElementById('fit-indicator').dataset.pageCount`));
+    const ownPdfPath = path.join(downloadDir, 'write-own-worksheet.pdf');
+    await writeFile(ownPdfPath, Buffer.from(await driver.printPage(), 'base64'));
+    const ownPrintedPages = Number((execFileSync('pdfinfo', [ownPdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
+    check(`write-about-the-picture worksheet prints as exactly ${ownPages} pages (got ${ownPrintedPages})`, ownPrintedPages === ownPages);
+    const ownInstruction = await evalJs(`return document.querySelector('#preview .ws-instruction')?.textContent ?? ''`);
+    const ownText = execFileSync('pdftotext', [ownPdfPath, '-']).toString().replace(/\s+/g, '');
+    check('its printed PDF carries the instruction line', ownInstruction.length > 0 && ownText.includes(ownInstruction.replace(/\s+/g, '')));
+    await evalJs(`const el = document.getElementById('writing-mode-select'); el.value = 'read-copy'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await waitForFit();
+
     // Reset back to defaults — the language loop below checks for the
     // localized "fits" wording specifically, which these settings would
     // break for languages whose content doesn't also extend at max size.

@@ -75,6 +75,10 @@ export function init({ state, els, defaultLetterColors: DEFAULT_LETTER_COLORS, r
     els.headerNameLineToggle.checked = Boolean(s.header.nameLine);
     els.headerDateToggle.checked = Boolean(s.header.date);
     els.headerTitleToggle.checked = Boolean(s.header.title);
+    // Absent in setups saved before 0.10: on.
+    els.headerInstructionsToggle.checked = s.header.instructions !== false;
+    els.imageSlotSelect.value = s.imageSlot ?? 'picture';
+    els.imageSlotSelect.querySelector('option[value="none"]').disabled = s.writingMode === 'write-own';
     els.guideHeightInput.value = s.guideHeightMm;
   }
 
@@ -157,6 +161,7 @@ export function init({ state, els, defaultLetterColors: DEFAULT_LETTER_COLORS, r
   els.headerNameLineToggle.addEventListener('change', (e) => updateHeaderField('nameLine', e.target.checked));
   els.headerDateToggle.addEventListener('change', (e) => updateHeaderField('date', e.target.checked));
   els.headerTitleToggle.addEventListener('change', (e) => updateHeaderField('title', e.target.checked));
+  els.headerInstructionsToggle.addEventListener('change', (e) => updateHeaderField('instructions', e.target.checked));
   els.guideHeightInput.addEventListener('change', (e) => updateNumericSetting('guideHeightMm', SETTINGS_LIMITS.guideHeightMm, e.target));
 
   return { populateFontSelect, applySettingsLimits, syncSettingsControlsFromState };

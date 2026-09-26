@@ -22,3 +22,19 @@ export function createTranslator(locale) {
     );
   };
 }
+
+/**
+ * Everything printed on a sheet that comes from the locale: header labels,
+ * the preview's page-break label, and activity instruction lines
+ * (`sheet.instruction.<key>`). One builder, so the preview, the print
+ * surface, the fit check, packets and the Word export can't disagree.
+ * @param {(key: string, vars?: Record<string, string | number>) => string} t
+ */
+export function sheetLabels(t) {
+  return {
+    nameLine: t('header.nameLine'),
+    date: t('header.date'),
+    pageBreak: (n) => t('preview.pageBreak', { n }),
+    instruction: (key) => t(`sheet.instruction.${key}`)
+  };
+}

@@ -113,6 +113,12 @@
   font-weight: 700;
 }
 
+/* The activity's instruction to the child ("Look at the picture and write
+   about it."), under the title, at the passage's size so a child can read it. */
+.ws-instruction {
+  margin: 0 0 3mm 0;
+}
+
 .ws-image-wrap {
   display: flex;
   justify-content: center;

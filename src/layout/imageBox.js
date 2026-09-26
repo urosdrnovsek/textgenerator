@@ -8,6 +8,8 @@
 
 export const IMAGE_BOX_MAX_WIDTH_MM = 60;
 export const IMAGE_BOX_MAX_HEIGHT_MM = 45;
+/** The picture box for activities with `imageSize: 'large'` (write about the picture). */
+export const IMAGE_BOX_LARGE = Object.freeze({ widthMm: 120, heightMm: 90 });
 
 /**
  * Mirrors CSS `object-fit: contain` against the box above: scales the

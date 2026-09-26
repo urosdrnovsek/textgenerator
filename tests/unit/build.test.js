@@ -113,6 +113,7 @@ test('buildWorksheet returns settings that do not alias the caller\'s object (a 
   live.header.nameLine = false;
   live.header.date = false;
   live.header.title = false;
+  live.header.instructions = false;
   live.letterColors.b = '#000000'; // in-place mutation of a nested map
   live.letterColors = { z: '#111111' }; // and reassignment
   live.syllableColors.push('#222222'); // in-place mutation of a nested array

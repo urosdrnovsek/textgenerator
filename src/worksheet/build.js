@@ -25,7 +25,7 @@ import { DRAWING_BOX_HEIGHT_MM } from '../config.js';
  * @property {number} lineHeightMultiplier
  * @property {number} letterSpacingPt
  * @property {number} extraWordSpacePt
- * @property {'read-copy' | 'trace' | 'read-only'} writingMode
+ * @property {'read-copy' | 'trace' | 'read-only' | 'write-own'} writingMode
  * @property {string} rulingId
  * @property {number} guideHeightMm
  * @property {Record<string, string>} letterColors
@@ -38,7 +38,7 @@ import { DRAWING_BOX_HEIGHT_MM } from '../config.js';
  * @property {boolean} [printStripes] whether stripes also show when printed (default off, to save ink)
  * @property {boolean} [lineNumbers] numbers every passage line, continuously across pages (default off)
  * @property {'picture' | 'drawing-box' | 'none'} [imageSlot] the text's picture above the passage, an empty drawing box after it, or neither (default 'picture')
- * @property {{ nameLine: boolean, date: boolean, title: boolean }} header
+ * @property {{ nameLine: boolean, date: boolean, title: boolean, instructions?: boolean }} header instructions: the activity's instruction line, when it has one (absent = on)
  * @property {number} marginMm
  * @property {number} pageWidthMm
  * @property {number} pageHeightMm
@@ -64,7 +64,8 @@ import { DRAWING_BOX_HEIGHT_MM } from '../config.js';
  * @typedef {(
  *   | { type: 'header', nameLine: boolean, date: boolean }
  *   | { type: 'title', text: string }
- *   | { type: 'image' }
+ *   | { type: 'instruction', key: string } text: labels.instruction(key), in the sheet's language
+ *   | { type: 'image', size: 'normal' | 'large' }
  *   | { type: 'passage', paragraphs: import('../text/runs.js').StyledRun[][], lineNumbers: boolean }
  *   | { type: 'drawingBox', heightMm: number }
  * )} Block
@@ -131,7 +132,7 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount) {
     // frozen layout/page count described the old settings — the real cause
     // of what was mis-documented in 0.8 as a Chromium print-engine bug.
     settings: structuredClone(settings),
-    blocks: buildBlocks(entry, settings, bodyParagraphs),
+    blocks: buildBlocks(entry, settings, activity, bodyParagraphs),
     task: activity.task
   };
 }
@@ -141,19 +142,25 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount) {
  * the page and where; the adapters and the fit check just walk the list.
  * @param {import('../content/validate.js').ContentEntry} entry
  * @param {WorksheetSettings} settings
+ * @param {import('./activities.js').Activity} activity
  * @param {import('../text/runs.js').StyledRun[][]} paragraphs
  * @returns {Block[]}
  */
-function buildBlocks(entry, settings, paragraphs) {
+function buildBlocks(entry, settings, activity, paragraphs) {
   /** @type {Block[]} */
   const blocks = [];
   if (settings.header.nameLine || settings.header.date) {
     blocks.push({ type: 'header', nameLine: settings.header.nameLine, date: settings.header.date });
   }
   if (settings.header.title) blocks.push({ type: 'title', text: entry.title });
+  if (activity.instruction && settings.header.instructions !== false) {
+    blocks.push({ type: 'instruction', key: activity.instruction });
+  }
   const imageSlot = settings.imageSlot ?? 'picture';
-  if (imageSlot === 'picture') blocks.push({ type: 'image' });
-  blocks.push({ type: 'passage', paragraphs, lineNumbers: Boolean(settings.lineNumbers) });
+  if (imageSlot === 'picture') blocks.push({ type: 'image', size: activity.imageSize ?? 'normal' });
+  if (activity.passage !== 'hidden') {
+    blocks.push({ type: 'passage', paragraphs, lineNumbers: Boolean(settings.lineNumbers) });
+  }
   // After the passage: the child draws what they have just read.
   if (imageSlot === 'drawing-box') blocks.push({ type: 'drawingBox', heightMm: DRAWING_BOX_HEIGHT_MM });
   return blocks;

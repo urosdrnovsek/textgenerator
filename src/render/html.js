@@ -7,12 +7,21 @@
 
 import { buildRulingRows } from '../layout/rulings.js';
 import { ptToMm, pxToMm, FONT_FAMILIES, COPY_AREA_GAP_MM, TINTS_BY_ID, LINE_NUMBER_GUTTER_MM, DRAWING_BOX_GAP_MM } from '../config.js';
-import { IMAGE_BOX_MAX_WIDTH_MM, IMAGE_BOX_MAX_HEIGHT_MM } from '../layout/imageBox.js';
+import { IMAGE_BOX_MAX_WIDTH_MM, IMAGE_BOX_MAX_HEIGHT_MM, IMAGE_BOX_LARGE } from '../layout/imageBox.js';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 
 /** @type {{ nameLine: string, date: string, pageBreak: (n: number) => string }} */
-const DEFAULT_LABELS = { nameLine: 'Ime:', date: 'Datum:', pageBreak: (n) => `Stran ${n}` };
+const DEFAULT_LABELS = {
+  nameLine: 'Ime:',
+  date: 'Datum:',
+  pageBreak: (n) => `Stran ${n}`,
+  // No fallback text for what a child reads: a caller that renders an
+  // instruction without the locale's labels is a bug (i18n.sheetLabels).
+  instruction: (key) => {
+    throw new Error(`MISSING_LABEL: sheet.instruction.${key}`);
+  }
+};
 
 /**
  * One span per run. Word and syllable ids (src/text/tokenize.js) go on as
@@ -225,9 +234,20 @@ export const BLOCK_RENDERERS = {
     title.textContent = block.text;
     return title;
   },
+  instruction: (block, { labels }) => {
+    const line = document.createElement('p');
+    line.className = 'ws-instruction ws-text';
+    line.textContent = (labels.instruction ?? DEFAULT_LABELS.instruction)(block.key);
+    return line;
+  },
   image: (block, { model }) => {
     const imageWrap = document.createElement('div');
     imageWrap.className = 'ws-image-wrap';
+    if (block.size === 'large') {
+      // Overrides the page's normal box (set in renderWorksheet) for this image only.
+      imageWrap.style.setProperty('--ws-image-max-width-mm', `${IMAGE_BOX_LARGE.widthMm}mm`);
+      imageWrap.style.setProperty('--ws-image-max-height-mm', `${IMAGE_BOX_LARGE.heightMm}mm`);
+    }
     const img = document.createElement('img');
     img.className = 'ws-image';
     img.src = model.image.path;

@@ -10,7 +10,7 @@ import { validatePack } from '../../src/content/validate.js';
 import { buildWorksheet } from '../../src/worksheet/build.js';
 import { exportDocx } from '../../src/export/docx.js';
 import { convertMillimetersToTwip } from 'docx';
-import { mmToTwips, LINE_NUMBER_GUTTER_MM } from '../../src/config.js';
+import { mmToTwips, mmToPx, LINE_NUMBER_GUTTER_MM } from '../../src/config.js';
 
 const root = path.dirname(path.dirname(path.dirname(fileURLToPath(import.meta.url))));
 const TEST_ENTRY_ID = 'stories_muc_1';
@@ -225,8 +225,8 @@ test('exportDocx writes authored paragraph breaks as separate paragraphs with th
   assert.equal(gaps.length, model.bodyParagraphs.length);
 });
 
-async function documentXmlOf(model, layout, t) {
-  const blob = await exportDocx(model, layout, await imageBytesFor(TEST_ENTRY_ID));
+async function documentXmlOf(model, layout, t, labels) {
+  const blob = await exportDocx(model, layout, await imageBytesFor(TEST_ENTRY_ID), labels);
   const tmpDir = await mkdtemp(path.join(os.tmpdir(), 'worksheet-docx-test-'));
   t.after(() => rm(tmpDir, { recursive: true, force: true }));
   const docxPath = path.join(tmpDir, 'worksheet.docx');
@@ -278,4 +278,23 @@ test('drawing box: a borderless gap row and a bordered box row of exact heights,
   // Word merges tables that touch; a paragraph must come between them.
   const between = xml.slice(xml.indexOf(tables[0]) + tables[0].length, xml.indexOf(tables[1]));
   assert.match(between, /^<w:p>|^<w:p /);
+});
+
+test('write about the picture: the instruction line, the picture in the large 120 × 90 mm box, no passage, then copy lines', async (t) => {
+  const model = await buildModel(TEST_ENTRY_ID, { ...SETTINGS, writingMode: 'write-own' });
+  const labels = { nameLine: 'Name:', date: 'Date:', instruction: (key) => `instruction:${key}` };
+  const xml = await documentXmlOf(model, { copyBlocks: [8] }, t, labels);
+
+  assert.match(xml, /<w:t[^>]*>instruction:write-own<\/w:t>/);
+  // 512 × 512 source contained in 120 × 90 mm: 90 × 90 mm, at the exporter's pixel rounding.
+  const { cx, cy } = extractExtent(xml);
+  assert.equal(cx, cy);
+  assert.equal(cx, Math.round(mmToPx(90)) * 9525);
+  assert.doesNotMatch(xml, /Muc/, 'the passage is not on the sheet');
+  assert.equal((xml.match(/<w:tbl>/g) ?? []).length, 1, 'the copy lines');
+});
+
+test('an instruction without the locale\'s labels is an error, never a silent fallback', async () => {
+  const model = await buildModel(TEST_ENTRY_ID, { ...SETTINGS, writingMode: 'write-own' });
+  await assert.rejects(exportDocx(model, { copyBlocks: [] }, await imageBytesFor(TEST_ENTRY_ID)), /MISSING_LABEL: sheet\.instruction\.write-own/);
 });

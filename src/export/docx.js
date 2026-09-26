@@ -47,10 +47,16 @@ import {
   convertMillimetersToTwip
 } from 'docx';
 import { FONT_FAMILIES, TWIPS_PER_PT, mmToPx, mmToTwips, TINTS_BY_ID, contentWidthMm, LINE_NUMBER_GUTTER_MM, DRAWING_BOX_GAP_MM } from '../config.js';
-import { computeContainedImageSizeMm } from '../layout/imageBox.js';
+import { computeContainedImageSizeMm, IMAGE_BOX_LARGE } from '../layout/imageBox.js';
 
 /** Matches src/render/html.js DEFAULT_LABELS — used only when a caller doesn't pass the active locale's translated labels. */
-const DEFAULT_LABELS = { nameLine: 'Ime:', date: 'Datum:' };
+const DEFAULT_LABELS = {
+  nameLine: 'Ime:',
+  date: 'Datum:',
+  instruction: (key) => {
+    throw new Error(`MISSING_LABEL: sheet.instruction.${key}`);
+  }
+};
 
 /**
  * Splits each run on whitespace so word spacing (settings.extraWordSpacePt)
@@ -86,7 +92,7 @@ function toWordRuns(runs, { fontFamily, fontSizePt, characterSpacingTwips, wordS
 /**
  * @typedef {object} BlockWriteContext
  * @property {import('../worksheet/build.js').WorksheetModel} model
- * @property {{ nameLine: string, date: string }} labels
+ * @property {{ nameLine: string, date: string, instruction?: (key: string) => string }} labels
  * @property {Uint8Array | Buffer | undefined} imageBytes
  * @property {string} fontFamily
  * @property {object | undefined} shading paragraph shading when the tint prints, else undefined
@@ -125,13 +131,30 @@ export const BLOCK_WRITERS = {
     })
   ],
 
+  instruction: (block, { model, labels, fontFamily, shading, unnumbered }) => [
+    new Paragraph({
+      children: [
+        new TextRun({
+          text: (labels.instruction ?? DEFAULT_LABELS.instruction)(block.key),
+          font: fontFamily,
+          size: Math.round(model.settings.fontSizePt * 2)
+        })
+      ],
+      spacing: { after: 200 },
+      shading,
+      ...unnumbered
+    })
+  ],
+
   image: (block, { model, imageBytes, shading, unnumbered }) => {
     if (!imageBytes) return [];
     // Contains the image at its real aspect ratio within the same 60x45mm
     // slot the HTML preview uses (object-fit: contain) — previously a fixed
     // 60x45 forced every image (all bundled art is 512x512) into a
     // stretched 4:3 box (workstream D1).
-    const { widthMm, heightMm } = computeContainedImageSizeMm(model.image.width, model.image.height);
+    const { widthMm, heightMm } = block.size === 'large'
+      ? computeContainedImageSizeMm(model.image.width, model.image.height, IMAGE_BOX_LARGE.widthMm, IMAGE_BOX_LARGE.heightMm)
+      : computeContainedImageSizeMm(model.image.width, model.image.height);
     return [
       new Paragraph({
         alignment: AlignmentType.CENTER,
@@ -224,7 +247,7 @@ export const BLOCK_WRITERS = {
  * @param {import('../worksheet/build.js').WorksheetModel} model
  * @param {{ copyBlocks: number[] }} layout the fit-checked layout decision from layout/measure.js — one entry in copyBlocks per copy-practice block (a second entry means a page break is needed before it)
  * @param {Uint8Array | Buffer | undefined} imageBytes decoded bytes of model.image
- * @param {{ nameLine: string, date: string }} [labels] translated header.nameLine/header.date strings for the active locale (blueprint 8.1: every teacher-facing label must localize) — falls back to the Slovene defaults only if omitted
+ * @param {{ nameLine: string, date: string, instruction?: (key: string) => string }} [labels] translated header.nameLine/header.date strings and instruction lines (i18n.sheetLabels) for the active locale (blueprint 8.1: every teacher-facing label must localize) — falls back to the Slovene defaults only if omitted
  * @returns {Promise<Blob>} browser- and Node-compatible; tests convert via .arrayBuffer()
  */
 export async function exportDocx(model, layout, imageBytes, labels = DEFAULT_LABELS) {

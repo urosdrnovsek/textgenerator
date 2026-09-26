@@ -158,9 +158,11 @@ function blocked(revision, code, details, suggestions) {
  * @param {import('../worksheet/build.js').WorksheetModel} model
  * @param {number} revision caller-assigned revision id; stale async results
  *   must be discarded by the caller, not by this function
+ * @param {object} [labels] i18n.sheetLabels — measured in the sheet's own
+ *   language, so a longer instruction line is measured as it will print
  * @returns {Promise<FitResult>}
  */
-export async function measureWorksheet(model, revision) {
+export async function measureWorksheet(model, revision, labels) {
   const s = model.settings;
   const widthMm = contentWidthMm(s.marginMm);
   const budgetMm = contentHeightMm(s.marginMm) - FIT_SAFETY_MM;
@@ -173,7 +175,7 @@ export async function measureWorksheet(model, revision) {
   try {
     await waitForFonts(fontFamily);
 
-    const page = renderWorksheet(model, { copyBlocks: [], ruling, contentWidthMm: widthMm }, surface);
+    const page = renderWorksheet(model, { copyBlocks: [], ruling, contentWidthMm: widthMm }, surface, labels);
     await waitForImage(page.querySelector('img.ws-image'));
 
     if (hasHorizontalOverflow(page)) {
@@ -246,7 +248,7 @@ export async function measureWorksheet(model, revision) {
     // reported page count and break positions come from the DOM that will
     // actually print, not a re-derivation of it (blueprint 8.4 fit
     // procedure's own rule, applied to the added copy-area geometry).
-    const finalPage = renderWorksheet(model, { copyBlocks: copyBlocksRows, ruling, contentWidthMm: widthMm }, surface);
+    const finalPage = renderWorksheet(model, { copyBlocks: copyBlocksRows, ruling, contentWidthMm: widthMm }, surface, labels);
     await waitForImage(finalPage.querySelector('img.ws-image'));
     const measuredCopyBlockHeightsMm = [...finalPage.querySelectorAll('.ws-copy-block')].map((el) =>
       pxToMm(el.getBoundingClientRect().height)

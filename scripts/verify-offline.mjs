@@ -355,6 +355,53 @@ async function main() {
       note: slotOk ? `box ${slotBox.preview.boxHeightMm} mm, copy rows ${slotBox.preview.copyAfterBox ? 'after it' : 'not on this sheet'}` : JSON.stringify({ slotBox, slotNone, slotPicture })
     });
 
+    // Write about the picture (A4) + the instruction line: title, the
+    // locale's instruction, the large picture, no passage, copy rows. Its
+    // select disables "None", and choosing the mode while "None" is set
+    // switches back to the picture. Other modes print no instruction.
+    // (A square picture fills 90 × 90 of the large 120 × 90 mm box, and
+    // 45 × 45 of the normal 60 × 45 mm one.)
+    console.log('Driving "write about the picture" and the instruction line...');
+    const ownState = `(() => {
+      const read = (root) => {
+        const page = document.querySelector(root + ' .ws-page');
+        const img = page.querySelector('img.ws-image');
+        return {
+          instruction: page.querySelector('.ws-instruction')?.textContent ?? null,
+          passage: Boolean(page.querySelector('[data-block="passage"]')),
+          imageWidthMm: img ? Math.round(img.offsetWidth * 25.4 / 96) : null,
+          copy: Boolean(page.querySelector('.ws-copy-area'))
+        };
+      };
+      const slot = document.getElementById('image-slot-select');
+      return {
+        preview: read('#preview'), print: read('#print-surface'),
+        slot: slot.value, noneDisabled: slot.querySelector('option[value="none"]').disabled
+      };
+    })()`;
+    const setSelect = async (id, value) => {
+      await evalJs(`(() => { const el = document.getElementById('${id}'); el.value = '${value}'; el.dispatchEvent(new Event('change', { bubbles: true })); })()`);
+      await waitForFit();
+    };
+    await setSelect('image-slot-select', 'none');
+    await setSelect('writing-mode-select', 'write-own');
+    const own = await evalJs(ownState);
+    await evalJs(`document.getElementById('header-instructions-toggle').click()`);
+    await waitForFit();
+    const ownNoLine = await evalJs(ownState);
+    await evalJs(`document.getElementById('header-instructions-toggle').click()`);
+    await setSelect('writing-mode-select', 'read-copy');
+    const back = await evalJs(ownState);
+    const ownOk = ['preview', 'print'].every((k) => own[k].instruction && !own[k].passage && own[k].imageWidthMm === 90 && own[k].copy)
+      && own.slot === 'picture' && own.noneDisabled
+      && ownNoLine.preview.instruction === null && ownNoLine.print.instruction === null
+      && back.preview.instruction === null && back.preview.passage && back.preview.imageWidthMm === 45 && !back.noneDisabled;
+    journeyChecks.push({
+      label: '"write about the picture": instruction, 90 mm picture, no passage, copy rows; "None" disabled; line toggles off; read & copy unchanged',
+      ok: ownOk,
+      note: ownOk ? `instruction "${own.preview.instruction}"` : JSON.stringify({ own, ownNoLine, back })
+    });
+
     console.log('Exercising dyslexia-support toggles, presets, and a custom-font switch...');
     await evalJs(`
       (function() {

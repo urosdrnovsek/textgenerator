@@ -178,3 +178,14 @@ test('accepts each image slot or none given, and rejects an unknown one', () => 
   }
   assert.equal(validateSettings({ ...VALID_SETTINGS, imageSlot: 'photo' }).ok, false);
 });
+
+test('write about the picture needs a picture or a drawing box', () => {
+  assert.equal(validateSettings({ ...VALID_SETTINGS, writingMode: 'write-own' }).ok, true);
+  assert.equal(validateSettings({ ...VALID_SETTINGS, writingMode: 'write-own', imageSlot: 'drawing-box' }).ok, true);
+  assert.equal(validateSettings({ ...VALID_SETTINGS, writingMode: 'write-own', imageSlot: 'none' }).ok, false);
+});
+
+test('header.instructions is optional, and a boolean when present', () => {
+  assert.equal(validateSettings({ ...VALID_SETTINGS, header: { ...VALID_SETTINGS.header, instructions: false } }).ok, true);
+  assert.equal(validateSettings({ ...VALID_SETTINGS, header: { ...VALID_SETTINGS.header, instructions: 'yes' } }).ok, false);
+});

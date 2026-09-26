@@ -73,6 +73,16 @@ supports).
   row of exact height, like the copy lines. Saved setups include the
   choice; setups saved by 0.9 keep the picture. The Slovene labels are
   waiting for the owner's check.
+- **Write about the picture.** A new writing mode: the title, a short
+  instruction for the child ("Look at the picture and write about it."),
+  the picture in a larger 120 × 90 mm box, and ruled lines for the rest
+  of the page; the text itself is not printed. It can use the drawing box
+  instead of the picture, but not "no picture" (that option is disabled
+  while the mode is chosen). The instruction line is a new header option,
+  on by default, and only activities that have an instruction print one,
+  so the other modes print exactly as before. The instruction is written
+  in all five languages; none has had a native-speaker review, and the
+  Slovene is waiting for the owner's check.
 
 ## 0.9.0-rc.2 — 2026-09-24 (beta hotfix)
 

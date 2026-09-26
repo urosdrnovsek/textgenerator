@@ -61,3 +61,34 @@ test('the image slot: the picture above the passage, a drawing box after it, or 
   assert.deepEqual(drawing.blocks.at(-1), { type: 'drawingBox', heightMm: 90 });
   assert.deepEqual(types(buildWorksheet(ENTRY, { ...SETTINGS, imageSlot: 'none' }, ASSETS, 'sl')), ['header', 'title', 'passage']);
 });
+
+test('write about the picture: title, instruction line and a large picture; no passage', () => {
+  const model = buildWorksheet(ENTRY, { ...SETTINGS, writingMode: 'write-own' }, ASSETS, 'sl');
+  assert.deepEqual(types(model), ['header', 'title', 'instruction', 'image']);
+  assert.deepEqual(model.blocks[2], { type: 'instruction', key: 'write-own' });
+  assert.equal(model.blocks[3].size, 'large');
+  assert.equal(model.task, 'lines');
+  const noLine = buildWorksheet(ENTRY, { ...SETTINGS, writingMode: 'write-own', header: { ...SETTINGS.header, instructions: false } }, ASSETS, 'sl');
+  assert.deepEqual(types(noLine), ['header', 'title', 'image']);
+  const drawing = buildWorksheet(ENTRY, { ...SETTINGS, writingMode: 'write-own', imageSlot: 'drawing-box' }, ASSETS, 'sl');
+  assert.deepEqual(types(drawing), ['header', 'title', 'instruction', 'drawingBox']);
+});
+
+test('the older modes keep their exact blocks: no instruction line, a normal picture', () => {
+  for (const writingMode of ['read-copy', 'trace', 'read-only']) {
+    const model = buildWorksheet(ENTRY, { ...SETTINGS, writingMode, header: { ...SETTINGS.header, instructions: true } }, ASSETS, 'sl');
+    assert.deepEqual(types(model), ['header', 'title', 'image', 'passage'], writingMode);
+    assert.equal(model.blocks[2].size, 'normal');
+  }
+});
+
+test('every activity instruction has a sheet.instruction string in all five locales', async () => {
+  const { readFileSync } = await import('node:fs');
+  const { ACTIVITIES: activities } = await import('../../src/worksheet/activities.js');
+  const keys = Object.values(activities).map((a) => a.instruction).filter(Boolean);
+  assert.ok(keys.length > 0);
+  for (const language of ['sl', 'en', 'de', 'fr', 'es']) {
+    const { strings } = JSON.parse(readFileSync(new URL(`../../locales/${language}.json`, import.meta.url), 'utf8'));
+    for (const key of keys) assert.equal(typeof strings[`sheet.instruction.${key}`], 'string', `${language}: ${key}`);
+  }
+});

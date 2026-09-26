@@ -169,6 +169,9 @@ const CASES = [
   // Drawing box (A5): the 90 mm box after the passage, then the copy rows
   // in what remains, at a size that leaves only a little room for them.
   // 'es'+level-2 is an otherwise-unused pair.
+  // Write about the picture (A4): the instruction line and the large
+  // picture, no passage, copy rows after. 'de'+level-2 is otherwise unused.
+  { label: 'de-andika-level2-writeown', language: 'de', theme: 'stories', level: 2, entryId: 'stories_leuchtturmfenster_2', fontId: 'andika', writingMode: 'write-own' },
   { label: 'es-andika-level2-readcopy-drawingbox', language: 'es', theme: 'stories', level: 2, entryId: 'stories_huevo_blanco_2', fontId: 'andika', writingMode: 'read-copy', fontSizePt: 24, lineHeightMultiplier: 1.8, imageSlot: 'drawing-box' }
 ];
 
@@ -315,6 +318,7 @@ async function main() {
       // The text paragraphs only: overlays inside .ws-body (line numbers)
       // carry text of their own that isn't part of the passage.
       const renderedBody = await evalJs(`[...document.querySelectorAll('#preview .ws-body .ws-sentence')].map((p) => p.textContent).join('')`);
+      const renderedInstruction = await evalJs(`document.querySelector('#preview .ws-instruction')?.textContent ?? ''`);
       const previewLineNumbers = await evalJs(`document.querySelectorAll('#preview .ws-line-number').length`);
 
       await evalJs(`document.getElementById('btn-docx').click();`);
@@ -331,7 +335,7 @@ async function main() {
         downloaded.push({ testCase, ok: false, note: 'docx download never completed' });
         continue;
       }
-      downloaded.push({ testCase, ok: true, guid: completed.guid, fitText, expectedPages, renderedTitle, renderedBody, previewLineNumbers });
+      downloaded.push({ testCase, ok: true, guid: completed.guid, fitText, expectedPages, renderedTitle, renderedBody, renderedInstruction, previewLineNumbers });
     }
   } finally {
     chrome.kill();
@@ -436,6 +440,8 @@ async function main() {
       const pdfNormalized = normalizeForCompare(text);
       const bodyOk = matched ? pdfNormalized.includes(normalizeForCompare(matched.renderedBody)) : false;
       const titleOk = matched ? pdfNormalized.includes(normalizeForCompare(matched.renderedTitle)) : false;
+      // Empty for activities without an instruction line.
+      const instructionOk = matched ? pdfNormalized.includes(normalizeForCompare(matched.renderedInstruction)) : false;
       const pagesOk = pages !== null && Math.abs(pages - expectedPages) <= toleratedDelta;
       // Line numbers: in -layout text each numbered line starts with its
       // number, then a gap. They must run 1…K in order (one count across
@@ -450,9 +456,11 @@ async function main() {
         lineNumbersOk = inOrder && numbers.length === matched.previewLineNumbers;
         lineNumbersNote = `  line numbers 1…${numbers.length}${inOrder ? '' : ' OUT OF ORDER'} (preview ${matched.previewLineNumbers})`;
       }
-      const ok = pagesOk && bodyOk && titleOk && lineNumbersOk;
+      const ok = pagesOk && bodyOk && titleOk && instructionOk && lineNumbersOk;
       allOk = allOk && ok;
-      const textNote = bodyOk && titleOk ? 'full passage present' : `text MISMATCH (title ${titleOk ? 'ok' : 'missing'}, body ${bodyOk ? 'ok' : 'incomplete'})`;
+      const textNote = bodyOk && titleOk && instructionOk
+        ? (matched.renderedInstruction ? 'title and instruction present, no passage' : 'full passage present')
+        : `text MISMATCH (title ${titleOk ? 'ok' : 'missing'}, body ${bodyOk ? 'ok' : 'incomplete'}, instruction ${instructionOk ? 'ok' : 'missing'})`;
       console.log(`  ${ok ? 'PASS' : 'FAIL'}  ${label}  pages=${pages} (expected ${expectedPages}${toleratedDelta ? ` ±${toleratedDelta}` : ''})  ${textNote}${lineNumbersNote}`);
     } catch (error) {
       allOk = false;
