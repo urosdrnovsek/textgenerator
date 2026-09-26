@@ -116,6 +116,7 @@ const state = {
     printTint: false,
     lineStripes: false,
     printStripes: false,
+    lineNumbers: false,
     marginMm: 20
   },
   // How the preview is viewed, never what is printed: not in settings,
@@ -161,6 +162,7 @@ const els = {
   printTintToggle: document.getElementById('print-tint-toggle'),
   lineStripesToggle: document.getElementById('line-stripes-toggle'),
   printStripesToggle: document.getElementById('print-stripes-toggle'),
+  lineNumbersToggle: document.getElementById('line-numbers-toggle'),
   grayscalePreviewToggle: document.getElementById('grayscale-preview-toggle'),
   headerNameLineToggle: document.getElementById('header-nameline-toggle'),
   headerDateToggle: document.getElementById('header-date-toggle'),

@@ -71,6 +71,7 @@ export function init({ state, els, defaultLetterColors: DEFAULT_LETTER_COLORS, r
     els.lineStripesToggle.checked = Boolean(s.lineStripes);
     els.printStripesToggle.checked = Boolean(s.printStripes);
     els.printStripesToggle.disabled = !s.lineStripes;
+    els.lineNumbersToggle.checked = Boolean(s.lineNumbers);
     els.headerNameLineToggle.checked = Boolean(s.header.nameLine);
     els.headerDateToggle.checked = Boolean(s.header.date);
     els.headerTitleToggle.checked = Boolean(s.header.title);
@@ -128,6 +129,11 @@ export function init({ state, els, defaultLetterColors: DEFAULT_LETTER_COLORS, r
     if (state.contentId) requestRender();
   }
 
+  function updateLineNumbers(enabled) {
+    state.settings.lineNumbers = enabled;
+    if (state.contentId) requestRender();
+  }
+
   /** Header field toggles (upgrade blueprint v3, workstream D6) — the model and both exporters already supported these; this just exposes them in the settings panel. */
   function updateHeaderField(field, enabled) {
     state.settings.header[field] = enabled;
@@ -147,6 +153,7 @@ export function init({ state, els, defaultLetterColors: DEFAULT_LETTER_COLORS, r
   els.printTintToggle.addEventListener('change', (e) => updatePrintTint(e.target.checked));
   els.lineStripesToggle.addEventListener('change', (e) => updateLineStripes(e.target.checked));
   els.printStripesToggle.addEventListener('change', (e) => updatePrintStripes(e.target.checked));
+  els.lineNumbersToggle.addEventListener('change', (e) => updateLineNumbers(e.target.checked));
   els.headerNameLineToggle.addEventListener('change', (e) => updateHeaderField('nameLine', e.target.checked));
   els.headerDateToggle.addEventListener('change', (e) => updateHeaderField('date', e.target.checked));
   els.headerTitleToggle.addEventListener('change', (e) => updateHeaderField('title', e.target.checked));

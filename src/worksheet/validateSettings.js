@@ -132,6 +132,10 @@ export function validateSettings(settings) {
     push('printStripes', 'printStripes must be a boolean when present');
   }
 
+  if (settings.lineNumbers !== undefined && typeof settings.lineNumbers !== 'boolean') {
+    push('lineNumbers', 'lineNumbers must be a boolean when present');
+  }
+
   if (errors.length > 0) {
     return { ok: false, errors };
   }

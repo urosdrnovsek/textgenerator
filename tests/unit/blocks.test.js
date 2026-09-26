@@ -47,3 +47,9 @@ test('the passage block shows the styled text (lightened in trace mode)', () => 
 test('an unknown writing mode is a programmer error, not a silent default', () => {
   assert.throws(() => buildWorksheet(ENTRY, { ...SETTINGS, writingMode: 'dance' }, ASSETS, 'sl'), /UNKNOWN_WRITING_MODE/);
 });
+
+test('the passage block carries the line-numbers switch', () => {
+  const passage = (settings) => buildWorksheet(ENTRY, settings, ASSETS, 'sl').blocks.find((b) => b.type === 'passage');
+  assert.equal(passage(SETTINGS).lineNumbers, false);
+  assert.equal(passage({ ...SETTINGS, lineNumbers: true }).lineNumbers, true);
+});

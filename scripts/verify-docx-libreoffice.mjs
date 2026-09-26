@@ -52,6 +52,7 @@ import { mkdtemp, rm, readdir, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { DEFAULT_MARGIN_MM, MM_PER_INCH } from '../src/config.js';
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const CDP_PORT = 9422;
@@ -160,7 +161,11 @@ const CASES = [
   // the tolerance is gone. toleratedPageDelta itself stays supported for
   // a future case that genuinely needs it.
   { label: 'en-andika-level5-readcopy-multipage', language: 'en', theme: 'stories', level: 5, entryId: 'stories_svetilnik_5', fontId: 'andika', writingMode: 'read-copy', fontSizePt: 24 },
-  { label: 'de-andika-level4-readonly-multipage', language: 'de', theme: 'stories', level: 4, fontId: 'andika', writingMode: 'read-only', fontSizePt: 20, lineHeightMultiplier: 2.0 }
+  { label: 'de-andika-level4-readonly-multipage', language: 'de', theme: 'stories', level: 4, fontId: 'andika', writingMode: 'read-only', fontSizePt: 20, lineHeightMultiplier: 2.0 },
+  // Line numbers (B9): Word's own numbering, continuous across a page
+  // break, with the header/title/picture and the copy-row table left
+  // unnumbered. 'sl'+level-4 is an otherwise-unused pair.
+  { label: 'sl-andika-level4-readcopy-linenumbers-multipage', language: 'sl', theme: 'stories', level: 4, entryId: 'stories_piscancek_4', fontId: 'andika', writingMode: 'read-copy', fontSizePt: 28, lineHeightMultiplier: 2.0, lineNumbers: true }
 ];
 
 // Binaries: the defaults match the development machine; CI (and anyone
@@ -269,6 +274,8 @@ async function main() {
           document.getElementById('tint-select').dispatchEvent(new Event('change', { bubbles: true }));
           document.getElementById('print-tint-toggle').checked = ${Boolean(testCase.printTint)};
           document.getElementById('print-tint-toggle').dispatchEvent(new Event('change', { bubbles: true }));
+          document.getElementById('line-numbers-toggle').checked = ${Boolean(testCase.lineNumbers)};
+          document.getElementById('line-numbers-toggle').dispatchEvent(new Event('change', { bubbles: true }));
           ${testCase.wordSpacingPt !== undefined ? `
           document.getElementById('word-spacing-input').value = '${testCase.wordSpacingPt}';
           document.getElementById('word-spacing-input').dispatchEvent(new Event('change', { bubbles: true }));
@@ -299,7 +306,10 @@ async function main() {
       // what the PDF is later checked against — "non-empty text" proved
       // nothing (a header line alone passed it).
       const renderedTitle = await evalJs(`document.querySelector('#preview .ws-title')?.textContent ?? ''`);
-      const renderedBody = await evalJs(`document.querySelector('#preview .ws-body').textContent`);
+      // The text paragraphs only: overlays inside .ws-body (line numbers)
+      // carry text of their own that isn't part of the passage.
+      const renderedBody = await evalJs(`[...document.querySelectorAll('#preview .ws-body .ws-sentence')].map((p) => p.textContent).join('')`);
+      const previewLineNumbers = await evalJs(`document.querySelectorAll('#preview .ws-line-number').length`);
 
       await evalJs(`document.getElementById('btn-docx').click();`);
       let completed = null;
@@ -315,7 +325,7 @@ async function main() {
         downloaded.push({ testCase, ok: false, note: 'docx download never completed' });
         continue;
       }
-      downloaded.push({ testCase, ok: true, guid: completed.guid, fitText, expectedPages, renderedTitle, renderedBody });
+      downloaded.push({ testCase, ok: true, guid: completed.guid, fitText, expectedPages, renderedTitle, renderedBody, previewLineNumbers });
     }
   } finally {
     chrome.kill();
@@ -410,15 +420,34 @@ async function main() {
       const info = execFileSync('pdfinfo', [pdfPath]).toString();
       const pagesMatch = info.match(/^Pages:\s+(\d+)/m);
       const pages = pagesMatch ? Number(pagesMatch[1]) : null;
-      const text = execFileSync('pdftotext', [pdfPath, '-']).toString();
+      // Word draws line numbers in the page margin, left of the text
+      // column, and pdftotext mixes them into the text (sometimes mid-line).
+      // For those cases, read only the column (x from the left margin, in
+      // PDF points); the numbers are checked on their own below.
+      const marginPt = Math.floor((DEFAULT_MARGIN_MM / MM_PER_INCH) * 72);
+      const columnOnly = matched?.testCase.lineNumbers ? ['-x', String(marginPt), '-y', '0', '-W', String(595 - marginPt), '-H', '842'] : [];
+      const text = execFileSync('pdftotext', [...columnOnly, pdfPath, '-']).toString();
       const pdfNormalized = normalizeForCompare(text);
       const bodyOk = matched ? pdfNormalized.includes(normalizeForCompare(matched.renderedBody)) : false;
       const titleOk = matched ? pdfNormalized.includes(normalizeForCompare(matched.renderedTitle)) : false;
       const pagesOk = pages !== null && Math.abs(pages - expectedPages) <= toleratedDelta;
-      const ok = pagesOk && bodyOk && titleOk;
+      // Line numbers: in -layout text each numbered line starts with its
+      // number, then a gap. They must run 1…K in order (one count across
+      // pages, nothing outside the passage numbered), with K the number of
+      // lines the preview numbered — the same wrap in both.
+      let lineNumbersOk = true;
+      let lineNumbersNote = '';
+      if (matched?.testCase.lineNumbers) {
+        const layoutText = execFileSync('pdftotext', ['-layout', pdfPath, '-']).toString();
+        const numbers = [...layoutText.matchAll(/^\s*(\d+)\s{2,}\S/gm)].map((m) => Number(m[1]));
+        const inOrder = numbers.every((n, i) => n === i + 1);
+        lineNumbersOk = inOrder && numbers.length === matched.previewLineNumbers;
+        lineNumbersNote = `  line numbers 1…${numbers.length}${inOrder ? '' : ' OUT OF ORDER'} (preview ${matched.previewLineNumbers})`;
+      }
+      const ok = pagesOk && bodyOk && titleOk && lineNumbersOk;
       allOk = allOk && ok;
       const textNote = bodyOk && titleOk ? 'full passage present' : `text MISMATCH (title ${titleOk ? 'ok' : 'missing'}, body ${bodyOk ? 'ok' : 'incomplete'})`;
-      console.log(`  ${ok ? 'PASS' : 'FAIL'}  ${label}  pages=${pages} (expected ${expectedPages}${toleratedDelta ? ` ±${toleratedDelta}` : ''})  ${textNote}`);
+      console.log(`  ${ok ? 'PASS' : 'FAIL'}  ${label}  pages=${pages} (expected ${expectedPages}${toleratedDelta ? ` ±${toleratedDelta}` : ''})  ${textNote}${lineNumbersNote}`);
     } catch (error) {
       allOk = false;
       console.log(`  FAIL  ${label}  — conversion/inspection failed: ${error.message}`);

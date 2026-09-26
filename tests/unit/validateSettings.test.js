@@ -164,3 +164,10 @@ test('validatePresetSettings rejects a non-object', () => {
   assert.equal(validatePresetSettings(null).ok, false);
   assert.equal(validatePresetSettings(undefined).ok, false);
 });
+
+test('accepts lineNumbers on, off or absent, and rejects a non-boolean', () => {
+  assert.equal(validateSettings({ ...VALID_SETTINGS, lineNumbers: true }).ok, true);
+  assert.equal(validateSettings({ ...VALID_SETTINGS, lineNumbers: false }).ok, true);
+  assert.equal(validateSettings(VALID_SETTINGS).ok, true);
+  assert.equal(validateSettings({ ...VALID_SETTINGS, lineNumbers: 'yes' }).ok, false);
+});

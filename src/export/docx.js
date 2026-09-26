@@ -43,9 +43,10 @@ import {
   WidthType,
   VerticalAlign,
   ShadingType,
+  LineNumberRestartFormat,
   convertMillimetersToTwip
 } from 'docx';
-import { FONT_FAMILIES, TWIPS_PER_PT, mmToPx, mmToTwips, TINTS_BY_ID, contentWidthMm } from '../config.js';
+import { FONT_FAMILIES, TWIPS_PER_PT, mmToPx, mmToTwips, TINTS_BY_ID, contentWidthMm, LINE_NUMBER_GUTTER_MM } from '../config.js';
 import { computeContainedImageSizeMm } from '../layout/imageBox.js';
 
 /** Matches src/render/html.js DEFAULT_LABELS — used only when a caller doesn't pass the active locale's translated labels. */
@@ -91,6 +92,7 @@ function toWordRuns(runs, { fontFamily, fontSizePt, characterSpacingTwips, wordS
  * @property {object | undefined} shading paragraph shading when the tint prints, else undefined
  * @property {number} characterSpacingTwips
  * @property {number} wordSpacingTwips
+ * @property {{ suppressLineNumbers?: true }} unnumbered spread into every non-passage paragraph: with line numbers on, Word numbers passage lines only (tables are never numbered)
  */
 
 /**
@@ -100,7 +102,7 @@ function toWordRuns(runs, { fontFamily, fontSizePt, characterSpacingTwips, wordS
  * @type {Record<string, (block: any, context: BlockWriteContext) => (Paragraph | Table)[]>}
  */
 export const BLOCK_WRITERS = {
-  header: (block, { labels, fontFamily, shading }) => {
+  header: (block, { labels, fontFamily, shading, unnumbered }) => {
     const parts = [];
     if (block.nameLine) {
       parts.push(new TextRun({ text: `${labels.nameLine} _______________________`, font: fontFamily, size: 22 }));
@@ -108,20 +110,21 @@ export const BLOCK_WRITERS = {
     if (block.date) {
       parts.push(new TextRun({ text: `          ${labels.date} ________________`, font: fontFamily, size: 22 }));
     }
-    return [new Paragraph({ children: parts, spacing: { after: 200 }, shading })];
+    return [new Paragraph({ children: parts, spacing: { after: 200 }, shading, ...unnumbered })];
   },
 
-  title: (block, { model, fontFamily, shading }) => [
+  title: (block, { model, fontFamily, shading, unnumbered }) => [
     new Paragraph({
       children: [
         new TextRun({ text: block.text, bold: true, font: fontFamily, size: Math.round((model.settings.fontSizePt + 4) * 2) })
       ],
       spacing: { after: 200 },
-      shading
+      shading,
+      ...unnumbered
     })
   ],
 
-  image: (block, { model, imageBytes, shading }) => {
+  image: (block, { model, imageBytes, shading, unnumbered }) => {
     if (!imageBytes) return [];
     // Contains the image at its real aspect ratio within the same 60x45mm
     // slot the HTML preview uses (object-fit: contain) — previously a fixed
@@ -139,7 +142,8 @@ export const BLOCK_WRITERS = {
           })
         ],
         spacing: { after: 200 },
-        shading
+        shading,
+        ...unnumbered
       })
     ];
   },
@@ -162,6 +166,10 @@ export const BLOCK_WRITERS = {
     // paragraph (sentence-per-line or authored paragraph breaks). DOCX had no
     // gap at all before 0.10, so it ran slightly shorter than the preview.
     const paragraphGapTwips = block.paragraphs.length > 1 ? Math.round(0.25 * s.fontSizePt * TWIPS_PER_PT) : 0;
+    // Line numbers: the same gutter the preview reserves, so Word wraps at
+    // the width the fit check measured. Word draws its numbers left of the
+    // text column itself (section lnNumType, set in exportDocx).
+    const gutter = block.lineNumbers ? { indent: { left: mmToTwips(LINE_NUMBER_GUTTER_MM) } } : {};
     return block.paragraphs.map(
       (paragraphRuns) =>
         new Paragraph({
@@ -170,7 +178,8 @@ export const BLOCK_WRITERS = {
             ? { line: lineTwips, lineRule: LineRuleType.EXACT, after: paragraphGapTwips }
             : { line: lineTwips, lineRule: LineRuleType.EXACT },
           children: toWordRuns(paragraphRuns, { fontFamily, fontSizePt: s.fontSizePt, characterSpacingTwips, wordSpacingTwips }),
-          shading
+          shading,
+          ...gutter
         })
     );
   }
@@ -205,8 +214,11 @@ export async function exportDocx(model, layout, imageBytes, labels = DEFAULT_LAB
   const tintHex = s.tintId && s.tintId !== 'none' ? TINTS_BY_ID[s.tintId] : undefined;
   const shading = s.printTint && tintHex ? { type: ShadingType.CLEAR, fill: tintHex.replace('#', '') } : undefined;
 
+  const lineNumbers = model.blocks.some((block) => block.type === 'passage' && block.lineNumbers);
+  const unnumbered = lineNumbers ? { suppressLineNumbers: true } : {};
+
   /** @type {BlockWriteContext} */
-  const context = { model, labels, imageBytes, fontFamily, shading, characterSpacingTwips, wordSpacingTwips };
+  const context = { model, labels, imageBytes, fontFamily, shading, characterSpacingTwips, wordSpacingTwips, unnumbered };
   for (const block of model.blocks) {
     const write = BLOCK_WRITERS[block.type];
     if (!write) throw new Error(`UNKNOWN_BLOCK: "${block.type}"`);
@@ -234,7 +246,7 @@ export async function exportDocx(model, layout, imageBytes, labels = DEFAULT_LAB
     const noBorder = { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' };
     layout.copyBlocks.forEach((rowCount, blockIndex) => {
       if (blockIndex > 0) {
-        children.push(new Paragraph({ children: [], pageBreakBefore: true }));
+        children.push(new Paragraph({ children: [], pageBreakBefore: true, ...unnumbered }));
       }
       const rows = [];
       for (let i = 0; i < rowCount; i++) {
@@ -283,7 +295,9 @@ export async function exportDocx(model, layout, imageBytes, labels = DEFAULT_LAB
               left: convertMillimetersToTwip(s.marginMm),
               right: convertMillimetersToTwip(s.marginMm)
             }
-          }
+          },
+          // Word's own line numbering: every line, one count across pages.
+          ...(lineNumbers ? { lineNumbers: { countBy: 1, restart: LineNumberRestartFormat.CONTINUOUS } } : {})
         },
         children
       }

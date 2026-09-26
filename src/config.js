@@ -19,6 +19,12 @@ export const MIN_COPY_ROWS = 3;
  * budget in measure.js can never silently drift from what actually renders.
  */
 export const COPY_AREA_GAP_MM = 4;
+/**
+ * Line numbers (settings.lineNumbers) sit in a gutter inside the content
+ * box, never in the page margin: the passage is indented by this much in
+ * both adapters, so the text rewraps and the fit check measures it.
+ */
+export const LINE_NUMBER_GUTTER_MM = 8;
 
 export const MM_PER_INCH = 25.4;
 /** CSS reference pixels per inch — a fixed authoring constant, not a display DPI. */

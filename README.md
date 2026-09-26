@@ -45,7 +45,8 @@ to a school.
   (Andika, Lexend, OpenDyslexic, Comic Neue); font size, line, letter and
   word spacing; confused-letter colors (b/d/p/q); syllable colors and/or
   separators; one sentence per line; background tint and alternate-line
-  stripes (both print-optional, off by default to save ink); a one-click
+  stripes (both print-optional, off by default to save ink); line numbers
+  down the left of the passage (in Word too, as Word's own numbering); a one-click
   Dyslexia-friendly starting point.
 - **Grayscale preview:** shows the preview as a black-and-white printer
   would roughly print it (the printed sheet is unaffected). While it is on,

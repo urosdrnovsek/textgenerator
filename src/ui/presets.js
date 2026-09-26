@@ -73,6 +73,7 @@ export function init({
     printTint: false,
     lineStripes: false,
     printStripes: false,
+    lineNumbers: false,
     marginMm: 20
   };
 
@@ -127,6 +128,7 @@ export function init({
       printTint: s.printTint,
       lineStripes: s.lineStripes,
       printStripes: s.printStripes,
+      lineNumbers: s.lineNumbers,
       marginMm: s.marginMm
     };
   }
@@ -191,6 +193,7 @@ export function init({
       printTint: full.printTint ?? false,
       lineStripes: full.lineStripes ?? false,
       printStripes: full.printStripes ?? false,
+      lineNumbers: full.lineNumbers ?? false,
       marginMm: full.marginMm
     }));
 

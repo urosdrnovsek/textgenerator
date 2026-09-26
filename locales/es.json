@@ -75,6 +75,7 @@
     "field.printTint": "Imprimir también el fondo de color",
     "field.lineStripes": "Rayas alternas en las líneas",
     "field.printStripes": "Imprimir también las rayas",
+    "field.lineNumbers": "Números de línea",
     "field.grayscalePreview": "Vista previa en escala de grises (impresora en blanco y negro)",
     "field.header": "Campos de encabezado",
     "field.headerNameLine": "Línea de nombre",

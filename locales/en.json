@@ -75,6 +75,7 @@
     "field.printTint": "Also print the tinted background",
     "field.lineStripes": "Alternate-line stripes",
     "field.printStripes": "Also print the stripes",
+    "field.lineNumbers": "Line numbers",
     "field.grayscalePreview": "Preview in grayscale (black-and-white printer)",
     "field.header": "Header fields",
     "field.headerNameLine": "Name line",

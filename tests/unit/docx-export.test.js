@@ -10,6 +10,7 @@ import { validatePack } from '../../src/content/validate.js';
 import { buildWorksheet } from '../../src/worksheet/build.js';
 import { exportDocx } from '../../src/export/docx.js';
 import { convertMillimetersToTwip } from 'docx';
+import { mmToTwips, LINE_NUMBER_GUTTER_MM } from '../../src/config.js';
 
 const root = path.dirname(path.dirname(path.dirname(fileURLToPath(import.meta.url))));
 const TEST_ENTRY_ID = 'stories_muc_1';
@@ -37,12 +38,12 @@ async function loadManifestAssets() {
   return { assetIds, imagesById };
 }
 
-async function buildModel(entryId) {
+async function buildModel(entryId, settings = SETTINGS) {
   const raw = JSON.parse(await readFile(path.join(root, 'content/sl.json'), 'utf8'));
   const { assetIds, imagesById } = await loadManifestAssets();
   const { pack } = validatePack(raw, assetIds);
   const entry = { ...pack.entries.find((e) => e.id === entryId), language: pack.language };
-  return buildWorksheet(entry, SETTINGS, { imagesById }, 'sl');
+  return buildWorksheet(entry, settings, { imagesById }, 'sl');
 }
 
 async function imageBytesFor(entryId) {
@@ -222,4 +223,42 @@ test('exportDocx writes authored paragraph breaks as separate paragraphs with th
   // 0.25 × 20 pt font size × 20 twips/pt = 100 twips after each body paragraph.
   const gaps = documentXml.match(/<w:spacing w:after="100"/g) ?? [];
   assert.equal(gaps.length, model.bodyParagraphs.length);
+});
+
+async function documentXmlOf(model, layout, t) {
+  const blob = await exportDocx(model, layout, await imageBytesFor(TEST_ENTRY_ID));
+  const tmpDir = await mkdtemp(path.join(os.tmpdir(), 'worksheet-docx-test-'));
+  t.after(() => rm(tmpDir, { recursive: true, force: true }));
+  const docxPath = path.join(tmpDir, 'worksheet.docx');
+  const buffer = Buffer.from(await blob.arrayBuffer());
+  await import('node:fs/promises').then((fs) => fs.writeFile(docxPath, buffer));
+  return unzipEntry(docxPath, 'word/document.xml');
+}
+
+const paragraphsOf = (xml) => xml.match(/<w:p>[\s\S]*?<\/w:p>|<w:p [\s\S]*?<\/w:p>/g) ?? [];
+
+test('line numbers: Word numbers the passage lines only, continuously, with the passage in the same gutter as the preview', async (t) => {
+  const model = await buildModel(TEST_ENTRY_ID, { ...SETTINGS, lineNumbers: true });
+  const xml = await documentXmlOf(model, { copyBlocks: [5, 20] }, t);
+
+  assert.match(xml, /<w:lnNumType w:countBy="1" w:restart="continuous"\/>/);
+  const gutterTwips = mmToTwips(LINE_NUMBER_GUTTER_MM);
+  const paragraphs = paragraphsOf(xml);
+  const passage = paragraphs.filter((p) => p.includes(`<w:ind w:left="${gutterTwips}"/>`));
+  const others = paragraphs.filter((p) => !passage.includes(p));
+  assert.ok(passage.length >= 1, 'the passage paragraphs are indented by the gutter');
+  for (const p of passage) assert.doesNotMatch(p, /suppressLineNumbers/);
+  // Header, title, image and the page-break paragraph before the second
+  // copy block are all outside the tables; table cell paragraphs are
+  // never numbered by Word, so they carry nothing.
+  const outsideTables = xml.replace(/<w:tbl>[\s\S]*?<\/w:tbl>/g, '');
+  const numberedOutside = paragraphsOf(outsideTables).filter((p) => !passage.includes(p));
+  assert.equal(numberedOutside.length, 4, 'header, title, image, page break');
+  for (const p of numberedOutside) assert.match(p, /<w:suppressLineNumbers\/>/);
+  assert.ok(others.length > numberedOutside.length, 'copy-row cell paragraphs exist');
+});
+
+test('line numbers off: no numbering, suppression or gutter in the XML', async (t) => {
+  const xml = await documentXmlOf(await buildModel(TEST_ENTRY_ID), { copyBlocks: [5, 20] }, t);
+  assert.doesNotMatch(xml, /lnNumType|suppressLineNumbers|<w:ind /);
 });

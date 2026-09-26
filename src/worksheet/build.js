@@ -35,6 +35,7 @@ import { ACTIVITIES } from './activities.js';
  * @property {boolean} [printTint] whether the tint also shows when printed (default off, to save ink)
  * @property {boolean} [lineStripes] alternating faint background per real measured visual line — HTML/PDF only, see src/export/docx.js's header comment for why
  * @property {boolean} [printStripes] whether stripes also show when printed (default off, to save ink)
+ * @property {boolean} [lineNumbers] numbers every passage line, continuously across pages (default off)
  * @property {{ nameLine: boolean, date: boolean, title: boolean }} header
  * @property {number} marginMm
  * @property {number} pageWidthMm
@@ -62,7 +63,7 @@ import { ACTIVITIES } from './activities.js';
  *   | { type: 'header', nameLine: boolean, date: boolean }
  *   | { type: 'title', text: string }
  *   | { type: 'image' }
- *   | { type: 'passage', paragraphs: import('../text/runs.js').StyledRun[][] }
+ *   | { type: 'passage', paragraphs: import('../text/runs.js').StyledRun[][], lineNumbers: boolean }
  * )} Block
  */
 
@@ -148,6 +149,6 @@ function buildBlocks(entry, settings, paragraphs) {
   }
   if (settings.header.title) blocks.push({ type: 'title', text: entry.title });
   blocks.push({ type: 'image' });
-  blocks.push({ type: 'passage', paragraphs });
+  blocks.push({ type: 'passage', paragraphs, lineNumbers: Boolean(settings.lineNumbers) });
   return blocks;
 }

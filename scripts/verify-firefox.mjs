@@ -231,6 +231,31 @@ async function main() {
     const multiText = execFileSync('pdftotext', [multiPdfPath, '-']).toString();
     check('multi-page worksheet PDF has non-empty extracted text', multiText.trim().length > 0);
 
+    // Line numbers (B9) on the same multi-page sheet: the gutter strip of
+    // the real print (x from the 20 mm margin, 8 mm wide, in PDF points)
+    // holds the numbers, which must run 1…N across the pages
+    // with N the count the preview drew from Firefox's own line boxes.
+    console.log('\nLine numbers across pages in the real Firefox print...');
+    await evalJs(`document.getElementById('line-numbers-toggle').click();`);
+    await waitForFit();
+    const numberedPages = Number(await evalJs(`return document.getElementById('fit-indicator').dataset.pageCount`));
+    const previewNumbers = await evalJs(`return [...document.querySelectorAll('#preview .ws-line-number')].map((n) => n.textContent)`);
+    const numberedPdfPath = path.join(downloadDir, 'line-numbers-worksheet.pdf');
+    await writeFile(numberedPdfPath, Buffer.from(await driver.printPage(), 'base64'));
+    const printedPages = Number((execFileSync('pdfinfo', [numberedPdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
+    check(`line-numbered worksheet prints as exactly ${numberedPages} pages (got ${printedPages})`, printedPages === numberedPages);
+    const marginPt = (20 / 25.4) * 72;
+    const gutterText = execFileSync('pdftotext', ['-x', String(Math.floor(marginPt)), '-y', '0', '-W', String(Math.ceil((8 / 25.4) * 72)), '-H', '842', numberedPdfPath, '-']).toString();
+    // The header and title also start at the margin edge, so the strip
+    // holds their first characters too; keep the numeric tokens.
+    const printedNumbers = gutterText.split(/\s+/).filter((token) => /^\d+$/.test(token));
+    check(
+      `printed line numbers run 1…${previewNumbers.length} across pages, as in the preview (printed ${printedNumbers.length})`,
+      previewNumbers.length > 0 && previewNumbers.every((n, i) => n === String(i + 1)) && JSON.stringify(printedNumbers) === JSON.stringify(previewNumbers)
+    );
+    await evalJs(`document.getElementById('line-numbers-toggle').click();`);
+    await waitForFit();
+
     // Reset back to defaults — the language loop below checks for the
     // localized "fits" wording specifically, which these settings would
     // break for languages whose content doesn't also extend at max size.

@@ -75,6 +75,7 @@
     "field.printTint": "Natisni tudi barvno ozadje",
     "field.lineStripes": "Progaste vrstice",
     "field.printStripes": "Natisni tudi proge",
+    "field.lineNumbers": "Številke vrstic",
     "field.grayscalePreview": "Predogled v sivinah (črno-beli tiskalnik)",
     "field.header": "Polja glave",
     "field.headerNameLine": "Vrstica za ime",

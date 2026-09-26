@@ -58,6 +58,13 @@ supports).
   journey drives the checkbox in Chromium: the preview gets
   `grayscale(1)`, the print surface stays unfiltered, the notice shows
   only while the view is on, and it goes when letter colours are off.
+- **Line numbers.** A new "Line numbers" checkbox numbers every line of
+  the passage, small and grey, down its left side, in one count across
+  pages (the title, picture and copy lines are not numbered). The numbers
+  sit in an 8 mm gutter inside the page, so the text rewraps a little
+  narrower and the page-count check sees it. The Word file uses Word's
+  own line numbering, with the passage indented by the same 8 mm. Saved
+  setups include the option; setups saved by 0.9 load with it off.
 
 ## 0.9.0-rc.2 — 2026-09-24 (beta hotfix)
 

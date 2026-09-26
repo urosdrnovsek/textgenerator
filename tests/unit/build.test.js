@@ -88,6 +88,7 @@ test('buildWorksheet returns settings that do not alias the caller\'s object (a 
   live.printTint = false;
   live.lineStripes = false;
   live.printStripes = false;
+  live.lineNumbers = false;
   const model = buildWorksheet(ENTRY, live, ASSETS, 'sl');
   const reference = structuredClone(model.settings);
 
@@ -106,6 +107,7 @@ test('buildWorksheet returns settings that do not alias the caller\'s object (a 
   live.printTint = true;
   live.lineStripes = true;
   live.printStripes = true;
+  live.lineNumbers = true;
   live.header.nameLine = false;
   live.header.date = false;
   live.header.title = false;

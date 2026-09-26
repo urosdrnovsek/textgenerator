@@ -6,7 +6,7 @@
  */
 
 import { buildRulingRows } from '../layout/rulings.js';
-import { ptToMm, pxToMm, FONT_FAMILIES, COPY_AREA_GAP_MM, TINTS_BY_ID } from '../config.js';
+import { ptToMm, pxToMm, FONT_FAMILIES, COPY_AREA_GAP_MM, TINTS_BY_ID, LINE_NUMBER_GUTTER_MM } from '../config.js';
 import { IMAGE_BOX_MAX_WIDTH_MM, IMAGE_BOX_MAX_HEIGHT_MM } from '../layout/imageBox.js';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
@@ -101,7 +101,9 @@ function renderHeaderFields(header, labels) {
  * line) are merged by rounding their top edge — real line boxes never
  * share a top within a fraction of a pixel, styled fragments on the same
  * line always do. Requires `bodyElement` to already be attached to the
- * document; unattached nodes report zero-size rects.
+ * document; unattached nodes report zero-size rects. Only the text
+ * paragraphs (.ws-sentence) are measured, never the overlays drawn from
+ * this measurement (stripes, line numbers).
  * @param {HTMLElement} bodyElement
  * @returns {Array<{ topMm: number, heightMm: number }>}
  */
@@ -109,7 +111,7 @@ export function measureBodyLineBoxes(bodyElement) {
   const containerRect = bodyElement.getBoundingClientRect();
   const lineMap = new Map();
   for (const paragraph of bodyElement.children) {
-    if (!(paragraph instanceof HTMLElement) || paragraph.classList.contains('ws-line-stripes')) continue;
+    if (!(paragraph instanceof HTMLElement) || !paragraph.classList.contains('ws-sentence')) continue;
     const range = document.createRange();
     range.selectNodeContents(paragraph);
     for (const rect of range.getClientRects()) {
@@ -154,6 +156,27 @@ export function applyLineStripes(bodyElement) {
     overlay.append(stripe);
   });
   bodyElement.prepend(overlay);
+}
+
+/**
+ * Numbers every measured passage line in the gutter the passage block
+ * reserves with its left padding (settings.lineNumbers, handbook §11.6
+ * B9). One continuous count across printed pages, like Word's line
+ * numbering in the DOCX export. Same measurement as the stripes.
+ * @param {HTMLElement} bodyElement already attached to the document
+ */
+export function applyLineNumbers(bodyElement) {
+  const overlay = document.createElement('div');
+  overlay.className = 'ws-line-numbers';
+  measureBodyLineBoxes(bodyElement).forEach((line, index) => {
+    const number = document.createElement('div');
+    number.className = 'ws-line-number';
+    number.style.top = `${line.topMm}mm`;
+    number.style.height = `${line.heightMm}mm`;
+    number.textContent = String(index + 1);
+    overlay.append(number);
+  });
+  bodyElement.append(overlay);
 }
 
 /**
@@ -219,6 +242,10 @@ export const BLOCK_RENDERERS = {
     // paragraph breaks) gets the same small gap between paragraphs; the DOCX
     // exporter applies the matching spacing-after.
     bodyWrap.classList.toggle('ws-sentence-per-line', block.paragraphs.length > 1);
+    if (block.lineNumbers) {
+      bodyWrap.classList.add('ws-body--line-numbers');
+      bodyWrap.style.setProperty('--ws-line-number-gutter-mm', `${LINE_NUMBER_GUTTER_MM}mm`);
+    }
     for (const paragraphRuns of block.paragraphs) {
       const paragraph = document.createElement('p');
       paragraph.className = 'ws-sentence ws-text';
@@ -298,6 +325,9 @@ export function renderWorksheet(model, layout, container, labels = DEFAULT_LABEL
     page.classList.add('ws-page--striped');
     page.classList.toggle('ws-page--print-stripes', Boolean(model.settings.printStripes));
     applyLineStripes(passageEl);
+  }
+  if (passageEl && model.blocks.some((block) => block.type === 'passage' && block.lineNumbers)) {
+    applyLineNumbers(passageEl);
   }
 
   if (previewMode && layout.pageBreaksMm?.length > 0) {

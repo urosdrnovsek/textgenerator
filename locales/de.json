@@ -75,6 +75,7 @@
     "field.printTint": "Hintergrundfarbe auch drucken",
     "field.lineStripes": "Zeilenstreifen",
     "field.printStripes": "Streifen auch drucken",
+    "field.lineNumbers": "Zeilennummern",
     "field.grayscalePreview": "Vorschau in Graustufen (Schwarz-Weiß-Drucker)",
     "field.header": "Kopfzeile",
     "field.headerNameLine": "Namenszeile",

@@ -184,6 +184,9 @@ For at least one exported `.docx` per language and per writing mode (3 × 5 = 15
 - [ ] The embedded image displays (not a broken-image icon, not a linked/missing external reference).
 - [ ] Read-copy mode: handwriting-line rows are present and evenly spaced; if the app reported a second copy-practice block (a fresh page of rules), confirm Word actually starts it on a new page rather than overflowing the first.
 - [ ] Font: note what Word actually renders each exported font as. Fonts are *not* embedded in the `.docx` (documented, known limitation since Phase 0) — if Andika/Lexend/OpenDyslexic/Comic Neue aren't installed on the test machine, Word will substitute a fallback. Record which fallback Word picks for each, since that's useful information for a school's IT setup instructions.
+- [ ] Line numbers (where enabled): Word numbers every passage line, one
+      count across pages; the header, title, picture and copy rows carry no
+      number; the numbers sit left of the passage, not over it.
 - [ ] Edit the text (type a sentence, delete a sentence) and confirm the document remains usable — colors/spacing on the *edited* text may reasonably degrade (blueprint explicitly doesn't promise otherwise), but the file itself shouldn't break.
 
 ## Fresh-machine / offline test

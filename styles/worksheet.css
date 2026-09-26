@@ -171,6 +171,39 @@
   background: rgba(20, 20, 20, 0.06);
 }
 
+/* Line numbers (settings.lineNumbers): a gutter inside the content box —
+   the text rewraps to the narrower width and the fit check measures it.
+   Never in the page margin, which not every engine prints. The gutter
+   width comes from config.LINE_NUMBER_GUTTER_MM via an inline property. */
+.ws-body.ws-body--line-numbers {
+  padding-left: var(--ws-line-number-gutter-mm);
+}
+
+.ws-line-numbers {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: var(--ws-line-number-gutter-mm);
+  pointer-events: none;
+}
+
+/* Small and grey, vertically centred on its measured line, right-aligned
+   against the text. A fixed size: scaling with a 32pt passage font would
+   push three-digit numbers out of the 8mm gutter. */
+.ws-line-number {
+  position: absolute;
+  left: 0;
+  right: 2mm;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 9pt;
+  line-height: 1;
+  letter-spacing: 0;
+  color: #6b7280;
+}
+
 .ws-copy-area {
   /* The first block's margin-top is set inline by render/html.js from
      config.COPY_AREA_GAP_MM — the single source of truth also used by

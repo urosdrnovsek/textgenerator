@@ -9,6 +9,8 @@ import {
   importPresetsFromJson,
   resetAllData
 } from '../../src/storage.js';
+import { readFileSync } from 'node:fs';
+import { buildWorksheet } from '../../src/worksheet/build.js';
 
 /** Minimal in-memory localStorage-shaped mock, so tests never touch a real browser's storage. */
 function createMockStorage() {
@@ -192,4 +194,18 @@ test('resetAllData clears presets, and the legacy favorites key from pre-0.8 ins
 
 test('resetAllData reports failure (not a false success) when storage is unavailable', () => {
   assert.equal(resetAllData(createFailingStorage()), false);
+});
+
+// Compatibility promise: a setup exported by 0.9 (fields exactly as 0.9's
+// extractPresetSettings wrote them) keeps loading as settings are added.
+test('a preset file exported by 0.9 still imports, and builds with every newer setting at its default', () => {
+  const storage = createMockStorage();
+  const json = readFileSync(new URL('../fixtures/presets-0.9.json', import.meta.url), 'utf8');
+  assert.deepEqual(importPresetsFromJson(json, storage), { ok: true, imported: 1, skipped: [] });
+  const [preset] = listPresets(storage);
+  assert.equal(preset.settings.lineNumbers, undefined);
+  const entry = { id: 't', version: 1, theme: 'stories', level: 2, title: 'Naslov', body: 'Maja ima muco.', imageId: 'img', language: 'sl' };
+  const assets = { imagesById: new Map([['img', { id: 'img', path: 'data:image/jpeg;base64,x' }]]) };
+  const model = buildWorksheet(entry, preset.settings, assets, 'sl');
+  assert.equal(model.blocks.find((b) => b.type === 'passage').lineNumbers, false);
 });

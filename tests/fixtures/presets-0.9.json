@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "presets": [
+    {
+      "id": "preset-0-9-fixture",
+      "schemaVersion": 1,
+      "name": "Moja nastavitev (0.9)",
+      "settings": {
+        "language": "sl",
+        "theme": "stories",
+        "level": 2,
+        "fontId": "andika",
+        "fontSizePt": 18,
+        "lineHeightMultiplier": 1.6,
+        "letterSpacingPt": 0.5,
+        "extraWordSpacePt": 1.5,
+        "writingMode": "read-copy",
+        "rulingId": "standard-3line",
+        "guideHeightMm": 10,
+        "letterColors": { "b": "#B42318", "d": "#166534", "p": "#7C3AED", "q": "#B45309" },
+        "syllableMode": "colors",
+        "syllableColors": ["#1D4ED8", "#B45309"],
+        "header": { "nameLine": true, "date": true, "title": true },
+        "sentencePerLine": false,
+        "tintId": "cream",
+        "printTint": false,
+        "lineStripes": true,
+        "printStripes": false,
+        "marginMm": 20
+      }
+    }
+  ]
+}

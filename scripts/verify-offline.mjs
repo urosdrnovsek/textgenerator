@@ -280,6 +280,41 @@ async function main() {
       note: grayOk ? `notice "${grayOn.notice}"; gone with letter colours off and with the view off` : JSON.stringify({ grayOn, grayOnNoLetters, grayOff })
     });
 
+    // Line numbers (B9): 1…N in the preview and the print surface alike,
+    // one per measured line (no two at the same height), in a gutter the
+    // passage makes room for; gone again when switched off.
+    console.log('Driving the line numbers toggle...');
+    const lineNumberState = `(() => {
+      const read = (root) => {
+        const numbers = [...document.querySelectorAll(root + ' .ws-line-number')];
+        const body = document.querySelector(root + ' .ws-body');
+        return {
+          texts: numbers.map((n) => n.textContent),
+          distinctTops: new Set(numbers.map((n) => n.style.top)).size,
+          gutterPx: body ? parseFloat(getComputedStyle(body).paddingLeft) : null
+        };
+      };
+      return { preview: read('#preview'), print: read('#print-surface') };
+    })()`;
+    await evalJs(`document.getElementById('line-numbers-toggle').click()`);
+    await waitForFit();
+    const numbersOn = await evalJs(lineNumberState);
+    await evalJs(`document.getElementById('line-numbers-toggle').click()`);
+    await waitForFit();
+    const numbersOff = await evalJs(lineNumberState);
+    const sequential = (texts) => texts.length > 0 && texts.every((t, i) => t === String(i + 1));
+    const gutterPx = 8 * 96 / 25.4;
+    const numbersOk = sequential(numbersOn.preview.texts)
+      && JSON.stringify(numbersOn.print.texts) === JSON.stringify(numbersOn.preview.texts)
+      && numbersOn.preview.distinctTops === numbersOn.preview.texts.length
+      && Math.abs(numbersOn.preview.gutterPx - gutterPx) < 0.5
+      && numbersOff.preview.texts.length === 0 && numbersOff.print.texts.length === 0 && numbersOff.preview.gutterPx === 0;
+    journeyChecks.push({
+      label: 'line numbers run 1…N in preview and print surface in an 8 mm gutter, and go when switched off',
+      ok: numbersOk,
+      note: numbersOk ? `${numbersOn.preview.texts.length} lines numbered` : JSON.stringify({ numbersOn, numbersOff })
+    });
+
     console.log('Exercising dyslexia-support toggles, presets, and a custom-font switch...');
     await evalJs(`
       (function() {
