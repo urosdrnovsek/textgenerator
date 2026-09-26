@@ -4,7 +4,7 @@
  * or a malformed export — this is the boundary that stops that.
  */
 
-import { FONT_FAMILIES, SETTINGS_LIMITS, KNOWN_WRITING_MODES, KNOWN_SYLLABLE_MODES, TINTS_BY_ID } from '../config.js';
+import { FONT_FAMILIES, SETTINGS_LIMITS, KNOWN_WRITING_MODES, KNOWN_SYLLABLE_MODES, KNOWN_IMAGE_SLOTS, TINTS_BY_ID } from '../config.js';
 import { RULINGS_BY_ID } from '../layout/rulings.js';
 import { KNOWN_LANGUAGES, KNOWN_THEMES } from '../content/validate.js';
 
@@ -134,6 +134,10 @@ export function validateSettings(settings) {
 
   if (settings.lineNumbers !== undefined && typeof settings.lineNumbers !== 'boolean') {
     push('lineNumbers', 'lineNumbers must be a boolean when present');
+  }
+
+  if (settings.imageSlot !== undefined && !KNOWN_IMAGE_SLOTS.has(settings.imageSlot)) {
+    push('imageSlot', `unknown imageSlot "${settings.imageSlot}" — known: ${[...KNOWN_IMAGE_SLOTS].join(', ')}`);
   }
 
   if (errors.length > 0) {

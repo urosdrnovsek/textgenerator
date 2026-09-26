@@ -8,6 +8,7 @@
 import { splitIntoSentences, splitIntoParagraphs } from '../text/prepare.js';
 import { buildStyledRuns, splitRunsIntoSentences, lightenParagraphs, countWords } from '../text/runs.js';
 import { ACTIVITIES } from './activities.js';
+import { DRAWING_BOX_HEIGHT_MM } from '../config.js';
 
 /**
  * @typedef {object} ImageAsset
@@ -36,6 +37,7 @@ import { ACTIVITIES } from './activities.js';
  * @property {boolean} [lineStripes] alternating faint background per real measured visual line — HTML/PDF only, see src/export/docx.js's header comment for why
  * @property {boolean} [printStripes] whether stripes also show when printed (default off, to save ink)
  * @property {boolean} [lineNumbers] numbers every passage line, continuously across pages (default off)
+ * @property {'picture' | 'drawing-box' | 'none'} [imageSlot] the text's picture above the passage, an empty drawing box after it, or neither (default 'picture')
  * @property {{ nameLine: boolean, date: boolean, title: boolean }} header
  * @property {number} marginMm
  * @property {number} pageWidthMm
@@ -64,6 +66,7 @@ import { ACTIVITIES } from './activities.js';
  *   | { type: 'title', text: string }
  *   | { type: 'image' }
  *   | { type: 'passage', paragraphs: import('../text/runs.js').StyledRun[][], lineNumbers: boolean }
+ *   | { type: 'drawingBox', heightMm: number }
  * )} Block
  */
 
@@ -148,7 +151,10 @@ function buildBlocks(entry, settings, paragraphs) {
     blocks.push({ type: 'header', nameLine: settings.header.nameLine, date: settings.header.date });
   }
   if (settings.header.title) blocks.push({ type: 'title', text: entry.title });
-  blocks.push({ type: 'image' });
+  const imageSlot = settings.imageSlot ?? 'picture';
+  if (imageSlot === 'picture') blocks.push({ type: 'image' });
   blocks.push({ type: 'passage', paragraphs, lineNumbers: Boolean(settings.lineNumbers) });
+  // After the passage: the child draws what they have just read.
+  if (imageSlot === 'drawing-box') blocks.push({ type: 'drawingBox', heightMm: DRAWING_BOX_HEIGHT_MM });
   return blocks;
 }

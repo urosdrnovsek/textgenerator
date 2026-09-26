@@ -74,6 +74,7 @@ export function init({
     lineStripes: false,
     printStripes: false,
     lineNumbers: false,
+    imageSlot: 'picture',
     marginMm: 20
   };
 
@@ -129,6 +130,7 @@ export function init({
       lineStripes: s.lineStripes,
       printStripes: s.printStripes,
       lineNumbers: s.lineNumbers,
+      imageSlot: s.imageSlot,
       marginMm: s.marginMm
     };
   }
@@ -194,12 +196,14 @@ export function init({
       lineStripes: full.lineStripes ?? false,
       printStripes: full.printStripes ?? false,
       lineNumbers: full.lineNumbers ?? false,
+      imageSlot: full.imageSlot ?? 'picture',
       marginMm: full.marginMm
     }));
 
     els.themeSelect.value = state.filter.theme;
     els.levelSelect.value = String(state.filter.level);
     els.writingModeSelect.value = state.settings.writingMode;
+    els.imageSlotSelect.value = state.settings.imageSlot;
     syncSettingsControlsFromState();
     if (keepSelection) {
       if (state.contentId) requestRender();

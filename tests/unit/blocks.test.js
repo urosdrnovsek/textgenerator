@@ -53,3 +53,11 @@ test('the passage block carries the line-numbers switch', () => {
   assert.equal(passage(SETTINGS).lineNumbers, false);
   assert.equal(passage({ ...SETTINGS, lineNumbers: true }).lineNumbers, true);
 });
+
+test('the image slot: the picture above the passage, a drawing box after it, or neither', () => {
+  assert.deepEqual(types(buildWorksheet(ENTRY, { ...SETTINGS, imageSlot: 'picture' }, ASSETS, 'sl')), ['header', 'title', 'image', 'passage']);
+  const drawing = buildWorksheet(ENTRY, { ...SETTINGS, imageSlot: 'drawing-box' }, ASSETS, 'sl');
+  assert.deepEqual(types(drawing), ['header', 'title', 'passage', 'drawingBox']);
+  assert.deepEqual(drawing.blocks.at(-1), { type: 'drawingBox', heightMm: 90 });
+  assert.deepEqual(types(buildWorksheet(ENTRY, { ...SETTINGS, imageSlot: 'none' }, ASSETS, 'sl')), ['header', 'title', 'passage']);
+});

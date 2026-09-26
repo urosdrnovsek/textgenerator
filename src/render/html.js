@@ -6,7 +6,7 @@
  */
 
 import { buildRulingRows } from '../layout/rulings.js';
-import { ptToMm, pxToMm, FONT_FAMILIES, COPY_AREA_GAP_MM, TINTS_BY_ID, LINE_NUMBER_GUTTER_MM } from '../config.js';
+import { ptToMm, pxToMm, FONT_FAMILIES, COPY_AREA_GAP_MM, TINTS_BY_ID, LINE_NUMBER_GUTTER_MM, DRAWING_BOX_GAP_MM } from '../config.js';
 import { IMAGE_BOX_MAX_WIDTH_MM, IMAGE_BOX_MAX_HEIGHT_MM } from '../layout/imageBox.js';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
@@ -253,6 +253,15 @@ export const BLOCK_RENDERERS = {
       bodyWrap.append(paragraph);
     }
     return bodyWrap;
+  },
+  drawingBox: (block) => {
+    const box = document.createElement('div');
+    box.className = 'ws-drawing-box';
+    // Inline, from config, like the copy-area gap: the fit check measures
+    // exactly what the DOCX writer also uses.
+    box.style.height = `${block.heightMm}mm`;
+    box.style.marginTop = `${DRAWING_BOX_GAP_MM}mm`;
+    return box;
   }
 };
 

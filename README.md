@@ -53,6 +53,8 @@ to a school.
   a notice says when two marking colors come out almost the same grey.
 - **Writing modes:** read & copy (ruled handwriting lines), trace (light
   text to trace over), read only.
+- **Picture on the sheet:** the text's picture, an empty drawing box after
+  the text ("read it, then draw it"), or no picture.
 - **Header fields** (name line, date, title), each on/off; an optional
   custom image per worksheet.
 - **Export:** Print / Save as PDF (keeps the layout exactly as previewed)

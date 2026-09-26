@@ -117,6 +117,7 @@ const state = {
     lineStripes: false,
     printStripes: false,
     lineNumbers: false,
+    imageSlot: 'picture',
     marginMm: 20
   },
   // How the preview is viewed, never what is printed: not in settings,
@@ -146,6 +147,7 @@ const els = {
   themeSelect: document.getElementById('theme-select'),
   levelSelect: document.getElementById('level-select'),
   writingModeSelect: document.getElementById('writing-mode-select'),
+  imageSlotSelect: document.getElementById('image-slot-select'),
   candidateCount: document.getElementById('candidate-count'),
   textSelect: document.getElementById('text-select'),
   textSelectLabel: document.getElementById('text-select-label'),
@@ -353,6 +355,11 @@ function updateWritingMode(mode) {
   if (state.contentId) requestRender();
 }
 
+function updateImageSlot(slot) {
+  state.settings.imageSlot = slot;
+  if (state.contentId) requestRender();
+}
+
 /** Clears the custom image without rendering — its other callers (createText, updateLanguage) go on to render themselves. */
 function resetCustomImage() {
   state.customImage = null;
@@ -547,6 +554,7 @@ els.levelSelect.addEventListener('change', (event) => updateFilter({ level: Numb
 els.createButton.addEventListener('click', createText);
 els.textSelect.addEventListener('change', () => chooseTextById(els.textSelect.value));
 els.writingModeSelect.addEventListener('change', (event) => updateWritingMode(event.target.value));
+els.imageSlotSelect.addEventListener('change', (event) => updateImageSlot(event.target.value));
 els.printButton.addEventListener('click', printWorksheet);
 els.docxButton.addEventListener('click', handleExportDocx);
 
@@ -563,6 +571,7 @@ applySettingsLimits();
 syncSettingsControlsFromState();
 // A reload can restore the checkbox's old state; the view always starts in colour.
 els.grayscalePreviewToggle.checked = state.view.grayscale;
+els.imageSlotSelect.value = state.settings.imageSlot;
 populatePresetSelect();
 updatePacketControls();
 renderPacketList();

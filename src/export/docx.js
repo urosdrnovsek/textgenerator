@@ -46,7 +46,7 @@ import {
   LineNumberRestartFormat,
   convertMillimetersToTwip
 } from 'docx';
-import { FONT_FAMILIES, TWIPS_PER_PT, mmToPx, mmToTwips, TINTS_BY_ID, contentWidthMm, LINE_NUMBER_GUTTER_MM } from '../config.js';
+import { FONT_FAMILIES, TWIPS_PER_PT, mmToPx, mmToTwips, TINTS_BY_ID, contentWidthMm, LINE_NUMBER_GUTTER_MM, DRAWING_BOX_GAP_MM } from '../config.js';
 import { computeContainedImageSizeMm } from '../layout/imageBox.js';
 
 /** Matches src/render/html.js DEFAULT_LABELS — used only when a caller doesn't pass the active locale's translated labels. */
@@ -92,6 +92,7 @@ function toWordRuns(runs, { fontFamily, fontSizePt, characterSpacingTwips, wordS
  * @property {object | undefined} shading paragraph shading when the tint prints, else undefined
  * @property {number} characterSpacingTwips
  * @property {number} wordSpacingTwips
+ * @property {number} contentWidthTwips
  * @property {{ suppressLineNumbers?: true }} unnumbered spread into every non-passage paragraph: with line numbers on, Word numbers passage lines only (tables are never numbered)
  */
 
@@ -182,6 +183,40 @@ export const BLOCK_WRITERS = {
           ...gutter
         })
     );
+  },
+
+  // A table, like the copy lines, because a row's exact height is the one
+  // height Word and LibreOffice both honour. The first, borderless row is
+  // the gap above the box (the preview's margin-top). The small paragraph
+  // after it keeps Word from merging this table with the copy-line table
+  // that may follow, and a document may not end on a table.
+  drawingBox: (block, { contentWidthTwips, unnumbered }) => {
+    const noBorder = { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' };
+    const line = { style: BorderStyle.SINGLE, size: 6, color: '333333' };
+    const row = (heightMm, borders) =>
+      new TableRow({
+        height: { value: mmToTwips(heightMm), rule: HeightRule.EXACT },
+        cantSplit: true,
+        children: [
+          new TableCell({
+            width: { size: contentWidthTwips, type: WidthType.DXA },
+            margins: { top: 0, bottom: 0, left: 0, right: 0 },
+            borders,
+            children: [new Paragraph({ spacing: { before: 0, after: 0 }, children: [] })]
+          })
+        ]
+      });
+    return [
+      new Table({
+        width: { size: contentWidthTwips, type: WidthType.DXA },
+        borders: { top: noBorder, bottom: noBorder, left: noBorder, right: noBorder, insideHorizontal: noBorder, insideVertical: noBorder },
+        rows: [
+          row(DRAWING_BOX_GAP_MM, { top: noBorder, bottom: noBorder, left: noBorder, right: noBorder }),
+          row(block.heightMm, { top: line, bottom: line, left: line, right: line })
+        ]
+      }),
+      new Paragraph({ spacing: { before: 0, after: 0, line: mmToTwips(1), lineRule: LineRuleType.EXACT }, children: [], ...unnumbered })
+    ];
   }
 };
 
@@ -218,7 +253,7 @@ export async function exportDocx(model, layout, imageBytes, labels = DEFAULT_LAB
   const unnumbered = lineNumbers ? { suppressLineNumbers: true } : {};
 
   /** @type {BlockWriteContext} */
-  const context = { model, labels, imageBytes, fontFamily, shading, characterSpacingTwips, wordSpacingTwips, unnumbered };
+  const context = { model, labels, imageBytes, fontFamily, shading, characterSpacingTwips, wordSpacingTwips, contentWidthTwips, unnumbered };
   for (const block of model.blocks) {
     const write = BLOCK_WRITERS[block.type];
     if (!write) throw new Error(`UNKNOWN_BLOCK: "${block.type}"`);

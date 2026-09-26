@@ -165,7 +165,11 @@ const CASES = [
   // Line numbers (B9): Word's own numbering, continuous across a page
   // break, with the header/title/picture and the copy-row table left
   // unnumbered. 'sl'+level-4 is an otherwise-unused pair.
-  { label: 'sl-andika-level4-readcopy-linenumbers-multipage', language: 'sl', theme: 'stories', level: 4, entryId: 'stories_piscancek_4', fontId: 'andika', writingMode: 'read-copy', fontSizePt: 28, lineHeightMultiplier: 2.0, lineNumbers: true }
+  { label: 'sl-andika-level4-readcopy-linenumbers-multipage', language: 'sl', theme: 'stories', level: 4, entryId: 'stories_piscancek_4', fontId: 'andika', writingMode: 'read-copy', fontSizePt: 28, lineHeightMultiplier: 2.0, lineNumbers: true },
+  // Drawing box (A5): the 90 mm box after the passage, then the copy rows
+  // in what remains, at a size that leaves only a little room for them.
+  // 'es'+level-2 is an otherwise-unused pair.
+  { label: 'es-andika-level2-readcopy-drawingbox', language: 'es', theme: 'stories', level: 2, entryId: 'stories_huevo_blanco_2', fontId: 'andika', writingMode: 'read-copy', fontSizePt: 24, lineHeightMultiplier: 1.8, imageSlot: 'drawing-box' }
 ];
 
 // Binaries: the defaults match the development machine; CI (and anyone
@@ -276,6 +280,8 @@ async function main() {
           document.getElementById('print-tint-toggle').dispatchEvent(new Event('change', { bubbles: true }));
           document.getElementById('line-numbers-toggle').checked = ${Boolean(testCase.lineNumbers)};
           document.getElementById('line-numbers-toggle').dispatchEvent(new Event('change', { bubbles: true }));
+          document.getElementById('image-slot-select').value = '${testCase.imageSlot ?? 'picture'}';
+          document.getElementById('image-slot-select').dispatchEvent(new Event('change', { bubbles: true }));
           ${testCase.wordSpacingPt !== undefined ? `
           document.getElementById('word-spacing-input').value = '${testCase.wordSpacingPt}';
           document.getElementById('word-spacing-input').dispatchEvent(new Event('change', { bubbles: true }));

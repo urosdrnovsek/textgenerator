@@ -171,3 +171,10 @@ test('accepts lineNumbers on, off or absent, and rejects a non-boolean', () => {
   assert.equal(validateSettings(VALID_SETTINGS).ok, true);
   assert.equal(validateSettings({ ...VALID_SETTINGS, lineNumbers: 'yes' }).ok, false);
 });
+
+test('accepts each image slot or none given, and rejects an unknown one', () => {
+  for (const imageSlot of ['picture', 'drawing-box', 'none']) {
+    assert.equal(validateSettings({ ...VALID_SETTINGS, imageSlot }).ok, true, imageSlot);
+  }
+  assert.equal(validateSettings({ ...VALID_SETTINGS, imageSlot: 'photo' }).ok, false);
+});

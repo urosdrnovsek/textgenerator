@@ -315,6 +315,46 @@ async function main() {
       note: numbersOk ? `${numbersOn.preview.texts.length} lines numbered` : JSON.stringify({ numbersOn, numbersOff })
     });
 
+    // Image slot (A5): the picture above the passage, a 90 mm drawing box
+    // after it (then the copy rows), or neither — in the preview and the
+    // print surface alike.
+    console.log('Driving the picture / drawing box / none select...');
+    const slotState = `(() => {
+      const read = (root) => {
+        const page = document.querySelector(root + ' .ws-page');
+        const box = page.querySelector('.ws-drawing-box');
+        const passage = page.querySelector('[data-block="passage"]');
+        const copy = page.querySelector('.ws-copy-area');
+        return {
+          image: Boolean(page.querySelector('img.ws-image')),
+          box: Boolean(box),
+          // offsetHeight, not getBoundingClientRect: the on-screen preview
+          // is scaled down with a transform to fit the window.
+          boxHeightMm: box ? Math.round(box.offsetHeight * 25.4 / 96 * 10) / 10 : null,
+          boxAfterPassage: box ? Boolean(passage.compareDocumentPosition(box) & Node.DOCUMENT_POSITION_FOLLOWING) : null,
+          copyAfterBox: box && copy ? Boolean(box.compareDocumentPosition(copy) & Node.DOCUMENT_POSITION_FOLLOWING) : null
+        };
+      };
+      return { preview: read('#preview'), print: read('#print-surface') };
+    })()`;
+    const setSlot = async (slot) => {
+      await evalJs(`(() => { const el = document.getElementById('image-slot-select'); el.value = '${slot}'; el.dispatchEvent(new Event('change', { bubbles: true })); })()`);
+      await waitForFit();
+      return evalJs(slotState);
+    };
+    const slotBox = await setSlot('drawing-box');
+    const slotNone = await setSlot('none');
+    const slotPicture = await setSlot('picture');
+    const both = (st, f) => f(st.preview) && f(st.print);
+    const slotOk = both(slotBox, (x) => !x.image && x.box && x.boxHeightMm === 90 && x.boxAfterPassage && x.copyAfterBox !== false)
+      && both(slotNone, (x) => !x.image && !x.box)
+      && both(slotPicture, (x) => x.image && !x.box);
+    journeyChecks.push({
+      label: 'the picture select gives the picture, a 90 mm drawing box after the passage, or neither, in preview and print',
+      ok: slotOk,
+      note: slotOk ? `box ${slotBox.preview.boxHeightMm} mm, copy rows ${slotBox.preview.copyAfterBox ? 'after it' : 'not on this sheet'}` : JSON.stringify({ slotBox, slotNone, slotPicture })
+    });
+
     console.log('Exercising dyslexia-support toggles, presets, and a custom-font switch...');
     await evalJs(`
       (function() {

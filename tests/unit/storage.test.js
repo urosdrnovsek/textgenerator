@@ -208,4 +208,5 @@ test('a preset file exported by 0.9 still imports, and builds with every newer s
   const assets = { imagesById: new Map([['img', { id: 'img', path: 'data:image/jpeg;base64,x' }]]) };
   const model = buildWorksheet(entry, preset.settings, assets, 'sl');
   assert.equal(model.blocks.find((b) => b.type === 'passage').lineNumbers, false);
+  assert.ok(model.blocks.some((b) => b.type === 'image'), 'the picture, as in 0.9');
 });

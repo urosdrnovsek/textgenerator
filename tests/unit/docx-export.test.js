@@ -262,3 +262,20 @@ test('line numbers off: no numbering, suppression or gutter in the XML', async (
   const xml = await documentXmlOf(await buildModel(TEST_ENTRY_ID), { copyBlocks: [5, 20] }, t);
   assert.doesNotMatch(xml, /lnNumType|suppressLineNumbers|<w:ind /);
 });
+
+test('drawing box: a borderless gap row and a bordered box row of exact heights, no picture, and a paragraph before the copy lines', async (t) => {
+  const model = await buildModel(TEST_ENTRY_ID, { ...SETTINGS, imageSlot: 'drawing-box' });
+  const xml = await documentXmlOf(model, { copyBlocks: [5] }, t);
+
+  assert.doesNotMatch(xml, /<w:drawing>/, 'the text\'s picture is gone');
+  const tables = xml.match(/<w:tbl>[\s\S]*?<\/w:tbl>/g);
+  assert.equal(tables.length, 2, 'the drawing box, then the copy lines');
+  const heights = [...tables[0].matchAll(/<w:trHeight w:val="(\d+)" w:hRule="exact"\/>/g)].map((m) => Number(m[1]));
+  assert.deepEqual(heights, [mmToTwips(4), mmToTwips(90)]);
+  const [gapRow, boxRow] = tables[0].match(/<w:tr>[\s\S]*?<\/w:tr>/g);
+  assert.doesNotMatch(gapRow, /w:val="single"/);
+  assert.equal(boxRow.match(/w:val="single"/g).length, 4, 'four sides');
+  // Word merges tables that touch; a paragraph must come between them.
+  const between = xml.slice(xml.indexOf(tables[0]) + tables[0].length, xml.indexOf(tables[1]));
+  assert.match(between, /^<w:p>|^<w:p /);
+});

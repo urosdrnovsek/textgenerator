@@ -25,6 +25,13 @@ export const COPY_AREA_GAP_MM = 4;
  * both adapters, so the text rewraps and the fit check measures it.
  */
 export const LINE_NUMBER_GUTTER_MM = 8;
+/**
+ * "Read it, then draw it" (settings.imageSlot 'drawing-box'): a bordered
+ * box of fixed height after the passage, with a fixed gap above it. One
+ * size on purpose (handbook §11.16: no "fills the page" mode until asked).
+ */
+export const DRAWING_BOX_HEIGHT_MM = 90;
+export const DRAWING_BOX_GAP_MM = 4;
 
 export const MM_PER_INCH = 25.4;
 /** CSS reference pixels per inch — a fixed authoring constant, not a display DPI. */
@@ -108,6 +115,8 @@ export const SETTINGS_LIMITS = {
 /** One source for the writing modes: the activities table (src/worksheet/activities.js). */
 export const KNOWN_WRITING_MODES = new Set(Object.keys(ACTIVITIES));
 export const KNOWN_SYLLABLE_MODES = new Set(['off', 'colors', 'separators', 'both']);
+/** What the sheet's image slot holds: the text's picture, an empty box to draw in, or nothing. */
+export const KNOWN_IMAGE_SLOTS = new Set(['picture', 'drawing-box', 'none']);
 
 /**
  * Two marking colours whose relative luminances differ by less than this

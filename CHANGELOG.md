@@ -65,6 +65,14 @@ supports).
   narrower and the page-count check sees it. The Word file uses Word's
   own line numbering, with the passage indented by the same 8 mm. Saved
   setups include the option; setups saved by 0.9 load with it off.
+- **Drawing box ("read it, then draw it").** A new "Picture on the
+  sheet" choice: the text's picture (as before), a drawing box, or no
+  picture. The drawing box is an empty 9 cm bordered box after the text;
+  in read & copy the copy lines fill whatever room is left, and move to a
+  fresh page when too little is left, as before. In Word it is a table
+  row of exact height, like the copy lines. Saved setups include the
+  choice; setups saved by 0.9 keep the picture. The Slovene labels are
+  waiting for the owner's check.
 
 ## 0.9.0-rc.2 — 2026-09-24 (beta hotfix)
 

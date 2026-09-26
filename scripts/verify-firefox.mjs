@@ -256,6 +256,19 @@ async function main() {
     await evalJs(`document.getElementById('line-numbers-toggle').click();`);
     await waitForFit();
 
+    // Drawing box (A5) on the same multi-page sheet: an atomic 90 mm block
+    // after the passage, then copy rows; Firefox must paginate it as the app does.
+    console.log('\nDrawing box in the real Firefox print...');
+    await evalJs(`const el = document.getElementById('image-slot-select'); el.value = 'drawing-box'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await waitForFit();
+    const boxPages = Number(await evalJs(`return document.getElementById('fit-indicator').dataset.pageCount`));
+    const boxPdfPath = path.join(downloadDir, 'drawing-box-worksheet.pdf');
+    await writeFile(boxPdfPath, Buffer.from(await driver.printPage(), 'base64'));
+    const boxPrintedPages = Number((execFileSync('pdfinfo', [boxPdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
+    check(`drawing-box worksheet prints as exactly ${boxPages} pages (got ${boxPrintedPages})`, boxPrintedPages === boxPages);
+    await evalJs(`const el = document.getElementById('image-slot-select'); el.value = 'picture'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await waitForFit();
+
     // Reset back to defaults — the language loop below checks for the
     // localized "fits" wording specifically, which these settings would
     // break for languages whose content doesn't also extend at max size.
