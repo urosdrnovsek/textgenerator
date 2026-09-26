@@ -68,3 +68,18 @@ test('splitIntoSentences covers every bundled text completely: only whitespace f
     }
   }
 });
+
+test('the sentence rule keeps dialogue tags, ordinals and French closing guillemets with their sentence (sentence report, 2026-09-26)', () => {
+  assert.deepEqual(splitIntoSentences('»Ti pa nikamor ne prideš!« so vpili. Ko je.'), ['»Ti pa nikamor ne prideš!« so vpili.', 'Ko je.']);
+  assert.deepEqual(splitIntoSentences('Zgradili so ga Inki v 15. stoletju. Kamnite stavbe.'), ['Zgradili so ga Inki v 15. stoletju.', 'Kamnite stavbe.']);
+  assert.deepEqual(splitIntoSentences("« Tu n'arriveras jamais ! » crient les autres. Au bout."), ["« Tu n'arriveras jamais ! » crient les autres.", 'Au bout.']);
+  assert.deepEqual(splitIntoSentences('« Ils ne se commandent pas. » Chaque matin, Chloé.'), ['« Ils ne se commandent pas. »', 'Chaque matin, Chloé.']);
+});
+
+test('real boundaries still split: a year before a capital, exclamations, an opening quote, double spaces', () => {
+  assert.deepEqual(splitIntoSentences('razstavo leta 1889. Njegov stolp.'), ['razstavo leta 1889.', 'Njegov stolp.']);
+  assert.deepEqual(splitIntoSentences('Mum! Dad! Mia!'), ['Mum!', 'Dad!', 'Mia!']);
+  assert.deepEqual(splitIntoSentences('Il y a un œuf. « Il faut être patient », dit-elle.'), ['Il y a un œuf.', '« Il faut être patient », dit-elle.']);
+  assert.deepEqual(splitIntoSentences('It rains.  It pours.'), ['It rains.', 'It pours.']);
+  assert.deepEqual(splitIntoSentences('Er rief: „Ziel!“, riefen sie. Dann.'), ['Er rief: „Ziel!“, riefen sie.', 'Dann.']);
+});

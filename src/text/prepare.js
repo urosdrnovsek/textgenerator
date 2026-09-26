@@ -30,7 +30,24 @@ const CLOSING_MARKS = '»«"\'“”‘’)\\]';
 // quoted exclamation at all, so the regex skipped it and the words vanished
 // from sentence-per-line sheets (found 2026-09-24 in a German and a Spanish
 // story). Everything between two matches is now whitespace by construction.
-const SENTENCE_PATTERN = new RegExp(`\\S[\\s\\S]*?(?:[.!?]+[${CLOSING_MARKS}]*(?=\\s|$)|$)`, 'g');
+//
+// Two more rules from the sentence report (scripts/sentence-report.mjs,
+// 2026-09-26), both found in real entries that sequencing would have cut
+// into broken items:
+// - A terminator followed by a lowercase word does not end the sentence:
+//   no sentence in these languages starts in lowercase, but dialogue tags
+//   (»…prideš!« so vpili.), ordinals (v 15. stoletju) and French spaced
+//   closing marks (… ! » crient les autres.) continue one.
+// - A lone » between spaces right after a terminator is a French closing
+//   guillemet and stays with that sentence (« … pas. » Chaque matin).
+//   Unambiguous without knowing the language: Slovene and German attach
+//   their » to the word it opens (»Besedilo), never with a space after.
+const SENTENCE_PATTERN = new RegExp(
+  // After the terminator: skip every space and quote mark, then the next
+  // character must not be a lowercase letter.
+  `\\S[\\s\\S]*?(?:[.!?]+[${CLOSING_MARKS}]*(?:\\s»(?=\\s|$))?(?=\\s*$|\\s[\\s${CLOSING_MARKS}]*(?![\\s${CLOSING_MARKS}\\p{Ll}]))|$)`,
+  'gu'
+);
 
 /**
  * @param {string} text the entry's body text

@@ -37,6 +37,8 @@ function flagsFor(sentence) {
   const last = (sentence.split(/\s+/).at(-1) ?? '').toLowerCase().replace(/[»«"'“”‘’)\]]+$/u, '');
   if (ABBREVIATIONS.has(last) || /^\p{Lu}\.$/u.test(sentence.split(/\s+/).at(-1) ?? '')) flags.push('ABBREVIATION');
   if (/(\.\.\.|…)[»«"'“”‘’)\]]*$/u.test(sentence)) flags.push('ELLIPSIS');
+  // "am 3. Mai": a German ordinal before a capital would be cut here (a year can end a sentence too).
+  if (/\d\.$/u.test(sentence)) flags.push('ENDS_WITH_NUMBER');
   // A closing mark left over from the previous sentence (French "pas. » Chaque").
   if (/^[»”’)\]]\s/u.test(sentence)) flags.push('STARTS_WITH_CLOSING_MARK');
   return flags;
@@ -73,7 +75,7 @@ out.push(`| language | texts | sentences per text | fewer than ${SEQUENCE_SENTEN
 out.push('| --- | --- | --- | --- | --- | --- |');
 out.push(...summary);
 out.push('');
-out.push('Flags: SHORT (under 3 words), LONG (over 30 words: a missed split?), LOWERCASE_START (a false split?), NO_TERMINATOR (no . ! ? at the end), ABBREVIATION (ends in "Dr.", "npr.", "z.B.", an initial …: a false split?), ELLIPSIS (ends in "..."/"…"), STARTS_WITH_CLOSING_MARK (a quote mark that belongs to the sentence before).');
+out.push('Flags: SHORT (under 3 words), LONG (over 30 words: a missed split?), LOWERCASE_START (a false split?), NO_TERMINATOR (no . ! ? at the end), ABBREVIATION (ends in "Dr.", "npr.", "z.B.", an initial …: a false split?), ELLIPSIS (ends in "..."/"…"), STARTS_WITH_CLOSING_MARK (a quote mark that belongs to the sentence before), ENDS_WITH_NUMBER (an ordinal such as "am 3." cut from its word?).');
 out.push('');
 out.push(showAll ? '## Every text' : '## Texts with a flagged sentence');
 for (const { language, entry, flagged } of flaggedTexts) {

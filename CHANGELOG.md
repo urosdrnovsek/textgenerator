@@ -73,6 +73,17 @@ supports).
   row of exact height, like the copy lines. Saved setups include the
   choice; setups saved by 0.9 keep the picture. The owner checked the
   Slovene labels.
+- **Sentence splitting fixed in four texts.** A new report
+  (`npm run sentence-report`) lists how every text splits into
+  sentences. It found four texts where a sentence was cut in two: after
+  a dialogue quote followed by the speaker ("»…prideš!« so vpili."),
+  after an ordinal number ("v 15. stoletju"), and after a French closing
+  guillemet, which French writes with a space ("… ! » crient les
+  autres.", "… pas. » Chaque matin"). "One sentence per line" showed
+  these as broken lines. The rule now keeps a sentence going when the
+  next word starts in lowercase, and keeps a spaced French » with the
+  sentence it closes. Only those four texts change, and only with one
+  sentence per line.
 - **Choose what to copy.** In read & copy, a new "Copy:" choice: the
   whole text (as before), the first two sentences, one sentence (click it
   in the preview), or the title only. The chosen part is marked with a
