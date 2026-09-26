@@ -104,6 +104,14 @@ export const KNOWN_WRITING_MODES = new Set(Object.keys(ACTIVITIES));
 export const KNOWN_SYLLABLE_MODES = new Set(['off', 'colors', 'separators', 'both']);
 
 /**
+ * Two marking colours whose relative luminances differ by less than this
+ * print as nearly the same grey (worksheet/advice.js GRAY_COLLISION). A
+ * starting value (handbook §11.6 B8), to be checked against a real mono
+ * laser print; the default b/d pair (0.110 vs 0.097) is well under it.
+ */
+export const GRAY_MIN_LUMINANCE_DELTA = 0.05;
+
+/**
  * Screen/print background tint (brief section 5: "Tinted background
  * options (cream / soft pastel) instead of pure white, to reduce glare").
  * `printTint` (a separate boolean on WorksheetSettings) controls whether the

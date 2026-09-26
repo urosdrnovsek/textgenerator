@@ -43,6 +43,21 @@ supports).
   asserts the line is hidden on a plain sheet; and a temporary probe build
   that always returned one notice showed exactly one visible item with no
   console errors (not committed).
+- **Grayscale preview.** A new "Preview in grayscale (black-and-white
+  printer)" checkbox greys the on-screen preview only; it is not saved in
+  setups and never reaches the printed sheet or the Word file. While it
+  is on, a notice appears when two colours that tell things apart (the
+  confused-letter colours among themselves, or the two syllable colours
+  when they print) come out almost the same grey. The notice is computed
+  for every sheet but held back while the preview is in colour, because
+  the default red b / green d always trigger it (owner decision). The
+  wording is written in all five languages; the Slovene is waiting for
+  the owner's check. Checked: unit tests (the default b/d pair is
+  detected; syllable colours count only when the text has syllable data;
+  every notice has a string in all five languages), and the offline
+  journey drives the checkbox in Chromium: the preview gets
+  `grayscale(1)`, the print surface stays unfiltered, the notice shows
+  only while the view is on, and it goes when letter colours are off.
 
 ## 0.9.0-rc.2 — 2026-09-24 (beta hotfix)
 

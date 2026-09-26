@@ -237,6 +237,12 @@ own hardware. Checklist:
       printed in grayscale — the blueprint is explicit that red/green "must
       not be the only way the interface communicates meaning," and a
       grayscale print is exactly the scenario where that matters most.
+- [ ] Compare that grayscale print with the app's grayscale preview: the
+      preview uses CSS `grayscale()`, which a printer driver may not match.
+      With the default colors the preview's grey-collision notice appears
+      (b and d are 0.110 vs 0.097 in relative luminance; the threshold is
+      0.05) — note whether b and d really are hard to tell apart on paper,
+      so the threshold can be adjusted.
 
 ## Licenses
 

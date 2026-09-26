@@ -237,14 +237,47 @@ async function main() {
       await waitForFit();
       await evalJs(`document.getElementById('btn-add-to-packet').click();`);
     }
-    // No advisory notice applies to a plain sheet, so the notice line
-    // (worksheet/advice.js, shown under the fit indicator) stays hidden.
+    // With the grayscale view off, no notice is shown on a default sheet
+    // (its GRAY_COLLISION is computed but held back), so the notice line
+    // (worksheet/advice.js, under the fit indicator) stays hidden.
     const noticeState = await evalJs(`(() => { const el = document.getElementById('fit-notices'); return el ? { hidden: el.hidden, items: el.children.length } : null; })()`);
     const noticesHiddenOk = noticeState !== null && noticeState.hidden && noticeState.items === 0;
     journeyChecks.push({
-      label: 'the notice line exists and is hidden when a sheet has no notices',
+      label: 'the notice line exists and is hidden when no notice is shown',
       ok: noticesHiddenOk,
       note: noticesHiddenOk ? 'hidden, empty' : `state=${JSON.stringify(noticeState)}`
+    });
+
+    // Grayscale preview (B8): view only. The default letter palette's b/d
+    // pair is a GRAY_COLLISION, shown only while the grayscale view is on.
+    console.log('Driving the grayscale preview toggle...');
+    const grayState = `(() => {
+      const notice = document.querySelector('#fit-notices [data-notice="GRAY_COLLISION"]');
+      return {
+        previewFilter: getComputedStyle(document.getElementById('preview')).filter,
+        printFilter: getComputedStyle(document.getElementById('print-surface')).filter,
+        printPageFilter: getComputedStyle(document.querySelector('#print-surface .ws-page')).filter,
+        listHidden: document.getElementById('fit-notices').hidden,
+        notice: notice ? notice.textContent : null
+      };
+    })()`;
+    await evalJs(`document.getElementById('grayscale-preview-toggle').click()`);
+    const grayOn = await evalJs(grayState);
+    await evalJs(`document.getElementById('letter-colors-toggle').click()`);
+    await waitForFit();
+    const grayOnNoLetters = await evalJs(grayState);
+    await evalJs(`document.getElementById('letter-colors-toggle').click()`);
+    await waitForFit();
+    await evalJs(`document.getElementById('grayscale-preview-toggle').click()`);
+    const grayOff = await evalJs(grayState);
+    const grayOk = grayOn.previewFilter === 'grayscale(1)' && grayOn.printFilter === 'none' && grayOn.printPageFilter === 'none'
+      && !grayOn.listHidden && Boolean(grayOn.notice)
+      && grayOnNoLetters.notice === null && grayOnNoLetters.listHidden
+      && grayOff.previewFilter === 'none' && grayOff.listHidden && grayOff.notice === null;
+    journeyChecks.push({
+      label: 'grayscale preview greys #preview only, and shows the grey-collision notice only while on',
+      ok: grayOk,
+      note: grayOk ? `notice "${grayOn.notice}"; gone with letter colours off and with the view off` : JSON.stringify({ grayOn, grayOnNoLetters, grayOff })
     });
 
     console.log('Exercising dyslexia-support toggles, presets, and a custom-font switch...');

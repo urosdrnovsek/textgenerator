@@ -47,6 +47,9 @@ to a school.
   separators; one sentence per line; background tint and alternate-line
   stripes (both print-optional, off by default to save ink); a one-click
   Dyslexia-friendly starting point.
+- **Grayscale preview:** shows the preview as a black-and-white printer
+  would roughly print it (the printed sheet is unaffected). While it is on,
+  a notice says when two marking colors come out almost the same grey.
 - **Writing modes:** read & copy (ruled handwriting lines), trace (light
   text to trace over), read only.
 - **Header fields** (name line, date, title), each on/off; an optional

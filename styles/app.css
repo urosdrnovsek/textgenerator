@@ -208,6 +208,12 @@ body {
   display: none;
 }
 
+/* Grayscale preview (view only): an approximation of a mono printer —
+   CSS grayscale() and a printer driver don't convert identically. */
+#preview.is-grayscale {
+  filter: grayscale(1);
+}
+
 .preview-scroll {
   flex: 1;
   display: flex;

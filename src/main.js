@@ -118,6 +118,9 @@ const state = {
     printStripes: false,
     marginMm: 20
   },
+  // How the preview is viewed, never what is printed: not in settings,
+  // presets, the model or the print surface (handbook §11.8).
+  view: { grayscale: false },
   customImage: null, // { id: 'custom', path: dataUrl } | null — session-only, never persisted (blueprint 8.8/section 15)
   lastGood: null, // { model, layout }
   packet: [] // ordered PacketSnapshot[] (worksheet/packet.js) — frozen { id, title, language, level, model, layout, labels }, never live references (blueprint 8.10/6)
@@ -158,6 +161,7 @@ const els = {
   printTintToggle: document.getElementById('print-tint-toggle'),
   lineStripesToggle: document.getElementById('line-stripes-toggle'),
   printStripesToggle: document.getElementById('print-stripes-toggle'),
+  grayscalePreviewToggle: document.getElementById('grayscale-preview-toggle'),
   headerNameLineToggle: document.getElementById('header-nameline-toggle'),
   headerDateToggle: document.getElementById('header-date-toggle'),
   headerTitleToggle: document.getElementById('header-title-toggle'),
@@ -413,21 +417,36 @@ function showFit(model, result) {
   showNotices(result.notices);
 }
 
+/** The last sheet's notice codes, unfiltered — re-shown when the view changes. */
+let currentNoticeCodes = [];
+
 /**
  * Advisory notices (worksheet/advice.js), one line each under the fit
  * indicator. They never block printing, so they sit outside the fit line.
+ * GRAY_COLLISION is shown only while the grayscale preview is on: the
+ * owner's palette always triggers it (b/d), and it is the moment the
+ * teacher is asking how the sheet prints in grey (handbook §11.15).
  * @param {string[]} codes
  */
 function showNotices(codes) {
+  currentNoticeCodes = codes;
+  const shown = codes.filter((code) => code !== 'GRAY_COLLISION' || state.view.grayscale);
   els.fitNotices.replaceChildren(
-    ...codes.map((code) => {
+    ...shown.map((code) => {
       const li = document.createElement('li');
       li.dataset.notice = code;
       li.textContent = t(`notice.${code}`);
       return li;
     })
   );
-  els.fitNotices.hidden = codes.length === 0;
+  els.fitNotices.hidden = shown.length === 0;
+}
+
+/** View only: greys the on-screen preview; the print surface is never touched. */
+function updateGrayscalePreview(enabled) {
+  state.view.grayscale = enabled;
+  els.preview.classList.toggle('is-grayscale', enabled);
+  showNotices(currentNoticeCodes);
 }
 
 /** Nothing printable: clears the preview, the print surface and lastGood, and disables every output. */
@@ -531,6 +550,7 @@ els.docxButton.addEventListener('click', handleExportDocx);
 
 els.imageUpload.addEventListener('change', (e) => handleImageUpload(e.target.files[0]));
 els.resetImageButton.addEventListener('click', handleResetImage);
+els.grayscalePreviewToggle.addEventListener('change', (e) => updateGrayscalePreview(e.target.checked));
 
 applyStaticLabels();
 populateLanguageSelect();
@@ -539,6 +559,8 @@ populateFontSelect();
 updateCandidateCount();
 applySettingsLimits();
 syncSettingsControlsFromState();
+// A reload can restore the checkbox's old state; the view always starts in colour.
+els.grayscalePreviewToggle.checked = state.view.grayscale;
 populatePresetSelect();
 updatePacketControls();
 renderPacketList();

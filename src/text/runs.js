@@ -28,6 +28,9 @@ import { tokenize, wordIndexByOffset } from './tokenize.js';
 
 const HEX_COLOR_PATTERN = /^#[0-9a-fA-F]{6}$/;
 
+/** The two alternating syllable colours when settings give none. */
+export const DEFAULT_SYLLABLE_COLORS = ['#1D4ED8', '#B45309'];
+
 /**
  * @param {string} color
  */
@@ -89,7 +92,7 @@ export function styleText(doc, options = {}) {
   const {
     letterColors = {},
     uppercaseAlso = false,
-    syllableColors = ['#1D4ED8', '#B45309'],
+    syllableColors = DEFAULT_SYLLABLE_COLORS,
     separatorColor = '#64748B',
     syllableMode = 'off',
     baseColor = '#202020'
