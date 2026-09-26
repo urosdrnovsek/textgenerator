@@ -73,6 +73,15 @@ supports).
   row of exact height, like the copy lines. Saved setups include the
   choice; setups saved by 0.9 keep the picture. The owner checked the
   Slovene labels.
+- **Word files: no more lines pushed to the next page (bug fix).** Word
+  and LibreOffice keep at least two lines of a paragraph together on a
+  page by default ("widow/orphan control"); the app's preview allows a
+  single line, as its page count assumes. When a paragraph's first or
+  last line fell alone at a page break, the Word file moved it and could
+  come out a page longer than the app said. The Word export now switches
+  this off for the passage, as the preview does. Found while testing
+  visible word spaces (a 28pt trace sheet: 4 pages in LibreOffice, 3 in
+  the app; 3 in both after the fix). Nothing else in the files changed.
 - **Highlight letters.** A new "Highlight letters" field takes up to
   four letter groups, separated by commas (for example `ch, sch, š`).
   Wherever a group occurs inside a word, it is printed in its own colour

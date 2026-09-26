@@ -173,6 +173,17 @@ test('exportDocx sets body line spacing as an EXACT multiple of the font size, n
   assert.equal(bodySpacing[2], 'exact');
 });
 
+test('passage paragraphs switch widow/orphan control off, like the preview (orphans/widows: 1)', async (t) => {
+  // With it on (the Word/LibreOffice default), a paragraph's lone first or
+  // last line was pulled to the next page, so the file could print one
+  // page longer than the app had measured.
+  const model = await buildModel(TEST_ENTRY_ID, { ...SETTINGS, header: { nameLine: false, date: false, title: false } });
+  const xml = await documentXmlOf(model, { copyBlocks: [] }, t);
+  const passage = paragraphsOf(xml).filter((p) => p.includes('w:lineRule="exact"'));
+  assert.ok(passage.length > 0);
+  for (const p of passage) assert.match(p, /<w:widowControl w:val="false"\/>/);
+});
+
 test('exportDocx renders no copy-practice lines when copyBlocks is empty (read-only mode)', async () => {
   const model = await buildModel(TEST_ENTRY_ID);
   const readOnlySettings = { ...SETTINGS, writingMode: 'read-only' };

@@ -204,6 +204,11 @@ export const BLOCK_WRITERS = {
             : { line: lineTwips, lineRule: LineRuleType.EXACT },
           children: toWordRuns(paragraphRuns, { fontFamily, fontSizePt: s.fontSizePt, characterSpacingTwips, wordSpacingTwips }),
           shading,
+          // Same rule as the preview's `orphans: 1; widows: 1` (worksheet.css):
+          // the fit check breaks between any two lines. Word and LibreOffice
+          // keep two lines together by default, which moved a lone line to
+          // the next page and could add a page the app never reported.
+          widowControl: false,
           ...gutter
         })
     );
