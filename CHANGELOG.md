@@ -14,6 +14,7 @@ summarizes what shipped and what was verified; the commit messages in
   fire station (5). Each language has its own text, not a translation.
   English first: five stories, so English now has five per level.
   Slovene: five stories (marked draft until the owner has read them).
+  German: five stories.
 - **Your own text.** A new "Your own text" panel: type a title and a
   text, choose whether it gets a picture, and click "Add text". It goes
   into the theme that is selected, at the level its length gives (the
