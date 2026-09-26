@@ -902,6 +902,96 @@
         "syllablesReviewed": true,
         "imageAccuracy": "verified"
       }
+    },
+    {
+      "id": "stories_sopa_verduras_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Sopa para cenar",
+      "body": "Afuera ya es de noche. Mamá prepara sopa de verduras. Lucía lava las zanahorias. Pablo saca los guisantes de sus vainas. La cocina huele muy bien. ¡Pronto estará lista la sopa!",
+      "syllable_body": "A|fue|ra ya es de no|che. Ma|má pre|pa|ra so|pa de ver|du|ras. Lu|cí|a la|va las za|na|ho|rias. Pa|blo sa|ca los gui|san|tes de sus vai|nas. La co|ci|na hue|le muy bien. ¡Pron|to es|ta|rá lis|ta la so|pa!",
+      "imageId": "family_soup",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-26",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_paquete_nieve_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Un paquete en la nieve",
+      "body": "La nieve cubre los tejados y la valla. Lucía espera en la puerta del jardín. Por el camino llega el cartero con su bolsa pesada. Tiene las mejillas rojas por el frío. Sonríe y le da un paquete con un lazo rojo. ¡Es un regalo del abuelo! Desde el buzón rojo, un pequeño petirrojo los mira.",
+      "syllable_body": "La nie|ve cu|bre los te|ja|dos y la va|lla. Lu|cí|a es|pe|ra en la puer|ta del jar|dín. Por el ca|mi|no lle|ga el car|te|ro con su bol|sa pe|sa|da. Tie|ne las me|ji|llas ro|jas por el frí|o. Son|rí|e y le da un pa|que|te con un la|zo ro|jo. ¡Es un re|ga|lo del a|bue|lo! Des|de el bu|zón ro|jo, un pe|que|ño pe|ti|rro|jo los mi|ra.",
+      "imageId": "winter_postman",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-26",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_orquesta_sabado_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "La orquesta del sábado",
+      "body": "Cada sábado, el salón de la abuela se convierte en una sala de música. Lucía toca el violín, Pablo toca la flauta y Marta sujeta un gran violonchelo entre las rodillas. Diego está sentado al final, con su tambor. La abuela se pone delante de ellos y levanta las manos. Cuando mueve la cabeza, todos empiezan a la vez. Al principio, el tambor suena demasiado fuerte, porque a Diego le encanta. «Hay que escucharse unos a otros», dice la abuela. Lo intentan otra vez, más suave, y de repente la música suena como una sola canción. La abuela sonríe.",
+      "syllable_body": "Ca|da sá|ba|do, el sa|lón de la a|bue|la se con|vier|te en u|na sa|la de mú|si|ca. Lu|cí|a to|ca el vio|lín, Pa|blo to|ca la flau|ta y Mar|ta su|je|ta un gran vio|lon|che|lo en|tre las ro|di|llas. Die|go es|tá sen|ta|do al fi|nal, con su tam|bor. La a|bue|la se po|ne de|lan|te de e|llos y le|van|ta las ma|nos. Cuan|do mue|ve la ca|be|za, to|dos em|pie|zan a la vez. Al prin|ci|pio, el tam|bor sue|na de|ma|sia|do fuer|te, por|que a Die|go le en|can|ta. «Hay que es|cu|char|se u|nos a o|tros», di|ce la a|bue|la. Lo in|ten|tan o|tra vez, más sua|ve, y de re|pen|te la mú|si|ca sue|na co|mo u|na so|la can|ción. La a|bue|la son|rí|e.",
+      "imageId": "music_rehearsal",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-26",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_farol_tomas_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "El farol de Tomás",
+      "body": "Desde hacía cuarenta años, el viejo Tomás cuidaba el faro de los acantilados. Cada tarde encendía la gran lámpara para que los barcos vieran las rocas.\n\nUna tarde de tormenta, mientras el sol se ponía en un cielo naranja y violeta, vio un pequeño barco de pesca que iba a la deriva hacia las rocas. ¡Se le había parado el motor! Tomás llamó enseguida a los socorristas del puerto. Luego tomó su viejo farol, bajó hasta la orilla y lo movió bien alto por encima de la cabeza.\n\nPronto llegó una lancha de rescate roja entre las olas. Dos socorristas con chaquetas amarillas lanzaron una cuerda a los pescadores y alejaron su barco de las rocas justo a tiempo. De vuelta, saludaron al anciano con la mano, y sobre él la luz del faro barría el mar oscuro.",
+      "syllable_body": "Des|de ha|cí|a cua|ren|ta a|ños, el vie|jo To|más cui|da|ba el fa|ro de los a|can|ti|la|dos. Ca|da tar|de en|cen|dí|a la gran lám|pa|ra pa|ra que los bar|cos vie|ran las ro|cas.\n\nU|na tar|de de tor|men|ta, mien|tras el sol se po|ní|a en un cie|lo na|ran|ja y vio|le|ta, vio un pe|que|ño bar|co de pes|ca que i|ba a la de|ri|va ha|cia las ro|cas. ¡Se le ha|bí|a pa|ra|do el mo|tor! To|más lla|mó en|se|gui|da a los so|co|rris|tas del puer|to. Lue|go to|mó su vie|jo fa|rol, ba|jó has|ta la o|ri|lla y lo mo|vió bien al|to por en|ci|ma de la ca|be|za.\n\nPron|to lle|gó u|na lan|cha de res|ca|te ro|ja en|tre las o|las. Dos so|co|rris|tas con cha|que|tas a|ma|ri|llas lan|za|ron u|na cuer|da a los pes|ca|do|res y a|le|ja|ron su bar|co de las ro|cas jus|to a tiem|po. De vuel|ta, sa|lu|da|ron al an|cia|no con la ma|no, y so|bre él la luz del fa|ro ba|rrí|a el mar os|cu|ro.",
+      "imageId": "lighthouse_rescue",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-26",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_estacion_bomberos_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "De visita con los bomberos",
+      "body": "El viernes por la mañana, la clase de Lucía visitó la estación de bomberos del final de la calle. Las grandes puertas estaban abiertas, y dentro brillaba un enorme camión rojo. Una cinta amarilla y negra y una fila de conos naranjas mantenían a los niños a una distancia segura.\n\nEl bombero Andrés estaba de rodillas junto a una larga manguera amarilla. «Hay que enrollar bien la manguera», explicó, «para poder desenrollarla en pocos segundos si hay un incendio». Les enseñó cómo se hace, vuelta a vuelta, hasta que la manguera quedó como una rueda plana. Detrás de él, otro bombero revisaba el equipo del camión.\n\nPablo preguntó por qué pesaban tanto los cascos de la mesa. Andrés se rio y le dejó levantar uno. ¡Pesaba mucho más de lo que parecía! «Nos protege la cabeza si algo se cae», dijo Andrés.\n\nAntes de irse, Andrés les contó la regla más importante: si hay fuego, sal enseguida, quédate fuera y pide ayuda.",
+      "syllable_body": "El vier|nes por la ma|ña|na, la cla|se de Lu|cí|a vi|si|tó la es|ta|ción de bom|be|ros del fi|nal de la ca|lle. Las gran|des puer|tas es|ta|ban a|bier|tas, y den|tro bri|lla|ba un e|nor|me ca|mión ro|jo. U|na cin|ta a|ma|ri|lla y ne|gra y u|na fi|la de co|nos na|ran|jas man|te|ní|an a los ni|ños a u|na dis|tan|cia se|gu|ra.\n\nEl bom|be|ro An|drés es|ta|ba de ro|di|llas jun|to a u|na lar|ga man|gue|ra a|ma|ri|lla. «Hay que en|ro|llar bien la man|gue|ra», ex|pli|có, «pa|ra po|der de|sen|ro|llar|la en po|cos se|gun|dos si hay un in|cen|dio». Les en|se|ñó có|mo se ha|ce, vuel|ta a vuel|ta, has|ta que la man|gue|ra que|dó co|mo u|na rue|da pla|na. De|trás de él, o|tro bom|be|ro re|vi|sa|ba el e|qui|po del ca|mión.\n\nPa|blo pre|gun|tó por qué pe|sa|ban tan|to los cas|cos de la me|sa. An|drés se rio y le de|jó le|van|tar u|no. ¡Pe|sa|ba mu|cho más de lo que pa|re|cí|a! «Nos pro|te|ge la ca|be|za si al|go se ca|e», di|jo An|drés.\n\nAn|tes de ir|se, An|drés les con|tó la re|gla más im|por|tan|te: si hay fue|go, sal en|se|gui|da, qué|da|te fue|ra y pi|de a|yu|da.",
+      "imageId": "fire_station",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-26",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
     }
   ]
 }
