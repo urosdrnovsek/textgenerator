@@ -143,6 +143,10 @@ export function validateSettings(settings) {
     push('copyTarget', `unknown copyTarget "${settings.copyTarget}" — known: ${[...KNOWN_COPY_TARGETS].join(', ')}`);
   }
 
+  if (settings.clozeWordBank !== undefined && typeof settings.clozeWordBank !== 'boolean') {
+    push('clozeWordBank', 'clozeWordBank must be a boolean when present');
+  }
+
   if (settings.syllableArcs !== undefined && typeof settings.syllableArcs !== 'boolean') {
     push('syllableArcs', 'syllableArcs must be a boolean when present');
   }

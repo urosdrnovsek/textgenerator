@@ -71,6 +71,7 @@ export function init({ state, els, defaultLetterColors: DEFAULT_LETTER_COLORS, r
     els.syllableColorsToggle.checked = s.syllableMode === 'colors' || s.syllableMode === 'both';
     els.syllableSeparatorsToggle.checked = s.syllableMode === 'separators' || s.syllableMode === 'both';
     els.syllableArcsToggle.checked = Boolean(s.syllableArcs);
+    els.clozeWordBankToggle.checked = Boolean(s.clozeWordBank);
     els.sentencePerLineToggle.checked = Boolean(s.sentencePerLine);
     els.wordSpaceMarksToggle.checked = Boolean(s.wordSpaceMarks);
     els.tintSelect.value = s.tintId ?? 'none';
@@ -143,6 +144,12 @@ export function init({ state, els, defaultLetterColors: DEFAULT_LETTER_COLORS, r
     if (state.contentId) requestRender();
   }
 
+  /** Gap-fill word bank: a formatting choice, so it lives in settings (and setups). */
+  function updateClozeWordBank(enabled) {
+    state.settings.clozeWordBank = enabled;
+    if (state.contentId) requestRender();
+  }
+
   function updateSentencePerLine(enabled) {
     state.settings.sentencePerLine = enabled;
     if (state.contentId) requestRender();
@@ -196,6 +203,7 @@ export function init({ state, els, defaultLetterColors: DEFAULT_LETTER_COLORS, r
   els.syllableColorsToggle.addEventListener('change', updateSyllableMode);
   els.syllableSeparatorsToggle.addEventListener('change', updateSyllableMode);
   els.syllableArcsToggle.addEventListener('change', (e) => updateSyllableArcs(e.target.checked));
+  els.clozeWordBankToggle.addEventListener('change', (e) => updateClozeWordBank(e.target.checked));
   els.sentencePerLineToggle.addEventListener('change', (e) => updateSentencePerLine(e.target.checked));
   els.wordSpaceMarksToggle.addEventListener('change', (e) => updateWordSpaceMarks(e.target.checked));
   els.tintSelect.addEventListener('change', (e) => updateTint(e.target.value));

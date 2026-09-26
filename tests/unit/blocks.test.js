@@ -137,3 +137,16 @@ test('the teacher\'s questions follow the text (before a drawing box), in any mo
   assert.ok(types(buildWorksheet(ENTRY, { ...SETTINGS, writingMode: 'read-only' }, ASSETS, 'sl', selection(['Kdo?']))).includes('questions'));
   assert.ok(!types(buildWorksheet(ENTRY, SETTINGS, ASSETS, 'sl', selection([]))).includes('questions'));
 });
+
+test('the gap-fill word bank: above the text, the missing words in alphabetical order, repeats kept; only with gaps and the option on', () => {
+  // 13 words, so four gaps are within the 40% cap.
+  const entry = { ...ENTRY, body: 'Maja ima muco. Muca ima Majo rada. Maja ima tudi psa in mačko.' };
+  const gaps = { key: 'sl:t@1', blanks: [5, 0, 1, 4], sentence: null, showAnswers: false, questions: [] };
+  const cloze = { ...SETTINGS, writingMode: 'cloze', clozeWordBank: true };
+  const model = buildWorksheet(entry, cloze, ASSETS, 'sl', gaps);
+  assert.deepEqual(types(model), ['header', 'title', 'instruction', 'image', 'wordBank', 'passage']);
+  assert.deepEqual(model.blocks[4].words, ['ima', 'ima', 'Maja', 'Majo']);
+  assert.ok(!types(buildWorksheet(entry, { ...cloze, clozeWordBank: false }, ASSETS, 'sl', gaps)).includes('wordBank'));
+  assert.ok(!types(buildWorksheet(entry, cloze, ASSETS, 'sl', { ...gaps, blanks: [] })).includes('wordBank'), 'no gaps: no bank');
+  assert.ok(!types(buildWorksheet(entry, { ...cloze, writingMode: 'read-copy' }, ASSETS, 'sl', gaps)).includes('wordBank'), 'gap-fill only');
+});

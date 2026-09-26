@@ -61,7 +61,8 @@ to a school.
   are enough), trace (light
   text to trace over), read only, write about the picture (a large
   picture and ruled lines, no text), and fill the gaps (click words in the
-  preview, or let the app gap every Nth word, to make a gap-fill sheet;
+  preview, or let the app gap every Nth word, to make a gap-fill sheet,
+  with an optional word bank of the missing words;
   "Show the answers" turns it into the answer key, marked "Answers"), and
   put in order (the text's first 3–6 sentences shuffled, a box beside
   each for the child's number; the key shows the right numbers), and

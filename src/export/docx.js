@@ -48,7 +48,7 @@ import {
   TableLayoutType,
   convertMillimetersToTwip
 } from 'docx';
-import { FONT_FAMILIES, TWIPS_PER_PT, mmToPx, mmToTwips, TINTS_BY_ID, contentWidthMm, LINE_NUMBER_GUTTER_MM, DRAWING_BOX_GAP_MM, CLOZE, COPY_MARK_COLOR, SEQUENCE_BOX_FACTOR, ptToMm } from '../config.js';
+import { FONT_FAMILIES, TWIPS_PER_PT, mmToPx, mmToTwips, TINTS_BY_ID, contentWidthMm, LINE_NUMBER_GUTTER_MM, DRAWING_BOX_GAP_MM, CLOZE, COPY_MARK_COLOR, SEQUENCE_BOX_FACTOR, WORD_BANK, ptToMm } from '../config.js';
 import { markedParagraphs } from '../worksheet/copyMark.js';
 import { computeContainedImageSizeMm, IMAGE_BOX_LARGE } from '../layout/imageBox.js';
 
@@ -387,6 +387,44 @@ export const BLOCK_WRITERS = {
         rows
       }),
       new Paragraph({ spacing: { before: 0, after: 0, line: mmToTwips(1), lineRule: LineRuleType.EXACT }, children: [], ...unnumbered })
+    ];
+  },
+
+  // Gap-fill word bank: one bordered cell holding the missing words, spaced
+  // with no-break spaces (a normal space after each group lets the line
+  // wrap). Explicit width and fixed layout, as for every table here.
+  wordBank: (block, { model, fontFamily, contentWidthTwips, unnumbered }) => {
+    const s = model.settings;
+    const line = { style: BorderStyle.SINGLE, size: 6, color: '202020' };
+    const noBorder = { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' };
+    const gap = `${'\u00A0'.repeat(WORD_BANK.gapSpaces)} `;
+    return [
+      new Table({
+        width: { size: contentWidthTwips, type: WidthType.DXA },
+        columnWidths: [contentWidthTwips],
+        layout: TableLayoutType.FIXED,
+        // The box is the cell's border; the table's own stays off (the library's default would add a second frame).
+        borders: { top: noBorder, bottom: noBorder, left: noBorder, right: noBorder, insideHorizontal: noBorder, insideVertical: noBorder },
+        rows: [
+          new TableRow({
+            cantSplit: true,
+            children: [
+              new TableCell({
+                width: { size: contentWidthTwips, type: WidthType.DXA },
+                margins: { top: mmToTwips(2), bottom: mmToTwips(2), left: mmToTwips(3), right: mmToTwips(3) },
+                borders: { top: line, bottom: line, left: line, right: line },
+                children: [
+                  new Paragraph({
+                    spacing: { before: 0, after: 0, line: Math.round(WORD_BANK.lineHeight * s.fontSizePt * TWIPS_PER_PT), lineRule: LineRuleType.EXACT },
+                    children: [new TextRun({ text: block.words.join(gap), font: fontFamily, size: Math.round(s.fontSizePt * 2) })]
+                  })
+                ]
+              })
+            ]
+          })
+        ]
+      }),
+      new Paragraph({ spacing: { before: 0, after: 0, line: mmToTwips(3), lineRule: LineRuleType.EXACT }, children: [], ...unnumbered })
     ];
   },
 

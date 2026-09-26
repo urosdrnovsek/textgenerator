@@ -62,6 +62,7 @@
     "cloze.everyNthLabel": "N =",
     "cloze.everyNth": "Praznina na vsako N-to besedo",
     "cloze.clear": "Počisti praznine",
+    "cloze.wordBank": "Manjkajoče besede v okvirju nad besedilom",
     "cloze.showAnswers": "Pokaži rešitve (list z rešitvami)",
     "questions.panel": "Vprašanja k besedilu",
     "questions.hint": "Natisnejo se pod besedilom, vsako s črtami za odgovor. Veljajo le za to besedilo.",

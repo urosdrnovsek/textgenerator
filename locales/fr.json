@@ -62,6 +62,7 @@
     "cloze.everyNthLabel": "N =",
     "cloze.everyNth": "Un trou tous les N mots",
     "cloze.clear": "Effacer les trous",
+    "cloze.wordBank": "Banque de mots (les mots manquants dans un cadre au-dessus du texte)",
     "cloze.showAnswers": "Afficher les réponses (corrigé)",
     "questions.panel": "Questions sur ce texte",
     "questions.hint": "Imprimées sous le texte, chacune avec des lignes pour répondre. Elles ne valent que pour ce texte.",

@@ -650,6 +650,37 @@ async function main() {
       note: starterOk ? `"${starter.text}"` : JSON.stringify({ starter, fullText })
     });
 
+    // Gap-fill word bank: the missing words, alphabetical, in a box above
+    // the text, the same in print; gone when switched off.
+    console.log('Driving the gap-fill word bank...');
+    const bankState = `(() => ({
+      bank: [...document.querySelectorAll('#preview .ws-word-bank-word')].map((w) => w.textContent),
+      printBank: [...document.querySelectorAll('#print-surface .ws-word-bank-word')].map((w) => w.textContent),
+      answers: [...document.querySelectorAll('#preview .ws-blank')].map((g) => g.textContent),
+      beforeText: document.querySelector('#preview [data-block="wordBank"]')?.nextElementSibling?.dataset.block ?? null
+    }))()`;
+    await setSelect('writing-mode-select', 'cloze');
+    await evalJs(`(() => { document.getElementById('cloze-every-nth-input').value = '4'; document.getElementById('btn-cloze-every-nth').click(); })()`);
+    await wait(300);
+    await waitForFit();
+    await evalJs(`document.getElementById('cloze-word-bank-toggle').click()`);
+    await wait(300);
+    await waitForFit();
+    const bankOn = await evalJs(bankState);
+    await evalJs(`document.getElementById('cloze-word-bank-toggle').click()`);
+    await wait(300);
+    await waitForFit();
+    const bankOff = await evalJs(bankState);
+    await setSelect('writing-mode-select', 'read-copy');
+    const collator = new Intl.Collator(undefined, { sensitivity: 'base' });
+    const bankOk = bankOn.bank.length > 0 && JSON.stringify(bankOn.bank) === JSON.stringify([...bankOn.answers].sort(collator.compare))
+      && JSON.stringify(bankOn.printBank) === JSON.stringify(bankOn.bank) && bankOn.beforeText === 'passage' && bankOff.bank.length === 0;
+    journeyChecks.push({
+      label: 'gap-fill word bank: the missing words, alphabetical, in a box above the text, same in print, gone when off',
+      ok: bankOk,
+      note: bankOk ? bankOn.bank.join(', ') : JSON.stringify({ bankOn, bankOff })
+    });
+
     // The teacher's own questions: typed in the sidebar, printed after the
     // text, numbered, each with its answer lines, the same in print;
     // cleared when another text is shown.

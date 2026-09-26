@@ -62,6 +62,7 @@
     "cloze.everyNthLabel": "N =",
     "cloze.everyNth": "Gap every Nth word",
     "cloze.clear": "Clear gaps",
+    "cloze.wordBank": "Word bank (the missing words in a box above the text)",
     "cloze.showAnswers": "Show the answers (answer key)",
     "questions.panel": "Questions about this text",
     "questions.hint": "Printed under the text, each with lines to answer on. They belong to this text only.",

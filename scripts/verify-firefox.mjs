@@ -352,6 +352,22 @@ async function main() {
     check(`gap-fill worksheet (${gapCount} gaps) page count agrees (${pagesNote(clozePrintedPages, clozePages)})`, gapCount > 0 && pagesAgree(clozePrintedPages, clozePages));
     check('the printed gap-fill has the passage without its answers, and not the answers',
       clozeTexts.every((p) => clozePdf.includes(squash(p.gapped))) && clozeTexts.filter((p) => p.gaps > 0).every((p) => !clozePdf.includes(squash(p.full))));
+    // The word bank on the same gap-fill sheet: printed, pages as measured.
+    await evalJs(`document.getElementById('cloze-word-bank-toggle').click();`);
+    await driver.sleep(500);
+    await waitForFit();
+    const bankPages = await reportedPages();
+    const bankWords = await evalJs(`return [...document.querySelectorAll('#preview .ws-word-bank-word')].map((w) => w.textContent)`);
+    const bankPdfPath = path.join(downloadDir, 'word-bank-worksheet.pdf');
+    await writeFile(bankPdfPath, Buffer.from(await driver.printPage(), 'base64'));
+    const bankPrintedPages = Number((execFileSync('pdfinfo', [bankPdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
+    const bankPdf = squash(execFileSync('pdftotext', ['-layout', bankPdfPath, '-']).toString());
+    check(`word bank (${bankWords.length} words) page count agrees (${pagesNote(bankPrintedPages, bankPages)}), every word printed`,
+      bankWords.length > 0 && pagesAgree(bankPrintedPages, bankPages) && bankWords.every((w) => bankPdf.includes(squash(w))));
+    await evalJs(`document.getElementById('cloze-word-bank-toggle').click();`);
+    await driver.sleep(500);
+    await waitForFit();
+
     // The answer key (U3b): the same sheet with "Show the answers" prints
     // the passage with its answers and the "Answers" tag.
     await evalJs(`document.getElementById('show-answers-toggle').click();`);

@@ -150,6 +150,14 @@ export const STARTER_SENTENCES = 2;
  * ruled answer lines. Per text, never saved (worksheet/selection.js).
  */
 export const QUESTIONS = { max: 3, maxLength: 200, linesEach: 2 };
+/**
+ * The gap-fill word bank's own line spacing (× font size), the same in
+ * both outputs: a list of words doesn't need reading spacing, and with the
+ * sheet's (up to 2.5) a long bank at a large font outgrew the page.
+ * Words are separated by gapSpaces no-break spaces and a space
+ * (in the preview: that many × CLOZE.docxNbspEm, in em).
+ */
+export const WORD_BANK = { lineHeight: 1.3, gapSpaces: 4 };
 /** The number box beside each sentence: this many times the font size, square. */
 export const SEQUENCE_BOX_FACTOR = 1.4;
 

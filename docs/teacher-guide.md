@@ -110,7 +110,9 @@ afterward.
   (click again to undo; the arrow keys and Space work too), or use **Gap
   every Nth word**, which leaves the first sentence whole. All gaps are
   the same width, so the length doesn't give the answer away. The preview
-  shows the answers faintly; the printed sheet doesn't.
+  shows the answers faintly; the printed sheet doesn't. **Word bank** adds
+  the missing words in a box above the text, in alphabetical order, for
+  children who need that help.
 - **Put in order** — the text's first sentences (3 to 6) in a shuffled
   order, each with an empty box for the child's number. The same text is
   always shuffled the same way. A text with fewer than 3 sentences can't

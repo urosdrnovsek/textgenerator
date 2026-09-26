@@ -62,6 +62,7 @@
     "cloze.everyNthLabel": "N =",
     "cloze.everyNth": "Jedes N-te Wort als Lücke",
     "cloze.clear": "Lücken entfernen",
+    "cloze.wordBank": "Wörterkasten (die fehlenden Wörter in einem Kasten über dem Text)",
     "cloze.showAnswers": "Lösungen zeigen (Lösungsblatt)",
     "questions.panel": "Fragen zu diesem Text",
     "questions.hint": "Werden unter dem Text gedruckt, jede mit Zeilen für die Antwort. Sie gelten nur für diesen Text.",

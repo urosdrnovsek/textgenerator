@@ -206,6 +206,9 @@ const CASES = [
   // The teacher's own questions: two, each with ruled answer lines, before
   // the copy lines. 'fr'+level-1 is otherwise unused.
   { label: 'fr-andika-level1-readcopy-questions', language: 'fr', theme: 'stories', level: 1, entryId: 'stories_boite_a_musique_1', fontId: 'andika', writingMode: 'read-copy', questions: ['Où est le chaton ?', 'Que fait la fille ?'] },
+  // Gap-fill with the word bank: the missing words in a bordered box above
+  // the text. 'es'+level-1 is otherwise unused.
+  { label: 'es-andika-level1-cloze-wordbank', language: 'es', theme: 'stories', level: 1, entryId: 'stories_cometa_verde_1', fontId: 'andika', writingMode: 'cloze', clozeEveryNth: 4, wordBank: true },
   { label: 'es-andika-level2-readcopy-drawingbox', language: 'es', theme: 'stories', level: 2, entryId: 'stories_huevo_blanco_2', fontId: 'andika', writingMode: 'read-copy', fontSizePt: 24, lineHeightMultiplier: 1.8, imageSlot: 'drawing-box' }
 ];
 
@@ -323,6 +326,8 @@ async function main() {
           document.getElementById('image-slot-select').dispatchEvent(new Event('change', { bubbles: true }));
           document.getElementById('word-space-marks-toggle').checked = ${Boolean(testCase.wordSpaceMarks)};
           document.getElementById('word-space-marks-toggle').dispatchEvent(new Event('change', { bubbles: true }));
+          document.getElementById('cloze-word-bank-toggle').checked = ${Boolean(testCase.wordBank)};
+          document.getElementById('cloze-word-bank-toggle').dispatchEvent(new Event('change', { bubbles: true }));
           document.getElementById('graphemes-input').value = ${JSON.stringify(testCase.graphemes ?? '')};
           document.getElementById('graphemes-input').dispatchEvent(new Event('change', { bubbles: true }));
           ${testCase.wordSpacingPt !== undefined ? `
@@ -392,7 +397,7 @@ async function main() {
       const renderedTag = await evalJs(`document.querySelector('#preview .ws-answer-tag')?.textContent ?? ''`);
       // "Put in order": each sentence item, checked on its own (in the key,
       // the box numbers sit between them in the extracted text).
-      const renderedItems = await evalJs(`[...document.querySelectorAll('#preview .ws-sequence-text, #preview .ws-question-text')].map((p) => p.textContent)`);
+      const renderedItems = await evalJs(`[...document.querySelectorAll('#preview .ws-sequence-text, #preview .ws-question-text, #preview .ws-word-bank-word')].map((p) => p.textContent)`);
       const renderedInstruction = await evalJs(`document.querySelector('#preview .ws-instruction')?.textContent ?? ''`);
       const previewLineNumbers = await evalJs(`document.querySelectorAll('#preview .ws-line-number').length`);
 

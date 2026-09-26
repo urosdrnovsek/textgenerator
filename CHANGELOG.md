@@ -7,6 +7,11 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
+- **Word bank for gap-fill.** In "Fill the gaps", a new checkbox prints the
+  missing words in a box above the text, in alphabetical order (so the
+  order gives nothing away; a word gapped twice is listed twice), for
+  children who need the support. Saved in setups. The answer key keeps
+  the box.
 - **Your own questions about a text.** A new "Questions about this text"
   panel takes up to three questions. They are printed after the text,
   numbered, each with two ruled lines to answer on (a question and its

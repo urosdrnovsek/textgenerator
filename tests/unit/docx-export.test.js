@@ -429,3 +429,20 @@ test('the teacher\'s questions in Word: numbered, kept with their ruled answer l
   assert.equal((xml.match(/<w:tbl>/g) ?? []).length, 3, 'two answer tables and the copy lines');
   assert.doesNotMatch(xml, /<\/w:tbl><w:tbl>/, 'no two tables touch (Word would merge them)');
 });
+
+test('the word bank in Word: one bordered cell with the missing words, above the text, and nothing numbered by it', async (t) => {
+  const { keyFor } = await import('../../src/worksheet/selection.js');
+  const plain = await buildModel(TEST_ENTRY_ID);
+  const raw = JSON.parse(await readFile(path.join(root, 'content/sl.json'), 'utf8'));
+  const { imagesById } = await loadManifestAssets();
+  const entry = { ...raw.entries.find((e) => e.id === TEST_ENTRY_ID), language: 'sl' };
+  const model = buildWorksheet(entry, { ...SETTINGS, writingMode: 'cloze', clozeWordBank: true, lineNumbers: true }, { imagesById }, 'sl', { key: keyFor(plain.contentKey), blanks: [3, 1], sentence: null, showAnswers: false, questions: [] });
+  const words = model.blocks.find((b) => b.type === 'wordBank').words;
+  const xml = await documentXmlOf(model, { copyBlocks: [] }, t, { nameLine: 'Ime:', date: 'Datum:', instruction: () => 'Dopolni.' });
+  const table = xml.match(/<w:tbl>[\s\S]*?<\/w:tbl>/)[0];
+  assert.equal((table.match(/w:val="single"/g) ?? []).length, 4, 'four borders');
+  assert.match(table, new RegExp(`>${words[0]} + ${words[1]}<`));
+  assert.ok(xml.indexOf(table) < xml.indexOf('<w:widowControl w:val="false"/>'), 'before the passage (its paragraphs carry widowControl false)');
+  const spacer = xml.slice(xml.indexOf(table) + table.length).match(/^<w:p>[\s\S]*?<\/w:p>/)[0];
+  assert.match(spacer, /<w:suppressLineNumbers\/>/);
+});

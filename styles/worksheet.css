@@ -293,6 +293,17 @@
   letter-spacing: 0.05em;
 }
 
+/* Gap-fill word bank: the missing words, spread out in a box. */
+.ws-word-bank {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 0;
+  padding: 2mm 3mm;
+  margin-bottom: 3mm;
+  border: 0.3mm solid #202020;
+  break-inside: avoid;
+}
+
 /* The teacher's own questions, each with its answer lines. */
 .ws-questions {
   margin-top: 4mm;

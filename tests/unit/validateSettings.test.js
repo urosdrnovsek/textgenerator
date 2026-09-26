@@ -221,3 +221,8 @@ test('accepts syllableArcs on, off or absent, and rejects a non-boolean', () => 
   assert.equal(validateSettings({ ...VALID_SETTINGS, syllableArcs: true }).ok, true);
   assert.equal(validateSettings({ ...VALID_SETTINGS, syllableArcs: 'on' }).ok, false);
 });
+
+test('accepts clozeWordBank on, off or absent, and rejects a non-boolean', () => {
+  assert.equal(validateSettings({ ...VALID_SETTINGS, clozeWordBank: true }).ok, true);
+  assert.equal(validateSettings({ ...VALID_SETTINGS, clozeWordBank: 'yes' }).ok, false);
+});

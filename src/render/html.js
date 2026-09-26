@@ -6,7 +6,7 @@
  */
 
 import { buildRulingRows, getRuling } from '../layout/rulings.js';
-import { contentWidthMm, ptToMm, pxToMm, FONT_FAMILIES, COPY_AREA_GAP_MM, TINTS_BY_ID, LINE_NUMBER_GUTTER_MM, DRAWING_BOX_GAP_MM, COPY_MARK_COLOR, SEQUENCE_BOX_FACTOR } from '../config.js';
+import { contentWidthMm, WORD_BANK, CLOZE, ptToMm, pxToMm, FONT_FAMILIES, COPY_AREA_GAP_MM, TINTS_BY_ID, LINE_NUMBER_GUTTER_MM, DRAWING_BOX_GAP_MM, COPY_MARK_COLOR, SEQUENCE_BOX_FACTOR } from '../config.js';
 import { IMAGE_BOX_MAX_WIDTH_MM, IMAGE_BOX_MAX_HEIGHT_MM, IMAGE_BOX_LARGE } from '../layout/imageBox.js';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
@@ -409,6 +409,21 @@ export const BLOCK_RENDERERS = {
       list.append(row);
     }
     return list;
+  },
+  // Gap-fill word bank: the missing words in a box above the text.
+  wordBank: (block) => {
+    const box = document.createElement('div');
+    box.className = 'ws-word-bank ws-text';
+    // The same spacing as the Word file's no-break spaces and exact lines.
+    box.style.lineHeight = String(WORD_BANK.lineHeight);
+    box.style.columnGap = `${(WORD_BANK.gapSpaces * CLOZE.docxNbspEm + 0.25).toFixed(2)}em`;
+    for (const word of block.words) {
+      const item = document.createElement('span');
+      item.className = 'ws-word-bank-word';
+      item.textContent = word;
+      box.append(item);
+    }
+    return box;
   },
   // The teacher's own questions: each numbered, then ruled answer lines
   // drawn like the copy lines. A question and its lines are one unit for

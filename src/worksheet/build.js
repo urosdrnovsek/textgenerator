@@ -40,6 +40,7 @@ import { DRAWING_BOX_HEIGHT_MM, ARC_COLOR, STARTER_SENTENCES, QUESTIONS } from '
  * @property {boolean} [lineStripes] alternating faint background per real measured visual line — HTML/PDF only, see src/export/docx.js's header comment for why
  * @property {boolean} [printStripes] whether stripes also show when printed (default off, to save ink)
  * @property {boolean} [lineNumbers] numbers every passage line, continuously across pages (default off)
+ * @property {boolean} [clozeWordBank] gap-fill: print the missing words in a box above the text (default off)
  * @property {boolean} [syllableArcs] a curve under each syllable (HTML/print only; needs syllable data) (default off)
  * @property {boolean} [wordSpaceMarks] a faint "_" in every space between two words of a sentence (default off)
  * @property {import('../text/graphemes.js').GraphemeGroup[]} [graphemes] letter groups highlighted in colour and bold (default none)
@@ -80,7 +81,8 @@ import { DRAWING_BOX_HEIGHT_MM, ARC_COLOR, STARTER_SENTENCES, QUESTIONS } from '
  *   | { type: 'image', size: 'normal' | 'large' }
  *   | { type: 'passage', paragraphs: import('../text/runs.js').StyledRun[][], lineNumbers: boolean, blankWidthEm: number, showAnswers: boolean, copyMark: { firstW: number, lastW: number } | null, arcColor: string | null } arcColor: syllable arcs are drawn, in this colour (null: none) blankWidthEm: every gap's width (0 = no gaps); showAnswers: the answer key (gaps show their word)
  *   | { type: 'drawingBox', heightMm: number }
- *   | { type: 'questions', items: string[], linesEach: number } the teacher's own questions, each followed by ruled answer lines
+ *   | { type: 'questions', items: string[], linesEach: number }
+ *   | { type: 'wordBank', words: string[] } gap-fill: the missing words, alphabetical, in a box above the text the teacher's own questions, each followed by ruled answer lines
  *   | { type: 'sequence', items: Array<{ runs: import('../text/runs.js').StyledRun[], position: number }>, sentenceCount: number, showAnswers: boolean } items: shuffled, position = the sentence's place in the text (1-based); no items when the text has too few sentences
  * )} Block
  */
@@ -186,7 +188,8 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
     hasSyllableData: doc.hasSyllables,
     copyTarget: target.kind,
     copyTargetText: target.text,
-    blocks: buildBlocks(entry, settings, activity, bodyParagraphs, blanks.length > 0 ? blankWidthEm(doc, blanks) : 0, answerKey, target, sequence, arcColor, chosen.selection.questions),
+    blocks: buildBlocks(entry, settings, activity, bodyParagraphs, blanks.length > 0 ? blankWidthEm(doc, blanks) : 0, answerKey, target, sequence, arcColor, chosen.selection.questions,
+      settings.clozeWordBank && blanks.length > 0 ? wordBank(doc, blanks, entry.language ?? localeForWordCount) : null),
     task: activity.task
   };
 }
@@ -204,9 +207,10 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
  * @param {{ items: Array<{ runs: import('../text/runs.js').StyledRun[], position: number }>, sentenceCount: number } | null} sequence
  * @param {string | null} arcColor
  * @param {string[]} questions the teacher's own questions (already cleaned)
+ * @param {string[] | null} bankWords gap-fill word bank, or null for none
  * @returns {Block[]}
  */
-function buildBlocks(entry, settings, activity, paragraphs, gapWidthEm, answerKey, target, sequence, arcColor, questions) {
+function buildBlocks(entry, settings, activity, paragraphs, gapWidthEm, answerKey, target, sequence, arcColor, questions, bankWords) {
   /** @type {Block[]} */
   const blocks = [];
   // First, whatever else is switched off: a key must never pass for a student sheet.
@@ -220,6 +224,8 @@ function buildBlocks(entry, settings, activity, paragraphs, gapWidthEm, answerKe
   }
   const imageSlot = settings.imageSlot ?? 'picture';
   if (imageSlot === 'picture') blocks.push({ type: 'image', size: activity.imageSize ?? 'normal' });
+  // Above the text: the child reads the words first, then fills them in.
+  if (bankWords) blocks.push({ type: 'wordBank', words: bankWords });
   if (activity.passage !== 'hidden') {
     blocks.push({ type: 'passage', paragraphs, lineNumbers: Boolean(settings.lineNumbers), blankWidthEm: gapWidthEm, showAnswers: answerKey, copyMark: target.words, arcColor });
   }
@@ -297,4 +303,18 @@ function starterParagraphs(bodyRuns, doc, sentencePerLine) {
     ? kept.map(({ start, end }) => doc.body.slice(start, end))
     : [doc.body.slice(kept[0].start, kept.at(-1).end)];
   return splitRunsIntoSentences(bodyRuns, texts);
+}
+
+/**
+ * Gap-fill word bank: the missing words as written in the text, in the
+ * text language's alphabetical order (so the order gives nothing away).
+ * A word gapped twice is listed twice.
+ * @param {import('../text/tokenize.js').TextDoc} doc
+ * @param {number[]} blanks
+ * @param {string} language
+ * @returns {string[]}
+ */
+function wordBank(doc, blanks, language) {
+  const collator = new Intl.Collator(language, { sensitivity: 'base' });
+  return blanks.map((w) => doc.words[w].text).sort(collator.compare);
 }

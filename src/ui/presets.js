@@ -79,6 +79,7 @@ export function init({
     wordSpaceMarks: false,
     copyTarget: 'passage',
     syllableArcs: false,
+    clozeWordBank: false,
     marginMm: 20
   };
 
@@ -139,6 +140,7 @@ export function init({
       wordSpaceMarks: s.wordSpaceMarks,
       copyTarget: s.copyTarget,
       syllableArcs: s.syllableArcs,
+      clozeWordBank: s.clozeWordBank,
       marginMm: s.marginMm
     };
   }
@@ -209,6 +211,7 @@ export function init({
       wordSpaceMarks: full.wordSpaceMarks ?? false,
       copyTarget: full.copyTarget ?? 'passage',
       syllableArcs: full.syllableArcs ?? false,
+      clozeWordBank: full.clozeWordBank ?? false,
       marginMm: full.marginMm
     }));
 

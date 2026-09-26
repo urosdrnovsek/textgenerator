@@ -128,6 +128,7 @@ const state = {
     wordSpaceMarks: false,
     copyTarget: 'passage',
     syllableArcs: false,
+    clozeWordBank: false,
     marginMm: 20
   },
   // How the preview is viewed, never what is printed: not in settings,
@@ -167,6 +168,7 @@ const els = {
   clozeEveryNthInput: document.getElementById('cloze-every-nth-input'),
   clozeEveryNthButton: document.getElementById('btn-cloze-every-nth'),
   clozeClearButton: document.getElementById('btn-cloze-clear'),
+  clozeWordBankToggle: document.getElementById('cloze-word-bank-toggle'),
   answersRow: document.getElementById('answers-row'),
   showAnswersToggle: document.getElementById('show-answers-toggle'),
   questionInputs: [...document.querySelectorAll('.question-input')],

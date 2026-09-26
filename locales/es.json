@@ -62,6 +62,7 @@
     "cloze.everyNthLabel": "N =",
     "cloze.everyNth": "Un hueco cada N palabras",
     "cloze.clear": "Quitar huecos",
+    "cloze.wordBank": "Banco de palabras (las palabras que faltan en un recuadro sobre el texto)",
     "cloze.showAnswers": "Mostrar las soluciones (hoja de soluciones)",
     "questions.panel": "Preguntas sobre este texto",
     "questions.hint": "Se imprimen debajo del texto, cada una con líneas para responder. Solo valen para este texto.",
