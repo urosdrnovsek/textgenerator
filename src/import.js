@@ -20,12 +20,8 @@ export const IMAGE_LIMITS = {
 const ACCEPTED_TYPES = new Set(['image/png', 'image/jpeg']);
 
 /**
- * @typedef {object} ImageReadResult
- * @property {boolean} ok
- * @property {string} [code] one of UNSUPPORTED_TYPE, FILE_TOO_LARGE, DECODE_FAILED, TOO_MANY_PIXELS
- * @property {string} [dataUrl]
- * @property {number} [width]
- * @property {number} [height]
+ * @typedef {{ ok: true, dataUrl: string, width: number, height: number }
+ *   | { ok: false, code: 'UNSUPPORTED_TYPE' | 'FILE_TOO_LARGE' | 'DECODE_FAILED' | 'TOO_MANY_PIXELS' }} ImageReadResult
  */
 
 /**
@@ -68,6 +64,7 @@ export async function readImageFile(file, limits = IMAGE_LIMITS) {
   canvas.width = targetWidth;
   canvas.height = targetHeight;
   const ctx = canvas.getContext('2d');
+  if (!ctx) return { ok: false, code: 'DECODE_FAILED' };
   // JPEG has no transparency: without a white ground, a clip-art PNG's
   // transparent background turned black on the sheet (until 0.10.0-rc.2).
   ctx.fillStyle = '#ffffff';
@@ -93,13 +90,11 @@ export function imageFilenameToAssetId(filename) {
 }
 
 /**
- * @typedef {object} ContentPackImportResult
- * @property {boolean} ok
- * @property {string} [code] INVALID_JSON | IMAGE_READ_FAILED | (a validatePack error code)
- * @property {{ filename: string, code: string }} [imageError] present only for IMAGE_READ_FAILED
- * @property {import('./content/validate.js').ValidationError[]} [errors] present only when pack validation itself failed
- * @property {ReturnType<typeof validatePack>['pack']} [pack]
- * @property {Map<string, { id: string, path: string, width: number, height: number }>} [images] newly read images, keyed by asset id
+ * @typedef {{ ok: true, pack: import('./content/validate.js').ContentPack, images: Map<string, { id: string, path: string, width: number, height: number }> }
+ *   | { ok: false, code: 'INVALID_JSON' }
+ *   | { ok: false, code: 'IMAGE_READ_FAILED', imageError: { filename: string, code: string } }
+ *   | { ok: false, code: 'VALIDATION_FAILED', errors: import('./content/validate.js').ValidationError[] }} ContentPackImportResult
+ * images: the newly read ones, keyed by asset id
  */
 
 /**

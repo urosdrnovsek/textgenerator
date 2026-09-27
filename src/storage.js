@@ -31,7 +31,8 @@ function generatePresetId() {
  * @property {string} id
  * @property {number} schemaVersion
  * @property {string} name
- * @property {{ theme: string, level: number } & import('./worksheet/build.js').WorksheetSettings} settings
+ * @property {{ language: string, theme: string, level: number } & import('./worksheet/build.js').WorksheetSettings} settings
+ * @property {boolean} [builtin] the two built-in setups (ui/presets.js); never stored
  */
 
 function defaultStorage() {
@@ -40,7 +41,7 @@ function defaultStorage() {
 
 /**
  * @param {Storage} [storage]
- * @returns {boolean}
+ * @returns {storage is Storage}
  */
 export function checkStorageCapability(storage = defaultStorage()) {
   if (!storage) return false;
@@ -72,7 +73,7 @@ export function listPresets(storage = defaultStorage()) {
 
 /**
  * @param {Preset[]} presets
- * @param {Storage} storage
+ * @param {Storage | undefined} storage
  * @returns {boolean} true if the write actually succeeded
  */
 function writePresets(presets, storage) {

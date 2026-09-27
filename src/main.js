@@ -13,7 +13,7 @@ import { LANGUAGE_CODES, DEFAULT_LANGUAGE, languageName } from './languages.js';
 import { validatePack } from './content/validate.js';
 import { buildCatalogIndex, findCandidates, chooseEntry, listThemes } from './content/catalog.js';
 import { validateSettings } from './worksheet/validateSettings.js';
-import { DEFAULT_SETTINGS } from './config.js';
+import { DEFAULT_SETTINGS, PAGE_WIDTH_MM, mmToPx } from './config.js';
 import { buildWorksheet } from './worksheet/build.js';
 import { renderWorksheet } from './render/html.js';
 import { measureWorksheet } from './layout/measure.js';
@@ -23,6 +23,7 @@ import { createTranslator, sheetLabels } from './i18n.js';
 import { checkStorageCapability, listOwnTexts, writeOwnTexts } from './storage.js';
 import { checkOwnText, makeOwnText, ownTextEntry } from './content/ownText.js';
 import { readImageFile } from './import.js';
+import { findElements } from './ui/elements.js';
 import { init as initPacketUi } from './ui/packet.js';
 import { init as initPresetsUi } from './ui/presets.js';
 import { init as initContentImportUi } from './ui/contentImport.js';
@@ -102,14 +103,29 @@ function installCatalog(language, catalog) {
   }
 }
 
-/** Single mutable state object (blueprint section 5). */
+/**
+ * The single mutable state object (blueprint section 5).
+ * @typedef {object} AppState
+ * @property {string} language
+ * @property {{ theme: string, level: number }} filter the theme and level chosen in the menus
+ * @property {string | null} contentId the text on screen
+ * @property {number} revision bumped by every render; a slower, older render is discarded
+ * @property {import('./worksheet/build.js').WorksheetSettings} settings
+ * @property {{ grayscale: boolean }} view
+ * @property {import('./worksheet/selection.js').Selection | null} selection
+ * @property {import('./worksheet/build.js').ImageAsset | null} customImage
+ * @property {{ model: import('./worksheet/build.js').WorksheetModel, layout: import('./layout/measure.js').PageLayout, pageCount: number } | null} lastGood
+ * @property {import('./worksheet/packet.js').PacketSnapshot[]} packet
+ */
+
+/** @type {AppState} */
 const state = {
   language: DEFAULT_LANGUAGE,
   filter: { theme: THEMES[0], level: 1 },
   contentId: null,
   revision: 0,
   // A copy: the settings panel changes it in place (config.js holds the defaults).
-  settings: structuredClone(DEFAULT_SETTINGS),
+  settings: /** @type {import('./worksheet/build.js').WorksheetSettings} */ (structuredClone(DEFAULT_SETTINGS)),
   // How the preview is viewed, never what is printed: not in settings,
   // presets, the model or the print surface (handbook §11.8).
   view: { grayscale: false },
@@ -128,87 +144,7 @@ if (!settingsCheck.ok) {
   throw new Error('Default settings failed validation — see console for details.');
 }
 
-const els = {
-  preview: document.getElementById('preview'),
-  printSurface: document.getElementById('print-surface'),
-  fitIndicator: document.getElementById('fit-indicator'),
-  fitNotices: document.getElementById('fit-notices'),
-  printButton: document.getElementById('btn-print'),
-  docxButton: document.getElementById('btn-docx'),
-  createButton: document.getElementById('btn-create'),
-  languageSelect: document.getElementById('language-select'),
-  themeSelect: document.getElementById('theme-select'),
-  levelSelect: document.getElementById('level-select'),
-  writingModeSelect: document.getElementById('writing-mode-select'),
-  imageSlotSelect: document.getElementById('image-slot-select'),
-  copyTargetRow: document.getElementById('copy-target-row'),
-  copyTargetSelect: document.getElementById('copy-target-select'),
-  clozeControls: document.getElementById('cloze-controls'),
-  clozeEveryNthInput: document.getElementById('cloze-every-nth-input'),
-  clozeEveryNthButton: document.getElementById('btn-cloze-every-nth'),
-  clozeClearButton: document.getElementById('btn-cloze-clear'),
-  clozeWordBankToggle: document.getElementById('cloze-word-bank-toggle'),
-  answersRow: document.getElementById('answers-row'),
-  showAnswersToggle: document.getElementById('show-answers-toggle'),
-  questionInputs: [...document.querySelectorAll('.question-input')],
-  ownTitleInput: document.getElementById('own-title-input'),
-  ownBodyInput: document.getElementById('own-body-input'),
-  ownPictureToggle: document.getElementById('own-picture-toggle'),
-  ownAddButton: document.getElementById('btn-own-add'),
-  ownDeleteButton: document.getElementById('btn-own-delete'),
-  ownStatus: document.getElementById('own-status'),
-  clozeStatus: document.getElementById('cloze-status'),
-  previewHint: document.getElementById('preview-hint'),
-  candidateCount: document.getElementById('candidate-count'),
-  textSelect: document.getElementById('text-select'),
-  textSelectLabel: document.getElementById('text-select-label'),
-  fontSelect: document.getElementById('font-select'),
-  fontSizeInput: document.getElementById('font-size-input'),
-  lineHeightInput: document.getElementById('line-height-input'),
-  letterSpacingInput: document.getElementById('letter-spacing-input'),
-  wordSpacingInput: document.getElementById('word-spacing-input'),
-  letterColorsToggle: document.getElementById('letter-colors-toggle'),
-  graphemesInput: document.getElementById('graphemes-input'),
-  graphemesStatus: document.getElementById('graphemes-status'),
-  syllableColorsToggle: document.getElementById('syllable-colors-toggle'),
-  syllableSeparatorsToggle: document.getElementById('syllable-separators-toggle'),
-  syllableArcsToggle: document.getElementById('syllable-arcs-toggle'),
-  sentencePerLineToggle: document.getElementById('sentence-per-line-toggle'),
-  wordSpaceMarksToggle: document.getElementById('word-space-marks-toggle'),
-  tintSelect: document.getElementById('tint-select'),
-  printTintToggle: document.getElementById('print-tint-toggle'),
-  lineStripesToggle: document.getElementById('line-stripes-toggle'),
-  printStripesToggle: document.getElementById('print-stripes-toggle'),
-  lineNumbersToggle: document.getElementById('line-numbers-toggle'),
-  grayscalePreviewToggle: document.getElementById('grayscale-preview-toggle'),
-  headerNameLineToggle: document.getElementById('header-nameline-toggle'),
-  headerDateToggle: document.getElementById('header-date-toggle'),
-  headerTitleToggle: document.getElementById('header-title-toggle'),
-  headerInstructionsToggle: document.getElementById('header-instructions-toggle'),
-  guideHeightInput: document.getElementById('guide-height-input'),
-  dyslexiaPresetButton: document.getElementById('btn-dyslexia-preset'),
-  presetSelect: document.getElementById('preset-select'),
-  loadPresetButton: document.getElementById('btn-load-preset'),
-  deletePresetButton: document.getElementById('btn-delete-preset'),
-  savePresetButton: document.getElementById('btn-save-preset'),
-  storageStatus: document.getElementById('storage-status'),
-  imageUpload: document.getElementById('image-upload'),
-  resetImageButton: document.getElementById('btn-reset-image'),
-  imageStatus: document.getElementById('image-status'),
-  packetCount: document.getElementById('packet-count'),
-  packetList: document.getElementById('packet-list'),
-  addToPacketButton: document.getElementById('btn-add-to-packet'),
-  printPacketButton: document.getElementById('btn-print-packet'),
-  clearPacketButton: document.getElementById('btn-clear-packet'),
-  packetStatus: document.getElementById('packet-status'),
-  importJsonInput: document.getElementById('import-json-input'),
-  importImagesInput: document.getElementById('import-images-input'),
-  importContentButton: document.getElementById('btn-import-content'),
-  importStatus: document.getElementById('import-status'),
-  exportSetupsButton: document.getElementById('btn-export-setups'),
-  importSetupsInput: document.getElementById('import-setups-input'),
-  resetDataButton: document.getElementById('btn-reset-data')
-};
+const els = findElements();
 
 // UI coordinators extracted from this file (0.8.1, workstream J1). Each
 // gets the shared state/els and a translator *getter* (t is reassigned on
@@ -257,6 +193,7 @@ function onWordPicked(w) {
   if (mode === 'sentence') {
     const doc = currentDoc();
     if (!doc || !doc.words[w]) return;
+    if (!state.selection) return;
     state.selection = chooseSentence(state.selection, doc.words[w].sentence);
     requestRender();
   }
@@ -288,7 +225,7 @@ function syncPicking() {
   els.ownDeleteButton.hidden = !(state.contentId && CATALOG.byId.get(state.contentId)?.own);
   // "Put in order" needs 3 sentences: otherwise disabled, with the reason.
   const doc = currentDoc();
-  const option = els.writingModeSelect.querySelector('option[value="sequence"]');
+  const option = els.sequenceOption;
   const tooFew = doc !== null && sequenceLength(doc.sentences.length) === 0;
   option.disabled = tooFew;
   option.textContent = tooFew ? t('writingMode.sequenceTooFew', { count: doc.sentences.length }) : t('writingMode.sequence');
@@ -311,14 +248,14 @@ function updateShowAnswers(enabled) {
 function applyStaticLabels() {
   document.documentElement.lang = state.language;
   document.title = t('app.title');
-  for (const el of document.querySelectorAll('[data-label]')) {
-    el.textContent = t(el.dataset.label);
+  for (const el of /** @type {NodeListOf<HTMLElement>} */ (document.querySelectorAll('[data-label]'))) {
+    el.textContent = t(String(el.dataset.label));
   }
-  for (const el of document.querySelectorAll('[data-placeholder]')) {
-    el.placeholder = t(el.dataset.placeholder);
+  for (const el of /** @type {NodeListOf<HTMLInputElement>} */ (document.querySelectorAll('[data-placeholder]'))) {
+    el.placeholder = t(String(el.dataset.placeholder));
   }
-  for (const el of document.querySelectorAll('[data-aria-label]')) {
-    el.setAttribute('aria-label', t(el.dataset.ariaLabel));
+  for (const el of /** @type {NodeListOf<HTMLElement>} */ (document.querySelectorAll('[data-aria-label]'))) {
+    el.setAttribute('aria-label', t(String(el.dataset.ariaLabel)));
   }
 }
 
@@ -389,7 +326,7 @@ function updateCandidateCount() {
  * clicking "Create text" through the cycle. Shown only when there is
  * something to choose between. Choosing a title shows that text at once;
  * "Create text" then continues from it in pack order.
- * @param {import('./content/validate.js').ContentEntry[]} candidates
+ * @param {import('./content/catalog.js').CatalogEntry[]} candidates
  */
 function populateTextSelect(candidates) {
   const select = els.textSelect;
@@ -411,7 +348,7 @@ function populateTextSelect(candidates) {
 function syncTextSelect(candidates = findCandidates(CATALOG, state.filter)) {
   if (els.textSelect.hidden) return;
   const shown = candidates.some((c) => c.id === state.contentId);
-  els.textSelect.value = shown ? state.contentId : '';
+  els.textSelect.value = shown ? state.contentId ?? '' : '';
   if (!shown) els.textSelect.selectedIndex = -1;
 }
 
@@ -467,7 +404,7 @@ function addOwnText() {
 
 /** Deletes the own text on screen, here and in storage, and moves on to the next text of the cell. */
 function deleteOwnText() {
-  const entry = CATALOG.byId.get(state.contentId);
+  const entry = state.contentId ? CATALOG.byId.get(state.contentId) : undefined;
   if (!entry?.own) return;
   OWN_TEXTS = OWN_TEXTS.filter((own) => own.id !== entry.id);
   writeOwnTexts(OWN_TEXTS);
@@ -565,38 +502,37 @@ function showFit(model, result) {
   const el = els.fitIndicator;
   el.classList.toggle('is-overflow', result.status === 'blocked');
   el.classList.toggle('is-extends', result.status === 'extends');
-  el.dataset.pageCount = result.pageCount ?? '';
-  // The blocking code is for the verify-* scripts; the teacher reads the reason.
-  el.dataset.blockedCode = result.code ?? '';
-  // The millimetre figures are a developer diagnostic, not teacher-facing
-  // text (workstream I3) — kept here for the verify-* scripts and debugging.
-  el.dataset.usedMm = result.heightsMm ? (result.heightsMm.final ?? result.heightsMm.used).toFixed(1) : '';
-  el.dataset.budgetMm = result.heightsMm ? result.heightsMm.budget.toFixed(1) : '';
-  // Only for sheets without copy rows (their row filling depends on the margin too).
-  el.dataset.pageCountWithoutMargin = result.pageCountWithoutMargin ?? '';
-
   const suggestions = (result.suggestions ?? []).map((code) => t(`fit.suggestion.${code}`)).join(', ');
 
-  if (result.status === 'fits') {
-    el.textContent = t('fit.fits', { words: model.wordCount, level: model.level });
-  } else if (result.status === 'extends') {
-    el.textContent = t('fit.extends', {
-      pages: result.pageCount,
-      words: model.wordCount,
-      level: model.level,
-      suggestions
-    });
-  } else {
-    el.textContent = t('fit.blocked', {
-      reason: t(`fit.blocked.reason.${result.code}`),
-      suggestions
-    });
+  if (result.status === 'blocked') {
+    // The blocking code is for the verify-* scripts; the teacher reads the reason.
+    Object.assign(el.dataset, { pageCount: '', blockedCode: result.code, usedMm: '', budgetMm: '', pageCountWithoutMargin: '' });
+    el.textContent = t('fit.blocked', { reason: t(`fit.blocked.reason.${result.code}`), suggestions });
+    showNotices(result.notices);
+    return;
   }
+
+  // The millimetre figures are a developer diagnostic, not teacher-facing
+  // text (workstream I3) — kept for the verify-* scripts and debugging. The
+  // page count without the margin only exists for sheets without copy rows
+  // (their row filling depends on the margin too).
+  Object.assign(el.dataset, {
+    pageCount: String(result.pageCount),
+    blockedCode: '',
+    usedMm: (result.heightsMm.final ?? result.heightsMm.used).toFixed(1),
+    budgetMm: result.heightsMm.budget.toFixed(1),
+    pageCountWithoutMargin: String(result.pageCountWithoutMargin ?? '')
+  });
+  el.textContent = result.status === 'fits'
+    ? t('fit.fits', { words: model.wordCount, level: model.level })
+    : t('fit.extends', { pages: result.pageCount, words: model.wordCount, level: model.level, suggestions });
   showNotices(result.notices, result.noticeVars);
 }
 
 /** The last sheet's notice codes (unfiltered) and their numbers — re-shown when the view changes. */
+/** @type {string[]} */
 let currentNoticeCodes = [];
+/** @type {Record<string, Record<string, number>>} */
 let currentNoticeVars = {};
 
 /**
@@ -684,12 +620,13 @@ async function whenRendered() {
 async function renderNow() {
   const revision = ++state.revision;
   try {
-    const entry = CATALOG.byId.get(state.contentId);
+    const entry = state.contentId ? CATALOG.byId.get(state.contentId) : undefined;
+    if (!entry) throw new Error('NO_TEXT: there is no text on screen to render');
     // A teacher-uploaded image overrides only this entry's mapping, for this
     // render — the shared IMAGES_BY_ID map itself is never mutated.
-    const imagesById = state.customImage
-      ? new Map(IMAGES_BY_ID).set(entry.imageId, state.customImage)
-      : IMAGES_BY_ID;
+    /** @type {Map<string | null, import('./worksheet/build.js').ImageAsset>} */
+    const imagesById = new Map(IMAGES_BY_ID);
+    if (state.customImage) imagesById.set(entry.imageId, state.customImage);
     const model = buildWorksheet(entry, state.settings, { imagesById }, entry.language, state.selection);
 
     const labels = sheetLabels(t);
@@ -767,15 +704,15 @@ async function handleExportDocx() {
   }
 }
 
-els.languageSelect.addEventListener('change', (event) => updateLanguage(event.target.value));
-els.themeSelect.addEventListener('change', (event) => updateFilter({ theme: event.target.value }));
-els.levelSelect.addEventListener('change', (event) => updateFilter({ level: Number(event.target.value) }));
+els.languageSelect.addEventListener('change', () => updateLanguage(els.languageSelect.value));
+els.themeSelect.addEventListener('change', () => updateFilter({ theme: els.themeSelect.value }));
+els.levelSelect.addEventListener('change', () => updateFilter({ level: Number(els.levelSelect.value) }));
 els.createButton.addEventListener('click', createText);
 els.textSelect.addEventListener('change', () => chooseTextById(els.textSelect.value));
-els.writingModeSelect.addEventListener('change', (event) => updateWritingMode(event.target.value));
-els.imageSlotSelect.addEventListener('change', (event) => updateImageSlot(event.target.value));
-els.copyTargetSelect.addEventListener('change', (event) => updateCopyTarget(event.target.value));
-els.showAnswersToggle.addEventListener('change', (event) => updateShowAnswers(event.target.checked));
+els.writingModeSelect.addEventListener('change', () => updateWritingMode(els.writingModeSelect.value));
+els.imageSlotSelect.addEventListener('change', () => updateImageSlot(els.imageSlotSelect.value));
+els.copyTargetSelect.addEventListener('change', () => updateCopyTarget(els.copyTargetSelect.value));
+els.showAnswersToggle.addEventListener('change', () => updateShowAnswers(els.showAnswersToggle.checked));
 for (const input of els.questionInputs) input.addEventListener('change', updateQuestions);
 els.ownAddButton.addEventListener('click', addOwnText);
 els.ownDeleteButton.addEventListener('click', deleteOwnText);
@@ -785,9 +722,9 @@ els.printButton.addEventListener('click', async () => {
 });
 els.docxButton.addEventListener('click', handleExportDocx);
 
-els.imageUpload.addEventListener('change', (e) => handleImageUpload(e.target.files[0]));
+els.imageUpload.addEventListener('change', () => handleImageUpload(els.imageUpload.files?.[0]));
 els.resetImageButton.addEventListener('click', handleResetImage);
-els.grayscalePreviewToggle.addEventListener('change', (e) => updateGrayscalePreview(e.target.checked));
+els.grayscalePreviewToggle.addEventListener('change', () => updateGrayscalePreview(els.grayscalePreviewToggle.checked));
 
 applyStaticLabels();
 populateLanguageSelect();
@@ -810,15 +747,12 @@ els.fitIndicator.textContent = t('fit.measuring');
 // Scale the on-screen A4 preview down to fit the available width (never
 // up). Display-only: the fit check measures in its own unscaled surface.
 {
-  const previewScroll = document.querySelector('.preview-scroll');
-  const pageFrame = document.querySelector('.page-frame');
-  const A4_WIDTH_PX = 210 * (96 / 25.4);
   const fitPreview = () => {
-    const available = previewScroll.clientWidth - 16;
-    const scale = Math.min(1, available / A4_WIDTH_PX);
-    pageFrame.style.setProperty('--preview-scale', scale.toFixed(3));
+    const available = els.previewScroll.clientWidth - 16;
+    const scale = Math.min(1, available / mmToPx(PAGE_WIDTH_MM));
+    els.pageFrame.style.setProperty('--preview-scale', scale.toFixed(3));
   };
-  if (typeof ResizeObserver !== 'undefined') new ResizeObserver(fitPreview).observe(previewScroll);
+  if (typeof ResizeObserver !== 'undefined') new ResizeObserver(fitPreview).observe(els.previewScroll);
   fitPreview();
 }
 

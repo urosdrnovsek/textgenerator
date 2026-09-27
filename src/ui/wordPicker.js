@@ -24,16 +24,32 @@ export function init({ els, onWord }) {
   let currentW = null;
   let restoreFocus = false;
 
-  /** The first span of every word, in reading order (a word may be split into several spans). */
+  /**
+   * The first span of every word, in reading order (a word may be split into several spans).
+   * @returns {HTMLElement[]}
+   */
   function wordSpans() {
     const seen = new Set();
-    return [...els.preview.querySelectorAll('.ws-sentence [data-w]')].filter((span) => {
+    return [.../** @type {NodeListOf<HTMLElement>} */ (els.preview.querySelectorAll('.ws-sentence [data-w]'))].filter((span) => {
       if (seen.has(span.dataset.w)) return false;
       seen.add(span.dataset.w);
       return true;
     });
   }
 
+  /**
+   * The word span an event happened on, if any.
+   * @param {Event} event
+   * @returns {HTMLElement | null}
+   */
+  function wordAt(event) {
+    return event.target instanceof Element ? event.target.closest('.ws-sentence [data-w]') : null;
+  }
+
+  /**
+   * @param {HTMLElement} span
+   * @param {boolean} fromKeyboard
+   */
   function pick(span, fromKeyboard) {
     currentW = Number(span.dataset.w);
     restoreFocus = fromKeyboard;
@@ -42,13 +58,13 @@ export function init({ els, onWord }) {
 
   els.preview.addEventListener('click', (event) => {
     if (!active) return;
-    const span = event.target.closest('.ws-sentence [data-w]');
+    const span = wordAt(event);
     if (span) pick(span, false);
   });
 
   els.preview.addEventListener('keydown', (event) => {
     if (!active) return;
-    const span = event.target.closest?.('.ws-sentence [data-w]');
+    const span = wordAt(event);
     if (!span) return;
     const spans = wordSpans();
     const index = spans.findIndex((s) => s.dataset.w === span.dataset.w);

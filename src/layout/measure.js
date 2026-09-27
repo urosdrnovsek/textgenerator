@@ -78,19 +78,31 @@ async function waitForImage(img) {
  */
 
 /**
- * @typedef {object} FitResult
- * @property {'fits' | 'extends' | 'blocked'} status
+ * A sheet that cannot be printed, and why.
+ * @typedef {object} BlockedResult
+ * @property {'blocked'} status
  * @property {number} revision
- * @property {number} [pageCount] present unless 'blocked'; 1 when status is 'fits'
- * @property {PageLayout} [layout] present unless 'blocked'
- * @property {string} [code] 'blocked' only: 'WIDTH_OVERFLOW' | 'BLOCK_TOO_TALL' | 'TOO_FEW_SENTENCES' | 'NO_PICTURE'
- * @property {object} [details]
- * @property {string[]} [suggestions]
- * @property {Record<string, number>} [heightsMm]
+ * @property {'WIDTH_OVERFLOW' | 'BLOCK_TOO_TALL' | 'TOO_FEW_SENTENCES' | 'NO_PICTURE'} code
+ * @property {object} details
+ * @property {string[]} suggestions
+ * @property {string[]} notices always empty
+ */
+
+/**
+ * A sheet laid out on one page ('fits') or more ('extends'); both print.
+ * @typedef {object} LaidOutResult
+ * @property {'fits' | 'extends'} status
+ * @property {number} revision
+ * @property {number} pageCount 1 when status is 'fits'
+ * @property {PageLayout} layout
+ * @property {Record<string, number>} heightsMm
+ * @property {string[]} [suggestions] how to get to one page, when it doesn't fit
  * @property {number} [pageCountWithoutMargin] diagnostic only: the content's page count at the full page height (no FIT_SAFETY_MM); the reported pageCount may exceed it by one, never fall below it
- * @property {string[]} notices advisory codes from worksheet/advice.js; always empty when 'blocked'
+ * @property {string[]} notices advisory codes from worksheet/advice.js
  * @property {Record<string, Record<string, number>>} [noticeVars] numbers a notice's text needs, by code (COPY_SPACE_SHORT: { needed, rows })
  */
+
+/** @typedef {BlockedResult | LaidOutResult} FitResult */
 
 /**
  * WIDTH_OVERFLOW means "a word wider than the content width" — normal
@@ -133,7 +145,7 @@ function collectContentBlocks(page) {
   const pageTopPx = page.getBoundingClientRect().top;
   /** @type {number[]} */
   const topsMm = [];
-  for (const el of page.querySelectorAll(':scope > [data-block]')) {
+  for (const el of /** @type {NodeListOf<HTMLElement>} */ (page.querySelectorAll(':scope > [data-block]'))) {
     const topMm = pxToMm(el.getBoundingClientRect().top - pageTopPx);
     if (el.dataset.block === 'passage') {
       for (const line of measureBodyLineBoxes(el)) topsMm.push(topMm + line.topMm);
@@ -167,10 +179,10 @@ function onePageSuggestions(model, more = []) {
 
 /**
  * @param {number} revision
- * @param {string} code
+ * @param {BlockedResult['code']} code
  * @param {object} details
  * @param {string[]} suggestions
- * @returns {FitResult}
+ * @returns {BlockedResult}
  */
 function blocked(revision, code, details, suggestions) {
   return { status: 'blocked', revision, code, details, suggestions, notices: [] };
@@ -203,7 +215,7 @@ export async function measureWorksheet(model, revision, labels) {
   // text without one) would print "Look at the picture" over nothing.
   const needsPicture = ACTIVITIES[s.writingMode]?.imageSize === 'large';
   if (needsPicture && !model.blocks.some((block) => block.type === 'image' || block.type === 'drawingBox')) {
-    return blocked(revision, 'NO_PICTURE', {}, ['choose-other-mode']);
+    return blocked(revision, 'NO_PICTURE', {}, ['use-drawing-box', 'choose-other-mode']);
   }
 
   const surface = createMeasureSurface();

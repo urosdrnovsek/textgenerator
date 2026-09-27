@@ -6,12 +6,12 @@
  */
 
 import { buildRulingRows, getRuling } from '../layout/rulings.js';
-import { contentWidthMm, WORD_BANK, CLOZE, ptToMm, pxToMm, FONT_FAMILIES, COPY_AREA_GAP_MM, TINTS_BY_ID, LINE_NUMBER_GUTTER_MM, DRAWING_BOX_GAP_MM, COPY_MARK_COLOR, SEQUENCE_BOX_FACTOR } from '../config.js';
+import { contentWidthMm, contentHeightMm, TINT_FILL_SLACK_MM, WORD_BANK, CLOZE, ptToMm, pxToMm, FONT_FAMILIES, COPY_AREA_GAP_MM, TINTS_BY_ID, LINE_NUMBER_GUTTER_MM, DRAWING_BOX_GAP_MM, COPY_MARK_COLOR, SEQUENCE_BOX_FACTOR } from '../config.js';
 import { IMAGE_BOX_MAX_WIDTH_MM, IMAGE_BOX_MAX_HEIGHT_MM, IMAGE_BOX_LARGE } from '../layout/imageBox.js';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 
-/** @type {{ nameLine: string, date: string, pageBreak: (n: number) => string }} */
+/** @type {import('../i18n.js').SheetLabels} */
 const DEFAULT_LABELS = {
   nameLine: 'Ime:',
   date: 'Datum:',
@@ -96,12 +96,12 @@ export function renderRulingSvg(ruling, rowCount, contentWidthMm) {
 }
 
 /**
+ * A header block exists only when one of its fields is on (worksheet/build.js).
  * @param {{ nameLine: boolean, date: boolean }} header
  * @param {typeof DEFAULT_LABELS} labels
- * @returns {HTMLElement | null}
+ * @returns {HTMLElement}
  */
 function renderHeaderFields(header, labels) {
-  if (!header.nameLine && !header.date) return null;
   const wrap = document.createElement('div');
   wrap.className = 'ws-header';
   if (header.nameLine) {
@@ -141,7 +141,7 @@ export function measureBodyLineBoxes(bodyElement) {
     if (!(paragraph instanceof HTMLElement) || !paragraph.classList.contains('ws-sentence')) continue;
     const walker = document.createTreeWalker(paragraph, NodeFilter.SHOW_TEXT);
     for (let node = walker.nextNode(); node; node = walker.nextNode()) {
-      if (node.parentElement.closest('.ws-blank')) continue;
+      if (node.parentElement?.closest('.ws-blank')) continue;
       range.selectNodeContents(node);
       for (const rect of range.getClientRects()) if (rect.width > 0 && rect.height > 0) textRects.push(rect);
     }
@@ -239,7 +239,7 @@ export function applySyllableArcs(bodyElement, color) {
   const bodyRect = bodyElement.getBoundingClientRect();
   /** @type {Map<string, { left: number, right: number, top: number, bottom: number }>} */
   const syllables = new Map();
-  for (const span of bodyElement.querySelectorAll('.ws-sentence [data-w][data-syl]')) {
+  for (const span of /** @type {NodeListOf<HTMLElement>} */ (bodyElement.querySelectorAll('.ws-sentence [data-w][data-syl]'))) {
     for (const rect of span.getClientRects()) {
       if (rect.width === 0) continue;
       const key = `${span.dataset.w}:${span.dataset.syl}:${Math.round(rect.top)}`;
@@ -254,7 +254,7 @@ export function applySyllableArcs(bodyElement, color) {
     }
   }
   const widthMm = pxToMm(bodyRect.width);
-  const lines = measureBodyLineBoxes(bodyElement).map((line) => ({ ...line, paths: [] }));
+  const lines = measureBodyLineBoxes(bodyElement).map((line) => ({ ...line, paths: /** @type {string[]} */ ([]) }));
   for (const box of syllables.values()) {
     const middleMm = pxToMm((box.top + box.bottom) / 2 - bodyRect.top);
     const line = lines.find((l) => middleMm >= l.topMm && middleMm <= l.topMm + l.heightMm);
@@ -294,7 +294,7 @@ export function applySyllableArcs(bodyElement, color) {
  */
 export function applyCopyMark(bodyElement, { firstW, lastW }) {
   const bodyTop = bodyElement.getBoundingClientRect().top;
-  const targetTops = [...bodyElement.querySelectorAll('.ws-sentence [data-w]')]
+  const targetTops = [.../** @type {NodeListOf<HTMLElement>} */ (bodyElement.querySelectorAll('.ws-sentence [data-w]'))]
     .filter((span) => Number(span.dataset.w) >= firstW && Number(span.dataset.w) <= lastW)
     .flatMap((span) => [...span.getClientRects()].map((rect) => pxToMm((rect.top + rect.bottom) / 2 - bodyTop)));
   const overlay = document.createElement('div');
@@ -349,7 +349,7 @@ function renderPageBreakMarkers(page, pageBreaksMm, pageBreakLabel) {
  * @type {Record<string, (block: any, context: BlockRenderContext) => HTMLElement>}
  */
 export const BLOCK_RENDERERS = {
-  answerTag: (block, { labels }) => {
+  answerTag: (_block, { labels }) => {
     const tag = document.createElement('div');
     tag.className = 'ws-answer-tag ws-text';
     tag.textContent = labels.answers ?? DEFAULT_LABELS.answers;
@@ -379,6 +379,8 @@ export const BLOCK_RENDERERS = {
     }
     const img = document.createElement('img');
     img.className = 'ws-image';
+    // An image block exists only when the sheet has a picture (worksheet/build.js).
+    if (!model.image) throw new Error('IMAGE_BLOCK_WITHOUT_IMAGE');
     img.src = model.image.path;
     img.alt = '';
     imageWrap.append(img);
@@ -496,13 +498,20 @@ export function renderWorksheet(model, layout, container, labels = DEFAULT_LABEL
   page.style.setProperty('--ws-image-max-width-mm', `${IMAGE_BOX_MAX_WIDTH_MM}mm`);
   page.style.setProperty('--ws-image-max-height-mm', `${IMAGE_BOX_MAX_HEIGHT_MM}mm`);
   // Only on a sheet with a copy mark, so every other page's markup is unchanged.
-  if (model.blocks.some((block) => block.copyMark)) page.style.setProperty('--ws-copy-mark-color', COPY_MARK_COLOR);
+  if (model.blocks.some((block) => 'copyMark' in block && block.copyMark)) page.style.setProperty('--ws-copy-mark-color', COPY_MARK_COLOR);
 
   const tintId = model.settings.tintId ?? 'none';
   if (tintId !== 'none') {
     page.classList.add('ws-page--tinted');
     page.style.setProperty('--ws-tint-color', TINTS_BY_ID[tintId]);
     page.classList.toggle('ws-page--print-tint', Boolean(model.settings.printTint));
+    // Down to the bottom of the page, not only behind the content (a short
+    // sheet showed a tinted box ending mid-page). Only on a final one-page
+    // layout: the fit check's passes carry no pageBreaksMm and must measure
+    // the content alone; a longer sheet's pages are left as they flow.
+    if (layout.pageBreaksMm?.length === 0) {
+      page.style.minHeight = `${contentHeightMm(model.settings.marginMm) - TINT_FILL_SLACK_MM}mm`;
+    }
   }
 
   for (const block of model.blocks) {
@@ -538,13 +547,13 @@ export function renderWorksheet(model, layout, container, labels = DEFAULT_LABEL
 
   // Must run after the page is attached (above) — measuring line boxes on
   // detached nodes returns all-zero rects, since there's no layout yet.
-  const passageEl = page.querySelector(':scope > [data-block="passage"]');
+  const passageEl = /** @type {HTMLElement | null} */ (page.querySelector(':scope > [data-block="passage"]'));
   if (model.settings.lineStripes && passageEl) {
     page.classList.add('ws-page--striped');
     page.classList.toggle('ws-page--print-stripes', Boolean(model.settings.printStripes));
     applyLineStripes(passageEl);
   }
-  const passageBlock = model.blocks.find((block) => block.type === 'passage');
+  const passageBlock = /** @type {import('../worksheet/build.js').PassageBlock | undefined} */ (model.blocks.find((block) => block.type === 'passage'));
   if (passageEl && passageBlock?.lineNumbers) {
     applyLineNumbers(passageEl);
   }
@@ -555,7 +564,7 @@ export function renderWorksheet(model, layout, container, labels = DEFAULT_LABEL
     applySyllableArcs(passageEl, passageBlock.arcColor);
   }
 
-  if (previewMode && layout.pageBreaksMm?.length > 0) {
+  if (previewMode && layout.pageBreaksMm && layout.pageBreaksMm.length > 0) {
     renderPageBreakMarkers(page, layout.pageBreaksMm, labels.pageBreak ?? DEFAULT_LABELS.pageBreak);
   }
 

@@ -62,7 +62,7 @@ const OPTIONAL_BOOLEANS = ['sentencePerLine', 'printTint', 'lineStripes', 'print
  */
 
 /**
- * @param {import('./build.js').WorksheetSettings} settings
+ * @param {Record<string, any>} settings untrusted until checked
  * @returns {{ ok: true } | { ok: false, errors: SettingsValidationError[] }}
  */
 export function validateSettings(settings) {
@@ -167,7 +167,7 @@ export function validateSettings(settings) {
  * without going through this first could otherwise reach
  * layout/measure.js with an invalid rulingId or similar and throw instead
  * of failing with a clear message.
- * @param {{ language: string, theme: string, level: number } & import('./build.js').WorksheetSettings} settings
+ * @param {Record<string, any>} settings untrusted: a stored, imported or hand-edited setup
  * @returns {{ ok: true } | { ok: false, errors: SettingsValidationError[] }}
  */
 export function validatePresetSettings(settings) {

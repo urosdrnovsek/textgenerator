@@ -167,7 +167,7 @@ function toWordRuns(runs, { fontFamily, fontSizePt, characterSpacingTwips, wordS
 /**
  * @typedef {object} BlockWriteContext
  * @property {import('../worksheet/build.js').WorksheetModel} model
- * @property {{ nameLine: string, date: string, instruction?: (key: string) => string }} labels
+ * @property {{ nameLine: string, date: string, instruction?: (key: string) => string, answers?: string }} labels
  * @property {Uint8Array | Buffer | undefined} imageBytes
  * @property {string} fontFamily
  * @property {object | undefined} shading paragraph shading when the tint prints, else undefined
@@ -185,7 +185,7 @@ function toWordRuns(runs, { fontFamily, fontSizePt, characterSpacingTwips, wordS
  */
 export const BLOCK_WRITERS = {
   // "Answers", boxed and right-aligned like the preview's tag.
-  answerTag: (block, { labels, unnumbered }) => [
+  answerTag: (_block, { labels, unnumbered }) => [
     new Paragraph({
       alignment: AlignmentType.RIGHT,
       spacing: { after: 120 },
@@ -240,7 +240,7 @@ export const BLOCK_WRITERS = {
   ],
 
   image: (block, { model, imageBytes, shading, unnumbered }) => {
-    if (!imageBytes) return [];
+    if (!imageBytes || !model.image) return [];
     // Contains the image at its real aspect ratio within the same 60x45mm
     // slot the HTML preview uses (object-fit: contain) — previously a fixed
     // 60x45 forced every image (all bundled art is 512x512) into a
@@ -487,7 +487,7 @@ export const BLOCK_WRITERS = {
  * @param {import('../worksheet/build.js').WorksheetModel} model
  * @param {{ copyBlocks: number[] }} layout the fit-checked layout decision from layout/measure.js — one entry in copyBlocks per copy-practice block (a second entry means a page break is needed before it)
  * @param {Uint8Array | Buffer | undefined} imageBytes decoded bytes of model.image
- * @param {{ nameLine: string, date: string, instruction?: (key: string) => string }} [labels] translated header.nameLine/header.date strings and instruction lines (i18n.sheetLabels) for the active locale (blueprint 8.1: every teacher-facing label must localize) — falls back to the Slovene defaults only if omitted
+ * @param {{ nameLine: string, date: string, instruction?: (key: string) => string, answers?: string }} [labels] translated header.nameLine/header.date strings and instruction lines (i18n.sheetLabels) for the active locale (blueprint 8.1: every teacher-facing label must localize) — falls back to the Slovene defaults only if omitted
  * @returns {Promise<Blob>} browser- and Node-compatible; tests convert via .arrayBuffer()
  */
 export async function exportDocx(model, layout, imageBytes, labels = DEFAULT_LABELS) {
@@ -513,7 +513,7 @@ export async function exportDocx(model, layout, imageBytes, labels = DEFAULT_LAB
   const shading = s.printTint && tintHex ? { type: ShadingType.CLEAR, fill: tintHex.replace('#', '') } : undefined;
 
   const lineNumbers = model.blocks.some((block) => block.type === 'passage' && block.lineNumbers);
-  const unnumbered = lineNumbers ? { suppressLineNumbers: true } : {};
+  const unnumbered = lineNumbers ? { suppressLineNumbers: /** @type {true} */ (true) } : {};
 
   /** @type {BlockWriteContext} */
   const context = { model, labels, imageBytes, fontFamily, shading, characterSpacingTwips, wordSpacingTwips, contentWidthTwips, unnumbered };

@@ -25,6 +25,36 @@ Word file and saved-setup file is identical to 0.10.0-rc.3):
   language.
 - `docs/content-guide.md` has an "Adding a language" section.
 
+Small fixes and code quality (2026-09-27, after the testers' rc.3):
+
+- **Packet printing in Safari.** After printing a packet, the sheet on
+  screen is put back on the print surface when the browser reports that
+  printing is done (`afterprint`), not on the line after `print()`.
+  Chrome and Firefox wait in `print()`, but Safari may return at once, and
+  would then have printed the single sheet instead of the packet. (Safari
+  itself is still untested; the behaviour was simulated in Chromium.)
+- **"Write about the picture" on an own text without a picture** now
+  suggests Picture on the sheet: "Drawing box", which makes it printable.
+- **Content-import errors in the teacher's language.** "Import failed … in
+  the text "x", field "imageId": there is no picture with that name …"
+  instead of the developer message ("imageId … has no matching asset").
+  The developer details go to the browser console as a warning.
+- **The background tint fills a one-page sheet** down to the bottom
+  margin, in the preview and in print, instead of stopping where the
+  content ends. Sheets of two or more pages are unchanged.
+- **Accessibility:** the saved-setups menu has an accessible name, and the
+  image, setup, packet and import messages are announced to screen
+  readers. Contrast (WCAG AA) and the keyboard order were checked; both
+  were already fine.
+- **Type checking (`npm run typecheck`, also in CI).** TypeScript, as a
+  development tool only (never bundled), checks the JSDoc types across
+  `src/`, including unused code. It started at 229 findings. They were
+  inaccurate or missing type descriptions (the `Block` type could not be
+  read at all, the settings type listed 4 of 7 writing modes), not bugs.
+  All are fixed, mostly by precise types (`ui/elements.js` types every
+  element; the fit result is "blocked" or "laid out"), and the
+  settings panel's controls are now two small tables.
+
 ## 0.10.0-rc.3 — 2026-09-27 (fixes before the testers)
 
 The same features as 0.10.0-rc.2, with 12 glitches fixed after a full

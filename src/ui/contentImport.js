@@ -17,8 +17,8 @@ import { languageName } from '../languages.js';
 
 /**
  * @param {object} ctx
- * @param {object} ctx.state the single mutable app state (main.js)
- * @param {Record<string, HTMLElement>} ctx.els
+ * @param {import('../main.js').AppState} ctx.state the single mutable app state (main.js)
+ * @param {import('./elements.js').Elements} ctx.els
  * @param {() => (key: string, vars?: object) => string} ctx.getT
  * @param {Map<string, object>} ctx.imagesById the shared image registry; imported images are added to it
  * @param {(language: string, catalog: import('../content/catalog.js').CatalogIndex) => void} ctx.installCatalog
@@ -31,12 +31,14 @@ export function init({ state, els, getT, imagesById: IMAGES_BY_ID, installCatalo
   function describeImportError(result) {
     if (result.code === 'INVALID_JSON') return t('error.INVALID_JSON');
     if (result.code === 'IMAGE_READ_FAILED') return t('import.error.IMAGE_READ_FAILED', { filename: result.imageError.filename });
+    // eslint-disable-next-line no-console
+    console.warn('Content import refused:', result.errors);
     const first = result.errors[0];
     return t('import.error.VALIDATION_FAILED', {
       count: result.errors.length,
-      entryId: first.entryId,
+      where: first.entryId === '(pack)' ? t('import.where.pack') : t('import.where.entry', { id: first.entryId }),
       field: first.field,
-      message: first.message
+      reason: t(`import.reason.${first.code}`)
     });
   }
 
@@ -48,9 +50,9 @@ export function init({ state, els, getT, imagesById: IMAGES_BY_ID, installCatalo
    * (blueprint 8.11: "Imported packs are session-resident initially").
    */
   async function handleImportContent() {
-    const jsonFile = els.importJsonInput.files[0];
+    const jsonFile = els.importJsonInput.files?.[0];
     if (!jsonFile) return;
-    const imageFiles = [...els.importImagesInput.files];
+    const imageFiles = [...(els.importImagesInput.files ?? [])];
     const result = await readContentPackImport(jsonFile, imageFiles, new Set(IMAGES_BY_ID.keys()));
     if (!result.ok) {
       els.importStatus.textContent = describeImportError(result);

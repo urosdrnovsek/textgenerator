@@ -21,6 +21,9 @@ export function generateSnapshotId() {
  * @property {string} language
  * @property {number} level
  * @property {number} pageCount how many pages this sheet prints as (upgrade blueprint v3, workstream A — a sheet is no longer guaranteed to be exactly one page)
+ * @property {import('./build.js').WorksheetModel} model frozen when added: later setting changes never reach it
+ * @property {import('../layout/measure.js').PageLayout} layout
+ * @property {ReturnType<typeof import('../i18n.js').sheetLabels>} labels the sheet's own language, whatever the interface language later
  */
 
 /**

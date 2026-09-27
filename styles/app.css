@@ -48,6 +48,8 @@ body {
   max-height: 50vh;
   overflow-y: auto;
   box-sizing: border-box;
+  /* Only ever a second scrollbar inside the sidebar's own: keep it slight. */
+  scrollbar-width: thin;
 }
 
 .app-sidebar label {

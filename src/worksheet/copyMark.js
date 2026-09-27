@@ -15,7 +15,7 @@ export function markedParagraphs(passage) {
   if (!passage.copyMark) return { whole, partial };
   const { firstW, lastW } = passage.copyMark;
   passage.paragraphs.forEach((runs, i) => {
-    const words = runs.filter((r) => r.w !== undefined).map((r) => r.w);
+    const words = runs.flatMap((r) => (r.w === undefined ? [] : [r.w]));
     const inside = words.filter((w) => w >= firstW && w <= lastW);
     if (inside.length === 0) return;
     if (inside.length === words.length) whole.add(i);

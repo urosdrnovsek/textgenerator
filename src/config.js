@@ -240,6 +240,13 @@ export const GRAY_MIN_LUMINANCE_DELTA = 0.05;
  * (section 6).
  * @type {Record<string, string>}
  */
+/**
+ * A one-page tinted sheet is tinted to the bottom of its page
+ * (render/html.js); this much short of it, so the tinted box can never
+ * spill onto a second printed page.
+ */
+export const TINT_FILL_SLACK_MM = 1;
+
 export const TINTS_BY_ID = {
   none: '#FFFFFF',
   cream: '#FFF8E7',
@@ -261,6 +268,7 @@ export const DEFAULT_SYLLABLE_COLORS = Object.freeze(['#1D4ED8', '#B45309']);
  * here, its check in worksheet/validateSettings.js and its control in the
  * settings panel.
  */
+/** @type {Readonly<import('./worksheet/build.js').WorksheetSettings>} */
 export const DEFAULT_SETTINGS = Object.freeze({
   fontId: 'andika',
   fontSizePt: 16,

@@ -40,3 +40,11 @@ test('all bundled locale files expose exactly the same set of keys', () => {
     assert.deepEqual(keysByLanguage[lang], keysByLanguage[reference], `${lang}.json must define exactly the same keys as ${reference}.json`);
   }
 });
+
+test('every content-import error code has an import.reason.<CODE> string in every locale', async () => {
+  const { VALIDATION_ERROR_CODES } = await import('../../src/content/validate.js');
+  for (const language of LANGUAGE_CODES) {
+    const { strings } = readLocale(language);
+    for (const code of VALIDATION_ERROR_CODES) assert.equal(typeof strings[`import.reason.${code}`], 'string', `${language}: ${code}`);
+  }
+});

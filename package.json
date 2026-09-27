@@ -9,6 +9,7 @@
     "validate-content": "node scripts/validate-content.mjs",
     "content-status": "node scripts/content-status.mjs",
     "test": "node --test \"tests/unit/*.test.js\"",
+    "typecheck": "tsc -p tsconfig.json",
     "verify-docx": "node scripts/verify-docx-libreoffice.mjs",
     "verify-offline": "node scripts/verify-offline.mjs",
     "verify-firefox": "node scripts/verify-firefox.mjs",
@@ -18,6 +19,7 @@
   "devDependencies": {
     "docx": "9.7.1",
     "esbuild": "^0.24.0",
-    "selenium-webdriver": "^4.49.0"
+    "selenium-webdriver": "^4.49.0",
+    "typescript": "5.9.3"
   }
 }

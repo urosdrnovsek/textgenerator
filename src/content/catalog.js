@@ -5,14 +5,20 @@
  */
 
 /**
- * @typedef {object} CatalogIndex
- * @property {Map<string, import('./validate.js').ContentEntry>} byId
- * @property {Map<string, import('./validate.js').ContentEntry[]>} byThemeLevel key is `${theme}|${level}`
- * @property {import('./validate.js').ContentEntry[]} entries
+ * A text as the app uses it: a pack entry with its language, or one of
+ * the teacher's own texts (`own`: no review, no syllables, maybe no picture).
+ * @typedef {Omit<import('./validate.js').ContentEntry, 'review' | 'imageId'> & { language: string, imageId: string | null, review?: import('./validate.js').EntryReview, own?: true }} CatalogEntry
  */
 
 /**
- * @param {import('./validate.js').ContentEntry[]} entries
+ * @typedef {object} CatalogIndex
+ * @property {Map<string, CatalogEntry>} byId
+ * @property {Map<string, CatalogEntry[]>} byThemeLevel key is `${theme}|${level}`
+ * @property {CatalogEntry[]} entries
+ */
+
+/**
+ * @param {CatalogEntry[]} entries
  * @returns {CatalogIndex}
  */
 export function buildCatalogIndex(entries) {
@@ -30,7 +36,7 @@ export function buildCatalogIndex(entries) {
 /**
  * @param {CatalogIndex} catalog
  * @param {{ theme: string, level: number }} filter
- * @returns {import('./validate.js').ContentEntry[]} matching entries, empty array if none
+ * @returns {CatalogEntry[]} matching entries, empty array if none
  */
 export function findCandidates(catalog, filter) {
   return catalog.byThemeLevel.get(`${filter.theme}|${filter.level}`) ?? [];
@@ -45,9 +51,9 @@ export function findCandidates(catalog, filter) {
  * random choice was a v2 assumption, not a requirement, and it made the
  * verify-* scripts' expected page counts depend on luck once a cell held
  * more than one entry.
- * @param {import('./validate.js').ContentEntry[]} candidates
+ * @param {CatalogEntry[]} candidates
  * @param {string | null} previousId
- * @returns {import('./validate.js').ContentEntry | null}
+ * @returns {CatalogEntry | null}
  */
 export function chooseEntry(candidates, previousId) {
   if (candidates.length === 0) return null;

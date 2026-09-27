@@ -1,7 +1,8 @@
 # Two layers, mirroring the project's own rule that nothing is claimed to
 # work until it has run in a real environment (docs/compatibility.md):
 #
-#   unit             — fast, always: unit tests, content validation, build.
+#   unit             — fast, always: unit tests, content validation, build,
+#                      type check.
 #   real-environment — real LibreOffice + real headless Chromium:
 #                      npm run verify-docx, npm run verify-offline.
 #   real-firefox     — real Firefox via geckodriver: npm run verify-firefox.
@@ -33,6 +34,8 @@ jobs:
       - run: npm test
       - run: npm run validate-content
       - run: npm run build
+      # After the build: main.js imports the generated language data.
+      - run: npm run typecheck
       - run: npm run content-status
 
   real-environment:

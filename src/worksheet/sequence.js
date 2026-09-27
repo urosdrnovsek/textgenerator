@@ -18,7 +18,7 @@ import { SEQUENCE_SENTENCES } from '../config.js';
 export function hashString(text) {
   let h = 0x811c9dc5;
   for (const ch of text) {
-    h ^= ch.codePointAt(0);
+    h ^= /** @type {number} */ (ch.codePointAt(0));
     h = Math.imul(h, 0x01000193);
   }
   return h >>> 0;

@@ -2,10 +2,11 @@
  * Text-settings panel coordinator: the font select, the numeric inputs
  * (clamped to config.js limits), the reading-support toggles, tint and
  * stripes, header fields and guide height. Every handler writes one field
- * of state.settings and asks for a render. Extracted verbatim from main.js
- * (0.8.1, workstream J1). The writing-mode select and the child-name field
- * sit outside the panel and stay in main.js with the other primary
- * controls.
+ * of state.settings and asks for a render. The writing-mode select sits
+ * outside the panel and stays in main.js with the other primary controls.
+ *
+ * The plain controls are tables (NUMBER_FIELDS, SWITCHES): one row wires a
+ * control to its setting for display, limits and changes alike.
  *
  * Takes everything through `ctx` and never imports another ui/* module.
  * The one translated text produced here is the "Highlight letters"
@@ -16,15 +17,63 @@ import { SETTINGS_LIMITS, FONT_FAMILIES, DEFAULT_LETTER_COLORS } from '../config
 import { parseGraphemeInput } from '../text/graphemes.js';
 import { ACTIVITIES } from '../worksheet/activities.js';
 
+/** @typedef {keyof import('./elements.js').Elements} Control */
+
+/**
+ * Number boxes: [control in `els`, setting], clamped to SETTINGS_LIMITS.
+ * @type {ReadonlyArray<[Control, keyof typeof SETTINGS_LIMITS]>}
+ */
+const NUMBER_FIELDS = [
+  ['fontSizeInput', 'fontSizePt'],
+  ['lineHeightInput', 'lineHeightMultiplier'],
+  ['letterSpacingInput', 'letterSpacingPt'],
+  ['wordSpacingInput', 'extraWordSpacePt'],
+  ['guideHeightInput', 'guideHeightMm']
+];
+
+/**
+ * On/off settings shown as a checkbox: [control in `els`, setting].
+ * @type {ReadonlyArray<[Control, 'syllableArcs' | 'clozeWordBank' | 'sentencePerLine' | 'wordSpaceMarks' | 'printTint' | 'lineStripes' | 'printStripes' | 'lineNumbers']>}
+ */
+const SWITCHES = [
+  ['syllableArcsToggle', 'syllableArcs'],
+  ['clozeWordBankToggle', 'clozeWordBank'],
+  ['sentencePerLineToggle', 'sentencePerLine'],
+  ['wordSpaceMarksToggle', 'wordSpaceMarks'],
+  ['printTintToggle', 'printTint'],
+  ['lineStripesToggle', 'lineStripes'],
+  ['printStripesToggle', 'printStripes'],
+  ['lineNumbersToggle', 'lineNumbers']
+];
+
+/**
+ * The sheet header's checkboxes: [control in `els`, field of settings.header].
+ * @type {ReadonlyArray<[Control, 'nameLine' | 'date' | 'title' | 'instructions']>}
+ */
+const HEADER_SWITCHES = [
+  ['headerNameLineToggle', 'nameLine'],
+  ['headerDateToggle', 'date'],
+  ['headerTitleToggle', 'title'],
+  ['headerInstructionsToggle', 'instructions']
+];
+
 /**
  * @param {object} ctx
- * @param {object} ctx.state the single mutable app state (main.js)
- * @param {Record<string, HTMLElement>} ctx.els
+ * @param {import('../main.js').AppState} ctx.state the single mutable app state (main.js)
+ * @param {import('./elements.js').Elements} ctx.els
  * @param {() => void} ctx.requestRender
  * @param {() => (key: string, vars?: object) => string} ctx.getT a getter: main.js reassigns its translator on a language switch
  * @returns {{ populateFontSelect: () => void, applySettingsLimits: () => void, syncSettingsControlsFromState: () => void }}
  */
 export function init({ state, els, requestRender, getT }) {
+  /** @param {Control} key */
+  const input = (key) => /** @type {HTMLInputElement} */ (els[key]);
+
+  /** Every change: re-render the sheet on screen, if there is one. */
+  function changed() {
+    if (state.contentId) requestRender();
+  }
+
   /** Font names (Andika, Lexend, ...) are proper nouns — shown as-is, not translated. */
   function populateFontSelect() {
     els.fontSelect.replaceChildren(
@@ -37,76 +86,54 @@ export function init({ state, els, requestRender, getT }) {
     );
   }
 
-  function updateFontId(fontId) {
-    state.settings.fontId = fontId;
-    if (state.contentId) requestRender();
-  }
-
   /** Sets each number input's min/max from the single shared limits config (blueprint 5) — never hardcoded in HTML. */
   function applySettingsLimits() {
-    els.fontSizeInput.min = SETTINGS_LIMITS.fontSizePt.min;
-    els.fontSizeInput.max = SETTINGS_LIMITS.fontSizePt.max;
-    els.lineHeightInput.min = SETTINGS_LIMITS.lineHeightMultiplier.min;
-    els.lineHeightInput.max = SETTINGS_LIMITS.lineHeightMultiplier.max;
-    els.letterSpacingInput.min = SETTINGS_LIMITS.letterSpacingPt.min;
-    els.letterSpacingInput.max = SETTINGS_LIMITS.letterSpacingPt.max;
-    els.wordSpacingInput.min = SETTINGS_LIMITS.extraWordSpacePt.min;
-    els.wordSpacingInput.max = SETTINGS_LIMITS.extraWordSpacePt.max;
-    els.guideHeightInput.min = SETTINGS_LIMITS.guideHeightMm.min;
-    els.guideHeightInput.max = SETTINGS_LIMITS.guideHeightMm.max;
+    for (const [key, setting] of NUMBER_FIELDS) {
+      input(key).min = String(SETTINGS_LIMITS[setting].min);
+      input(key).max = String(SETTINGS_LIMITS[setting].max);
+    }
+  }
+
+  /** Print tint needs a tint, printed stripes need stripes. */
+  function syncDependentSwitches() {
+    els.printTintToggle.disabled = (state.settings.tintId ?? 'none') === 'none';
+    els.printStripesToggle.disabled = !state.settings.lineStripes;
   }
 
   /** Reflects state.settings into the settings-panel controls — used at startup and after applying a preset. */
   function syncSettingsControlsFromState() {
     const s = state.settings;
     els.fontSelect.value = s.fontId;
-    els.fontSizeInput.value = s.fontSizePt;
-    els.lineHeightInput.value = s.lineHeightMultiplier;
-    els.letterSpacingInput.value = s.letterSpacingPt;
-    els.wordSpacingInput.value = s.extraWordSpacePt;
+    for (const [key, setting] of NUMBER_FIELDS) input(key).value = String(s[setting]);
+    for (const [key, setting] of SWITCHES) input(key).checked = Boolean(s[setting]);
+    // Absent in setups saved before 0.10: the instruction line is on.
+    for (const [key, field] of HEADER_SWITCHES) input(key).checked = field === 'instructions' ? s.header.instructions !== false : Boolean(s.header[field]);
     els.letterColorsToggle.checked = Object.keys(s.letterColors).length > 0;
     els.graphemesInput.value = (s.graphemes ?? []).map((g) => g.text).join(', ');
     els.graphemesStatus.textContent = '';
     els.syllableColorsToggle.checked = s.syllableMode === 'colors' || s.syllableMode === 'both';
     els.syllableSeparatorsToggle.checked = s.syllableMode === 'separators' || s.syllableMode === 'both';
-    els.syllableArcsToggle.checked = Boolean(s.syllableArcs);
-    els.clozeWordBankToggle.checked = Boolean(s.clozeWordBank);
-    els.sentencePerLineToggle.checked = Boolean(s.sentencePerLine);
-    els.wordSpaceMarksToggle.checked = Boolean(s.wordSpaceMarks);
     els.tintSelect.value = s.tintId ?? 'none';
-    els.printTintToggle.checked = Boolean(s.printTint);
-    els.printTintToggle.disabled = (s.tintId ?? 'none') === 'none';
-    els.lineStripesToggle.checked = Boolean(s.lineStripes);
-    els.printStripesToggle.checked = Boolean(s.printStripes);
-    els.printStripesToggle.disabled = !s.lineStripes;
-    els.lineNumbersToggle.checked = Boolean(s.lineNumbers);
-    els.headerNameLineToggle.checked = Boolean(s.header.nameLine);
-    els.headerDateToggle.checked = Boolean(s.header.date);
-    els.headerTitleToggle.checked = Boolean(s.header.title);
-    // Absent in setups saved before 0.10: on.
-    els.headerInstructionsToggle.checked = s.header.instructions !== false;
     els.imageSlotSelect.value = s.imageSlot ?? 'picture';
     // "Copy:" only where there are copy lines to fill.
     els.copyTargetRow.hidden = !ACTIVITIES[s.writingMode]?.copyTarget;
     els.copyTargetSelect.value = s.copyTarget ?? 'passage';
-    els.imageSlotSelect.querySelector('option[value="none"]').disabled = s.writingMode === 'write-own';
-    els.guideHeightInput.value = s.guideHeightMm;
+    /** @type {HTMLOptionElement} */ (els.imageSlotSelect.querySelector('option[value="none"]')).disabled = s.writingMode === 'write-own';
+    syncDependentSwitches();
   }
 
-  function clamp(value, range) {
-    return Math.min(range.max, Math.max(range.min, value));
-  }
-
-  function updateNumericSetting(field, range, inputEl) {
-    const value = clamp(Number(inputEl.value), range);
-    state.settings[field] = value;
-    inputEl.value = value; // reflect clamping back — the box must never show a value that isn't actually applied
-    if (state.contentId) requestRender();
-  }
-
-  function updateLetterColorsEnabled(enabled) {
-    state.settings.letterColors = enabled ? { ...DEFAULT_LETTER_COLORS } : {};
-    if (state.contentId) requestRender();
+  /**
+   * The value applied is always the value shown: out-of-range input is
+   * clamped, and the box is set to the clamped value.
+   * @param {Control} key
+   * @param {keyof typeof SETTINGS_LIMITS} setting
+   */
+  function updateNumber(key, setting) {
+    const range = SETTINGS_LIMITS[setting];
+    const value = Math.min(range.max, Math.max(range.min, Number(input(key).value)));
+    state.settings[setting] = value;
+    input(key).value = String(value);
+    changed();
   }
 
   /**
@@ -114,9 +141,9 @@ export function init({ state, els, requestRender, getT }) {
    * Invalid input changes nothing (the previous groups stay on the sheet)
    * and says why, next to the field (handbook §11.6 B6). Empty clears them.
    */
-  function updateGraphemes(input) {
+  function updateGraphemes() {
     const t = getT();
-    const result = parseGraphemeInput(input);
+    const result = parseGraphemeInput(els.graphemesInput.value);
     if (!result.ok) {
       els.graphemesStatus.textContent = result.code === 'GRAPHEME_TOO_MANY'
         ? t('graphemes.tooMany', { max: result.max })
@@ -126,7 +153,7 @@ export function init({ state, els, requestRender, getT }) {
     els.graphemesStatus.textContent = '';
     state.settings.graphemes = result.groups;
     els.graphemesInput.value = result.groups.map((g) => g.text).join(', ');
-    if (state.contentId) requestRender();
+    changed();
   }
 
   /** Colors and separators are independently toggleable (brief section 5: "and/or") — this reads both checkboxes to derive the single syllableMode value the rest of the app expects. */
@@ -134,87 +161,39 @@ export function init({ state, els, requestRender, getT }) {
     const colors = els.syllableColorsToggle.checked;
     const separators = els.syllableSeparatorsToggle.checked;
     state.settings.syllableMode = colors && separators ? 'both' : colors ? 'colors' : separators ? 'separators' : 'off';
-    if (state.contentId) requestRender();
+    changed();
   }
 
-  /** Arcs are independent of syllable colours and separators: all three may be on. */
-  function updateSyllableArcs(enabled) {
-    state.settings.syllableArcs = enabled;
-    if (state.contentId) requestRender();
+  els.fontSelect.addEventListener('change', () => {
+    state.settings.fontId = els.fontSelect.value;
+    changed();
+  });
+  for (const [key, setting] of NUMBER_FIELDS) input(key).addEventListener('change', () => updateNumber(key, setting));
+  for (const [key, setting] of SWITCHES) {
+    input(key).addEventListener('change', () => {
+      state.settings[setting] = input(key).checked;
+      syncDependentSwitches();
+      changed();
+    });
   }
-
-  /** Gap-fill word bank: a formatting choice, so it lives in settings (and setups). */
-  function updateClozeWordBank(enabled) {
-    state.settings.clozeWordBank = enabled;
-    if (state.contentId) requestRender();
+  for (const [key, field] of HEADER_SWITCHES) {
+    input(key).addEventListener('change', () => {
+      state.settings.header[field] = input(key).checked;
+      changed();
+    });
   }
-
-  function updateSentencePerLine(enabled) {
-    state.settings.sentencePerLine = enabled;
-    if (state.contentId) requestRender();
-  }
-
-  function updateWordSpaceMarks(enabled) {
-    state.settings.wordSpaceMarks = enabled;
-    if (state.contentId) requestRender();
-  }
-
-  function updateTint(tintId) {
-    state.settings.tintId = tintId;
-    els.printTintToggle.disabled = tintId === 'none';
-    if (state.contentId) requestRender();
-  }
-
-  function updatePrintTint(enabled) {
-    state.settings.printTint = enabled;
-    if (state.contentId) requestRender();
-  }
-
-  function updateLineStripes(enabled) {
-    state.settings.lineStripes = enabled;
-    els.printStripesToggle.disabled = !enabled;
-    if (state.contentId) requestRender();
-  }
-
-  function updatePrintStripes(enabled) {
-    state.settings.printStripes = enabled;
-    if (state.contentId) requestRender();
-  }
-
-  function updateLineNumbers(enabled) {
-    state.settings.lineNumbers = enabled;
-    if (state.contentId) requestRender();
-  }
-
-  /** Header field toggles (upgrade blueprint v3, workstream D6) — the model and both exporters already supported these; this just exposes them in the settings panel. */
-  function updateHeaderField(field, enabled) {
-    state.settings.header[field] = enabled;
-    if (state.contentId) requestRender();
-  }
-
-  els.fontSelect.addEventListener('change', (e) => updateFontId(e.target.value));
-  els.fontSizeInput.addEventListener('change', (e) => updateNumericSetting('fontSizePt', SETTINGS_LIMITS.fontSizePt, e.target));
-  els.lineHeightInput.addEventListener('change', (e) => updateNumericSetting('lineHeightMultiplier', SETTINGS_LIMITS.lineHeightMultiplier, e.target));
-  els.letterSpacingInput.addEventListener('change', (e) => updateNumericSetting('letterSpacingPt', SETTINGS_LIMITS.letterSpacingPt, e.target));
-  els.wordSpacingInput.addEventListener('change', (e) => updateNumericSetting('extraWordSpacePt', SETTINGS_LIMITS.extraWordSpacePt, e.target));
-  els.letterColorsToggle.addEventListener('change', (e) => updateLetterColorsEnabled(e.target.checked));
-  els.graphemesInput.addEventListener('change', (e) => updateGraphemes(e.target.value));
+  els.letterColorsToggle.addEventListener('change', () => {
+    state.settings.letterColors = els.letterColorsToggle.checked ? { ...DEFAULT_LETTER_COLORS } : {};
+    changed();
+  });
+  els.graphemesInput.addEventListener('change', updateGraphemes);
   els.syllableColorsToggle.addEventListener('change', updateSyllableMode);
   els.syllableSeparatorsToggle.addEventListener('change', updateSyllableMode);
-  els.syllableArcsToggle.addEventListener('change', (e) => updateSyllableArcs(e.target.checked));
-  els.clozeWordBankToggle.addEventListener('change', (e) => updateClozeWordBank(e.target.checked));
-  els.sentencePerLineToggle.addEventListener('change', (e) => updateSentencePerLine(e.target.checked));
-  els.wordSpaceMarksToggle.addEventListener('change', (e) => updateWordSpaceMarks(e.target.checked));
-  els.tintSelect.addEventListener('change', (e) => updateTint(e.target.value));
-  els.printTintToggle.addEventListener('change', (e) => updatePrintTint(e.target.checked));
-  els.lineStripesToggle.addEventListener('change', (e) => updateLineStripes(e.target.checked));
-  els.printStripesToggle.addEventListener('change', (e) => updatePrintStripes(e.target.checked));
-  els.lineNumbersToggle.addEventListener('change', (e) => updateLineNumbers(e.target.checked));
-  els.headerNameLineToggle.addEventListener('change', (e) => updateHeaderField('nameLine', e.target.checked));
-  els.headerDateToggle.addEventListener('change', (e) => updateHeaderField('date', e.target.checked));
-  els.headerTitleToggle.addEventListener('change', (e) => updateHeaderField('title', e.target.checked));
-  els.headerInstructionsToggle.addEventListener('change', (e) => updateHeaderField('instructions', e.target.checked));
-  els.guideHeightInput.addEventListener('change', (e) => updateNumericSetting('guideHeightMm', SETTINGS_LIMITS.guideHeightMm, e.target));
+  els.tintSelect.addEventListener('change', () => {
+    state.settings.tintId = els.tintSelect.value;
+    syncDependentSwitches();
+    changed();
+  });
 
   return { populateFontSelect, applySettingsLimits, syncSettingsControlsFromState };
 }

@@ -27,6 +27,10 @@ const ISO_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 const PLACEHOLDER_PATTERN = /\{([a-zA-Z_]+)\}/g;
 
 /**
+ * @typedef {{ schemaVersion: number, packId: string, language: string, entries: ContentEntry[] }} ContentPack
+ */
+
+/**
  * @typedef {object} ContentEntry
  * @property {string} id
  * @property {number} version
@@ -112,7 +116,7 @@ function validateEntry(raw, assetIds, seenIds) {
     push('DUPLICATE_ID', 'id', `duplicate entry id "${entry.id}" in this pack`);
   }
 
-  if (!Number.isInteger(entry.version) || entry.version < 1) {
+  if (typeof entry.version !== 'number' || !Number.isInteger(entry.version) || entry.version < 1) {
     push('INVALID_FIELD', 'version', 'version must be a positive integer');
   }
 
@@ -122,7 +126,7 @@ function validateEntry(raw, assetIds, seenIds) {
     push('UNKNOWN_THEME', 'theme', `theme "${entry.theme}" is not a known theme`);
   }
 
-  if (!Number.isInteger(entry.level) || entry.level < 1 || entry.level > 5) {
+  if (typeof entry.level !== 'number' || !Number.isInteger(entry.level) || entry.level < 1 || entry.level > 5) {
     push('INVALID_FIELD', 'level', 'level must be an integer from 1 to 5');
   }
 
@@ -208,28 +212,31 @@ function validateEntry(raw, assetIds, seenIds) {
     return { entry: null, errors };
   }
 
-  seenIds.add(entry.id);
+  // No errors: every field below was checked above.
+  const valid = /** @type {Record<string, any>} */ (entry);
+  const validReview = /** @type {Record<string, any>} */ (review);
+  seenIds.add(valid.id);
 
   return {
     entry: {
-      id: entry.id,
-      version: entry.version,
-      theme: entry.theme,
-      level: entry.level,
-      title: entry.title,
-      body,
+      id: valid.id,
+      version: valid.version,
+      theme: valid.theme,
+      level: valid.level,
+      title: valid.title,
+      body: /** @type {string} */ (body), // required: set above whenever there are no errors
       syllable_body: typeof entry.syllable_body === 'string' ? normalize(entry.syllable_body) : undefined,
       sentences: Array.isArray(entry.sentences) ? entry.sentences.map((s) => normalize(s)) : undefined,
-      imageId: entry.imageId,
+      imageId: valid.imageId,
       review: {
-        status: /** @type {string} */ (review.status),
+        status: validReview.status,
         // Optional provenance is carried through unchanged (undefined when
         // absent) — the catalog does not use it, content-status does.
-        reviewer: /** @type {string | undefined} */ (review.reviewer),
-        date: /** @type {string | undefined} */ (review.date),
-        nativeSpeaker: /** @type {boolean | undefined} */ (review.nativeSpeaker),
-        syllablesReviewed: /** @type {boolean | undefined} */ (review.syllablesReviewed),
-        imageAccuracy: /** @type {string | undefined} */ (review.imageAccuracy)
+        reviewer: validReview.reviewer,
+        date: validReview.date,
+        nativeSpeaker: validReview.nativeSpeaker,
+        syllablesReviewed: validReview.syllablesReviewed,
+        imageAccuracy: validReview.imageAccuracy
       }
     },
     errors: []
@@ -240,7 +247,7 @@ function validateEntry(raw, assetIds, seenIds) {
  * Validates a whole content pack.
  * @param {unknown} raw parsed (but untrusted) JSON
  * @param {Set<string>} assetIds known local asset ids the pack may reference
- * @returns {{ ok: true, pack: { schemaVersion: number, packId: string, language: string, entries: ContentEntry[] } } | { ok: false, errors: ValidationError[] }}
+ * @returns {{ ok: true, pack: ContentPack } | { ok: false, errors: ValidationError[] }}
  */
 export function validatePack(raw, assetIds) {
   /** @type {ValidationError[]} */
@@ -294,15 +301,20 @@ export function validatePack(raw, assetIds) {
     return { ok: false, errors };
   }
 
+  // No errors: the pack's own fields were checked above.
+  const valid = /** @type {Record<string, any>} */ (pack);
   return {
     ok: true,
-    pack: {
-      schemaVersion: pack.schemaVersion,
-      packId: pack.packId,
-      language: pack.language,
-      entries
-    }
+    pack: { schemaVersion: valid.schemaVersion, packId: valid.packId, language: valid.language, entries }
   };
 }
 
-export { KNOWN_LANGUAGES, KNOWN_THEMES, KNOWN_REVIEW_STATUSES };
+/**
+ * Every error code validatePack() can report. A teacher importing a pack
+ * reads each as `import.reason.<CODE>` in their language
+ * (ui/contentImport.js); the English `message` goes to the console.
+ */
+const VALIDATION_ERROR_CODES = ['UNSUPPORTED_SCHEMA', 'MISSING_FIELD', 'INVALID_FIELD', 'DUPLICATE_ID', 'UNKNOWN_THEME',
+  'UNKNOWN_PLACEHOLDER', 'SYLLABLE_MISMATCH', 'SENTENCES_MISMATCH', 'MISSING_IMAGE'];
+
+export { KNOWN_LANGUAGES, KNOWN_THEMES, KNOWN_REVIEW_STATUSES, VALIDATION_ERROR_CODES };

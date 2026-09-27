@@ -68,7 +68,7 @@ export function makeOwnText(checked, { id, language, theme, picture }) {
  * The catalog entry for an own text: like a bundled entry, without
  * syllable data and with the default picture or none (imageId null).
  * @param {OwnText} own
- * @returns {import('./validate.js').ContentEntry & { language: string, own: true }}
+ * @returns {import('./catalog.js').CatalogEntry}
  */
 export function ownTextEntry(own) {
   return {
@@ -90,9 +90,10 @@ export function ownTextEntry(own) {
  * @returns {boolean}
  */
 export function isOwnText(value) {
-  return Boolean(value) && typeof value === 'object'
-    && typeof value.id === 'string' && value.id.startsWith('own_')
-    && typeof value.language === 'string' && typeof value.theme === 'string'
-    && Number.isInteger(value.level) && value.level >= 1 && value.level <= 5
-    && checkOwnText(value).ok && typeof value.picture === 'boolean';
+  if (!value || typeof value !== 'object') return false;
+  const own = /** @type {Record<string, any>} */ (value);
+  return typeof own.id === 'string' && own.id.startsWith('own_')
+    && typeof own.language === 'string' && typeof own.theme === 'string'
+    && Number.isInteger(own.level) && own.level >= 1 && own.level <= 5
+    && checkOwnText({ title: own.title, body: own.body }).ok && typeof own.picture === 'boolean';
 }

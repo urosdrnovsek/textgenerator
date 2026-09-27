@@ -38,3 +38,5 @@ export function sheetLabels(t) {
     answers: t('sheet.answers')
   };
 }
+
+/** @typedef {ReturnType<typeof sheetLabels>} SheetLabels */

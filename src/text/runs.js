@@ -66,11 +66,11 @@ const SYLLABLE_SEPARATOR = '·'; // middle dot
  * @typedef {object} StyleOptions
  * @property {Record<string, string>} [letterColors] lowercase letter -> hex color, e.g. { b: '#B42318', d: '#166534' }
  * @property {boolean} [uppercaseAlso] apply letterColors to uppercase too (default false)
- * @property {[string, string]} [syllableColors] two hex colors to alternate across syllables
+ * @property {ReadonlyArray<string>} [syllableColors] hex colors to alternate across syllables
  * @property {string} [separatorColor] color of the middle-dot mark in 'separators'/'both' mode
  * @property {'off' | 'colors' | 'separators' | 'both'} [syllableMode]
  * @property {string} [baseColor]
- * @property {import('./graphemes.js').GraphemeGroup[]} [graphemes] letter groups to highlight (colour + bold), above every other colour
+ * @property {ReadonlyArray<import('./graphemes.js').GraphemeGroup>} [graphemes] letter groups to highlight (colour + bold), above every other colour
  * @property {boolean} [wordSpaceMarks] a faint mark in every space between two words of one sentence
  * @property {number[]} [blanks] word indices that become gaps (worksheet/selection.js)
  */
@@ -139,7 +139,7 @@ export function styleText(doc, options = {}) {
   let tokenSyllable = 0; // syllable index within the current whitespace token
   let offset = 0;
   while (offset < body.length) {
-    const char = String.fromCodePoint(body.codePointAt(offset));
+    const char = String.fromCodePoint(/** @type {number} */ (body.codePointAt(offset)));
     const space = isSpace(char);
     if (space) tokenSyllable = 0;
 

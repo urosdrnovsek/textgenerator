@@ -28,12 +28,12 @@ import { DRAWING_BOX_HEIGHT_MM, ARC_COLOR, STARTER_SENTENCES, QUESTIONS } from '
  * @property {number} lineHeightMultiplier
  * @property {number} letterSpacingPt
  * @property {number} extraWordSpacePt
- * @property {'read-copy' | 'trace' | 'read-only' | 'write-own'} writingMode
+ * @property {keyof typeof ACTIVITIES} writingMode a row of worksheet/activities.js
  * @property {string} rulingId
  * @property {number} guideHeightMm
  * @property {Record<string, string>} letterColors
  * @property {'off' | 'colors' | 'separators' | 'both'} syllableMode
- * @property {[string, string]} [syllableColors]
+ * @property {ReadonlyArray<string>} [syllableColors] alternating, in order
  * @property {boolean} [sentencePerLine]
  * @property {string} [tintId] key into config.TINTS_BY_ID
  * @property {boolean} [printTint] whether the tint also shows when printed (default off, to save ink)
@@ -43,12 +43,11 @@ import { DRAWING_BOX_HEIGHT_MM, ARC_COLOR, STARTER_SENTENCES, QUESTIONS } from '
  * @property {boolean} [clozeWordBank] gap-fill: print the missing words in a box above the text (default off)
  * @property {boolean} [syllableArcs] a curve under each syllable (HTML/print only; needs syllable data) (default off)
  * @property {boolean} [wordSpaceMarks] a faint "_" in every space between two words of a sentence (default off)
- * @property {import('../text/graphemes.js').GraphemeGroup[]} [graphemes] letter groups highlighted in colour and bold (default none)
+ * @property {ReadonlyArray<import('../text/graphemes.js').GraphemeGroup>} [graphemes] letter groups highlighted in colour and bold (default none)
+ * @property {'passage' | 'first-sentences' | 'sentence' | 'title'} [copyTarget] read & copy: what the child copies (default 'passage')
  * @property {'picture' | 'drawing-box' | 'none'} [imageSlot] the text's picture above the passage, an empty drawing box after it, or neither (default 'picture')
  * @property {{ nameLine: boolean, date: boolean, title: boolean, instructions?: boolean }} header instructions: the activity's instruction line, when it has one (absent = on)
  * @property {number} marginMm
- * @property {number} pageWidthMm
- * @property {number} pageHeightMm
  */
 
 /**
@@ -69,30 +68,34 @@ import { DRAWING_BOX_HEIGHT_MM, ARC_COLOR, STARTER_SENTENCES, QUESTIONS } from '
  * @property {'lines' | 'none'} task what follows the blocks: ruled copy rows filling the rest of the page, or nothing — a layout decision made by layout/measure.js, not a block
  */
 
+/** @typedef {import('../text/runs.js').StyledRun} StyledRun */
+
 /**
- * One piece of the page. Both adapters (render/html.js BLOCK_RENDERERS,
- * export/docx.js BLOCK_WRITERS) handle exactly these types, and a test
- * holds their key sets equal.
- * @typedef {(
- *   | { type: 'answerTag' } an answer-key sheet's "Answers" tag (labels.answers), first on the page
- *   | { type: 'header', nameLine: boolean, date: boolean }
- *   | { type: 'title', text: string, copyMark: boolean } copyMark: the title is what the child copies
- *   | { type: 'instruction', key: string } text: labels.instruction(key), in the sheet's language
- *   | { type: 'image', size: 'normal' | 'large' }
- *   | { type: 'passage', paragraphs: import('../text/runs.js').StyledRun[][], lineNumbers: boolean, blankWidthEm: number, showAnswers: boolean, copyMark: { firstW: number, lastW: number } | null, arcColor: string | null } arcColor: syllable arcs are drawn, in this colour (null: none) blankWidthEm: every gap's width (0 = no gaps); showAnswers: the answer key (gaps show their word)
- *   | { type: 'drawingBox', heightMm: number }
- *   | { type: 'questions', items: string[], linesEach: number }
- *   | { type: 'wordBank', words: string[] } gap-fill: the missing words, alphabetical, in a box above the text the teacher's own questions, each followed by ruled answer lines
- *   | { type: 'sequence', items: Array<{ runs: import('../text/runs.js').StyledRun[], position: number }>, sentenceCount: number, showAnswers: boolean } items: shuffled, position = the sentence's place in the text (1-based); no items when the text has too few sentences
- * )} Block
+ * The page's blocks, one type each. Both adapters (render/html.js
+ * BLOCK_RENDERERS, export/docx.js BLOCK_WRITERS) handle exactly these
+ * types, and a test holds their key sets equal.
+ *
+ * @typedef {{ type: 'answerTag' }} AnswerTagBlock an answer-key sheet's "Answers" tag (labels.answers), first on the page
+ * @typedef {{ type: 'header', nameLine: boolean, date: boolean }} HeaderBlock
+ * @typedef {{ type: 'title', text: string, copyMark: boolean }} TitleBlock copyMark: the title is what the child copies
+ * @typedef {{ type: 'instruction', key: string }} InstructionBlock text: labels.instruction(key), in the sheet's language
+ * @typedef {{ type: 'image', size: 'normal' | 'large' }} ImageBlock
+ * @typedef {{ type: 'passage', paragraphs: StyledRun[][], lineNumbers: boolean, blankWidthEm: number, showAnswers: boolean, copyMark: { firstW: number, lastW: number } | null, arcColor: string | null }} PassageBlock
+ *   blankWidthEm: every gap's width (0: no gaps); showAnswers: the answer key (gaps show their word); arcColor: syllable arcs in this colour (null: none)
+ * @typedef {{ type: 'drawingBox', heightMm: number }} DrawingBoxBlock
+ * @typedef {{ type: 'questions', items: string[], linesEach: number }} QuestionsBlock the teacher's own questions, each followed by ruled answer lines
+ * @typedef {{ type: 'wordBank', words: string[] }} WordBankBlock gap-fill: the missing words, alphabetical, in a box above the text
+ * @typedef {{ type: 'sequence', items: Array<{ runs: StyledRun[], position: number }>, sentenceCount: number, showAnswers: boolean }} SequenceBlock
+ *   items: shuffled; position: the sentence's place in the text (1-based); no items when the text has too few sentences
+ * @typedef {AnswerTagBlock | HeaderBlock | TitleBlock | InstructionBlock | ImageBlock | PassageBlock | DrawingBoxBlock | QuestionsBlock | WordBankBlock | SequenceBlock} Block
  */
 
 /**
- * @param {import('../content/validate.js').ContentEntry} entry
+ * @param {import('../content/catalog.js').CatalogEntry} entry
  * @param {WorksheetSettings} settings
- * @param {{ imagesById: Map<string, ImageAsset> }} assets
+ * @param {{ imagesById: Map<string | null, ImageAsset> }} assets an own text without a picture looks up null (a picture the teacher uploaded)
  * @param {string} localeForWordCount e.g. "sl"
- * @param {import('./selection.js').Selection} [selection] the teacher's clicks
+ * @param {import('./selection.js').Selection | null} [selection] the teacher's clicks
  *   on this text; ignored (and reported as selectionReset) when its key
  *   belongs to another text or version
  * @returns {WorksheetModel}
@@ -152,7 +155,7 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
   const sequence = activity.sequence ? buildSequence(bodyRuns, resolvedText.body, entry.id) : null;
   // A key only when there is something to answer: gaps, or sentences to number.
   const answerKey = chosen.selection.showAnswers && Boolean(activity.answers)
-    && (activity.sequence ? sequence.items.length > 0 : blanks.length > 0);
+    && (sequence ? sequence.items.length > 0 : blanks.length > 0);
 
   // Only lines meant for copying have a copy text. Write about the picture
   // has lines too, but nothing to copy: until 0.10.0-rc.1's fix it fell back
@@ -160,7 +163,7 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
   // copy this".
   const target = activity.copyTarget
     ? resolveCopyTarget(settings.copyTarget ?? 'passage', doc, chosen.selection, entry.title)
-    : { kind: 'passage', text: '', words: null };
+    : /** @type {CopyTarget} */ ({ kind: 'passage', text: '', words: null });
 
   // An own text may have no picture (imageId null): then there is no image
   // block, unless the teacher uploaded a custom image for it. For any other
@@ -200,7 +203,7 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
 /**
  * The page's blocks in order. Only this function decides what appears on
  * the page and where; the adapters and the fit check just walk the list.
- * @param {import('../content/validate.js').ContentEntry} entry
+ * @param {import('../content/catalog.js').CatalogEntry} entry
  * @param {WorksheetSettings} settings
  * @param {import('./activities.js').Activity} activity
  * @param {import('../text/runs.js').StyledRun[][]} paragraphs
@@ -262,7 +265,7 @@ function resolveCopyTarget(kind, doc, selection, title) {
   const sentenceRange = (from, to) => {
     const words = doc.words.filter((word) => word.sentence >= from && word.sentence <= to);
     if (words.length === 0) return null;
-    return { firstW: words[0].w, lastW: words.at(-1).w };
+    return { firstW: words[0].w, lastW: words[words.length - 1].w };
   };
   if (kind === 'title') return { kind, text: title, words: null };
   if (kind === 'first-sentences') {
@@ -305,7 +308,7 @@ function starterParagraphs(bodyRuns, doc, sentencePerLine) {
   const kept = doc.sentences.slice(0, count);
   const texts = sentencePerLine
     ? kept.map(({ start, end }) => doc.body.slice(start, end))
-    : [doc.body.slice(kept[0].start, kept.at(-1).end)];
+    : [doc.body.slice(kept[0].start, kept[kept.length - 1].end)];
   return splitRunsIntoSentences(bodyRuns, texts);
 }
 

@@ -42,7 +42,7 @@
       <label for="image-upload" data-label="field.customImage">Lastna slika (neobvezno)</label>
       <input type="file" id="image-upload" accept="image/png,image/jpeg" />
       <button id="btn-reset-image" type="button" data-label="action.resetImage" disabled></button>
-      <div id="image-status" class="storage-status"></div>
+      <div id="image-status" class="storage-status" role="status"></div>
 
       <label for="writing-mode-select" data-label="field.writingMode">Način pisanja</label>
       <select id="writing-mode-select">
@@ -215,11 +215,11 @@
       <details class="settings-panel">
         <summary data-label="field.presets">Shranjene nastavitve</summary>
 
-        <select id="preset-select"></select>
+        <select id="preset-select" data-aria-label="field.presets" aria-label="Shranjene nastavitve"></select>
         <button id="btn-load-preset" type="button" data-label="action.loadPreset">Naloži</button>
         <button id="btn-delete-preset" type="button" data-label="action.deletePreset">Izbriši</button>
         <button id="btn-save-preset" type="button" data-label="action.savePreset">Shrani trenutne nastavitve</button>
-        <div id="storage-status" class="storage-status"></div>
+        <div id="storage-status" class="storage-status" role="status"></div>
 
         <div class="panel-heading" data-label="field.setupBackup">Varnostna kopija nastavitev</div>
         <button id="btn-export-setups" type="button" data-label="action.exportSetups">Izvozi moje nastavitve</button>
@@ -237,7 +237,7 @@
         <ol id="packet-list"></ol>
         <button id="btn-print-packet" type="button" data-label="action.printPacket" disabled>Natisni sveženj</button>
         <button id="btn-clear-packet" type="button" data-label="action.clearPacket" disabled>Počisti sveženj</button>
-        <div id="packet-status" class="storage-status"></div>
+        <div id="packet-status" class="storage-status" role="status"></div>
       </details>
 
       <details class="settings-panel" id="own-text-panel">
@@ -264,7 +264,7 @@
         <label for="import-images-input" data-label="field.importImages">Nove slike (neobvezno)</label>
         <input type="file" id="import-images-input" accept="image/png,image/jpeg" multiple />
         <button id="btn-import-content" type="button" data-label="action.importContent">Uvozi</button>
-        <div id="import-status" class="storage-status"></div>
+        <div id="import-status" class="storage-status" role="status"></div>
       </details>
 
       <div class="sidebar-actions">

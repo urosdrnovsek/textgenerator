@@ -101,7 +101,7 @@ export function chooseSentence(selection, sentence) {
  * The selection a model may use for this entry: the given one when its key
  * matches (with out-of-range or duplicate indices dropped), otherwise an
  * empty one — and `reset` says a non-empty selection was thrown away.
- * @param {Selection | undefined} selection
+ * @param {Selection | null | undefined} selection
  * @param {string} key
  * @param {import('../text/tokenize.js').TextDoc} doc
  * @returns {{ selection: Selection, reset: boolean }}
@@ -116,7 +116,7 @@ export function selectionFor(selection, key, doc) {
     .filter((w) => Number.isInteger(w) && w >= 0 && w < doc.words.length)
     .sort((a, b) => a - b)
     .slice(0, maxBlanks(doc));
-  const sentence = Number.isInteger(selection.sentence) && selection.sentence >= 0 && selection.sentence < doc.sentences.length
+  const sentence = typeof selection.sentence === 'number' && Number.isInteger(selection.sentence) && selection.sentence >= 0 && selection.sentence < doc.sentences.length
     ? selection.sentence
     : null;
   return { selection: { key, blanks, sentence, showAnswers: Boolean(selection.showAnswers), questions: questionBoxes(selection.questions) }, reset: false };

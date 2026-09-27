@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { validatePack, KNOWN_THEMES } from '../../src/content/validate.js';
+import { validatePack, KNOWN_THEMES, VALIDATION_ERROR_CODES } from '../../src/content/validate.js';
 import { LANGUAGE_CODES, ASSET_IDS, readPack } from './helpers.js';
 
 // No entry counts here: adding a text must not mean editing a test. What
@@ -173,4 +173,19 @@ test('rejects malformed review provenance fields, each with its own field name',
       `${field}=${JSON.stringify(value)} should report review.${field}`
     );
   }
+});
+
+test('validatePack reports only codes listed in VALIDATION_ERROR_CODES (each has a translated reason)', () => {
+  const pack = readPack('sl');
+  pack.entries[0].syllable_body = pack.entries[0].syllable_body.replace('|', '|x');
+  pack.entries[1].id = pack.entries[2].id;
+  pack.entries[3].theme = 'no_such_theme';
+  pack.entries[4].imageId = 'no_such_image';
+  pack.entries[5].body = 'Hello {name}.';
+  delete pack.entries[6].title;
+  pack.entries[7].level = 9;
+  const codes = new Set(validatePack(pack, ASSET_IDS).errors.map((e) => e.code));
+  for (const code of codes) assert.ok(VALIDATION_ERROR_CODES.includes(code), code);
+  assert.ok(codes.size >= 6);
+  assert.ok(!validatePack(null, ASSET_IDS).errors.some((e) => !VALIDATION_ERROR_CODES.includes(e.code)));
 });

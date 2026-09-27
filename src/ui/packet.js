@@ -17,7 +17,7 @@ import { printWorksheet } from '../export/print.js';
 import { PACKET_MAX_SHEETS, addSnapshot, removeSnapshot, moveSnapshot, generateSnapshotId, totalPages } from '../worksheet/packet.js';
 
 /**
- * @param {{ state: object, els: Record<string, HTMLElement>, getT: () => (key: string, vars?: object) => string, whenRendered: () => Promise<void> }} ctx
+ * @param {{ state: import('../main.js').AppState, els: import('./elements.js').Elements, getT: () => (key: string, vars?: object) => string, whenRendered: () => Promise<void> }} ctx
  *   whenRendered: resolves once the sheet on screen is rendered (an edit may still be measuring)
  * @returns {{ renderPacketList: () => void, updatePacketControls: () => void }}
  */
@@ -160,13 +160,18 @@ export function init({ state, els, getT, whenRendered }) {
       // depends on that.
       container.replaceWith(...container.children);
     }
+    // Afterwards the print surface holds the sheet on screen again, so a
+    // plain "Print" (or Ctrl+P) prints that. On the browser's afterprint
+    // event, not on the line after print(): Chrome and Firefox wait in
+    // print() until the dialog closes, but Safari may return at once, and
+    // restoring then would print the single sheet instead of the packet.
+    window.addEventListener('afterprint', restoreSingleSheet, { once: true });
     printWorksheet();
-    // Restore the print surface to the currently displayed single worksheet
-    // so a subsequent plain "Print" click reflects what's on screen again.
-    if (state.lastGood) {
-      const labels = sheetLabels(t);
-      renderWorksheet(state.lastGood.model, state.lastGood.layout, els.printSurface, labels);
-    }
+  }
+
+  function restoreSingleSheet() {
+    if (state.lastGood) renderWorksheet(state.lastGood.model, state.lastGood.layout, els.printSurface, sheetLabels(t));
+    else els.printSurface.replaceChildren();
   }
 
   els.addToPacketButton.addEventListener('click', handleAddToPacket);

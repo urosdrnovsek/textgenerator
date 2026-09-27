@@ -50,7 +50,7 @@ export function isValidGroupText(text) {
  * Compared in body coordinates; a character whose lowercase form has a
  * different length (Turkish İ) simply doesn't match.
  * @param {import('./tokenize.js').TextDoc} doc
- * @param {GraphemeGroup[]} groups
+ * @param {ReadonlyArray<GraphemeGroup>} groups
  * @returns {Array<{ start: number, end: number, color: string }>} ascending, non-overlapping
  */
 export function findGraphemeSpans(doc, groups) {

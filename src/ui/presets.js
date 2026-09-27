@@ -33,8 +33,8 @@ import {
 
 /**
  * @param {object} ctx
- * @param {object} ctx.state the single mutable app state (main.js)
- * @param {Record<string, HTMLElement>} ctx.els
+ * @param {import('../main.js').AppState} ctx.state the single mutable app state (main.js)
+ * @param {import('./elements.js').Elements} ctx.els
  * @param {() => (key: string, vars?: object) => string} ctx.getT
  * @param {(language: string) => void} ctx.switchLanguage
  * @param {() => void} ctx.syncSettingsControlsFromState
@@ -95,14 +95,15 @@ export function init({
     applyPresetSettings(DYSLEXIA_FORMATTING, { keepSelection: true });
   }
 
-  /** Everything a setup captures: what is shown, and every setting. */
+  /**
+   * Everything a setup captures: what is shown, and every setting.
+   * @returns {import('../storage.js').Preset['settings']}
+   */
   function extractPresetSettings() {
-    return {
-      language: state.language,
-      theme: state.filter.theme,
-      level: state.filter.level,
-      ...Object.fromEntries(SETTING_KEYS.map((key) => [key, state.settings[key]]))
-    };
+    const settings = /** @type {import('../worksheet/build.js').WorksheetSettings} */ (
+      Object.fromEntries(SETTING_KEYS.map((key) => [key, state.settings[key]]))
+    );
+    return { language: state.language, theme: state.filter.theme, level: state.filter.level, ...settings };
   }
 
   /**
@@ -117,7 +118,7 @@ export function init({
    * changes, and the current worksheet is re-rendered. Without it (a
    * teacher-saved setup): language/theme/level are restored and a text is
    * created for them, which is what saving a setup is for.
-   * @param {unknown} settings
+   * @param {Record<string, any>} settings untrusted (a stored or imported setup): validated below
    * @param {{ keepSelection?: boolean }} [options]
    */
   function applyPresetSettings(settings, { keepSelection = false } = {}) {
@@ -268,7 +269,7 @@ export function init({
   els.deletePresetButton.addEventListener('click', handleDeletePreset);
   els.savePresetButton.addEventListener('click', handleSavePreset);
   els.exportSetupsButton.addEventListener('click', handleExportSetups);
-  els.importSetupsInput.addEventListener('change', (e) => handleImportSetups(e.target.files[0]));
+  els.importSetupsInput.addEventListener('change', () => handleImportSetups(els.importSetupsInput.files?.[0]));
   els.resetDataButton.addEventListener('click', handleResetData);
 
   return { populatePresetSelect };

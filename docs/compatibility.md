@@ -88,7 +88,7 @@ it was an app bug, since fixed — see "Corrected on 2026-09-20" below).
 | Google Chrome (real, desktop) | **Not yet tested here** | Same underlying engine as Chromium; low risk, but not the same binary — needs a real run before claiming it. |
 | Microsoft Edge (real, desktop — the brief's primary target, "Windows most likely") | **Not yet tested here** | Chromium-based; same low-but-nonzero risk as Chrome. This is the brief's actual primary target browser and should be the first real-browser check done outside this environment. |
 | Firefox (real, desktop) | **Not yet tested** | The headless automated run above is real Firefox, but a real desktop session (different windowing/print-dialog path) hasn't been checked. |
-| Safari | **Not tested — not applicable to this Linux dev environment** | Lower priority per the brief ("Windows most likely, possibly Mac/Linux") but should be checked before claiming Mac support. |
+| Safari | **Not tested — not applicable to this Linux dev environment** | Lower priority per the brief ("Windows most likely, possibly Mac/Linux") but should be checked before claiming Mac support. One known difference is handled without being tested there: Safari's `print()` may return before printing ends, so a printed packet is only replaced by the sheet on screen on the `afterprint` event (simulated in Chromium on 2026-09-27). On a Mac, print a packet of two different sheets and check both are in the print. |
 
 ### Corrected on 2026-09-20: two "browser engine bugs" that were not
 

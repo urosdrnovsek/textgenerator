@@ -29,7 +29,7 @@ export function relativeLuminance(hex) {
 
 /**
  * True when two colours of one group print as nearly the same grey.
- * @param {string[]} colors
+ * @param {ReadonlyArray<string>} colors
  */
 function hasGrayCollision(colors) {
   const lums = [...new Set(colors.map((c) => c.toUpperCase()))].map(relativeLuminance);
@@ -71,7 +71,7 @@ export function advise(model, layoutFacts = {}) {
   // "One sentence" with none clicked yet: the whole text is still there to copy, unmarked.
   if (model.copyTarget === 'sentence' && model.selection?.sentence === null) notices.push('COPY_TARGET_UNCHOSEN');
   // The estimate is a heuristic; it informs, it never adds pages.
-  if (layoutFacts.copyRowsNeeded > layoutFacts.copyRows) notices.push('COPY_SPACE_SHORT');
+  if ((layoutFacts.copyRowsNeeded ?? 0) > (layoutFacts.copyRows ?? 0)) notices.push('COPY_SPACE_SHORT');
   const passage = model.blocks.find((block) => block.type === 'passage');
   if (passage && markedParagraphs(passage).partial) notices.push('DOCX_OMITS_COPY_MARK');
   // Syllable colours, separators and arcs all need the text's syllable data
