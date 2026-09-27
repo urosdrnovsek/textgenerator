@@ -1,108 +1,29 @@
 #!/usr/bin/env node
 /**
- * Phase 7 release qualification: real LibreOffice compatibility check.
+ * The Word check, in real LibreOffice: the app (release/, driven in
+ * Chromium as a teacher would) exports each case in CASES; LibreOffice
+ * converts each file to PDF; and the PDF must have the page count the app
+ * reported and contain the title, instruction and passage the preview
+ * showed. The Word file is exported by the app itself, never built here:
+ * the copy lines' count comes from the app's own fit check.
  *
- * Blueprint section 1 (risk B) and section 12 ("Office verification: actual
- * Word, LibreOffice, and OpenOffice import tests... XML inspection alone
- * cannot prove layout") are explicit that a browser fit-check does not run
- * Word/LibreOffice's own layout engine, and that this project's earlier
- * DOCX tests (tests/unit/docx-export.test.js) only unzip and inspect XML —
- * never actually proving an exported .docx renders as one page in a real
- * office application. This script closes that gap for LibreOffice
- * specifically (the office suite actually installed in this environment;
- * real Word/OpenOffice still need the user's own machine, tracked in
- * docs/compatibility.md).
+ * LibreOffice gets the bundled fonts through a private fontconfig file.
+ * Without them it substitutes a font, and that hid a line-spacing bug
+ * once. The script prints what each font resolves to.
  *
- * Deliberately drives the REAL built release (release/index.html) through
- * real headless Chromium exactly the way a teacher would — pick language/
- * theme/level, click Create text, adjust settings, click Export as Word —
- * rather than hand-building a WorksheetModel in Node. That matters
- * specifically for read-copy mode: the number of handwriting-line rows is
- * decided by layout/measure.js's real-DOM fit check, and guessing that
- * number here instead would silently test a different (and possibly
- * invalid) document than the one the app actually produces.
- *
- * For each downloaded .docx this converts to PDF with real headless
- * LibreOffice and checks the PDF has the page count the app itself
- * reported for that worksheet (1 for most cases; more for the multi-page
- * cases) and contains the complete rendered title and passage — not just
- * that no exception was thrown, and not just that *some* text came out.
- * A case whose export never happened fails the run, and every case in
- * CASES must produce its file.
- *
- * LibreOffice is run with the project's bundled fonts (assets/fonts) made
- * visible through a private fontconfig file, so the conversion uses the
- * real Andika/Lexend/OpenDyslexic/Comic Neue — what a school machine that
- * installed them would use — rather than whatever the machine substitutes.
- * That distinction is not academic: the development machine had none of
- * them installed, LibreOffice fell back to Liberation Sans, and a DOCX
- * line-spacing bug that put every read-copy worksheet onto two pages with
- * the real Andika stayed invisible until the fonts were present (0.8.1,
- * workstream F4). The script prints what each family resolves to.
- *
- * Developer/QA tool only, per blueprint 12 ("never a teacher prerequisite")
- * — not part of `npm test` or the build gate: requires `soffice` and
- * `pdfinfo`/`pdftotext` (poppler-utils) locally, and `npm run build` to
- * have already produced release/. Run with `npm run verify-docx`.
+ * Needs `soffice` and poppler (pdfinfo, pdftotext), and a build. Run with
+ * `npm run verify-docx`.
  */
 
-import { spawn } from 'node:child_process';
 import { execFileSync } from 'node:child_process';
 import { mkdtemp, rm, readdir, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { DEFAULT_MARGIN_MM, MM_PER_INCH } from '../src/config.js';
+import { launchChromium, pageScripts, wait } from './lib/chromium.mjs';
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
-const CDP_PORT = 9422;
-
-function wait(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-async function waitForCdp() {
-  for (let i = 0; i < 50; i++) {
-    try {
-      const res = await fetch(`http://127.0.0.1:${CDP_PORT}/json/version`);
-      if (res.ok) return;
-    } catch {
-      /* not up yet */
-    }
-    await wait(200);
-  }
-  throw new Error('Chromium DevTools endpoint never came up');
-}
-
-class CdpClient {
-  constructor(ws) {
-    this.ws = ws;
-    this.id = 0;
-    this.pending = new Map();
-    this.listeners = [];
-    ws.addEventListener('message', (event) => {
-      const message = JSON.parse(event.data);
-      if (message.id !== undefined && this.pending.has(message.id)) {
-        const { resolve, reject } = this.pending.get(message.id);
-        this.pending.delete(message.id);
-        if (message.error) reject(new Error(JSON.stringify(message.error)));
-        else resolve(message.result);
-      } else if (message.method) {
-        for (const listener of this.listeners) listener(message.method, message.params);
-      }
-    });
-  }
-  send(method, params = {}) {
-    const id = ++this.id;
-    return new Promise((resolve, reject) => {
-      this.pending.set(id, { resolve, reject });
-      this.ws.send(JSON.stringify({ id, method, params }));
-    });
-  }
-  on(listener) {
-    this.listeners.push(listener);
-  }
-}
 
 /**
  * Representative pairwise combinations + boundary cases (blueprint 12),
@@ -216,137 +137,64 @@ const CASES = [
   { label: 'es-andika-level2-readcopy-drawingbox', language: 'es', theme: 'stories', level: 2, entryId: 'stories_huevo_blanco_2', fontId: 'andika', writingMode: 'read-copy', fontSizePt: 24, lineHeightMultiplier: 1.8, imageSlot: 'drawing-box' }
 ];
 
-// Binaries: the defaults match the development machine; CI (and anyone
-// whose Chromium/LibreOffice live elsewhere) overrides them with
-// CHROMIUM_BIN / SOFFICE_BIN (workstream F4).
-const CHROMIUM_BIN = process.env.CHROMIUM_BIN ?? '/usr/bin/chromium';
+// The development machine's LibreOffice; CI sets SOFFICE_BIN (and
+// CHROMIUM_BIN, read by lib/chromium.mjs).
 const SOFFICE_BIN = process.env.SOFFICE_BIN ?? 'soffice';
+
+/**
+ * The controls a case sets after its text is shown, in order: every one,
+ * back to its default when the case doesn't name it (the cases share one
+ * app session), plus the three spacing boxes only when the case sets them.
+ * @param {object} testCase an entry of CASES
+ * @returns {Array<[string, string | number | boolean]>} [element id, value]
+ */
+function caseFields(testCase) {
+  return [
+    ['font-select', testCase.fontId],
+    ['writing-mode-select', testCase.writingMode],
+    ['letter-colors-toggle', Boolean(testCase.letterColors)],
+    ['syllable-colors-toggle', Boolean(testCase.syllableColors)],
+    ['sentence-per-line-toggle', Boolean(testCase.sentencePerLine)],
+    ['tint-select', testCase.tintId ?? 'none'],
+    ['print-tint-toggle', Boolean(testCase.printTint)],
+    ['line-numbers-toggle', Boolean(testCase.lineNumbers)],
+    ['copy-target-select', testCase.copyTarget ?? 'passage'],
+    ['image-slot-select', testCase.imageSlot ?? 'picture'],
+    ['word-space-marks-toggle', Boolean(testCase.wordSpaceMarks)],
+    ['cloze-word-bank-toggle', Boolean(testCase.wordBank)],
+    ['graphemes-input', testCase.graphemes ?? ''],
+    ...(testCase.wordSpacingPt !== undefined ? [['word-spacing-input', testCase.wordSpacingPt]] : []),
+    ...(testCase.fontSizePt !== undefined ? [['font-size-input', testCase.fontSizePt]] : []),
+    ...(testCase.lineHeightMultiplier !== undefined ? [['line-height-input', testCase.lineHeightMultiplier]] : [])
+  ];
+}
 
 async function main() {
   const downloadDir = await mkdtemp(path.join(os.tmpdir(), 'worksheet-lo-downloads-'));
-  const profileDir = await mkdtemp(path.join(os.tmpdir(), 'worksheet-lo-profile-'));
   const indexPath = path.join(root, 'release/index.html');
-
-  const chrome = spawn(
-    CHROMIUM_BIN,
-    [
-      `--remote-debugging-port=${CDP_PORT}`,
-      '--headless=new',
-      '--disable-gpu',
-      '--no-sandbox',
-      '--disable-dev-shm-usage',
-      `--user-data-dir=${profileDir}`,
-      'about:blank'
-    ],
-    { stdio: 'ignore' }
-  );
+  const browser = await launchChromium({ port: 9422, downloadDir });
+  const { evalJs, waitForFit } = browser;
 
   const downloaded = [];
   try {
-    await waitForCdp();
-    const created = await (await fetch(`http://127.0.0.1:${CDP_PORT}/json/new?about:blank`, { method: 'PUT' })).json();
-    const ws = new WebSocket(created.webSocketDebuggerUrl);
-    await new Promise((resolve, reject) => {
-      ws.addEventListener('open', resolve);
-      ws.addEventListener('error', reject);
-    });
-    const cdp = new CdpClient(ws);
-    await cdp.send('Page.enable');
-    await cdp.send('Runtime.enable');
-    await cdp.send('Browser.setDownloadBehavior', { behavior: 'allow', downloadPath: downloadDir, eventsEnabled: true });
-
-    const downloadEvents = [];
-    cdp.on((method, params) => {
-      if (method === 'Browser.downloadProgress') downloadEvents.push(params);
-    });
-
-    let loaded = false;
-    cdp.on((method) => {
-      if (method === 'Page.loadEventFired') loaded = true;
-    });
-    await cdp.send('Page.navigate', { url: `file://${indexPath}` });
-    for (let i = 0; i < 40 && !loaded; i++) await wait(250);
-    await wait(300);
-
-    async function evalJs(expression, awaitPromise = false) {
-      const result = await cdp.send('Runtime.evaluate', { expression, returnByValue: true, awaitPromise });
-      if (result.exceptionDetails) throw new Error(`JS error: ${JSON.stringify(result.exceptionDetails)}`);
-      return result.result.value;
-    }
-
-    async function waitForFit() {
-      for (let i = 0; i < 20; i++) {
-        await wait(250);
-        const fitText = await evalJs(`document.getElementById('fit-indicator')?.textContent || ''`);
-        if (fitText && !/measuring|preverjanje|midiendo|wird geprüft|vérification/i.test(fitText)) return fitText;
-      }
-      throw new Error('fit check never settled');
-    }
+    await browser.open(indexPath);
 
     console.log(`Building and exporting ${CASES.length} representative worksheets through the real app...`);
     for (const testCase of CASES) {
-      await evalJs(`
-        (function() {
-          const sel = document.getElementById('language-select');
-          sel.value = '${testCase.language}';
-          sel.dispatchEvent(new Event('change', { bubbles: true }));
-        })();
-      `);
+      await evalJs(pageScripts.setField('language-select', testCase.language));
       await wait(150);
       await evalJs(`
-        (function() {
-          document.getElementById('theme-select').value = '${testCase.theme}';
-          document.getElementById('theme-select').dispatchEvent(new Event('change', { bubbles: true }));
-          document.getElementById('level-select').value = '${testCase.level}';
-          document.getElementById('level-select').dispatchEvent(new Event('change', { bubbles: true }));
-          document.getElementById('btn-create').click();
-          if (${JSON.stringify(testCase.entryId ?? null)}) {
-            const picker = document.getElementById('text-select');
-            if (picker.hidden || ![...picker.options].some((o) => o.value === ${JSON.stringify(testCase.entryId ?? null)})) {
-              throw new Error('case ${testCase.label}: entry ${testCase.entryId} is not offered by the title picker');
-            }
-            picker.value = ${JSON.stringify(testCase.entryId ?? null)};
-            picker.dispatchEvent(new Event('change', { bubbles: true }));
+        ${pageScripts.setField('theme-select', testCase.theme)};
+        ${pageScripts.setField('level-select', testCase.level)};
+        document.getElementById('btn-create').click();
+        if (${JSON.stringify(testCase.entryId ?? null)}) {
+          const picker = document.getElementById('text-select');
+          if (picker.hidden || ![...picker.options].some((o) => o.value === ${JSON.stringify(testCase.entryId ?? null)})) {
+            throw new Error('case ${testCase.label}: entry ${testCase.entryId} is not offered by the title picker');
           }
-          document.getElementById('font-select').value = '${testCase.fontId}';
-          document.getElementById('font-select').dispatchEvent(new Event('change', { bubbles: true }));
-          document.getElementById('writing-mode-select').value = '${testCase.writingMode}';
-          document.getElementById('writing-mode-select').dispatchEvent(new Event('change', { bubbles: true }));
-          document.getElementById('letter-colors-toggle').checked = ${Boolean(testCase.letterColors)};
-          document.getElementById('letter-colors-toggle').dispatchEvent(new Event('change', { bubbles: true }));
-          document.getElementById('syllable-colors-toggle').checked = ${Boolean(testCase.syllableColors)};
-          document.getElementById('syllable-colors-toggle').dispatchEvent(new Event('change', { bubbles: true }));
-          document.getElementById('sentence-per-line-toggle').checked = ${Boolean(testCase.sentencePerLine)};
-          document.getElementById('sentence-per-line-toggle').dispatchEvent(new Event('change', { bubbles: true }));
-          document.getElementById('tint-select').value = '${testCase.tintId ?? 'none'}';
-          document.getElementById('tint-select').dispatchEvent(new Event('change', { bubbles: true }));
-          document.getElementById('print-tint-toggle').checked = ${Boolean(testCase.printTint)};
-          document.getElementById('print-tint-toggle').dispatchEvent(new Event('change', { bubbles: true }));
-          document.getElementById('line-numbers-toggle').checked = ${Boolean(testCase.lineNumbers)};
-          document.getElementById('line-numbers-toggle').dispatchEvent(new Event('change', { bubbles: true }));
-          document.getElementById('copy-target-select').value = '${testCase.copyTarget ?? 'passage'}';
-          document.getElementById('copy-target-select').dispatchEvent(new Event('change', { bubbles: true }));
-          document.getElementById('image-slot-select').value = '${testCase.imageSlot ?? 'picture'}';
-          document.getElementById('image-slot-select').dispatchEvent(new Event('change', { bubbles: true }));
-          document.getElementById('word-space-marks-toggle').checked = ${Boolean(testCase.wordSpaceMarks)};
-          document.getElementById('word-space-marks-toggle').dispatchEvent(new Event('change', { bubbles: true }));
-          document.getElementById('cloze-word-bank-toggle').checked = ${Boolean(testCase.wordBank)};
-          document.getElementById('cloze-word-bank-toggle').dispatchEvent(new Event('change', { bubbles: true }));
-          document.getElementById('graphemes-input').value = ${JSON.stringify(testCase.graphemes ?? '')};
-          document.getElementById('graphemes-input').dispatchEvent(new Event('change', { bubbles: true }));
-          ${testCase.wordSpacingPt !== undefined ? `
-          document.getElementById('word-spacing-input').value = '${testCase.wordSpacingPt}';
-          document.getElementById('word-spacing-input').dispatchEvent(new Event('change', { bubbles: true }));
-          ` : ''}
-          ${testCase.fontSizePt !== undefined ? `
-          document.getElementById('font-size-input').value = '${testCase.fontSizePt}';
-          document.getElementById('font-size-input').dispatchEvent(new Event('change', { bubbles: true }));
-          ` : ''}
-          ${testCase.lineHeightMultiplier !== undefined ? `
-          document.getElementById('line-height-input').value = '${testCase.lineHeightMultiplier}';
-          document.getElementById('line-height-input').dispatchEvent(new Event('change', { bubbles: true }));
-          ` : ''}
-        })();
+          ${pageScripts.setField('text-select', testCase.entryId ?? '')};
+        }
+        ${caseFields(testCase).map(([id, value]) => pageScripts.setField(id, value)).join(';\n')};
       `);
       if (testCase.clozeEveryNth) {
         // Gap-fill: the gaps are chosen after the text is on screen.
@@ -395,7 +243,7 @@ async function main() {
       // against, instead of a hardcoded 1.
       const expectedPages = Number(await evalJs(`document.getElementById('fit-indicator').dataset.pageCount`));
 
-      const beforeCount = downloadEvents.filter((e) => e.state === 'completed').length;
+      const completedBefore = browser.completedDownloads().length;
       // The rendered passage, captured from the real app before export, is
       // what the PDF is later checked against — "non-empty text" proved
       // nothing (a header line alone passed it).
@@ -417,16 +265,8 @@ async function main() {
       const renderedInstruction = await evalJs(`document.querySelector('#preview .ws-instruction')?.textContent ?? ''`);
       const previewLineNumbers = await evalJs(`document.querySelectorAll('#preview .ws-line-number').length`);
 
-      await evalJs(`document.getElementById('btn-docx').click();`);
-      let completed = null;
-      for (let i = 0; i < 40; i++) {
-        await wait(200);
-        const finished = downloadEvents.filter((e) => e.state === 'completed');
-        if (finished.length > beforeCount) {
-          completed = finished[finished.length - 1];
-          break;
-        }
-      }
+      await evalJs(pageScripts.click('btn-docx'));
+      const completed = await browser.waitForDownload(completedBefore);
       if (!completed) {
         downloaded.push({ testCase, ok: false, note: 'docx download never completed' });
         continue;
@@ -434,7 +274,7 @@ async function main() {
       downloaded.push({ testCase, ok: true, guid: completed.guid, fitText, expectedPages, renderedTitle, renderedBody, renderedInstruction, renderedTag, renderedItems, previewLineNumbers });
     }
   } finally {
-    chrome.kill();
+    await browser.close();
   }
 
   const filesInDownloadDir = await readdir(downloadDir);
@@ -571,7 +411,6 @@ async function main() {
   }
 
   await rm(downloadDir, { recursive: true, force: true });
-  await rm(profileDir, { recursive: true, force: true });
 
   console.log(allOk ? '\nAll LibreOffice compatibility checks passed.' : '\nSome LibreOffice compatibility checks FAILED.');
   process.exitCode = allOk ? 0 : 1;

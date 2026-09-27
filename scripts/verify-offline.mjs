@@ -1,92 +1,26 @@
 #!/usr/bin/env node
 /**
- * Phase 7 release qualification: fresh-machine offline test.
+ * The fresh-machine offline check: the app, opened from its files in a new
+ * Chromium profile with every DNS lookup failing (so a network request
+ * would fail, not quietly succeed), taken through a broad teacher journey:
+ * every language, the reading supports, every writing mode, setups,
+ * packets, printing, Word export (each download followed to a real
+ * OOXML file), content import and own texts. It fails on any network
+ * request, any console error, or any check in the journey.
  *
- * Blueprint section 12: "Open the extracted release through file:// with
- * network access disabled and a fresh profile. Record and fail unexpected
- * HTTP(S) requests." This is stronger than merely observing traffic — the
- * point of --host-resolver-rules below is that even if some future change
- * accidentally tried to reach the network, the attempt would fail closed
- * (DNS resolution forced to NOTFOUND) rather than happening to succeed
- * because this dev machine has internet access.
- *
- * Takes an --unzip <path-to-zip> argument to exercise the actual packaged
- * deliverable (what `npm run package` produces) extracted to a scratch
- * directory outside the repo — the real "extract a ZIP on a fresh machine"
- * scenario — rather than the repo's own release/ folder. Falls back to
- * release/ if no zip is given.
- *
- * Exercises a broad real user journey (every bundled language, dyslexia
- * supports, presets, packets, a multi-page worksheet, print, and real
- * .docx export with the download tracked to completion) and fails on:
- * any non-file:// network request, any console error/exception, or a
- * .docx export that doesn't produce a real OOXML file. (Until 2026-09-20
- * this header claimed the script failed on a failed download, but it had
- * no download tracking at all and never clicked the export button — the
- * "print and .docx export" step only pressed Print.)
- *
- * Developer/QA tool, not part of `npm test`. Run with `npm run verify-offline`.
+ * `--unzip <zip>` tests the packaged ZIP, extracted outside the repo,
+ * instead of release/. Run with `npm run verify-offline` after a build.
  */
 
-import { spawn, execFileSync } from 'node:child_process';
+import { execFileSync } from 'node:child_process';
 import { mkdtemp, mkdir, rm, cp, readFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { LANGUAGE_CODES } from '../src/languages.js';
-
-// Default matches the development machine; CI overrides it (workstream F4).
-const CHROMIUM_BIN = process.env.CHROMIUM_BIN ?? '/usr/bin/chromium';
+import { launchChromium, pageScripts, wait } from './lib/chromium.mjs';
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
-const CDP_PORT = 9423;
-
-function wait(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-async function waitForCdp() {
-  for (let i = 0; i < 50; i++) {
-    try {
-      const res = await fetch(`http://127.0.0.1:${CDP_PORT}/json/version`);
-      if (res.ok) return;
-    } catch {
-      /* not up yet */
-    }
-    await wait(200);
-  }
-  throw new Error('Chromium DevTools endpoint never came up');
-}
-
-class CdpClient {
-  constructor(ws) {
-    this.ws = ws;
-    this.id = 0;
-    this.pending = new Map();
-    this.listeners = [];
-    ws.addEventListener('message', (event) => {
-      const message = JSON.parse(event.data);
-      if (message.id !== undefined && this.pending.has(message.id)) {
-        const { resolve, reject } = this.pending.get(message.id);
-        this.pending.delete(message.id);
-        if (message.error) reject(new Error(JSON.stringify(message.error)));
-        else resolve(message.result);
-      } else if (message.method) {
-        for (const listener of this.listeners) listener(message.method, message.params);
-      }
-    });
-  }
-  send(method, params = {}) {
-    const id = ++this.id;
-    return new Promise((resolve, reject) => {
-      this.pending.set(id, { resolve, reject });
-      this.ws.send(JSON.stringify({ id, method, params }));
-    });
-  }
-  on(listener) {
-    this.listeners.push(listener);
-  }
-}
 
 /** @returns {Promise<{ indexPath: string, stageDir: string | null }>} stageDir: the ZIP's extraction, removed at the end */
 async function resolveIndexPath() {
@@ -107,87 +41,25 @@ async function resolveIndexPath() {
 
 async function main() {
   const { indexPath, stageDir } = await resolveIndexPath();
-  const profileDir = await mkdtemp(path.join(os.tmpdir(), 'worksheet-offline-profile-'));
   const downloadDir = await mkdtemp(path.join(os.tmpdir(), 'worksheet-offline-downloads-'));
+  // Every DNS lookup fails: a network request would error out rather than
+  // happen to succeed because this machine is online.
+  const browser = await launchChromium({ port: 9423, args: ['--host-resolver-rules=MAP * ~NOTFOUND'], downloadDir });
+  const { cdp, evalJs, waitForFit } = browser;
 
-  const chrome = spawn(
-    CHROMIUM_BIN,
-    [
-      `--remote-debugging-port=${CDP_PORT}`,
-      '--headless=new',
-      '--disable-gpu',
-      '--no-sandbox',
-      '--disable-dev-shm-usage',
-      `--user-data-dir=${profileDir}`,
-      // Force every DNS lookup to fail — a network request would error out
-      // rather than happening to succeed because this dev machine is online.
-      '--host-resolver-rules=MAP * ~NOTFOUND',
-      'about:blank'
-    ],
-    { stdio: 'ignore' }
-  );
-
+  /** @type {string[]} */
   const networkRequests = [];
-  const consoleErrors = [];
   /** @type {Array<{ label: string, ok: boolean, note: string }>} */
   const journeyChecks = [];
 
   try {
-    await waitForCdp();
-    const created = await (await fetch(`http://127.0.0.1:${CDP_PORT}/json/new?about:blank`, { method: 'PUT' })).json();
-    const ws = new WebSocket(created.webSocketDebuggerUrl);
-    await new Promise((resolve, reject) => {
-      ws.addEventListener('open', resolve);
-      ws.addEventListener('error', reject);
-    });
-    const cdp = new CdpClient(ws);
-    await cdp.send('Page.enable');
-    await cdp.send('Runtime.enable');
     await cdp.send('Network.enable');
-    await cdp.send('Browser.setDownloadBehavior', { behavior: 'allow', downloadPath: downloadDir, eventsEnabled: true });
-
-    const downloadEvents = [];
     cdp.on((method, params) => {
-      if (method === 'Browser.downloadProgress') downloadEvents.push(params);
+      if (method !== 'Network.requestWillBeSent') return;
+      const url = params.request.url;
+      if (!url.startsWith('file://') && !url.startsWith('data:') && url !== 'about:blank') networkRequests.push(url);
     });
-
-    cdp.on((method, params) => {
-      if (method === 'Network.requestWillBeSent') {
-        const url = params.request.url;
-        if (!url.startsWith('file://') && !url.startsWith('data:') && url !== 'about:blank') {
-          networkRequests.push(url);
-        }
-      }
-      if (method === 'Runtime.exceptionThrown') {
-        consoleErrors.push(JSON.stringify(params.exceptionDetails));
-      }
-      if (method === 'Runtime.consoleAPICalled' && params.type === 'error') {
-        consoleErrors.push((params.args || []).map((a) => a.value ?? a.description).join(' '));
-      }
-    });
-
-    let loaded = false;
-    cdp.on((method) => {
-      if (method === 'Page.loadEventFired') loaded = true;
-    });
-    await cdp.send('Page.navigate', { url: `file://${indexPath}` });
-    for (let i = 0; i < 40 && !loaded; i++) await wait(250);
-    if (!loaded) throw new Error('page never fired load event');
-    await wait(300);
-
-    async function evalJs(expression, awaitPromise = false) {
-      const result = await cdp.send('Runtime.evaluate', { expression, returnByValue: true, awaitPromise });
-      if (result.exceptionDetails) throw new Error(`JS error: ${JSON.stringify(result.exceptionDetails)}`);
-      return result.result.value;
-    }
-    async function waitForFit() {
-      for (let i = 0; i < 20; i++) {
-        await wait(250);
-        const fitText = await evalJs(`document.getElementById('fit-indicator')?.textContent || ''`);
-        if (fitText && !/measuring|preverjanje|midiendo|wird geprüft|vérification/i.test(fitText)) return fitText;
-      }
-      throw new Error('fit check never settled');
-    }
+    await browser.open(indexPath);
 
     // Clicks "Export as Word", waits for the real download to complete,
     // and checks the file on disk is a non-trivial OOXML zip. Same
@@ -198,15 +70,9 @@ async function main() {
         journeyChecks.push({ label, ok: false, note: 'export button was disabled' });
         return;
       }
-      const beforeCount = downloadEvents.filter((e) => e.state === 'completed').length;
-      await evalJs(`document.getElementById('btn-docx').click();`);
-      let completed = null;
-      for (let i = 0; i < 40 && !completed; i++) {
-        await wait(200);
-        const finished = downloadEvents.filter((e) => e.state === 'completed');
-        if (finished.length > beforeCount) completed = finished[finished.length - 1];
-      }
-      if (!completed) {
+      const completedBefore = browser.completedDownloads().length;
+      await evalJs(pageScripts.click('btn-docx'));
+      if (!(await browser.waitForDownload(completedBefore))) {
         journeyChecks.push({ label, ok: false, note: 'download never completed' });
         return;
       }
@@ -340,7 +206,7 @@ async function main() {
       return { preview: read('#preview'), print: read('#print-surface') };
     })()`;
     const setSlot = async (slot) => {
-      await evalJs(`(() => { const el = document.getElementById('image-slot-select'); el.value = '${slot}'; el.dispatchEvent(new Event('change', { bubbles: true })); })()`);
+      await evalJs(pageScripts.setField('image-slot-select', slot));
       await waitForFit();
       return evalJs(slotState);
     };
@@ -372,7 +238,7 @@ async function main() {
       };
     })()`;
     const typeGroups = async (value) => {
-      await evalJs(`(() => { const el = document.getElementById('graphemes-input'); el.value = ${JSON.stringify(value)}; el.dispatchEvent(new Event('change', { bubbles: true })); })()`);
+      await evalJs(pageScripts.setField('graphemes-input', value));
       await wait(300);
       await waitForFit();
       return evalJs(groupState);
@@ -421,7 +287,7 @@ async function main() {
     // width, the same boxes in preview and print, answers hidden only in
     // print media, and nothing clickable once the mode is left.
     const setSelect = async (id, value) => {
-      await evalJs(`(() => { const el = document.getElementById('${id}'); el.value = '${value}'; el.dispatchEvent(new Event('change', { bubbles: true })); })()`);
+      await evalJs(pageScripts.setField(id, value));
       await waitForFit();
     };
     console.log('Driving "Fill the gaps"...');
@@ -1050,12 +916,12 @@ async function main() {
     // saved setup could, blocks the sheet with TOO_FEW_SENTENCES.
     console.log('Checking "Put in order" on a text with too few sentences...');
     const tooFewOption = await evalJs(`(() => { const o = document.querySelector('#writing-mode-select option[value="sequence"]'); return { disabled: o.disabled, label: o.textContent }; })()`);
-    await evalJs(`(() => { const el = document.getElementById('writing-mode-select'); el.value = 'sequence'; el.dispatchEvent(new Event('change', { bubbles: true })); })()`);
+    await evalJs(pageScripts.setField('writing-mode-select', 'sequence'));
     const tooFewFit = await waitForFit();
     const tooFewCode = await evalJs(`document.getElementById('fit-indicator').dataset.blockedCode`);
     await wait(300);
     const tooFewPrintDisabled = await evalJs(`document.getElementById('btn-print').disabled`);
-    await evalJs(`(() => { const el = document.getElementById('writing-mode-select'); el.value = 'read-copy'; el.dispatchEvent(new Event('change', { bubbles: true })); })()`);
+    await evalJs(pageScripts.setField('writing-mode-select', 'read-copy'));
     await waitForFit();
     const tooFewOk = tooFewOption.disabled && /: 2\)$/.test(tooFewOption.label) && tooFewCode === 'TOO_FEW_SENTENCES' && tooFewPrintDisabled;
     journeyChecks.push({
@@ -1088,8 +954,8 @@ async function main() {
     // picture, kept after a reload (browser storage), and deleted again.
     console.log('Adding, reloading and deleting an own text...');
     await evalJs(`(() => {
-      document.getElementById('language-select').value = 'en'; document.getElementById('language-select').dispatchEvent(new Event('change', { bubbles: true }));
-      document.getElementById('theme-select').value = 'stories'; document.getElementById('theme-select').dispatchEvent(new Event('change', { bubbles: true }));
+      ${pageScripts.setField('language-select', 'en')};
+      ${pageScripts.setField('theme-select', 'stories')};
       document.getElementById('own-title-input').value = 'Our Class Garden';
       document.getElementById('own-body-input').value = 'Our class has a small garden. We grow beans and sunflowers. Every morning two children water the plants.';
       document.getElementById('own-picture-toggle').checked = true;
@@ -1109,9 +975,9 @@ async function main() {
     await cdp.send('Page.reload');
     await wait(2000);
     await evalJs(`(() => {
-      document.getElementById('language-select').value = 'en'; document.getElementById('language-select').dispatchEvent(new Event('change', { bubbles: true }));
-      document.getElementById('theme-select').value = 'stories'; document.getElementById('theme-select').dispatchEvent(new Event('change', { bubbles: true }));
-      document.getElementById('level-select').value = '1'; document.getElementById('level-select').dispatchEvent(new Event('change', { bubbles: true }));
+      ${pageScripts.setField('language-select', 'en')};
+      ${pageScripts.setField('theme-select', 'stories')};
+      ${pageScripts.setField('level-select', '1')};
       const s = document.getElementById('text-select'); s.value = [...s.options].find((o) => o.textContent === 'Our Class Garden')?.value ?? ''; s.dispatchEvent(new Event('change', { bubbles: true }));
     })()`);
     await wait(500);
@@ -1132,11 +998,7 @@ async function main() {
 
     // Regressions found on the 2026-09-27 test day (0.10.0-rc.2).
     console.log('Checking the 2026-09-27 fixes (gap lines, built-in presets, own texts, reset)...');
-    const setField = (id, value) => `(() => {
-      const el = document.getElementById(${JSON.stringify(id)});
-      if (el.type === 'checkbox') el.checked = ${JSON.stringify(value)}; else el.value = ${JSON.stringify(value)};
-      el.dispatchEvent(new Event('change', { bubbles: true }));
-    })()`;
+    const { setField } = pageScripts;
     const act = async (expression) => {
       await evalJs(expression);
       await wait(300);
@@ -1212,15 +1074,7 @@ async function main() {
       note: JSON.stringify({ titlesAfterReset, storedAfter })
     });
   } finally {
-    chrome.kill();
-    // Give Chromium a moment to actually release its profile-directory file
-    // locks before cleanup — deleting it immediately after kill() can race
-    // and throw ENOTEMPTY. A failed cleanup here must not mask the actual
-    // test results below (it's just a leftover /tmp directory).
-    await wait(500);
-    await rm(profileDir, { recursive: true, force: true }).catch((error) => {
-      console.log(`(cleanup note: couldn't remove ${profileDir}: ${error.message})`);
-    });
+    await browser.close();
     await rm(downloadDir, { recursive: true, force: true }).catch(() => {});
     // The extracted ZIP (--unzip): 16 MB on a RAM-backed /tmp otherwise left behind.
     if (stageDir) await rm(stageDir, { recursive: true, force: true }).catch(() => {});
@@ -1230,9 +1084,9 @@ async function main() {
   const networkOk = networkRequests.length === 0;
   console.log(`  ${networkOk ? 'PASS' : 'FAIL'}  zero non-file/data network requests (observed: ${networkRequests.length})`);
   if (!networkOk) for (const url of networkRequests) console.log(`         - ${url}`);
-  const consoleOk = consoleErrors.length === 0;
-  console.log(`  ${consoleOk ? 'PASS' : 'FAIL'}  zero console errors/exceptions (observed: ${consoleErrors.length})`);
-  if (!consoleOk) for (const e of consoleErrors) console.log(`         - ${e}`);
+  const consoleOk = browser.errors.length === 0;
+  console.log(`  ${consoleOk ? 'PASS' : 'FAIL'}  zero console errors/exceptions (observed: ${browser.errors.length})`);
+  if (!consoleOk) for (const e of browser.errors) console.log(`         - ${e}`);
 
   let journeyOk = true;
   for (const c of journeyChecks) {

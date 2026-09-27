@@ -1,52 +1,18 @@
 #!/usr/bin/env node
 /**
- * Phase 7 release qualification: real Firefox compatibility check.
+ * The Firefox check. Firefox doesn't speak the DevTools protocol, so this
+ * drives it with selenium-webdriver and geckodriver (a system package).
+ * It takes the app through every language, a setup, both exports and the
+ * activities, with the network blocked (an unreachable proxy), and prints
+ * with Firefox's real print engine (WebDriver printPage): every PDF's page
+ * count must match what the app reported, packets included.
  *
- * Firefox does not speak Chrome DevTools Protocol (used by
- * verify-docx-libreoffice.mjs / verify-offline.mjs) — it speaks WebDriver
- * BiDi. `selenium-webdriver` + `geckodriver` (a system package, not
- * bundled — `sudo pacman -S geckodriver` on this Arch-based environment)
- * give a stable client for it instead of hand-rolling the BiDi WebSocket
- * protocol.
+ * Lesson kept from 2026-09-20: a "browser bug" here was this script's own
+ * bug. A browser issue is only documented once it reproduces in a
+ * standalone page.
  *
- * Exercises the real built release the way a teacher would — every
- * bundled language, the dyslexia-friendly preset, saving a setup,
- * and both exports — then specifically verifies the
- * single highest cross-browser risk called out in docs/compatibility.md:
- * packet multi-page printing. `break-after: page` handling has
- * historically differed between browser print engines, so this doesn't
- * just click the button and hope — it uses WebDriver's real `printPage()`
- * command (Firefox's actual print/PDF engine, not a re-implementation) to
- * render the packet and checks the resulting PDF's page count with
- * `pdfinfo`, the same way verify-docx-libreoffice.mjs checks LibreOffice's
- * output.
- *
- * Network is hard-blocked via an unreachable proxy (not DNS-NOTFOUND —
- * Firefox has no exact equivalent of Chromium's --host-resolver-rules,
- * so any attempted request fails at connection time instead of at DNS
- * resolution time; same effect, different mechanism) with a fresh
- * profile, satisfying the same "fresh-machine offline" bar as
- * verify-offline.mjs.
- *
- * HISTORY WORTH KNOWING: from Phase 7 until 2026-09-20 this script carried
- * an "informational" section that reproduced what was documented as a
- * Firefox/Gecko print-engine bug (a 2-sheet packet printing as 5 pages
- * after unrelated settings changes). It was a bug in this script:
- * checkPacketPageCount() replaced #print-surface.replaceChildren with a
- * once-only wrapper and never restored it, so its second use in the same
- * page wrapped the already-spent wrapper and the second packet was never
- * written to the print surface at all — Firefox faithfully printed the
- * stale first packet. Restoring the method between calls (below) made
- * the "bug" vanish with no app change. That section is now a real,
- * failing check, and doubles as the regression test for a genuine app
- * bug fixed the same day (packet snapshots sharing the live settings
- * object — see src/worksheet/build.js). Lesson: a "known browser issue"
- * must be reproducible in a standalone page with no app code before it
- * is documented as one.
- *
- * Developer/QA tool, not part of `npm test`. Run with `npm run verify-firefox`.
- * Takes --unzip <path-to-zip> to test the actual packaged deliverable
- * (extracted outside the repo) instead of the repo's own release/.
+ * `--unzip <zip>` tests the packaged ZIP instead of release/. Run with
+ * `npm run verify-firefox` after a build.
  */
 
 import { Builder } from 'selenium-webdriver';
@@ -57,6 +23,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { LANGUAGE_CODES } from '../src/languages.js';
+import { MEASURING, pageScripts } from './lib/chromium.mjs';
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 
@@ -185,7 +152,7 @@ async function main() {
       for (let i = 0; i < 20; i++) {
         await driver.sleep(250);
         const fitText = await evalJs(`return document.getElementById('fit-indicator')?.textContent || ''`);
-        if (fitText && !/measuring|preverjanje|midiendo|wird geprüft|vérification/i.test(fitText)) return fitText;
+        if (fitText && !MEASURING.test(fitText)) return fitText;
       }
       throw new Error('fit check never settled');
     }
@@ -273,20 +240,20 @@ async function main() {
     // Drawing box (A5) on the same multi-page sheet: an atomic 90 mm block
     // after the passage, then copy rows; Firefox must paginate it as the app does.
     console.log('\nDrawing box in the real Firefox print...');
-    await evalJs(`const el = document.getElementById('image-slot-select'); el.value = 'drawing-box'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await evalJs(pageScripts.setField('image-slot-select', 'drawing-box'));
     await waitForFit();
     const boxPages = await reportedPages();
     const boxPdfPath = path.join(downloadDir, 'drawing-box-worksheet.pdf');
     await writeFile(boxPdfPath, Buffer.from(await driver.printPage(), 'base64'));
     const boxPrintedPages = Number((execFileSync('pdfinfo', [boxPdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
     check(`drawing-box worksheet page count agrees (${pagesNote(boxPrintedPages, boxPages)})`, pagesAgree(boxPrintedPages, boxPages));
-    await evalJs(`const el = document.getElementById('image-slot-select'); el.value = 'picture'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await evalJs(pageScripts.setField('image-slot-select', 'picture'));
     await waitForFit();
 
     // Write about the picture (A4) on the same sheet: instruction line,
     // large picture, copy rows; the real print must match the app's count.
     console.log('\nWrite about the picture in the real Firefox print...');
-    await evalJs(`const el = document.getElementById('writing-mode-select'); el.value = 'write-own'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await evalJs(pageScripts.setField('writing-mode-select', 'write-own'));
     await waitForFit();
     const ownPages = await reportedPages();
     const ownPdfPath = path.join(downloadDir, 'write-own-worksheet.pdf');
@@ -296,13 +263,13 @@ async function main() {
     const ownInstruction = await evalJs(`return document.querySelector('#preview .ws-instruction')?.textContent ?? ''`);
     const ownText = execFileSync('pdftotext', [ownPdfPath, '-']).toString().replace(/\s+/g, '');
     check('its printed PDF carries the instruction line', ownInstruction.length > 0 && ownText.includes(ownInstruction.replace(/\s+/g, '')));
-    await evalJs(`const el = document.getElementById('writing-mode-select'); el.value = 'read-copy'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await evalJs(pageScripts.setField('writing-mode-select', 'read-copy'));
     await waitForFit();
 
     // Highlighted letter groups (B6): bold highlights rewrap the passage;
     // Firefox must still paginate it as the app measured.
     console.log('\nHighlighted letter groups in the real Firefox print...');
-    await evalJs(`const el = document.getElementById('graphemes-input'); el.value = 'a, e, i, o'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await evalJs(pageScripts.setField('graphemes-input', 'a, e, i, o'));
     await waitForFit();
     const groupPages = await reportedPages();
     const groupBold = Number(await evalJs(`return [...document.querySelectorAll('#preview .ws-sentence span')].filter((s) => s.style.fontWeight === '700').length`));
@@ -310,7 +277,7 @@ async function main() {
     await writeFile(groupPdfPath, Buffer.from(await driver.printPage(), 'base64'));
     const groupPrintedPages = Number((execFileSync('pdfinfo', [groupPdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
     check(`letter-group worksheet (${groupBold} bold runs) page count agrees (${pagesNote(groupPrintedPages, groupPages)})`, groupBold > 0 && pagesAgree(groupPrintedPages, groupPages));
-    await evalJs(`const el = document.getElementById('graphemes-input'); el.value = ''; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await evalJs(pageScripts.setField('graphemes-input', ''));
     await waitForFit();
 
     // Visible word spaces (B10): the marks widen every gap and rewrap the
@@ -331,7 +298,7 @@ async function main() {
     // measured size — the passage without its answers is in the PDF, the
     // passage with them is not — and the page count still matches.
     console.log('\nGap-fill in the real Firefox print...');
-    await evalJs(`const el = document.getElementById('writing-mode-select'); el.value = 'cloze'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await evalJs(pageScripts.setField('writing-mode-select', 'cloze'));
     await waitForFit();
     await evalJs(`document.getElementById('cloze-every-nth-input').value = '4'; document.getElementById('btn-cloze-every-nth').click();`);
     await driver.sleep(500);
@@ -382,13 +349,13 @@ async function main() {
     const keyPdf = squash(execFileSync('pdftotext', ['-layout', keyPdfPath, '-']).toString());
     check(`answer key page count agrees (${pagesNote(keyPrintedPages, keyPages)}), with the "${keyTag}" tag and every answer`,
       pagesAgree(keyPrintedPages, keyPages) && keyTag !== '' && keyPdf.toLowerCase().includes(squash(keyTag).toLowerCase()) && clozeTexts.every((p) => keyPdf.includes(squash(p.full))));
-    await evalJs(`const el = document.getElementById('writing-mode-select'); el.value = 'read-copy'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await evalJs(pageScripts.setField('writing-mode-select', 'read-copy'));
     await waitForFit();
 
     // Copy target (A3) on the same sheet: the marks are overlays, so the
     // print must still paginate as the app measured.
     console.log('\nCopy target marks in the real Firefox print...');
-    await evalJs(`const el = document.getElementById('copy-target-select'); el.value = 'first-sentences'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await evalJs(pageScripts.setField('copy-target-select', 'first-sentences'));
     await waitForFit();
     const copyPages = await reportedPages();
     const copyBars = Number(await evalJs(`return document.querySelectorAll('#print-surface .ws-copy-mark-bar').length`));
@@ -396,14 +363,14 @@ async function main() {
     await writeFile(copyPdfPath, Buffer.from(await driver.printPage(), 'base64'));
     const copyPrintedPages = Number((execFileSync('pdfinfo', [copyPdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
     check(`copy-target worksheet (${copyBars} marked lines) page count agrees (${pagesNote(copyPrintedPages, copyPages)})`, copyBars > 0 && pagesAgree(copyPrintedPages, copyPages));
-    await evalJs(`const el = document.getElementById('copy-target-select'); el.value = 'passage'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await evalJs(pageScripts.setField('copy-target-select', 'passage'));
     await waitForFit();
 
     // "Put in order" (A2) on the same sheet: the items don't split across
     // pages, and the print must paginate as the app measured, with every
     // sentence item in the PDF.
     console.log('\n"Put in order" in the real Firefox print...');
-    await evalJs(`const el = document.getElementById('writing-mode-select'); el.value = 'sequence'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await evalJs(pageScripts.setField('writing-mode-select', 'sequence'));
     await waitForFit();
     const seqPages = await reportedPages();
     const seqItems = await evalJs(`return [...document.querySelectorAll('#preview .ws-sequence-text')].map((p) => p.textContent)`);
@@ -413,7 +380,7 @@ async function main() {
     const seqPdf = squash(execFileSync('pdftotext', ['-layout', seqPdfPath, '-']).toString());
     check(`"Put in order" worksheet (${seqItems.length} items) page count agrees (${pagesNote(seqPrintedPages, seqPages)}), every item printed`,
       seqItems.length >= 3 && pagesAgree(seqPrintedPages, seqPages) && seqItems.every((item) => seqPdf.includes(squash(item))));
-    await evalJs(`const el = document.getElementById('writing-mode-select'); el.value = 'read-copy'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await evalJs(pageScripts.setField('writing-mode-select', 'read-copy'));
     await waitForFit();
 
     // Syllable arcs (B7): Firefox measures line boxes its own way, so the
@@ -434,7 +401,7 @@ async function main() {
 
     // "Continue the text" (story starter) on the same sheet.
     console.log('\n"Continue the text" in the real Firefox print...');
-    await evalJs(`const el = document.getElementById('writing-mode-select'); el.value = 'starter'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await evalJs(pageScripts.setField('writing-mode-select', 'starter'));
     await waitForFit();
     const starterPages = await reportedPages();
     const starterText = await evalJs(`return [...document.querySelectorAll('#preview .ws-body .ws-sentence')].map((p) => p.textContent).join(' ')`);
@@ -443,7 +410,7 @@ async function main() {
     const starterPrintedPages = Number((execFileSync('pdfinfo', [starterPdfPath]).toString().match(/^Pages:\s+(\d+)/m) || [])[1]);
     check(`"Continue the text" page count agrees (${pagesNote(starterPrintedPages, starterPages)}), with its beginning printed`,
       pagesAgree(starterPrintedPages, starterPages) && squash(execFileSync('pdftotext', [starterPdfPath, '-']).toString()).includes(squash(starterText)));
-    await evalJs(`const el = document.getElementById('writing-mode-select'); el.value = 'read-copy'; el.dispatchEvent(new Event('change', { bubbles: true }));`);
+    await evalJs(pageScripts.setField('writing-mode-select', 'read-copy'));
     await waitForFit();
 
     // The teacher's own questions on the same sheet: a question and its
