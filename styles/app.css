@@ -42,6 +42,12 @@ body {
   padding: 8px 12px 12px;
   background: #ffffff;
   border-top: 1px solid #ddd;
+  /* On a 768 px school laptop, a long fit line and a few notices made this
+     block cover most of the settings above it. It never takes more than
+     half the screen; past that the notices scroll inside it. */
+  max-height: 50vh;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
 .app-sidebar label {

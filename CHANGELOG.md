@@ -7,6 +7,46 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
+Fixes from the test day before the testers get the app (2026-09-27):
+
+- **Gap-fill line numbers and stripes.** A gap sits a few pixels lower
+  than its line's text, and the line measurement counted every line with
+  a gap as two lines. Gap-fill sheets showed two overlapping line numbers
+  on those lines, the stripes and arcs drifted, and a page break could
+  be placed inside a line. Lines are now grouped by their vertical middle.
+- **The Dyslexia-friendly button (and the two built-in setups) no longer
+  change the activity.** They switched a gap-fill, put-in-order or other
+  sheet back to read & copy, gaps and all. The teacher guide already said
+  they change only the formatting; now they do. Writing mode, "Copy:",
+  the picture slot and the word bank stay.
+- **"Reset saved data" also clears the own texts on screen.** They were
+  gone from storage but still listed, and adding the next own text wrote
+  them all back. The confirmation now says it deletes own texts too.
+- **An own text that can't be laid out can be deleted.** For example, one
+  with a word wider than the page. The delete button was only updated
+  after a successful render.
+- **A content import clears the previous sheet completely.** Its notices,
+  the gap controls, the click-words hint and an "Add to packet" button
+  that did nothing all stayed on screen.
+- **Print, Word and "Add to packet" wait for a render in progress.** A
+  field that was just edited (a question, the font size) applies when the
+  button click takes the focus away from it. On a slow PC the output
+  could otherwise be the sheet from before the edit.
+- **Transparent pictures stay white.** A PNG with a transparent
+  background (typical clip art), whether uploaded as the sheet's own
+  picture or with a content pack, printed on a black square.
+- **The sidebar on small screens.** On a 768 px laptop screen, the
+  pinned Print/Word block with a few notices covered most of the
+  settings. It now takes at most half the screen height, and the notices
+  scroll inside it.
+- **Packet lines say what each sheet is.** Each line now shows the
+  writing mode, and "Answers" on an answer key. A student sheet and its
+  key used to be two identical lines.
+- **Clearer messages.** A sheet that can't be laid out no longer shows an
+  internal code such as `(WIDTH_OVERFLOW)`. "For one page, try: …" now
+  names the real control (Picture on the sheet: "None"), and offers it
+  only when the sheet has a picture or drawing box to remove.
+
 ## 0.10.0-rc.2 — 2026-09-26 (story starters, your own questions and texts, word bank)
 
 Everything since 0.10.0-rc.1, in one release for the tester teachers: a

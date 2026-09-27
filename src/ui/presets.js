@@ -31,6 +31,7 @@ import {
  * @param {() => void} ctx.updateCandidateCount
  * @param {() => void} ctx.createText
  * @param {() => void} ctx.requestRender
+ * @param {() => void} ctx.forgetOwnTexts "Reset saved data" also removed the teacher's own texts
  * @returns {{ populatePresetSelect: () => void }}
  */
 export function init({
@@ -43,7 +44,8 @@ export function init({
   syncSettingsControlsFromState,
   updateCandidateCount,
   createText,
-  requestRender
+  requestRender,
+  forgetOwnTexts
 }) {
   const t = (key, vars) => getT()(key, vars);
 
@@ -162,9 +164,21 @@ export function init({
    */
   function applyPresetSettings(settings, { keepSelection = false } = {}) {
     // Built-in presets carry no selection; fill it from the current state so
-    // the same validator serves both kinds.
+    // the same validator serves both kinds. They are formatting only, so the
+    // activity stays too: until 0.10.0-rc.2 the Dyslexia-friendly button
+    // switched a gap-fill sheet back to read & copy, gaps and all.
+    const s = state.settings;
     const full = keepSelection
-      ? { ...settings, language: state.language, theme: state.filter.theme, level: state.filter.level }
+      ? {
+          ...settings,
+          language: state.language,
+          theme: state.filter.theme,
+          level: state.filter.level,
+          writingMode: s.writingMode,
+          copyTarget: s.copyTarget,
+          imageSlot: s.imageSlot,
+          clozeWordBank: s.clozeWordBank
+        }
       : settings;
     const validation = validatePresetSettings(full);
     if (!validation.ok) {
@@ -316,6 +330,7 @@ export function init({
       return;
     }
     populatePresetSelect();
+    forgetOwnTexts();
     els.storageStatus.textContent = t('reset.done');
   }
 

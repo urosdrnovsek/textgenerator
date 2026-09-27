@@ -231,7 +231,11 @@ itself has internet access), extracts the actual packaged ZIP to a
 directory outside the repo, and drives a broad real user journey: every
 bundled language, the dyslexia-friendly preset, saving a setup, adding to a
 packet, printing, printing the packet, and exporting
-`.docx`. Current result: **zero non-`file://`/`data:` network requests,
+`.docx`. Since 2026-09-27 it also rechecks the fixes from the test day
+before the testers: one line number per line on gap-fill sheets, the
+built-in setups keeping the activity, an own text that can't be laid out
+staying deletable, "Reset saved data" clearing own texts from the session,
+and a content import clearing the previous sheet. Current result: **zero non-`file://`/`data:` network requests,
 zero console errors or exceptions.**
 
 `npm run verify-firefox` applies the same offline principle for Firefox —

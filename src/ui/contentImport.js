@@ -22,8 +22,9 @@ import { readContentPackImport } from '../import.js';
  * @param {Map<string, object>} ctx.imagesById the shared image registry; imported images are added to it
  * @param {(language: string, catalog: import('../content/catalog.js').CatalogIndex) => void} ctx.installCatalog
  * @param {() => void} ctx.updateCandidateCount
+ * @param {() => void} ctx.showNoText clears the sheet, its notices and the picking controls
  */
-export function init({ state, els, getT, imagesById: IMAGES_BY_ID, installCatalog, updateCandidateCount }) {
+export function init({ state, els, getT, imagesById: IMAGES_BY_ID, installCatalog, updateCandidateCount, showNoText }) {
   const t = (key, vars) => getT()(key, vars);
 
   function describeImportError(result) {
@@ -69,14 +70,8 @@ export function init({ state, els, getT, imagesById: IMAGES_BY_ID, installCatalo
     els.importImagesInput.value = '';
 
     if (result.pack.language === state.language) {
-      state.contentId = null;
-      state.lastGood = null;
-      els.preview.replaceChildren();
-      els.printSurface.replaceChildren();
-      els.printButton.disabled = true;
-      els.docxButton.disabled = true;
       updateCandidateCount();
-      els.fitIndicator.textContent = t('preview.empty');
+      showNoText();
     }
   }
 

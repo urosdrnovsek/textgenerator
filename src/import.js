@@ -68,6 +68,10 @@ export async function readImageFile(file, limits = IMAGE_LIMITS) {
   canvas.width = targetWidth;
   canvas.height = targetHeight;
   const ctx = canvas.getContext('2d');
+  // JPEG has no transparency: without a white ground, a clip-art PNG's
+  // transparent background turned black on the sheet (until 0.10.0-rc.2).
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, targetWidth, targetHeight);
   ctx.drawImage(bitmap, 0, 0, targetWidth, targetHeight);
   bitmap.close();
 

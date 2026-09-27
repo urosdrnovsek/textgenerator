@@ -249,7 +249,7 @@ const els = {
 // UI coordinators extracted from this file (0.8.1, workstream J1). Each
 // gets the shared state/els and a translator *getter* (t is reassigned on
 // language switch) and hands back only what the wiring here still calls.
-const { renderPacketList, updatePacketControls } = initPacketUi({ state, els, getT: () => t });
+const { renderPacketList, updatePacketControls } = initPacketUi({ state, els, getT: () => t, whenRendered });
 const { populateFontSelect, applySettingsLimits, syncSettingsControlsFromState } = initSettingsPanelUi({
   state,
   els,
@@ -267,9 +267,10 @@ const { populatePresetSelect } = initPresetsUi({
   syncSettingsControlsFromState,
   updateCandidateCount,
   createText,
-  requestRender
+  requestRender,
+  forgetOwnTexts
 });
-initContentImportUi({ state, els, getT: () => t, imagesById: IMAGES_BY_ID, installCatalog, updateCandidateCount });
+initContentImportUi({ state, els, getT: () => t, imagesById: IMAGES_BY_ID, installCatalog, updateCandidateCount, showNoText });
 
 /** The displayed text, tokenized (for the word picker's selection operations); null before one is shown. */
 function currentDoc() {
@@ -307,7 +308,8 @@ const wordPicker = initWordPickerUi({ els, onWord: onWordPicked });
  * can be put in order. Call after every render and mode change.
  */
 function syncPicking() {
-  const mode = pickingMode();
+  // Nothing to click on while no sheet is shown (a blocked one).
+  const mode = state.lastGood ? pickingMode() : null;
   wordPicker.refresh(mode !== null);
   els.previewHint.hidden = mode === null;
   if (mode) els.previewHint.textContent = t(mode === 'gaps' ? 'cloze.hint' : 'copyTarget.hint');
@@ -512,6 +514,23 @@ function deleteOwnText() {
   updateCandidateCount();
   els.ownStatus.classList.remove('is-refused');
   els.ownStatus.textContent = t('ownText.deleted');
+  showFirstOfCell();
+}
+
+/**
+ * "Reset saved data" has removed the own texts from storage: drop them from
+ * this session too. Until 0.10.0-rc.2 they stayed listed, and adding the
+ * next own text wrote them all back to storage.
+ */
+function forgetOwnTexts() {
+  OWN_TEXTS = [];
+  for (const language of LANGUAGES) installCatalog(language, CATALOGS[language]);
+  updateCandidateCount();
+  if (state.contentId && !CATALOG.byId.has(state.contentId)) showFirstOfCell();
+}
+
+/** After the text on screen was removed: the cell's first text, or nothing printable. */
+function showFirstOfCell() {
   state.contentId = null;
   const next = chooseEntry(findCandidates(CATALOG, state.filter), null);
   if (next) showEntry(next);
@@ -586,6 +605,8 @@ function showFit(model, result) {
   el.classList.toggle('is-overflow', result.status === 'blocked');
   el.classList.toggle('is-extends', result.status === 'extends');
   el.dataset.pageCount = result.pageCount ?? '';
+  // The blocking code is for the verify-* scripts; the teacher reads the reason.
+  el.dataset.blockedCode = result.code ?? '';
   // The millimetre figures are a developer diagnostic, not teacher-facing
   // text (workstream I3) — kept here for the verify-* scripts and debugging.
   el.dataset.usedMm = result.heightsMm ? (result.heightsMm.final ?? result.heightsMm.used).toFixed(1) : '';
@@ -606,7 +627,6 @@ function showFit(model, result) {
     });
   } else {
     el.textContent = t('fit.blocked', {
-      code: result.code,
       reason: t(`fit.blocked.reason.${result.code}`),
       suggestions
     });
@@ -659,7 +679,48 @@ function clearPrintableWorksheet() {
   updatePacketControls();
 }
 
-async function requestRender() {
+/**
+ * No text on screen (a content import replaced this language's texts):
+ * nothing printable, nothing to click, no notices from the last sheet,
+ * and a render still in flight is discarded.
+ */
+function showNoText() {
+  state.revision += 1;
+  state.contentId = null;
+  state.selection = null;
+  clearPrintableWorksheet();
+  showNotices([]);
+  els.fitIndicator.classList.remove('is-overflow', 'is-extends');
+  els.fitIndicator.dataset.pageCount = '';
+  els.fitIndicator.dataset.blockedCode = '';
+  els.fitIndicator.textContent = t('preview.empty');
+  syncPicking();
+}
+
+/** The latest render: output waits for it (see whenRendered). */
+let latestRender = Promise.resolve();
+
+function requestRender() {
+  latestRender = renderNow();
+  return latestRender;
+}
+
+/**
+ * Resolves once no render is in flight. Print, Word and "Add to packet"
+ * wait for it: a field applies on change (when it loses focus), which is
+ * the same click that presses the button, and on a slow school PC the
+ * measurement can still be running when the click lands — the output
+ * would then be the sheet from before the edit.
+ */
+async function whenRendered() {
+  let render;
+  do {
+    render = latestRender;
+    await render;
+  } while (render !== latestRender);
+}
+
+async function renderNow() {
   const revision = ++state.revision;
   try {
     const entry = CATALOG.byId.get(state.contentId);
@@ -680,6 +741,9 @@ async function requestRender() {
 
     if (result.status === 'blocked') {
       clearPrintableWorksheet();
+      // Still sync the side controls: an own text that can't be laid out
+      // (one word wider than the page) must stay deletable.
+      syncPicking();
       return;
     }
 
@@ -701,6 +765,7 @@ async function requestRender() {
     els.fitIndicator.classList.add('is-overflow');
     els.fitIndicator.classList.remove('is-extends');
     els.fitIndicator.dataset.pageCount = '';
+    els.fitIndicator.dataset.blockedCode = '';
     els.fitIndicator.textContent = t('fit.internalError', { message: error.message });
     showNotices([]);
   }
@@ -715,6 +780,7 @@ function dataUrlToUint8Array(dataUrl) {
 }
 
 async function handleExportDocx() {
+  await whenRendered();
   if (!state.lastGood) return;
   try {
     const { model, layout } = state.lastGood;
@@ -752,7 +818,10 @@ els.showAnswersToggle.addEventListener('change', (event) => updateShowAnswers(ev
 for (const input of els.questionInputs) input.addEventListener('change', updateQuestions);
 els.ownAddButton.addEventListener('click', addOwnText);
 els.ownDeleteButton.addEventListener('click', deleteOwnText);
-els.printButton.addEventListener('click', printWorksheet);
+els.printButton.addEventListener('click', async () => {
+  await whenRendered();
+  if (state.lastGood) printWorksheet();
+});
 els.docxButton.addEventListener('click', handleExportDocx);
 
 els.imageUpload.addEventListener('change', (e) => handleImageUpload(e.target.files[0]));

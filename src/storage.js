@@ -152,7 +152,7 @@ export function importPresetsFromJson(jsonText, storage = defaultStorage()) {
   } catch {
     return { ok: false, error: 'INVALID_JSON' };
   }
-  if (parsed.schemaVersion !== 1 || !Array.isArray(parsed.presets)) {
+  if (parsed?.schemaVersion !== 1 || !Array.isArray(parsed.presets)) {
     return { ok: false, error: 'UNSUPPORTED_SCHEMA' };
   }
   const existing = listPresets(storage);

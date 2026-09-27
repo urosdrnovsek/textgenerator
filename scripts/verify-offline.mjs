@@ -1000,6 +1000,16 @@ async function main() {
     await evalJs(`document.getElementById('btn-import-content').click();`);
     await wait(800);
     const importStatus = await evalJs(`document.getElementById('import-status').textContent`);
+    // Nothing of the previous sheet may linger (until rc.2 its notices, the
+    // gap controls and an enabled "Add to packet" stayed on screen).
+    const afterImport = await evalJs(`(() => ({
+      noticesHidden: document.getElementById('fit-notices').hidden,
+      addToPacket: !document.getElementById('btn-add-to-packet').disabled,
+      print: !document.getElementById('btn-print').disabled,
+      hint: !document.getElementById('preview-hint').hidden,
+      preview: document.getElementById('preview').childElementCount
+    }))()`);
+    const importCleared = afterImport.noticesHidden && !afterImport.addToPacket && !afterImport.print && !afterImport.hint && afterImport.preview === 0;
     await evalJs(`
       (function() {
         document.getElementById('theme-select').value = 'stories';
@@ -1021,17 +1031,17 @@ async function main() {
     const importedImageSrc = await evalJs(`document.querySelector('#preview .ws-image')?.src || ''`);
     // The imported text has no syllable_body, and syllable colours are on by default.
     const importNotices = await evalJs(`[...document.querySelectorAll('#fit-notices li')].map((l) => l.dataset.notice)`);
-    const importOk = importNotices.includes('NO_SYLLABLE_DATA') && importStatus === 'Imported 2 text(s) for English.'
+    const importOk = importCleared && importNotices.includes('NO_SYLLABLE_DATA') && importStatus === 'Imported 2 text(s) for English.'
       && candidateText === 'Available: 1'
       && pickerHiddenForSingleText
       && importedTitle === 'Offline Import Check'
       && importedImageSrc.startsWith('data:image/');
     journeyChecks.push({
-      label: 'importing a content pack with a new image replaces the language\'s texts for the session (a single-text cell hides the title list; a text without syllable data says so)',
+      label: 'importing a content pack with a new image replaces the language\'s texts for the session and clears the previous sheet (a single-text cell hides the title list; a text without syllable data says so)',
       ok: importOk,
       note: importOk
-        ? 'status, candidate count, hidden title list, rendered title and imported image all as expected'
-        : `status="${importStatus}", candidates="${candidateText}", pickerHidden=${pickerHiddenForSingleText}, title="${importedTitle}", image=${importedImageSrc.slice(0, 20)}, notices=${importNotices}`
+        ? 'previous sheet cleared; status, candidate count, hidden title list, rendered title and imported image all as expected'
+        : `afterImport=${JSON.stringify(afterImport)}, status="${importStatus}", candidates="${candidateText}", pickerHidden=${pickerHiddenForSingleText}, title="${importedTitle}", image=${importedImageSrc.slice(0, 20)}, notices=${importNotices}`
     });
 
     // "Put in order" on a text with 2 sentences (the imported one above):
@@ -1041,15 +1051,16 @@ async function main() {
     const tooFewOption = await evalJs(`(() => { const o = document.querySelector('#writing-mode-select option[value="sequence"]'); return { disabled: o.disabled, label: o.textContent }; })()`);
     await evalJs(`(() => { const el = document.getElementById('writing-mode-select'); el.value = 'sequence'; el.dispatchEvent(new Event('change', { bubbles: true })); })()`);
     const tooFewFit = await waitForFit();
+    const tooFewCode = await evalJs(`document.getElementById('fit-indicator').dataset.blockedCode`);
     await wait(300);
     const tooFewPrintDisabled = await evalJs(`document.getElementById('btn-print').disabled`);
     await evalJs(`(() => { const el = document.getElementById('writing-mode-select'); el.value = 'read-copy'; el.dispatchEvent(new Event('change', { bubbles: true })); })()`);
     await waitForFit();
-    const tooFewOk = tooFewOption.disabled && /: 2\)$/.test(tooFewOption.label) && /TOO_FEW_SENTENCES/.test(tooFewFit) && tooFewPrintDisabled;
+    const tooFewOk = tooFewOption.disabled && /: 2\)$/.test(tooFewOption.label) && tooFewCode === 'TOO_FEW_SENTENCES' && tooFewPrintDisabled;
     journeyChecks.push({
       label: '"Put in order" is disabled with the reason for a 2-sentence text, and blocked (not printable) if forced',
       ok: tooFewOk,
-      note: tooFewOk ? `option "${tooFewOption.label}"` : JSON.stringify({ tooFewOption, tooFewFit, tooFewPrintDisabled })
+      note: tooFewOk ? `option "${tooFewOption.label}"` : JSON.stringify({ tooFewOption, tooFewFit, tooFewCode, tooFewPrintDisabled })
     });
 
     console.log('Checking that an unbreakable word still reports WIDTH_OVERFLOW...');
@@ -1061,10 +1072,11 @@ async function main() {
       })();
     `);
     const wideFitText = await waitForFit();
+    const wideCode = await evalJs(`document.getElementById('fit-indicator').dataset.blockedCode`);
     await wait(300);
     const widePageCount = await evalJs(`document.getElementById('fit-indicator').dataset.pageCount`);
     const widePrintDisabled = await evalJs(`document.getElementById('btn-print').disabled`);
-    const wideBlocked = /WIDTH_OVERFLOW/.test(wideFitText) && widePageCount === '' && widePrintDisabled;
+    const wideBlocked = wideCode === 'WIDTH_OVERFLOW' && widePageCount === '' && widePrintDisabled;
     journeyChecks.push({
       label: 'a word wider than the page is still blocked with WIDTH_OVERFLOW (print disabled)',
       ok: wideBlocked,
@@ -1115,6 +1127,88 @@ async function main() {
       label: 'an own text: added at its length\'s level with the default picture, kept after a reload, deleted again',
       ok: ownTextOk,
       note: ownTextOk ? `level ${ownTextAdded.level}; ${ownTextReloaded.titles.length} titles after reload` : JSON.stringify({ ownTextAdded, ownTextReloaded, ownTextDeleted })
+    });
+
+    // Regressions found on the 2026-09-27 test day (0.10.0-rc.2).
+    console.log('Checking the 2026-09-27 fixes (gap lines, built-in presets, own texts, reset)...');
+    const setField = (id, value) => `(() => {
+      const el = document.getElementById(${JSON.stringify(id)});
+      if (el.type === 'checkbox') el.checked = ${JSON.stringify(value)}; else el.value = ${JSON.stringify(value)};
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+    })()`;
+    const act = async (expression) => {
+      await evalJs(expression);
+      await wait(300);
+      await waitForFit();
+    };
+    const addOwnText = (title, body) => act(`(() => {
+      document.getElementById('own-title-input').value = ${JSON.stringify(title)};
+      document.getElementById('own-body-input').value = ${JSON.stringify(body)};
+      document.getElementById('btn-own-add').click();
+    })()`);
+    const titlesNow = () => evalJs(`[...document.getElementById('text-select').options].map((o) => o.textContent)`);
+    const storedOwnTitles = () => evalJs(`JSON.parse(localStorage.getItem('worksheet-own-texts-v1') ?? '[]').map((o) => o.title)`);
+
+    // A gap sits a little lower than its line's text: each gapped line was
+    // counted twice, so gap-fill sheets showed doubled line numbers.
+    await act(setField('level-select', '3'));
+    await act(`document.getElementById('btn-create').click()`);
+    await act(setField('writing-mode-select', 'cloze'));
+    await act(`document.getElementById('btn-cloze-every-nth').click()`);
+    await act(setField('line-numbers-toggle', true));
+    const gapLines = await evalJs(`(() => {
+      const tops = [...document.querySelectorAll('#print-surface .ws-line-number')].map((n) => parseFloat(n.style.top));
+      const lineMm = parseFloat(getComputedStyle(document.querySelector('#print-surface .ws-sentence')).lineHeight) * 25.4 / 96;
+      return { numbers: tops.length, gaps: document.querySelectorAll('#print-surface .ws-blank').length, closest: Math.min(...tops.slice(1).map((top, i) => top - tops[i])), lineMm };
+    })()`);
+    const gapLinesOk = gapLines.gaps > 0 && gapLines.numbers > 3 && gapLines.closest > gapLines.lineMm * 0.9;
+    journeyChecks.push({
+      label: 'gap-fill with line numbers: one number per line, never two on one gapped line',
+      ok: gapLinesOk,
+      note: JSON.stringify(gapLines)
+    });
+
+    // The built-in presets are formatting only: the Dyslexia-friendly button
+    // switched a gap-fill sheet back to read & copy until rc.2.
+    const gapsBefore = await evalJs(`document.querySelectorAll('#preview .ws-blank').length`);
+    await act(`document.getElementById('btn-dyslexia-preset').click()`);
+    const afterDyslexia = await evalJs(`({ mode: document.getElementById('writing-mode-select').value, gaps: document.querySelectorAll('#preview .ws-blank').length, size: document.getElementById('font-size-input').value })`);
+    const dyslexiaOk = afterDyslexia.mode === 'cloze' && afterDyslexia.gaps === gapsBefore && afterDyslexia.size === '18';
+    journeyChecks.push({
+      label: 'the Dyslexia-friendly button changes the formatting and keeps the activity and its gaps',
+      ok: dyslexiaOk,
+      note: JSON.stringify({ gapsBefore, ...afterDyslexia })
+    });
+    await act(setField('line-numbers-toggle', false));
+    await act(setField('writing-mode-select', 'read-copy'));
+
+    // An own text that can't be laid out must still be deletable (the
+    // delete button was only updated after a successful render).
+    await addOwnText('Too Wide', `A word too wide: ${'y'.repeat(160)}.`);
+    const wideOwn = await evalJs(`({ blocked: document.getElementById('fit-indicator').dataset.blockedCode, canDelete: !document.getElementById('btn-own-delete').hidden })`);
+    await act(`document.getElementById('btn-own-delete').click()`);
+    const wideOwnGone = !(await storedOwnTitles()).includes('Too Wide');
+    const wideOwnOk = wideOwn.blocked === 'WIDTH_OVERFLOW' && wideOwn.canDelete && wideOwnGone;
+    journeyChecks.push({
+      label: 'an own text too wide to lay out is blocked and can still be deleted',
+      ok: wideOwnOk,
+      note: JSON.stringify({ ...wideOwn, wideOwnGone })
+    });
+
+    // "Reset saved data" removes the own texts from this session too; until
+    // rc.2 the next own text added wrote the reset ones back to storage.
+    await addOwnText('Before Reset', 'We plant beans in spring. They grow tall and green in the sun.');
+    await evalJs(`window.confirm = () => true`);
+    await act(`document.getElementById('btn-reset-data').click()`);
+    const titlesAfterReset = await titlesNow();
+    await addOwnText('After Reset', 'Our cat sleeps by the window. She likes the warm sun on her fur.');
+    const storedAfter = await storedOwnTitles();
+    await act(`document.getElementById('btn-own-delete').click()`);
+    const resetOk = !titlesAfterReset.includes('Before Reset') && JSON.stringify(storedAfter) === JSON.stringify(['After Reset']);
+    journeyChecks.push({
+      label: '"Reset saved data" removes the own texts from the session too, and none come back',
+      ok: resetOk,
+      note: JSON.stringify({ titlesAfterReset, storedAfter })
     });
   } finally {
     chrome.kill();

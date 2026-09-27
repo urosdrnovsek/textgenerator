@@ -169,8 +169,8 @@ restore setups**:
   internal id already exists, the imported copy gets added as a new one
   rather than overwriting it.
 
-**Reset saved data**, further down, deletes every setup saved on this
-computer (after asking you to confirm) — useful before handing the computer
+**Reset saved data**, further down, deletes every setup and every one of
+your own texts saved on this computer (after asking you to confirm) — useful before handing the computer
 to someone else, or if something looks wrong and you want a clean slate. It
 only touches this app's own saved data, nothing else on the computer.
 
@@ -183,6 +183,8 @@ levels for one lesson — use the **Packet** panel:
    worksheet you see at that moment is captured exactly as it is; changing
    settings afterward won't change sheets already added.
 2. Repeat for every worksheet you want in the set (up to 20 sheets).
+   Each line in the list shows the text, language, level and writing
+   mode, and says "Answers" for an answer key.
 3. Reorder with the **↑ / ↓** buttons next to each sheet, or remove one
    with **✕**.
 4. Click **Print packet** — this opens the normal print dialog with every

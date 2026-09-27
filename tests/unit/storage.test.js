@@ -162,6 +162,14 @@ test('importPresetsFromJson rejects an unsupported schema version', () => {
   assert.equal(result.error, 'UNSUPPORTED_SCHEMA');
 });
 
+test('importPresetsFromJson rejects valid JSON that is not a setups file (null, a number) without throwing', () => {
+  for (const text of ['null', '42', '"text"']) {
+    const result = importPresetsFromJson(text, createMockStorage());
+    assert.equal(result.ok, false);
+    assert.equal(result.error, 'UNSUPPORTED_SCHEMA');
+  }
+});
+
 test('importPresetsFromJson assigns a fresh id instead of silently overwriting on collision', () => {
   const storage = createMockStorage();
   const existing = savePreset('Obstoječa', SETTINGS, storage).preset;

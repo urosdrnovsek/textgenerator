@@ -16,10 +16,11 @@ import { printWorksheet } from '../export/print.js';
 import { PACKET_MAX_SHEETS, addSnapshot, removeSnapshot, moveSnapshot, generateSnapshotId, totalPages } from '../worksheet/packet.js';
 
 /**
- * @param {{ state: object, els: Record<string, HTMLElement>, getT: () => (key: string, vars?: object) => string }} ctx
+ * @param {{ state: object, els: Record<string, HTMLElement>, getT: () => (key: string, vars?: object) => string, whenRendered: () => Promise<void> }} ctx
+ *   whenRendered: resolves once the sheet on screen is rendered (an edit may still be measuring)
  * @returns {{ renderPacketList: () => void, updatePacketControls: () => void }}
  */
-export function init({ state, els, getT }) {
+export function init({ state, els, getT, whenRendered }) {
   const t = (key, vars) => getT()(key, vars);
 
   /** Reflects state.packet into the sidebar list/buttons — pure DOM sync, no state changes. */
@@ -38,7 +39,11 @@ export function init({ state, els, getT }) {
         const titleSpan = document.createElement('span');
         titleSpan.className = 'packet-item-title';
         const pagesSuffix = sheet.pageCount > 1 ? ` — ${t('packet.sheetPages', { pages: sheet.pageCount })}` : '';
-        titleSpan.textContent = `${index + 1}. ${sheet.title} — ${t(`language.${sheet.language}`)}, ${t('field.level')} ${sheet.level}${pagesSuffix}`;
+        // The activity and "Answers": a student sheet and its key are
+        // otherwise two identical lines.
+        const mode = t(`writingMode.${sheet.model.settings.writingMode}`);
+        const key = sheet.model.blocks.some((block) => block.type === 'answerTag') ? ` — ${t('sheet.answers')}` : '';
+        titleSpan.textContent = `${index + 1}. ${sheet.title} — ${t(`language.${sheet.language}`)}, ${t('field.level')} ${sheet.level} — ${mode}${key}${pagesSuffix}`;
         li.append(titleSpan);
 
         const upButton = document.createElement('button');
@@ -97,7 +102,8 @@ export function init({ state, els, getT }) {
     els.clearPacketButton.disabled = state.packet.length === 0;
   }
 
-  function handleAddToPacket() {
+  async function handleAddToPacket() {
+    await whenRendered();
     if (!state.lastGood) return;
     const { model, layout, pageCount } = state.lastGood;
     const labels = sheetLabels(t);

@@ -152,6 +152,20 @@ function collectContentBlocks(page) {
 }
 
 /**
+ * What to try for one page: a shorter text, then "Picture on the sheet:
+ * None" when there is a picture or drawing box that may go (never on
+ * "Write about the picture", where None is not offered).
+ * @param {import('../worksheet/build.js').WorksheetModel} model
+ * @param {string[]} [more] further suggestions, after these
+ * @returns {string[]}
+ */
+function onePageSuggestions(model, more = []) {
+  const picture = model.blocks.some((block) => block.type === 'image' || block.type === 'drawingBox');
+  const removable = picture && ACTIVITIES[model.settings.writingMode]?.imageSize !== 'large';
+  return ['choose-shorter-text', ...(removable ? ['reduce-image'] : []), ...more];
+}
+
+/**
  * @param {number} revision
  * @param {string} code
  * @param {object} details
@@ -217,7 +231,7 @@ export async function measureWorksheet(model, revision, labels) {
         revision,
         'BLOCK_TOO_TALL',
         { availableHeightMm: budgetMm, requiredHeightMm: tooTall.heightMm },
-        ['choose-shorter-text', 'reduce-image']
+        onePageSuggestions(model)
       );
     }
 
@@ -232,7 +246,7 @@ export async function measureWorksheet(model, revision, labels) {
         pageCount,
         layout: { ruling, contentWidthMm: widthMm, copyBlocks: [], pageBreaksMm: breaksMm },
         heightsMm: { used: totalContentHeightMm, budget: budgetMm },
-        suggestions: pageCount === 1 ? undefined : ['choose-shorter-text', 'reduce-image'],
+        suggestions: pageCount === 1 ? undefined : onePageSuggestions(model),
         pageCountWithoutMargin,
         notices: advise(model)
       };
@@ -303,7 +317,7 @@ export async function measureWorksheet(model, revision, labels) {
       pageCount: finalPageCount,
       layout: { ruling, contentWidthMm: widthMm, copyBlocks: copyBlocksRows, pageBreaksMm: [...breaksMm, ...copyBreaksMm] },
       heightsMm: { used: totalContentHeightMm, final: cursorMm, budget: budgetMm },
-      suggestions: finalPageCount === 1 ? undefined : ['choose-shorter-text', 'reduce-image', 'read-only'],
+      suggestions: finalPageCount === 1 ? undefined : onePageSuggestions(model, ['read-only']),
       notices: advise(model, { copyRows, copyRowsNeeded }),
       noticeVars: { COPY_SPACE_SHORT: { needed: copyRowsNeeded, rows: copyRows } }
     };

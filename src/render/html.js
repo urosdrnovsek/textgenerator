@@ -122,13 +122,11 @@ function renderHeaderFields(header, labels) {
 /**
  * Measures the body's actual rendered visual lines (blueprint 8.6:
  * "alternating paragraphs is not equivalent to alternating physical lines
- * — extract line boundaries after browser layout"). A Range over a whole
- * paragraph's contents yields one client rect per style-run fragment, so
- * same-line fragments (several differently-colored spans on one wrapped
- * line) are merged by rounding their top edge — real line boxes never
- * share a top within a fraction of a pixel, styled fragments on the same
- * line always do. Requires `bodyElement` to already be attached to the
- * document; unattached nodes report zero-size rects. Only the text
+ * — extract line boundaries after browser layout"). Each text node gives
+ * one client rect per line it sits on; same-line fragments (differently
+ * coloured spans) are merged by their vertical middle, and gaps are then
+ * attached to their line. Requires `bodyElement` to already be attached to
+ * the document; unattached nodes report zero-size rects. Only the text
  * paragraphs (.ws-sentence) are measured, never the overlays drawn from
  * this measurement (stripes, line numbers).
  * @param {HTMLElement} bodyElement
@@ -136,24 +134,43 @@ function renderHeaderFields(header, labels) {
  */
 export function measureBodyLineBoxes(bodyElement) {
   const containerRect = bodyElement.getBoundingClientRect();
-  const lineMap = new Map();
+  const textRects = [];
+  const gapRects = [];
+  const range = document.createRange();
   for (const paragraph of bodyElement.children) {
     if (!(paragraph instanceof HTMLElement) || !paragraph.classList.contains('ws-sentence')) continue;
-    const range = document.createRange();
-    range.selectNodeContents(paragraph);
-    for (const rect of range.getClientRects()) {
-      if (rect.width === 0 || rect.height === 0) continue;
-      const key = Math.round(rect.top);
-      const existing = lineMap.get(key);
-      if (existing) {
-        existing.top = Math.min(existing.top, rect.top);
-        existing.bottom = Math.max(existing.bottom, rect.bottom);
-      } else {
-        lineMap.set(key, { top: rect.top, bottom: rect.bottom });
-      }
+    const walker = document.createTreeWalker(paragraph, NodeFilter.SHOW_TEXT);
+    for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+      if (node.parentElement.closest('.ws-blank')) continue;
+      range.selectNodeContents(node);
+      for (const rect of range.getClientRects()) if (rect.width > 0 && rect.height > 0) textRects.push(rect);
     }
+    for (const gap of paragraph.querySelectorAll('.ws-blank')) gapRects.push(gap.getBoundingClientRect());
   }
-  return [...lineMap.values()]
+  // Text fragments form the lines: a fragment joins the line its vertical
+  // middle falls in. Consecutive lines can't be confused (the minimum line
+  // height is 1.0, and a fragment is never twice as tall as the pitch).
+  const lines = [];
+  for (const rect of textRects.sort((a, b) => a.top - b.top)) {
+    const middle = (rect.top + rect.bottom) / 2;
+    const line = lines.at(-1);
+    if (line && middle >= line.top && middle <= line.bottom) line.bottom = Math.max(line.bottom, rect.bottom);
+    else lines.push({ top: rect.top, bottom: rect.bottom });
+  }
+  // A gap (an inline-block) then joins its line without moving the line's
+  // top: its box starts a little below the text at the usual spacing and
+  // well above it at 2.5, so taking its top as the line's gave gapped and
+  // plain lines different references. Until 0.10.0-rc.2 lines were grouped
+  // by a rounded top edge, and every gapped line counted as two: gap-fill
+  // sheets showed two overlapping line numbers on those lines.
+  for (const gap of gapRects) {
+    const middle = (gap.top + gap.bottom) / 2;
+    const line = lines.find((l) => middle >= l.top && middle <= l.bottom)
+      ?? lines.find((l) => (l.top + l.bottom) / 2 >= gap.top && (l.top + l.bottom) / 2 <= gap.bottom);
+    if (line) line.bottom = Math.max(line.bottom, gap.bottom);
+    else lines.push({ top: gap.top, bottom: gap.bottom }); // a line holding nothing but a gap
+  }
+  return lines
     .sort((a, b) => a.top - b.top)
     .map((line) => ({
       topMm: pxToMm(line.top - containerRect.top),
