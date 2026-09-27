@@ -1,12 +1,11 @@
 /**
- * Shared styled-text-run construction: confused-letter coloring and
- * syllable coloring, built once and consumed by both the HTML renderer and
- * the DOCX exporter so the two outputs cannot visually drift apart.
+ * Styled runs: the text cut into pieces that each have one colour and
+ * weight, built once and drawn by both the HTML renderer and the Word
+ * exporter, so the two outputs can't differ.
  *
- * One function decides every glyph's style (styleText, upgrade blueprint
- * §11.5.2); before 0.10 there were two builders (plain letters and
- * syllables) with the precedence written out twice. Precedence, highest
- * first: confused-letter colour > alternating syllable colour > base.
+ * One function (styleText) decides every glyph's style. Precedence,
+ * highest first: a gap, a highlighted letter group, b/d/p/q, the
+ * alternating syllable colour, the base colour.
  *
  * Runs carry metadata so later features can address words and syllables
  * (click targets, arcs): a run never crosses a word or syllable boundary.
@@ -59,7 +58,7 @@ function colorForChar(char, letterColors, uppercaseAlso) {
   return letterColors[lower];
 }
 
-/** Between-syllable mark for 'separators'/'both' mode (blueprint brief section 5: "separating words into syllables and/or alternating syllable colors" — both are independently available, not either/or). */
+/** Between syllables in 'separators' and 'both' mode; colours and separators can be on together. */
 const SYLLABLE_SEPARATOR = '·'; // middle dot
 
 /**
@@ -85,9 +84,8 @@ function sameStyle(a, b) {
  * metadata are decided here, nowhere else.
  *
  * Syllable alternation counts syllables per whitespace-separated token
- * (so trailing punctuation takes the colour of the last syllable, "ny,"),
- * exactly as the pre-0.10 builders did; the golden test
- * (tests/unit/golden-runs.test.js) holds this function to that output.
+ * (so trailing punctuation takes the colour of the last syllable, "ny,");
+ * the golden test (tests/unit/golden-runs.test.js) pins the output.
  * @param {import('./tokenize.js').TextDoc} doc
  * @param {StyleOptions} options
  * @returns {StyledRun[]}
@@ -181,7 +179,7 @@ export function styleText(doc, options = {}) {
       piece.kind = 'space';
     } else {
       // Precedence: the teacher's letter groups, then b/d/p/q, then
-      // syllable alternation, then the base colour (handbook §11.5.2).
+      // syllable alternation, then the base colour.
       const highlight = graphemeAt[offset];
       if (highlight) piece.bold = true;
       piece.color = highlight
@@ -249,12 +247,9 @@ export function buildStyledRuns(resolvedText, options = {}) {
 }
 
 /**
- * Splits one flat run array into one run array per sentence, for
- * "one sentence per line" (blueprint brief section 5). Cuts the already-
- * built runs at sentence-boundary character offsets rather than re-deriving
- * styling per sentence, so styling (syllable alternation, letter-color
- * precedence) stays computed exactly once on the full text — the same
- * shared-runs principle as the rest of this module (blueprint 8.6/8.9).
+ * Cuts the runs into one array per segment (sentence or paragraph) at the
+ * segments' offsets, so the styling, computed once on the whole text,
+ * carries over unchanged (the syllable alternation doesn't restart).
  * @param {StyledRun[]} runs flat runs whose concatenated text exactly equals the source of `sentences`
  * @param {string[]} sentences from splitIntoSentences(sourceText) — trimmed, whitespace-joined approximation of sourceText
  * @returns {StyledRun[][]}
@@ -273,10 +268,8 @@ export function splitRunsIntoSentences(runs, sentences) {
     while (remaining > 0 && runIndex < runs.length) {
       const run = runs[runIndex];
       if (run.kind === 'sep' || run.kind === 'mark') {
-        // An inserted syllable or word-space mark is not in the source text, so it
-        // consumes none of the sentence's length. Counting it (before
-        // 0.10) cut every sentence short with separators on and dropped
-        // the passage's last characters entirely.
+        // An inserted syllable or word-space mark is not in the source
+        // text, so it uses none of the sentence's length.
         paragraphRuns.push(run);
         runIndex++;
         offsetInRun = 0;
@@ -324,11 +317,8 @@ export function lightenColor(hexColor, amount) {
 }
 
 /**
- * Produces a lightened copy of styled paragraphs for trace mode — keeps
- * every color (letter, syllable, separator) distinguishable but light
- * enough to trace over (blueprint 8.6: "explicit lighter variants while
- * preserving b/d/p/q distinction"). Same shared-runs data flows to both
- * HTML and DOCX, so the two can't render trace mode differently.
+ * A lightened copy for tracing over: every colour stays told apart (b/d
+ * too), just light.
  * @param {StyledRun[][]} paragraphs
  * @param {number} [amount]
  * @returns {StyledRun[][]}

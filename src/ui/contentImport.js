@@ -1,17 +1,12 @@
 /**
- * Teacher content import coordinator ("Add new content"): reads the
- * selected JSON + images through import.js, reports the first problem in
- * the teacher's language, or installs the pack as this language's catalog
- * for the rest of the session. Extracted verbatim from main.js (0.8.1,
- * workstream J1); the parsing/validation is in import.js and
- * content/validate.js.
+ * "Add new content": a content pack and its pictures (read by import.js)
+ * replace a language's texts for this session, or the first problem is
+ * reported in the teacher's language.
  *
  * Takes everything through `ctx` and never imports another ui/* module.
- * `getT` is a getter because main.js reassigns its translator on every
- * language switch.
+ * `getT` is a getter: the translator changes with the interface language.
  */
 
-import { buildCatalogIndex } from '../content/catalog.js';
 import { readContentPackImport } from '../import.js';
 import { languageName } from '../languages.js';
 
@@ -21,11 +16,11 @@ import { languageName } from '../languages.js';
  * @param {import('./elements.js').Elements} ctx.els
  * @param {() => (key: string, vars?: object) => string} ctx.getT
  * @param {Map<string, object>} ctx.imagesById the shared image registry; imported images are added to it
- * @param {(language: string, catalog: import('../content/catalog.js').CatalogIndex) => void} ctx.installCatalog
+ * @param {(language: string, entries: import('../content/catalog.js').CatalogEntry[]) => void} ctx.replaceTexts a pack's texts, for this session
  * @param {() => void} ctx.updateCandidateCount
  * @param {() => void} ctx.showNoText clears the sheet, its notices and the picking controls
  */
-export function init({ state, els, getT, imagesById: IMAGES_BY_ID, installCatalog, updateCandidateCount, showNoText }) {
+export function init({ state, els, getT, imagesById: IMAGES_BY_ID, replaceTexts, updateCandidateCount, showNoText }) {
   const t = (key, vars) => getT()(key, vars);
 
   function describeImportError(result) {
@@ -43,11 +38,8 @@ export function init({ state, els, getT, imagesById: IMAGES_BY_ID, installCatalo
   }
 
   /**
-   * Teacher-driven content extension without coding (blueprint 8.11):
-   * validates the selected JSON + any new images together, then — all or
-   * nothing — replaces that language's catalog for the rest of this session.
-   * Imported packs are session-resident only, never written back to disk
-   * (blueprint 8.11: "Imported packs are session-resident initially").
+   * All or nothing: the pack and its pictures are checked together, then
+   * replace the language's texts until the page is closed (never saved).
    */
   async function handleImportContent() {
     const jsonFile = els.importJsonInput.files?.[0];
@@ -60,10 +52,7 @@ export function init({ state, els, getT, imagesById: IMAGES_BY_ID, installCatalo
     }
 
     for (const [id, image] of result.images) IMAGES_BY_ID.set(id, image);
-    const entriesWithLanguage = result.pack.entries.map((entry) => ({ ...entry, language: result.pack.language }));
-    // main.js owns the catalog bindings; if this is the active language it
-    // also refreshes the theme list.
-    installCatalog(result.pack.language, buildCatalogIndex(entriesWithLanguage));
+    replaceTexts(result.pack.language, result.pack.entries.map((entry) => ({ ...entry, language: result.pack.language })));
 
     els.importStatus.textContent = t('import.success', {
       count: result.pack.entries.length,

@@ -1,6 +1,6 @@
 /**
- * Advisory notices: things the teacher should know about a printable
- * sheet (handbook §11.11, "Advisory"). Pure: model in, notice codes out.
+ * Notices: things the teacher should know about a printable sheet. Pure:
+ * model in, notice codes out.
  * The codes are localized at the UI edge as `notice.<CODE>`.
  *
  * Notices never block and never change the layout — a sheet that cannot

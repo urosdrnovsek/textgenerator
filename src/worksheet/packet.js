@@ -1,10 +1,7 @@
 /**
- * Pure array operations over a packet's ordered worksheet snapshots
- * (blueprint 8.10/6: "Packets contain snapshots, not live references to
- * form controls... Add, remove, reorder... Start with a conservative
- * proposed 20-sheet limit"). No DOM, no storage — main.js owns building the
- * actual snapshot objects (each one a frozen { model, layout } pair from
- * worksheet/build.js + layout/measure.js) and printing them.
+ * A packet's list of sheets: add, remove, move, count pages, up to 20
+ * sheets. Each sheet is a frozen copy, never a live reference. Pure;
+ * ui/packet.js makes the copies and prints them.
  */
 
 export const PACKET_MAX_SHEETS = 20;
@@ -20,7 +17,7 @@ export function generateSnapshotId() {
  * @property {string} title
  * @property {string} language
  * @property {number} level
- * @property {number} pageCount how many pages this sheet prints as (upgrade blueprint v3, workstream A — a sheet is no longer guaranteed to be exactly one page)
+ * @property {number} pageCount how many pages this sheet prints as
  * @property {import('./build.js').WorksheetModel} model frozen when added: later setting changes never reach it
  * @property {import('../layout/measure.js').PageLayout} layout
  * @property {ReturnType<typeof import('../i18n.js').sheetLabels>} labels the sheet's own language, whatever the interface language later

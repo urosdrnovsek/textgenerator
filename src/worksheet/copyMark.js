@@ -1,5 +1,5 @@
 /**
- * Which passage paragraphs a copy mark (handbook §11.6 A3) covers
+ * Which passage paragraphs a copy mark covers
  * completely. The Word file can only mark a whole paragraph (a left
  * border); a target that covers part of one is marked in the preview and
  * print only, and advice.js says so (DOCX_OMITS_COPY_MARK). Pure.

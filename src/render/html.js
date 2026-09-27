@@ -1,8 +1,7 @@
 /**
- * Builds safe DOM nodes for screen preview and print from the shared
- * worksheet model. Never re-implements letter/syllable coloring — it only
- * renders the StyledRun[] it is given. Text always enters through
- * textContent, never innerHTML (blueprint 8.6).
+ * The worksheet model as DOM, for the preview and the print surface. It
+ * draws the styled runs it is given and never colours anything itself.
+ * Text enters through textContent only, never innerHTML.
  */
 
 import { buildRulingRows, getRuling } from '../layout/rulings.js';
@@ -120,15 +119,12 @@ function renderHeaderFields(header, labels) {
 }
 
 /**
- * Measures the body's actual rendered visual lines (blueprint 8.6:
- * "alternating paragraphs is not equivalent to alternating physical lines
- * — extract line boundaries after browser layout"). Each text node gives
- * one client rect per line it sits on; same-line fragments (differently
- * coloured spans) are merged by their vertical middle, and gaps are then
- * attached to their line. Requires `bodyElement` to already be attached to
- * the document; unattached nodes report zero-size rects. Only the text
- * paragraphs (.ws-sentence) are measured, never the overlays drawn from
- * this measurement (stripes, line numbers).
+ * The passage's lines as the browser actually broke them (not its
+ * paragraphs): each text node gives one rect per line it sits on, fragments
+ * on one line are merged by their vertical middle, and gaps then join
+ * their line. Only the text paragraphs (.ws-sentence) count, never the
+ * overlays drawn from these lines. `bodyElement` must be attached: detached
+ * nodes measure as zero.
  * @param {HTMLElement} bodyElement
  * @returns {Array<{ topMm: number, heightMm: number }>}
  */
@@ -157,12 +153,9 @@ export function measureBodyLineBoxes(bodyElement) {
     if (line && middle >= line.top && middle <= line.bottom) line.bottom = Math.max(line.bottom, rect.bottom);
     else lines.push({ top: rect.top, bottom: rect.bottom });
   }
-  // A gap (an inline-block) then joins its line without moving the line's
-  // top: its box starts a little below the text at the usual spacing and
-  // well above it at 2.5, so taking its top as the line's gave gapped and
-  // plain lines different references. Until 0.10.0-rc.2 lines were grouped
-  // by a rounded top edge, and every gapped line counted as two: gap-fill
-  // sheets showed two overlapping line numbers on those lines.
+  // A gap (an inline-block) joins its line without moving the line's top:
+  // its box starts below the text at the usual spacing and above it at 2.5,
+  // so its top would give gapped and plain lines different references.
   for (const gap of gapRects) {
     const middle = (gap.top + gap.bottom) / 2;
     const line = lines.find((l) => middle >= l.top && middle <= l.bottom)
@@ -179,12 +172,9 @@ export function measureBodyLineBoxes(bodyElement) {
 }
 
 /**
- * Inserts a faint alternating background behind every other measured line
- * (brief section 5: "zebra striping to keep the reader's eye anchored").
- * Absolutely positioned behind the text (blueprint: never hides/clips
- * content — this only paints behind it), driven entirely by real measured
- * line boxes, never a fixed-height CSS repeat (which would drift from the
- * text the moment font metrics or wrapping changed).
+ * Zebra stripes: a faint band behind every other measured line, painted
+ * behind the text. From the real lines, not a CSS repeat, which would drift
+ * from the text with the font or the wrapping.
  * @param {HTMLElement} bodyElement already attached to the document
  */
 export function applyLineStripes(bodyElement) {
@@ -203,10 +193,8 @@ export function applyLineStripes(bodyElement) {
 }
 
 /**
- * Numbers every measured passage line in the gutter the passage block
- * reserves with its left padding (settings.lineNumbers, handbook §11.6
- * B9). One continuous count across printed pages, like Word's line
- * numbering in the DOCX export. Same measurement as the stripes.
+ * Numbers every passage line in the gutter the passage keeps free on its
+ * left, one count across pages (as Word numbers them in the Word file).
  * @param {HTMLElement} bodyElement already attached to the document
  */
 export function applyLineNumbers(bodyElement) {
@@ -224,14 +212,11 @@ export function applyLineNumbers(bodyElement) {
 }
 
 /**
- * Syllable arcs (handbook §11.6 B7): one curve under each syllable —
- * one-syllable words included — drawn in the descender zone from the
- * union of that syllable's spans (grouped by data-w + data-syl; no
- * hyphenation, so a syllable is never split across lines). One small SVG
- * per measured line, in millimetres and positioned like the stripes. Not
- * one SVG for the whole passage: an SVG is a single unbreakable box, and
- * Firefox's print added pages rather than split a tall one (7 printed
- * where 5 were measured; 5 with the overlay removed).
+ * Syllable arcs: a curve under each syllable (one-syllable words too), in
+ * the descender zone, across the syllable's spans (data-w + data-syl; a
+ * syllable is never split across lines). One small SVG per line, not one
+ * for the passage: an SVG can't break across pages, and Firefox's print
+ * adds pages rather than split a tall one.
  * @param {HTMLElement} bodyElement already attached to the document
  * @param {string} color
  */
@@ -286,9 +271,8 @@ export function applySyllableArcs(bodyElement, color) {
 }
 
 /**
- * Marks what the child copies (handbook §11.6 A3): a thin bar beside every
- * measured line that holds a word of the target. An overlay, positioned
- * from the same line boxes as the stripes, so the layout doesn't change.
+ * Marks what the child copies: a thin bar beside every line holding a word
+ * of it. An overlay, so the layout doesn't change.
  * @param {HTMLElement} bodyElement already attached to the document
  * @param {{ firstW: number, lastW: number }} range
  */
@@ -311,15 +295,12 @@ export function applyCopyMark(bodyElement, { firstW, lastW }) {
 }
 
 /**
- * Absolutely-positioned dashed markers showing where the model expects a
- * page break — screen-only preview aid (upgrade blueprint v3, workstream
- * A), never rendered into the print surface or a packet sheet. `.ws-page`
- * has no fixed height (it grows with content, potentially spanning what
- * will print as several pages), so a marker is positioned at its mm
- * offset from the page's own top rather than inserted into element flow.
+ * The preview's dashed "Page 2" markers where the fit check expects a page
+ * to break; never on the print surface or a packet sheet. The page is one
+ * tall box, so a marker sits at its distance from the top, out of the flow.
  * @param {HTMLElement} page already has `position: relative`
  * @param {number[]} pageBreaksMm
- * @param {(n: number) => string} pageBreakLabel translates "Page {n}" for the active locale — was hardcoded English until found in a 2026-09-20 review, since this app is otherwise fully localized
+ * @param {(n: number) => string} pageBreakLabel "Page {n}" in the sheet's language
  */
 function renderPageBreakMarkers(page, pageBreaksMm, pageBreakLabel) {
   pageBreaksMm.forEach((offsetMm, index) => {
@@ -341,11 +322,11 @@ function renderPageBreakMarkers(page, pageBreaksMm, pageBreakLabel) {
  */
 
 /**
- * One renderer per block type (upgrade blueprint §11.5.3). Each returns
- * the block's element; renderWorksheet appends it and tags it with
- * `data-block`. Elements holding shaped text carry the `ws-text` class,
- * which the fit check's width-overflow test looks for. Must stay in step
- * with export/docx.js BLOCK_WRITERS (a unit test compares the key sets).
+ * One renderer per block type, returning the block's element;
+ * renderWorksheet appends it and tags it with `data-block`. Elements holding
+ * text carry the `ws-text` class, which the fit check's width test looks
+ * for. The same keys as export/docx.js BLOCK_WRITERS (a test holds them
+ * equal).
  * @type {Record<string, (block: any, context: BlockRenderContext) => HTMLElement>}
  */
 export const BLOCK_RENDERERS = {
@@ -494,7 +475,7 @@ export function renderWorksheet(model, layout, container, labels = DEFAULT_LABEL
   page.style.setProperty('--ws-line-height', String(model.settings.lineHeightMultiplier));
   page.style.setProperty('--ws-letter-spacing-mm', `${ptToMm(model.settings.letterSpacingPt)}mm`);
   page.style.setProperty('--ws-word-spacing-mm', `${ptToMm(model.settings.extraWordSpacePt)}mm`);
-  // Same box the DOCX exporter contains the image within (src/layout/imageBox.js) — one source for the slot size (workstream D1).
+  // The picture box, shared with the Word file (layout/imageBox.js).
   page.style.setProperty('--ws-image-max-width-mm', `${IMAGE_BOX_MAX_WIDTH_MM}mm`);
   page.style.setProperty('--ws-image-max-height-mm', `${IMAGE_BOX_MAX_HEIGHT_MM}mm`);
   // Only on a sheet with a copy mark, so every other page's markup is unchanged.
@@ -532,9 +513,7 @@ export function renderWorksheet(model, layout, container, labels = DEFAULT_LABEL
       if (index === 0) {
         block.style.marginTop = `${COPY_AREA_GAP_MM}mm`;
       } else {
-        // A second copy block means the fit check decided the copy
-        // exercise needs a fresh page (blueprint v3, workstream A) —
-        // break-before: page only takes effect when actually printed.
+        // The fit check gave the copy lines a fresh page (in print only).
         block.classList.add('ws-copy-block--new-page');
       }
       block.append(renderRulingSvg(layout.ruling, rows, layout.contentWidthMm));

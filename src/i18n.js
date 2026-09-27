@@ -1,7 +1,7 @@
 /**
- * Minimal string lookup by stable ID (blueprint 8.1: "Use stable IDs
- * internally rather than translated labels"). One locale file per language
- * in src/languages.js, all with the same keys (tests/unit/i18n.test.js).
+ * Interface and sheet strings by stable key, never by their English text.
+ * One locale file per language in src/languages.js, all with the same keys
+ * (tests/unit/i18n.test.js).
  */
 
 const PLACEHOLDER_PATTERN = /\{(\w+)\}/g;

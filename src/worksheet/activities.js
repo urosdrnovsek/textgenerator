@@ -1,6 +1,6 @@
 /**
- * What each writing mode puts on the page — "strategy as data" (upgrade
- * blueprint §11.5.4). worksheet/build.js reads this table to decide the
+ * What each writing mode puts on the page, as data. worksheet/build.js
+ * reads this table to decide the
  * passage variant and the task region. layout/measure.js and both
  * adapters read only the resulting model (`model.blocks`, `model.task`),
  * never the mode name, so a new activity is one row here plus whatever new

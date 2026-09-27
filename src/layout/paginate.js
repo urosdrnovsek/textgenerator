@@ -1,6 +1,6 @@
 /**
  * Pure pagination over an ordered list of already-measured blocks
- * (upgrade blueprint v3, workstream A). Computes exactly what the print
+ *. Computes exactly what the print
  * CSS's own page-break rules will do — this module's job is to make that
  * computation explicit ahead of time, not to guess independently of it,
  * so the reported page count and the actual print output can't drift

@@ -1,8 +1,8 @@
 /**
- * Builds the shared worksheet document model from an explicit content
- * entry, settings, and asset lookup. No random selection, no DOM, no
- * storage, no Word objects — those are separate concerns (blueprint
- * section 3's module responsibility table).
+ * The worksheet model: everything a sheet shows, built from a text, the
+ * settings and the teacher's clicks. The HTML renderer and the Word
+ * exporter both draw this one model. Pure: no DOM, no storage, no
+ * randomness.
  */
 
 import { splitIntoSentences, splitIntoParagraphs } from '../text/prepare.js';
@@ -59,7 +59,7 @@ import { DRAWING_BOX_HEIGHT_MM, ARC_COLOR, STARTER_SENTENCES, QUESTIONS } from '
  * @property {number} level
  * @property {ImageAsset | null} image the sheet's picture asset (an image block, when present, shows this one); null for an own text without a picture
  * @property {WorksheetSettings} settings
- * @property {Block[]} blocks the page's content in order, above the task region (upgrade blueprint §11.5.3)
+ * @property {Block[]} blocks the page's content in order, above the task region
  * @property {import('./selection.js').Selection} selection the clicks this model was built with (a snapshot)
  * @property {'passage' | 'first-sentences' | 'sentence' | 'title'} copyTarget what the child copies (always 'passage' outside read & copy)
  * @property {string} copyTargetText that text, for layout/copyEstimate.js ('' when nothing is copied: another activity, or "one sentence" with none chosen)
@@ -126,19 +126,14 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
     blanks
   });
 
-  // Authored paragraph breaks ("\n\n" in body) become separate paragraphs.
-  // Until 0.10 the whole body went into one paragraph, where HTML collapsed
-  // the newlines to a space and DOCX kept them inside one w:t (printed as
-  // spaces by LibreOffice), so 73 texts lost their paragraphing in every
-  // output. splitRunsIntoSentences cuts at any list of trimmed segments,
-  // so it serves paragraphs as well as sentences.
+  // One paragraph per sentence, or per authored paragraph ("\n\n" in the
+  // body): splitRunsIntoSentences cuts at any list of segments.
   const sentenceParagraphs = settings.sentencePerLine
     ? splitRunsIntoSentences(bodyRuns, splitIntoSentences(resolvedText.body))
     : splitRunsIntoSentences(bodyRuns, splitIntoParagraphs(resolvedText.body));
 
-  // Trace: light solid text (blueprint 8.7) — computed once here so HTML
-  // and DOCX render identical colors, never two implementations of "light".
-  // A story starter keeps only its first sentences.
+  // Trace: the text lightened here, once, so both outputs print the same
+  // light colours. A story starter keeps only its first sentences.
   const bodyParagraphs = activity.passage === 'traced'
     ? lightenParagraphs(sentenceParagraphs)
     : activity.passage === 'starter'
@@ -157,10 +152,8 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
   const answerKey = chosen.selection.showAnswers && Boolean(activity.answers)
     && (sequence ? sequence.items.length > 0 : blanks.length > 0);
 
-  // Only lines meant for copying have a copy text. Write about the picture
-  // has lines too, but nothing to copy: until 0.10.0-rc.1's fix it fell back
-  // to the whole (hidden) text and was told "About N lines are needed to
-  // copy this".
+  // Only lines meant for copying have a copy text: "Write about the
+  // picture" has lines too, but nothing to copy.
   const target = activity.copyTarget
     ? resolveCopyTarget(settings.copyTarget ?? 'passage', doc, chosen.selection, entry.title)
     : /** @type {CopyTarget} */ ({ kind: 'passage', text: '', words: null });
@@ -183,11 +176,8 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
     // entries are never mutated (a custom image is a new object, content
     // import sets new entries). Don't start mutating them.
     image,
-    // A model is a snapshot. main.js mutates its live settings object in
-    // place on every control change, so storing it by reference made every
-    // packet sheet silently follow later changes at print time while its
-    // frozen layout/page count described the old settings — the real cause
-    // of what was mis-documented in 0.8 as a Chromium print-engine bug.
+    // A copy: the settings panel changes the live settings in place, and a
+    // packet sheet must keep the settings it was measured with.
     settings: structuredClone(settings),
     selection: chosen.selection,
     selectionReset: chosen.reset,
@@ -252,7 +242,7 @@ function buildBlocks(entry, settings, activity, paragraphs, gapWidthEm, answerKe
  */
 
 /**
- * What the child copies in read & copy (handbook §11.6 A3), resolved on
+ * What the child copies in read & copy, resolved on
  * the text: "the first two sentences" (one, if that is all there is), the
  * sentence the teacher clicked, the title, or the whole text (unmarked).
  * @param {'passage' | 'first-sentences' | 'sentence' | 'title'} kind

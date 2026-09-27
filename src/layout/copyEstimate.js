@@ -1,5 +1,5 @@
 /**
- * How many handwriting rows a copy target needs (handbook §11.6 A3). A
+ * How many handwriting rows a copy target needs. A
  * heuristic, and shown as one ("About N lines"): a child's handwritten
  * character is taken to be HANDWRITING_CHAR_WIDTH_RATIO of the guide
  * height wide. The layout never adds pages to match it — the teacher

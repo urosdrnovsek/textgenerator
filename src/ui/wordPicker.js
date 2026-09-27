@@ -1,5 +1,5 @@
 /**
- * Picks words in the preview (handbook §11.3): one delegated listener on
+ * Picks words in the preview: one delegated listener on
  * #preview reads `data-w` from the clicked span and reports the word
  * index through `ctx.onWord`. It never renders worksheet DOM and never
  * writes state; the caller decides what a picked word means.

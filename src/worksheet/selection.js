@@ -1,7 +1,7 @@
 /**
- * Per-text choices the teacher makes by clicking the preview (handbook
- * §11.8): which words are gaps, which sentence to copy, whether to print
- * the answers. Pure: every operation returns a new selection and never
+ * Per-text choices the teacher makes on the preview: which words are gaps,
+ * which sentence to copy, whether to print the answers, the questions.
+ * Pure: every operation returns a new selection and never
  * touches its input. Selections are session-only — never in presets.
  *
  * A selection belongs to one text version (`key`). worksheet/build.js

@@ -1,15 +1,9 @@
 /**
- * Font/image readiness, page measurement, and the fit result. Renders into
- * a real, off-screen, unscaled surface at the actual print width — never
- * `display:none` (blueprint 8.4 fit procedure).
- *
- * A worksheet may now print on more than one page (upgrade blueprint v3,
- * workstream A — the old hard one-page block is gone). This module's job
- * is to compute exactly how many pages, and where the breaks fall, by
- * feeding real measured block heights into layout/paginate.js — the same
- * computation the print CSS's own break rules perform, so the reported
- * page count can't drift from what actually prints (see
- * styles/worksheet.css's break-inside/orphans/widows rules).
+ * The fit check: how many pages a sheet prints on, and where they break.
+ * It renders the sheet off screen, unscaled, at the print width (never
+ * display:none, which has no layout), waits for its fonts and picture,
+ * and feeds the measured heights to layout/paginate.js, which breaks pages
+ * by the same rules as the print CSS (styles/worksheet.css).
  */
 
 import { renderWorksheet, measureBodyLineBoxes } from '../render/html.js';
@@ -105,13 +99,9 @@ async function waitForImage(img) {
 /** @typedef {BlockedResult | LaidOutResult} FitResult */
 
 /**
- * WIDTH_OVERFLOW means "a word wider than the content width" — normal
- * wrapping cannot break it, so it overflows its own text box. Checked on
- * the text blocks, not the page's scrollWidth: decorative overlays are
- * allowed to bleed past the body box (the line stripes extend 2mm either
- * side on purpose), and a page-wide check mistook that bleed for an
- * unbreakable word, blocking every worksheet with stripes on from 0.8
- * (cf502b9) until 0.8.1.
+ * WIDTH_OVERFLOW: a word wider than the text column, which no wrapping can
+ * break. Checked on the text blocks, not the page: the stripes reach 2 mm
+ * past the text on purpose, and must not count.
  * @param {HTMLElement} page
  * @returns {boolean}
  */
@@ -121,23 +111,13 @@ function hasHorizontalOverflow(page) {
 }
 
 /**
- * Collects the atomic layout units above the copy area, in document order,
- * from an already-rendered, already-attached page: every model block
- * (`[data-block]`, see render/html.js) is one unit, except a passage,
- * which contributes one unit per real measured line box (it may break
- * between lines).
+ * The units a page may break between, in order: each block (`data-block`)
+ * is one, except that a passage gives one per line and "Put in order" and
+ * the questions one per item.
  *
- * Each block's heightMm is derived from the gap between its own top and
- * the next block's top (or the page's own bottom, for the last block) —
- * not from the block's own border-box height. getBoundingClientRect()
- * excludes margins, so summing individual heights would silently drop any
- * margin between blocks (found the hard way: sentence-per-line's
- * `.ws-sentence { margin-bottom: 0.25em }` between paragraphs disappeared
- * this way, undercounting total height and reporting 'fits' for content
- * that, once printed, actually needed a second page). Measuring the real
- * top-to-top distance between successive elements captures whatever
- * margin sits between them, whatever it is, the same way the single
- * whole-page measurement this replaced always did.
+ * A unit's height is the distance from its top to the next unit's top
+ * (the last: to the page's bottom), not its own box height, which leaves
+ * out the margins between units.
  * @param {HTMLElement} page
  * @returns {Array<{ heightMm: number }>}
  */
@@ -264,12 +244,9 @@ export async function measureWorksheet(model, revision, labels) {
       };
     }
 
-    // Read-and-copy: fit as many copy rows as remain on the last content
-    // page; if fewer than a usable minimum remain, finish that page with
-    // whatever fits (may be zero rows) and give the copy exercise one full
-    // fresh page rather than a cramped handful of lines (blueprint 8.4:
-    // "do not imply five blank lines are enough for 200 handwritten
-    // words" — applied honestly via an extra page instead of blocking).
+    // Copy lines: as many rows as fit on the last page; if that is fewer
+    // than a usable minimum, those rows and then a whole fresh page of
+    // them, rather than a cramped handful.
     const remainderMm = budgetMm - lastPageUsedMm - COPY_AREA_GAP_MM;
     const rowsOnLastPage = countFullRows(remainderMm, ruling.lineHeightMm);
 
@@ -295,10 +272,8 @@ export async function measureWorksheet(model, revision, labels) {
 
     const copyBlocksRows = [lastPageRows, freshPageRows].filter((n) => n > 0);
 
-    // Real second render pass with the actual final copy blocks, so the
-    // reported page count and break positions come from the DOM that will
-    // actually print, not a re-derivation of it (blueprint 8.4 fit
-    // procedure's own rule, applied to the added copy-area geometry).
+    // Rendered again with the copy lines, so the page count comes from the
+    // page that will print, not from a calculation.
     const finalPage = renderWorksheet(model, { copyBlocks: copyBlocksRows, ruling, contentWidthMm: widthMm }, surface, labels);
     await waitForImage(finalPage.querySelector('img.ws-image'));
     const measuredCopyBlockHeightsMm = [...finalPage.querySelectorAll('.ws-copy-block')].map((el) =>

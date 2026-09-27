@@ -1,6 +1,6 @@
 /**
  * The single definition of a *word*, a *sentence* and a *syllable
- * boundary* (upgrade blueprint §11.5.1), all expressed as UTF-16 offsets
+ * boundary*, all expressed as UTF-16 offsets
  * into the NFC-normalized `body`. `syllable_body` is reduced to a list of
  * break offsets; the syllable invariant (stripping `|` reproduces `body`
  * after NFC — enforced by content/validate.js) guarantees they line up.
@@ -11,8 +11,7 @@
  *
  * Deliberately separate from countWords() in runs.js, which uses
  * Intl.Segmenter for the word count shown to the teacher; unifying the two
- * would change displayed counts and the level calibration (blueprint
- * §11.5.1).
+ * would change the counts shown and the level calibration.
  */
 
 import { splitSentenceRanges } from './prepare.js';

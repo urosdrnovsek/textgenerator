@@ -148,7 +148,7 @@ export function validateSettings(settings) {
   }
 
   // Writing about the picture with no picture would print an empty sheet
-  // (handbook §11.6 A4); the UI disables the combination, this catches a
+  //; the UI disables the combination, this catches a
   // hand-edited or imported setup.
   if (settings.writingMode === 'write-own' && settings.imageSlot === 'none') {
     push('imageSlot', 'writingMode "write-own" needs a picture or a drawing box, not imageSlot "none"');
@@ -163,7 +163,7 @@ export function validateSettings(settings) {
 /**
  * Validates a saved/imported Preset's settings object — the WorksheetSettings
  * fields above, plus the language/theme/level fields a Preset carries
- * alongside them (blueprint v3, workstream D2). A preset saved or imported
+ * alongside them. A preset saved or imported
  * without going through this first could otherwise reach
  * layout/measure.js with an invalid rulingId or similar and throw instead
  * of failing with a clear message.

@@ -1,20 +1,17 @@
 /**
- * Teacher-selected image and content-pack reading, via the File API
- * (blueprint 8.8/8.11/13). Browser-only (createImageBitmap, canvas) —
- * verified against a real browser, not unit-tested the way pure modules
- * are (same pattern as layout/measure.js and render/html.js).
+ * Reading what the teacher selects: a picture, or a content pack with its
+ * pictures. Browser-only (createImageBitmap, canvas), so checked in a real
+ * browser by the verify scripts rather than by unit tests.
  *
- * Deliberately PNG/JPEG only: uploaded SVG is never accepted (blueprint 13:
- * "Only reviewed bundled SVG initially; never inline arbitrary uploaded
- * SVG" — SVG can carry scripts/external references).
+ * PNG and JPEG only: an uploaded SVG could carry scripts or links.
  */
 
 import { validatePack } from './content/validate.js';
 
 export const IMAGE_LIMITS = {
-  maxFileSizeBytes: 10 * 1024 * 1024, // blueprint 13: 10 MB per image
-  maxPixels: 16_000_000, // blueprint 13: 16 megapixels decoded
-  maxDimensionPx: 1600 // downsample target — the worksheet only ever displays this at a few cm wide
+  maxFileSizeBytes: 10 * 1024 * 1024, // 10 MB per picture
+  maxPixels: 16_000_000, // 16 megapixels decoded
+  maxDimensionPx: 1600 // shrunk to this: a sheet shows it a few cm wide
 };
 
 const ACCEPTED_TYPES = new Set(['image/png', 'image/jpeg']);
@@ -25,12 +22,10 @@ const ACCEPTED_TYPES = new Set(['image/png', 'image/jpeg']);
  */
 
 /**
- * Validates, decodes (rejecting anything that doesn't actually decode as an
- * image regardless of its claimed type/extension), normalizes EXIF
- * orientation, downsamples if oversized, and returns a data: URL — never a
- * temporary object URL, so the result survives independently of the
- * original File (blueprint 8.8: "Do not store only a temporary object URL
- * and expect it to survive reopening the app").
+ * Checks, decodes (whatever the file claims to be, it must decode as a
+ * picture), turns it upright by its EXIF orientation, shrinks it if large,
+ * and returns it as a data: URL, which, unlike an object URL, outlives the
+ * File.
  * @param {File} file
  * @param {typeof IMAGE_LIMITS} [limits]
  * @returns {Promise<ImageReadResult>}
@@ -66,7 +61,7 @@ export async function readImageFile(file, limits = IMAGE_LIMITS) {
   const ctx = canvas.getContext('2d');
   if (!ctx) return { ok: false, code: 'DECODE_FAILED' };
   // JPEG has no transparency: without a white ground, a clip-art PNG's
-  // transparent background turned black on the sheet (until 0.10.0-rc.2).
+  // transparent background turns black.
   ctx.fillStyle = '#ffffff';
   ctx.fillRect(0, 0, targetWidth, targetHeight);
   ctx.drawImage(bitmap, 0, 0, targetWidth, targetHeight);
@@ -77,11 +72,8 @@ export async function readImageFile(file, limits = IMAGE_LIMITS) {
 }
 
 /**
- * Derives a stable asset id from a teacher-selected image filename the same
- * way the brief's author-friendly content record does ("image":
- * "octopus.jpg") — normalized to just the id validatePack()'s imageId field
- * expects (blueprint 8.11: "change its text/level/theme/image filename...
- * select that JSON plus any new images").
+ * A selected picture's asset id: its filename without the extension
+ * ("octopus.jpg" is "octopus"), the imageId a content pack refers to.
  * @param {string} filename
  * @returns {string}
  */
@@ -98,14 +90,9 @@ export function imageFilenameToAssetId(filename) {
  */
 
 /**
- * Reads a teacher-selected content-pack JSON file plus any accompanying
- * image files, decodes/validates the images through the same pipeline as a
- * per-worksheet custom image, derives each image's asset id from its
- * filename, and validates the whole pack against the combined (existing +
- * newly supplied) asset id set. All-or-nothing: a bad image or a pack
- * validation failure aborts the whole import rather than partially merging
- * (blueprint 8.11: "Validate everything and show a summary before
- * activating the replacement pack").
+ * Reads a content pack and its pictures (checked like a custom picture)
+ * and validates the pack against the bundled and the new pictures. All or
+ * nothing: one bad picture or pack error and nothing is imported.
  * @param {File} jsonFile
  * @param {File[]} imageFiles
  * @param {Set<string>} existingAssetIds asset ids already known (bundled + previously imported)

@@ -1,5 +1,5 @@
 /**
- * "Fill the gaps" controls (handbook §11.6 A1): toggling a picked word,
+ * "Fill the gaps" controls: toggling a picked word,
  * every Nth word, clearing, the gap count and the refusal past the cap.
  * ("Show the answers" serves every activity with a key; main.js owns it.)
  * Writes exactly one slice of state: `state.selection` (via the pure

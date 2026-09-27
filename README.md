@@ -144,10 +144,11 @@ never a teacher prerequisite.
 
 ## Project layout
 
-- `src/` — application source: content validation/catalog, text styling,
-  worksheet model, settings validation, layout/fit measurement and
-  pagination, HTML/print rendering, DOCX export, storage, i18n, and
-  `main.js` (state and UI wiring)
+- `src/` — application source: the language list (`languages.js`), the
+  texts on offer (`content/`), text styling, the worksheet model, settings
+  validation, layout/fit measurement and pagination, HTML/print rendering,
+  DOCX export, storage, i18n, one module per sidebar panel (`ui/`), and
+  `main.js` (the state, the text on screen, and the render pipeline)
 - `styles/` — shared worksheet appearance, print stylesheet, app chrome
 - `content/` — validated content packs (`sl`, `en`, `de`, `fr`, `es`)
 - `locales/` — UI string tables, one per language, identical key sets

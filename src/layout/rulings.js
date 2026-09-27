@@ -1,8 +1,7 @@
 /**
- * Parameterized handwriting guides. Phase 0 ships one reviewed-pending
- * default: a standard three-line guide (top line, dashed midline, solid
- * baseline). Country-specific rulings (Séyès, German, Slovene) are Phase 4
- * work that plugs into the same shape (blueprint 8.7).
+ * Handwriting rulings as data. One so far: three lines (top, dashed middle,
+ * solid baseline). A country's ruling (Séyès, German, Slovene) is one more
+ * entry of the same shape, once real classroom samples exist.
  */
 
 /**
@@ -57,7 +56,7 @@ export function getRuling(rulingId, lineHeightMm) {
 
 /**
  * Full rows only — a partially clipped last row is worse than a shorter
- * copy area (blueprint 8.4).
+ * copy area.
  * @param {number} availableHeightMm
  * @param {number} lineHeightMm
  * @returns {number}

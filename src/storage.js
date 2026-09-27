@@ -1,8 +1,8 @@
 /**
- * Preference storage: capability check, named setup save/load/delete,
- * export/import for portability. localStorage isn't guaranteed to persist
- * under file:// (blueprint section 4, "C") — every write is guarded by a
- * capability check, and a failed save must never claim success.
+ * What the app keeps in this browser: saved setups (with their backup file)
+ * and the teacher's own texts. Storage may be unavailable, which some
+ * browsers do for pages opened from a file, so every write is checked, and a
+ * failed save never claims success.
  *
  * Every function takes an injectable storage backend (an object with
  * getItem/setItem/removeItem, i.e. the same interface as `localStorage`),
@@ -14,11 +14,11 @@ import { isOwnText } from './content/ownText.js';
 import { validatePresetSettings } from './worksheet/validateSettings.js';
 
 const STORAGE_KEY = 'worksheet-presets-v1';
-/** Favorites were removed in 0.8 (upgrade blueprint v3, workstream C — teachers didn't use the feature). Kept here only so resetAllData() still cleans up this key on a browser profile that has 0.7 data in it. */
+/** A key of the removed Favorites feature (before 0.8): reset still clears it. */
 const FAVORITES_STORAGE_KEY = 'worksheet-favorites-v1';
 const CAPABILITY_TEST_KEY = 'worksheet-storage-check';
-/** Every key this application writes to localStorage — resetAllData() must clear exactly these and nothing else (blueprint 13: "deletes only this application's keys, never every key in localStorage"). */
 const OWN_TEXTS_STORAGE_KEY = 'worksheet-own-texts-v1';
+/** Every key the app writes: "Reset saved data" clears exactly these, nothing else in the browser. */
 const ALL_APP_KEYS = [STORAGE_KEY, FAVORITES_STORAGE_KEY, OWN_TEXTS_STORAGE_KEY];
 
 /** Date.now() alone collides when two presets are saved within the same millisecond. */
@@ -87,11 +87,8 @@ function writePresets(presets, storage) {
 }
 
 /**
- * Saves (or overwrites, by name) a named setup. Validates settings first
- * (same check importPresetsFromJson runs — upgrade blueprint v3, workstream
- * D2) even though the caller today always builds `settings` from already-
- * valid live UI state: defense in depth against a future caller that
- * doesn't, rather than trusting that invariant to hold forever.
+ * Saves a setup, or replaces the one of the same name. The settings are
+ * validated here too, as on import, whoever the caller.
  * @param {string} name
  * @param {Preset['settings']} settings
  * @param {Storage} [storage]
@@ -160,11 +157,8 @@ export function importPresetsFromJson(jsonText, storage = defaultStorage()) {
   const existingIds = new Set(existing.map((p) => p.id));
   const shapedIncoming = parsed.presets.filter((p) => p && typeof p.name === 'string' && typeof p.id === 'string' && p.settings);
 
-  // A preset whose settings don't actually validate (a corrupted file, or
-  // one saved by an older/newer version with a since-removed rulingId,
-  // etc.) is skipped rather than imported — importing it unchecked would
-  // otherwise reach layout/measure.js later and throw instead of failing
-  // with a clear message (upgrade blueprint v3, workstream D2).
+  // A setup that doesn't validate (a damaged file, another version's
+  // settings) is skipped and reported, never imported unchecked.
   /** @type {SkippedPreset[]} */
   const skipped = [];
   const valid = [];
@@ -212,11 +206,8 @@ export function writeOwnTexts(texts, storage = defaultStorage()) {
 }
 
 /**
- * Deletes only this application's own localStorage keys (blueprint 13: "A
- * Reset action deletes only this application's keys, never every key in
- * localStorage") — presets, plus the legacy favorites key from pre-0.8
- * installs. Never touches anything else a shared school computer's browser
- * profile might hold.
+ * "Reset saved data": deletes the app's own keys and nothing else a shared
+ * school computer's browser may hold.
  * @param {Storage} [storage]
  * @returns {boolean} true if every key was actually removed
  */

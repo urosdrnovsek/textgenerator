@@ -1,6 +1,6 @@
 /**
  * Teacher-chosen letter groups ("ch, sch, š") to highlight in the passage
- * (handbook §11.6 B6). Pure. Matching is literal string comparison: a
+ *. Pure. Matching is literal string comparison: a
  * RegExp is never built from what the teacher typed.
  */
 

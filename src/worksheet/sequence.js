@@ -1,5 +1,5 @@
 /**
- * "Put in order" (handbook §11.6 A2): which sentences a sequencing sheet
+ * "Put in order": which sentences a sequencing sheet
  * shows, and in which order. Pure and deterministic — the same text gives
  * the same order every year, seeded by the entry id (not its version).
  *

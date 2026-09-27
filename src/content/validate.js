@@ -20,10 +20,8 @@ const KNOWN_IMAGE_ACCURACIES = new Set(['verified', 'plausible', 'mismatch']);
 // YYYY-MM-DD only — a review date is a label for humans and
 // `content-status`, never parsed as a timestamp.
 const ISO_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
-// Texts carry no placeholders. `{name}` used to be one (a teacher-typed
-// child name, removed in 0.8.1 because a name of the other gender made the
-// story ungrammatical); a body that still contains `{...}` is rejected
-// rather than printed with literal braces.
+// Texts are printed as written: a body with a `{...}` placeholder (the old
+// child-name field's `{name}`) is refused, never printed with its braces.
 const PLACEHOLDER_PATTERN = /\{([a-zA-Z_]+)\}/g;
 
 /**

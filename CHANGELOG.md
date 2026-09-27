@@ -7,6 +7,24 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
+Code clean-up (2026-09-27; no visible change, proven as below):
+
+- **`main.js` split into the panels it wired by hand.** From 760 lines
+  to 423. `content/library.js` holds the texts on offer (no more loose
+  catalog variables); `ui/fitStatus.js`, `ui/activityPanel.js`,
+  `ui/ownTextPanel.js`, `ui/imagePanel.js` and `ui/outputButtons.js` are
+  panels like the others. `main.js` keeps the state, the text choice and
+  the render pipeline.
+- **Comments say why, not when.** Release history, blueprint and
+  workstream references went out of the comments in `src/` and the
+  verify scripts' headers (git and this file keep the history); about
+  500 comment lines fewer. The app's code, minified with the comments
+  stripped, is byte-identical before and after.
+- **One helper for driving Chromium** (`scripts/lib/chromium.mjs`),
+  used by `verify-offline` and `verify-docx`, and its page snippets by
+  `verify-firefox`: `verify-offline` is 130 lines shorter,
+  `verify-docx` 130 (its 20 hand-written field settings are one table).
+
 Groundwork for more languages and texts (no visible change; every sheet,
 Word file and saved-setup file is identical to 0.10.0-rc.3):
 

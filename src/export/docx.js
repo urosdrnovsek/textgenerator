@@ -1,30 +1,13 @@
 /**
- * Converts the shared worksheet model into an editable .docx via the
- * `docx` package. Reuses the exact same StyledRun[] the HTML renderer
- * consumes — no separate coloring logic (blueprint 8.6/8.9).
+ * The worksheet model as an editable Word file (the `docx` package). It
+ * writes the same styled runs the HTML renderer draws, so colours and
+ * syllables can't differ between the two.
  *
- * Known Phase-0 limitation, recorded rather than hidden: bundled fonts are
- * *declared* on each run (`font: "Andika"` etc.) but not embedded in the
- * file. `docx`'s FontTable only registers a font-family reference; true
- * OOXML font embedding requires obfuscated embedded font parts the library
- * does not expose. Word/LibreOffice will substitute a fallback font unless
- * the chosen font is installed on the machine that opens the file. This is
- * exactly the go/no-go risk the blueprint (8.9) flags for Phase 0 —
- * resolved here as "not yet embedded," not silently assumed.
- *
- * settings.lineStripes (zebra striping) is deliberately NOT implemented
- * here. Blueprint 8.6 is explicit about why: "alternating paragraphs is
- * not equivalent to alternating physical lines... if a line wraps again in
- * Word, the feature fails the compatibility gate" — and 8.6 again: "this
- * feature is deliberately scheduled after basic exports." Reproducing it in
- * Word would mean pre-splitting the passage into one paragraph per line at
- * the SAME character offsets the browser wrapped at, then trusting Word's
- * own layout engine to wrap identically at those conservative widths —
- * unverified without the real cross-application "compatibility gate"
- * testing (actual Word, actual LibreOffice, actual content) the blueprint
- * calls for, which is a separate, later effort. Everything else about the
- * passage (text, colors, sentence-per-line, trace,
- * tint) still exports correctly; only the striped background is skipped.
+ * Not in the Word file, and said so by a notice on screen:
+ * - the fonts themselves: they are named, not embedded (the library can't
+ *   embed them), so Word substitutes one that isn't installed;
+ * - zebra stripes and syllable arcs: they follow the browser's line breaks,
+ *   and Word breaks lines on its own.
  */
 
 import {
@@ -103,7 +86,7 @@ function ruledLines(rowCount, rowHeightTwips, contentWidthTwips, keepTogether = 
  */
 const COPY_MARK_BORDER = { left: { style: BorderStyle.SINGLE, size: 12, color: COPY_MARK_COLOR.slice(1), space: 4 } };
 
-/** Matches src/render/html.js DEFAULT_LABELS — used only when a caller doesn't pass the active locale's translated labels. */
+/** Slovene, as in render/html.js: only when a caller passes no labels. */
 const DEFAULT_LABELS = {
   nameLine: 'Ime:',
   date: 'Datum:',
@@ -114,11 +97,9 @@ const DEFAULT_LABELS = {
 };
 
 /**
- * Splits each run on whitespace so word spacing (settings.extraWordSpacePt)
- * can be applied only to the space runs, on top of the uniform letter
- * spacing applied to every run — the same two-property split CSS
- * letter-spacing/word-spacing gives the HTML preview, previously missing
- * from DOCX export entirely (upgrade blueprint v3, workstream D3).
+ * Splits each run on whitespace, so the extra word spacing goes on the
+ * spaces only and the letter spacing on everything, as CSS letter-spacing
+ * and word-spacing do in the preview.
  * @param {import('../text/runs.js').StyledRun[]} runs
  * A gap (run.blank) becomes one underlined run of no-break spaces about
  * the sheet's gap width wide (CLOZE.docxNbspEm per space — an estimate;
@@ -178,9 +159,9 @@ function toWordRuns(runs, { fontFamily, fontSizePt, characterSpacingTwips, wordS
  */
 
 /**
- * One writer per block type (upgrade blueprint §11.5.3), each returning
- * the Word paragraphs/tables for its block. Must stay in step with
- * render/html.js BLOCK_RENDERERS (a unit test compares the key sets).
+ * One writer per block type, each returning the block's Word paragraphs and
+ * tables. The same keys as render/html.js BLOCK_RENDERERS (a test holds them
+ * equal).
  * @type {Record<string, (block: any, context: BlockWriteContext) => (Paragraph | Table)[]>}
  */
 export const BLOCK_WRITERS = {
@@ -241,10 +222,7 @@ export const BLOCK_WRITERS = {
 
   image: (block, { model, imageBytes, shading, unnumbered }) => {
     if (!imageBytes || !model.image) return [];
-    // Contains the image at its real aspect ratio within the same 60x45mm
-    // slot the HTML preview uses (object-fit: contain) — previously a fixed
-    // 60x45 forced every image (all bundled art is 512x512) into a
-    // stretched 4:3 box (workstream D1).
+    // At its own aspect ratio, inside the preview's picture box (object-fit: contain).
     const { widthMm, heightMm } = block.size === 'large'
       ? computeContainedImageSizeMm(model.image.width, model.image.height, IMAGE_BOX_LARGE.widthMm, IMAGE_BOX_LARGE.heightMm)
       : computeContainedImageSizeMm(model.image.width, model.image.height);
@@ -267,21 +245,11 @@ export const BLOCK_WRITERS = {
 
   passage: (block, { model, fontFamily, shading, characterSpacingTwips, wordSpacingTwips }) => {
     const s = model.settings;
-    // Line spacing must be EXACT, in twips of the font size, to mean the same
-    // thing as the preview's CSS `line-height: <multiplier>` (a multiple of
-    // the font size). The default "auto" rule multiplies the font's own
-    // natural line height instead, which for Andika is 1.61em (Lexend
-    // 1.25em) — so with the real fonts installed, 1.4x came out as 2.25em
-    // per line, 60% taller than the preview, and every read-copy worksheet
-    // that filled the page spilled its copy lines onto a second page. The
-    // development machine had none of the bundled fonts installed and
-    // LibreOffice's Liberation Sans substitute (1.15em) happened to fit, so
-    // verify-docx passed until CI installed the real fonts (0.8.1, F4).
+    // EXACT line spacing, a multiple of the font size like CSS line-height.
+    // Word's default ("auto") multiplies the font's own line height instead
+    // (Andika's is 1.61em), which makes every line far taller than the preview.
     const lineTwips = Math.round((s.lineHeightMultiplier ?? 1.5) * s.fontSizePt * TWIPS_PER_PT);
-    // Same gap as the preview's `.ws-body.ws-sentence-per-line .ws-sentence {
-    // margin-bottom: 0.25em }`, which applies whenever there is more than one
-    // paragraph (sentence-per-line or authored paragraph breaks). DOCX had no
-    // gap at all before 0.10, so it ran slightly shorter than the preview.
+    // The preview's gap between paragraphs (.ws-sentence margin-bottom: 0.25em).
     const paragraphGapTwips = block.paragraphs.length > 1 ? Math.round(0.25 * s.fontSizePt * TWIPS_PER_PT) : 0;
     // Line numbers: the same gutter the preview reserves, so Word wraps at
     // the width the fit check measured. Word draws its numbers left of the
@@ -298,10 +266,8 @@ export const BLOCK_WRITERS = {
             : { line: lineTwips, lineRule: LineRuleType.EXACT },
           children: toWordRuns(paragraphRuns, { fontFamily, fontSizePt: s.fontSizePt, characterSpacingTwips, wordSpacingTwips, blankWidthEm: block.blankWidthEm, showAnswers: block.showAnswers }),
           shading,
-          // Same rule as the preview's `orphans: 1; widows: 1` (worksheet.css):
-          // the fit check breaks between any two lines. Word and LibreOffice
-          // keep two lines together by default, which moved a lone line to
-          // the next page and could add a page the app never reported.
+          // As the preview (orphans/widows 1): a page may break between any two
+          // lines. Word's default keeps two together and can add a page.
           widowControl: false,
           ...(marked.has(i) ? { border: COPY_MARK_BORDER } : {}),
           ...gutter
@@ -487,7 +453,7 @@ export const BLOCK_WRITERS = {
  * @param {import('../worksheet/build.js').WorksheetModel} model
  * @param {{ copyBlocks: number[] }} layout the fit-checked layout decision from layout/measure.js — one entry in copyBlocks per copy-practice block (a second entry means a page break is needed before it)
  * @param {Uint8Array | Buffer | undefined} imageBytes decoded bytes of model.image
- * @param {{ nameLine: string, date: string, instruction?: (key: string) => string, answers?: string }} [labels] translated header.nameLine/header.date strings and instruction lines (i18n.sheetLabels) for the active locale (blueprint 8.1: every teacher-facing label must localize) — falls back to the Slovene defaults only if omitted
+ * @param {{ nameLine: string, date: string, instruction?: (key: string) => string, answers?: string }} [labels] the sheet's words in its language (i18n.sheetLabels)
  * @returns {Promise<Blob>} browser- and Node-compatible; tests convert via .arrayBuffer()
  */
 export async function exportDocx(model, layout, imageBytes, labels = DEFAULT_LABELS) {
@@ -495,20 +461,13 @@ export async function exportDocx(model, layout, imageBytes, labels = DEFAULT_LAB
   const fontFamily = FONT_FAMILIES[s.fontId] ?? s.fontId;
   const characterSpacingTwips = Math.round((s.letterSpacingPt ?? 0) * TWIPS_PER_PT);
   const wordSpacingTwips = Math.round((s.extraWordSpacePt ?? 0) * TWIPS_PER_PT);
-  // Derived from the actual margin setting rather than hardcoded — margin
-  // has no UI control today (always 20mm, giving 170mm), but a settings
-  // field for it already exists and is validated, so this must not
-  // silently drift from it if a control is ever added.
   const contentWidthTwips = mmToTwips(contentWidthMm(s.marginMm));
 
   /** @type {(Paragraph | Table)[]} */
   const children = [];
 
-  // Page tint (brief section 5) is print-optional to save ink (blueprint
-  // 8.5); reuses paragraph shading rather than page background, since Word
-  // page color is a screen-only feature by default and often isn't printed
-  // (blueprint 8.6: "Test cell/paragraph/page shading rather than assume a
-  // screen background prints").
+  // The tint, only when it prints: as paragraph shading, because Word's page
+  // colour is often left out of the print.
   const tintHex = s.tintId && s.tintId !== 'none' ? TINTS_BY_ID[s.tintId] : undefined;
   const shading = s.printTint && tintHex ? { type: ShadingType.CLEAR, fill: tintHex.replace('#', '') } : undefined;
 
@@ -523,22 +482,11 @@ export async function exportDocx(model, layout, imageBytes, labels = DEFAULT_LAB
     children.push(...write(block, context));
   }
 
-  // Copy-practice lines: a single-column table with one row per line.
-  // Paragraph-border "exact" spacing on empty/near-empty paragraphs was
-  // tried first and verified (via real LibreOffice conversion) to collapse
-  // unpredictably -- office layout engines don't treat pPr spacing the way
-  // browsers treat CSS line-height. A table's row height is authoritative
-  // across Word/LibreOffice, which is why this is the standard technique
-  // for ruled lines in generated Word documents. The full three-line guide
-  // (top + dashed midline + baseline) is still deferred to a PNG-guide
-  // adapter (blueprint 8.7) -- a bottom border alone is the Phase 0 subset.
-  //
-  // layout.copyBlocks (upgrade blueprint v3, workstream A) is one entry
-  // per block the fit check decided on — a second entry means the copy
-  // exercise needs a fresh page, same as the HTML/print output's
-  // .ws-copy-block--new-page; a Word page break is inserted before it
-  // rather than relying on the table simply overflowing, so Word's own
-  // pagination matches the app's.
+  // The copy lines: a table, one exact-height row per line, because a row's
+  // height is the one height Word and LibreOffice both keep (paragraph
+  // spacing on empty paragraphs collapsed). Only the bottom line of the
+  // preview's three-line ruling. A second copy block starts on a new page,
+  // as the fit check decided.
   if (model.task === 'lines' && layout?.copyBlocks?.length > 0) {
     const rowHeightTwips = mmToTwips(s.guideHeightMm ?? 10);
     layout.copyBlocks.forEach((rowCount, blockIndex) => {

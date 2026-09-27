@@ -1,7 +1,7 @@
 /**
- * Single source for page geometry and unit conversions. Internal values are
- * millimetres and points; adapters convert to CSS px or Word twips/half-points
- * at their own boundary (blueprint section 5).
+ * Every measure, limit, colour and default in one place. Lengths are kept
+ * in millimetres and points; the adapters convert them to CSS pixels or
+ * Word twips at their own edge.
  */
 
 import { ACTIVITIES } from './worksheet/activities.js';
@@ -35,10 +35,13 @@ export const LINE_NUMBER_GUTTER_MM = 8;
 /**
  * "Read it, then draw it" (settings.imageSlot 'drawing-box'): a bordered
  * box of fixed height after the passage, with a fixed gap above it. One
- * size on purpose (handbook §11.16: no "fills the page" mode until asked).
+ * size on purpose, until teachers ask for another.
  */
 export const DRAWING_BOX_HEIGHT_MM = 90;
 export const DRAWING_BOX_GAP_MM = 4;
+
+/** Room left beside the on-screen A4 preview when it is scaled to fit (CSS px). */
+export const PREVIEW_SIDE_GAP_PX = 16;
 
 export const MM_PER_INCH = 25.4;
 /** CSS reference pixels per inch — a fixed authoring constant, not a display DPI. */
@@ -104,11 +107,8 @@ export const FONT_FAMILIES = {
 };
 
 /**
- * Bounded numeric ranges for WorksheetSettings — the single source both the
- * settings validator and any future settings form must read from, so a
- * form's allowed range and the validator's accepted range can never drift
- * apart (blueprint section 5: "one configuration source for font sizes,
- * permitted spacing, asset limits, and page dimensions").
+ * The allowed range of each numeric setting, read by both the validator
+ * and the settings panel's number boxes, so the two can't disagree.
  */
 export const SETTINGS_LIMITS = {
   fontSizePt: { min: 10, max: 32 },
@@ -141,8 +141,8 @@ export const GRAPHEME_COLORS = ['#1E3A8A', '#0F766E', '#9A3412', '#DB2777'];
 export const SEQUENCE_SENTENCES = { min: 3, max: 6 };
 /**
  * "Continue the text" (story starter): how many sentences of the text the
- * sheet gives before the child continues. Always at least one fewer than
- * the text has, so there is something left to write.
+ * sheet gives before the child continues; fewer when the text is short, so
+ * some of it is left (a one-sentence text keeps its sentence).
  */
 export const STARTER_SENTENCES = 2;
 /**
@@ -198,13 +198,12 @@ export const WORD_SPACE_MARK = '_';
 export const WORD_SPACE_MARK_COLOR = '#94A3B8';
 
 /**
- * "Copy:" in read & copy (settings.copyTarget, handbook §11.6 A3): what
- * the child copies onto the lines. The target is marked with a thin bar
- * of COPY_MARK_COLOR next to its lines; the layout never changes.
- * HANDWRITING_CHAR_WIDTH_RATIO — the average handwritten character width
- * as a share of the guide height — drives layout/copyEstimate.js, a
- * heuristic labelled as such ("About N lines"); calibrate it from the
- * testers' ruled-paper photos (§8).
+ * "Copy:" in read & copy (settings.copyTarget): what the child copies onto
+ * the lines, marked with a thin bar of COPY_MARK_COLOR next to its lines;
+ * the layout never changes. HANDWRITING_CHAR_WIDTH_RATIO, the average
+ * handwritten letter's width as a share of the guide height, drives the
+ * "About N lines" estimate (layout/copyEstimate.js). It is a guess, to be
+ * calibrated from the testers' photos of ruled paper.
  */
 export const KNOWN_COPY_TARGETS = new Set(['passage', 'first-sentences', 'sentence', 'title']);
 export const COPY_MARK_COLOR = '#9CA3AF';
@@ -226,20 +225,11 @@ export const KNOWN_IMAGE_SLOTS = new Set(['picture', 'drawing-box', 'none']);
 /**
  * Two marking colours whose relative luminances differ by less than this
  * print as nearly the same grey (worksheet/advice.js GRAY_COLLISION). A
- * starting value (handbook §11.6 B8), to be checked against a real mono
- * laser print; the default b/d pair (0.110 vs 0.097) is well under it.
+ * starting value, to be checked against a real mono laser print; the
+ * default b/d pair (0.110 vs 0.097) is well under it.
  */
 export const GRAY_MIN_LUMINANCE_DELTA = 0.05;
 
-/**
- * Screen/print background tint (brief section 5: "Tinted background
- * options (cream / soft pastel) instead of pure white, to reduce glare").
- * `printTint` (a separate boolean on WorksheetSettings) controls whether the
- * tint also shows when printed, kept off by default to save ink — matches
- * the printTint/printStripes fields in the blueprint's own example preset
- * (section 6).
- * @type {Record<string, string>}
- */
 /**
  * A one-page tinted sheet is tinted to the bottom of its page
  * (render/html.js); this much short of it, so the tinted box can never
@@ -247,6 +237,11 @@ export const GRAY_MIN_LUMINANCE_DELTA = 0.05;
  */
 export const TINT_FILL_SLACK_MM = 1;
 
+/**
+ * Background tints, softer than white to reduce glare. They print only
+ * when the teacher ticks it (settings.printTint), to save ink.
+ * @type {Record<string, string>}
+ */
 export const TINTS_BY_ID = {
   none: '#FFFFFF',
   cream: '#FFF8E7',
@@ -254,7 +249,7 @@ export const TINTS_BY_ID = {
   green: '#EDF7EE'
 };
 
-/** The owner's letter colours for b, d, p and q (handbook §8: they stay). */
+/** The letter colours for b, d, p and q (the owner's choice). */
 export const DEFAULT_LETTER_COLORS = Object.freeze({ b: '#B42318', d: '#166534', p: '#7C3AED', q: '#B45309' });
 
 /** The two alternating syllable colours. */

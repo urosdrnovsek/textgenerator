@@ -1,9 +1,6 @@
 /**
- * Image slot geometry — one source of truth for the worksheet image's
- * bounding box, shared by the HTML/print CSS and the DOCX exporter, so a
- * bundled/custom/imported image is never stretched off its real aspect
- * ratio in one output while fitting correctly in the other (upgrade
- * blueprint v3, workstream D1). Pure, no DOM.
+ * The picture box, shared by the print CSS and the Word exporter, so a
+ * picture keeps its aspect ratio the same way in both. Pure.
  */
 
 export const IMAGE_BOX_MAX_WIDTH_MM = 60;

@@ -1,14 +1,11 @@
 /**
- * Export readiness and the print surface. Print uses the browser's own
- * pipeline against the same DOM the preview renders — no second layout
- * engine (blueprint 8.5).
+ * Printing is the browser's own, of the same DOM the preview shows: there
+ * is no second layout engine.
  */
 
 /**
- * A worksheet is print-ready whenever it laid out at all — 'fits' (one
- * page) and 'extends' (more than one, clearly labelled) are both allowed
- * to print/export; only 'blocked' is not (upgrade blueprint v3, workstream
- * A reverses the old one-page-only hard block).
+ * A sheet prints (and exports) whenever it was laid out, on one page or
+ * more; only a blocked one does not.
  * @param {{ status: 'fits' | 'extends' | 'blocked' } | null | undefined} fitResult
  * @returns {boolean}
  */

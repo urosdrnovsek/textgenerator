@@ -1,8 +1,7 @@
 /**
- * Presets coordinator: the two built-in formatting presets, teacher-saved
- * setups (save/load/delete), setup backup export/import, and "Reset saved
- * data". Extracted verbatim from main.js (0.8.1, workstream J1). Storage
- * itself stays in storage.js; validation in worksheet/validateSettings.js.
+ * "Saved setups": the two built-in setups, the teacher's own (save, load,
+ * delete), their backup file (export, import), and "Reset saved data".
+ * Storage is storage.js; validation is worksheet/validateSettings.js.
  *
  * Takes everything through `ctx` and never imports another ui/* module.
  * `getT` is a getter because main.js reassigns its translator on every
@@ -18,8 +17,7 @@ const SETTING_KEYS = Object.keys(DEFAULT_SETTINGS);
 
 /**
  * What a sheet is for rather than how it looks: the built-in setups, being
- * formatting only, leave these as they are (until 0.10.0-rc.2 the
- * Dyslexia-friendly button switched a gap-fill sheet back to read & copy).
+ * formatting only, leave these as they are.
  */
 const ACTIVITY_SETTING_KEYS = ['writingMode', 'copyTarget', 'imageSlot', 'clozeWordBank'];
 import {
@@ -58,17 +56,13 @@ export function init({
   const t = (key, vars) => getT()(key, vars);
 
   /**
-   * The two built-in presets are *formatting* presets: no language, theme,
-   * level, or text. A teacher-saved setup (extractPresetSettings) is a full
-   * setup and does carry those, and restoring them is the point of saving
-   * one. Until 0.8.1 the built-ins carried the app's default language too,
-   * so loading "Standard" in an English session switched the whole app back
-   * to Slovene and replaced the current text (upgrade blueprint v3, H).
-   * "Standard" is simply the defaults a new sheet starts with.
+   * The built-in setups are formatting only: no language, theme, level or
+   * text. A setup the teacher saved carries those, and restores them.
+   * "Standard" is the defaults a new sheet starts with.
    */
   const STANDARD_FORMATTING = DEFAULT_SETTINGS;
 
-  /** blueprint 8.6: "a Dyslexia-friendly preset as an adjustable starting point" (Andika, larger type, ~1.6 line spacing, modest spacing) — a starting combination, not a claim of clinical efficacy. */
+  /** A starting point, not a treatment: larger type, 1.6 line spacing, a little more space between letters and words. */
   const DYSLEXIA_FORMATTING = {
     ...STANDARD_FORMATTING,
     fontSizePt: 18,
@@ -78,10 +72,8 @@ export function init({
   };
 
   /**
-   * Built-in presets always exist, independent of localStorage (blueprint
-   * 8.10: "a couple of sensible built-in presets out of the box"). A
-   * function, not a module-level const: its names must re-translate when the
-   * teacher switches the interface language.
+   * The built-in setups exist whether or not the browser stores anything. A
+   * function, so their names follow the interface language.
    */
   function getBuiltInPresets() {
     return [
@@ -90,7 +82,7 @@ export function init({
     ];
   }
 
-  /** The one-click button is the same thing as loading the built-in "Dyslexia-friendly" preset — one code path, so the two can't drift. */
+  /** The "Dyslexia-friendly" button loads the built-in setup of that name: one code path. */
   function applyDyslexiaPreset() {
     applyPresetSettings(DYSLEXIA_FORMATTING, { keepSelection: true });
   }
@@ -107,11 +99,9 @@ export function init({
   }
 
   /**
-   * Applies a preset's settings after validating them (upgrade blueprint v3,
-   * workstream D2) — protects against a preset that was hand-edited, saved by
-   * a different app version, or corrupted in localStorage, which would
-   * otherwise reach layout/measure.js later and throw instead of failing with
-   * a clear message.
+   * Applies a setup after validating it: a stored or imported one may be
+   * hand-edited, from another version, or damaged, and is refused with a
+   * message rather than failing later in the layout.
    *
    * `keepSelection` (built-in formatting presets and the Dyslexia button):
    * the current language, theme, level and text all stay; only formatting
@@ -149,12 +139,9 @@ export function init({
       state.filter.theme = full.theme;
       state.filter.level = full.level;
     }
-    // structuredClone: the preset's nested header/letterColors/syllableColors
-    // must not become state.settings' own objects — the settings panel
-    // mutates those in place, which would otherwise silently rewrite the
-    // preset (a module constant, for the built-ins) for the rest of the
-    // session. Same aliasing class as the packet-snapshot bug. A setting
-    // missing from an older setup takes its default.
+    // Copies: the settings panel changes nested objects (header, letter
+    // colours) in place, which would otherwise rewrite the setup itself. A
+    // setting missing from an older setup takes its default.
     Object.assign(state.settings, structuredClone(
       Object.fromEntries(SETTING_KEYS.map((key) => [key, full[key] ?? DEFAULT_SETTINGS[key]]))
     ));

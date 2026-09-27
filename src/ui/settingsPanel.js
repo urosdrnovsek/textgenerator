@@ -1,5 +1,5 @@
 /**
- * Text-settings panel coordinator: the font select, the numeric inputs
+ * "Text settings": the font select, the numeric inputs
  * (clamped to config.js limits), the reading-support toggles, tint and
  * stripes, header fields and guide height. Every handler writes one field
  * of state.settings and asks for a render. The writing-mode select sits
@@ -86,7 +86,7 @@ export function init({ state, els, requestRender, getT }) {
     );
   }
 
-  /** Sets each number input's min/max from the single shared limits config (blueprint 5) — never hardcoded in HTML. */
+  /** Sets each number input's min/max from the single shared limits config — never hardcoded in HTML. */
   function applySettingsLimits() {
     for (const [key, setting] of NUMBER_FIELDS) {
       input(key).min = String(SETTINGS_LIMITS[setting].min);
@@ -139,7 +139,7 @@ export function init({ state, els, requestRender, getT }) {
   /**
    * "Highlight letters": applied only when the whole field is valid.
    * Invalid input changes nothing (the previous groups stay on the sheet)
-   * and says why, next to the field (handbook §11.6 B6). Empty clears them.
+   * and says why, next to the field. Empty clears them.
    */
   function updateGraphemes() {
     const t = getT();
@@ -156,7 +156,7 @@ export function init({ state, els, requestRender, getT }) {
     changed();
   }
 
-  /** Colors and separators are independently toggleable (brief section 5: "and/or") — this reads both checkboxes to derive the single syllableMode value the rest of the app expects. */
+  /** Syllable colours and separators are two checkboxes, and can be on together; the settings keep one syllableMode. */
   function updateSyllableMode() {
     const colors = els.syllableColorsToggle.checked;
     const separators = els.syllableSeparatorsToggle.checked;

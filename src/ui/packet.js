@@ -1,13 +1,9 @@
 /**
- * Packet sidebar coordinator: the list of frozen worksheet snapshots, its
- * Add/Print/Clear buttons, and printing them as one document. Extracted
- * verbatim from main.js (0.8.1, workstream J1) — the packet data model
- * itself lives in worksheet/packet.js and stays pure.
+ * "Packet": frozen copies of sheets, listed with Add, Print and Clear, and
+ * printed as one document. The list operations are worksheet/packet.js.
  *
  * Takes everything through `ctx` and never imports another ui/* module.
- * `getT` is a getter because main.js reassigns its translator on every
- * language switch; holding the function itself would keep translating in
- * the startup language.
+ * `getT` is a getter: the translator changes with the interface language.
  */
 
 import { sheetLabels } from '../i18n.js';
@@ -135,21 +131,15 @@ export function init({ state, els, getT, whenRendered }) {
   }
 
   /**
-   * Prints every packet snapshot as its own page, in order. Each snapshot was
-   * only ever added once it was already a print-ready worksheet, and the
-   * frozen model/layout/labels can't have changed since — so there is nothing
-   * left to re-measure here, only to re-render (blueprint 8.10: "Recheck
-   * every sheet before printing" is satisfied by re-rendering from the
-   * immutable snapshot rather than trusting stale DOM).
+   * Prints every sheet of the packet in order, each from its frozen copy.
+   * Each was print-ready when added and can't have changed, so it is drawn
+   * again, not measured again.
    */
   function handlePrintPacket() {
     if (state.packet.length === 0) return;
-    // Each sheet is rendered into a container that is already attached to
-    // the (off-screen, laid-out) print surface. Overlays such as line
-    // stripes measure real line boxes, and a detached node measures as
-    // zero, so until 0.10 every packet printed without its stripes even
-    // when printStripes was on (reproduced in Chromium: 7 stripes on the
-    // single print surface, 0 in the packet).
+    // Each sheet is drawn into a container already on the print surface:
+    // the stripes and arcs measure real lines, and a detached node measures
+    // as zero.
     els.printSurface.replaceChildren();
     for (const sheet of state.packet) {
       const container = document.createElement('div');
