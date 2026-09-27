@@ -14,7 +14,7 @@
 
 import { tokenize, wordIndexByOffset } from './tokenize.js';
 import { findGraphemeSpans } from './graphemes.js';
-import { WORD_SPACE_MARK, WORD_SPACE_MARK_COLOR } from '../config.js';
+import { WORD_SPACE_MARK, WORD_SPACE_MARK_COLOR, DEFAULT_SYLLABLE_COLORS } from '../config.js';
 
 /**
  * @typedef {object} StyledRun
@@ -31,9 +31,6 @@ import { WORD_SPACE_MARK, WORD_SPACE_MARK_COLOR } from '../config.js';
  */
 
 const HEX_COLOR_PATTERN = /^#[0-9a-fA-F]{6}$/;
-
-/** The two alternating syllable colours when settings give none. */
-export const DEFAULT_SYLLABLE_COLORS = ['#1D4ED8', '#B45309'];
 
 /**
  * @param {string} color

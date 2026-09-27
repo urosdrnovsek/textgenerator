@@ -10,6 +10,18 @@
  */
 
 import { validatePresetSettings } from '../worksheet/validateSettings.js';
+import { LANGUAGE_CODES } from '../languages.js';
+import { DEFAULT_SETTINGS } from '../config.js';
+
+/** Every setting a setup stores: the keys of the defaults (config.js). */
+const SETTING_KEYS = Object.keys(DEFAULT_SETTINGS);
+
+/**
+ * What a sheet is for rather than how it looks: the built-in setups, being
+ * formatting only, leave these as they are (until 0.10.0-rc.2 the
+ * Dyslexia-friendly button switched a gap-fill sheet back to read & copy).
+ */
+const ACTIVITY_SETTING_KEYS = ['writingMode', 'copyTarget', 'imageSlot', 'clozeWordBank'];
 import {
   listPresets,
   savePreset,
@@ -24,8 +36,6 @@ import {
  * @param {object} ctx.state the single mutable app state (main.js)
  * @param {Record<string, HTMLElement>} ctx.els
  * @param {() => (key: string, vars?: object) => string} ctx.getT
- * @param {string[]} ctx.languages ids of the bundled languages
- * @param {Record<string, string>} ctx.defaultLetterColors
  * @param {(language: string) => void} ctx.switchLanguage
  * @param {() => void} ctx.syncSettingsControlsFromState
  * @param {() => void} ctx.updateCandidateCount
@@ -38,8 +48,6 @@ export function init({
   state,
   els,
   getT,
-  languages: LANGUAGES,
-  defaultLetterColors: DEFAULT_LETTER_COLORS,
   switchLanguage,
   syncSettingsControlsFromState,
   updateCandidateCount,
@@ -56,34 +64,9 @@ export function init({
    * one. Until 0.8.1 the built-ins carried the app's default language too,
    * so loading "Standard" in an English session switched the whole app back
    * to Slovene and replaced the current text (upgrade blueprint v3, H).
+   * "Standard" is simply the defaults a new sheet starts with.
    */
-  const STANDARD_FORMATTING = {
-    fontId: 'andika',
-    fontSizePt: 16,
-    lineHeightMultiplier: 1.4,
-    letterSpacingPt: 0.3,
-    extraWordSpacePt: 1,
-    writingMode: 'read-copy',
-    rulingId: 'standard-3line',
-    guideHeightMm: 10,
-    letterColors: DEFAULT_LETTER_COLORS,
-    syllableMode: 'colors',
-    syllableColors: ['#1D4ED8', '#B45309'],
-    header: { nameLine: true, date: true, title: true, instructions: true },
-    sentencePerLine: false,
-    tintId: 'none',
-    printTint: false,
-    lineStripes: false,
-    printStripes: false,
-    lineNumbers: false,
-    imageSlot: 'picture',
-    graphemes: [],
-    wordSpaceMarks: false,
-    copyTarget: 'passage',
-    syllableArcs: false,
-    clozeWordBank: false,
-    marginMm: 20
-  };
+  const STANDARD_FORMATTING = DEFAULT_SETTINGS;
 
   /** blueprint 8.6: "a Dyslexia-friendly preset as an adjustable starting point" (Andika, larger type, ~1.6 line spacing, modest spacing) — a starting combination, not a claim of clinical efficacy. */
   const DYSLEXIA_FORMATTING = {
@@ -112,38 +95,13 @@ export function init({
     applyPresetSettings(DYSLEXIA_FORMATTING, { keepSelection: true });
   }
 
-  /** Everything a preset should capture. */
+  /** Everything a setup captures: what is shown, and every setting. */
   function extractPresetSettings() {
-    const s = state.settings;
     return {
       language: state.language,
       theme: state.filter.theme,
       level: state.filter.level,
-      fontId: s.fontId,
-      fontSizePt: s.fontSizePt,
-      lineHeightMultiplier: s.lineHeightMultiplier,
-      letterSpacingPt: s.letterSpacingPt,
-      extraWordSpacePt: s.extraWordSpacePt,
-      writingMode: s.writingMode,
-      rulingId: s.rulingId,
-      guideHeightMm: s.guideHeightMm,
-      letterColors: s.letterColors,
-      syllableMode: s.syllableMode,
-      syllableColors: s.syllableColors,
-      header: s.header,
-      sentencePerLine: s.sentencePerLine,
-      tintId: s.tintId,
-      printTint: s.printTint,
-      lineStripes: s.lineStripes,
-      printStripes: s.printStripes,
-      lineNumbers: s.lineNumbers,
-      imageSlot: s.imageSlot,
-      graphemes: s.graphemes,
-      wordSpaceMarks: s.wordSpaceMarks,
-      copyTarget: s.copyTarget,
-      syllableArcs: s.syllableArcs,
-      clozeWordBank: s.clozeWordBank,
-      marginMm: s.marginMm
+      ...Object.fromEntries(SETTING_KEYS.map((key) => [key, state.settings[key]]))
     };
   }
 
@@ -163,21 +121,15 @@ export function init({
    * @param {{ keepSelection?: boolean }} [options]
    */
   function applyPresetSettings(settings, { keepSelection = false } = {}) {
-    // Built-in presets carry no selection; fill it from the current state so
-    // the same validator serves both kinds. They are formatting only, so the
-    // activity stays too: until 0.10.0-rc.2 the Dyslexia-friendly button
-    // switched a gap-fill sheet back to read & copy, gaps and all.
-    const s = state.settings;
+    // Built-in presets carry no selection, and leave the activity alone;
+    // both come from the current state, so one validator serves both kinds.
     const full = keepSelection
       ? {
           ...settings,
           language: state.language,
           theme: state.filter.theme,
           level: state.filter.level,
-          writingMode: s.writingMode,
-          copyTarget: s.copyTarget,
-          imageSlot: s.imageSlot,
-          clozeWordBank: s.clozeWordBank
+          ...Object.fromEntries(ACTIVITY_SETTING_KEYS.map((key) => [key, state.settings[key]]))
         }
       : settings;
     const validation = validatePresetSettings(full);
@@ -190,7 +142,7 @@ export function init({
     els.storageStatus.textContent = '';
 
     if (!keepSelection) {
-      if (full.language !== state.language && LANGUAGES.includes(full.language)) {
+      if (full.language !== state.language && LANGUAGE_CODES.includes(full.language)) {
         switchLanguage(full.language);
       }
       state.filter.theme = full.theme;
@@ -200,34 +152,11 @@ export function init({
     // must not become state.settings' own objects — the settings panel
     // mutates those in place, which would otherwise silently rewrite the
     // preset (a module constant, for the built-ins) for the rest of the
-    // session. Same aliasing class as the packet-snapshot bug.
-    Object.assign(state.settings, structuredClone({
-      fontId: full.fontId,
-      fontSizePt: full.fontSizePt,
-      lineHeightMultiplier: full.lineHeightMultiplier,
-      letterSpacingPt: full.letterSpacingPt,
-      extraWordSpacePt: full.extraWordSpacePt,
-      writingMode: full.writingMode,
-      rulingId: full.rulingId,
-      guideHeightMm: full.guideHeightMm,
-      letterColors: full.letterColors,
-      syllableMode: full.syllableMode,
-      syllableColors: full.syllableColors,
-      header: full.header,
-      sentencePerLine: full.sentencePerLine ?? false,
-      tintId: full.tintId ?? 'none',
-      printTint: full.printTint ?? false,
-      lineStripes: full.lineStripes ?? false,
-      printStripes: full.printStripes ?? false,
-      lineNumbers: full.lineNumbers ?? false,
-      imageSlot: full.imageSlot ?? 'picture',
-      graphemes: full.graphemes ?? [],
-      wordSpaceMarks: full.wordSpaceMarks ?? false,
-      copyTarget: full.copyTarget ?? 'passage',
-      syllableArcs: full.syllableArcs ?? false,
-      clozeWordBank: full.clozeWordBank ?? false,
-      marginMm: full.marginMm
-    }));
+    // session. Same aliasing class as the packet-snapshot bug. A setting
+    // missing from an older setup takes its default.
+    Object.assign(state.settings, structuredClone(
+      Object.fromEntries(SETTING_KEYS.map((key) => [key, full[key] ?? DEFAULT_SETTINGS[key]]))
+    ));
 
     els.themeSelect.value = state.filter.theme;
     els.levelSelect.value = String(state.filter.level);

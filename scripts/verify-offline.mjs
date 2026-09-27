@@ -33,6 +33,7 @@ import { mkdtemp, mkdir, rm, cp, readFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { LANGUAGE_CODES } from '../src/languages.js';
 
 // Default matches the development machine; CI overrides it (workstream F4).
 const CHROMIUM_BIN = process.env.CHROMIUM_BIN ?? '/usr/bin/chromium';
@@ -227,8 +228,8 @@ async function main() {
       });
     }
 
-    console.log('Exercising a broad user journey across all 5 languages...');
-    for (const language of ['sl', 'en', 'de', 'fr', 'es']) {
+    console.log(`Exercising a broad user journey across all ${LANGUAGE_CODES.length} languages...`);
+    for (const language of LANGUAGE_CODES) {
       await evalJs(`
         (function() {
           document.getElementById('language-select').value = '${language}';

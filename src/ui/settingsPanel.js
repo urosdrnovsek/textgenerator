@@ -12,7 +12,7 @@
  * field's inline error, through `getT`.
  */
 
-import { SETTINGS_LIMITS, FONT_FAMILIES } from '../config.js';
+import { SETTINGS_LIMITS, FONT_FAMILIES, DEFAULT_LETTER_COLORS } from '../config.js';
 import { parseGraphemeInput } from '../text/graphemes.js';
 import { ACTIVITIES } from '../worksheet/activities.js';
 
@@ -20,12 +20,11 @@ import { ACTIVITIES } from '../worksheet/activities.js';
  * @param {object} ctx
  * @param {object} ctx.state the single mutable app state (main.js)
  * @param {Record<string, HTMLElement>} ctx.els
- * @param {Record<string, string>} ctx.defaultLetterColors restored when the letter-colours toggle is switched back on
  * @param {() => void} ctx.requestRender
  * @param {() => (key: string, vars?: object) => string} ctx.getT a getter: main.js reassigns its translator on a language switch
  * @returns {{ populateFontSelect: () => void, applySettingsLimits: () => void, syncSettingsControlsFromState: () => void }}
  */
-export function init({ state, els, defaultLetterColors: DEFAULT_LETTER_COLORS, requestRender, getT }) {
+export function init({ state, els, requestRender, getT }) {
   /** Font names (Andika, Lexend, ...) are proper nouns — shown as-is, not translated. */
   function populateFontSelect() {
     els.fontSelect.replaceChildren(
@@ -106,7 +105,7 @@ export function init({ state, els, defaultLetterColors: DEFAULT_LETTER_COLORS, r
   }
 
   function updateLetterColorsEnabled(enabled) {
-    state.settings.letterColors = enabled ? DEFAULT_LETTER_COLORS : {};
+    state.settings.letterColors = enabled ? { ...DEFAULT_LETTER_COLORS } : {};
     if (state.contentId) requestRender();
   }
 

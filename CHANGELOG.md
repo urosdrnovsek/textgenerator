@@ -7,6 +7,24 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
+Groundwork for more languages and texts (no visible change; every sheet,
+Word file and saved-setup file is identical to 0.10.0-rc.3):
+
+- **One language list, `src/languages.js`.** A language is now its content
+  file, its locale file and one line there. The build bundles exactly the
+  listed languages; validation refuses a missing or unlisted file; the
+  tests and the verify scripts loop over the list (they had ten copies of
+  it). Language names moved from the five locale files into the list.
+- **One source for the default settings, `DEFAULT_SETTINGS` in
+  `src/config.js`.** It was written out twice in full (the start state and
+  the "Standard" setup), and saving and loading a setup listed every field
+  by hand. A new setting is now one key there, its check and its control.
+- **Adding a text needs no test change.** The Slovene entry-count test is
+  replaced by one that holds every pack to at least two texts per cell,
+  and two property checks that read only the Slovene texts now read every
+  language.
+- `docs/content-guide.md` has an "Adding a language" section.
+
 ## 0.10.0-rc.3 — 2026-09-27 (fixes before the testers)
 
 The same features as 0.10.0-rc.2, with 12 glitches fixed after a full

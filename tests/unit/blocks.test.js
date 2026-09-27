@@ -5,6 +5,7 @@ import { KNOWN_WRITING_MODES } from '../../src/config.js';
 import { BLOCK_RENDERERS } from '../../src/render/html.js';
 import { BLOCK_WRITERS } from '../../src/export/docx.js';
 import { buildWorksheet } from '../../src/worksheet/build.js';
+import { LANGUAGE_CODES, readLocale } from './helpers.js';
 
 const ENTRY = { id: 't', version: 1, theme: 'stories', level: 1, title: 'Naslov', body: 'Maja ima muco.', imageId: 'img', language: 'sl' };
 const ASSETS = { imagesById: new Map([['img', { id: 'img', path: 'data:image/jpeg;base64,x' }]]) };
@@ -83,12 +84,11 @@ test('the older modes keep their exact blocks: no instruction line, a normal pic
 });
 
 test('every activity instruction has a sheet.instruction string in all five locales', async () => {
-  const { readFileSync } = await import('node:fs');
   const { ACTIVITIES: activities } = await import('../../src/worksheet/activities.js');
   const keys = Object.values(activities).map((a) => a.instruction).filter(Boolean);
   assert.ok(keys.length > 0);
-  for (const language of ['sl', 'en', 'de', 'fr', 'es']) {
-    const { strings } = JSON.parse(readFileSync(new URL(`../../locales/${language}.json`, import.meta.url), 'utf8'));
+  for (const language of LANGUAGE_CODES) {
+    const { strings } = readLocale(language);
     for (const key of keys) assert.equal(typeof strings[`sheet.instruction.${key}`], 'string', `${language}: ${key}`);
   }
 });

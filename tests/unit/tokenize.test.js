@@ -1,9 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
 import { tokenize, syllableBreakOffsets, wordIndexByOffset } from '../../src/text/tokenize.js';
 import { buildStyledRuns, splitRunsIntoSentences } from '../../src/text/runs.js';
 import { splitIntoSentences } from '../../src/text/prepare.js';
+import { LANGUAGE_CODES, readPack } from './helpers.js';
 
 const words = (doc) => doc.words.map((w) => w.text);
 
@@ -48,11 +48,9 @@ test('styled runs carry word and syllable ids, never crossing a word or syllable
   );
 });
 
-test('every bundled text: tokenizer and run metadata invariants hold (property check over all 318 entries)', async () => {
-  const root = new URL('../../', import.meta.url);
-  for (const language of ['sl', 'en', 'de', 'fr', 'es']) {
-    const pack = JSON.parse(await readFile(new URL(`content/${language}.json`, root), 'utf8'));
-    for (const entry of pack.entries) {
+test('every bundled text: tokenizer and run metadata invariants hold (property check over every entry)', () => {
+  for (const language of LANGUAGE_CODES) {
+    for (const entry of readPack(language).entries) {
       const label = `${language}:${entry.id}`;
       const doc = tokenize(entry);
       const wordAt = wordIndexByOffset(doc);

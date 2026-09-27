@@ -1,8 +1,5 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
-import { fileURLToPath } from 'node:url';
-import path from 'node:path';
 import { buildStyledRuns, splitRunsIntoSentences, countWords } from '../../src/text/runs.js';
 
 // The pre-0.10 builders (plain letters / syllables) became one styleText
@@ -20,6 +17,7 @@ const byColor = (runs) => {
   return merged;
 };
 import { splitIntoSentences } from '../../src/text/prepare.js';
+import { LANGUAGE_CODES, readPack } from './helpers.js';
 
 test('colors b/d while preserving the exact passage, including Slovene diacritics', () => {
   const source = 'b d p q č š ž <b>';
@@ -164,16 +162,16 @@ test('splitRunsIntoSentences splits correctly even when a sentence boundary fall
   assert.deepEqual(paragraphs.map((p) => p.map((r) => r.text).join('')), ['Ena.', 'Dve.', 'Tri.']);
 });
 
-test('splitRunsIntoSentences: reconstructed text from paragraphs matches splitIntoSentences for every real content entry (property check)', async () => {
-  const root = path.dirname(path.dirname(path.dirname(fileURLToPath(import.meta.url))));
-  const pack = JSON.parse(await readFile(path.join(root, 'content/sl.json'), 'utf8'));
-  for (const entry of pack.entries) {
-    const runs = buildLetterRuns(entry.body, { letterColors: { b: '#B42318', d: '#166534' } });
-    const sentences = splitIntoSentences(entry.body);
-    const paragraphs = splitRunsIntoSentences(runs, sentences);
-    assert.equal(paragraphs.length, sentences.length, `${entry.id}: one paragraph per sentence`);
-    const reconstructed = paragraphs.map((p) => p.map((r) => r.text).join(''));
-    assert.deepEqual(reconstructed, sentences, `${entry.id}: paragraph text must match the sentence it was cut for`);
+test('splitRunsIntoSentences: reconstructed text from paragraphs matches splitIntoSentences for every real content entry (property check)', () => {
+  for (const language of LANGUAGE_CODES) {
+    for (const entry of readPack(language).entries) {
+      const runs = buildLetterRuns(entry.body, { letterColors: { b: '#B42318', d: '#166534' } });
+      const sentences = splitIntoSentences(entry.body);
+      const paragraphs = splitRunsIntoSentences(runs, sentences);
+      assert.equal(paragraphs.length, sentences.length, `${language}:${entry.id}: one paragraph per sentence`);
+      const reconstructed = paragraphs.map((p) => p.map((r) => r.text).join(''));
+      assert.deepEqual(reconstructed, sentences, `${language}:${entry.id}: paragraph text must match the sentence it was cut for`);
+    }
   }
 });
 

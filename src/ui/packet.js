@@ -11,6 +11,7 @@
  */
 
 import { sheetLabels } from '../i18n.js';
+import { languageName } from '../languages.js';
 import { renderWorksheet } from '../render/html.js';
 import { printWorksheet } from '../export/print.js';
 import { PACKET_MAX_SHEETS, addSnapshot, removeSnapshot, moveSnapshot, generateSnapshotId, totalPages } from '../worksheet/packet.js';
@@ -43,7 +44,7 @@ export function init({ state, els, getT, whenRendered }) {
         // otherwise two identical lines.
         const mode = t(`writingMode.${sheet.model.settings.writingMode}`);
         const key = sheet.model.blocks.some((block) => block.type === 'answerTag') ? ` — ${t('sheet.answers')}` : '';
-        titleSpan.textContent = `${index + 1}. ${sheet.title} — ${t(`language.${sheet.language}`)}, ${t('field.level')} ${sheet.level} — ${mode}${key}${pagesSuffix}`;
+        titleSpan.textContent = `${index + 1}. ${sheet.title} — ${languageName(sheet.language)}, ${t('field.level')} ${sheet.level} — ${mode}${key}${pagesSuffix}`;
         li.append(titleSpan);
 
         const upButton = document.createElement('button');

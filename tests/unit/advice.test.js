@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
 import { advise, relativeLuminance, NOTICE_CODES } from '../../src/worksheet/advice.js';
 import { buildWorksheet } from '../../src/worksheet/build.js';
+import { LANGUAGE_CODES, readLocale } from './helpers.js';
 
 const ENTRY = { id: 't', version: 1, theme: 'stories', level: 1, title: 'Naslov', body: 'Maja ima muco.', imageId: 'img', language: 'sl' };
 const SYLLABLE_ENTRY = { ...ENTRY, syllable_body: 'Ma|ja i|ma mu|co.' };
@@ -60,9 +60,9 @@ test('the default syllable colours alone are not a collision', () => {
 });
 
 // t() throws on a missing key, which turns every render into fit.internalError.
-test('every notice code has a notice.<CODE> string in all five locales', () => {
-  for (const language of ['sl', 'en', 'de', 'fr', 'es']) {
-    const { strings } = JSON.parse(readFileSync(new URL(`../../locales/${language}.json`, import.meta.url), 'utf8'));
+test('every notice code has a notice.<CODE> string in every locale', () => {
+  for (const language of LANGUAGE_CODES) {
+    const { strings } = readLocale(language);
     for (const code of NOTICE_CODES) {
       assert.equal(typeof strings[`notice.${code}`], 'string', `${language}: notice.${code}`);
     }

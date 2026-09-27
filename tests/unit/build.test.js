@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { buildWorksheet } from '../../src/worksheet/build.js';
+import { LANGUAGE_CODES, readPack } from './helpers.js';
 
 const ENTRY = {
   id: 'test_entry',
@@ -146,10 +147,8 @@ test('every bundled text survives every paragraph/syllable combination with no c
   // counted as source text when cutting sentences (cutting them short and
   // dropping the passage's end), and the sentence splitter skipped a quoted
   // exclamation that the sentence continued past.
-  const { readFile } = await import('node:fs/promises');
-  const root = new URL('../../', import.meta.url);
-  for (const language of ['sl', 'en', 'de', 'fr', 'es']) {
-    const pack = JSON.parse(await readFile(new URL(`content/${language}.json`, root), 'utf8'));
+  for (const language of LANGUAGE_CODES) {
+    const pack = readPack(language);
     for (const entry of pack.entries) {
       const assets = { imagesById: new Map([[entry.imageId, { id: entry.imageId, path: '' }]]) };
       for (const sentencePerLine of [false, true]) {

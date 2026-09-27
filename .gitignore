@@ -6,7 +6,8 @@ release/
 # Generated versioned ZIP — reproducible via `npm run package`.
 dist/
 
-# Generated from assets/manifest.json on every build.
+# Generated on every build: images from assets/manifest.json, languages from
+# src/languages.js + content/ + locales/.
 src/generated/
 
 # Not published yet — internal planning docs.

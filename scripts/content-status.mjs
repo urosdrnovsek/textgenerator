@@ -16,11 +16,12 @@
  * (`npm run validate-content` is the gate).
  */
 
-import { readFile, readdir } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 import { validatePack } from '../src/content/validate.js';
+import { LANGUAGE_CODES } from '../src/languages.js';
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const THEMES = ['stories', 'animal_facts', 'around_the_world', 'amazing_science', 'nature_seasons'];
@@ -90,7 +91,7 @@ async function main() {
   const assetIds = new Set(manifest.assets.map((a) => a.id));
 
   const contentDir = path.join(root, 'content');
-  const files = (await readdir(contentDir)).filter((f) => f.endsWith('.json')).sort();
+  const files = LANGUAGE_CODES.map((code) => `${code}.json`);
   let ok = true;
   for (const file of files) {
     const language = file.replace(/\.json$/, '');

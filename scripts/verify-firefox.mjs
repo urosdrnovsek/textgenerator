@@ -56,6 +56,7 @@ import { mkdtemp, rm, writeFile, readdir, readFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { LANGUAGE_CODES } from '../src/languages.js';
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 
@@ -493,8 +494,8 @@ async function main() {
     `);
     await waitForFit();
 
-    console.log('\nExercising all 5 languages...');
-    for (const language of ['sl', 'en', 'de', 'fr', 'es']) {
+    console.log(`\nExercising all ${LANGUAGE_CODES.length} languages...`);
+    for (const language of LANGUAGE_CODES) {
       await evalJs(`
         document.getElementById('language-select').value = '${language}';
         document.getElementById('language-select').dispatchEvent(new Event('change', { bubbles: true }));

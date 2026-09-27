@@ -8,8 +8,8 @@ no-rebuild import path from the teacher's side).
 
 ## Packs and the theme × level grid
 
-One file per language: `content/sl.json`, `en.json`, `de.json`, `fr.json`,
-`es.json`. Each is a *pack*:
+One file per language in `content/`, named by its code (`sl.json`,
+`en.json`, …). Each is a *pack*:
 
 ```json
 {
@@ -22,18 +22,44 @@ One file per language: `content/sl.json`, `en.json`, `de.json`, `fr.json`,
 
 The app offers five themes (`stories`, `animal_facts`, `around_the_world`,
 `amazing_science`, `nature_seasons`) and five levels. **Every theme × level
-cell should have at least one entry** — an empty cell is exactly what a
-teacher sees as "No texts for this selection" (the app never quietly
-substitutes another level). Slovene, German, French and Spanish have
-exactly one entry per cell, 25 per language; English is being grown to
-three per cell so a class doesn't get the same text twice (stories done
-on 2026-09-20 — ten original texts on already-bundled pictures — the
-other four themes to follow). Within a cell the app offers the titles in
-a picker and "Create text" cycles through them in pack order, so **new
-entries go at the end of the file**: the first entry of a cell is what a
-teacher sees first, and what the verify scripts get unless they pin an
-`entryId`. `npm run content-status` prints the grid and flags empty
-cells.
+cell has at least two entries** (a unit test holds every pack to it), so a
+teacher always has a choice and a class doesn't get the same text twice.
+An empty cell is what a teacher would see as "No texts for this
+selection": the app never quietly substitutes another level. Within a
+cell the app offers the titles in a picker and "Create text" cycles
+through them in pack order, so **new entries go at the end of the file**:
+the first entry of a cell is what a teacher sees first, and what the
+verify scripts get unless they pin an `entryId`. `npm run content-status`
+prints the grid and the counts.
+
+Adding a text needs no code and no test change: append the entry, then
+`npm run validate-content`, `node scripts/dump-golden-runs.mjs` (the diff
+must touch only the new entry) and `npm test`.
+
+### Adding a language
+
+A language is two files and one line; nothing else in the code names the
+languages.
+
+1. `content/<code>.json`: the pack, at least two texts per cell, each with
+   its syllable breaks (below) and a picture from `assets/`.
+2. `locales/<code>.json`: every key the other locale files have (copy
+   `en.json` and translate; a unit test holds the key sets equal),
+   including the instruction lines printed on the sheets.
+3. One line in `src/languages.js`: the code and the language's own name,
+   in the position it should have in the menu.
+
+Then `node scripts/dump-golden-runs.mjs` records the new texts' styling
+fingerprints (the golden test fails until then, as it should for any new
+text). `npm run validate-content` (and so `npm run build`) refuses to run
+while one of the three is missing or a file names another language. The
+tests
+and the verify scripts loop over `src/languages.js`, so the new language
+is checked everywhere at once. Before release, check that the four fonts
+have its letters (`Instructions/tools/cmap.mjs`; all four cover the
+Latin-alphabet languages of Europe except Romanian `ș` in Comic Neue) and
+that the level word bands (`LEVEL_WORD_BANDS` in `src/config.js`) suit
+it; a language of long compound words may need its own.
 
 ## Levels
 

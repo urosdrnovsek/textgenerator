@@ -13,6 +13,7 @@
 
 import { buildCatalogIndex } from '../content/catalog.js';
 import { readContentPackImport } from '../import.js';
+import { languageName } from '../languages.js';
 
 /**
  * @param {object} ctx
@@ -64,7 +65,7 @@ export function init({ state, els, getT, imagesById: IMAGES_BY_ID, installCatalo
 
     els.importStatus.textContent = t('import.success', {
       count: result.pack.entries.length,
-      language: t(`language.${result.pack.language}`)
+      language: languageName(result.pack.language)
     });
     els.importJsonInput.value = '';
     els.importImagesInput.value = '';

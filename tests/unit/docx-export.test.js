@@ -11,6 +11,7 @@ import { buildWorksheet } from '../../src/worksheet/build.js';
 import { exportDocx } from '../../src/export/docx.js';
 import { convertMillimetersToTwip } from 'docx';
 import { mmToTwips, mmToPx, LINE_NUMBER_GUTTER_MM } from '../../src/config.js';
+import { readJson, readPack } from './helpers.js';
 
 const root = path.dirname(path.dirname(path.dirname(fileURLToPath(import.meta.url))));
 const TEST_ENTRY_ID = 'stories_muc_1';
@@ -32,14 +33,14 @@ const SETTINGS = {
 };
 
 async function loadManifestAssets() {
-  const manifest = JSON.parse(await readFile(path.join(root, 'assets/manifest.json'), 'utf8'));
+  const manifest = readJson('assets/manifest.json');
   const assetIds = new Set(manifest.assets.map((a) => a.id));
   const imagesById = new Map(manifest.assets.map((a) => [a.id, { id: a.id, path: a.path, width: a.width, height: a.height }]));
   return { assetIds, imagesById };
 }
 
 async function buildModel(entryId, settings = SETTINGS) {
-  const raw = JSON.parse(await readFile(path.join(root, 'content/sl.json'), 'utf8'));
+  const raw = readPack('sl');
   const { assetIds, imagesById } = await loadManifestAssets();
   const { pack } = validatePack(raw, assetIds);
   const entry = { ...pack.entries.find((e) => e.id === entryId), language: pack.language };
@@ -47,7 +48,7 @@ async function buildModel(entryId, settings = SETTINGS) {
 }
 
 async function imageBytesFor(entryId) {
-  const raw = JSON.parse(await readFile(path.join(root, 'content/sl.json'), 'utf8'));
+  const raw = readPack('sl');
   const entry = raw.entries.find((e) => e.id === entryId);
   const { imagesById } = await loadManifestAssets();
   return readFile(path.join(root, imagesById.get(entry.imageId).path));
@@ -338,7 +339,7 @@ test('a gap is one underlined run of no-break spaces about the gap width wide, a
   const plain = await buildModel(TEST_ENTRY_ID);
   const answer = plain.bodyParagraphs.flat().filter((r) => r.w === 3).map((r) => r.text).join('');
   const selection = { key: keyFor(plain.contentKey), blanks: [3], sentence: null, showAnswers: false };
-  const raw = JSON.parse(await readFile(path.join(root, 'content/sl.json'), 'utf8'));
+  const raw = readPack('sl');
   const { imagesById } = await loadManifestAssets();
   const entry = { ...raw.entries.find((e) => e.id === TEST_ENTRY_ID), language: 'sl' };
   const gapped = buildWorksheet(entry, { ...SETTINGS, writingMode: 'cloze' }, { imagesById }, 'sl', selection);
@@ -354,7 +355,7 @@ test('the answer key in Word: the "Answers" tag, and each answer bold in the mid
   const { keyFor } = await import('../../src/worksheet/selection.js');
   const plain = await buildModel(TEST_ENTRY_ID);
   const answer = plain.bodyParagraphs.flat().filter((r) => r.w === 3).map((r) => r.text).join('');
-  const raw = JSON.parse(await readFile(path.join(root, 'content/sl.json'), 'utf8'));
+  const raw = readPack('sl');
   const { imagesById } = await loadManifestAssets();
   const entry = { ...raw.entries.find((e) => e.id === TEST_ENTRY_ID), language: 'sl' };
   const selection = { key: keyFor(plain.contentKey), blanks: [3], sentence: null, showAnswers: true };
@@ -395,7 +396,7 @@ test('"Put in order" in Word: one unsplittable row per sentence, a square box of
   const box = toTwips(ptToMm(SETTINGS.fontSizePt * SEQUENCE_BOX_FACTOR));
   assert.equal((xml.match(/<w:cantSplit\/>/g) ?? []).length, items);
   assert.equal((xml.match(new RegExp(`<w:trHeight w:val="${box}" w:hRule="exact"/>`, 'g')) ?? []).length, items, 'one exact square per item');
-  const raw = JSON.parse(await readFile(path.join(root, 'content/sl.json'), 'utf8'));
+  const raw = readPack('sl');
   const { imagesById } = await loadManifestAssets();
   const entry = { ...raw.entries.find((e) => e.id === TEST_ENTRY_ID), language: 'sl' };
   const key = buildWorksheet(entry, { ...SETTINGS, writingMode: 'sequence' }, { imagesById }, 'sl', { key: keyFor(student.contentKey), blanks: [], sentence: null, showAnswers: true });
@@ -418,7 +419,7 @@ test('"Continue the text" in Word: the instruction, only the first sentences, th
 test('the teacher\'s questions in Word: numbered, kept with their ruled answer lines, not merged with the copy lines', async (t) => {
   const { keyFor } = await import('../../src/worksheet/selection.js');
   const plain = await buildModel(TEST_ENTRY_ID);
-  const raw = JSON.parse(await readFile(path.join(root, 'content/sl.json'), 'utf8'));
+  const raw = readPack('sl');
   const { imagesById } = await loadManifestAssets();
   const entry = { ...raw.entries.find((e) => e.id === TEST_ENTRY_ID), language: 'sl' };
   const model = buildWorksheet(entry, SETTINGS, { imagesById }, 'sl', { key: keyFor(plain.contentKey), blanks: [], sentence: null, showAnswers: false, questions: ['Kdo ima muco?', 'Kakšna je muca?'] });
@@ -433,7 +434,7 @@ test('the teacher\'s questions in Word: numbered, kept with their ruled answer l
 test('the word bank in Word: one bordered cell with the missing words, above the text, and nothing numbered by it', async (t) => {
   const { keyFor } = await import('../../src/worksheet/selection.js');
   const plain = await buildModel(TEST_ENTRY_ID);
-  const raw = JSON.parse(await readFile(path.join(root, 'content/sl.json'), 'utf8'));
+  const raw = readPack('sl');
   const { imagesById } = await loadManifestAssets();
   const entry = { ...raw.entries.find((e) => e.id === TEST_ENTRY_ID), language: 'sl' };
   const model = buildWorksheet(entry, { ...SETTINGS, writingMode: 'cloze', clozeWordBank: true, lineNumbers: true }, { imagesById }, 'sl', { key: keyFor(plain.contentKey), blanks: [3, 1], sentence: null, showAnswers: false, questions: [] });

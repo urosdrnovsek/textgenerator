@@ -7,8 +7,7 @@
  * be laid out is a 'blocked' FitResult (layout/measure.js), not a notice.
  */
 
-import { GRAY_MIN_LUMINANCE_DELTA, ARC_MIN_LINE_HEIGHT } from '../config.js';
-import { DEFAULT_SYLLABLE_COLORS } from '../text/runs.js';
+import { GRAY_MIN_LUMINANCE_DELTA, ARC_MIN_LINE_HEIGHT, DEFAULT_SYLLABLE_COLORS } from '../config.js';
 import { ACTIVITIES } from './activities.js';
 import { markedParagraphs } from './copyMark.js';
 

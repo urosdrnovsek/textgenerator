@@ -52,6 +52,9 @@ function checkColorMap(field, colors, errors) {
   }
 }
 
+/** On/off settings; each may be absent (a setup saved before it existed). */
+const OPTIONAL_BOOLEANS = ['sentencePerLine', 'printTint', 'lineStripes', 'printStripes', 'lineNumbers', 'clozeWordBank', 'syllableArcs', 'wordSpaceMarks'];
+
 /**
  * @typedef {object} SettingsValidationError
  * @property {string} field
@@ -115,44 +118,16 @@ export function validateSettings(settings) {
     push('header', 'header.instructions must be a boolean when present');
   }
 
-  if (settings.sentencePerLine !== undefined && typeof settings.sentencePerLine !== 'boolean') {
-    push('sentencePerLine', 'sentencePerLine must be a boolean when present');
+  for (const field of OPTIONAL_BOOLEANS) {
+    if (settings[field] !== undefined && typeof settings[field] !== 'boolean') push(field, `${field} must be a boolean when present`);
   }
 
   if (settings.tintId !== undefined && !Object.hasOwn(TINTS_BY_ID, settings.tintId)) {
     push('tintId', `unknown tintId "${settings.tintId}" — known: ${Object.keys(TINTS_BY_ID).join(', ')}`);
   }
 
-  if (settings.printTint !== undefined && typeof settings.printTint !== 'boolean') {
-    push('printTint', 'printTint must be a boolean when present');
-  }
-
-  if (settings.lineStripes !== undefined && typeof settings.lineStripes !== 'boolean') {
-    push('lineStripes', 'lineStripes must be a boolean when present');
-  }
-
-  if (settings.printStripes !== undefined && typeof settings.printStripes !== 'boolean') {
-    push('printStripes', 'printStripes must be a boolean when present');
-  }
-
-  if (settings.lineNumbers !== undefined && typeof settings.lineNumbers !== 'boolean') {
-    push('lineNumbers', 'lineNumbers must be a boolean when present');
-  }
-
   if (settings.copyTarget !== undefined && !KNOWN_COPY_TARGETS.has(settings.copyTarget)) {
     push('copyTarget', `unknown copyTarget "${settings.copyTarget}" — known: ${[...KNOWN_COPY_TARGETS].join(', ')}`);
-  }
-
-  if (settings.clozeWordBank !== undefined && typeof settings.clozeWordBank !== 'boolean') {
-    push('clozeWordBank', 'clozeWordBank must be a boolean when present');
-  }
-
-  if (settings.syllableArcs !== undefined && typeof settings.syllableArcs !== 'boolean') {
-    push('syllableArcs', 'syllableArcs must be a boolean when present');
-  }
-
-  if (settings.wordSpaceMarks !== undefined && typeof settings.wordSpaceMarks !== 'boolean') {
-    push('wordSpaceMarks', 'wordSpaceMarks must be a boolean when present');
   }
 
   if (settings.imageSlot !== undefined && !KNOWN_IMAGE_SLOTS.has(settings.imageSlot)) {

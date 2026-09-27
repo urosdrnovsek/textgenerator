@@ -15,8 +15,7 @@
 import { readFile } from 'node:fs/promises';
 import { splitSentenceRanges } from '../src/text/prepare.js';
 import { SEQUENCE_SENTENCES } from '../src/config.js';
-
-const LANGUAGES = ['sl', 'en', 'de', 'fr', 'es'];
+import { LANGUAGE_CODES as LANGUAGES } from '../src/languages.js';
 const showAll = process.argv.includes('--all');
 
 // Tokens that end in a full stop without ending a sentence (lowercase, as typed).

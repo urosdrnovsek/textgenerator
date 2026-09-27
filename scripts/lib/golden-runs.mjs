@@ -16,8 +16,7 @@
 import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { buildWorksheet } from '../../src/worksheet/build.js';
-
-export const LANGUAGES = ['sl', 'en', 'de', 'fr', 'es'];
+import { LANGUAGE_CODES } from '../../src/languages.js';
 
 const BASE_SETTINGS = {
   fontId: 'andika',
@@ -73,7 +72,7 @@ export function fingerprint(paragraphs) {
 
 export async function loadEntries(root) {
   const entries = [];
-  for (const language of LANGUAGES) {
+  for (const language of LANGUAGE_CODES) {
     const pack = JSON.parse(await readFile(new URL(`content/${language}.json`, root), 'utf8'));
     for (const entry of pack.entries) entries.push({ ...entry, language });
   }

@@ -1,8 +1,7 @@
 /**
  * Minimal string lookup by stable ID (blueprint 8.1: "Use stable IDs
- * internally rather than translated labels"). Only `sl` and a draft `en`
- * exist so far — German and French translations are Phase 5 work and need
- * a native-speaking reviewer, not a placeholder file (blueprint 8.3).
+ * internally rather than translated labels"). One locale file per language
+ * in src/languages.js, all with the same keys (tests/unit/i18n.test.js).
  */
 
 const PLACEHOLDER_PATTERN = /\{(\w+)\}/g;

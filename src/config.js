@@ -246,3 +246,45 @@ export const TINTS_BY_ID = {
   blue: '#EAF3FB',
   green: '#EDF7EE'
 };
+
+/** The owner's letter colours for b, d, p and q (handbook §8: they stay). */
+export const DEFAULT_LETTER_COLORS = Object.freeze({ b: '#B42318', d: '#166534', p: '#7C3AED', q: '#B45309' });
+
+/** The two alternating syllable colours. */
+export const DEFAULT_SYLLABLE_COLORS = Object.freeze(['#1D4ED8', '#B45309']);
+
+/**
+ * Every worksheet setting and its default: a new sheet starts from these,
+ * and so does the built-in "Standard" setup. The keys are the settings: a
+ * saved setup stores exactly these, in this order, and a key missing from
+ * an older setup falls back to its value here. A new setting is one key
+ * here, its check in worksheet/validateSettings.js and its control in the
+ * settings panel.
+ */
+export const DEFAULT_SETTINGS = Object.freeze({
+  fontId: 'andika',
+  fontSizePt: 16,
+  lineHeightMultiplier: 1.4,
+  letterSpacingPt: 0.3,
+  extraWordSpacePt: 1,
+  writingMode: 'read-copy',
+  rulingId: 'standard-3line',
+  guideHeightMm: 10,
+  letterColors: DEFAULT_LETTER_COLORS,
+  syllableMode: 'colors',
+  syllableColors: DEFAULT_SYLLABLE_COLORS,
+  header: Object.freeze({ nameLine: true, date: true, title: true, instructions: true }),
+  sentencePerLine: false,
+  tintId: 'none',
+  printTint: false,
+  lineStripes: false,
+  printStripes: false,
+  lineNumbers: false,
+  imageSlot: 'picture',
+  graphemes: Object.freeze([]),
+  wordSpaceMarks: false,
+  copyTarget: 'passage',
+  syllableArcs: false,
+  clozeWordBank: false,
+  marginMm: DEFAULT_MARGIN_MM
+});

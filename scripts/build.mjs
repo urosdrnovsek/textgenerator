@@ -11,6 +11,7 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 import { validateAllContent } from './validate-content.mjs';
+import { LANGUAGE_CODES } from '../src/languages.js';
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const releaseDir = path.join(root, 'release');
@@ -45,6 +46,24 @@ async function generateImageData() {
   return Object.keys(data).length;
 }
 
+/**
+ * Every registered language's content pack and locale in one JSON file,
+ * `code -> { pack, locale }`, so the app bundles exactly the languages in
+ * src/languages.js and a new language needs no new import anywhere.
+ * (validateAllContent has already checked that each file exists.)
+ */
+async function generateLanguageData() {
+  const data = {};
+  for (const code of LANGUAGE_CODES) {
+    data[code] = {
+      pack: JSON.parse(await readFile(path.join(root, 'content', `${code}.json`), 'utf8')),
+      locale: JSON.parse(await readFile(path.join(root, 'locales', `${code}.json`), 'utf8'))
+    };
+  }
+  await mkdir(generatedDir, { recursive: true });
+  await writeFile(path.join(generatedDir, 'languageData.json'), JSON.stringify(data));
+}
+
 async function main() {
   const contentCheck = await validateAllContent();
   if (!contentCheck.ok) {
@@ -56,6 +75,8 @@ async function main() {
 
   const imageCount = await generateImageData();
   console.log(`Generated src/generated/imageData.json (${imageCount} images).`);
+  await generateLanguageData();
+  console.log(`Generated src/generated/languageData.json (${LANGUAGE_CODES.join(', ')}).`);
 
   await rm(releaseDir, { recursive: true, force: true });
   await mkdir(releaseDir, { recursive: true });
