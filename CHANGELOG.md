@@ -7,7 +7,17 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
-Fixes from the test day before the testers get the app (2026-09-27):
+## 0.10.0-rc.3 — 2026-09-27 (fixes before the testers)
+
+The same features as 0.10.0-rc.2, with 12 glitches fixed after a full
+test day: every text in every writing mode, every control driven in a
+real browser. Existing worksheets print exactly as in rc.2 (compared
+before and after, page by page and in the Word files); only the "for one
+page, try" suggestion wording changed.
+
+Worth knowing: the Dyslexia-friendly button now keeps the writing mode,
+and "Reset saved data" also deletes your own texts (it always did in
+storage; now the screen agrees and the confirmation says so).
 
 - **Gap-fill line numbers and stripes.** A gap sits a few pixels lower
   than its line's text, and the line measurement counted every line with
