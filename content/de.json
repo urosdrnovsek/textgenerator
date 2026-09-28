@@ -992,6 +992,186 @@
         "syllablesReviewed": true,
         "imageAccuracy": "verified"
       }
+    },
+    {
+      "id": "stories_pfuetze_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Platsch!",
+      "body": "Der Regen hat aufgehört. Emma zieht ihre roten Gummistiefel und ihre gelbe Regenjacke an. Im Park sieht sie eine große Pfütze. Platsch! Emma springt mitten hinein. Auch ihr kleiner brauner Hund wird nass.",
+      "syllable_body": "Der Re|gen hat auf|ge|hört. Em|ma zieht ih|re ro|ten Gum|mi|stie|fel und ih|re gel|be Re|gen|ja|cke an. Im Park sieht sie ei|ne gro|ße Pfüt|ze. Platsch! Em|ma springt mit|ten hin|ein. Auch ihr klei|ner brau|ner Hund wird nass.",
+      "imageId": "puddle_jump",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_schneemann_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Der Schneemann",
+      "body": "Es hat die ganze Nacht geschneit. Emma und Ben laufen in den Garten. Sie rollen drei große Schneekugeln und setzen sie aufeinander. Ben holt eine Möhre für die Nase. Emma findet zwei schwarze Steine für die Augen. Ben schenkt dem Schneemann seinen roten Schal, und ein alter grüner Eimer ist sein Hut. Sofort landet ein kleiner Vogel auf dem Eimer.",
+      "syllable_body": "Es hat die gan|ze Nacht ge|schneit. Em|ma und Ben lau|fen in den Gar|ten. Sie rol|len drei gro|ße Schnee|ku|geln und set|zen sie auf|ein|an|der. Ben holt ei|ne Möh|re für die Na|se. Em|ma fin|det zwei schwar|ze Stei|ne für die Au|gen. Ben schenkt dem Schnee|mann sei|nen ro|ten Schal, und ein al|ter grü|ner Ei|mer ist sein Hut. So|fort lan|det ein klei|ner Vo|gel auf dem Ei|mer.",
+      "imageId": "snowman_garden",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_sandburg_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Die Burg und das Meer",
+      "body": "Am letzten Ferientag bauten Emma und Ben am Strand eine Sandburg. Ben füllte den roten Eimer mit nassem Sand, und Emma strich die Mauern mit der blauen Schaufel glatt. Bald hatte die Burg vier Türme. Auf den höchsten steckte Emma eine weiße Feder als Fahne. „Das Meer kommt!“, rief Ben. Schnell gruben sie einen tiefen Graben rund um die Burg. Eine Welle rollte heran und füllte den Graben mit Wasser. Jetzt hatte die Burg einen echten Wassergraben und stand sicher in der Mitte.",
+      "syllable_body": "Am letz|ten Fe|ri|en|tag bau|ten Em|ma und Ben am Strand ei|ne Sand|burg. Ben füll|te den ro|ten Ei|mer mit nas|sem Sand, und Em|ma strich die Mau|ern mit der blau|en Schau|fel glatt. Bald hat|te die Burg vier Tür|me. Auf den höchs|ten steck|te Em|ma ei|ne wei|ße Fe|der als Fah|ne. „Das Meer kommt!“, rief Ben. Schnell gru|ben sie ei|nen tie|fen Gra|ben rund um die Burg. Ei|ne Wel|le roll|te her|an und füll|te den Gra|ben mit Was|ser. Jetzt hat|te die Burg ei|nen ech|ten Was|ser|gra|ben und stand si|cher in der Mit|te.",
+      "imageId": "sandcastle_beach",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_vogelhaus_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Ein Restaurant für Vögel",
+      "body": "Seit drei Tagen schneite es, und der Garten war weiß und still. „Die Vögel haben Hunger“, sagte Emma. „Bauen wir ihnen ein kleines Restaurant.“\n\nIm Schuppen half Papa ihnen, die Bretter zu sägen, und Ben schlug die Nägel ein. Emma strich das Dach rot an. Dann füllten sie das Vogelhaus mit Sonnenblumenkernen und trugen es zum alten Baum. Emma hängte es an einen kräftigen Ast, während ihr kleiner Bruder den Beutel mit den Kernen hielt.\n\nKaum hatte Emma es losgelassen, landete schon eine Kohlmeise mit gelber Brust und schwarzem Kopf darauf. „Das Restaurant ist geöffnet!“, lachte Ben. Papa hatte ihnen eine wichtige Regel erklärt: Wer im Winter anfängt, Vögel zu füttern, muss bis zum Frühling weitermachen. Seitdem füllte Ben jeden Morgen das Vogelhaus.",
+      "syllable_body": "Seit drei Ta|gen schnei|te es, und der Gar|ten war weiß und still. „Die Vö|gel ha|ben Hun|ger“, sag|te Em|ma. „Bau|en wir ih|nen ein klei|nes Re|stau|rant.“\n\nIm Schup|pen half Pa|pa ih|nen, die Bret|ter zu sä|gen, und Ben schlug die Nä|gel ein. Em|ma strich das Dach rot an. Dann füll|ten sie das Vo|gel|haus mit Son|nen|blu|men|ker|nen und tru|gen es zum al|ten Baum. Em|ma häng|te es an ei|nen kräf|ti|gen Ast, wäh|rend ihr klei|ner Bru|der den Beu|tel mit den Ker|nen hielt.\n\nKaum hat|te Em|ma es los|ge|las|sen, lan|de|te schon ei|ne Kohl|mei|se mit gel|ber Brust und schwar|zem Kopf dar|auf. „Das Re|stau|rant ist ge|öff|net!“, lach|te Ben. Pa|pa hat|te ih|nen ei|ne wich|ti|ge Re|gel er|klärt: Wer im Win|ter an|fängt, Vö|gel zu füt|tern, muss bis zum Früh|ling wei|ter|ma|chen. Seit|dem füll|te Ben je|den Mor|gen das Vo|gel|haus.",
+      "imageId": "bird_feeder_winter",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_dinosaurier_museum_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Der Riese im Museum",
+      "body": "Am Montag besuchte Bens Klasse das Naturkundemuseum. Im größten Saal blieben alle mit offenem Mund stehen. Vor ihnen stand das Skelett eines Dinosauriers mit einem langen Hals und einem noch längeren Schwanz. Sein kleiner Kopf reichte fast bis an die Decke, und die Kinder reichten ihm nur bis zu den Knien.\n\n„Das ist ein Diplodocus“, sagte der Museumsführer, ein Mann mit grauem Bart. „Er lebte vor etwa hundertfünfzig Millionen Jahren und war so lang wie zwei Busse. Aber keine Sorge: Er fraß nur Pflanzen.“ Alle lachten. Dann erklärte er, dass die Knochen in Millionen von Jahren zu Stein geworden waren. Forscher hatten sie aus dem Fels gegraben und wie ein riesiges Puzzle zusammengesetzt.\n\nBen setzte sich mit seinem Heft auf den Boden und zeichnete den langen Hals, den winzigen Kopf und jede einzelne Rippe. Als der Museumsführer seine Zeichnung sah, lächelte er. „Vielleicht gräbst du eines Tages selbst einen Dinosaurier aus“, sagte er.",
+      "syllable_body": "Am Mon|tag be|such|te Bens Klas|se das Na|tur|kun|de|mu|se|um. Im größ|ten Saal blie|ben al|le mit of|fe|nem Mund ste|hen. Vor ih|nen stand das Ske|lett ei|nes Di|no|sau|ri|ers mit ei|nem lan|gen Hals und ei|nem noch län|ge|ren Schwanz. Sein klei|ner Kopf reich|te fast bis an die De|cke, und die Kin|der reich|ten ihm nur bis zu den Knien.\n\n„Das ist ein Di|plo|do|cus“, sag|te der Mu|se|ums|füh|rer, ein Mann mit grau|em Bart. „Er leb|te vor et|wa hun|dert|fünf|zig Mil|li|o|nen Jah|ren und war so lang wie zwei Bus|se. A|ber kei|ne Sor|ge: Er fraß nur Pflan|zen.“ Al|le lach|ten. Dann er|klär|te er, dass die Kno|chen in Mil|li|o|nen von Jah|ren zu Stein ge|wor|den wa|ren. For|scher hat|ten sie aus dem Fels ge|gra|ben und wie ein rie|si|ges Puz|zle zu|sam|men|ge|setzt.\n\nBen setz|te sich mit sei|nem Heft auf den Bo|den und zeich|ne|te den lan|gen Hals, den win|zi|gen Kopf und je|de ein|zel|ne Rip|pe. Als der Mu|se|ums|füh|rer sei|ne Zeich|nung sah, lä|chel|te er. „Viel|leicht gräbst du ei|nes Ta|ges selbst ei|nen Di|no|sau|ri|er aus“, sag|te er.",
+      "imageId": "dinosaur_museum",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_marienkaefer_1",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 1,
+      "title": "Der Marienkäfer",
+      "body": "Ein Marienkäfer sitzt auf einem grünen Blatt. Er ist rot und hat schwarze Punkte. Er hat sechs Beine. Auf dem Blatt frisst er winzige grüne Insekten. Dann öffnet er seine Flügel und fliegt davon.",
+      "syllable_body": "Ein Ma|ri|en|kä|fer sitzt auf ei|nem grü|nen Blatt. Er ist rot und hat schwar|ze Punk|te. Er hat sechs Bei|ne. Auf dem Blatt frisst er win|zi|ge grü|ne In|sek|ten. Dann öff|net er sei|ne Flü|gel und fliegt da|von.",
+      "imageId": "ladybird_leaf",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_kaenguru_2",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 2,
+      "title": "Ein Baby im Beutel",
+      "body": "Das Känguru lebt in Australien. Mit seinen kräftigen Hinterbeinen hüpft es sehr schnell, und sein langer Schwanz hilft ihm, das Gleichgewicht zu halten. Bei der Geburt ist das Junge nur so groß wie eine Bohne. Es wächst in einem warmen Beutel am Bauch seiner Mutter, die es überallhin mitnimmt. Wenn es größer ist, schaut es heraus und betrachtet die Welt.",
+      "syllable_body": "Das Kän|gu|ru lebt in Aus|tra|li|en. Mit sei|nen kräf|ti|gen Hin|ter|bei|nen hüpft es sehr schnell, und sein lan|ger Schwanz hilft ihm, das Gleich|ge|wicht zu hal|ten. Bei der Ge|burt ist das Jun|ge nur so groß wie ei|ne Boh|ne. Es wächst in ei|nem war|men Beu|tel am Bauch sei|ner Mut|ter, die es ü|ber|all|hin mit|nimmt. Wenn es grö|ßer ist, schaut es her|aus und be|trach|tet die Welt.",
+      "imageId": "kangaroo_joey",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_storch_3",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 3,
+      "title": "Der Storch kommt zurück",
+      "body": "Jedes Frühjahr kehrt der Weißstorch aus Afrika zurück. Oft fliegt er Jahr für Jahr zum selben Nest auf demselben Dach. Das Nest ist aus Zweigen gebaut, und ein altes Nest kann zwei Meter breit sein. Der Storch hat lange rote Beine und einen langen roten Schnabel. Langsam stolziert er über feuchte Wiesen und fängt Frösche, Mäuse und Insekten. Störche singen nicht. Stattdessen klappern sie laut mit dem Schnabel. Im Frühling schlüpfen ein paar Junge im Nest, und beide Eltern bringen ihnen Futter. Im Spätsommer fliegen die Störche wieder nach Süden.",
+      "syllable_body": "Je|des Früh|jahr kehrt der Weiß|storch aus A|fri|ka zu|rück. Oft fliegt er Jahr für Jahr zum sel|ben Nest auf dem|sel|ben Dach. Das Nest ist aus Zwei|gen ge|baut, und ein al|tes Nest kann zwei Me|ter breit sein. Der Storch hat lan|ge ro|te Bei|ne und ei|nen lan|gen ro|ten Schna|bel. Lang|sam stol|ziert er ü|ber feuch|te Wie|sen und fängt Frö|sche, Mäu|se und In|sek|ten. Stör|che sin|gen nicht. Statt|des|sen klap|pern sie laut mit dem Schna|bel. Im Früh|ling schlüp|fen ein paar Jun|ge im Nest, und bei|de El|tern brin|gen ih|nen Fut|ter. Im Spät|som|mer flie|gen die Stör|che wie|der nach Sü|den.",
+      "imageId": "stork_nest",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_braunbaer_4",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 4,
+      "title": "Die Bärin und ihre Jungen",
+      "body": "Der Braunbär ist eines der größten Tiere in den Wäldern Europas. Trotzdem frisst er vor allem Pflanzen: Gras, Wurzeln, Nüsse und süße Beeren. Er gräbt auch nach Ameisen und Käfern, und manchmal frisst er Fleisch. Sein bestes Werkzeug ist die Nase, die Futter schon von Weitem riecht.\n\nIm Herbst frisst der Bär, so viel er kann. Dann kriecht er in eine Höhle und verschläft den größten Teil des Winters. Dort bringt die Bärin ihre Jungen zur Welt. Anfangs sind sie winzig und blind. Im Frühling führt sie sie in den Wald und zeigt ihnen, wo die besten Heidelbeeren wachsen.\n\nDie Jungen bleiben etwa zwei Jahre bei ihr. Wenn du einmal einen Bären siehst, geh nie nah heran. Bleib ruhig und entferne dich langsam.",
+      "syllable_body": "Der Braun|bär ist ei|nes der größ|ten Tie|re in den Wäl|dern Eu|ro|pas. Trotz|dem frisst er vor al|lem Pflan|zen: Gras, Wur|zeln, Nüs|se und sü|ße Bee|ren. Er gräbt auch nach A|mei|sen und Kä|fern, und manch|mal frisst er Fleisch. Sein bes|tes Werk|zeug ist die Na|se, die Fut|ter schon von Wei|tem riecht.\n\nIm Herbst frisst der Bär, so viel er kann. Dann kriecht er in ei|ne Höh|le und ver|schläft den größ|ten Teil des Win|ters. Dort bringt die Bä|rin ih|re Jun|gen zur Welt. An|fangs sind sie win|zig und blind. Im Früh|ling führt sie sie in den Wald und zeigt ih|nen, wo die bes|ten Hei|del|bee|ren wach|sen.\n\nDie Jun|gen blei|ben et|wa zwei Jah|re bei ihr. Wenn du ein|mal ei|nen Bä|ren siehst, geh nie nah her|an. Bleib ru|hig und ent|fer|ne dich lang|sam.",
+      "imageId": "brown_bear_cubs",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_elefantenfamilie_5",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 5,
+      "title": "Die Elefantenfamilie",
+      "body": "Der Afrikanische Elefant ist das größte Landtier. Ein erwachsener Bulle kann so viel wiegen wie sechs Autos, und schon ein neugeborenes Kalb wiegt etwa hundert Kilo.\n\nDer Rüssel ist Nase und Oberlippe in einem. Er hat keine Knochen, aber Tausende Muskeln. Damit kann der Elefant einen schweren Stamm heben oder eine einzelne Nuss aufsammeln. Er riecht mit dem Rüssel, begrüßt seine Familie und trinkt: Er saugt Wasser ein und spritzt es sich ins Maul. An heißen Tagen spritzt er sich Wasser oder Staub auf den Rücken. Auch die riesigen Ohren helfen: Wenn er mit ihnen fächelt, kühlt das Blut darin ab.\n\nElefanten leben in Familien aus Müttern, Schwestern, Tanten und Kälbern. Die Anführerin ist die älteste Kuh. Sie weiß, wo es Wasser gibt, selbst in den trockensten Monaten. Alle kümmern sich um die Kälber. Junge Bullen ziehen fort, wenn sie erwachsen sind, doch die Weibchen bleiben ein Leben lang zusammen.",
+      "syllable_body": "Der A|fri|ka|ni|sche E|le|fant ist das größ|te Land|tier. Ein er|wach|se|ner Bul|le kann so viel wie|gen wie sechs Au|tos, und schon ein neu|ge|bo|re|nes Kalb wiegt et|wa hun|dert Ki|lo.\n\nDer Rüs|sel ist Na|se und O|ber|lip|pe in ei|nem. Er hat kei|ne Kno|chen, a|ber Tau|sen|de Mus|keln. Da|mit kann der E|le|fant ei|nen schwe|ren Stamm he|ben o|der ei|ne ein|zel|ne Nuss auf|sam|meln. Er riecht mit dem Rüs|sel, be|grüßt sei|ne Fa|mi|lie und trinkt: Er saugt Was|ser ein und spritzt es sich ins Maul. An hei|ßen Ta|gen spritzt er sich Was|ser o|der Staub auf den Rü|cken. Auch die rie|si|gen Oh|ren hel|fen: Wenn er mit ih|nen fä|chelt, kühlt das Blut dar|in ab.\n\nE|le|fan|ten le|ben in Fa|mi|li|en aus Müt|tern, Schwes|tern, Tan|ten und Käl|bern. Die An|füh|re|rin ist die äl|tes|te Kuh. Sie weiß, wo es Was|ser gibt, selbst in den tro|ckens|ten Mo|na|ten. Al|le küm|mern sich um die Käl|ber. Jun|ge Bul|len zie|hen fort, wenn sie er|wach|sen sind, doch die Weib|chen blei|ben ein Le|ben lang zu|sam|men.",
+      "imageId": "elephant_waterhole",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
     }
   ]
 }

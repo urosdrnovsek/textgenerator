@@ -220,7 +220,7 @@ Rules of thumb:
 - Set `imageAccuracy` independently of the text review; it's a different
   check, and often a different person.
 
-### Where the content stands (2026-09-26)
+### Where the content stands (2026-09-28)
 
 From `npm run content-status`:
 
@@ -233,7 +233,7 @@ From `npm run content-status`:
   covered the pool, not these entries as such, and only part of the pool
   for certain), `syllablesReviewed: false` (the pool's syllable breaks
   were never separately checked). Pictures: 33 already bundled, 17
-  bundled from the raw `Images/` pool for this; the science texts, which
+  bundled from the owner's raw picture pool for this (its unused pictures now sit, unlisted, in `assets/images/`); the science texts, which
   have no pool pictures at all, were matched to bundled pictures by
   topic (magnets, echo, arch bridge, seed, moon phases). The eight
   non-story level-5 texts (and the owner's Venice text) each lost one to
@@ -324,7 +324,19 @@ From `npm run content-status`:
   second opinion) corrected 62 more breaks in 28 entries: 1 Spanish, 2
   German, 18 French (mostly `feu|il|le`-type words), 41 English. Native-
   speaker review: **0 of 100.**
-- **Images:** 234 of 343 `verified` (the four illustrations generated for
+- **Round 4 (2026-09-28), all languages:** a new story and a new animal
+  text per level in every language (50 texts), on ten new pictures the
+  owner generated from Claude's prompts (`puddle_jump`, `snowman_garden`,
+  `sandcastle_beach`, `bird_feeder_winter`, `dinosaur_museum`,
+  `ladybird_leaf`, `kangaroo_joey`, `stork_nest`, `brown_bear_cubs`,
+  `elephant_waterhole`). One scene per picture, told with the same
+  visible details in every language, and no writing in the pictures, so
+  each picture serves all five languages. Each text was re-read against
+  its picture; three were adapted (the feeder is hung by an older sister,
+  the museum drawer is a boy, the ladybird's spots aren't counted).
+  Slovene five-and-five are `draft` for the owner. Generators:
+  `Instructions/tools/*-round4.py` (gitignored).
+- **Images:** 284 of 393 `verified` (the ten round-4 pictures, the four illustrations generated for
   the mismatched Neuschwanstein, Uluru, Easter Island and Pont du Gard
   entries, the axolotl illustration bundled for the five Spanish ajolote
   entries, the fifty new English texts, the twenty-five fifth-round

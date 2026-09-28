@@ -992,6 +992,186 @@
         "syllablesReviewed": true,
         "imageAccuracy": "verified"
       }
+    },
+    {
+      "id": "stories_charco_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "¡Al charco!",
+      "body": "Ya no llueve. Lucía se pone las botas rojas y el impermeable amarillo. En el parque ve un charco grande. ¡Chof! Lucía salta dentro. Su perrito marrón también se moja.",
+      "syllable_body": "Ya no llue|ve. Lu|cí|a se po|ne las bo|tas ro|jas y el im|per|me|a|ble a|ma|ri|llo. En el par|que ve un char|co gran|de. ¡Chof! Lu|cí|a sal|ta den|tro. Su pe|rri|to ma|rrón tam|bién se mo|ja.",
+      "imageId": "puddle_jump",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_muneco_nieve_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "El muñeco de nieve",
+      "body": "Ha nevado toda la noche. Lucía y Pablo salen corriendo al jardín. Hacen rodar tres bolas grandes de nieve y las ponen una encima de otra. Pablo trae una zanahoria para la nariz. Lucía encuentra dos piedras negras para los ojos. Pablo le da al muñeco su bufanda roja, y un viejo cubo verde es su sombrero. Enseguida se posa un pajarito en el cubo.",
+      "syllable_body": "Ha ne|va|do to|da la no|che. Lu|cí|a y Pa|blo sa|len co|rrien|do al jar|dín. Ha|cen ro|dar tres bo|las gran|des de nie|ve y las po|nen u|na en|ci|ma de o|tra. Pa|blo tra|e u|na za|na|ho|ria pa|ra la na|riz. Lu|cí|a en|cuen|tra dos pie|dras ne|gras pa|ra los o|jos. Pa|blo le da al mu|ñe|co su bu|fan|da ro|ja, y un vie|jo cu|bo ver|de es su som|bre|ro. En|se|gui|da se po|sa un pa|ja|ri|to en el cu|bo.",
+      "imageId": "snowman_garden",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_castillo_arena_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "El castillo y el mar",
+      "body": "El último día de vacaciones, Lucía y Pablo construyeron un castillo de arena en la playa. Pablo llenaba el cubo rojo de arena mojada, y Lucía alisaba las paredes con la pala azul. Pronto el castillo tuvo cuatro torres. En lo alto de la torre más alta, Lucía clavó una pluma blanca como bandera. «¡Que viene el mar!», gritó Pablo. Rápidamente cavaron un foso profundo alrededor del castillo. Llegó una ola y llenó el foso de agua. Ahora el castillo tenía un foso de verdad y seguía a salvo en el centro.",
+      "syllable_body": "El úl|ti|mo dí|a de va|ca|cio|nes, Lu|cí|a y Pa|blo cons|tru|ye|ron un cas|ti|llo de a|re|na en la pla|ya. Pa|blo lle|na|ba el cu|bo ro|jo de a|re|na mo|ja|da, y Lu|cí|a a|li|sa|ba las pa|re|des con la pa|la a|zul. Pron|to el cas|ti|llo tu|vo cua|tro to|rres. En lo al|to de la to|rre más al|ta, Lu|cí|a cla|vó u|na plu|ma blan|ca co|mo ban|de|ra. «¡Que vie|ne el mar!», gri|tó Pa|blo. Rá|pi|da|men|te ca|va|ron un fo|so pro|fun|do al|re|de|dor del cas|ti|llo. Lle|gó u|na o|la y lle|nó el fo|so de a|gua. A|ho|ra el cas|ti|llo te|ní|a un fo|so de ver|dad y se|guí|a a sal|vo en el cen|tro.",
+      "imageId": "sandcastle_beach",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_comedero_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Un restaurante para pájaros",
+      "body": "Llevaba tres días nevando, y el jardín estaba blanco y en silencio. «Los pájaros tienen hambre», dijo Lucía. «Vamos a construirles un pequeño restaurante».\n\nEn el cobertizo, papá los ayudó a serrar las tablas, y Pablo clavó los clavos. Lucía pintó el tejado de rojo. Después llenaron el comedero de pipas de girasol y lo llevaron al viejo árbol. Lucía lo colgó de una rama fuerte, mientras su hermano pequeño sujetaba la bolsa de pipas.\n\nApenas lo había soltado Lucía cuando un carbonero de pecho amarillo y cabeza negra se posó en el comedero. «¡El restaurante está abierto!», se rio Pablo. Papá les había explicado una regla importante: si empiezas a dar de comer a los pájaros en invierno, tienes que seguir hasta la primavera. Por eso, desde aquel día, Pablo llenó el comedero cada mañana.",
+      "syllable_body": "Lle|va|ba tres dí|as ne|van|do, y el jar|dín es|ta|ba blan|co y en si|len|cio. «Los pá|ja|ros tie|nen ham|bre», di|jo Lu|cí|a. «Va|mos a cons|truir|les un pe|que|ño res|tau|ran|te».\n\nEn el co|ber|ti|zo, pa|pá los a|yu|dó a se|rrar las ta|blas, y Pa|blo cla|vó los cla|vos. Lu|cí|a pin|tó el te|ja|do de ro|jo. Des|pués lle|na|ron el co|me|de|ro de pi|pas de gi|ra|sol y lo lle|va|ron al vie|jo ár|bol. Lu|cí|a lo col|gó de u|na ra|ma fuer|te, mien|tras su her|ma|no pe|que|ño su|je|ta|ba la bol|sa de pi|pas.\n\nA|pe|nas lo ha|bí|a sol|ta|do Lu|cí|a cuan|do un car|bo|ne|ro de pe|cho a|ma|ri|llo y ca|be|za ne|gra se po|só en el co|me|de|ro. «¡El res|tau|ran|te es|tá a|bier|to!», se rio Pa|blo. Pa|pá les ha|bí|a ex|pli|ca|do u|na re|gla im|por|tan|te: si em|pie|zas a dar de co|mer a los pá|ja|ros en in|vier|no, tie|nes que se|guir has|ta la pri|ma|ve|ra. Por e|so, des|de a|quel dí|a, Pa|blo lle|nó el co|me|de|ro ca|da ma|ña|na.",
+      "imageId": "bird_feeder_winter",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_dinosaurio_museo_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "El gigante del museo",
+      "body": "El lunes, la clase de Pablo visitó el museo de ciencias naturales. En la sala más grande, todos se quedaron boquiabiertos. Delante de ellos estaba el esqueleto de un dinosaurio con un cuello largo y una cola todavía más larga. Su pequeña cabeza llegaba casi al techo, y los niños solo le llegaban a las rodillas.\n\n«Es un diplodocus», dijo el guía, un señor con barba gris. «Vivió hace unos ciento cincuenta millones de años y era tan largo como dos autobuses. Pero tranquilos: solo comía plantas». Todos se rieron.\n\nLes explicó que, con el paso de millones de años, los huesos se habían convertido en piedra. Los científicos los habían sacado de la roca pieza a pieza y los habían montado como un rompecabezas gigante.\n\nPablo se sentó en el suelo con su cuaderno y empezó a dibujar. Dibujó el cuello largo, la cabeza diminuta y cada costilla. Cuando el guía vio su dibujo, sonrió. «Quizá algún día», le dijo, «tú también desentierres tu propio dinosaurio».",
+      "syllable_body": "El lu|nes, la cla|se de Pa|blo vi|si|tó el mu|se|o de cien|cias na|tu|ra|les. En la sa|la más gran|de, to|dos se que|da|ron bo|quia|bier|tos. De|lan|te de e|llos es|ta|ba el es|que|le|to de un di|no|sau|rio con un cue|llo lar|go y u|na co|la to|da|ví|a más lar|ga. Su pe|que|ña ca|be|za lle|ga|ba ca|si al te|cho, y los ni|ños so|lo le lle|ga|ban a las ro|di|llas.\n\n«Es un di|plo|do|cus», di|jo el guí|a, un se|ñor con bar|ba gris. «Vi|vió ha|ce u|nos cien|to cin|cuen|ta mi|llo|nes de a|ños y e|ra tan lar|go co|mo dos au|to|bu|ses. Pe|ro tran|qui|los: so|lo co|mí|a plan|tas». To|dos se rie|ron.\n\nLes ex|pli|có que, con el pa|so de mi|llo|nes de a|ños, los hue|sos se ha|bí|an con|ver|ti|do en pie|dra. Los cien|tí|fi|cos los ha|bí|an sa|ca|do de la ro|ca pie|za a pie|za y los ha|bí|an mon|ta|do co|mo un rom|pe|ca|be|zas gi|gan|te.\n\nPa|blo se sen|tó en el sue|lo con su cua|der|no y em|pe|zó a di|bu|jar. Di|bu|jó el cue|llo lar|go, la ca|be|za di|mi|nu|ta y ca|da cos|ti|lla. Cuan|do el guí|a vio su di|bu|jo, son|rió. «Qui|zá al|gún dí|a», le di|jo, «tú tam|bién de|sen|tie|rres tu pro|pio di|no|sau|rio».",
+      "imageId": "dinosaur_museum",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_mariquita_1",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 1,
+      "title": "La mariquita",
+      "body": "Una mariquita está sobre una hoja verde. Es roja y tiene puntos negros. Tiene seis patas. En la hoja caza bichitos verdes muy pequeños. Luego abre las alas y se va volando.",
+      "syllable_body": "U|na ma|ri|qui|ta es|tá so|bre u|na ho|ja ver|de. Es ro|ja y tie|ne pun|tos ne|gros. Tie|ne seis pa|tas. En la ho|ja ca|za bi|chi|tos ver|des muy pe|que|ños. Lue|go a|bre las a|las y se va vo|lan|do.",
+      "imageId": "ladybird_leaf",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_canguro_2",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 2,
+      "title": "Un bebé en la bolsa",
+      "body": "El canguro vive en Australia. Salta muy rápido con sus fuertes patas traseras, y su larga cola lo ayuda a mantener el equilibrio. Al nacer, la cría es tan pequeña como una judía. Crece en una bolsa calentita en la barriga de su madre, que la lleva a todas partes. Cuando es más grande, asoma la cabeza para ver el mundo.",
+      "syllable_body": "El can|gu|ro vi|ve en Aus|tra|lia. Sal|ta muy rá|pi|do con sus fuer|tes pa|tas tra|se|ras, y su lar|ga co|la lo a|yu|da a man|te|ner el e|qui|li|brio. Al na|cer, la crí|a es tan pe|que|ña co|mo u|na ju|dí|a. Cre|ce en u|na bol|sa ca|len|ti|ta en la ba|rri|ga de su ma|dre, que la lle|va a to|das par|tes. Cuan|do es más gran|de, a|so|ma la ca|be|za pa|ra ver el mun|do.",
+      "imageId": "kangaroo_joey",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_ciguena_3",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 3,
+      "title": "La cigüeña vuelve",
+      "body": "Cada primavera, la cigüeña blanca vuelve de África. Muchas veces regresa al mismo nido año tras año. El nido está hecho de ramas, y uno viejo puede medir dos metros de ancho. La cigüeña tiene las patas largas y rojas y un pico largo y rojo. Camina despacio por los prados húmedos y atrapa ranas, ratones e insectos. Las cigüeñas no cantan. En cambio, castañetean ruidosamente con el pico. En primavera nacen algunos polluelos en el nido, y los dos padres les llevan comida. A finales del verano, las cigüeñas vuelan otra vez hacia el sur.",
+      "syllable_body": "Ca|da pri|ma|ve|ra, la ci|güe|ña blan|ca vuel|ve de Á|fri|ca. Mu|chas ve|ces re|gre|sa al mis|mo ni|do a|ño tras a|ño. El ni|do es|tá he|cho de ra|mas, y u|no vie|jo pue|de me|dir dos me|tros de an|cho. La ci|güe|ña tie|ne las pa|tas lar|gas y ro|jas y un pi|co lar|go y ro|jo. Ca|mi|na des|pa|cio por los pra|dos hú|me|dos y a|tra|pa ra|nas, ra|to|nes e in|sec|tos. Las ci|güe|ñas no can|tan. En cam|bio, cas|ta|ñe|te|an rui|do|sa|men|te con el pi|co. En pri|ma|ve|ra na|cen al|gu|nos po|llue|los en el ni|do, y los dos pa|dres les lle|van co|mi|da. A fi|na|les del ve|ra|no, las ci|güe|ñas vue|lan o|tra vez ha|cia el sur.",
+      "imageId": "stork_nest",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_oso_pardo_4",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 4,
+      "title": "La osa y sus oseznos",
+      "body": "El oso pardo es uno de los animales más grandes de los bosques de Europa. Aun así, come sobre todo plantas: hierba, raíces, frutos secos y bayas dulces. También escarba en busca de hormigas y escarabajos, y a veces come carne. Su mejor herramienta es el hocico, que huele la comida desde muy lejos.\n\nEn otoño, el oso come todo lo que puede. Después se mete en una guarida bajo las rocas o las raíces y duerme casi todo el invierno. Allí la osa da a luz a sus oseznos. Al principio son diminutos y ciegos. En primavera los lleva al bosque y les enseña dónde crecen los mejores arándanos.\n\nLos oseznos se quedan con su madre unos dos años. Si alguna vez ves un oso, no te acerques nunca. Mantén la calma y aléjate despacio.",
+      "syllable_body": "El o|so par|do es u|no de los a|ni|ma|les más gran|des de los bos|ques de Eu|ro|pa. Aun a|sí, co|me so|bre to|do plan|tas: hier|ba, ra|í|ces, fru|tos se|cos y ba|yas dul|ces. Tam|bién es|car|ba en bus|ca de hor|mi|gas y es|ca|ra|ba|jos, y a ve|ces co|me car|ne. Su me|jor he|rra|mien|ta es el ho|ci|co, que hue|le la co|mi|da des|de muy le|jos.\n\nEn o|to|ño, el o|so co|me to|do lo que pue|de. Des|pués se me|te en u|na gua|ri|da ba|jo las ro|cas o las ra|í|ces y duer|me ca|si to|do el in|vier|no. A|llí la o|sa da a luz a sus o|sez|nos. Al prin|ci|pio son di|mi|nu|tos y cie|gos. En pri|ma|ve|ra los lle|va al bos|que y les en|se|ña dón|de cre|cen los me|jo|res a|rán|da|nos.\n\nLos o|sez|nos se que|dan con su ma|dre u|nos dos a|ños. Si al|gu|na vez ves un o|so, no te a|cer|ques nun|ca. Man|tén la cal|ma y a|lé|ja|te des|pa|cio.",
+      "imageId": "brown_bear_cubs",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_familia_elefantes_5",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 5,
+      "title": "La familia de los elefantes",
+      "body": "El elefante africano es el animal terrestre más grande. Un macho adulto puede pesar tanto como seis coches, y hasta una cría recién nacida pesa unos cien kilos.\n\nLa trompa del elefante es su nariz unida al labio superior. No tiene huesos, pero tiene miles de músculos, así que puede levantar un tronco pesado o coger una sola nuez. El elefante usa la trompa para oler, para saludar a su familia y para beber: sorbe el agua y se la echa en la boca. Los días de calor se echa agua o polvo por el lomo. Sus enormes orejas también lo ayudan: cuando las agita, la sangre que pasa por ellas se enfría.\n\nLos elefantes viven en familias de madres, hermanas, tías y crías. Las guía la hembra más vieja. Ella recuerda dónde hay agua, incluso en los meses más secos, y la familia la sigue de charca en charca. Todas cuidan de las crías. Los machos jóvenes se van al crecer, pero las hembras siguen juntas toda la vida.",
+      "syllable_body": "El e|le|fan|te a|fri|ca|no es el a|ni|mal te|rres|tre más gran|de. Un ma|cho a|dul|to pue|de pe|sar tan|to co|mo seis co|ches, y has|ta u|na crí|a re|cién na|ci|da pe|sa u|nos cien ki|los.\n\nLa trom|pa del e|le|fan|te es su na|riz u|ni|da al la|bio su|pe|rior. No tie|ne hue|sos, pe|ro tie|ne mi|les de mús|cu|los, a|sí que pue|de le|van|tar un tron|co pe|sa|do o co|ger u|na so|la nuez. El e|le|fan|te u|sa la trom|pa pa|ra o|ler, pa|ra sa|lu|dar a su fa|mi|lia y pa|ra be|ber: sor|be el a|gua y se la e|cha en la bo|ca. Los dí|as de ca|lor se e|cha a|gua o pol|vo por el lo|mo. Sus e|nor|mes o|re|jas tam|bién lo a|yu|dan: cuan|do las a|gi|ta, la san|gre que pa|sa por e|llas se en|frí|a.\n\nLos e|le|fan|tes vi|ven en fa|mi|lias de ma|dres, her|ma|nas, tí|as y crí|as. Las guí|a la hem|bra más vie|ja. E|lla re|cuer|da dón|de hay a|gua, in|clu|so en los me|ses más se|cos, y la fa|mi|lia la si|gue de char|ca en char|ca. To|das cui|dan de las crí|as. Los ma|chos jó|ve|nes se van al cre|cer, pe|ro las hem|bras si|guen jun|tas to|da la vi|da.",
+      "imageId": "elephant_waterhole",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
     }
   ]
 }

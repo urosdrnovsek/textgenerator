@@ -992,6 +992,186 @@
         "syllablesReviewed": true,
         "imageAccuracy": "verified"
       }
+    },
+    {
+      "id": "stories_flaque_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Plouf !",
+      "body": "La pluie s'est arrêtée. Inès met ses bottes rouges et son imperméable jaune. Au parc, elle voit une grande flaque. Plouf ! Inès saute dedans. Son petit chien marron est tout mouillé, lui aussi.",
+      "syllable_body": "La pluie s'est ar|rê|tée. I|nès met ses bot|tes rou|ges et son im|per|mé|a|ble jau|ne. Au parc, el|le voit u|ne gran|de fla|que. Plouf ! I|nès sau|te de|dans. Son pe|tit chien mar|ron est tout mouil|lé, lui aus|si.",
+      "imageId": "puddle_jump",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_bonhomme_neige_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Le bonhomme de neige",
+      "body": "Il a neigé toute la nuit. Inès et Hugo courent dans le jardin. Ils roulent trois grosses boules de neige et les posent l'une sur l'autre. Hugo apporte une carotte pour le nez. Inès trouve deux cailloux noirs pour les yeux. Hugo donne son écharpe rouge au bonhomme, et un vieux seau vert lui sert de chapeau. Aussitôt, un petit oiseau se pose sur le seau.",
+      "syllable_body": "Il a nei|gé tou|te la nuit. I|nès et Hu|go cou|rent dans le jar|din. Ils rou|lent trois gros|ses bou|les de nei|ge et les po|sent l'u|ne sur l'au|tre. Hu|go ap|por|te u|ne ca|rot|te pour le nez. I|nès trou|ve deux cail|loux noirs pour les yeux. Hu|go don|ne son é|char|pe rou|ge au bon|hom|me, et un vieux seau vert lui sert de cha|peau. Aus|si|tôt, un pe|tit oi|seau se po|se sur le seau.",
+      "imageId": "snowman_garden",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_chateau_sable_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Le château et la mer",
+      "body": "Le dernier jour des vacances, Inès et Hugo ont construit un château de sable sur la plage. Hugo remplissait le seau rouge de sable mouillé, et Inès lissait les murs avec la pelle bleue. Bientôt, le château a eu quatre tours. Tout en haut de la plus haute, Inès a planté une plume blanche comme drapeau. « La mer arrive ! » a crié Hugo. Vite, ils ont creusé un fossé profond tout autour du château. Une vague est arrivée et a rempli le fossé d'eau. Maintenant, le château avait de vraies douves, et il restait à l'abri au milieu.",
+      "syllable_body": "Le der|nier jour des va|can|ces, I|nès et Hu|go ont cons|truit un châ|teau de sa|ble sur la pla|ge. Hu|go rem|plis|sait le seau rou|ge de sa|ble mouil|lé, et I|nès lis|sait les murs a|vec la pel|le bleue. Bien|tôt, le châ|teau a eu qua|tre tours. Tout en haut de la plus hau|te, I|nès a plan|té u|ne plu|me blan|che com|me dra|peau. « La mer ar|ri|ve ! » a crié Hu|go. Vi|te, ils ont creu|sé un fos|sé pro|fond tout au|tour du châ|teau. U|ne va|gue est ar|ri|vée et a rem|pli le fos|sé d'eau. Main|te|nant, le châ|teau a|vait de vraies dou|ves, et il res|tait à l'a|bri au mi|lieu.",
+      "imageId": "sandcastle_beach",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_mangeoire_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Un restaurant pour les oiseaux",
+      "body": "Il neigeait depuis trois jours, et le jardin était blanc et silencieux. « Les oiseaux ont faim, a dit Inès. Construisons-leur un petit restaurant. »\n\nDans la cabane du jardin, Papa les a aidés à scier les planches, et Hugo a planté les clous. Inès a peint le toit en rouge. Ensuite, ils ont rempli la mangeoire de graines de tournesol et l'ont portée jusqu'au vieil arbre. Inès l'a accrochée à une branche solide, pendant que son petit frère tenait le sac de graines.\n\nInès l'avait à peine lâchée qu'une mésange charbonnière, à la poitrine jaune et à la tête noire, s'est posée sur la mangeoire. « Le restaurant est ouvert ! » a ri Hugo. Papa leur avait donné une règle importante : quand on commence à nourrir les oiseaux en hiver, il faut continuer jusqu'au printemps. Depuis ce jour-là, Hugo remplit la mangeoire chaque matin.",
+      "syllable_body": "Il nei|geait de|puis trois jours, et le jar|din é|tait blanc et si|len|cieux. « Les oi|seaux ont faim, a dit I|nès. Cons|trui|sons-leur un pe|tit res|tau|rant. »\n\nDans la ca|ba|ne du jar|din, Pa|pa les a ai|dés à scier les plan|ches, et Hu|go a plan|té les clous. I|nès a peint le toit en rou|ge. En|sui|te, ils ont rem|pli la man|geoi|re de grai|nes de tour|ne|sol et l'ont por|tée jus|qu'au vieil ar|bre. I|nès l'a ac|cro|chée à u|ne bran|che so|li|de, pen|dant que son pe|tit frè|re te|nait le sac de grai|nes.\n\nI|nès l'a|vait à pei|ne lâ|chée qu'u|ne mé|san|ge char|bon|niè|re, à la poi|tri|ne jau|ne et à la tê|te noi|re, s'est po|sée sur la man|geoi|re. « Le res|tau|rant est ou|vert ! » a ri Hu|go. Pa|pa leur a|vait don|né u|ne rè|gle im|por|tan|te : quand on com|men|ce à nour|rir les oi|seaux en hi|ver, il faut con|ti|nuer jus|qu'au prin|temps. De|puis ce jour-là, Hu|go rem|plit la man|geoi|re cha|que ma|tin.",
+      "imageId": "bird_feeder_winter",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_dinosaure_musee_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Le géant du musée",
+      "body": "Lundi, la classe de Hugo a visité le muséum d'histoire naturelle. Dans la grande salle, tout le monde est resté bouche bée. Devant eux se dressait le squelette d'un dinosaure au long cou et à la queue encore plus longue. Sa petite tête touchait presque le plafond, et les enfants lui arrivaient à peine aux genoux.\n\n« C'est un diplodocus, a dit le guide, un monsieur à la barbe grise. Il vivait il y a environ cent cinquante millions d'années et il était aussi long que deux autobus. Mais rassurez-vous : il ne mangeait que des plantes. » Tout le monde a ri.\n\nIl a expliqué qu'en des millions d'années, les os s'étaient changés en pierre. Des scientifiques les avaient dégagés de la roche, puis assemblés comme un immense jeu de construction.\n\nHugo s'est assis par terre avec son cahier et a dessiné le long cou, la toute petite tête et chaque côte. En voyant son dessin, le guide a souri. « Un jour, peut-être, a-t-il dit, tu découvriras toi aussi ton propre dinosaure. »",
+      "syllable_body": "Lun|di, la clas|se de Hu|go a vi|si|té le mu|sé|um d'his|toi|re na|tu|rel|le. Dans la gran|de sal|le, tout le mon|de est res|té bou|che bée. De|vant eux se dres|sait le sque|let|te d'un di|no|sau|re au long cou et à la queue en|co|re plus lon|gue. Sa pe|ti|te tê|te tou|chait pres|que le pla|fond, et les en|fants lui ar|ri|vaient à pei|ne aux ge|noux.\n\n« C'est un di|plo|do|cus, a dit le gui|de, un mon|sieur à la bar|be gri|se. Il vi|vait il y a en|vi|ron cent cin|quan|te mil|lions d'an|nées et il é|tait aus|si long que deux au|to|bus. Mais ras|su|rez-vous : il ne man|geait que des plan|tes. » Tout le mon|de a ri.\n\nIl a ex|pli|qué qu'en des mil|lions d'an|nées, les os s'é|taient chan|gés en pier|re. Des scien|ti|fi|ques les a|vaient dé|ga|gés de la ro|che, puis as|sem|blés com|me un im|men|se jeu de cons|truc|tion.\n\nHu|go s'est as|sis par ter|re a|vec son ca|hier et a des|si|né le long cou, la tou|te pe|ti|te tê|te et cha|que cô|te. En vo|yant son des|sin, le gui|de a sou|ri. « Un jour, peut-ê|tre, a-t-il dit, tu dé|cou|vri|ras toi aus|si ton pro|pre di|no|sau|re. »",
+      "imageId": "dinosaur_museum",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_coccinelle_1",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 1,
+      "title": "La coccinelle",
+      "body": "Une coccinelle est posée sur une feuille verte. Elle est rouge avec des points noirs. Elle a six pattes. Sur la feuille, elle mange de minuscules insectes verts. Puis elle ouvre ses ailes et s'envole.",
+      "syllable_body": "U|ne coc|ci|nel|le est po|sée sur u|ne feuil|le ver|te. El|le est rou|ge a|vec des points noirs. El|le a six pat|tes. Sur la feuil|le, el|le man|ge de mi|nus|cu|les in|sec|tes verts. Puis el|le ou|vre ses ai|les et s'en|vo|le.",
+      "imageId": "ladybird_leaf",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_kangourou_2",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 2,
+      "title": "Un bébé dans la poche",
+      "body": "Le kangourou vit en Australie. Il saute très vite sur ses fortes pattes arrière, et sa longue queue l'aide à garder l'équilibre. À la naissance, le bébé kangourou n'est pas plus gros qu'un haricot. Il grandit dans une poche bien chaude sur le ventre de sa mère, qui l'emporte partout. Quand il est plus grand, il sort la tête pour regarder le monde.",
+      "syllable_body": "Le kan|gou|rou vit en Aus|tra|lie. Il sau|te très vi|te sur ses for|tes pat|tes ar|riè|re, et sa lon|gue queue l'ai|de à gar|der l'é|qui|li|bre. À la nais|san|ce, le bé|bé kan|gou|rou n'est pas plus gros qu'un ha|ri|cot. Il gran|dit dans u|ne po|che bien chau|de sur le ven|tre de sa mè|re, qui l'em|por|te par|tout. Quand il est plus grand, il sort la tê|te pour re|gar|der le mon|de.",
+      "imageId": "kangaroo_joey",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_cigogne_3",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 3,
+      "title": "La cigogne revient",
+      "body": "Chaque printemps, la cigogne blanche revient d'Afrique. Souvent, elle retrouve le même nid année après année. Le nid est fait de branches, et un vieux nid peut mesurer deux mètres de large. La cigogne a de longues pattes rouges et un long bec rouge. Elle marche lentement dans les prés humides et attrape des grenouilles, des souris et des insectes. Les cigognes ne chantent pas. À la place, elles font claquer leur bec. Au printemps, quelques petits naissent dans le nid, et les deux parents leur apportent à manger. À la fin de l'été, les cigognes repartent vers le sud.",
+      "syllable_body": "Cha|que prin|temps, la ci|go|gne blan|che re|vient d'A|fri|que. Sou|vent, el|le re|trou|ve le mê|me nid an|née a|près an|née. Le nid est fait de bran|ches, et un vieux nid peut me|su|rer deux mè|tres de lar|ge. La ci|go|gne a de lon|gues pat|tes rou|ges et un long bec rou|ge. El|le mar|che len|te|ment dans les prés hu|mi|des et at|tra|pe des gre|nouil|les, des sou|ris et des in|sec|tes. Les ci|go|gnes ne chan|tent pas. À la pla|ce, el|les font cla|quer leur bec. Au prin|temps, quel|ques pe|tits nais|sent dans le nid, et les deux pa|rents leur ap|por|tent à man|ger. À la fin de l'é|té, les ci|go|gnes re|par|tent vers le sud.",
+      "imageId": "stork_nest",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_ours_brun_4",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 4,
+      "title": "L'ourse et ses oursons",
+      "body": "L'ours brun est l'un des plus grands animaux des forêts d'Europe. Pourtant, il mange surtout des plantes : de l'herbe, des racines, des noisettes et des baies sucrées. Il déterre aussi des fourmis et des scarabées, et parfois il mange de la viande. Son meilleur outil, c'est son nez : il sent la nourriture de très loin.\n\nEn automne, l'ours mange autant qu'il peut. Puis il se glisse dans une tanière et dort presque tout l'hiver. C'est là que l'ourse met au monde ses oursons. Au début, ils sont minuscules et aveugles. Au printemps, elle les emmène dans la forêt et leur montre où poussent les meilleures myrtilles.\n\nLes oursons restent avec leur mère environ deux ans. Si tu vois un jour un ours, ne t'approche jamais. Reste calme et éloigne-toi lentement.",
+      "syllable_body": "L'ours brun est l'un des plus grands a|ni|maux des fo|rêts d'Eu|ro|pe. Pour|tant, il man|ge sur|tout des plan|tes : de l'her|be, des ra|ci|nes, des noi|set|tes et des baies su|crées. Il dé|ter|re aus|si des four|mis et des sca|ra|bées, et par|fois il man|ge de la vian|de. Son meil|leur ou|til, c'est son nez : il sent la nour|ri|tu|re de très loin.\n\nEn au|tom|ne, l'ours man|ge au|tant qu'il peut. Puis il se glis|se dans u|ne ta|niè|re et dort pres|que tout l'hi|ver. C'est là que l'our|se met au mon|de ses our|sons. Au dé|but, ils sont mi|nus|cu|les et a|veu|gles. Au prin|temps, el|le les em|mè|ne dans la fo|rêt et leur mon|tre où pous|sent les meil|leu|res myr|til|les.\n\nLes our|sons res|tent a|vec leur mè|re en|vi|ron deux ans. Si tu vois un jour un ours, ne t'ap|pro|che ja|mais. Res|te cal|me et é|loi|gne-toi len|te|ment.",
+      "imageId": "brown_bear_cubs",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_famille_elephants_5",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 5,
+      "title": "La famille des éléphants",
+      "body": "L'éléphant d'Afrique est le plus grand animal terrestre. Un mâle adulte peut peser autant que six voitures, et même un éléphanteau nouveau-né pèse environ cent kilos.\n\nLa trompe de l'éléphant, c'est son nez et sa lèvre supérieure réunis. Elle n'a pas d'os, mais elle a des milliers de muscles : elle peut soulever un tronc lourd ou ramasser une seule noix. L'éléphant s'en sert pour sentir, pour saluer sa famille et pour boire : il aspire l'eau, puis la souffle dans sa bouche. Quand il fait chaud, il s'asperge le dos d'eau ou de poussière. Ses immenses oreilles l'aident aussi : quand il les agite, le sang qui y circule se refroidit.\n\nLes éléphants vivent en familles de mères, de sœurs, de tantes et de petits. C'est la femelle la plus âgée qui les guide. Elle se souvient des points d'eau, même pendant les mois les plus secs. Tout le monde s'occupe des petits. Les jeunes mâles partent en grandissant, mais les femelles restent ensemble toute leur vie.",
+      "syllable_body": "L'é|lé|phant d'A|fri|que est le plus grand a|ni|mal ter|res|tre. Un mâ|le a|dul|te peut pe|ser au|tant que six voi|tu|res, et mê|me un é|lé|phan|teau nou|veau-né pè|se en|vi|ron cent ki|los.\n\nLa trom|pe de l'é|lé|phant, c'est son nez et sa lè|vre su|pé|rieu|re ré|u|nis. El|le n'a pas d'os, mais el|le a des mil|liers de mus|cles : el|le peut sou|le|ver un tronc lourd ou ra|mas|ser u|ne seu|le noix. L'é|lé|phant s'en sert pour sen|tir, pour sa|luer sa fa|mil|le et pour boi|re : il as|pi|re l'eau, puis la souf|fle dans sa bou|che. Quand il fait chaud, il s'as|per|ge le dos d'eau ou de pous|siè|re. Ses im|men|ses o|reil|les l'ai|dent aus|si : quand il les a|gi|te, le sang qui y cir|cu|le se re|froi|dit.\n\nLes é|lé|phants vi|vent en fa|mil|les de mè|res, de sœurs, de tan|tes et de pe|tits. C'est la fe|mel|le la plus â|gée qui les gui|de. El|le se sou|vient des points d'eau, mê|me pen|dant les mois les plus secs. Tout le mon|de s'oc|cu|pe des pe|tits. Les jeu|nes mâ|les par|tent en gran|dis|sant, mais les fe|mel|les res|tent en|sem|ble tou|te leur vie.",
+      "imageId": "elephant_waterhole",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
     }
   ]
 }

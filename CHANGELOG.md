@@ -7,6 +7,21 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
+More texts and one picture folder (2026-09-28):
+
+- **50 new texts:** a new story and a new animal text per level in all
+  five languages (393 texts), on ten new pictures made for them (a
+  puddle jump, a snowman, a sandcastle, a bird feeder, a museum dinosaur;
+  a ladybird, a kangaroo, storks, brown bears, elephants). Every new text
+  fits on one page. The Slovene ten are drafts for the owner.
+- **Corrections** in all five languages after an owner-approved review
+  (grammar, wrong words, three factual errors); corrected entries have
+  their `version` bumped.
+- **All pictures in `assets/images/`.** The old `Images/` folder (96
+  exact duplicates, 94 unused pictures) is gone: duplicates deleted,
+  unused pictures moved in, unlisted in the manifest, so the app is
+  unchanged in size apart from the ten new pictures.
+
 Code clean-up (2026-09-27; no visible change, proven as below):
 
 - **`main.js` split into the panels it wired by hand.** From 760 lines

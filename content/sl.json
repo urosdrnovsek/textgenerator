@@ -1342,6 +1342,186 @@
         "syllablesReviewed": true,
         "imageAccuracy": "verified"
       }
+    },
+    {
+      "id": "stories_luza_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Čof!",
+      "body": "Dež je ponehal. Mia obuje rdeče škornje in obleče rumen dežni plašč. V parku zagleda veliko lužo. Čof! Mia skoči naravnost vanjo. Tudi njen mali rjavi kuža je ves moker.",
+      "syllable_body": "Dež je po|ne|hal. Mi|a o|bu|je r|de|če škor|nje in ob|le|če ru|men dež|ni plašč. V par|ku za|gle|da ve|li|ko lu|žo. Čof! Mi|a sko|či na|rav|nost va|njo. Tu|di njen ma|li rja|vi ku|ža je ves mo|ker.",
+      "imageId": "puddle_jump",
+      "review": {
+        "status": "draft",
+        "reviewer": "Claude (original Slovene text, not a native speaker; syllable breaks by the pack's conventions) — for the owner's review",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_snezak_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Snežak",
+      "body": "Vso noč je snežilo. Mia in Tim stečeta na vrt. Zvaljata tri velike kepe in jih postavita eno na drugo. Tim prinese korenček za nos. Mia najde dva črna kamenčka za oči. Tim snežaku podari svoj rdeči šal, staro zeleno vedro pa je njegov klobuk. Na vedro takoj prileti majhna ptica.",
+      "syllable_body": "Vso noč je sne|ži|lo. Mi|a in Tim ste|če|ta na vrt. Zva|lja|ta tri ve|li|ke ke|pe in jih po|sta|vi|ta e|no na dru|go. Tim pri|ne|se ko|ren|ček za nos. Mi|a naj|de dva čr|na ka|men|čka za o|či. Tim sne|ža|ku po|da|ri svoj r|de|či šal, sta|ro ze|le|no ve|dro pa je nje|gov klo|buk. Na ve|dro ta|koj pri|le|ti majh|na pti|ca.",
+      "imageId": "snowman_garden",
+      "review": {
+        "status": "draft",
+        "reviewer": "Claude (original Slovene text, not a native speaker; syllable breaks by the pack's conventions) — for the owner's review",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_grad_iz_peska_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Grad in morje",
+      "body": "Zadnji dan počitnic sta Mia in Tim na plaži gradila grad iz peska. Tim je v rdeče vedro nalagal moker pesek, Mia pa je z modro lopatko gladila zidove. Kmalu je imel grad štiri stolpe. Na vrh najvišjega je Mia zataknila belo pero za zastavo. »Morje prihaja!« je zaklical Tim. Hitro sta okoli gradu izkopala globok jarek. Pripljusknil je val in jarek napolnil z vodo. Zdaj je grad obdajal pravi vodni jarek, sam pa je varno stal na sredini.",
+      "syllable_body": "Zad|nji dan po|čit|nic sta Mi|a in Tim na pla|ži gra|di|la grad iz pes|ka. Tim je v r|de|če ve|dro na|la|gal mo|ker pe|sek, Mi|a pa je z mo|dro lo|pat|ko gla|di|la zi|do|ve. Kma|lu je i|mel grad šti|ri stol|pe. Na vrh naj|viš|je|ga je Mi|a za|ta|kni|la be|lo pe|ro za za|sta|vo. »Mor|je pri|ha|ja!« je za|kli|cal Tim. Hi|tro sta o|ko|li gra|du iz|ko|pa|la glo|bok ja|rek. Pri|pljusk|nil je val in ja|rek na|pol|nil z vo|do. Zdaj je grad ob|da|jal pra|vi vod|ni ja|rek, sam pa je var|no stal na sre|di|ni.",
+      "imageId": "sandcastle_beach",
+      "review": {
+        "status": "draft",
+        "reviewer": "Claude (original Slovene text, not a native speaker; syllable breaks by the pack's conventions) — for the owner's review",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_krmilnica_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Restavracija za ptice",
+      "body": "Že tri dni je snežilo in vrt je bil bel in tih. »Ptice so lačne,« je rekla Mia. »Zgradiva jim majhno restavracijo.«\n\nV lopi jima je oče pomagal žagati deske, Tim pa je zabijal žeblje. Mia je streho pobarvala rdeče. Nato sta krmilnico napolnila s sončničnimi semeni in jo odnesla do starega drevesa. Mia jo je obesila na močno vejo, njen mlajši brat pa je držal vrečko s semeni.\n\nMia jo je komaj izpustila, ko je nanjo že priletela velika sinica z rumenimi prsmi in črno glavo. »Restavracija je odprta!« se je zasmejal Tim. Oče jima je povedal pomembno pravilo: če pozimi začneš hraniti ptice, jih moraš hraniti vse do pomladi. Zato je Tim od tistega dne vsako jutro napolnil krmilnico.",
+      "syllable_body": "Že tri dni je sne|ži|lo in vrt je bil bel in tih. »Pti|ce so lač|ne,« je re|kla Mi|a. »Zgra|di|va jim maj|hno re|sta|vra|ci|jo.«\n\nV lo|pi ji|ma je o|če po|ma|gal ža|ga|ti des|ke, Tim pa je za|bi|jal žeb|lje. Mi|a je stre|ho po|bar|va|la r|de|če. Na|to sta kr|mil|ni|co na|pol|ni|la s son|čnič|ni|mi se|me|ni in jo od|ne|sla do sta|re|ga dre|ve|sa. Mi|a jo je o|be|si|la na moč|no ve|jo, njen mlaj|ši brat pa je dr|žal vreč|ko s se|me|ni.\n\nMi|a jo je ko|maj iz|pu|sti|la, ko je na|njo že pri|le|te|la ve|li|ka si|ni|ca z ru|me|ni|mi pr|smi in čr|no gla|vo. »Re|sta|vra|ci|ja je od|pr|ta!« se je za|sme|jal Tim. O|če ji|ma je po|ve|dal po|memb|no pra|vi|lo: če po|zi|mi zač|neš hra|ni|ti pti|ce, jih mo|raš hra|ni|ti vse do po|mla|di. Za|to je Tim od ti|ste|ga dne vsa|ko ju|tro na|pol|nil kr|mil|ni|co.",
+      "imageId": "bird_feeder_winter",
+      "review": {
+        "status": "draft",
+        "reviewer": "Claude (original Slovene text, not a native speaker; syllable breaks by the pack's conventions) — for the owner's review",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_dinozaver_muzej_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Velikan v muzeju",
+      "body": "V ponedeljek je Timov razred obiskal prirodoslovni muzej. V največji dvorani so otroci obstali in strmeli. Pred njimi je stalo okostje dinozavra z dolgim vratom in še daljšim repom. Njegova majhna glava je segala skoraj do stropa, otroci pa so mu segali le do kolen.\n\n»To je diplodok,« je povedal vodnik, gospod s sivo brado. »Živel je pred približno sto petdeset milijoni let in je bil dolg kot dva avtobusa. A brez skrbi, jedel je samo rastline.« Vsi so se zasmejali.\n\nRazložil je, da so se kosti v milijonih let počasi spremenile v kamen. Znanstveniki so jih kos za kosom izkopali iz skal in jih sestavili kot ogromno sestavljanko.\n\nTim se je z zvezkom usedel na tla in začel risati. Narisal je dolgi vrat, drobno glavo in prav vsako rebro. Ko je vodnik videl njegovo risbo, se je nasmehnil. »Morda boš nekoč,« je rekel, »tudi ti izkopal svojega dinozavra.«",
+      "syllable_body": "V po|ne|de|ljek je Ti|mov raz|red o|bis|kal pri|ro|do|slov|ni mu|zej. V naj|več|ji dvo|ra|ni so o|tro|ci ob|sta|li in str|me|li. Pred nji|mi je sta|lo o|kost|je di|no|za|vra z dol|gim vra|tom in še dalj|šim re|pom. Nje|go|va majh|na gla|va je se|ga|la sko|raj do stro|pa, o|tro|ci pa so mu se|ga|li le do ko|len.\n\n»To je di|plo|dok,« je po|ve|dal vod|nik, go|spod s si|vo bra|do. »Ži|vel je pred pri|bliž|no sto pet|de|set mi|li|jo|ni let in je bil dolg kot dva av|to|bu|sa. A brez skr|bi, je|del je sa|mo ras|tli|ne.« Vsi so se za|sme|ja|li.\n\nRaz|lo|žil je, da so se ko|sti v mi|li|jo|nih let po|ča|si spre|me|ni|le v ka|men. Znans|tve|ni|ki so jih kos za ko|som iz|ko|pa|li iz skal in jih se|sta|vi|li kot o|grom|no se|stav|ljan|ko.\n\nTim se je z zvez|kom u|se|del na tla in za|čel ri|sa|ti. Na|ri|sal je dol|gi vrat, drob|no gla|vo in prav vsa|ko re|bro. Ko je vod|nik vi|del nje|go|vo ris|bo, se je na|sme|hnil. »Mor|da boš ne|koč,« je re|kel, »tu|di ti iz|ko|pal svo|je|ga di|no|za|vra.«",
+      "imageId": "dinosaur_museum",
+      "review": {
+        "status": "draft",
+        "reviewer": "Claude (original Slovene text, not a native speaker; syllable breaks by the pack's conventions) — for the owner's review",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_pikapolonica_1",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 1,
+      "title": "Pikapolonica",
+      "body": "Pikapolonica sedi na zelenem listu. Rdeča je in ima črne pike. Ima šest nog. Na listu lovi drobne zelene žuželke. Nato razpre krila in odleti.",
+      "syllable_body": "Pi|ka|po|lo|ni|ca se|di na ze|le|nem li|stu. R|de|ča je in i|ma čr|ne pi|ke. I|ma šest nog. Na li|stu lo|vi drob|ne ze|le|ne žu|žel|ke. Na|to raz|pre kri|la in od|le|ti.",
+      "imageId": "ladybird_leaf",
+      "review": {
+        "status": "draft",
+        "reviewer": "Claude (original Slovene text, not a native speaker; syllable breaks by the pack's conventions) — for the owner's review",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_kenguru_2",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 2,
+      "title": "Mladiček v vrečki",
+      "body": "Kenguru živi v Avstraliji. Na močnih zadnjih nogah hitro skače, dolg rep pa mu pomaga ohranjati ravnotežje. Ko se mladiček skoti, je majhen kot fižolovo zrno. Raste v topli vrečki na maminem trebuhu, mama pa ga nosi povsod s seboj. Ko je večji, pokuka ven in si ogleda svet.",
+      "syllable_body": "Ken|gu|ru ži|vi v Av|stra|li|ji. Na moč|nih zad|njih no|gah hi|tro ska|če, dolg rep pa mu po|ma|ga o|hra|nja|ti rav|no|tež|je. Ko se mla|di|ček sko|ti, je maj|hen kot fi|žo|lo|vo zr|no. Ra|ste v to|pli vreč|ki na ma|mi|nem tre|bu|hu, ma|ma pa ga no|si pov|sod s se|boj. Ko je več|ji, po|ku|ka ven in si o|gle|da svet.",
+      "imageId": "kangaroo_joey",
+      "review": {
+        "status": "draft",
+        "reviewer": "Claude (original Slovene text, not a native speaker; syllable breaks by the pack's conventions) — for the owner's review",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_storklja_3",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 3,
+      "title": "Štorklja se vrača",
+      "body": "Vsako pomlad se bela štorklja vrne iz Afrike. Pogosto se leto za letom vrača v isto gnezdo na isti strehi. Gnezdo je spleteno iz vej, staro gnezdo pa je lahko široko kar dva metra. Štorklja ima dolge rdeče noge in dolg rdeč kljun. Počasi hodi po mokrih travnikih in lovi žabe, miši in žuželke. Štorklje ne pojejo. Namesto tega glasno klepetajo s kljuni. Spomladi se v gnezdu izleže nekaj mladičev in oba starša jim nosita hrano. Pozno poleti štorklje spet odletijo na jug.",
+      "syllable_body": "Vsa|ko po|mlad se be|la štor|klja vr|ne iz A|fri|ke. Po|go|sto se le|to za le|tom vra|ča v i|sto gne|zdo na i|sti stre|hi. Gne|zdo je sple|te|no iz vej, sta|ro gne|zdo pa je lah|ko ši|ro|ko kar dva me|tra. Štor|klja i|ma dol|ge r|de|če no|ge in dolg r|deč kljun. Po|ča|si ho|di po mo|krih trav|ni|kih in lo|vi ža|be, mi|ši in žu|žel|ke. Štor|klje ne po|je|jo. Na|me|sto te|ga gla|sno kle|pe|ta|jo s klju|ni. Spo|mla|di se v gne|zdu iz|le|že ne|kaj mla|di|čev in o|ba star|ša jim no|si|ta hra|no. Poz|no po|le|ti štor|klje spet od|le|ti|jo na jug.",
+      "imageId": "stork_nest",
+      "review": {
+        "status": "draft",
+        "reviewer": "Claude (original Slovene text, not a native speaker; syllable breaks by the pack's conventions) — for the owner's review",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_rjavi_medved_4",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 4,
+      "title": "Medvedka in njena mladiča",
+      "body": "Rjavi medved je ena največjih živali v evropskih gozdovih, živi pa tudi pri nas. Kljub svoji velikosti se večinoma hrani z rastlinami: s travo, koreninami, orehi in sladkimi jagodami. Izkopava tudi mravlje in hrošče, občasno pa se hrani tudi z mesom. Njegovo najboljše orodje je nos, s katerim zavoha hrano že od daleč.\n\nJeseni se medved zredi, saj ves čas išče hrano. Nato se zavleče v brlog pod skalami ali koreninami in prespi večji del zime. Tam medvedka skoti mladiče. Sprva so drobni in slepi. Spomladi jih odpelje v gozd in jim pokaže, kje rastejo najboljše borovnice.\n\nMladiči ostanejo z njo približno dve leti. Če kdaj vidiš medveda, se mu nikoli ne približaj. Ostani miren in se počasi umakni.",
+      "syllable_body": "Rja|vi me|dved je e|na naj|več|jih ži|va|li v e|vrop|skih go|zdo|vih, ži|vi pa tu|di pri nas. Kljub svo|ji ve|li|ko|sti se ve|či|no|ma hra|ni z ras|tli|na|mi: s tra|vo, ko|re|ni|na|mi, o|re|hi in slad|ki|mi ja|go|da|mi. Iz|ko|pa|va tu|di mrav|lje in hroš|če, ob|ča|sno pa se hra|ni tu|di z me|som. Nje|go|vo naj|bolj|še o|rod|je je nos, s ka|te|rim za|vo|ha hra|no že od da|leč.\n\nJe|se|ni se me|dved zre|di, saj ves čas iš|če hra|no. Na|to se za|vle|če v br|log pod ska|la|mi a|li ko|re|ni|na|mi in pre|spi več|ji del zi|me. Tam me|dved|ka sko|ti mla|di|če. Spr|va so drob|ni in sle|pi. Spo|mla|di jih od|pe|lje v gozd in jim po|ka|že, kje ra|ste|jo naj|bolj|še bo|rov|ni|ce.\n\nMla|di|či o|sta|ne|jo z njo pri|bliž|no dve le|ti. Če kdaj vi|diš me|dve|da, se mu ni|ko|li ne pri|bli|žaj. O|sta|ni mi|ren in se po|ča|si u|mak|ni.",
+      "imageId": "brown_bear_cubs",
+      "review": {
+        "status": "draft",
+        "reviewer": "Claude (original Slovene text, not a native speaker; syllable breaks by the pack's conventions) — for the owner's review",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_slonja_druzina_5",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 5,
+      "title": "Slonja družina",
+      "body": "Afriški slon je največja kopenska žival. Odrasel samec lahko tehta toliko kot šest avtomobilov, celo novorojeni mladič pa tehta približno sto kilogramov.\n\nSlonov rilec je nos, zraščen z zgornjo ustnico. Nima kosti, ima pa na tisoče mišic, zato lahko z njim dvigne težko deblo ali pobere en sam orešek. Slon z rilcem voha, pozdravlja člane družine in pije: vodo posrka v rilec in si jo brizgne v usta. Ob vročih dneh si z njim škropi vodo ali prah po hrbtu. Pomagajo mu tudi ogromna ušesa. Ko z njimi maha, se kri v njih ohladi.\n\nSloni živijo v družinah, ki jih sestavljajo mame, sestre, tete in mladiči. Vodi jih najstarejša samica. Ve, kje je voda, tudi v najbolj suhih mesecih, in družina ji sledi od napajališča do napajališča. Za mladiče skrbijo vsi. Mladi samci odidejo, ko odrastejo, samice pa ostanejo skupaj vse življenje.",
+      "syllable_body": "A|fri|ški slon je naj|več|ja ko|pen|ska ži|val. Od|ra|sel sa|mec lah|ko teh|ta to|li|ko kot šest av|to|mo|bi|lov, ce|lo no|vo|ro|je|ni mla|dič pa teh|ta pri|bliž|no sto ki|lo|gra|mov.\n\nSlo|nov ri|lec je nos, zra|ščen z zgor|njo ust|ni|co. Ni|ma ko|sti, i|ma pa na ti|so|če mi|šic, za|to lah|ko z njim dvi|gne tež|ko de|blo a|li po|be|re en sam o|re|šek. Slon z ril|cem vo|ha, po|zdrav|lja čla|ne dru|ži|ne in pi|je: vo|do po|sr|ka v ri|lec in si jo briz|gne v u|sta. Ob vro|čih dneh si z njim škro|pi vo|do a|li prah po hrb|tu. Po|ma|ga|jo mu tu|di o|grom|na u|še|sa. Ko z nji|mi ma|ha, se kri v njih o|hla|di.\n\nSlo|ni ži|vi|jo v dru|ži|nah, ki jih se|stav|lja|jo ma|me, se|stre, te|te in mla|di|či. Vo|di jih naj|sta|rej|ša sa|mi|ca. Ve, kje je vo|da, tu|di v naj|bolj su|hih me|se|cih, in dru|ži|na ji sle|di od na|pa|ja|li|šča do na|pa|ja|li|šča. Za mla|di|če skr|bi|jo vsi. Mla|di sam|ci o|di|de|jo, ko od|ra|ste|jo, sa|mi|ce pa o|sta|ne|jo sku|paj vse živ|lje|nje.",
+      "imageId": "elephant_waterhole",
+      "review": {
+        "status": "draft",
+        "reviewer": "Claude (original Slovene text, not a native speaker; syllable breaks by the pack's conventions) — for the owner's review",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
     }
   ]
 }

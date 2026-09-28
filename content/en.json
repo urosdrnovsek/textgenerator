@@ -1766,6 +1766,186 @@
         "syllablesReviewed": true,
         "imageAccuracy": "verified"
       }
+    },
+    {
+      "id": "stories_puddle_jump_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Splash!",
+      "body": "The rain has stopped. Mia puts on her red boots and her yellow raincoat. In the park she sees a big puddle. Splash! Mia jumps right in. Her little brown dog gets wet too.",
+      "syllable_body": "The rain has stopped. Mi|a puts on her red boots and her yel|low rain|coat. In the park she sees a big pud|dle. Splash! Mi|a jumps right in. Her lit|tle brown dog gets wet too.",
+      "imageId": "puddle_jump",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_snowman_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "The Snowman",
+      "body": "It snowed all night. Mia and Tom run into the garden. They roll three big snowballs and put them on top of each other. Tom brings a carrot for the nose. Mia finds two black stones for the eyes. Tom gives the snowman his red scarf, and an old green bucket is its hat. A little bird lands on the bucket at once.",
+      "syllable_body": "It snowed all night. Mi|a and Tom run in|to the gar|den. They roll three big snow|balls and put them on top of each oth|er. Tom brings a car|rot for the nose. Mi|a finds two black stones for the eyes. Tom gives the snow|man his red scarf, and an old green buck|et is its hat. A lit|tle bird lands on the buck|et at once.",
+      "imageId": "snowman_garden",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_sandcastle_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "The Castle and the Sea",
+      "body": "On the last day of the holiday, Mia and Tom built a sandcastle on the beach. Tom filled the red bucket with wet sand, and Mia patted the walls smooth with the blue spade. Soon the castle had four towers. On top of the tallest one, Mia put a white feather as a flag. “The sea is coming!” shouted Tom. Quickly they dug a deep ditch all around the castle. A wave rolled in and filled the ditch with water. Now the castle had a real moat, and it stood safe in the middle.",
+      "syllable_body": "On the last day of the hol|i|day, Mi|a and Tom built a sand|cas|tle on the beach. Tom filled the red buck|et with wet sand, and Mi|a pat|ted the walls smooth with the blue spade. Soon the cas|tle had four tow|ers. On top of the tall|est one, Mi|a put a white feath|er as a flag. “The sea is com|ing!” shout|ed Tom. Quick|ly they dug a deep ditch all a|round the cas|tle. A wave rolled in and filled the ditch with wa|ter. Now the cas|tle had a real moat, and it stood safe in the mid|dle.",
+      "imageId": "sandcastle_beach",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_bird_feeder_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "A Restaurant for Birds",
+      "body": "It had snowed for three days, and the garden was white and quiet. “The birds are hungry,” said Mia. “Let’s build them a little restaurant.”\n\nIn the shed, Dad helped them saw the boards, and Tom hammered in the nails. Mia painted the roof red. Then they filled the bird feeder with sunflower seeds and carried it out to the old tree. Mia hung it on a strong branch, while her little brother held the bag of seeds.\n\nMia had hardly let go of it when a great tit with a yellow chest and a black head landed on the feeder. “The restaurant is open!” Tom laughed. Dad had told them one important rule: once you start feeding birds in winter, you must keep going until spring. So from that day on, Tom filled the feeder every morning.",
+      "syllable_body": "It had snowed for three days, and the gar|den was white and qui|et. “The birds are hun|gry,” said Mi|a. “Let’s build them a lit|tle res|tau|rant.”\n\nIn the shed, Dad helped them saw the boards, and Tom ham|mered in the nails. Mi|a paint|ed the roof red. Then they filled the bird feed|er with sun|flow|er seeds and car|ried it out to the old tree. Mi|a hung it on a strong branch, while her lit|tle broth|er held the bag of seeds.\n\nMi|a had hard|ly let go of it when a great tit with a yel|low chest and a black head land|ed on the feed|er. “The res|tau|rant is o|pen!” Tom laughed. Dad had told them one im|por|tant rule: once you start feed|ing birds in win|ter, you must keep go|ing un|til spring. So from that day on, Tom filled the feed|er ev|ery morn|ing.",
+      "imageId": "bird_feeder_winter",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_dinosaur_museum_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "The Giant in the Museum",
+      "body": "On Monday, Tom’s class visited the natural history museum. In the biggest hall they stopped and stared. In front of them stood the skeleton of a dinosaur with a long neck and an even longer tail. Its small head was up near the ceiling, and the children only reached up to its knees.\n\n“This is a diplodocus,” said the guide, a man with a grey beard. “It lived about one hundred and fifty million years ago and was as long as two buses. But don’t worry: it only ate plants.” Everyone laughed.\n\nHe explained that over millions of years the bones had slowly turned to stone. Scientists had dug them out of the rock piece by piece and put them together like a giant puzzle.\n\nTom sat down on the floor with his notebook and began to draw. She drew the long neck, the tiny head and every single rib. When the guide saw his drawing, he smiled. “Maybe one day,” he said, “you will dig up a dinosaur of your own.”",
+      "syllable_body": "On Mon|day, Tom’s class vis|it|ed the nat|u|ral his|to|ry mu|se|um. In the big|gest hall they stopped and stared. In front of them stood the skel|e|ton of a di|no|saur with a long neck and an e|ven long|er tail. Its small head was up near the ceil|ing, and the chil|dren on|ly reached up to its knees.\n\n“This is a di|plod|o|cus,” said the guide, a man with a grey beard. “It lived a|bout one hun|dred and fif|ty mil|lion years a|go and was as long as two bus|es. But don’t wor|ry: it on|ly ate plants.” Ev|ery|one laughed.\n\nHe ex|plained that o|ver mil|lions of years the bones had slow|ly turned to stone. Sci|en|tists had dug them out of the rock piece by piece and put them to|geth|er like a gi|ant puz|zle.\n\nTom sat down on the floor with his note|book and be|gan to draw. She drew the long neck, the ti|ny head and ev|ery sin|gle rib. When the guide saw his draw|ing, he smiled. “May|be one day,” he said, “you will dig up a di|no|saur of your own.”",
+      "imageId": "dinosaur_museum",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_ladybird_1",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 1,
+      "title": "The Ladybird",
+      "body": "A ladybird sits on a green leaf. It is red with black spots. It has six legs. It eats tiny green insects on the leaf. Then it opens its wings and flies away.",
+      "syllable_body": "A la|dy|bird sits on a green leaf. It is red with black spots. It has six legs. It eats ti|ny green in|sects on the leaf. Then it o|pens its wings and flies a|way.",
+      "imageId": "ladybird_leaf",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_kangaroo_2",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 2,
+      "title": "A Baby in a Pouch",
+      "body": "The kangaroo lives in Australia. It hops fast on its strong back legs, and its long tail helps it keep its balance. A baby kangaroo is called a joey. At birth it is as small as a bean. It grows in a warm pouch on its mother’s tummy. When it is bigger, it peeks out to look at the world.",
+      "syllable_body": "The kan|ga|roo lives in Aus|tra|lia. It hops fast on its strong back legs, and its long tail helps it keep its bal|ance. A ba|by kan|ga|roo is called a jo|ey. At birth it is as small as a bean. It grows in a warm pouch on its moth|er’s tum|my. When it is big|ger, it peeks out to look at the world.",
+      "imageId": "kangaroo_joey",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_stork_3",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 3,
+      "title": "The Stork Comes Back",
+      "body": "Every spring, the white stork flies back from Africa. It often returns to the same nest on the same roof, year after year. The nest is made of sticks, and an old one can be two metres wide. The stork has long red legs and a long red beak. It walks slowly through wet meadows and catches frogs, mice and insects. Storks do not sing. Instead, they clatter their beaks loudly. In spring, a few chicks hatch in the nest, and both parents bring them food. In late summer, the storks fly south again.",
+      "syllable_body": "Ev|ery spring, the white stork flies back from Af|ri|ca. It of|ten re|turns to the same nest on the same roof, year af|ter year. The nest is made of sticks, and an old one can be two me|tres wide. The stork has long red legs and a long red beak. It walks slow|ly through wet mead|ows and catch|es frogs, mice and in|sects. Storks do not sing. In|stead, they clat|ter their beaks loud|ly. In spring, a few chicks hatch in the nest, and both par|ents bring them food. In late sum|mer, the storks fly south a|gain.",
+      "imageId": "stork_nest",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_brown_bear_4",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 4,
+      "title": "The Brown Bear and Her Cubs",
+      "body": "The brown bear is one of the largest animals in the forests of Europe. Even so, it eats mostly plants: grass, roots, nuts and sweet berries. It also digs for ants and beetles, and sometimes it eats meat. Its best tool is its nose, which can smell food from far away.\n\nIn autumn the bear eats as much as it can. Then it crawls into a den under rocks or roots and sleeps through most of the winter. There the mother gives birth to her cubs. They are tiny and blind at first. In spring she leads them out into the forest and shows them where the best blueberries grow.\n\nThe cubs stay with her for about two years. If you ever see a bear, never go close. Stay calm and walk slowly away.",
+      "syllable_body": "The brown bear is one of the larg|est an|i|mals in the for|ests of Eu|rope. E|ven so, it eats most|ly plants: grass, roots, nuts and sweet ber|ries. It al|so digs for ants and bee|tles, and some|times it eats meat. Its best tool is its nose, which can smell food from far a|way.\n\nIn au|tumn the bear eats as much as it can. Then it crawls in|to a den un|der rocks or roots and sleeps through most of the win|ter. There the moth|er gives birth to her cubs. They are ti|ny and blind at first. In spring she leads them out in|to the for|est and shows them where the best blue|ber|ries grow.\n\nThe cubs stay with her for a|bout two years. If you ev|er see a bear, nev|er go close. Stay calm and walk slow|ly a|way.",
+      "imageId": "brown_bear_cubs",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_elephant_family_5",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 5,
+      "title": "The Elephant Family",
+      "body": "The African elephant is the largest animal on land. A grown male can weigh as much as six cars, and even a newborn calf weighs about a hundred kilograms.\n\nAn elephant’s trunk is its nose and upper lip joined together. It has no bones, but it has thousands of muscles, so it can lift a heavy log or pick up a single nut. The elephant uses its trunk to smell, to greet its family and to drink: it sucks up water and squirts it into its mouth. On hot days it sprays water or dust over its back. Its huge ears help too. When it flaps them, the blood inside them cools down.\n\nElephants live in families of mothers, sisters, aunts and calves. The leader is the oldest female. She remembers where to find water, even in the driest months, and the family follows her from waterhole to waterhole. Everyone looks after the calves. Young males leave when they grow up, but the females stay together all their lives.",
+      "syllable_body": "The Af|ri|can el|e|phant is the larg|est an|i|mal on land. A grown male can weigh as much as six cars, and e|ven a new|born calf weighs a|bout a hun|dred kil|o|grams.\n\nAn el|e|phant’s trunk is its nose and up|per lip joined to|geth|er. It has no bones, but it has thou|sands of mus|cles, so it can lift a heav|y log or pick up a sin|gle nut. The el|e|phant us|es its trunk to smell, to greet its fam|i|ly and to drink: it sucks up wa|ter and squirts it in|to its mouth. On hot days it sprays wa|ter or dust o|ver its back. Its huge ears help too. When it flaps them, the blood in|side them cools down.\n\nEl|e|phants live in fam|i|lies of moth|ers, sis|ters, aunts and calves. The lead|er is the old|est fe|male. She re|mem|bers where to find wa|ter, e|ven in the dri|est months, and the fam|i|ly fol|lows her from wa|ter|hole to wa|ter|hole. Ev|ery|one looks af|ter the calves. Young males leave when they grow up, but the fe|males stay to|geth|er all their lives.",
+      "imageId": "elephant_waterhole",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
     }
   ]
 }
