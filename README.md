@@ -8,9 +8,10 @@ or an editable Word (`.docx`) file. It runs entirely offline — open
 `index.html`; no server, no install, no internet connection at any point.
 
 Five languages (Slovene, English, German, French, Spanish), five themes,
-five difficulty levels; English has three to six texts for every theme
-and level (108 entries), Slovene three to five (90), French, German and
-Spanish two to four (65 each) — 393 texts in all.
+five difficulty levels; English has three to eight texts for every theme
+and level (118 entries), Slovene three to seven (100), French, German and
+Spanish two to six (75 each) — 443 texts in all, including a set of gentle
+fantasy stories.
 Current version:
 `0.10.0-rc.3` — a release candidate; see "Status" below for what's still
 open.
@@ -100,11 +101,11 @@ project owner's own hardware.
 
 Still open, deliberately: a native speaker's review of the English, German,
 French and Spanish content (they've had a careful editorial pass, not a
-native speaker's read — 0 of 303 non-Slovene entries native-reviewed, and
+native speaker's read — 0 of 343 non-Slovene entries native-reviewed, and
 the same goes for the short instruction lines printed on the new activity
 sheets); an
 image-accuracy pass over the entries whose pictures were reassigned on
-topic rather than drawn for the text (284 of 393 verified, the rest
+topic rather than drawn for the text (334 of 443 verified, the rest
 plausible, no known mismatch). Both numbers come from the per-entry review record and are
 printed by `npm run content-status`, so progress is measurable rather
 than asserted (see `docs/content-guide.md`). Also open: country-specific

@@ -1172,6 +1172,186 @@
         "syllablesReviewed": true,
         "imageAccuracy": "verified"
       }
+    },
+    {
+      "id": "stories_oiseau_peint_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "L'oiseau peint",
+      "body": "Inès peint un oiseau bleu. Alors l'oiseau ouvre les yeux. Il bat des ailes et s'envole du papier ! Il chante dans la pièce ensoleillée. Inès rit. Le chat continue de dormir.",
+      "syllable_body": "I|nès peint un oi|seau bleu. A|lors l'oi|seau ou|vre les yeux. Il bat des ai|les et s'en|vo|le du pa|pier ! Il chan|te dans la piè|ce en|so|leil|lée. I|nès rit. Le chat con|ti|nue de dor|mir.",
+      "imageId": "magic_paintbrush",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_mouton_nuage_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Le mouton-nuage",
+      "body": "Hugo voit un nuage qui ressemble à un mouton. Le mouton-nuage descend et lui sourit. Hugo grimpe sur son dos tout doux. Et hop, ils s'envolent au-dessus de la rivière et du petit village !",
+      "syllable_body": "Hu|go voit un nu|a|ge qui res|sem|ble à un mou|ton. Le mou|ton-nu|a|ge des|cend et lui sou|rit. Hu|go grim|pe sur son dos tout doux. Et hop, ils s'en|vo|lent au-des|sus de la ri|viè|re et du pe|tit vil|la|ge !",
+      "imageId": "cloud_sheep",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_porte_minuscule_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "La porte minuscule",
+      "body": "Inès est allongée dans l'herbe, près d'un grand et vieil arbre. Entre les racines, elle voit une porte minuscule en bois avec une fenêtre ronde. À côté pend une petite lanterne. Puis la porte s'ouvre. Une souris en manteau rouge sort, une théière dans les pattes. « Tu veux une tasse de thé ? » demande la souris. Inès sourit. Elle est bien trop grande pour entrer !",
+      "syllable_body": "I|nès est al|lon|gée dans l'her|be, près d'un grand et vieil ar|bre. En|tre les ra|ci|nes, el|le voit u|ne por|te mi|nus|cu|le en bois a|vec u|ne fe|nê|tre ron|de. À cô|té pend u|ne pe|ti|te lan|ter|ne. Puis la por|te s'ou|vre. U|ne sou|ris en man|teau rou|ge sort, u|ne thé|iè|re dans les pat|tes. « Tu veux u|ne tas|se de thé ? » de|man|de la sou|ris. I|nès sou|rit. El|le est bien trop gran|de pour en|trer !",
+      "imageId": "tiny_door",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_chaussette_geant_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "La chaussette du géant",
+      "body": "Dans le pré, Hugo trouve une chose étrange : une énorme chaussette à rayures rouges et blanches ! Elle est aussi grande qu'une tente. Hugo se glisse dedans et rit. Les moutons le regardent, étonnés. Tout à coup, le sol se met à trembler. Au loin, derrière les collines, se tient un géant avec un pied nu. « Voilà ma chaussette ! » crie-t-il, tout content.",
+      "syllable_body": "Dans le pré, Hu|go trou|ve u|ne cho|se é|tran|ge : u|ne é|nor|me chaus|set|te à ra|yu|res rou|ges et blan|ches ! El|le est aus|si gran|de qu'u|ne ten|te. Hu|go se glis|se de|dans et rit. Les mou|tons le re|gar|dent, é|ton|nés. Tout à coup, le sol se met à trem|bler. Au loin, der|riè|re les col|li|nes, se tient un gé|ant a|vec un pied nu. « Voi|là ma chaus|set|te ! » crie-t-il, tout con|tent.",
+      "imageId": "giant_sock",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_licorne_potager_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "La licorne du potager",
+      "body": "Un matin, très tôt, Inès est allée au potager pour cueillir des carottes. Entre les salades se tenait une petite licorne blanche, avec une corne argentée et une longue crinière dorée. Elle levait une patte avant. Inès s'est agenouillée doucement. « Tu as mal ? » a-t-elle chuchoté. Un petit caillou était coincé dans son sabot. Avec précaution, Inès l'a retiré. La licorne a touché ses cheveux du bout du nez. Alors, tout autour de ses sabots, des fleurs de toutes les couleurs ont poussé dans la terre. Inès n'avait jamais rien vu d'aussi beau.",
+      "syllable_body": "Un ma|tin, très tôt, I|nès est al|lée au po|ta|ger pour cueil|lir des ca|rot|tes. En|tre les sa|la|des se te|nait u|ne pe|ti|te li|cor|ne blan|che, a|vec u|ne cor|ne ar|gen|tée et u|ne lon|gue cri|niè|re do|rée. El|le le|vait u|ne pat|te a|vant. I|nès s'est a|ge|nouil|lée dou|ce|ment. « Tu as mal ? » a-t-el|le chu|cho|té. Un pe|tit cail|lou é|tait coin|cé dans son sa|bot. A|vec pré|cau|tion, I|nès l'a re|ti|ré. La li|cor|ne a tou|ché ses che|veux du bout du nez. A|lors, tout au|tour de ses sa|bots, des fleurs de tou|tes les cou|leurs ont pous|sé dans la ter|re. I|nès n'a|vait ja|mais rien vu d'aus|si beau.",
+      "imageId": "unicorn_garden",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_chapeau_magicien_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Le chapeau du magicien",
+      "body": "Un après-midi ensoleillé, Hugo jouait au grenier. Dans une vieille malle en bois, il a trouvé un grand chapeau bleu avec des étoiles et des lunes dorées. Il était bien trop grand pour lui, mais il l'a mis quand même. Aussitôt, le chat gris assis dans le fauteuil a levé la patte et a dit : « Enfin ! J'attendais depuis longtemps que quelqu'un porte ce chapeau. » Hugo est resté bouche bée. « Tu sais parler ? » « Tous les chats savent parler, a répondu le chat. Mais seuls les magiciens nous entendent. » Hugo a regardé le chat, puis le chapeau, et il a souri.",
+      "syllable_body": "Un a|près-mi|di en|so|leil|lé, Hu|go jouait au gre|nier. Dans u|ne vieil|le mal|le en bois, il a trou|vé un grand cha|peau bleu a|vec des é|toi|les et des lu|nes do|rées. Il é|tait bien trop grand pour lui, mais il l'a mis quand mê|me. Aus|si|tôt, le chat gris as|sis dans le fau|teuil a le|vé la pat|te et a dit : « En|fin ! J'at|ten|dais de|puis long|temps que quel|qu'un por|te ce cha|peau. » Hu|go est res|té bou|che bée. « Tu sais par|ler ? » « Tous les chats sa|vent par|ler, a ré|pon|du le chat. Mais seuls les ma|gi|ciens nous en|ten|dent. » Hu|go a re|gar|dé le chat, puis le cha|peau, et il a sou|ri.",
+      "imageId": "wizard_hat",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_dragon_lanterne_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Le dragon qui avait peur du noir",
+      "body": "Sur la colline au-dessus du village vivait un grand dragon violet. Il avait des cornes pointues et des ailes immenses, et tout le village le croyait très courageux. Mais le dragon avait un secret : il avait peur du noir.\n\nUn soir, Inès est montée sur la colline avec sa lanterne. Elle a trouvé le dragon roulé en boule, tout tremblant. « Qu'est-ce qui ne va pas ? » a-t-elle demandé. « Il fait si noir, a chuchoté le dragon. Je ne vois rien. »\n\nInès a levé sa lanterne, et sa douce lumière a éclairé le visage du dragon. « Regarde, a-t-elle dit. Le noir n'est pas vide. Il y a la lune et les étoiles, et les lucioles dansent dans l'herbe. Et là, en bas, brillent les lumières de notre village. »\n\nLe dragon a regardé, et peu à peu, il s'est mis à sourire.",
+      "syllable_body": "Sur la col|li|ne au-des|sus du vil|la|ge vi|vait un grand dra|gon vio|let. Il a|vait des cor|nes poin|tues et des ai|les im|men|ses, et tout le vil|la|ge le cro|yait très cou|ra|geux. Mais le dra|gon a|vait un se|cret : il a|vait peur du noir.\n\nUn soir, I|nès est mon|tée sur la col|li|ne a|vec sa lan|ter|ne. El|le a trou|vé le dra|gon rou|lé en bou|le, tout trem|blant. « Qu'est-ce qui ne va pas ? » a-t-el|le de|man|dé. « Il fait si noir, a chu|cho|té le dra|gon. Je ne vois rien. »\n\nI|nès a le|vé sa lan|ter|ne, et sa dou|ce lu|miè|re a é|clai|ré le vi|sa|ge du dra|gon. « Re|gar|de, a-t-el|le dit. Le noir n'est pas vi|de. Il y a la lu|ne et les é|toi|les, et les lu|cio|les dan|sent dans l'her|be. Et là, en bas, bril|lent les lu|miè|res de no|tre vil|la|ge. »\n\nLe dra|gon a re|gar|dé, et peu à peu, il s'est mis à sou|ri|re.",
+      "imageId": "dragon_lantern",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_coquillage_sirene_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Le coquillage de la sirène",
+      "body": "Hugo adorait explorer les rochers au bord de la mer. Un soir, au coucher du soleil, il a trouvé un grand coquillage rose dans une flaque entre les rochers. Quand il l'a porté à son oreille, il a entendu quelqu'un chanter.\n\nSoudain, une fillette a sorti la tête de l'eau. Elle avait de longs cheveux bruns ornés de petites étoiles de mer, et derrière elle, une queue verte scintillait dans les vagues. Une sirène !\n\n« Tu as trouvé mon coquillage, a-t-elle dit. Il garde la chanson de ma grand-mère. Je l'ai perdu à marée basse. » Hugo s'est agenouillé sur le rocher plat et lui a tendu le coquillage. La sirène l'a pris avec un grand sourire.\n\n« Merci, a-t-elle dit. Chaque fois que tu viendras sur ces rochers, écoute les vagues. Je chanterai pour toi. »",
+      "syllable_body": "Hu|go a|do|rait ex|plo|rer les ro|chers au bord de la mer. Un soir, au cou|cher du so|leil, il a trou|vé un grand co|quil|la|ge ro|se dans u|ne fla|que en|tre les ro|chers. Quand il l'a por|té à son o|reil|le, il a en|ten|du quel|qu'un chan|ter.\n\nSou|dain, u|ne fil|let|te a sor|ti la tê|te de l'eau. El|le a|vait de longs che|veux bruns or|nés de pe|ti|tes é|toi|les de mer, et der|riè|re el|le, u|ne queue ver|te scin|til|lait dans les va|gues. U|ne si|rè|ne !\n\n« Tu as trou|vé mon co|quil|la|ge, a-t-el|le dit. Il gar|de la chan|son de ma grand-mè|re. Je l'ai per|du à ma|rée bas|se. » Hu|go s'est a|ge|nouil|lé sur le ro|cher plat et lui a ten|du le co|quil|la|ge. La si|rè|ne l'a pris a|vec un grand sou|ri|re.\n\n« Mer|ci, a-t-el|le dit. Cha|que fois que tu vien|dras sur ces ro|chers, é|cou|te les va|gues. Je chan|te|rai pour toi. »",
+      "imageId": "mermaid_shell",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_chateau_nuages_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Le château dans les nuages",
+      "body": "Un matin, un arc-en-ciel est apparu au-dessus de la vallée. Il était si lumineux qu'il semblait solide, et l'un de ses bouts descendait juste à côté du jardin d'Inès et de Hugo. « Tu crois qu'on pourrait marcher dessus ? » a demandé Hugo. Inès a posé un pied sur la bande rouge. Elle était ferme et tiède, comme du sable au soleil. Sac au dos et main dans la main, ils ont commencé à grimper.\n\nBientôt, le village était tout en bas : la rivière, le pont de pierre et la petite église. Une chouette brune est venue voler près d'eux. « Suivez-moi, a-t-elle hululé. La Reine des Nuages vous attend. » En haut de l'arc-en-ciel, un château blanc aux tours bleues se dressait sur les nuages. La Reine des Nuages leur a expliqué qu'elle envoie la pluie pour que les champs restent verts, et que l'arc-en-ciel est sa façon de remercier le soleil.\n\nLe soir, la chouette leur a montré le chemin du retour. Cette nuit-là, au loin, quelques tours brillaient encore sur les nuages.",
+      "syllable_body": "Un ma|tin, un arc-en-ciel est ap|pa|ru au-des|sus de la val|lée. Il é|tait si lu|mi|neux qu'il sem|blait so|li|de, et l'un de ses bouts des|cen|dait jus|te à cô|té du jar|din d'I|nès et de Hu|go. « Tu crois qu'on pour|rait mar|cher des|sus ? » a de|man|dé Hu|go. I|nès a po|sé un pied sur la ban|de rou|ge. El|le é|tait fer|me et tiè|de, com|me du sa|ble au so|leil. Sac au dos et main dans la main, ils ont com|men|cé à grim|per.\n\nBien|tôt, le vil|la|ge é|tait tout en bas : la ri|viè|re, le pont de pier|re et la pe|ti|te é|gli|se. U|ne chouet|te bru|ne est ve|nue vo|ler près d'eux. « Sui|vez-moi, a-t-el|le hu|lu|lé. La Rei|ne des Nu|a|ges vous at|tend. » En haut de l'arc-en-ciel, un châ|teau blanc aux tours bleues se dres|sait sur les nu|a|ges. La Rei|ne des Nu|a|ges leur a ex|pli|qué qu'el|le en|voie la pluie pour que les champs res|tent verts, et que l'arc-en-ciel est sa fa|çon de re|mer|cier le so|leil.\n\nLe soir, la chouet|te leur a mon|tré le che|min du re|tour. Cet|te nuit-là, au loin, quel|ques tours bril|laient en|co|re sur les nu|a|ges.",
+      "imageId": "rainbow_castle",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_nains_jardin_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "La nuit où les nains se sont réveillés",
+      "body": "L'orage avait cassé la vieille clôture du jardin, et Papa avait dit qu'il la réparerait samedi. Mais cette nuit-là, la pleine lune brillait si fort que Hugo n'arrivait pas à dormir. Il est allé à la fenêtre. Il s'est frotté les yeux. Les cinq nains de jardin, toujours immobiles entre les fleurs, marchaient sur la pelouse avec leurs bonnets rouges et pointus !\n\nIls avaient apporté une échelle, un marteau et une caisse de clous. Un nain est monté sur l'échelle et s'est mis à taper. Deux autres portaient une planche neuve, en soufflant et en riant. Le quatrième tenait la clôture bien droite, et le cinquième sortait des clous de la caisse. Une petite lanterne brillait dans l'herbe. Hugo a regardé jusqu'à ce que la clôture soit réparée. Puis les nains sont retournés à leur place et n'ont plus bougé.\n\nLe matin, Papa est sorti avec sa boîte à outils et s'est arrêté, surpris. « Qui a réparé la clôture ? » a-t-il demandé. Hugo a seulement souri.",
+      "syllable_body": "L'o|ra|ge a|vait cas|sé la vieil|le clô|tu|re du jar|din, et Pa|pa a|vait dit qu'il la ré|pa|re|rait sa|me|di. Mais cet|te nuit-là, la plei|ne lu|ne bril|lait si fort que Hu|go n'ar|ri|vait pas à dor|mir. Il est al|lé à la fe|nê|tre. Il s'est frot|té les yeux. Les cinq nains de jar|din, tou|jours im|mo|bi|les en|tre les fleurs, mar|chaient sur la pe|lou|se a|vec leurs bon|nets rou|ges et poin|tus !\n\nIls a|vaient ap|por|té u|ne é|chel|le, un mar|teau et u|ne cais|se de clous. Un nain est mon|té sur l'é|chel|le et s'est mis à ta|per. Deux au|tres por|taient u|ne plan|che neu|ve, en souf|flant et en riant. Le qua|triè|me te|nait la clô|tu|re bien droi|te, et le cin|quiè|me sor|tait des clous de la cais|se. U|ne pe|ti|te lan|ter|ne bril|lait dans l'her|be. Hu|go a re|gar|dé jus|qu'à ce que la clô|tu|re soit ré|pa|rée. Puis les nains sont re|tour|nés à leur pla|ce et n'ont plus bou|gé.\n\nLe ma|tin, Pa|pa est sor|ti a|vec sa boî|te à ou|tils et s'est ar|rê|té, sur|pris. « Qui a ré|pa|ré la clô|tu|re ? » a-t-il de|man|dé. Hu|go a seu|le|ment sou|ri.",
+      "imageId": "garden_gnomes",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original French text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
     }
   ]
 }

@@ -1172,6 +1172,186 @@
         "syllablesReviewed": true,
         "imageAccuracy": "verified"
       }
+    },
+    {
+      "id": "stories_gemalter_vogel_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Der gemalte Vogel",
+      "body": "Emma malt einen blauen Vogel. Da öffnet der Vogel die Augen. Er schlägt mit den Flügeln und fliegt aus dem Bild! Er singt im sonnigen Zimmer. Emma lacht. Die Katze schläft einfach weiter.",
+      "syllable_body": "Em|ma malt ei|nen blau|en Vo|gel. Da öff|net der Vo|gel die Au|gen. Er schlägt mit den Flü|geln und fliegt aus dem Bild! Er singt im son|ni|gen Zim|mer. Em|ma lacht. Die Kat|ze schläft ein|fach wei|ter.",
+      "imageId": "magic_paintbrush",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_wolkenschaf_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Das Wolkenschaf",
+      "body": "Ben sieht eine Wolke, die wie ein Schaf aussieht. Das Wolkenschaf kommt herunter und lächelt. Ben klettert auf seinen weichen Rücken. Schon fliegen sie über den Fluss und das kleine Dorf.",
+      "syllable_body": "Ben sieht ei|ne Wol|ke, die wie ein Schaf aus|sieht. Das Wol|ken|schaf kommt her|un|ter und lä|chelt. Ben klet|tert auf sei|nen wei|chen Rü|cken. Schon flie|gen sie ü|ber den Fluss und das klei|ne Dorf.",
+      "imageId": "cloud_sheep",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_winzige_tuer_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Die winzige Tür",
+      "body": "Emma liegt im Gras unter einem großen alten Baum. Zwischen den Wurzeln entdeckt sie eine winzige Holztür mit einem runden Fenster. Daneben hängt eine kleine Laterne. Dann geht die Tür auf. Heraus kommt eine Maus in einem roten Mantel, mit einer Teekanne in den Pfoten. „Möchtest du eine Tasse Tee?“, fragt die Maus. Emma lächelt. Sie ist viel zu groß für das Haus!",
+      "syllable_body": "Em|ma liegt im Gras un|ter ei|nem gro|ßen al|ten Baum. Zwi|schen den Wur|zeln ent|deckt sie ei|ne win|zi|ge Holz|tür mit ei|nem run|den Fens|ter. Da|ne|ben hängt ei|ne klei|ne La|ter|ne. Dann geht die Tür auf. Her|aus kommt ei|ne Maus in ei|nem ro|ten Man|tel, mit ei|ner Tee|kan|ne in den Pfo|ten. „Möch|test du ei|ne Tas|se Tee?“, fragt die Maus. Em|ma lä|chelt. Sie ist viel zu groß für das Haus!",
+      "imageId": "tiny_door",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_riesensocke_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Die Socke des Riesen",
+      "body": "Auf der Wiese findet Ben etwas Seltsames: eine riesige rot-weiß gestreifte Socke! Sie ist so groß wie ein Zelt. Ben klettert hinein und lacht. Die Schafe starren ihn an. Plötzlich bebt der Boden. Weit hinter den Hügeln steht ein Riese mit einem nackten Fuß. „Da ist ja meine Socke!“, ruft er fröhlich.",
+      "syllable_body": "Auf der Wie|se fin|det Ben et|was Selt|sa|mes: ei|ne rie|si|ge rot-weiß ge|streif|te So|cke! Sie ist so groß wie ein Zelt. Ben klet|tert hin|ein und lacht. Die Scha|fe star|ren ihn an. Plötz|lich bebt der Bo|den. Weit hin|ter den Hü|geln steht ein Rie|se mit ei|nem nack|ten Fuß. „Da ist ja mei|ne So|cke!“, ruft er fröh|lich.",
+      "imageId": "giant_sock",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_einhorn_garten_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Das Einhorn im Garten",
+      "body": "Eines Morgens ging Emma früh in den Gemüsegarten, um Möhren zu holen. Zwischen den Salatköpfen stand ein kleines weißes Einhorn mit einem silbernen Horn und einer langen goldenen Mähne. Es hielt ein Vorderbein hoch. Emma kniete sich langsam hin. „Tut dir etwas weh?“, flüsterte sie. Ein kleiner Stein steckte in seinem Huf. Vorsichtig zog Emma ihn heraus. Das Einhorn stupste sie sanft mit der Nase an. Dann wuchsen rings um seine Hufe bunte Blumen aus der Erde. So etwas Schönes hatte Emma noch nie gesehen.",
+      "syllable_body": "Ei|nes Mor|gens ging Em|ma früh in den Ge|mü|se|gar|ten, um Möh|ren zu ho|len. Zwi|schen den Sa|lat|köp|fen stand ein klei|nes wei|ßes Ein|horn mit ei|nem sil|ber|nen Horn und ei|ner lan|gen gol|de|nen Mäh|ne. Es hielt ein Vor|der|bein hoch. Em|ma knie|te sich lang|sam hin. „Tut dir et|was weh?“, flüs|ter|te sie. Ein klei|ner Stein steck|te in sei|nem Huf. Vor|sich|tig zog Em|ma ihn her|aus. Das Ein|horn stups|te sie sanft mit der Na|se an. Dann wuch|sen rings um sei|ne Hu|fe bun|te Blu|men aus der Er|de. So et|was Schö|nes hat|te Em|ma noch nie ge|se|hen.",
+      "imageId": "unicorn_garden",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_zauberhut_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Der Zauberhut",
+      "body": "An einem sonnigen Nachmittag spielte Ben auf dem Dachboden. In einer alten Holztruhe fand er einen großen blauen Hut mit goldenen Sternen und Monden. Er war ihm viel zu groß, aber er setzte ihn trotzdem auf. Sofort hob die graue Katze auf dem Sessel eine Pfote und sagte: „Endlich! Ich warte schon lange darauf, dass jemand diesen Hut trägt.“ Ben blieb der Mund offen stehen. „Du kannst sprechen?“ „Alle Katzen können sprechen“, sagte die Katze. „Aber nur Zauberer können uns hören.“ Ben sah die Katze an, dann den Hut, und grinste.",
+      "syllable_body": "An ei|nem son|ni|gen Nach|mit|tag spiel|te Ben auf dem Dach|bo|den. In ei|ner al|ten Holz|tru|he fand er ei|nen gro|ßen blau|en Hut mit gol|de|nen Ster|nen und Mon|den. Er war ihm viel zu groß, a|ber er setz|te ihn trotz|dem auf. So|fort hob die grau|e Kat|ze auf dem Ses|sel ei|ne Pfo|te und sag|te: „End|lich! Ich war|te schon lan|ge dar|auf, dass je|mand die|sen Hut trägt.“ Ben blieb der Mund of|fen ste|hen. „Du kannst spre|chen?“ „Al|le Kat|zen kön|nen spre|chen“, sag|te die Kat|ze. „A|ber nur Zau|be|rer kön|nen uns hö|ren.“ Ben sah die Kat|ze an, dann den Hut, und grins|te.",
+      "imageId": "wizard_hat",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_drache_laterne_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Der Drache, der Angst im Dunkeln hatte",
+      "body": "Auf dem Hügel über dem Dorf wohnte ein großer lila Drache. Er hatte spitze Hörner und riesige Flügel, und alle im Dorf hielten ihn für schrecklich mutig. Doch der Drache hatte ein Geheimnis: Er hatte Angst im Dunkeln.\n\nEines Nachts stieg Emma mit ihrer Laterne auf den Hügel. Sie fand den Drachen zusammengerollt, und er zitterte. „Was ist los?“, fragte sie. „Es ist so dunkel“, flüsterte der Drache. „Ich sehe gar nichts.“\n\nEmma hob ihre Laterne hoch, und das warme Licht fiel auf das Gesicht des Drachen. „Schau“, sagte sie. „Die Dunkelheit ist nicht leer. Da sind der Mond und die Sterne, und im Gras tanzen Glühwürmchen. Und dort unten leuchten die Lichter unseres Dorfes.“\n\nDer Drache schaute, und langsam begann er zu lächeln.",
+      "syllable_body": "Auf dem Hü|gel ü|ber dem Dorf wohn|te ein gro|ßer li|la Dra|che. Er hat|te spit|ze Hör|ner und rie|si|ge Flü|gel, und al|le im Dorf hiel|ten ihn für schreck|lich mu|tig. Doch der Dra|che hat|te ein Ge|heim|nis: Er hat|te Angst im Dun|keln.\n\nEi|nes Nachts stieg Em|ma mit ih|rer La|ter|ne auf den Hü|gel. Sie fand den Dra|chen zu|sam|men|ge|rollt, und er zit|ter|te. „Was ist los?“, frag|te sie. „Es ist so dun|kel“, flüs|ter|te der Dra|che. „Ich se|he gar nichts.“\n\nEm|ma hob ih|re La|ter|ne hoch, und das war|me Licht fiel auf das Ge|sicht des Dra|chen. „Schau“, sag|te sie. „Die Dun|kel|heit ist nicht leer. Da sind der Mond und die Ster|ne, und im Gras tan|zen Glüh|würm|chen. Und dort un|ten leuch|ten die Lich|ter un|se|res Dor|fes.“\n\nDer Dra|che schau|te, und lang|sam be|gann er zu lä|cheln.",
+      "imageId": "dragon_lantern",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_meerjungfrau_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Die Muschel der Meerjungfrau",
+      "body": "Ben erkundete gern die Felsen am Meer. Eines Abends, als die Sonne unterging, fand er in einem Tümpel zwischen den Felsen eine große rosa Muschel. Als er sie ans Ohr hielt, hörte er jemanden singen.\n\nPlötzlich tauchte ein Mädchen aus dem Wasser auf. Es hatte lange braune Haare mit kleinen Seesternen darin, und hinter ihm glitzerte ein grüner Schwanz in den Wellen. Eine Meerjungfrau!\n\n„Du hast meine Muschel gefunden“, sagte sie. „Darin ist das Lied meiner Großmutter. Ich habe sie bei Ebbe verloren.“ Ben kniete sich auf den flachen Felsen und reichte ihr die Muschel. Die Meerjungfrau nahm sie und lächelte glücklich.\n\n„Danke“, sagte sie. „Wann immer du zu diesen Felsen kommst, hör den Wellen zu. Dann singe ich für dich.“",
+      "syllable_body": "Ben er|kun|de|te gern die Fel|sen am Meer. Ei|nes A|bends, als die Son|ne un|ter|ging, fand er in ei|nem Tüm|pel zwi|schen den Fel|sen ei|ne gro|ße ro|sa Mu|schel. Als er sie ans Ohr hielt, hör|te er je|man|den sin|gen.\n\nPlötz|lich tauch|te ein Mäd|chen aus dem Was|ser auf. Es hat|te lan|ge brau|ne Haa|re mit klei|nen See|ster|nen dar|in, und hin|ter ihm glit|zer|te ein grü|ner Schwanz in den Wel|len. Ei|ne Meer|jung|frau!\n\n„Du hast mei|ne Mu|schel ge|fun|den“, sag|te sie. „Dar|in ist das Lied mei|ner Groß|mut|ter. Ich ha|be sie bei Eb|be ver|lo|ren.“ Ben knie|te sich auf den fla|chen Fel|sen und reich|te ihr die Mu|schel. Die Meer|jung|frau nahm sie und lä|chel|te glück|lich.\n\n„Dan|ke“, sag|te sie. „Wann im|mer du zu die|sen Fel|sen kommst, hör den Wel|len zu. Dann sin|ge ich für dich.“",
+      "imageId": "mermaid_shell",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_wolkenschloss_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Das Schloss auf den Wolken",
+      "body": "Eines Morgens erschien ein Regenbogen über dem Tal. Er leuchtete so hell, dass er ganz fest aussah, und ein Ende reichte bis direkt neben den Garten von Emma und Ben. „Ob man darauf gehen kann?“, fragte Ben. Emma setzte einen Fuß auf den roten Streifen. Er war fest und warm wie Sand in der Sonne. Sie packten ihre Rucksäcke, nahmen sich an der Hand und kletterten los.\n\nBald lag das Dorf tief unter ihnen: der Fluss, die Steinbrücke und die kleine Kirche. Da flog eine braune Eule neben ihnen her. „Folgt mir“, rief sie. „Die Wolkenkönigin erwartet euch.“ Oben stand auf den Wolken ein weißes Schloss mit blauen Türmen. Die Wolkenkönigin erzählte ihnen, dass sie den Regen schickt, damit die Felder grün bleiben, und dass der Regenbogen ihr Dank an die Sonne ist.\n\nAm Abend zeigte ihnen die Eule den Weg nach Hause. In der Nacht leuchteten in der Ferne noch ein paar Türme auf den Wolken.",
+      "syllable_body": "Ei|nes Mor|gens er|schien ein Re|gen|bo|gen ü|ber dem Tal. Er leuch|te|te so hell, dass er ganz fest aus|sah, und ein En|de reich|te bis di|rekt ne|ben den Gar|ten von Em|ma und Ben. „Ob man dar|auf ge|hen kann?“, frag|te Ben. Em|ma setz|te ei|nen Fuß auf den ro|ten Strei|fen. Er war fest und warm wie Sand in der Son|ne. Sie pack|ten ih|re Ruck|sä|cke, nah|men sich an der Hand und klet|ter|ten los.\n\nBald lag das Dorf tief un|ter ih|nen: der Fluss, die Stein|brü|cke und die klei|ne Kir|che. Da flog ei|ne brau|ne Eu|le ne|ben ih|nen her. „Folgt mir“, rief sie. „Die Wol|ken|kö|ni|gin er|war|tet euch.“ O|ben stand auf den Wol|ken ein wei|ßes Schloss mit blau|en Tür|men. Die Wol|ken|kö|ni|gin er|zähl|te ih|nen, dass sie den Re|gen schickt, da|mit die Fel|der grün blei|ben, und dass der Re|gen|bo|gen ihr Dank an die Son|ne ist.\n\nAm A|bend zeig|te ih|nen die Eu|le den Weg nach Hau|se. In der Nacht leuch|te|ten in der Fer|ne noch ein paar Tür|me auf den Wol|ken.",
+      "imageId": "rainbow_castle",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_gartenzwerge_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Die Nacht, in der die Zwerge erwachten",
+      "body": "Der Sturm hatte den alten Gartenzaun kaputt gemacht, und Papa wollte ihn am Samstag reparieren. Doch in dieser Nacht schien der Vollmond so hell, dass Ben nicht schlafen konnte. Er ging zum Fenster und rieb sich die Augen: Die fünf Gartenzwerge, die sonst still zwischen den Blumen standen, liefen mit ihren roten Zipfelmützen über den Rasen!\n\nSie hatten eine Leiter, einen Hammer und eine Holzkiste voller Nägel mitgebracht. Ein Zwerg stieg auf die Leiter und hämmerte los. Zwei andere trugen zusammen ein neues Brett und schnauften und lachten dabei. Der vierte hielt den Zaun gerade, und der fünfte reichte Nägel aus der Kiste. Im Gras leuchtete eine kleine Laterne. Ben sah zu, bis der Zaun wieder ganz war. Dann gingen die Zwerge an ihre Plätze zurück und standen still.\n\nAm Morgen ging Papa mit seinem Werkzeugkasten hinaus und blieb verwundert stehen. „Wer hat den Zaun repariert?“, fragte er. Ben lächelte nur.",
+      "syllable_body": "Der Sturm hat|te den al|ten Gar|ten|zaun ka|putt ge|macht, und Pa|pa woll|te ihn am Sams|tag re|pa|rie|ren. Doch in die|ser Nacht schien der Voll|mond so hell, dass Ben nicht schla|fen konn|te. Er ging zum Fens|ter und rieb sich die Au|gen: Die fünf Gar|ten|zwer|ge, die sonst still zwi|schen den Blu|men stan|den, lie|fen mit ih|ren ro|ten Zip|fel|müt|zen ü|ber den Ra|sen!\n\nSie hat|ten ei|ne Lei|ter, ei|nen Ham|mer und ei|ne Holz|kis|te vol|ler Nä|gel mit|ge|bracht. Ein Zwerg stieg auf die Lei|ter und häm|mer|te los. Zwei an|de|re tru|gen zu|sam|men ein neu|es Brett und schnauf|ten und lach|ten da|bei. Der vier|te hielt den Zaun ge|ra|de, und der fünf|te reich|te Nä|gel aus der Kis|te. Im Gras leuch|te|te ei|ne klei|ne La|ter|ne. Ben sah zu, bis der Zaun wie|der ganz war. Dann gin|gen die Zwer|ge an ih|re Plät|ze zu|rück und stan|den still.\n\nAm Mor|gen ging Pa|pa mit sei|nem Werk|zeug|kas|ten hin|aus und blieb ver|wun|dert ste|hen. „Wer hat den Zaun re|pa|riert?“, frag|te er. Ben lä|chel|te nur.",
+      "imageId": "garden_gnomes",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original German text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
     }
   ]
 }

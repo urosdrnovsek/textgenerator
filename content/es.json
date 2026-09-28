@@ -1172,6 +1172,186 @@
         "syllablesReviewed": true,
         "imageAccuracy": "verified"
       }
+    },
+    {
+      "id": "stories_pajaro_pintado_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "El pájaro pintado",
+      "body": "Lucía pinta un pájaro azul. Entonces el pájaro abre los ojos. Mueve las alas y sale volando del papel. Canta en la habitación llena de sol. Lucía se ríe. El gato sigue durmiendo.",
+      "syllable_body": "Lu|cí|a pin|ta un pá|ja|ro a|zul. En|ton|ces el pá|ja|ro a|bre los o|jos. Mue|ve las a|las y sa|le vo|lan|do del pa|pel. Can|ta en la ha|bi|ta|ción lle|na de sol. Lu|cí|a se rí|e. El ga|to si|gue dur|mien|do.",
+      "imageId": "magic_paintbrush",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_oveja_nube_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "La oveja de nube",
+      "body": "Pablo ve una nube con forma de oveja. La oveja de nube baja y le sonríe. Pablo se sube a su lomo blandito. ¡Allá van volando, sobre el río y el pueblecito!",
+      "syllable_body": "Pa|blo ve u|na nu|be con for|ma de o|ve|ja. La o|ve|ja de nu|be ba|ja y le son|rí|e. Pa|blo se su|be a su lo|mo blan|di|to. ¡A|llá van vo|lan|do, so|bre el rí|o y el pue|ble|ci|to!",
+      "imageId": "cloud_sheep",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_puerta_diminuta_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "La puerta diminuta",
+      "body": "Lucía está tumbada en la hierba junto a un árbol grande y viejo. Entre las raíces ve una puerta diminuta de madera con una ventana redonda. Al lado cuelga un farolillo. Entonces la puerta se abre. Sale un ratón con un abrigo rojo y una tetera en las patas. «¿Te apetece un té?», pregunta el ratón. Lucía sonríe. ¡Es demasiado grande para entrar!",
+      "syllable_body": "Lu|cí|a es|tá tum|ba|da en la hier|ba jun|to a un ár|bol gran|de y vie|jo. En|tre las ra|í|ces ve u|na puer|ta di|mi|nu|ta de ma|de|ra con u|na ven|ta|na re|don|da. Al la|do cuel|ga un fa|ro|li|llo. En|ton|ces la puer|ta se a|bre. Sa|le un ra|tón con un a|bri|go ro|jo y u|na te|te|ra en las pa|tas. «¿Te a|pe|te|ce un té?», pre|gun|ta el ra|tón. Lu|cí|a son|rí|e. ¡Es de|ma|sia|do gran|de pa|ra en|trar!",
+      "imageId": "tiny_door",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_calcetin_gigante_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "El calcetín del gigante",
+      "body": "En el prado, Pablo encuentra algo muy raro: ¡un calcetín enorme de rayas rojas y blancas! Es tan grande como una tienda de campaña. Pablo se mete dentro y se ríe. Las ovejas lo miran sorprendidas. De pronto, el suelo empieza a temblar. Lejos, detrás de las colinas, hay un gigante con un pie descalzo. «¡Ahí está mi calcetín!», grita contento.",
+      "syllable_body": "En el pra|do, Pa|blo en|cuen|tra al|go muy ra|ro: ¡un cal|ce|tín e|nor|me de ra|yas ro|jas y blan|cas! Es tan gran|de co|mo u|na tien|da de cam|pa|ña. Pa|blo se me|te den|tro y se rí|e. Las o|ve|jas lo mi|ran sor|pren|di|das. De pron|to, el sue|lo em|pie|za a tem|blar. Le|jos, de|trás de las co|li|nas, hay un gi|gan|te con un pie des|cal|zo. «¡A|hí es|tá mi cal|ce|tín!», gri|ta con|ten|to.",
+      "imageId": "giant_sock",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_unicornio_huerto_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "El unicornio del huerto",
+      "body": "Una mañana temprano, Lucía salió al huerto a coger zanahorias. Entre las lechugas había un pequeño unicornio blanco, con un cuerno plateado y una larga crin dorada. Tenía una pata delantera levantada. Lucía se arrodilló despacio. «¿Te duele?», susurró. Tenía una piedrecita clavada en el casco. Con mucho cuidado, Lucía se la sacó. El unicornio le rozó el pelo con el hocico. Entonces, alrededor de sus cascos, empezaron a brotar de la tierra flores de colores. Lucía nunca había visto nada tan bonito.",
+      "syllable_body": "U|na ma|ña|na tem|pra|no, Lu|cí|a sa|lió al huer|to a co|ger za|na|ho|rias. En|tre las le|chu|gas ha|bí|a un pe|que|ño u|ni|cor|nio blan|co, con un cuer|no pla|te|a|do y u|na lar|ga crin do|ra|da. Te|ní|a u|na pa|ta de|lan|te|ra le|van|ta|da. Lu|cí|a se a|rro|di|lló des|pa|cio. «¿Te due|le?», su|su|rró. Te|ní|a u|na pie|dre|ci|ta cla|va|da en el cas|co. Con mu|cho cui|da|do, Lu|cí|a se la sa|có. El u|ni|cor|nio le ro|zó el pe|lo con el ho|ci|co. En|ton|ces, al|re|de|dor de sus cas|cos, em|pe|za|ron a bro|tar de la tie|rra flo|res de co|lo|res. Lu|cí|a nun|ca ha|bí|a vis|to na|da tan bo|ni|to.",
+      "imageId": "unicorn_garden",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_sombrero_mago_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "El sombrero del mago",
+      "body": "Una tarde soleada, Pablo jugaba en el desván. En un viejo baúl de madera encontró un gran sombrero azul con estrellas y lunas doradas. Le quedaba demasiado grande, pero se lo puso de todos modos. En ese momento, el gato gris del sillón levantó una pata y dijo: «¡Por fin! Llevo mucho tiempo esperando a que alguien se ponga ese sombrero». Pablo se quedó con la boca abierta. «¿Sabes hablar?». «Todos los gatos sabemos hablar», dijo el gato. «Pero solo los magos pueden oírnos». Pablo miró al gato, luego al sombrero, y sonrió.",
+      "syllable_body": "U|na tar|de so|le|a|da, Pa|blo ju|ga|ba en el des|ván. En un vie|jo ba|úl de ma|de|ra en|con|tró un gran som|bre|ro a|zul con es|tre|llas y lu|nas do|ra|das. Le que|da|ba de|ma|sia|do gran|de, pe|ro se lo pu|so de to|dos mo|dos. En e|se mo|men|to, el ga|to gris del si|llón le|van|tó u|na pa|ta y di|jo: «¡Por fin! Lle|vo mu|cho tiem|po es|pe|ran|do a que al|guien se pon|ga e|se som|bre|ro». Pa|blo se que|dó con la bo|ca a|bier|ta. «¿Sa|bes ha|blar?». «To|dos los ga|tos sa|be|mos ha|blar», di|jo el ga|to. «Pe|ro so|lo los ma|gos pue|den o|ír|nos». Pa|blo mi|ró al ga|to, lue|go al som|bre|ro, y son|rió.",
+      "imageId": "wizard_hat",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_dragon_farol_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "El dragón que tenía miedo de la oscuridad",
+      "body": "En la colina que había sobre el pueblo vivía un gran dragón morado. Tenía cuernos afilados y unas alas enormes, y en el pueblo todos pensaban que era muy valiente. Pero el dragón tenía un secreto: le daba miedo la oscuridad.\n\nUna noche, Lucía subió a la colina con su farol. Encontró al dragón hecho un ovillo y temblando. «¿Qué te pasa?», le preguntó. «Está todo tan oscuro», susurró el dragón. «No veo nada».\n\nLucía levantó el farol, y su luz cálida iluminó la cara del dragón. «Mira», le dijo. «La oscuridad no está vacía. Ahí están la luna y las estrellas, y las luciérnagas bailan en la hierba. Y allí abajo brillan las luces de nuestro pueblo».\n\nEl dragón miró y, poco a poco, empezó a sonreír.",
+      "syllable_body": "En la co|li|na que ha|bí|a so|bre el pue|blo vi|ví|a un gran dra|gón mo|ra|do. Te|ní|a cuer|nos a|fi|la|dos y u|nas a|las e|nor|mes, y en el pue|blo to|dos pen|sa|ban que e|ra muy va|lien|te. Pe|ro el dra|gón te|ní|a un se|cre|to: le da|ba mie|do la os|cu|ri|dad.\n\nU|na no|che, Lu|cí|a su|bió a la co|li|na con su fa|rol. En|con|tró al dra|gón he|cho un o|vi|llo y tem|blan|do. «¿Qué te pa|sa?», le pre|gun|tó. «Es|tá to|do tan os|cu|ro», su|su|rró el dra|gón. «No ve|o na|da».\n\nLu|cí|a le|van|tó el fa|rol, y su luz cá|li|da i|lu|mi|nó la ca|ra del dra|gón. «Mi|ra», le di|jo. «La os|cu|ri|dad no es|tá va|cí|a. A|hí es|tán la lu|na y las es|tre|llas, y las lu|ciér|na|gas bai|lan en la hier|ba. Y a|llí a|ba|jo bri|llan las lu|ces de nues|tro pue|blo».\n\nEl dra|gón mi|ró y, po|co a po|co, em|pe|zó a son|re|ír.",
+      "imageId": "dragon_lantern",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_concha_sirena_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "La concha de la sirena",
+      "body": "A Pablo le encantaba explorar las rocas junto al mar. Una tarde, mientras se ponía el sol, encontró una gran concha rosa en una poza entre las rocas. Cuando se la acercó al oído, oyó que alguien cantaba.\n\nDe repente, una niña asomó la cabeza fuera del agua. Tenía el pelo largo y castaño, adornado con estrellas de mar, y detrás de ella brillaba entre las olas una cola verde. ¡Una sirena!\n\n«Has encontrado mi concha», dijo. «Guarda la canción de mi abuela. La perdí cuando bajó la marea». Pablo se arrodilló en la roca plana y le tendió la concha. La sirena la cogió con una sonrisa feliz.\n\n«Gracias», dijo. «Cuando vengas a estas rocas, escucha las olas. Estaré cantando para ti».",
+      "syllable_body": "A Pa|blo le en|can|ta|ba ex|plo|rar las ro|cas jun|to al mar. U|na tar|de, mien|tras se po|ní|a el sol, en|con|tró u|na gran con|cha ro|sa en u|na po|za en|tre las ro|cas. Cuan|do se la a|cer|có al o|í|do, o|yó que al|guien can|ta|ba.\n\nDe re|pen|te, u|na ni|ña a|so|mó la ca|be|za fue|ra del a|gua. Te|ní|a el pe|lo lar|go y cas|ta|ño, a|dor|na|do con es|tre|llas de mar, y de|trás de e|lla bri|lla|ba en|tre las o|las u|na co|la ver|de. ¡U|na si|re|na!\n\n«Has en|con|tra|do mi con|cha», di|jo. «Guar|da la can|ción de mi a|bue|la. La per|dí cuan|do ba|jó la ma|re|a». Pa|blo se a|rro|di|lló en la ro|ca pla|na y le ten|dió la con|cha. La si|re|na la co|gió con u|na son|ri|sa fe|liz.\n\n«Gra|cias», di|jo. «Cuan|do ven|gas a es|tas ro|cas, es|cu|cha las o|las. Es|ta|ré can|tan|do pa|ra ti».",
+      "imageId": "mermaid_shell",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_castillo_nubes_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "El castillo en las nubes",
+      "body": "Una mañana apareció un arcoíris sobre el valle. Era tan brillante que parecía sólido, y uno de sus extremos bajaba justo al lado del jardín de Lucía y Pablo. «¿Crees que podríamos caminar por él?», preguntó Pablo. Lucía puso un pie en la franja roja. Era firme y tibia, como la arena al sol. Prepararon las mochilas, se dieron la mano y empezaron a subir.\n\nPronto el pueblo quedó muy abajo: el río, el puente de piedra y la pequeña iglesia. Entonces se les acercó volando un búho marrón. «Seguidme», ululó. «La Reina de las Nubes os espera». En lo alto del arcoíris, sobre las nubes, se alzaba un castillo blanco con torres azules, y de su puerta salía una luz dorada. La Reina de las Nubes les contó que ella envía la lluvia para que los campos estén verdes, y que el arcoíris es su manera de dar las gracias al sol.\n\nAl atardecer, el búho les enseñó el camino de vuelta. Aquella noche, a lo lejos, todavía brillaban unas torres sobre las nubes.",
+      "syllable_body": "U|na ma|ña|na a|pa|re|ció un ar|co|í|ris so|bre el va|lle. E|ra tan bri|llan|te que pa|re|cí|a só|li|do, y u|no de sus ex|tre|mos ba|ja|ba jus|to al la|do del jar|dín de Lu|cí|a y Pa|blo. «¿Cre|es que po|drí|a|mos ca|mi|nar por él?», pre|gun|tó Pa|blo. Lu|cí|a pu|so un pie en la fran|ja ro|ja. E|ra fir|me y ti|bia, co|mo la a|re|na al sol. Pre|pa|ra|ron las mo|chi|las, se die|ron la ma|no y em|pe|za|ron a su|bir.\n\nPron|to el pue|blo que|dó muy a|ba|jo: el rí|o, el puen|te de pie|dra y la pe|que|ña i|gle|sia. En|ton|ces se les a|cer|có vo|lan|do un bú|ho ma|rrón. «Se|guid|me», u|lu|ló. «La Rei|na de las Nu|bes os es|pe|ra». En lo al|to del ar|co|í|ris, so|bre las nu|bes, se al|za|ba un cas|ti|llo blan|co con to|rres a|zu|les, y de su puer|ta sa|lí|a u|na luz do|ra|da. La Rei|na de las Nu|bes les con|tó que e|lla en|ví|a la llu|via pa|ra que los cam|pos es|tén ver|des, y que el ar|co|í|ris es su ma|ne|ra de dar las gra|cias al sol.\n\nAl a|tar|de|cer, el bú|ho les en|se|ñó el ca|mi|no de vuel|ta. A|que|lla no|che, a lo le|jos, to|da|ví|a bri|lla|ban u|nas to|rres so|bre las nu|bes.",
+      "imageId": "rainbow_castle",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_gnomos_jardin_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "La noche en que despertaron los gnomos",
+      "body": "La tormenta había roto la vieja valla del jardín, y papá dijo que la arreglaría el sábado. Pero aquella noche la luna llena brillaba tanto que Pablo no podía dormir, así que se asomó a la ventana. Lo que vio le hizo frotarse los ojos. ¡Los cinco gnomos del jardín, que siempre estaban quietos entre las flores, caminaban por el césped con sus gorros rojos y puntiagudos!\n\nHabían traído una escalera, un martillo y una caja de madera llena de clavos. Un gnomo subió a la escalera y empezó a martillear. Otros dos llevaban juntos una tabla nueva, resoplando y riéndose. El cuarto sujetaba la valla bien recta, y el quinto sacaba clavos de la caja. En la hierba brillaba un pequeño farol. Pablo miró hasta que la valla volvió a estar entera. Después, los gnomos regresaron a sus sitios y se quedaron quietos.\n\nPor la mañana, papá salió con su caja de herramientas y se detuvo sorprendido. «¿Quién ha arreglado la valla?», preguntó. Pablo solo sonrió.",
+      "syllable_body": "La tor|men|ta ha|bí|a ro|to la vie|ja va|lla del jar|dín, y pa|pá di|jo que la a|rre|gla|rí|a el sá|ba|do. Pe|ro a|que|lla no|che la lu|na lle|na bri|lla|ba tan|to que Pa|blo no po|dí|a dor|mir, a|sí que se a|so|mó a la ven|ta|na. Lo que vio le hi|zo fro|tar|se los o|jos. ¡Los cin|co gno|mos del jar|dín, que siem|pre es|ta|ban quie|tos en|tre las flo|res, ca|mi|na|ban por el cés|ped con sus go|rros ro|jos y pun|tia|gu|dos!\n\nHa|bí|an tra|í|do u|na es|ca|le|ra, un mar|ti|llo y u|na ca|ja de ma|de|ra lle|na de cla|vos. Un gno|mo su|bió a la es|ca|le|ra y em|pe|zó a mar|ti|lle|ar. O|tros dos lle|va|ban jun|tos u|na ta|bla nue|va, re|so|plan|do y rién|do|se. El cuar|to su|je|ta|ba la va|lla bien rec|ta, y el quin|to sa|ca|ba cla|vos de la ca|ja. En la hier|ba bri|lla|ba un pe|que|ño fa|rol. Pa|blo mi|ró has|ta que la va|lla vol|vió a es|tar en|te|ra. Des|pués, los gno|mos re|gre|sa|ron a sus si|tios y se que|da|ron quie|tos.\n\nPor la ma|ña|na, pa|pá sa|lió con su ca|ja de he|rra|mien|tas y se de|tu|vo sor|pren|di|do. «¿Quién ha a|rre|gla|do la va|lla?», pre|gun|tó. Pa|blo so|lo son|rió.",
+      "imageId": "garden_gnomes",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Spanish text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
     }
   ]
 }

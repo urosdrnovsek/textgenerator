@@ -1522,6 +1522,186 @@
         "syllablesReviewed": true,
         "imageAccuracy": "verified"
       }
+    },
+    {
+      "id": "stories_naslikana_ptica_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Naslikana ptica",
+      "body": "Mia naslika modro ptico. Nato ptica odpre oči. Zamahne s krili in odleti s papirja! V sončni sobi zapoje. Mia se zasmeje. Mačka pa kar naprej spi.",
+      "syllable_body": "Mi|a na|sli|ka mo|dro pti|co. Na|to pti|ca od|pre o|či. Za|mah|ne s kri|li in od|le|ti s pa|pir|ja! V sonč|ni so|bi za|po|je. Mi|a se za|sme|je. Mač|ka pa kar na|prej spi.",
+      "imageId": "magic_paintbrush",
+      "review": {
+        "status": "draft",
+        "reviewer": "Claude (original Slovene text, not a native speaker; syllable breaks by the pack's conventions) — for the owner's review",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_oblacna_ovcka_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Ovčka iz oblaka",
+      "body": "Tim zagleda oblak, ki je podoben ovčki. Oblačna ovčka se spusti k njemu in se nasmehne. Tim spleza na njen mehki hrbet. Že letita, visoko nad reko in majhno vasjo.",
+      "syllable_body": "Tim za|gle|da o|blak, ki je po|do|ben ovč|ki. O|blač|na ovč|ka se spu|sti k nje|mu in se na|sme|hne. Tim sple|za na njen meh|ki hr|bet. Že le|ti|ta, vi|so|ko nad re|ko in maj|hno vas|jo.",
+      "imageId": "cloud_sheep",
+      "review": {
+        "status": "draft",
+        "reviewer": "Claude (original Slovene text, not a native speaker; syllable breaks by the pack's conventions) — for the owner's review",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_majhna_vrata_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Majhna vrata",
+      "body": "Mia leži v travi pod velikim starim drevesom. Med koreninami zagleda majcena lesena vrata z okroglim okencem. Zraven visi drobna svetilka. Nato se vrata odprejo. Ven stopi miška v rdečem plašču, v tačkah pa drži čajnik. »Bi skodelico čaja?« vpraša miška. Mia se nasmehne. Za v hišico je precej prevelika!",
+      "syllable_body": "Mi|a le|ži v tra|vi pod ve|li|kim sta|rim dre|ve|som. Med ko|re|ni|na|mi za|gle|da maj|ce|na le|se|na vra|ta z o|kro|glim o|ken|cem. Zra|ven vi|si drob|na sve|til|ka. Na|to se vra|ta od|pre|jo. Ven sto|pi mi|ška v r|de|čem pla|šču, v tač|kah pa dr|ži čaj|nik. »Bi sko|de|li|co ča|ja?« vpra|ša mi|ška. Mi|a se na|sme|hne. Za v hi|ši|co je pre|cej pre|ve|li|ka!",
+      "imageId": "tiny_door",
+      "review": {
+        "status": "draft",
+        "reviewer": "Claude (original Slovene text, not a native speaker; syllable breaks by the pack's conventions) — for the owner's review",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_velikanova_nogavica_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Velikanova nogavica",
+      "body": "Na travniku Tim najde nekaj čudnega: ogromno rdeče-belo nogavico! Velika je kot šotor. Tim zleze vanjo in se smeje. Ovce ga začudeno gledajo. Tedaj se zemlja strese. Daleč za hribi stoji velikan z eno boso nogo. »Tu je moja nogavica!« veselo zakliče.",
+      "syllable_body": "Na trav|ni|ku Tim naj|de ne|kaj čud|ne|ga: o|grom|no r|de|če-be|lo no|ga|vi|co! Ve|li|ka je kot šo|tor. Tim zle|ze va|njo in se sme|je. Ov|ce ga za|ču|de|no gle|da|jo. Te|daj se zem|lja stre|se. Da|leč za hri|bi sto|ji ve|li|kan z e|no bo|so no|go. »Tu je mo|ja no|ga|vi|ca!« ve|se|lo za|kli|če.",
+      "imageId": "giant_sock",
+      "review": {
+        "status": "draft",
+        "reviewer": "Claude (original Slovene text, not a native speaker; syllable breaks by the pack's conventions) — for the owner's review",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_samorog_na_vrtu_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Samorog na vrtu",
+      "body": "Nekega zgodnjega jutra je šla Mia na zelenjavni vrt po korenje. Med solato je stal majhen bel samorog s srebrnim rogom in dolgo zlato grivo. Eno sprednjo nogo je držal dvignjeno. Mia je počasi pokleknila. »Te boli?« je zašepetala. V kopitu se mu je zataknil kamenček. Mia ga je previdno izvlekla. Samorog se je z nosom nežno dotaknil njenih las. Nato so okoli njegovih kopit iz zemlje pognale pisane rože. Mia še nikoli ni videla česa tako lepega.",
+      "syllable_body": "Ne|ke|ga zgod|nje|ga ju|tra je šla Mi|a na ze|le|njav|ni vrt po ko|re|nje. Med so|la|to je stal maj|hen bel sa|mo|rog s sre|br|nim ro|gom in dol|go zla|to gri|vo. E|no spred|njo no|go je dr|žal dvig|nje|no. Mi|a je po|ča|si po|klek|ni|la. »Te bo|li?« je za|še|pe|ta|la. V ko|pi|tu se mu je za|tak|nil ka|men|ček. Mi|a ga je pre|vid|no iz|vle|kla. Sa|mo|rog se je z no|som než|no do|tak|nil nje|nih las. Na|to so o|ko|li nje|go|vih ko|pit iz zem|lje po|gna|le pi|sa|ne ro|že. Mi|a še ni|ko|li ni vi|de|la če|sa ta|ko le|pe|ga.",
+      "imageId": "unicorn_garden",
+      "review": {
+        "status": "draft",
+        "reviewer": "Claude (original Slovene text, not a native speaker; syllable breaks by the pack's conventions) — for the owner's review",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_carovnikov_klobuk_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Čarovnikov klobuk",
+      "body": "Nekega sončnega popoldneva se je Tim igral na podstrešju. V stari leseni skrinji je našel velik moder klobuk z zlatimi zvezdami in luninimi krajci. Bil mu je precej prevelik, a si ga je vseeno poveznil na glavo. Siva mačka na naslanjaču je takoj dvignila tačko in rekla: »Končno! Že dolgo čakam, da bo kdo nosil ta klobuk.« Tim je od začudenja odprl usta. »Ti znaš govoriti?« »Vse mačke znamo govoriti,« je rekla mačka. »A slišijo nas samo čarovniki.« Tim je pogledal mačko, nato klobuk, in se široko nasmehnil.",
+      "syllable_body": "Ne|ke|ga sonč|ne|ga po|pol|dne|va se je Tim i|gral na pod|stre|šju. V sta|ri le|se|ni skri|nji je na|šel ve|lik mo|der klo|buk z zla|ti|mi zve|zda|mi in lu|ni|ni|mi kraj|ci. Bil mu je pre|cej pre|ve|lik, a si ga je vse|e|no po|vez|nil na gla|vo. Si|va mač|ka na na|sla|nja|ču je ta|koj dvig|ni|la tač|ko in re|kla: »Konč|no! Že dol|go ča|kam, da bo kdo no|sil ta klo|buk.« Tim je od za|ču|de|nja od|prl u|sta. »Ti znaš go|vo|ri|ti?« »Vse mač|ke zna|mo go|vo|ri|ti,« je re|kla mač|ka. »A sli|ši|jo nas sa|mo ča|rov|ni|ki.« Tim je po|gle|dal mač|ko, na|to klo|buk, in se ši|ro|ko na|sme|hnil.",
+      "imageId": "wizard_hat",
+      "review": {
+        "status": "draft",
+        "reviewer": "Claude (original Slovene text, not a native speaker; syllable breaks by the pack's conventions) — for the owner's review",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_zmaj_in_svetilka_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Zmaj, ki se je bal teme",
+      "body": "Na hribu nad vasjo je živel velik vijoličen zmaj. Imel je ostre roge in ogromna krila in vsi v vasi so mislili, da je strašno pogumen. A zmaj je imel skrivnost: bal se je teme.\n\nNeke noči se je Mia s svetilko povzpela na hrib. Zmaja je našla zvitega v klobčič, ves se je tresel. »Kaj je narobe?« ga je vprašala. »Tako temno je,« je zašepetal zmaj. »Ničesar ne vidim.«\n\nMia je dvignila svetilko in njena topla svetloba je posvetila zmaju v obraz. »Poglej,« je rekla. »Tema ni prazna. Tam sta luna in zvezde, v travi pa plešejo kresnice. Tam spodaj svetijo luči naše vasi.«\n\nZmaj je pogledal in se počasi nasmehnil.",
+      "syllable_body": "Na hri|bu nad vas|jo je ži|vel ve|lik vi|jo|li|čen zmaj. I|mel je o|stre ro|ge in o|grom|na kri|la in vsi v va|si so mi|sli|li, da je straš|no po|gu|men. A zmaj je i|mel skriv|nost: bal se je te|me.\n\nNe|ke no|či se je Mi|a s sve|til|ko povz|pe|la na hrib. Zma|ja je na|šla zvi|te|ga v klob|čič, ves se je tre|sel. »Kaj je na|ro|be?« ga je vpra|ša|la. »Ta|ko tem|no je,« je za|še|pe|tal zmaj. »Ni|če|sar ne vi|dim.«\n\nMi|a je dvig|ni|la sve|til|ko in nje|na to|pla sve|tlo|ba je po|sve|ti|la zma|ju v o|braz. »Po|glej,« je re|kla. »Te|ma ni praz|na. Tam sta lu|na in zve|zde, v tra|vi pa ple|še|jo kres|ni|ce. Tam spo|daj sve|ti|jo lu|či na|še va|si.«\n\nZmaj je po|gle|dal in se po|ča|si na|sme|hnil.",
+      "imageId": "dragon_lantern",
+      "review": {
+        "status": "draft",
+        "reviewer": "Claude (original Slovene text, not a native speaker; syllable breaks by the pack's conventions) — for the owner's review",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_morska_deklica_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Školjka morske deklice",
+      "body": "Tim je rad raziskoval skale ob morju. Nekega večera, ko je sonce zahajalo, je v luži med skalami našel veliko rožnato školjko. Ko jo je prislonil k ušesu, je zaslišal petje.\n\nNenadoma se je iz vode prikazala deklica. Imela je dolge rjave lase z drobnimi morskimi zvezdami, za njo pa se je v valovih lesketal zelen rep. Morska deklica!\n\n»Našel si mojo školjko,« je rekla. »V njej je pesem moje babice. Izgubila sem jo ob oseki.« Tim je pokleknil na ploščato skalo in ji ponudil školjko. Morska deklica jo je vzela in se srečno nasmehnila.\n\n»Hvala,« je rekla. »Kadar koli prideš k tem skalam, prisluhni valovom. Pela bom zate.«",
+      "syllable_body": "Tim je rad raz|i|sko|val ska|le ob mor|ju. Ne|ke|ga ve|če|ra, ko je son|ce za|ha|ja|lo, je v lu|ži med ska|la|mi na|šel ve|li|ko rož|na|to školj|ko. Ko jo je pri|slo|nil k u|še|su, je za|sli|šal pet|je.\n\nNe|na|do|ma se je iz vo|de pri|ka|za|la de|kli|ca. I|me|la je dol|ge rja|ve la|se z drob|ni|mi mor|ski|mi zve|zda|mi, za njo pa se je v va|lo|vih les|ke|tal ze|len rep. Mors|ka de|kli|ca!\n\n»Na|šel si mo|jo školj|ko,« je re|kla. »V njej je pe|sem mo|je ba|bi|ce. Iz|gu|bi|la sem jo ob o|se|ki.« Tim je po|klek|nil na plo|šča|to ska|lo in ji po|nu|dil školj|ko. Mors|ka de|kli|ca jo je vze|la in se sreč|no na|sme|hni|la.\n\n»Hva|la,« je re|kla. »Ka|dar ko|li pri|deš k tem ska|lam, pri|sluh|ni va|lo|vom. Pe|la bom za|te.«",
+      "imageId": "mermaid_shell",
+      "review": {
+        "status": "draft",
+        "reviewer": "Claude (original Slovene text, not a native speaker; syllable breaks by the pack's conventions) — for the owner's review",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_grad_na_oblakih_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Grad na oblakih",
+      "body": "Nekega jutra se je nad dolino prikazala mavrica. Bila je tako svetla, da je bila videti trdna, njen konec pa se je spuščal tik ob vrtu, kjer sta živela Mia in Tim.\n\n»Misliš, da bi lahko hodila po njej?« je vprašal Tim. Mia je previdno stopila na rdeči pas. Bil je trden in topel kot pesek na soncu. Spakirala sta nahrbtnika, se prijela za roke in začela plezati.\n\nKmalu je bila vas globoko pod njima: reka, kamniti most in majhna cerkev. Tedaj je ob njiju priletela rjava sova. »Sledita mi,« je zaskovikala. »Kraljica oblakov vaju že pričakuje.«\n\nNa vrhu mavrice je na oblakih stal bel grad z modrimi stolpi, iz njegovih vrat pa je sijala zlata svetloba. Kraljica oblakov jima je povedala, da pošilja dež, da so polja zelena, z mavrico pa se zahvaljuje soncu.\n\nPred sončnim zahodom jima je sova pokazala pot domov. Tisto noč so daleč na oblakih še vedno svetili stolpi.",
+      "syllable_body": "Ne|ke|ga ju|tra se je nad do|li|no pri|ka|za|la mav|ri|ca. Bi|la je ta|ko sve|tla, da je bi|la vi|de|ti tr|dna, njen ko|nec pa se je spu|ščal tik ob vr|tu, kjer sta ži|ve|la Mi|a in Tim.\n\n»Mi|sliš, da bi lah|ko ho|di|la po njej?« je vpra|šal Tim. Mi|a je pre|vid|no sto|pi|la na r|de|či pas. Bil je tr|den in to|pel kot pe|sek na son|cu. Spa|ki|ra|la sta na|hrbt|ni|ka, se pri|je|la za ro|ke in za|če|la ple|za|ti.\n\nKma|lu je bi|la vas glo|bo|ko pod nji|ma: re|ka, ka|mni|ti most in majh|na cer|kev. Te|daj je ob nji|ju pri|le|te|la rja|va so|va. »Sle|di|ta mi,« je za|sko|vi|ka|la. »Kra|lji|ca o|bla|kov va|ju že pri|ča|ku|je.«\n\nNa vr|hu mav|ri|ce je na o|bla|kih stal bel grad z mo|dri|mi stol|pi, iz nje|go|vih vrat pa je si|ja|la zla|ta sve|tlo|ba. Kra|lji|ca o|bla|kov ji|ma je po|ve|da|la, da po|ši|lja dež, da so po|lja ze|le|na, z mav|ri|co pa se za|hva|lju|je son|cu.\n\nPred sonč|nim za|ho|dom ji|ma je so|va po|ka|za|la pot do|mov. Ti|sto noč so da|leč na o|bla|kih še ved|no sve|ti|li stol|pi.",
+      "imageId": "rainbow_castle",
+      "review": {
+        "status": "draft",
+        "reviewer": "Claude (original Slovene text, not a native speaker; syllable breaks by the pack's conventions) — for the owner's review",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_vrtni_palcki_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Noč, ko so se palčki prebudili",
+      "body": "Nevihta je podrla staro vrtno ograjo in oče je rekel, da jo bo popravil v soboto. A tisto noč je polna luna svetila tako močno, da Tim ni mogel zaspati, zato je stopil k oknu.\n\nKo je zagledal, kaj se dogaja, si je pomel oči. Pet vrtnih palčkov, ki so sicer mirno stali med rožami, je v rdečih koničastih kapah korakalo po trati!\n\nS seboj so prinesli lestev, kladivo in leseno škatlo z žeblji. Prvi palček je splezal na lestev in začel zabijati. Dva druga sta skupaj nosila novo desko ter pri tem sopihala in se smejala. Četrti je držal ograjo naravnost, peti pa je iz škatle podajal žeblje. V travi je svetila majhna svetilka.\n\nTim je gledal, dokler ograja ni bila spet cela. Nato so se palčki vrnili na svoja mesta in obstali pri miru.\n\nZjutraj je oče z orodjem stopil na vrt in presenečeno obstal. »Kdo je popravil ograjo?« je vprašal. Tim se je samo nasmehnil.",
+      "syllable_body": "Ne|vih|ta je po|dr|la sta|ro vr|tno o|gra|jo in o|če je re|kel, da jo bo po|pra|vil v so|bo|to. A ti|sto noč je pol|na lu|na sve|ti|la ta|ko moč|no, da Tim ni mo|gel za|spa|ti, za|to je sto|pil k o|knu.\n\nKo je za|gle|dal, kaj se do|ga|ja, si je po|mel o|či. Pet vr|tnih pal|čkov, ki so si|cer mir|no sta|li med ro|ža|mi, je v r|de|čih ko|ni|ča|stih ka|pah ko|ra|ka|lo po tra|ti!\n\nS se|boj so pri|ne|sli le|stev, kla|di|vo in le|se|no ška|tlo z žeb|lji. Pr|vi pal|ček je sple|zal na le|stev in za|čel za|bi|ja|ti. Dva dru|ga sta sku|paj no|si|la no|vo de|sko ter pri tem so|pi|ha|la in se sme|ja|la. Če|tr|ti je dr|žal o|gra|jo na|rav|nost, pe|ti pa je iz ška|tle po|da|jal žeb|lje. V tra|vi je sve|ti|la majh|na sve|til|ka.\n\nTim je gle|dal, do|kler o|gra|ja ni bi|la spet ce|la. Na|to so se pal|čki vr|ni|li na svo|ja me|sta in ob|sta|li pri mi|ru.\n\nZju|traj je o|če z o|rod|jem sto|pil na vrt in pre|se|ne|če|no ob|stal. »Kdo je po|pra|vil o|gra|jo?« je vpra|šal. Tim se je sa|mo na|sme|hnil.",
+      "imageId": "garden_gnomes",
+      "review": {
+        "status": "draft",
+        "reviewer": "Claude (original Slovene text, not a native speaker; syllable breaks by the pack's conventions) — for the owner's review",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
     }
   ]
 }

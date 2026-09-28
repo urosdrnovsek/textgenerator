@@ -1946,6 +1946,186 @@
         "syllablesReviewed": true,
         "imageAccuracy": "verified"
       }
+    },
+    {
+      "id": "stories_painted_bird_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "The Painted Bird",
+      "body": "Mia paints a blue bird. Then the bird opens its eyes. It flaps its wings and flies off the paper! It sings in the sunny room. Mia laughs. The cat keeps on sleeping.",
+      "syllable_body": "Mi|a paints a blue bird. Then the bird o|pens its eyes. It flaps its wings and flies off the pa|per! It sings in the sun|ny room. Mi|a laughs. The cat keeps on sleep|ing.",
+      "imageId": "magic_paintbrush",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_cloud_sheep_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "The Cloud Sheep",
+      "body": "Tom sees a cloud that looks like a sheep. The cloud sheep comes down and smiles. Tom climbs on its soft back. Up they fly, over the river and the little village.",
+      "syllable_body": "Tom sees a cloud that looks like a sheep. The cloud sheep comes down and smiles. Tom climbs on its soft back. Up they fly, o|ver the riv|er and the lit|tle vil|lage.",
+      "imageId": "cloud_sheep",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_tiny_door_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "The Tiny Door",
+      "body": "Mia lies in the grass by the big old tree. Between the roots she sees a tiny wooden door with a round window. A little lantern hangs next to it. Then the door opens. Out comes a mouse in a red coat, with a teapot in its paws. “Would you like some tea?” asks the mouse. Mia smiles. She is much too big to go in!",
+      "syllable_body": "Mi|a lies in the grass by the big old tree. Be|tween the roots she sees a ti|ny wood|en door with a round win|dow. A lit|tle lan|tern hangs next to it. Then the door o|pens. Out comes a mouse in a red coat, with a tea|pot in its paws. “Would you like some tea?” asks the mouse. Mi|a smiles. She is much too big to go in!",
+      "imageId": "tiny_door",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_giant_sock_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "The Giant’s Sock",
+      "body": "In the meadow Tom finds something strange: a huge red and white sock! It is as big as a tent. Tom climbs inside and laughs. The sheep stare at him. Then the ground begins to shake. Far away behind the hills stands a giant with one bare foot. “There is my sock!” he calls happily.",
+      "syllable_body": "In the mead|ow Tom finds some|thing strange: a huge red and white sock! It is as big as a tent. Tom climbs in|side and laughs. The sheep stare at him. Then the ground be|gins to shake. Far a|way be|hind the hills stands a gi|ant with one bare foot. “There is my sock!” he calls hap|pi|ly.",
+      "imageId": "giant_sock",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_unicorn_garden_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "The Unicorn in the Garden",
+      "body": "Early one morning, Mia went out to the vegetable garden to pick carrots. Between the lettuces stood a small white unicorn with a silver horn and a long golden mane. It was holding up one front leg. Mia knelt down slowly. “Are you hurt?” she whispered. A little stone was stuck in its hoof. Carefully, Mia pulled it out. The unicorn gently touched her hair with its nose. Then colourful flowers began to grow out of the soil, all around its hooves. Mia had never seen anything so beautiful.",
+      "syllable_body": "Ear|ly one morn|ing, Mi|a went out to the veg|e|ta|ble gar|den to pick car|rots. Be|tween the let|tu|ces stood a small white u|ni|corn with a sil|ver horn and a long gold|en mane. It was hold|ing up one front leg. Mi|a knelt down slow|ly. “Are you hurt?” she whis|pered. A lit|tle stone was stuck in its hoof. Care|ful|ly, Mi|a pulled it out. The u|ni|corn gen|tly touched her hair with its nose. Then col|our|ful flow|ers be|gan to grow out of the soil, all a|round its hooves. Mi|a had nev|er seen an|y|thing so beau|ti|ful.",
+      "imageId": "unicorn_garden",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_wizard_hat_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "The Wizard’s Hat",
+      "body": "One sunny afternoon, Tom was playing in the attic. In an old wooden chest he found a big blue hat with golden stars and moons. It was far too big for him, but he put it on anyway. At once the grey cat on the armchair lifted a paw and said, “At last! I have been waiting for someone to wear that hat.” Tom’s mouth fell open. “You can talk?” “All cats can talk,” said the cat. “But only wizards can hear us.” Tom looked at the cat, then at the hat, and grinned.",
+      "syllable_body": "One sun|ny af|ter|noon, Tom was play|ing in the at|tic. In an old wood|en chest he found a big blue hat with gold|en stars and moons. It was far too big for him, but he put it on an|y|way. At once the grey cat on the arm|chair lift|ed a paw and said, “At last! I have been wait|ing for some|one to wear that hat.” Tom’s mouth fell o|pen. “You can talk?” “All cats can talk,” said the cat. “But on|ly wiz|ards can hear us.” Tom looked at the cat, then at the hat, and grinned.",
+      "imageId": "wizard_hat",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_dragon_lantern_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "The Dragon Who Was Afraid of the Dark",
+      "body": "On the hill above the village lived a big purple dragon. It had sharp horns and huge wings, and everyone in the village thought it was terribly brave. But the dragon had a secret: it was afraid of the dark.\n\nOne night Mia climbed the hill with her lantern. She found the dragon curled up and trembling. “What’s wrong?” she asked. “It’s so dark,” the dragon whispered. “I can’t see anything at all.”\n\nMia held up her lantern, and its warm light shone on the dragon’s face. “Look,” she said. “The dark isn’t empty. There are the moon and the stars, and the fireflies are dancing in the grass. And down there are the lights of our village.”\n\nThe dragon looked, and slowly it began to smile.",
+      "syllable_body": "On the hill a|bove the vil|lage lived a big pur|ple drag|on. It had sharp horns and huge wings, and ev|ery|one in the vil|lage thought it was ter|ri|bly brave. But the drag|on had a se|cret: it was a|fraid of the dark.\n\nOne night Mi|a climbed the hill with her lan|tern. She found the drag|on curled up and trem|bling. “What’s wrong?” she asked. “It’s so dark,” the drag|on whis|pered. “I can’t see an|y|thing at all.”\n\nMi|a held up her lan|tern, and its warm light shone on the drag|on’s face. “Look,” she said. “The dark isn’t emp|ty. There are the moon and the stars, and the fire|flies are danc|ing in the grass. And down there are the lights of our vil|lage.”\n\nThe drag|on looked, and slow|ly it be|gan to smile.",
+      "imageId": "dragon_lantern",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_mermaid_shell_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "The Mermaid’s Shell",
+      "body": "Tom loved exploring the rocks by the sea. One evening, as the sun was setting, he found a big pink shell in a rock pool. When he held it to his ear, he heard someone singing.\n\nSuddenly a girl’s head came up out of the water. She had long brown hair with little starfish in it, and behind her a green tail sparkled in the waves. A mermaid!\n\n“You found my shell,” she said. “It holds my grandmother’s song. I lost it when the tide went out.” Tom knelt on the flat rock and held out the shell, and the mermaid took it with a happy smile.\n\n“Thank you,” she said. “Whenever you come to these rocks, listen to the waves. I will be singing for you.”",
+      "syllable_body": "Tom loved ex|plor|ing the rocks by the sea. One eve|ning, as the sun was set|ting, he found a big pink shell in a rock pool. When he held it to his ear, he heard some|one sing|ing.\n\nSud|den|ly a girl’s head came up out of the wa|ter. She had long brown hair with lit|tle star|fish in it, and be|hind her a green tail spar|kled in the waves. A mer|maid!\n\n“You found my shell,” she said. “It holds my grand|moth|er’s song. I lost it when the tide went out.” Tom knelt on the flat rock and held out the shell, and the mer|maid took it with a hap|py smile.\n\n“Thank you,” she said. “When|ev|er you come to these rocks, lis|ten to the waves. I will be sing|ing for you.”",
+      "imageId": "mermaid_shell",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_rainbow_castle_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "The Castle on the Clouds",
+      "body": "One morning a rainbow appeared over the valley. It was so bright that it looked solid, and one end came down right next to Mia and Tom’s garden. “Do you think we could walk on it?” asked Tom. Mia put one foot on the red stripe. It was firm and warm, like sand in the sun. They packed their backpacks, took each other’s hand and started to climb.\n\nSoon the village lay far below them: the river, the stone bridge and the little church. Then a brown owl flew up beside them. “Follow me,” it hooted. “The Cloud Queen is expecting you.” At the top of the rainbow, a white castle with blue towers stood on the clouds, and golden light poured out of its gate. The Cloud Queen told them that she sends the rain to make the fields green, and that the rainbow is her way of thanking the sun.\n\nBefore sunset, the owl showed them the way home. That night, far away on the clouds, a few towers were still glowing.",
+      "syllable_body": "One morn|ing a rain|bow ap|peared o|ver the val|ley. It was so bright that it looked sol|id, and one end came down right next to Mi|a and Tom’s gar|den. “Do you think we could walk on it?” asked Tom. Mi|a put one foot on the red stripe. It was firm and warm, like sand in the sun. They packed their back|packs, took each oth|er’s hand and start|ed to climb.\n\nSoon the vil|lage lay far be|low them: the riv|er, the stone bridge and the lit|tle church. Then a brown owl flew up be|side them. “Fol|low me,” it hoot|ed. “The Cloud Queen is ex|pect|ing you.” At the top of the rain|bow, a white cas|tle with blue tow|ers stood on the clouds, and gold|en light poured out of its gate. The Cloud Queen told them that she sends the rain to make the fields green, and that the rain|bow is her way of thank|ing the sun.\n\nBe|fore sun|set, the owl showed them the way home. That night, far a|way on the clouds, a few tow|ers were still glow|ing.",
+      "imageId": "rainbow_castle",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_garden_gnomes_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "The Night the Gnomes Woke Up",
+      "body": "The storm had broken the old garden fence, and Dad said he would mend it on Saturday. But that night the full moon was so bright that Tom couldn’t sleep, and he went to the window. What he saw made him rub his eyes. The five garden gnomes, which always stood still among the flowers, were walking across the lawn in their red pointed hats!\n\nThey had brought a ladder, a hammer and a wooden box of nails. One gnome climbed the ladder and began to hammer. Two others carried a new plank between them, puffing and laughing. The fourth held the fence straight, and the fifth handed out nails from the box. A little lantern glowed in the grass. Tom watched until the fence was whole again. Then the gnomes walked back to their places and stood still.\n\nIn the morning, Dad went out with his toolbox and stopped in surprise. “Who mended the fence?” he asked. Tom just smiled.",
+      "syllable_body": "The storm had bro|ken the old gar|den fence, and Dad said he would mend it on Sat|ur|day. But that night the full moon was so bright that Tom couldn’t sleep, and he went to the win|dow. What he saw made him rub his eyes. The five gar|den gnomes, which al|ways stood still a|mong the flow|ers, were walk|ing a|cross the lawn in their red point|ed hats!\n\nThey had brought a lad|der, a ham|mer and a wood|en box of nails. One gnome climbed the lad|der and be|gan to ham|mer. Two oth|ers car|ried a new plank be|tween them, puff|ing and laugh|ing. The fourth held the fence straight, and the fifth hand|ed out nails from the box. A lit|tle lan|tern glowed in the grass. Tom watched un|til the fence was whole a|gain. Then the gnomes walked back to their plac|es and stood still.\n\nIn the morn|ing, Dad went out with his tool|box and stopped in sur|prise. “Who mend|ed the fence?” he asked. Tom just smiled.",
+      "imageId": "garden_gnomes",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original English text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-28",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
     }
   ]
 }

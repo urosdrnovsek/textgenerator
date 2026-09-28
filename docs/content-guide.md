@@ -336,7 +336,17 @@ From `npm run content-status`:
   the museum drawer is a boy, the ladybird's spots aren't counted).
   Slovene five-and-five are `draft` for the owner. Generators:
   `Instructions/tools/*-round4.py` (gitignored).
-- **Images:** 284 of 393 `verified` (the ten round-4 pictures, the four illustrations generated for
+- **Round 5 (2026-09-28), fantasy stories:** two new stories per level
+  in every language (50 texts) on ten new fantasy pictures (a painted
+  bird that flies, a cloud sheep, a tiny door with a mouse, a giant's
+  sock, a unicorn, a wizard's hat and a talking cat, a dragon afraid of
+  the dark, a mermaid's shell, a rainbow bridge to a cloud castle, garden
+  gnomes mending a fence). This time the pictures came first and every
+  text was written from its finished picture. Gentle, nothing scary, no
+  well-known characters. In the `stories` theme (a separate theme would
+  need a code change). Slovene ten are `draft`. Generators:
+  `Instructions/tools/*-round5.py`.
+- **Images:** 334 of 443 `verified` (the ten round-5 and ten round-4 pictures, the four illustrations generated for
   the mismatched Neuschwanstein, Uluru, Easter Island and Pont du Gard
   entries, the axolotl illustration bundled for the five Spanish ajolote
   entries, the fifty new English texts, the twenty-five fifth-round

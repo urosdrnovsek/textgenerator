@@ -7,6 +7,16 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
+Fantasy stories (2026-09-28):
+
+- **50 fantasy stories:** two new stories per level in all five
+  languages (443 texts), on ten new pictures: a painted bird that flies
+  off the page, a cloud sheep, a tiny door with a mouse, a giant's sock,
+  a unicorn, a talking cat and a wizard's hat, a dragon afraid of the
+  dark, a mermaid's shell, a rainbow bridge to a cloud castle and garden
+  gnomes mending a fence. Written from the finished pictures; every one
+  fits on one page. The Slovene ten are drafts for the owner.
+
 More texts and one picture folder (2026-09-28):
 
 - **50 new texts:** a new story and a new animal text per level in all
