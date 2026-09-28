@@ -5,7 +5,14 @@ can be an introduction rather than a log. Newest first. Each entry
 summarizes what shipped and what was verified; the commit messages in
 `git log` carry the full per-change detail and are the source of truth.
 
-## Unreleased
+## 0.10.0-rc.4 — 2026-09-28 (more texts)
+
+The rc.3 app with 100 new texts (443 in all) and corrections in every
+language; no change to how the app works.
+
+Worth knowing: the new stories are listed after the older ones in each
+level, so the text a teacher sees first is unchanged. The Slovene new
+texts are drafts for the owner's read.
 
 Fantasy stories (2026-09-28):
 

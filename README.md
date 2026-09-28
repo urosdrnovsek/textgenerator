@@ -13,7 +13,7 @@ and level (118 entries), Slovene three to seven (100), French, German and
 Spanish two to six (75 each) — 443 texts in all, including a set of gentle
 fantasy stories.
 Current version:
-`0.10.0-rc.3` — a release candidate; see "Status" below for what's still
+`0.10.0-rc.4` — a release candidate; see "Status" below for what's still
 open.
 
 ## Quick start
