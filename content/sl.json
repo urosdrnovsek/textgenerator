@@ -61,7 +61,7 @@
     },
     {
       "id": "stories_muc_5",
-      "version": 3,
+      "version": 4,
       "theme": "stories",
       "level": 5,
       "title": "Muc, ki je našel dom",
@@ -117,7 +117,7 @@
     },
     {
       "id": "animal_facts_netopir_4",
-      "version": 1,
+      "version": 2,
       "theme": "animal_facts",
       "level": 4,
       "title": "Netopir lovi v temi",
@@ -131,7 +131,7 @@
     },
     {
       "id": "animal_facts_delfin_5",
-      "version": 1,
+      "version": 2,
       "theme": "animal_facts",
       "level": 5,
       "title": "Skrivnosti delfinov",
@@ -159,7 +159,7 @@
     },
     {
       "id": "around_the_world_piramide_2",
-      "version": 1,
+      "version": 2,
       "theme": "around_the_world",
       "level": 2,
       "title": "Kamnite gore",
@@ -173,7 +173,7 @@
     },
     {
       "id": "around_the_world_piramide_3",
-      "version": 1,
+      "version": 2,
       "theme": "around_the_world",
       "level": 3,
       "title": "Skrivnost piramid",
@@ -187,7 +187,7 @@
     },
     {
       "id": "around_the_world_piramide_4",
-      "version": 1,
+      "version": 2,
       "theme": "around_the_world",
       "level": 4,
       "title": "Kako so gradili piramide",
@@ -201,7 +201,7 @@
     },
     {
       "id": "around_the_world_benetke_5",
-      "version": 2,
+      "version": 3,
       "theme": "around_the_world",
       "level": 5,
       "title": "Sprehod po Benetkah",
@@ -243,12 +243,12 @@
     },
     {
       "id": "amazing_science_mavrica_3",
-      "version": 1,
+      "version": 2,
       "theme": "amazing_science",
       "level": 3,
       "title": "Kako nastane mavrica",
-      "body": "Mavrica je eden najlepših pojavov na nebu. Prikaže se takrat, kadar hkrati sije sonce in dežuje. Čeprav se nam zdi sončna svetloba bela, je v resnici sestavljena iz mnogih barv, skritih druga v drugi. Ko sončni žarek posije skozi drobno dežno kapljo, se v njej upogne in razcepi na vse te barve. Kaplje delujejo kot majhna okenca, ki razpršijo svetlobo. Ker to počne na tisoče kapelj hkrati, na nebu zagledamo velik pisan lok. Barve si v mavrici vedno sledijo v istem redu, od rdeče na vrhu do vijolične na dnu.",
-      "syllable_body": "Mav|ri|ca je e|den naj|lep|ših po|ja|vov na ne|bu. Pri|ka|že se ta|krat, ka|dar hkra|ti si|je son|ce in de|žu|je. Če|prav se nam zdi sonč|na sve|tlo|ba be|la, je v re|sni|ci se|sta|vlje|na iz mno|gih barv, skri|tih dru|ga v dru|gi. Ko sonč|ni ža|rek po|si|je sko|zi drob|no dež|no kap|ljo, se v njej u|po|gne in raz|ce|pi na vse te bar|ve. Kap|lje de|lu|je|jo kot majh|na o|ken|ca, ki raz|pr|ši|jo sve|tlo|bo. Ker to poč|ne na ti|so|če ka|pelj hkra|ti, na ne|bu za|gle|da|mo ve|lik pi|san lok. Bar|ve si v mav|ri|ci ved|no sle|di|jo v i|stem re|du, od rde|če na vr|hu do vi|jo|lič|ne na dnu.",
+      "body": "Mavrica je eden najlepših pojavov na nebu. Prikaže se takrat, kadar hkrati sije sonce in dežuje. Čeprav se nam zdi sončna svetloba bela, je v resnici sestavljena iz mnogih barv, skritih druga v drugi. Ko sončni žarek posije skozi drobno dežno kapljo, se v njej upogne in razcepi na vse te barve. Kaplje delujejo kot majhne prizme, ki razpršijo svetlobo. Ker to počne na tisoče kapelj hkrati, na nebu zagledamo velik pisan lok. Barve si v mavrici vedno sledijo v istem redu, od rdeče na vrhu do vijolične na dnu.",
+      "syllable_body": "Mav|ri|ca je e|den naj|lep|ših po|ja|vov na ne|bu. Pri|ka|že se ta|krat, ka|dar hkra|ti si|je son|ce in de|žu|je. Če|prav se nam zdi sonč|na sve|tlo|ba be|la, je v re|sni|ci se|sta|vlje|na iz mno|gih barv, skri|tih dru|ga v dru|gi. Ko sonč|ni ža|rek po|si|je sko|zi drob|no dež|no kap|ljo, se v njej u|po|gne in raz|ce|pi na vse te bar|ve. Kap|lje de|lu|je|jo kot majh|ne priz|me, ki raz|pr|ši|jo sve|tlo|bo. Ker to poč|ne na ti|so|če ka|pelj hkra|ti, na ne|bu za|gle|da|mo ve|lik pi|san lok. Bar|ve si v mav|ri|ci ved|no sle|di|jo v i|stem re|du, od rde|če na vr|hu do vi|jo|lič|ne na dnu.",
       "imageId": "mavrica_kaplja",
       "review": {
         "status": "draft",
@@ -257,7 +257,7 @@
     },
     {
       "id": "amazing_science_mavrica_4",
-      "version": 1,
+      "version": 2,
       "theme": "amazing_science",
       "level": 4,
       "title": "Lov na mavrico",
@@ -341,12 +341,12 @@
     },
     {
       "id": "nature_seasons_letni_casi_5",
-      "version": 1,
+      "version": 2,
       "theme": "nature_seasons",
       "level": 5,
       "title": "Veliko potovanje leta",
-      "body": "Ali si se kdaj vprašal, zakaj je poleti vroče, pozimi pa mrzlo? Odgovor je v tem, da leto potuje skozi štiri letne čase, ki se vsako leto zvrstijo v istem zaporedju: pomlad, poletje, jesen in zima.\n\nSpomladi se narava prebudi iz dolgega zimskega spanja. Drevesa poženejo sveže zelene liste, travniki se odenejo v pisano cvetje, ptice pa se vrnejo iz toplih krajev in si spletajo gnezda. Vse je polno novega življenja.\n\nPoleti zavlada toplota. Sonce vzide zgodaj in zaide pozno, zato so dnevi dolgi in prijetni za igro na prostem. To je čas, ko na drevesih in poljih dozori največ sadja in zelenjave.\n\nJeseni se dnevi počasi krajšajo in zrak postaja hladnejši. Listje na drevesih se obarva v čudovite rdeče, oranžne in rumene odtenke, nato pa zaplava po vetru na tla. Kmetje pospravijo zadnji pridelek, živali pa se pripravijo na mraz.\n\nPozimi narava utihne in počiva. Pokrajino pogosto pobeli sneg, dnevi so kratki, noči pa dolge in mrzle. Marsikatera žival prespi vso zimo, drevesa pa mirno čakajo. In ko se zdi, da je vsega konec, se veliko kolo leta znova zavrti in napoči nova pomlad.",
-      "syllable_body": "A|li si se kdaj vpra|šal, za|kaj je po|le|ti vro|če, po|zi|mi pa mr|zlo? Od|go|vor je v tem, da le|to po|tu|je sko|zi šti|ri let|ne ča|se, ki se vsa|ko le|to zvr|sti|jo v i|stem za|po|red|ju: po|mlad, po|le|tje, je|sen in zi|ma.\n\nSpo|mla|di se na|ra|va pre|bu|di iz dol|ge|ga zim|ske|ga spa|nja. Dre|ve|sa po|že|ne|jo sve|že ze|le|ne li|ste, trav|ni|ki se o|de|ne|jo v pi|sa|no cve|tje, pti|ce pa se vr|ne|jo iz to|plih kra|jev in si sple|ta|jo gnez|da. Vse je pol|no no|ve|ga živ|lje|nja.\n\nPo|le|ti za|vla|da to|plo|ta. Son|ce vzi|de zgo|daj in za|i|de poz|no, za|to so dne|vi dol|gi in pri|jet|ni za i|gro na pro|stem. To je čas, ko na dre|ve|sih in po|ljih do|zo|ri naj|več sad|ja in ze|le|nja|ve.\n\nJe|se|ni se dne|vi po|ča|si kraj|ša|jo in zrak po|sta|ja hlad|nej|ši. List|je na dre|ve|sih se o|bar|va v ču|do|vi|te rde|če, o|ranž|ne in ru|me|ne od|ten|ke, na|to pa za|pla|va po ve|tru na tla. Kmet|je po|spra|vi|jo zad|nji pri|de|lek, ži|va|li pa se pri|pra|vi|jo na mraz.\n\nPo|zi|mi na|ra|va u|ti|hne in po|či|va. Po|kra|ji|no po|go|sto po|be|li sneg, dne|vi so krat|ki, no|či pa dol|ge in mr|zle. Mar|si|ka|te|ra ži|val pre|spi vso zi|mo, dre|ve|sa pa mir|no ča|ka|jo. In ko se zdi, da je vse|ga ko|nec, se ve|li|ko ko|lo le|ta zno|va za|vr|ti in na|po|či no|va po|mlad.",
+      "body": "Ali veš, kako poteka leto v naravi? Leto potuje skozi štiri letne čase, ki se vsako leto zvrstijo v istem zaporedju: pomlad, poletje, jesen in zima.\n\nSpomladi se narava prebudi iz dolgega zimskega spanja. Drevesa poženejo sveže zelene liste, travniki se odenejo v pisano cvetje, ptice pa se vrnejo iz toplih krajev in si spletajo gnezda. Vse je polno novega življenja.\n\nPoleti zavlada toplota. Sonce vzide zgodaj in zaide pozno, zato so dnevi dolgi in prijetni za igro na prostem. To je čas, ko na drevesih in poljih dozori največ sadja in zelenjave.\n\nJeseni se dnevi počasi krajšajo in zrak postaja hladnejši. Listje na drevesih se obarva v čudovite rdeče, oranžne in rumene odtenke, nato pa zaplava po vetru na tla. Kmetje pospravijo zadnji pridelek, živali pa se pripravijo na mraz.\n\nPozimi narava utihne in počiva. Pokrajino pogosto pobeli sneg, dnevi so kratki, noči pa dolge in mrzle. Marsikatera žival prespi vso zimo, drevesa pa mirno čakajo. In ko se zdi, da je vsega konec, se veliko kolo leta znova zavrti in napoči nova pomlad.",
+      "syllable_body": "A|li veš, ka|ko po|te|ka le|to v na|ra|vi? Le|to po|tu|je sko|zi šti|ri let|ne ča|se, ki se vsa|ko le|to zvr|sti|jo v i|stem za|po|red|ju: po|mlad, po|le|tje, je|sen in zi|ma.\n\nSpo|mla|di se na|ra|va pre|bu|di iz dol|ge|ga zim|ske|ga spa|nja. Dre|ve|sa po|že|ne|jo sve|že ze|le|ne li|ste, trav|ni|ki se o|de|ne|jo v pi|sa|no cve|tje, pti|ce pa se vr|ne|jo iz to|plih kra|jev in si sple|ta|jo gnez|da. Vse je pol|no no|ve|ga živ|lje|nja.\n\nPo|le|ti za|vla|da to|plo|ta. Son|ce vzi|de zgo|daj in za|i|de poz|no, za|to so dne|vi dol|gi in pri|jet|ni za i|gro na pro|stem. To je čas, ko na dre|ve|sih in po|ljih do|zo|ri naj|več sad|ja in ze|le|nja|ve.\n\nJe|se|ni se dne|vi po|ča|si kraj|ša|jo in zrak po|sta|ja hlad|nej|ši. List|je na dre|ve|sih se o|bar|va v ču|do|vi|te rde|če, o|ranž|ne in ru|me|ne od|ten|ke, na|to pa za|pla|va po ve|tru na tla. Kmet|je po|spra|vi|jo zad|nji pri|de|lek, ži|va|li pa se pri|pra|vi|jo na mraz.\n\nPo|zi|mi na|ra|va u|ti|hne in po|či|va. Po|kra|ji|no po|go|sto po|be|li sneg, dne|vi so krat|ki, no|či pa dol|ge in mr|zle. Mar|si|ka|te|ra ži|val pre|spi vso zi|mo, dre|ve|sa pa mir|no ča|ka|jo. In ko se zdi, da je vse|ga ko|nec, se ve|li|ko ko|lo le|ta zno|va za|vr|ti in na|po|či no|va po|mlad.",
       "imageId": "letni_casi_pokrajina",
       "review": {
         "status": "draft",
@@ -517,7 +517,7 @@
     },
     {
       "id": "stories_garden_key_5",
-      "version": 1,
+      "version": 2,
       "theme": "stories",
       "level": 5,
       "title": "Ključ, ki je odprl spomine",
@@ -1057,7 +1057,7 @@
     },
     {
       "id": "amazing_science_magnets_5",
-      "version": 1,
+      "version": 2,
       "theme": "amazing_science",
       "level": 5,
       "title": "Magneti: nevidno polje, resnična sila",
@@ -1237,7 +1237,7 @@
     },
     {
       "id": "nature_seasons_winter_survival_5",
-      "version": 1,
+      "version": 2,
       "theme": "nature_seasons",
       "level": 5,
       "title": "Kako živali preživijo zimo",
@@ -1291,7 +1291,7 @@
     },
     {
       "id": "stories_babicina_vaja_3",
-      "version": 1,
+      "version": 2,
       "theme": "stories",
       "level": 3,
       "title": "Poslušajte drug drugega",
