@@ -1471,12 +1471,12 @@
     },
     {
       "id": "animal_facts_storklja_3",
-      "version": 2,
+      "version": 3,
       "theme": "animal_facts",
       "level": 3,
       "title": "Štorklja se vrača",
-      "body": "Vsako pomlad se bela štorklja vrne iz Afrike. Pogosto se leto za letom vrača v isto gnezdo na isti strehi. Gnezdo je spleteno iz vej, staro gnezdo pa je lahko široko kar dva metra. Štorklja ima dolge rdeče noge in dolg rdeč kljun. Počasi hodi po mokrih travnikih in lovi žabe, miši in žuželke. Štorklje ne pojejo. Namesto tega glasno klepetajo. Spomladi se v gnezdu izleže nekaj mladičev in oba starša jim nosita hrano. Pozno poleti štorklje spet odletijo na jug.",
-      "syllable_body": "Vsa|ko po|mlad se be|la štor|klja vr|ne iz A|fri|ke. Po|go|sto se le|to za le|tom vra|ča v i|sto gne|zdo na i|sti stre|hi. Gne|zdo je sple|te|no iz vej, sta|ro gne|zdo pa je lah|ko ši|ro|ko kar dva me|tra. Štor|klja i|ma dol|ge r|de|če no|ge in dolg r|deč kljun. Po|ča|si ho|di po mo|krih trav|ni|kih in lo|vi ža|be, mi|ši in žu|žel|ke. Štor|klje ne po|je|jo. Na|me|sto te|ga gla|sno kle|pe|ta|jo. Spo|mla|di se v gne|zdu iz|le|že ne|kaj mla|di|čev in o|ba star|ša jim no|si|ta hra|no. Poz|no po|le|ti štor|klje spet od|le|ti|jo na jug.",
+      "body": "Vsako pomlad se bela štorklja vrne iz Afrike. Pogosto se leto za letom vrača v isto gnezdo na isti strehi. Gnezdo je spleteno iz vej, staro gnezdo pa je lahko široko kar dva metra. Štorklja ima dolge rdeče noge in dolg rdeč kljun. Počasi hodi po mokrih travnikih in lovi žabe, miši in žuželke. Štorklje ne pojejo. Namesto tega glasno klopotajo. Spomladi se v gnezdu izleže nekaj mladičev in oba starša jim nosita hrano. Pozno poleti štorklje spet odletijo na jug.",
+      "syllable_body": "Vsa|ko po|mlad se be|la štor|klja vr|ne iz A|fri|ke. Po|go|sto se le|to za le|tom vra|ča v i|sto gne|zdo na i|sti stre|hi. Gne|zdo je sple|te|no iz vej, sta|ro gne|zdo pa je lah|ko ši|ro|ko kar dva me|tra. Štor|klja i|ma dol|ge r|de|če no|ge in dolg r|deč kljun. Po|ča|si ho|di po mo|krih trav|ni|kih in lo|vi ža|be, mi|ši in žu|žel|ke. Štor|klje ne po|je|jo. Na|me|sto te|ga gla|sno klo|po|ta|jo. Spo|mla|di se v gne|zdu iz|le|že ne|kaj mla|di|čev in o|ba star|ša jim no|si|ta hra|no. Poz|no po|le|ti štor|klje spet od|le|ti|jo na jug.",
       "imageId": "stork_nest",
       "review": {
         "status": "draft",
