@@ -70,6 +70,7 @@
     "cloze.count": "Trous : {count} (au maximum {max})",
     "cloze.tooMany": "{max} trous au maximum pour ce texte.",
     "notice.SELECTION_RESET": "Le texte a changé, les trous choisis ont donc été retirés.",
+    "notice.FONT_REPLACED": "Cette police n'a pas toutes les lettres de cette langue, la fiche utilise donc Andika.",
     "notice.NO_GAPS": "Pas encore de trous : cliquez sur des mots dans l'aperçu ou utilisez « Un trou tous les N mots ».",
     "theme.stories": "Histoires",
     "theme.animal_facts": "Le saviez-vous sur les animaux",

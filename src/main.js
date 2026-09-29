@@ -183,6 +183,7 @@ function switchLanguage(language) {
   applyStaticLabels();
   populateLanguageSelect();
   populateThemeSelect();
+  populateFontSelect(); // a font that can't write the language isn't offered
   populatePresetSelect(); // the built-in setups' names are translated
   renderPacketList();
 }

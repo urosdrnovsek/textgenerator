@@ -70,6 +70,7 @@
     "cloze.count": "Lücken: {count} (höchstens {max})",
     "cloze.tooMany": "Höchstens {max} Lücken bei diesem Text.",
     "notice.SELECTION_RESET": "Der Text hat sich geändert, deshalb wurden die gewählten Lücken entfernt.",
+    "notice.FONT_REPLACED": "Diese Schrift hat nicht alle Buchstaben dieser Sprache, deshalb verwendet das Blatt Andika.",
     "notice.NO_GAPS": "Noch keine Lücken: Klicken Sie im Vorschaubild auf Wörter oder verwenden Sie „Jedes N-te Wort als Lücke“.",
     "theme.stories": "Geschichten",
     "theme.animal_facts": "Tierwissen",

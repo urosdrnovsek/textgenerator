@@ -107,6 +107,30 @@ export const FONT_FAMILIES = {
 };
 
 /**
+ * The languages a font can't write: its files lack letters the language
+ * needs (Comic Neue has no Romanian ș Ș). A sheet in such a language is
+ * set in FALLBACK_FONT_ID and says so (notice FONT_REPLACED), and the font
+ * menu doesn't offer the font. tests/unit/fontCoverage.test.js reads the
+ * font files and holds this list exact.
+ * @type {Readonly<Record<string, ReadonlyArray<string>>>}
+ */
+export const FONT_MISSING_LANGUAGES = Object.freeze({
+  comicneue: Object.freeze(['ro'])
+});
+
+/** The font a sheet uses when the chosen one can't write its language; it writes every language. */
+export const FALLBACK_FONT_ID = 'andika';
+
+/**
+ * @param {string} fontId
+ * @param {string} language
+ * @returns {boolean} the font has every letter the language needs
+ */
+export function fontWritesLanguage(fontId, language) {
+  return !(FONT_MISSING_LANGUAGES[fontId] ?? []).includes(language);
+}
+
+/**
  * The allowed range of each numeric setting, read by both the validator
  * and the settings panel's number boxes, so the two can't disagree.
  */

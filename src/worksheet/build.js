@@ -11,7 +11,7 @@ import { tokenize } from '../text/tokenize.js';
 import { keyFor, selectionFor, blankWidthEm, printedQuestions } from './selection.js';
 import { seededDerangement, sequenceLength } from './sequence.js';
 import { ACTIVITIES } from './activities.js';
-import { DRAWING_BOX_HEIGHT_MM, ARC_COLOR, STARTER_SENTENCES, QUESTIONS } from '../config.js';
+import { DRAWING_BOX_HEIGHT_MM, ARC_COLOR, STARTER_SENTENCES, QUESTIONS, FALLBACK_FONT_ID, fontWritesLanguage } from '../config.js';
 
 /**
  * @typedef {object} ImageAsset
@@ -65,6 +65,7 @@ import { DRAWING_BOX_HEIGHT_MM, ARC_COLOR, STARTER_SENTENCES, QUESTIONS } from '
  * @property {string} copyTargetText that text, for layout/copyEstimate.js ('' when nothing is copied: another activity, or "one sentence" with none chosen)
  * @property {boolean} hasSyllableData the text has syllable data (syllable colours, separators and arcs need it)
  * @property {boolean} selectionReset a selection for another text or version was ignored (worksheet/advice.js SELECTION_RESET)
+ * @property {string | null} fontReplaced the chosen font, when it can't write the text's language and settings.fontId is the fallback instead (FONT_REPLACED); null otherwise
  * @property {'lines' | 'none'} task what follows the blocks: ruled copy rows filling the rest of the page, or nothing — a layout decision made by layout/measure.js, not a block
  */
 
@@ -166,8 +167,13 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
     throw new Error(`MISSING_IMAGE: no asset registered for imageId "${entry.imageId}"`);
   }
 
+  // A font without the language's letters would have them drawn in another
+  // font; the whole sheet is set in the fallback instead, and says so.
+  const language = entry.language ?? localeForWordCount;
+  const fontReplaced = fontWritesLanguage(settings.fontId, language) ? null : settings.fontId;
+
   return {
-    contentKey: { language: entry.language ?? localeForWordCount, id: entry.id, version: entry.version },
+    contentKey: { language, id: entry.id, version: entry.version },
     title: entry.title,
     bodyParagraphs,
     wordCount: countWords(resolvedText.body, localeForWordCount),
@@ -178,9 +184,10 @@ export function buildWorksheet(entry, settings, assets, localeForWordCount, sele
     image,
     // A copy: the settings panel changes the live settings in place, and a
     // packet sheet must keep the settings it was measured with.
-    settings: structuredClone(settings),
+    settings: fontReplaced ? { ...structuredClone(settings), fontId: FALLBACK_FONT_ID } : structuredClone(settings),
     selection: chosen.selection,
     selectionReset: chosen.reset,
+    fontReplaced,
     hasSyllableData: doc.hasSyllables,
     copyTarget: target.kind,
     copyTargetText: target.text,

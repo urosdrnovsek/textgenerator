@@ -12,7 +12,7 @@ import { ACTIVITIES } from './activities.js';
 import { markedParagraphs } from './copyMark.js';
 
 /** Every code advise() can return; each needs a `notice.<CODE>` string in all five locales. */
-export const NOTICE_CODES = ['GRAY_COLLISION', 'SELECTION_RESET', 'NO_GAPS', 'COPY_TARGET_UNCHOSEN', 'COPY_SPACE_SHORT', 'DOCX_OMITS_COPY_MARK',
+export const NOTICE_CODES = ['GRAY_COLLISION', 'SELECTION_RESET', 'FONT_REPLACED', 'NO_GAPS', 'COPY_TARGET_UNCHOSEN', 'COPY_SPACE_SHORT', 'DOCX_OMITS_COPY_MARK',
   'NO_SYLLABLE_DATA', 'ARCS_NEED_LINE_SPACING', 'DOCX_OMITS_ARCS', 'DOCX_OMITS_STRIPES'];
 
 /**
@@ -66,6 +66,8 @@ export function advise(model, layoutFacts = {}) {
   const notices = [];
   // Gaps chosen for a text that has since changed (a content import) were dropped.
   if (model.selectionReset) notices.push('SELECTION_RESET');
+  // The chosen font lacks letters of the text's language: the sheet is in the fallback font.
+  if (model.fontReplaced) notices.push('FONT_REPLACED');
   // A gap-fill sheet with no gaps would print the whole text under "Fill in the missing words".
   if (ACTIVITIES[model.settings.writingMode]?.passage === 'cloze' && (model.selection?.blanks.length ?? 0) === 0) notices.push('NO_GAPS');
   // "One sentence" with none clicked yet: the whole text is still there to copy, unmarked.

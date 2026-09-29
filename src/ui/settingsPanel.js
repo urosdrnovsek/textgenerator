@@ -13,7 +13,7 @@
  * field's inline error, through `getT`.
  */
 
-import { SETTINGS_LIMITS, FONT_FAMILIES, DEFAULT_LETTER_COLORS } from '../config.js';
+import { SETTINGS_LIMITS, FONT_FAMILIES, DEFAULT_LETTER_COLORS, FALLBACK_FONT_ID, fontWritesLanguage } from '../config.js';
 import { parseGraphemeInput } from '../text/graphemes.js';
 import { ACTIVITIES } from '../worksheet/activities.js';
 
@@ -74,16 +74,32 @@ export function init({ state, els, requestRender, getT }) {
     if (state.contentId) requestRender();
   }
 
-  /** Font names (Andika, Lexend, ...) are proper nouns — shown as-is, not translated. */
+  /**
+   * The fonts that can write the language on screen. Font names (Andika,
+   * Lexend, ...) are proper nouns — shown as-is, not translated.
+   */
   function populateFontSelect() {
     els.fontSelect.replaceChildren(
-      ...Object.entries(FONT_FAMILIES).map(([fontId, displayName]) => {
-        const option = document.createElement('option');
-        option.value = fontId;
-        option.textContent = displayName;
-        return option;
-      })
+      ...Object.entries(FONT_FAMILIES)
+        .filter(([fontId]) => fontWritesLanguage(fontId, state.language))
+        .map(([fontId, displayName]) => {
+          const option = document.createElement('option');
+          option.value = fontId;
+          option.textContent = displayName;
+          return option;
+        })
     );
+    showFont();
+  }
+
+  /**
+   * The font the sheet is set in. A setting kept from another language
+   * whose font can't write this one stays in the settings (it comes back
+   * with that language); the sheet uses the fallback and says so.
+   */
+  function showFont() {
+    const fontId = state.settings.fontId;
+    els.fontSelect.value = fontWritesLanguage(fontId, state.language) ? fontId : FALLBACK_FONT_ID;
   }
 
   /** Sets each number input's min/max from the single shared limits config — never hardcoded in HTML. */
@@ -103,7 +119,7 @@ export function init({ state, els, requestRender, getT }) {
   /** Reflects state.settings into the settings-panel controls — used at startup and after applying a preset. */
   function syncSettingsControlsFromState() {
     const s = state.settings;
-    els.fontSelect.value = s.fontId;
+    showFont();
     for (const [key, setting] of NUMBER_FIELDS) input(key).value = String(s[setting]);
     for (const [key, setting] of SWITCHES) input(key).checked = Boolean(s[setting]);
     // Absent in setups saved before 0.10: the instruction line is on.

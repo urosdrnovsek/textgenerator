@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { buildWorksheet } from '../../src/worksheet/build.js';
+import { advise } from '../../src/worksheet/advice.js';
+import { FALLBACK_FONT_ID } from '../../src/config.js';
 import { LANGUAGE_CODES, readPack } from './helpers.js';
 
 const ENTRY = {
@@ -169,4 +171,17 @@ test('every bundled text survives every paragraph/syllable combination with no c
       }
     }
   }
+});
+
+test('a font that can\'t write the text\'s language is replaced by the fallback, and the model says so', () => {
+  const romanian = { ...ENTRY, language: 'ro' };
+  const model = buildWorksheet(romanian, { ...BASE_SETTINGS, fontId: 'comicneue' }, ASSETS, 'ro');
+  assert.equal(model.settings.fontId, FALLBACK_FONT_ID);
+  assert.equal(model.fontReplaced, 'comicneue');
+  assert.ok(advise(model).includes('FONT_REPLACED'));
+
+  const slovene = buildWorksheet(ENTRY, { ...BASE_SETTINGS, fontId: 'comicneue' }, ASSETS, 'sl');
+  assert.equal(slovene.settings.fontId, 'comicneue');
+  assert.equal(slovene.fontReplaced, null);
+  assert.ok(!advise(slovene).includes('FONT_REPLACED'));
 });

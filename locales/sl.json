@@ -70,6 +70,7 @@
     "cloze.count": "Praznine: {count} (največ {max})",
     "cloze.tooMany": "Največ {max} praznin pri tem besedilu.",
     "notice.SELECTION_RESET": "Besedilo se je spremenilo, zato so bile izbrane praznine odstranjene.",
+    "notice.FONT_REPLACED": "Ta pisava nima vseh črk tega jezika, zato je list napisan v pisavi Andika.",
     "notice.NO_GAPS": "Še ni praznin: kliknite besede v predogledu ali uporabite »Praznina na vsako N-to besedo«.",
     "theme.stories": "Zgodbe",
     "theme.animal_facts": "Zanimivosti o živalih",
