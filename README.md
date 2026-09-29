@@ -14,7 +14,7 @@ seven (100), French, German, Spanish, Romanian, Slovak and Croatian two
 to six (75 each) — 668 texts in all,
 including a set of gentle fantasy stories.
 Current version:
-`0.10.0-rc.4` — a release candidate; see "Status" below for what's still
+`0.10.0-rc.5` — a release candidate; see "Status" below for what's still
 open.
 
 ## Quick start

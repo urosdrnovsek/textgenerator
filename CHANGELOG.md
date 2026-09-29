@@ -5,7 +5,15 @@ can be an introduction rather than a log. Newest first. Each entry
 summarizes what shipped and what was verified; the commit messages in
 `git log` carry the full per-change detail and are the source of truth.
 
-## Unreleased — Romanian, Slovak and Croatian (branches `feature/lang-ro`, `feature/lang-sk`, `feature/lang-hr`, 2026-09-29)
+## 0.10.0-rc.5 — 2026-09-29 (three new languages)
+
+The rc.4 app with three new languages, Romanian, Slovak and Croatian
+(75 texts each, 668 in all).
+
+Worth knowing: Comic Neue isn't offered for Romanian (it has no `ș`); a
+Romanian sheet with a Comic Neue setup is set in Andika and says so. The
+new languages' texts have not been read by a native speaker. Also in
+this release: the Slovene stork text now says "klopotajo".
 
 Three new languages, Romanian (Română), Slovak (Slovenčina) and Croatian
 (Hrvatski), with 75 texts each; no change to how the app works for the
