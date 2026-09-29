@@ -60,7 +60,9 @@ something.
 Open **Text settings** to adjust:
 
 - **Font** — including dyslexia-friendly options (Andika, OpenDyslexic,
-  Comic Neue) alongside a plain sans-serif (Lexend).
+  Comic Neue) alongside a plain sans-serif (Lexend). Comic Neue isn't
+  offered for Romanian: it has no letter `ș`. A setup saved with Comic
+  Neue still works; a Romanian sheet then uses Andika and says so.
 - **Font size, line spacing, letter spacing, extra word spacing.**
 - **Confused-letter colors (b/d/p/q)** — colors commonly mirrored letters
   so children can tell them apart at a glance.

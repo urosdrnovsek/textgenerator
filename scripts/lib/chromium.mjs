@@ -9,9 +9,11 @@
  */
 
 import { spawn } from 'node:child_process';
+import { readFileSync } from 'node:fs';
 import { mkdtemp, rm } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
+import { LANGUAGE_CODES } from '../../src/languages.js';
 
 /** The development machine's Chromium; CI sets CHROMIUM_BIN. */
 export const CHROMIUM_BIN = process.env.CHROMIUM_BIN ?? '/usr/bin/chromium';
@@ -199,8 +201,31 @@ export async function launchChromium({ port, args = [], downloadDir }) {
   }
 }
 
-/** The fit line while it says "Measuring…", in each interface language. */
-export const MEASURING = /measuring|preverjanje|midiendo|wird geprüft|vérification/i;
+/**
+ * The fit line while it says "Measuring…", in each interface language: read
+ * from the locale files, so a new language needs nothing here.
+ */
+export const MEASURING = new RegExp(localeStrings('fit.measuring')
+  .map((text) => escapeRegExp(text.replace(/…$/, '')))
+  .join('|'), 'i');
+
+/** The fit line of a sheet that fits on one page ("Fits on one page — …"), in each interface language. */
+export const FITS = new RegExp(`^(${localeStrings('fit.fits')
+  .map((text) => escapeRegExp(text.split(' — ')[0]))
+  .join('|')})`, 'i');
+
+/**
+ * @param {string} key
+ * @returns {string[]} that string in every registered language's locale file
+ */
+function localeStrings(key) {
+  return LANGUAGE_CODES.map((code) => JSON.parse(readFileSync(new URL(`../../locales/${code}.json`, import.meta.url), 'utf8')).strings[key]);
+}
+
+/** @param {string} text a locale string, matched literally */
+function escapeRegExp(text) {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
 
 /**
  * Page-side JavaScript, as source text, for either driver.

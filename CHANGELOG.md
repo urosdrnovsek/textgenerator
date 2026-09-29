@@ -5,6 +5,37 @@ can be an introduction rather than a log. Newest first. Each entry
 summarizes what shipped and what was verified; the commit messages in
 `git log` carry the full per-change detail and are the source of truth.
 
+## Unreleased — Romanian (branch `feature/lang-ro`, 2026-09-29)
+
+A sixth language, Romanian (Română), with 75 texts; no change to how the
+app works for the other five.
+
+- **75 Romanian texts** in the fr/de/es shape (six per story level, three
+  per animal level, two elsewhere; 518 texts in all), original texts on
+  the pictures the French texts use, each written after opening its
+  picture. Syllables follow DOOM (`Instructions/tools/ro.py` plus a
+  hiatus list, every split read). Every text fits one page. Reviewed by
+  Claude, not a native speaker, like fr/de/es.
+- **Romanian interface and sheet strings** (`locales/ro.json`). Counted
+  strings are written "label: number", because Romanian needs "de" from
+  20 up and the app has no plural forms yet.
+- **Fonts that can't write a language.** Comic Neue has no Romanian `ș`,
+  so it isn't offered for Romanian; a sheet in Romanian with a Comic Neue
+  setting is set in Andika and says so (notice `FONT_REPLACED`, in all
+  six languages), on screen, in print and in Word. A unit test reads the
+  font files and holds the list (`FONT_MISSING_LANGUAGES`) exact.
+- **Verify scripts** no longer name the languages: the "Measuring…" and
+  "Fits on one page" patterns come from the locale files. `verify-docx`
+  has five Romanian cases (30 in all) and ignores hyphens in its text
+  comparison (pdftotext drops a hyphen at a line break), and reads "Put
+  in order" sheets with `-layout`. `verify-offline` drives Comic Neue into
+  Romanian and back.
+
+Verified: `npm test` (264), `typecheck`, `validate-content`, the golden
+runs (only the 75 new entries added), `fitcheck` (all 75 Romanian texts
+on one page), `verify-docx` (30), `verify-offline` (35 checks),
+`verify-firefox`. Not done: a native speaker's read; a release ZIP.
+
 ## 0.10.0-rc.4 — 2026-09-28 (more texts)
 
 The rc.3 app with 100 new texts (443 in all) and corrections in every

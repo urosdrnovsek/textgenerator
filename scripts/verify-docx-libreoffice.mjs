@@ -134,7 +134,15 @@ const CASES = [
   // the Word file): an original ~126-word Spanish text, which its length
   // places at level 4 — 'es'+level-4 is the last unused pair.
   { label: 'es-andika-level4-owntext-nopicture', language: 'es', theme: 'stories', level: 4, fontId: 'andika', writingMode: 'read-copy', ownText: { title: 'El mercado del sábado', body: "El sábado por la mañana, Lucía y su abuelo fueron al mercado del pueblo. Llevaban una cesta grande y una lista escrita con letra redonda. Primero compraron tomates rojos, pimientos verdes y una calabaza tan pesada que el abuelo tuvo que llevarla en brazos.\n\nDespués pasaron por el puesto de la señora Rosa, que vendía queso y miel. Rosa les dejó probar un poco de miel de romero, dulce y espesa, y Lucía sonrió con los ojos cerrados. Al final compraron un tarro pequeño para el desayuno.\n\nCuando volvieron a casa, prepararon juntos una sopa de verduras. Lucía lavó los tomates y el abuelo cortó la calabaza en trozos. Por la tarde, toda la familia se sentó a la mesa y la sopa se terminó enseguida.", picture: false } },
-  { label: 'es-andika-level2-readcopy-drawingbox', language: 'es', theme: 'stories', level: 2, entryId: 'stories_huevo_blanco_2', fontId: 'andika', writingMode: 'read-copy', fontSizePt: 24, lineHeightMultiplier: 1.8, imageSlot: 'drawing-box' }
+  { label: 'es-andika-level2-readcopy-drawingbox', language: 'es', theme: 'stories', level: 2, entryId: 'stories_huevo_blanco_2', fontId: 'andika', writingMode: 'read-copy', fontSizePt: 24, lineHeightMultiplier: 1.8, imageSlot: 'drawing-box' },
+  // Romanian (2026-09-29): one case per level, each font Romanian is offered
+  // in (Comic Neue isn't: it has no ș), so LibreOffice draws ă â î ș ț in
+  // all three. Level 5 is the pack's longest text (1016 characters).
+  { label: 'ro-andika-level1-readcopy-colors', language: 'ro', theme: 'stories', level: 1, entryId: 'stories_pisoiul_ud_1', fontId: 'andika', writingMode: 'read-copy', letterColors: true, syllableColors: true },
+  { label: 'ro-lexend-level2-cloze-wordbank', language: 'ro', theme: 'animal_facts', level: 2, entryId: 'animal_facts_testoasa_2', fontId: 'lexend', writingMode: 'cloze', clozeEveryNth: 5, wordBank: true },
+  { label: 'ro-opendyslexic-level3-sequence', language: 'ro', theme: 'stories', level: 3, entryId: 'stories_melcul_campion_3', fontId: 'opendyslexic', writingMode: 'sequence' },
+  { label: 'ro-lexend-level4-starter', language: 'ro', theme: 'around_the_world', level: 4, entryId: 'around_the_world_dunarea_4', fontId: 'lexend', writingMode: 'starter' },
+  { label: 'ro-andika-level5-readcopy-stress', language: 'ro', theme: 'nature_seasons', level: 5, entryId: 'nature_seasons_anotimpurile_5', fontId: 'andika', writingMode: 'read-copy' }
 ];
 
 // The development machine's LibreOffice; CI sets SOFFICE_BIN (and
@@ -353,7 +361,10 @@ async function main() {
   // and hyphen-less line joins, so the only stable comparison is
   // whitespace-insensitive: NFC-normalize, then strip every whitespace
   // character, and check the PDF *contains* the rendered title and body.
-  const normalizeForCompare = (s) => s.normalize('NFC').replace(/\s+/g, '');
+  // Hyphens go too: a line that breaks after a hyphen in the text
+  // (Romanian "floarea-|soarelui", "s-|a") comes out of pdftotext joined
+  // without it.
+  const normalizeForCompare = (s) => s.normalize('NFC').replace(/[\s-]+/g, '');
 
   console.log('\nResults:');
   for (const docxPath of docxPaths) {
@@ -372,9 +383,10 @@ async function main() {
       // PDF points); the numbers are checked on their own below.
       const marginPt = Math.floor((DEFAULT_MARGIN_MM / MM_PER_INCH) * 72);
       const columnOnly = matched?.testCase.lineNumbers ? ['-x', String(marginPt), '-y', '0', '-W', String(595 - marginPt), '-H', '842'] : [];
-      // Wide empty gaps (gap-fill) make pdftotext's reading-order guess split
-      // a line into columns and interleave lines; -layout keeps line order.
-      const keepLineOrder = matched?.testCase.clozeEveryNth ? ['-layout'] : [];
+      // Wide empty gaps (gap-fill) and the two-column "Put in order" table
+      // (at large sizes) make pdftotext's reading-order guess split a line
+      // into columns and interleave lines; -layout keeps line order.
+      const keepLineOrder = matched?.testCase.clozeEveryNth || matched?.testCase.writingMode === 'sequence' ? ['-layout'] : [];
       const text = execFileSync('pdftotext', [...keepLineOrder, ...columnOnly, pdfPath, '-']).toString();
       const pdfNormalized = normalizeForCompare(text);
       const bodyOk = matched ? pdfNormalized.includes(normalizeForCompare(matched.renderedBody)) : false;

@@ -1073,6 +1073,30 @@ async function main() {
       ok: resetOk,
       note: JSON.stringify({ titlesAfterReset, storedAfter })
     });
+
+    // A font that can't write the language (Comic Neue has no Romanian ș):
+    // not offered for Romanian, the sheet is set in Andika and says so, and
+    // the font comes back with the language before.
+    const fontState = () => evalJs(`({
+      fonts: [...document.getElementById('font-select').options].map((o) => o.value),
+      menu: document.getElementById('font-select').value,
+      sheet: document.querySelector('#preview [style*="--ws-font-family"]')?.style.getPropertyValue('--ws-font-family') ?? '',
+      notice: Boolean(document.querySelector('#fit-notices li[data-notice="FONT_REPLACED"]'))
+    })`);
+    const languageBefore = await evalJs(`document.getElementById('language-select').value`);
+    await act(setField('font-select', 'comicneue'));
+    await act(setField('language-select', 'ro'));
+    const inRomanian = await fontState();
+    await act(setField('language-select', languageBefore));
+    const fontAfter = await fontState();
+    await act(setField('font-select', 'andika'));
+    const fontOk = !inRomanian.fonts.includes('comicneue') && inRomanian.menu === 'andika' && /Andika/.test(inRomanian.sheet) && inRomanian.notice
+      && fontAfter.menu === 'comicneue' && /Comic Neue/.test(fontAfter.sheet) && !fontAfter.notice;
+    journeyChecks.push({
+      label: 'Comic Neue (no Romanian ș) is not offered for Romanian: the sheet uses Andika and says so, and the font comes back after',
+      ok: fontOk,
+      note: JSON.stringify({ inRomanian, fontAfter })
+    });
   } finally {
     await browser.close();
     await rm(downloadDir, { recursive: true, force: true }).catch(() => {});

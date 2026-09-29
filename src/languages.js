@@ -23,7 +23,8 @@ export const LANGUAGES = Object.freeze([
   Object.freeze({ code: 'en', name: 'English' }),
   Object.freeze({ code: 'de', name: 'Deutsch' }),
   Object.freeze({ code: 'fr', name: 'Français' }),
-  Object.freeze({ code: 'es', name: 'Español' })
+  Object.freeze({ code: 'es', name: 'Español' }),
+  Object.freeze({ code: 'ro', name: 'Română' })
 ]);
 
 /** @type {ReadonlyArray<string>} e.g. ['sl', 'en', …] */

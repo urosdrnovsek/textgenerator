@@ -1,0 +1,1357 @@
+{
+  "schemaVersion": 1,
+  "packId": "starter-ro",
+  "language": "ro",
+  "entries": [
+    {
+      "id": "stories_cufarul_vechi_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Cufărul vechi",
+      "body": "Ana stă pe un covor în pivniță. Lângă ea este un cufăr vechi. În cufăr sunt cărți, scrisori și fotografii. Ana ține o fotografie în mâini. Pe podea este o cheie mică.",
+      "syllable_body": "A|na stă pe un co|vor în piv|ni|ță. Lân|gă ea es|te un cu|făr vechi. În cu|făr sunt cărți, scri|sori și fo|to|gra|fii. A|na ți|ne o fo|to|gra|fi|e în mâini. Pe po|dea es|te o che|ie mi|că.",
+      "imageId": "stara_skrinja",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_pisoiul_ud_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Pisoiul ud",
+      "body": "Plouă tare în parc. Maria găsește un pisoi ud lângă o bancă. Pisoiului îi este frig. Maria îl duce acasă. Acolo îl învelește într-o pătură roz. Pisoiul bea lapte și toarce.",
+      "syllable_body": "Plo|uă ta|re în parc. Ma|ri|a gă|seș|te un pi|soi ud lân|gă o ban|că. Pi|so|iu|lui îi es|te frig. Ma|ri|a îl du|ce a|ca|să. A|co|lo îl în|ve|leș|te într-o pă|tu|ră roz. Pi|so|iul bea lap|te și toar|ce.",
+      "imageId": "moker_muc",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_supa_de_legume_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Supa de legume",
+      "body": "Este seară. Mama face o supă mare. Ioana spală morcovii. Matei scoate boabele de mazăre din păstăi. În oală fierb multe legume. Toată bucătăria miroase frumos.",
+      "syllable_body": "Es|te sea|ră. Ma|ma fa|ce o su|pă ma|re. Ioa|na spa|lă mor|co|vii. Ma|tei scoa|te boa|be|le de ma|ză|re din păs|tăi. În oa|lă fierb mul|te le|gu|me. Toa|tă bu|că|tă|ri|a mi|roa|se fru|mos.",
+      "imageId": "family_soup",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_balta_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Balta",
+      "body": "Ploaia s-a oprit și acum iese soarele. Elena are o haină galbenă și cizme roșii. Ea sare într-o baltă mare. Apa stropește peste tot. Cățelul ei sare și el. Ce distracție!",
+      "syllable_body": "Ploa|ia s-a o|prit și a|cum ie|se soa|re|le. E|le|na a|re o hai|nă gal|be|nă și ciz|me ro|șii. Ea sa|re într-o bal|tă ma|re. A|pa stro|peș|te pes|te tot. Că|țe|lul ei sa|re și el. Ce dis|trac|ți|e!",
+      "imageId": "puddle_jump",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_pasarea_pictata_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Pasărea pictată",
+      "body": "Sofia pictează o pasăre albastră. Deodată, pasărea deschide ochii. Ea bate din aripi și zboară din foaie! Acum cântă lângă fereastră. Sofia râde. Pisica doarme mai departe.",
+      "syllable_body": "So|fi|a pic|tea|ză o pa|să|re al|bas|tră. De|o|da|tă, pa|să|rea des|chi|de o|chii. Ea ba|te din a|ripi și zboa|ră din foa|ie! A|cum cân|tă lân|gă fe|reas|tră. So|fi|a râ|de. Pi|si|ca doar|me mai de|par|te.",
+      "imageId": "magic_paintbrush",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_oaia_din_nori_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Oaia din nori",
+      "body": "Luca vede un nor ca o oaie. Norul coboară și îi zâmbește. Luca urcă pe spatele lui moale. Acum zboară amândoi! Jos se văd un râu, case mici și dealuri verzi.",
+      "syllable_body": "Lu|ca ve|de un nor ca o oa|ie. No|rul co|boa|ră și îi zâm|beș|te. Lu|ca ur|că pe spa|te|le lui moa|le. A|cum zboa|ră a|mân|doi! Jos se văd un râu, ca|se mici și dea|luri verzi.",
+      "imageId": "cloud_sheep",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_cufarul_vechi_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Fotografia din cufăr",
+      "body": "Ana găsește în pivniță un cufăr vechi de lemn. Lângă cufăr este o cheie mică. Ana ridică încet capacul greu. Înăuntru sunt scrisori legate cu sfoară, cărți vechi și multe fotografii. Pe o fotografie sunt un domn și o fetiță. Fetița are părul creț, la fel ca Ana. „Oare cine este?” se întreabă Ana. Apoi urcă scările să o întrebe pe bunica.",
+      "syllable_body": "A|na gă|seș|te în piv|ni|ță un cu|făr vechi de lemn. Lân|gă cu|făr es|te o che|ie mi|că. A|na ri|di|că în|cet ca|pa|cul greu. Î|nă|un|tru sunt scri|sori le|ga|te cu sfoa|ră, cărți vechi și mul|te fo|to|gra|fii. Pe o fo|to|gra|fi|e sunt un domn și o fe|ti|ță. Fe|ti|ța a|re pă|rul creț, la fel ca A|na. „Oa|re ci|ne es|te?” se în|trea|bă A|na. A|poi ur|că scă|ri|le să o în|tre|be pe bu|ni|ca.",
+      "imageId": "stara_skrinja",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_oul_alb_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Oul alb",
+      "body": "Ioana este la țară, la bunica. În hambar, într-un cuib de paie, stă un ou alb. Ioana vine să îl vadă în fiecare dimineață. Azi oul se mișcă! Apoi coaja crapă. Din ou iese un pui mic și galben. Puiul face „piu, piu”. Ioana își pune mâinile pe obraji de bucurie. Bunica râde sub pălăria ei de pai.",
+      "syllable_body": "Ioa|na es|te la ța|ră, la bu|ni|ca. În ham|bar, într-un cuib de pa|ie, stă un ou alb. Ioa|na vi|ne să îl va|dă în fi|e|ca|re di|mi|nea|ță. Azi o|ul se miș|că! A|poi coa|ja cra|pă. Din ou ie|se un pui mic și gal|ben. Pu|iul fa|ce „piu, piu”. Ioa|na își pu|ne mâi|ni|le pe o|braji de bu|cu|ri|e. Bu|ni|ca râ|de sub pă|lă|ri|a ei de pai.",
+      "imageId": "piscancek_gnezdo",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_pachetul_din_zapada_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Pachetul din zăpadă",
+      "body": "Ninge de dimineață și toate casele din sat sunt albe. Poștașul vine pe drum cu o geantă mare. El se oprește la poarta Mariei. „Am un pachet pentru tine!” spune el. Pachetul are o fundă roșie. Maria zâmbește și îl ia cu grijă. Pe cutia poștală, un măcăleandru privește curios. Oare ce este în pachet?",
+      "syllable_body": "Nin|ge de di|mi|nea|ță și toa|te ca|se|le din sat sunt al|be. Poș|ta|șul vi|ne pe drum cu o gean|tă ma|re. El se o|preș|te la poar|ta Ma|ri|ei. „Am un pa|chet pen|tru ti|ne!” spu|ne el. Pa|che|tul a|re o fun|dă ro|și|e. Ma|ri|a zâm|beș|te și îl ia cu gri|jă. Pe cu|ti|a poș|ta|lă, un mă|că|lean|dru pri|veș|te cu|ri|os. Oa|re ce es|te în pa|chet?",
+      "imageId": "winter_postman",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_omul_de_zapada_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Omul de zăpadă",
+      "body": "A nins mult peste noapte. Sofia și Andrei ies în grădină. Ei rostogolesc trei bulgări mari și îi pun unul peste altul. Omul de zăpadă are ochi negri și un nas de morcov. Sofia îi dă fularul ei roșu. Andrei îi pune pe cap o găleată verde. Apoi vine o păsărică și se așază pe găleată.",
+      "syllable_body": "A nins mult pes|te noap|te. So|fi|a și An|drei ies în gră|di|nă. Ei ros|to|go|lesc trei bul|gări mari și îi pun u|nul pes|te al|tul. O|mul de ză|pa|dă a|re ochi negri și un nas de mor|cov. So|fi|a îi dă fu|la|rul ei ro|șu. An|drei îi pu|ne pe cap o gă|lea|tă ver|de. A|poi vi|ne o pă|să|ri|că și se a|șa|ză pe gă|lea|tă.",
+      "imageId": "snowman_garden",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_usita_din_copac_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Ușița din copac",
+      "body": "Elena stă întinsă în iarbă, lângă un copac bătrân. Între rădăcini vede o ușiță de lemn cu o fereastră rotundă. Deodată, ușița se deschide. Iese un șoricel cu o haină roșie și un ceainic în lăbuțe. „Vrei un ceai?” întreabă el. Elena este prea mare ca să intre. Așa că șoricelul îi aduce afară o ceașcă mică, cât un degetar.",
+      "syllable_body": "E|le|na stă în|tin|să în iar|bă, lân|gă un co|pac bă|trân. În|tre ră|dă|cini ve|de o u|și|ță de lemn cu o fe|reas|tră ro|tun|dă. De|o|da|tă, u|și|ța se des|chi|de. Ie|se un șo|ri|cel cu o hai|nă ro|și|e și un ceai|nic în lă|bu|țe. „Vrei un ceai?” în|trea|bă el. E|le|na es|te prea ma|re ca să in|tre. A|șa că șo|ri|ce|lul îi a|du|ce a|fa|ră o ceaș|că mi|că, cât un de|ge|tar.",
+      "imageId": "tiny_door",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_soseta_uriasului_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Șoseta uriașului",
+      "body": "Pe o pajiște cu oi, Matei găsește ceva ciudat: o șosetă uriașă, cu dungi roșii și albe! Este mare cât un cort. Matei intră în șosetă și râde. Oile se uită mirate la el. Deodată, pământul tremură. Departe, după dealuri, merge un uriaș cu un picior gol. „Aici este șoseta ta!” strigă Matei și îi face cu mâna.",
+      "syllable_body": "Pe o pa|jiș|te cu oi, Ma|tei gă|seș|te ce|va ciu|dat: o șo|se|tă u|ri|a|șă, cu dungi ro|șii și al|be! Es|te ma|re cât un cort. Ma|tei in|tră în șo|se|tă și râ|de. O|i|le se ui|tă mi|ra|te la el. De|o|da|tă, pă|mân|tul tre|mu|ră. De|par|te, du|pă dea|luri, mer|ge un u|ri|aș cu un pi|cior gol. „A|ici es|te șo|se|ta ta!” stri|gă Ma|tei și îi fa|ce cu mâ|na.",
+      "imageId": "giant_sock",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_bicicleta_albastra_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Bicicleta albastră",
+      "body": "Sâmbătă dimineață, Ioana voia să meargă cu bicicleta la bunici. Dar bicicleta ei albastră avea lanțul căzut. Ioana era tristă, pentru că nu știa să o repare. Fratele ei, Andrei, a adus cutia roșie cu scule. Au intrat amândoi în șopron. Andrei a luat o cheie și a strâns șuruburile roții. Ioana a ținut ghidonul, ca bicicleta să nu cadă. Apoi au pus lanțul la loc. Când au terminat, Ioana a făcut o tură prin curte. Bicicleta mergea din nou perfect! Seara, i-a mulțumit lui Andrei cu o îmbrățișare mare.",
+      "syllable_body": "Sâm|bă|tă di|mi|nea|ță, Ioa|na vo|ia să mear|gă cu bi|ci|cle|ta la bu|nici. Dar bi|ci|cle|ta ei al|bas|tră a|vea lan|țul că|zut. Ioa|na e|ra tris|tă, pen|tru că nu știa să o re|pa|re. Fra|te|le ei, An|drei, a a|dus cu|ti|a ro|și|e cu scu|le. Au in|trat a|mân|doi în șo|pron. An|drei a lu|at o che|ie și a strâns șu|ru|bu|ri|le ro|ții. Ioa|na a ți|nut ghi|do|nul, ca bi|ci|cle|ta să nu ca|dă. A|poi au pus lan|țul la loc. Când au ter|mi|nat, Ioa|na a fă|cut o tu|ră prin cur|te. Bi|ci|cle|ta mer|gea din nou per|fect! Sea|ra, i-a mul|țu|mit lui An|drei cu o îm|bră|ți|șa|re ma|re.",
+      "imageId": "bicycle_repair",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_melcul_campion_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Melcul campion",
+      "body": "În pădure, animalele au făcut o întrecere. Iepurele era sigur că va câștiga, pentru că alerga foarte repede. Melcul era cel mai încet dintre toți. Când a început cursa, iepurele a țâșnit înainte. După un timp, s-a oprit sub un copac. „Am timp să dorm puțin”, s-a gândit el. Melcul a mers încet, dar nu s-a oprit deloc. Veverița, căprioara, bursucul și ariciul îl încurajau de pe marginea drumului. Seara, când soarele apunea, melcul a atins panglica roșie. Iepurele încă dormea! Când s-a trezit, toate animalele îl felicitau pe melc.",
+      "syllable_body": "În pă|du|re, a|ni|ma|le|le au fă|cut o în|tre|ce|re. Ie|pu|re|le e|ra si|gur că va câș|ti|ga, pen|tru că a|ler|ga foar|te re|pe|de. Mel|cul e|ra cel mai în|cet din|tre toți. Când a în|ce|put cur|sa, ie|pu|re|le a țâș|nit î|na|in|te. Du|pă un timp, s-a o|prit sub un co|pac. „Am timp să dorm pu|țin”, s-a gân|dit el. Mel|cul a mers în|cet, dar nu s-a o|prit de|loc. Ve|ve|ri|ța, că|pri|oa|ra, bur|su|cul și a|ri|ciul îl în|cu|ra|jau de pe mar|gi|nea dru|mu|lui. Sea|ra, când soa|re|le a|pu|nea, mel|cul a a|tins pan|gli|ca ro|și|e. Ie|pu|re|le în|că dor|mea! Când s-a tre|zit, toa|te a|ni|ma|le|le îl fe|li|ci|tau pe melc.",
+      "imageId": "polz_dirka",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_orchestra_de_sambata_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Orchestra de sâmbătă",
+      "body": "În fiecare sâmbătă, patru copii vin la doamna Elena acasă. Ea este o bunică veselă, cu ochelari rotunzi, care iubește muzica. Maria cântă la vioară, iar Radu cântă la flaut. Ana are un violoncel aproape cât ea de mare. David bate ritmul la o tobă. La început, fiecare cânta cum voia și se auzea doar zgomot. Dar doamna Elena i-a învățat să se asculte unii pe alții. Acum cântecul lor sună frumos. Doamna Elena ține ritmul cu mâinile și zâmbește mulțumită. Pe lângă fereastra deschisă, vecinii se opresc să asculte.",
+      "syllable_body": "În fi|e|ca|re sâm|bă|tă, pa|tru co|pii vin la doam|na E|le|na a|ca|să. Ea es|te o bu|ni|că ve|se|lă, cu o|che|lari ro|tunzi, ca|re iu|beș|te mu|zi|ca. Ma|ri|a cân|tă la vi|oa|ră, iar Ra|du cân|tă la fla|ut. A|na a|re un vi|o|lon|cel a|proa|pe cât ea de ma|re. Da|vid ba|te rit|mul la o to|bă. La în|ce|put, fi|e|ca|re cân|ta cum vo|ia și se a|u|zea doar zgo|mot. Dar doam|na E|le|na i-a în|vă|țat să se as|cul|te u|nii pe al|ții. A|cum cân|te|cul lor su|nă fru|mos. Doam|na E|le|na ți|ne rit|mul cu mâi|ni|le și zâm|beș|te mul|țu|mi|tă. Pe lân|gă fe|reas|tra des|chi|să, ve|ci|nii se o|presc să as|cul|te.",
+      "imageId": "music_rehearsal",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_castelul_de_nisip_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Castelul de nisip",
+      "body": "Vara trecută, Elena și Luca au fost la mare. Într-o zi, au hotărât să construiască cel mai mare castel de nisip de pe plajă. Au cărat apă cu o găleată roșie și au săpat cu o lopățică albastră. Castelul avea turnuri înalte și o poartă mică. Elena l-a împodobit cu scoici, iar Luca a pus o pană albă în vârful turnului celui mai înalt. Apoi au săpat un șanț în jurul lui. Când au venit valurile, apa a umplut șanțul, dar castelul a rămas în picioare!",
+      "syllable_body": "Va|ra tre|cu|tă, E|le|na și Lu|ca au fost la ma|re. Într-o zi, au ho|tă|rât să con|stru|ias|că cel mai ma|re cas|tel de ni|sip de pe pla|jă. Au că|rat a|pă cu o gă|lea|tă ro|și|e și au să|pat cu o lo|pă|ți|că al|bas|tră. Cas|te|lul a|vea tur|nuri î|nal|te și o poar|tă mi|că. E|le|na l-a îm|po|do|bit cu scoici, iar Lu|ca a pus o pa|nă al|bă în vâr|ful tur|nu|lui ce|lui mai î|nalt. A|poi au să|pat un șanț în ju|rul lui. Când au ve|nit va|lu|ri|le, a|pa a um|plut șan|țul, dar cas|te|lul a ră|mas în pi|cioa|re!",
+      "imageId": "sandcastle_beach",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_unicornul_din_gradina_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Unicornul din grădină",
+      "body": "Într-o seară, Maria a ieșit în grădină să ude legumele. Lângă straturile cu morcovi a văzut un unicorn mic și alb. Avea coama aurie, cu flori mici împletite în ea. Unicornul călca ușor printre salate. Acolo unde punea copita, din pământ răsăreau flori de toate culorile. Maria s-a lăsat în genunchi și i-a întins mâna. Unicornul i-a pus copita în palmă, ca și cum ar fi vrut să-i spună ceva. Apoi a scuturat din coamă și a plecat spre pădure, când soarele a apus. Din seara aceea, grădina Mariei este cea mai frumoasă din sat.",
+      "syllable_body": "Într-o sea|ră, Ma|ri|a a ie|șit în gră|di|nă să u|de le|gu|me|le. Lân|gă stra|tu|ri|le cu mor|covi a vă|zut un u|ni|corn mic și alb. A|vea coa|ma a|u|ri|e, cu flori mici îm|ple|ti|te în ea. U|ni|cor|nul căl|ca u|șor prin|tre sa|la|te. A|co|lo un|de pu|nea co|pi|ta, din pă|mânt ră|să|reau flori de toa|te cu|lo|ri|le. Ma|ri|a s-a lă|sat în ge|nunchi și i-a în|tins mâ|na. U|ni|cor|nul i-a pus co|pi|ta în pal|mă, ca și cum ar fi vrut să-i spu|nă ce|va. A|poi a scu|tu|rat din coa|mă și a ple|cat spre pă|du|re, când soa|re|le a a|pus. Din sea|ra a|cee|a, gră|di|na Ma|ri|ei es|te cea mai fru|moa|să din sat.",
+      "imageId": "unicorn_garden",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_palaria_vrajitorului_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Pălăria vrăjitorului",
+      "body": "Într-o după-amiază cu soare, Andrei s-a urcat în podul casei. Acolo a găsit un cufăr vechi, plin de lucruri ciudate. Înăuntru era o pălărie albastră cu stele și luni aurii. Era mult prea mare pentru el, dar Andrei și-a pus-o pe cap. Deodată, motanul cel gri din fotoliu a ridicat o labă și a spus: „În sfârșit mă auzi!” Andrei a rămas cu gura căscată. „Tu vorbești?” „De ani de zile”, a răspuns motanul. „Și, fiindcă tot mă auzi, aș vrea mai mult lapte la cină.”",
+      "syllable_body": "Într-o du|pă-a|mia|ză cu soa|re, An|drei s-a ur|cat în po|dul ca|sei. A|co|lo a gă|sit un cu|făr vechi, plin de lu|cruri ciu|da|te. Î|nă|un|tru e|ra o pă|lă|ri|e al|bas|tră cu ste|le și luni a|u|rii. E|ra mult prea ma|re pen|tru el, dar An|drei și-a pus-o pe cap. De|o|da|tă, mo|ta|nul cel gri din fo|to|liu a ri|di|cat o la|bă și a spus: „În sfâr|șit mă a|u|zi!” An|drei a ră|mas cu gu|ra căs|ca|tă. „Tu vor|bești?” „De ani de zi|le”, a răs|puns mo|ta|nul. „Și, fi|ind|că tot mă a|u|zi, aș vrea mai mult lap|te la ci|nă.”",
+      "imageId": "wizard_hat",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_cheia_de_argint_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Cheia de argint",
+      "body": "Matei își petrecea vacanța la bunica, într-o casă cu o grădină plină de flori. Într-o după-amiază, în timp ce uda menta, a văzut ceva strălucind în pământ. Era o cheie mică de argint.\n\n„Bunico, ce deschide cheia asta?” a întrebat el. Bunica s-a uitat la cheie și a zâmbit. „Cred că știu”, a spus ea. A adus din casă o cutie veche de lemn, cu o broască de fier.\n\nMatei a pus cheia în broască și a răsucit-o. Capacul s-a deschis cu un scârțâit. Înăuntru erau fotografii și cărți poștale vechi: munți cu zăpadă, un oraș lângă un lac și o fată tânără cu o rochie lungă.\n\n„Fata aceasta sunt eu”, a spus bunica. Pisica a venit și ea să vadă. Toată seara, bunica i-a povestit lui Matei despre călătoriile ei.",
+      "syllable_body": "Ma|tei își pe|tre|cea va|can|ța la bu|ni|ca, într-o ca|să cu o gră|di|nă pli|nă de flori. Într-o du|pă-a|mia|ză, în timp ce u|da men|ta, a vă|zut ce|va stră|lu|cind în pă|mânt. E|ra o che|ie mi|că de ar|gint.\n\n„Bu|ni|co, ce des|chi|de che|ia as|ta?” a în|tre|bat el. Bu|ni|ca s-a ui|tat la che|ie și a zâm|bit. „Cred că știu”, a spus ea. A a|dus din ca|să o cu|ti|e ve|che de lemn, cu o broas|că de fier.\n\nMa|tei a pus che|ia în broas|că și a ră|su|cit-o. Ca|pa|cul s-a des|chis cu un scâr|țâ|it. Î|nă|un|tru e|rau fo|to|gra|fii și cărți poș|ta|le vechi: munți cu ză|pa|dă, un o|raș lân|gă un lac și o fa|tă tâ|nă|ră cu o ro|chi|e lun|gă.\n\n„Fa|ta a|ceas|ta sunt eu”, a spus bu|ni|ca. Pi|si|ca a ve|nit și ea să va|dă. Toa|tă sea|ra, bu|ni|ca i-a po|ves|tit lui Ma|tei des|pre că|lă|to|ri|i|le ei.",
+      "imageId": "silver_key_garden",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_zgomotul_din_hambar_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Zgomotul din hambar",
+      "body": "În vacanța de vară, Ioana stătea la bunica, la țară. Într-o dimineață, a auzit din hambar un zgomot ciudat: „cioc, cioc, cioc”. Ioana s-a speriat puțin și s-a oprit în loc. Poate era un șoarece. Sau poate ceva mai mare?\n\nA deschis încet ușa de lemn și a intrat. Zgomotul venea dintr-un cuib de paie. Acolo era un ou alb, pe care găina îl lăsase singur. Și oul se mișca!\n\nIoana a chemat-o pe bunica. S-au aplecat amândouă peste cuib și au așteptat în liniște. „Cioc, cioc”, se auzea iar. Deodată, coaja s-a spart și a apărut un cioc mic și galben. Apoi a ieșit un pui ud, care s-a scuturat și a spus: „Piu!”\n\n„Nu era un monstru”, a râs Ioana. „Este cel mai mic animal din fermă!”",
+      "syllable_body": "În va|can|ța de va|ră, Ioa|na stă|tea la bu|ni|ca, la ța|ră. Într-o di|mi|nea|ță, a a|u|zit din ham|bar un zgo|mot ciu|dat: „cioc, cioc, cioc”. Ioa|na s-a spe|ri|at pu|țin și s-a o|prit în loc. Poa|te e|ra un șoa|re|ce. Sau poa|te ce|va mai ma|re?\n\nA des|chis în|cet u|șa de lemn și a in|trat. Zgo|mo|tul ve|nea dintr-un cuib de pa|ie. A|co|lo e|ra un ou alb, pe ca|re gă|i|na îl lă|sa|se sin|gur. Și o|ul se miș|ca!\n\nIoa|na a che|mat-o pe bu|ni|ca. S-au a|ple|cat a|mân|do|uă pes|te cuib și au aș|tep|tat în li|niș|te. „Cioc, cioc”, se a|u|zea iar. De|o|da|tă, coa|ja s-a spart și a a|pă|rut un cioc mic și gal|ben. A|poi a ie|șit un pui ud, ca|re s-a scu|tu|rat și a spus: „Piu!”\n\n„Nu e|ra un mon|stru”, a râs Ioa|na. „Es|te cel mai mic a|ni|mal din fer|mă!”",
+      "imageId": "piscancek_skedenj",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_felinarul_paznicului_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Felinarul paznicului de far",
+      "body": "Pe o stâncă de lângă mare era un far alb, cu acoperiș roșu. Acolo locuia domnul Iosif, paznicul farului. În fiecare seară, el aprindea lumina cea mare, ca să le arate corăbiilor drumul.\n\nÎntr-o seară, vântul a început să bată tare. Valurile loveau stâncile și ridicau spumă albă. Deodată, domnul Iosif a văzut o barcă mică în depărtare. În ea erau doi pescari care nu mai găseau drumul spre port.\n\nDomnul Iosif a luat felinarul lui vechi și a coborât pe stânci, cât mai aproape de apă. A ridicat felinarul sus și l-a legănat încolo și încoace. „Pe aici!” a strigat el.\n\nPescarii au văzut lumina și au îndreptat barca spre ea. Curând au ajuns la mal. I-au făcut cu mâna paznicului și au râs de bucurie.",
+      "syllable_body": "Pe o stân|că de lân|gă ma|re e|ra un far alb, cu a|co|pe|riș ro|șu. A|co|lo lo|cu|ia dom|nul Io|sif, paz|ni|cul fa|ru|lui. În fi|e|ca|re sea|ră, el a|prin|dea lu|mi|na cea ma|re, ca să le a|ra|te co|ră|bi|i|lor dru|mul.\n\nÎntr-o sea|ră, vân|tul a în|ce|put să ba|tă ta|re. Va|lu|ri|le lo|veau stân|ci|le și ri|di|cau spu|mă al|bă. De|o|da|tă, dom|nul Io|sif a vă|zut o bar|că mi|că în de|păr|ta|re. În ea e|rau doi pes|cari ca|re nu mai gă|seau dru|mul spre port.\n\nDom|nul Io|sif a lu|at fe|li|na|rul lui vechi și a co|bo|rât pe stânci, cât mai a|proa|pe de a|pă. A ri|di|cat fe|li|na|rul sus și l-a le|gă|nat în|co|lo și în|coa|ce. „Pe a|ici!” a stri|gat el.\n\nPes|ca|rii au vă|zut lu|mi|na și au în|drep|tat bar|ca spre ea. Cu|rând au a|juns la mal. I-au fă|cut cu mâ|na paz|ni|cu|lui și au râs de bu|cu|ri|e.",
+      "imageId": "lighthouse_rescue",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_casuta_pasarilor_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Căsuța păsărelelor",
+      "body": "Iarna aceasta a fost foarte grea. Zăpada a acoperit câmpurile și copacii, iar păsărelele nu mai găseau nimic de mâncare. Sofia le vedea în fiecare dimineață pe gard, zgribulite și flămânde.\n\n„Trebuie să le ajutăm”, i-a spus ea fratelui ei, Radu. Împreună cu tata, au construit din scânduri o căsuță pentru păsări. I-au făcut un acoperiș roșu, ca să nu intre zăpada.\n\nSâmbătă, au ieșit în grădină. Sofia s-a ridicat pe vârfuri și a agățat căsuța de o creangă a copacului bătrân. Radu a ținut punga cu semințe de floarea-soarelui și a turnat semințele înăuntru.\n\nNici nu s-au îndepărtat bine, când a venit primul musafir: un pițigoi cu pieptul galben. Apoi au venit și alții. De atunci, copiii umplu căsuța cu semințe în fiecare zi, iar grădina lor este plină de cântece.",
+      "syllable_body": "Iar|na a|ceas|ta a fost foar|te grea. Ză|pa|da a a|co|pe|rit câm|pu|ri|le și co|pa|cii, iar pă|să|re|le|le nu mai gă|seau ni|mic de mân|ca|re. So|fi|a le ve|dea în fi|e|ca|re di|mi|nea|ță pe gard, zgri|bu|li|te și flă|mân|de.\n\n„Tre|bu|ie să le a|ju|tăm”, i-a spus ea fra|te|lui ei, Ra|du. Îm|pre|u|nă cu ta|ta, au con|stru|it din scân|duri o că|su|ță pen|tru pă|sări. I-au fă|cut un a|co|pe|riș ro|șu, ca să nu in|tre ză|pa|da.\n\nSâm|bă|tă, au ie|șit în gră|di|nă. So|fi|a s-a ri|di|cat pe vâr|furi și a a|gă|țat că|su|ța de o crean|gă a co|pa|cu|lui bă|trân. Ra|du a ți|nut pun|ga cu se|min|țe de floa|rea-soa|re|lui și a tur|nat se|min|țe|le î|nă|un|tru.\n\nNici nu s-au în|de|păr|tat bi|ne, când a ve|nit pri|mul mu|sa|fir: un pi|ți|goi cu piep|tul gal|ben. A|poi au ve|nit și al|ții. De a|tunci, co|pi|ii um|plu că|su|ța cu se|min|țe în fi|e|ca|re zi, iar gră|di|na lor es|te pli|nă de cân|te|ce.",
+      "imageId": "bird_feeder_winter",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_dragonul_si_felinarul_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Dragonul fără foc",
+      "body": "Pe dealul de deasupra satului locuia un dragon mare și violet. Toți dragonii din povești scot foc pe nări, dar el nu putea. Oricât încerca, din nasul lui ieșea doar un fum mic și gri. De aceea stătea singur și nu cobora niciodată în sat.\n\nÎntr-o seară, Ana a urcat pe deal cu felinarul ei. A găsit dragonul ghemuit în iarbă, cu ochii triști. „De ce ești singur?” l-a întrebat ea. „Pentru că nu pot face foc”, a oftat dragonul.\n\nAna a ridicat felinarul spre el. „Nici eu nu pot face foc”, a spus ea. „Dar am lumină. Ține tu felinarul, ca să vezi drumul spre sat.”\n\nDragonul a zâmbit pentru prima dată. În noaptea aceea a coborât în sat, cu felinarul în gheare, iar licuricii zburau în jurul lui.",
+      "syllable_body": "Pe dea|lul de dea|su|pra sa|tu|lui lo|cu|ia un dra|gon ma|re și vi|o|let. Toți dra|go|nii din po|vești scot foc pe nări, dar el nu pu|tea. O|ri|cât în|cer|ca, din na|sul lui ie|șea doar un fum mic și gri. De a|cee|a stă|tea sin|gur și nu co|bo|ra ni|cio|da|tă în sat.\n\nÎntr-o sea|ră, A|na a ur|cat pe deal cu fe|li|na|rul ei. A gă|sit dra|go|nul ghe|mu|it în iar|bă, cu o|chii triști. „De ce ești sin|gur?” l-a în|tre|bat ea. „Pen|tru că nu pot fa|ce foc”, a of|tat dra|go|nul.\n\nA|na a ri|di|cat fe|li|na|rul spre el. „Nici eu nu pot fa|ce foc”, a spus ea. „Dar am lu|mi|nă. Ți|ne tu fe|li|na|rul, ca să vezi dru|mul spre sat.”\n\nDra|go|nul a zâm|bit pen|tru pri|ma da|tă. În noap|tea a|cee|a a co|bo|rât în sat, cu fe|li|na|rul în ghea|re, iar li|cu|ri|cii zbu|rau în ju|rul lui.",
+      "imageId": "dragon_lantern",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_scoica_sirenei_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Scoica sirenei",
+      "body": "Lui Radu îi plăcea să se plimbe seara pe stâncile de lângă mare. Într-o zi, când soarele apunea, a găsit între alge o scoică mare și roz. Era atât de frumoasă, încât a vrut să o ia acasă.\n\nDeodată, a auzit o voce din apă: „Te rog, nu o lua!” Între valuri era o fată cu părul lung, cu stele de mare prinse în el. În spatele ei strălucea o coadă verde. Era o sirenă!\n\n„Scoica aceasta este lampa mea”, a spus sirena. „Noaptea, pe fundul mării, lumina ei îmi arată drumul spre casă.”\n\nRadu s-a aplecat de pe stâncă și i-a dat scoica. Sirena a zâmbit și a dispărut sub valuri. Mai târziu, Radu a văzut departe, în apă, o lumină roz care clipea, ca un semn de mulțumire.",
+      "syllable_body": "Lui Ra|du îi plă|cea să se plim|be sea|ra pe stân|ci|le de lân|gă ma|re. Într-o zi, când soa|re|le a|pu|nea, a gă|sit în|tre al|ge o scoi|că ma|re și roz. E|ra a|tât de fru|moa|să, în|cât a vrut să o ia a|ca|să.\n\nDe|o|da|tă, a a|u|zit o vo|ce din a|pă: „Te rog, nu o lu|a!” În|tre va|luri e|ra o fa|tă cu pă|rul lung, cu ste|le de ma|re prin|se în el. În spa|te|le ei stră|lu|cea o coa|dă ver|de. E|ra o si|re|nă!\n\n„Scoi|ca a|ceas|ta es|te lam|pa mea”, a spus si|re|na. „Noap|tea, pe fun|dul mă|rii, lu|mi|na ei îmi a|ra|tă dru|mul spre ca|să.”\n\nRa|du s-a a|ple|cat de pe stân|că și i-a dat scoi|ca. Si|re|na a zâm|bit și a dis|pă|rut sub va|luri. Mai târ|ziu, Ra|du a vă|zut de|par|te, în a|pă, o lu|mi|nă roz ca|re cli|pea, ca un semn de mul|țu|mi|re.",
+      "imageId": "mermaid_shell",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_gradina_cu_poarta_verde_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Grădina cu poarta verde",
+      "body": "Lângă casa bunicilor era o grădină veche, ascunsă după un zid de piatră. Poarta ei verde stătuse încuiată mulți ani. Într-o primăvară, bunicul i-a dat Mariei cheia. „Dacă ai grijă de ea, grădina este a ta”, i-a spus el.\n\nMaria a muncit o lună întreagă. A smuls buruienile, a măturat aleea de piatră și a pus pământ nou în ghivece. A plantat lavandă, rozmarin, busuioc și roșii. În fiecare dimineață, înainte de școală, ieșea cu stropitoarea și le uda pe toate. Mâinile i se umpleau de pământ, iar seara era obosită, dar fericită. La început nu se întâmpla nimic, iar Maria se întreba dacă plantele vor crește vreodată.\n\nApoi, într-o zi, au apărut primele frunze. După câteva săptămâni, grădina mirosea a lavandă și a busuioc, iar albinele zumzăiau printre flori. Roșiile s-au înroșit la soare. Vecinii se opreau la poartă să privească. A venit și bunicul, s-a așezat pe banca de lemn și a zâmbit. „Știam eu că grădina aștepta pe cineva ca tine”, a spus el.",
+      "syllable_body": "Lân|gă ca|sa bu|ni|ci|lor e|ra o gră|di|nă ve|che, as|cun|să du|pă un zid de pia|tră. Poar|ta ei ver|de stă|tu|se în|cu|ia|tă mulți ani. Într-o pri|mă|va|ră, bu|ni|cul i-a dat Ma|ri|ei che|ia. „Da|că ai gri|jă de ea, gră|di|na es|te a ta”, i-a spus el.\n\nMa|ri|a a mun|cit o lu|nă în|trea|gă. A smuls bu|ru|ie|ni|le, a mă|tu|rat a|le|ea de pia|tră și a pus pă|mânt nou în ghi|ve|ce. A plan|tat la|van|dă, roz|ma|rin, bu|su|ioc și ro|șii. În fi|e|ca|re di|mi|nea|ță, î|na|in|te de școa|lă, ie|șea cu stro|pi|toa|rea și le u|da pe toa|te. Mâi|ni|le i se um|pleau de pă|mânt, iar sea|ra e|ra o|bo|si|tă, dar fe|ri|ci|tă. La în|ce|put nu se în|tâm|pla ni|mic, iar Ma|ri|a se în|tre|ba da|că plan|te|le vor creș|te vreo|da|tă.\n\nA|poi, într-o zi, au a|pă|rut pri|me|le frun|ze. Du|pă câ|te|va săp|tă|mâni, gră|di|na mi|ro|sea a la|van|dă și a bu|su|ioc, iar al|bi|ne|le zum|ză|iau prin|tre flori. Ro|și|i|le s-au în|ro|șit la soa|re. Ve|ci|nii se o|preau la poar|tă să pri|veas|că. A ve|nit și bu|ni|cul, s-a a|șe|zat pe ban|ca de lemn și a zâm|bit. „Știam eu că gră|di|na aș|tep|ta pe ci|ne|va ca ti|ne”, a spus el.",
+      "imageId": "green_garden_gate",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_pisoiul_gasit_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Un nume pentru pisoi",
+      "body": "De o săptămână, un pisoi mic și dungat locuia în casa Elenei. Ea îl găsise într-o seară ploioasă, ud și tremurând lângă o bancă din parc. Pisoiul era atât de slab, încât încăpea în palmele ei. Mama spusese atunci: „Poate sta la noi până îi găsim stăpânul.”\n\nElena a desenat afișe cu pisoiul și le-a lipit pe stâlpii din cartier. Alerga la ușă de fiecare dată când suna cineva, dar nimeni nu venea după pisoi. Între timp, pisoiul a învățat să bea lapte din bolul cu lăbuțe, să se joace cu șoricelul de pluș și să doarmă în coșul cu pătura albastră. Seara se urca în poala Elenei și torcea ca un motor mic.\n\nÎntr-o seară, afară ploua din nou. Mama s-a așezat lângă Elena pe covor. „Nu a venit nimeni”, a spus ea încet. „Cred că pisoiul și-a găsit deja casa.” Elena a sărit în sus de bucurie. „Atunci trebuie să aibă un nume!” a strigat ea. Au ales împreună numele Nor, pentru că blana lui era gri și pufoasă.",
+      "syllable_body": "De o săp|tă|mâ|nă, un pi|soi mic și dun|gat lo|cu|ia în ca|sa E|le|nei. Ea îl gă|si|se într-o sea|ră plo|ioa|să, ud și tre|mu|rând lân|gă o ban|că din parc. Pi|so|iul e|ra a|tât de slab, în|cât în|că|pea în pal|me|le ei. Ma|ma spu|se|se a|tunci: „Poa|te sta la noi pâ|nă îi gă|sim stă|pâ|nul.”\n\nE|le|na a de|se|nat a|fi|șe cu pi|so|iul și le-a li|pit pe stâl|pii din car|ti|er. A|ler|ga la u|șă de fi|e|ca|re da|tă când su|na ci|ne|va, dar ni|meni nu ve|nea du|pă pi|soi. În|tre timp, pi|so|iul a în|vă|țat să bea lap|te din bo|lul cu lă|bu|țe, să se joa|ce cu șo|ri|ce|lul de pluș și să doar|mă în co|șul cu pă|tu|ra al|bas|tră. Sea|ra se ur|ca în poa|la E|le|nei și tor|cea ca un mo|tor mic.\n\nÎntr-o sea|ră, a|fa|ră plo|ua din nou. Ma|ma s-a a|șe|zat lân|gă E|le|na pe co|vor. „Nu a ve|nit ni|meni”, a spus ea în|cet. „Cred că pi|so|iul și-a gă|sit de|ja ca|sa.” E|le|na a să|rit în sus de bu|cu|ri|e. „A|tunci tre|bu|ie să ai|bă un nu|me!” a stri|gat ea. Au a|les îm|pre|u|nă nu|me|le Nor, pen|tru că bla|na lui e|ra gri și pu|foa|să.",
+      "imageId": "muc_dom",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_la_pompieri_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "O zi la pompieri",
+      "body": "Într-o dimineață de mai, clasa a doua a mers în vizită la pompieri. Copiii au stat în spatele unor conuri portocalii și au privit cu ochii mari mașina roșie, lungă și strălucitoare. Pe laterale avea furtunuri, scări și multe uși mici.\n\nUn pompier pe nume Mihai i-a salutat zâmbind. „Să vă arăt cum ne pregătim”, a spus el. S-a lăsat în genunchi și a desfăcut un furtun galben, gros și greu. Le-a arătat casca roșie, care îi apără capul, și costumul special, care nu arde. Colega lui, Irina, a prins un capăt al furtunului și l-a legat la mașină. Un alt pompier verifica scările și lanternele din mașină.\n\n„Cât de repede plecați când sună alarma?” a întrebat Ana. „În mai puțin de un minut”, a răspuns Mihai. Copiii au rămas uimiți. Mihai le-a arătat și bara lucioasă pe care pompierii alunecă de la etaj. La sfârșit, fiecare a primit o cască mică de plastic. În autobuz, toți vorbeau despre același lucru: când vor fi mari, se vor face pompieri.",
+      "syllable_body": "Într-o di|mi|nea|ță de mai, cla|sa a do|ua a mers în vi|zi|tă la pom|pi|eri. Co|pi|ii au stat în spa|te|le u|nor co|nuri por|to|ca|lii și au pri|vit cu o|chii mari ma|și|na ro|și|e, lun|gă și stră|lu|ci|toa|re. Pe la|te|ra|le a|vea fur|tu|nuri, scări și mul|te uși mici.\n\nUn pom|pi|er pe nu|me Mi|hai i-a sa|lu|tat zâm|bind. „Să vă a|răt cum ne pre|gă|tim”, a spus el. S-a lă|sat în ge|nunchi și a des|fă|cut un fur|tun gal|ben, gros și greu. Le-a a|ră|tat cas|ca ro|și|e, ca|re îi a|pă|ră ca|pul, și cos|tu|mul spe|ci|al, ca|re nu ar|de. Co|le|ga lui, I|ri|na, a prins un ca|păt al fur|tu|nu|lui și l-a le|gat la ma|și|nă. Un alt pom|pi|er ve|ri|fi|ca scă|ri|le și lan|ter|ne|le din ma|și|nă.\n\n„Cât de re|pe|de ple|cați când su|nă a|lar|ma?” a în|tre|bat A|na. „În mai pu|țin de un mi|nut”, a răs|puns Mi|hai. Co|pi|ii au ră|mas u|i|miți. Mi|hai le-a a|ră|tat și ba|ra lu|cioa|să pe ca|re pom|pi|e|rii a|lu|ne|că de la e|taj. La sfâr|șit, fi|e|ca|re a pri|mit o cas|că mi|că de plas|tic. În au|to|buz, toți vor|beau des|pre a|ce|lași lu|cru: când vor fi mari, se vor fa|ce pom|pi|eri.",
+      "imageId": "fire_station",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_uriasul_din_muzeu_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Uriașul din muzeu",
+      "body": "Sala cea mare a muzeului era plină de lumină. Prin ferestrele înalte intra soarele și cădea pe un schelet uriaș, cu gâtul lung cât un copac. Copiii s-au oprit în fața lui și au rămas fără cuvinte. Capul dinozaurului era atât de sus, încât copiii trebuiau să privească drept în sus ca să-l vadă.\n\n„Acesta este un diplodocus”, a spus ghidul, un domn cu barbă albă. „A trăit acum foarte mult timp, cu mult înainte să existe oameni. Era lung cât trei autobuze și mânca doar plante.” Maria a întrebat cum au ajuns oasele în muzeu. Ghidul a explicat că cercetătorii le-au găsit în pământ și le-au scos cu grijă, bucată cu bucată. Apoi le-au pus la loc, ca pe piesele unui joc uriaș.\n\nDoar Andrei nu asculta. Stătea pe jos, puțin mai departe, și desena scheletul în caiet. Când ghidul a terminat, copiii s-au strâns în jurul lui. „Este exact ca în realitate!” a spus Maria. Ghidul a zâmbit: „Poate că într-o zi vei găsi tu un dinozaur nou.”",
+      "syllable_body": "Sa|la cea ma|re a mu|ze|u|lui e|ra pli|nă de lu|mi|nă. Prin fe|res|tre|le î|nal|te in|tra soa|re|le și că|dea pe un sche|let u|ri|aș, cu gâ|tul lung cât un co|pac. Co|pi|ii s-au o|prit în fa|ța lui și au ră|mas fă|ră cu|vin|te. Ca|pul di|no|za|u|ru|lui e|ra a|tât de sus, în|cât co|pi|ii tre|bu|iau să pri|veas|că drept în sus ca să-l va|dă.\n\n„A|ces|ta es|te un di|plo|do|cus”, a spus ghi|dul, un domn cu bar|bă al|bă. „A tră|it a|cum foar|te mult timp, cu mult î|na|in|te să e|xis|te oa|meni. E|ra lung cât trei au|to|bu|ze și mân|ca doar plan|te.” Ma|ri|a a în|tre|bat cum au a|juns oa|se|le în mu|zeu. Ghi|dul a ex|pli|cat că cer|ce|tă|to|rii le-au gă|sit în pă|mânt și le-au scos cu gri|jă, bu|ca|tă cu bu|ca|tă. A|poi le-au pus la loc, ca pe pie|se|le u|nui joc u|ri|aș.\n\nDoar An|drei nu as|cul|ta. Stă|tea pe jos, pu|țin mai de|par|te, și de|se|na sche|le|tul în ca|iet. Când ghi|dul a ter|mi|nat, co|pi|ii s-au strâns în ju|rul lui. „Es|te e|xact ca în re|a|li|ta|te!” a spus Ma|ri|a. Ghi|dul a zâm|bit: „Poa|te că într-o zi vei găsi tu un di|no|za|ur nou.”",
+      "imageId": "dinosaur_museum",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_castelul_din_nori_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Castelul din nori",
+      "body": "Într-o dimineață, după o ploaie scurtă de vară, Elena și Luca au văzut un curcubeu cum nu mai văzuseră. Pornea chiar de la marginea grădinii lor și urca spre cer, lat ca un drum. Deasupra lui zbura o bufniță, care se tot uita înapoi spre ei, ca și cum i-ar fi chemat.\n\nCopiii și-au luat rucsacii, s-au ținut de mână și au pășit pe curcubeu. Sub tălpi, culorile erau moi și calde. Cu cât urcau mai sus, cu atât satul se făcea mai mic: râul, podul de piatră, biserica cu turn ascuțit și acoperișurile roșii. Pe drum au trecut chiar printr-un nor, care le-a udat puțin obrajii. În jurul lor pluteau nori albi și pufoși.\n\nLa capătul curcubeului, pe un nor mare, stătea un castel alb, cu turnuri albastre și steaguri. Poarta s-a deschis singură și din ea a ieșit o lumină aurie. Bufnița s-a așezat lângă ei. „Bine ați venit”, a spus ea. „Castelul acesta se arată numai copiilor care nu uită să privească cerul.”",
+      "syllable_body": "Într-o di|mi|nea|ță, du|pă o ploa|ie scur|tă de va|ră, E|le|na și Lu|ca au vă|zut un cur|cu|beu cum nu mai vă|zu|se|ră. Por|nea chiar de la mar|gi|nea gră|di|nii lor și ur|ca spre cer, lat ca un drum. Dea|su|pra lui zbu|ra o buf|ni|ță, ca|re se tot ui|ta î|na|poi spre ei, ca și cum i-ar fi che|mat.\n\nCo|pi|ii și-au lu|at ruc|sa|cii, s-au ți|nut de mâ|nă și au pă|șit pe cur|cu|beu. Sub tălpi, cu|lo|ri|le e|rau moi și cal|de. Cu cât ur|cau mai sus, cu a|tât sa|tul se fă|cea mai mic: râ|ul, po|dul de pia|tră, bi|se|ri|ca cu turn as|cu|țit și a|co|pe|ri|șu|ri|le ro|șii. Pe drum au tre|cut chiar printr-un nor, ca|re le-a u|dat pu|țin o|bra|jii. În ju|rul lor plu|teau nori albi și pu|foși.\n\nLa ca|pă|tul cur|cu|be|u|lui, pe un nor ma|re, stă|tea un cas|tel alb, cu tur|nuri al|bas|tre și stea|guri. Poar|ta s-a des|chis sin|gu|ră și din ea a ie|șit o lu|mi|nă a|u|ri|e. Buf|ni|ța s-a a|șe|zat lân|gă ei. „Bi|ne ați ve|nit”, a spus ea. „Cas|te|lul a|ces|ta se a|ra|tă nu|mai co|pi|i|lor ca|re nu ui|tă să pri|veas|că ce|rul.”",
+      "imageId": "rainbow_castle",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_piticii_din_gradina_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Piticii din grădină",
+      "body": "Gardul din grădina lui David era vechi și strâmb. La ultima furtună, câteva scânduri se rupseseră, iar tata spusese că îl va repara duminică. În grădină stăteau cinci pitici de ghips, cu căciuli roșii și bărbi albe. Ziua nu se mișcau niciodată.\n\nÎntr-o noapte cu lună plină, David nu putea să doarmă. S-a uitat pe fereastră și nu i-a venit să creadă. Piticii se mișcau! Unul urcase pe o scară și bătea cuie cu un ciocan mic. Doi dintre ei cărau împreună o scândură lungă. Altul ținea o scândură nouă la locul ei, iar cel mai bătrân căuta cuie într-o ladă, la lumina unui felinar. Lucrau în liniște, ca să nu trezească pe nimeni.\n\nDimineață, David a alergat în grădină. Gardul era drept și întreg, iar piticii stăteau nemișcați, la locurile lor. Pe iarbă mai rămăsese un singur cui mic. Tata s-a scărpinat în cap, mirat. „Cine l-a reparat?” David a zâmbit și nu a spus nimic. Doar i s-a părut că unul dintre pitici i-a făcut cu ochiul.",
+      "syllable_body": "Gar|dul din gră|di|na lui Da|vid e|ra vechi și strâmb. La ul|ti|ma fur|tu|nă, câ|te|va scân|duri se rup|se|se|ră, iar ta|ta spu|se|se că îl va re|pa|ra du|mi|ni|că. În gră|di|nă stă|teau cinci pi|tici de ghips, cu că|ciuli ro|șii și bărbi al|be. Zi|ua nu se miș|cau ni|cio|da|tă.\n\nÎntr-o noap|te cu lu|nă pli|nă, Da|vid nu pu|tea să doar|mă. S-a ui|tat pe fe|reas|tră și nu i-a ve|nit să crea|dă. Pi|ti|cii se miș|cau! U|nul ur|ca|se pe o sca|ră și bă|tea cu|ie cu un cio|can mic. Doi din|tre ei că|rau îm|pre|u|nă o scân|du|ră lun|gă. Al|tul ți|nea o scân|du|ră no|uă la lo|cul ei, iar cel mai bă|trân că|u|ta cu|ie într-o la|dă, la lu|mi|na u|nui fe|li|nar. Lu|crau în li|niș|te, ca să nu tre|zeas|că pe ni|meni.\n\nDi|mi|nea|ță, Da|vid a a|ler|gat în gră|di|nă. Gar|dul e|ra drept și în|treg, iar pi|ti|cii stă|teau ne|miș|cați, la lo|cu|ri|le lor. Pe iar|bă mai ră|mă|se|se un sin|gur cui mic. Ta|ta s-a scăr|pi|nat în cap, mi|rat. „Ci|ne l-a re|pa|rat?” Da|vid a zâm|bit și nu a spus ni|mic. Doar i s-a pă|rut că u|nul din|tre pi|tici i-a fă|cut cu o|chiul.",
+      "imageId": "garden_gnomes",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_ariciul_1",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 1,
+      "title": "Ariciul",
+      "body": "Ariciul este un animal mic. Pe spate are mulți țepi. Țepii îl apără. Noaptea, ariciul caută mâncare. El mănâncă melci, gândaci și viermi. Iarna doarme într-un culcuș de frunze.",
+      "syllable_body": "A|ri|ciul es|te un a|ni|mal mic. Pe spa|te a|re mulți țepi. Țe|pii îl a|pă|ră. Noap|tea, a|ri|ciul ca|u|tă mân|ca|re. El mă|nân|că melci, gân|daci și viermi. Iar|na doar|me într-un cul|cuș de frun|ze.",
+      "imageId": "jez",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_bufnita_1",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 1,
+      "title": "Bufnița",
+      "body": "Bufnița este o pasăre de noapte. Ziua doarme într-o scorbură. Noaptea zboară fără zgomot. Ea are ochi mari și vede bine în întuneric. Bufnița prinde șoareci.",
+      "syllable_body": "Buf|ni|ța es|te o pa|să|re de noap|te. Zi|ua doar|me într-o scor|bu|ră. Noap|tea zboa|ră fă|ră zgo|mot. Ea a|re ochi mari și ve|de bi|ne în în|tu|ne|ric. Buf|ni|ța prin|de șoa|reci.",
+      "imageId": "sova_veja",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_buburuza_1",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 1,
+      "title": "Buburuza",
+      "body": "Buburuza este o insectă mică. Are aripi roșii cu puncte negre. Ea stă pe frunze verzi. Buburuza mănâncă păduchi de plante. Așa ajută grădina. Grădinarii o iubesc.",
+      "syllable_body": "Bu|bu|ru|za es|te o in|sec|tă mi|că. A|re a|ripi ro|șii cu punc|te ne|gre. Ea stă pe frun|ze verzi. Bu|bu|ru|za mă|nân|că pă|duchi de plan|te. A|șa a|ju|tă gră|di|na. Gră|di|na|rii o iu|besc.",
+      "imageId": "ladybird_leaf",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_testoasa_2",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 2,
+      "title": "Broasca țestoasă",
+      "body": "Broasca țestoasă are pe spate o carapace tare. Carapacea este casa ei și o apără de pericole. Când se sperie, țestoasa își ascunde capul și picioarele înăuntru. Unele țestoase trăiesc pe uscat, iar altele în mare. Țestoasele de mare au picioare ca niște vâsle. Țestoasele pot trăi foarte mult, unele chiar peste o sută de ani.",
+      "syllable_body": "Broas|ca țes|toa|să a|re pe spa|te o ca|ra|pa|ce ta|re. Ca|ra|pa|cea es|te ca|sa ei și o a|pă|ră de pe|ri|co|le. Când se spe|ri|e, țes|toa|sa își as|cun|de ca|pul și pi|cioa|re|le î|nă|un|tru. U|ne|le țes|toa|se tră|iesc pe us|cat, iar al|te|le în ma|re. Țes|toa|se|le de ma|re au pi|cioa|re ca niș|te vâs|le. Țes|toa|se|le pot tră|i foar|te mult, u|ne|le chiar pes|te o su|tă de ani.",
+      "imageId": "zelva",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_albina_2",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 2,
+      "title": "Albina harnică",
+      "body": "Albina zboară din floare în floare. Ea bea nectarul dulce din flori și adună pe picioare polen galben. Apoi duce totul la stup. În stup trăiesc mii de albine, dar o singură regină. Albinele fac acolo miere și ceară. Ele ajută și plantele, pentru că duc polenul de la o floare la alta. Așa cresc fructele.",
+      "syllable_body": "Al|bi|na zboa|ră din floa|re în floa|re. Ea bea nec|ta|rul dul|ce din flori și a|du|nă pe pi|cioa|re po|len gal|ben. A|poi du|ce to|tul la stup. În stup tră|iesc mii de al|bi|ne, dar o sin|gu|ră re|gi|nă. Al|bi|ne|le fac a|co|lo mie|re și cea|ră. E|le a|ju|tă și plan|te|le, pen|tru că duc po|le|nul de la o floa|re la al|ta. A|șa cresc fruc|te|le.",
+      "imageId": "cebela_cvet",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_cangurul_2",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 2,
+      "title": "Cangurul",
+      "body": "Cangurul trăiește în Australia. El are picioare lungi și puternice și o coadă mare. Cangurul nu merge, ci sare. Cu un singur salt poate ajunge foarte departe. Mama cangur are pe burtă un buzunar. Acolo stă puiul ei, care la început este foarte mic. Puiul crește în buzunar câteva luni, apoi iese afară.",
+      "syllable_body": "Can|gu|rul tră|ieș|te în Aus|tra|li|a. El a|re pi|cioa|re lungi și pu|ter|ni|ce și o coa|dă ma|re. Can|gu|rul nu mer|ge, ci sa|re. Cu un sin|gur salt poa|te a|jun|ge foar|te de|par|te. Ma|ma can|gur a|re pe bur|tă un bu|zu|nar. A|co|lo stă pu|iul ei, ca|re la în|ce|put es|te foar|te mic. Pu|iul creș|te în bu|zu|nar câ|te|va luni, a|poi ie|se a|fa|ră.",
+      "imageId": "kangaroo_joey",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_vulpea_3",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 3,
+      "title": "Vulpea",
+      "body": "Vulpea roșcată trăiește în păduri și pe câmpuri, dar uneori vine aproape de sate. Are blana portocalie, pieptul alb și o coadă lungă și stufoasă. Coada o ajută să își păstreze echilibrul când aleargă. Iarna, vulpea se învelește cu ea ca și cu o pătură. Vulpea vânează mai ales noaptea. Are auzul foarte bun și aude un șoarece chiar și sub zăpadă. Mănâncă șoareci și insecte, dar și fructe de pădure. Ziua se odihnește într-o vizuină. Vulpea este foarte isteață și se ferește de oameni. Puii de vulpe se nasc primăvara.",
+      "syllable_body": "Vul|pea roș|ca|tă tră|ieș|te în pă|duri și pe câm|puri, dar u|ne|ori vi|ne a|proa|pe de sa|te. A|re bla|na por|to|ca|li|e, piep|tul alb și o coa|dă lun|gă și stu|foa|să. Coa|da o a|ju|tă să își păs|tre|ze e|chi|li|brul când a|lear|gă. Iar|na, vul|pea se în|ve|leș|te cu ea ca și cu o pă|tu|ră. Vul|pea vâ|nea|ză mai a|les noap|tea. A|re a|u|zul foar|te bun și a|u|de un șoa|re|ce chiar și sub ză|pa|dă. Mă|nân|că șoa|reci și in|sec|te, dar și fruc|te de pă|du|re. Zi|ua se o|dih|neș|te într-o vi|zu|i|nă. Vul|pea es|te foar|te is|tea|ță și se fe|reș|te de oa|meni. Pu|ii de vul|pe se nasc pri|mă|va|ra.",
+      "imageId": "lisica",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_delfinii_3",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 3,
+      "title": "Numele delfinilor",
+      "body": "Delfinii trăiesc în grupuri și sunt foarte prietenoși. Ei nu sunt pești, ci mamifere, la fel ca oamenii. De aceea trebuie să iasă la suprafață ca să respire aer. Delfinii vorbesc între ei prin fluierături și clicuri. Fiecare delfin are fluierătura lui, care este un fel de nume. Când un delfin își aude numele, el răspunde. Delfinii se ajută unii pe alții și se joacă mult. Uneori sar din apă și se rostogolesc în aer, parcă de bucurie. Puii stau mult timp lângă mamele lor și învață de la ele.",
+      "syllable_body": "Del|fi|nii tră|iesc în gru|puri și sunt foar|te prie|te|noși. Ei nu sunt pești, ci ma|mi|fe|re, la fel ca oa|me|nii. De a|cee|a tre|bu|ie să ia|să la su|pra|fa|ță ca să res|pi|re a|er. Del|fi|nii vor|besc în|tre ei prin flu|ie|ră|turi și cli|curi. Fi|e|ca|re del|fin a|re flu|ie|ră|tu|ra lui, ca|re es|te un fel de nu|me. Când un del|fin își a|u|de nu|me|le, el răs|pun|de. Del|fi|nii se a|ju|tă u|nii pe al|ții și se joa|că mult. U|ne|ori sar din a|pă și se ros|to|go|lesc în a|er, par|că de bu|cu|ri|e. Pu|ii stau mult timp lân|gă ma|me|le lor și în|va|ță de la e|le.",
+      "imageId": "delfin_jata",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_barza_3",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 3,
+      "title": "Barza",
+      "body": "În fiecare primăvară, barza albă se întoarce din Africa. Deseori vine an de an în același cuib. Cuibul este făcut din crengi și poate fi foarte mare. Adesea stă pe un acoperiș, pe un coș sau pe un stâlp. Barza are picioare lungi și roșii și un cioc lung și roșu. Ea se plimbă prin pajiști umede și prinde broaște, șoareci și insecte. Berzele nu cântă, ci clămpănesc din cioc. Primăvara, părinții au grijă împreună de pui. Toamna, berzele pleacă din nou spre sud. Pe drum zboară mii de kilometri.",
+      "syllable_body": "În fi|e|ca|re pri|mă|va|ră, bar|za al|bă se în|toar|ce din A|fri|ca. De|se|ori vi|ne an de an în a|ce|lași cuib. Cui|bul es|te fă|cut din crengi și poa|te fi foar|te ma|re. A|de|sea stă pe un a|co|pe|riș, pe un coș sau pe un stâlp. Bar|za a|re pi|cioa|re lungi și ro|șii și un cioc lung și ro|șu. Ea se plim|bă prin pa|jiști u|me|de și prin|de broaș|te, șoa|reci și in|sec|te. Ber|ze|le nu cân|tă, ci clăm|pă|nesc din cioc. Pri|mă|va|ra, pă|rin|ții au gri|jă îm|pre|u|nă de pui. Toam|na, ber|ze|le plea|că din nou spre sud. Pe drum zboa|ră mii de ki|lo|metri.",
+      "imageId": "stork_nest",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_liliacul_4",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 4,
+      "title": "Liliacul și ecoul",
+      "body": "Liliacul este singurul mamifer care poate zbura cu adevărat. Aripile lui sunt făcute dintr-o piele subțire, întinsă între degetele lungi. Ziua, liliecii dorm în peșteri sau în poduri, atârnați cu capul în jos. Se țin de piatră cu ghearele de la picioare.\n\nNoaptea, liliacul pleacă la vânătoare. În întuneric nu vede prea bine, dar are un fel de radar. Scoate sunete foarte înalte, pe care oamenii nu le pot auzi. Sunetele lovesc o insectă și se întorc ca un ecou. După ecou, liliacul știe unde este prada și cât de departe.\n\nUn liliac mic poate prinde sute de țânțari într-o singură noapte. De aceea, liliecii sunt foarte folositori. Unii lilieci mănâncă fructe sau nectar din flori. Iarna, când nu mai sunt insecte, ei dorm în peșteri până în primăvară.",
+      "syllable_body": "Li|li|a|cul es|te sin|gu|rul ma|mi|fer ca|re poa|te zbu|ra cu a|de|vă|rat. A|ri|pi|le lui sunt fă|cu|te dintr-o pie|le sub|ți|re, în|tin|să în|tre de|ge|te|le lungi. Zi|ua, li|li|e|cii dorm în peș|teri sau în po|duri, a|târ|nați cu ca|pul în jos. Se țin de pia|tră cu ghea|re|le de la pi|cioa|re.\n\nNoap|tea, li|li|a|cul plea|că la vâ|nă|toa|re. În în|tu|ne|ric nu ve|de prea bi|ne, dar a|re un fel de ra|dar. Scoa|te su|ne|te foar|te î|nal|te, pe ca|re oa|me|nii nu le pot a|u|zi. Su|ne|te|le lo|vesc o in|sec|tă și se în|torc ca un e|cou. Du|pă e|cou, li|li|a|cul ști|e un|de es|te pra|da și cât de de|par|te.\n\nUn li|li|ac mic poa|te prin|de su|te de țân|țari într-o sin|gu|ră noap|te. De a|cee|a, li|li|e|cii sunt foar|te fo|lo|si|tori. U|nii li|li|eci mă|nân|că fruc|te sau nec|tar din flori. Iar|na, când nu mai sunt in|sec|te, ei dorm în peș|teri pâ|nă în pri|mă|va|ră.",
+      "imageId": "netopir",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_caracatita_4",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 4,
+      "title": "Caracatița isteață",
+      "body": "Caracatița trăiește în mare, printre stânci. Are opt brațe lungi, acoperite cu ventuze. Cu ele pipăie, apucă și ține lucrurile. Cu ventuzele simte și gustul lucrurilor pe care le atinge. Caracatița nu are oase, așa că se poate strecura prin găuri foarte mici.\n\nCaracatița este unul dintre cele mai istețe animale din mare. Ea își face adăpost într-o crăpătură de stâncă și poate rezolva probleme grele pentru un animal. Unele caracatițe au învățat chiar să deschidă un borcan cu capac, ca să ajungă la mâncarea dinăuntru.\n\nCând vine un pericol, caracatița își schimbă culoarea în câteva clipe și se ascunde printre pietre. Dacă dușmanul o vede totuși, ea aruncă un nor de cerneală neagră și fuge repede. Caracatița mai are un secret: are trei inimi, iar sângele ei este albastru.",
+      "syllable_body": "Ca|ra|ca|ti|ța tră|ieș|te în ma|re, prin|tre stânci. A|re opt bra|țe lungi, a|co|pe|ri|te cu ven|tu|ze. Cu e|le pi|pă|ie, a|pu|că și ți|ne lu|cru|ri|le. Cu ven|tu|ze|le sim|te și gus|tul lu|cru|ri|lor pe ca|re le a|tin|ge. Ca|ra|ca|ti|ța nu a|re oa|se, a|șa că se poa|te stre|cu|ra prin gă|uri foar|te mici.\n\nCa|ra|ca|ti|ța es|te u|nul din|tre ce|le mai is|te|țe a|ni|ma|le din ma|re. Ea își fa|ce a|dă|post într-o cră|pă|tu|ră de stân|că și poa|te re|zol|va pro|ble|me gre|le pen|tru un a|ni|mal. U|ne|le ca|ra|ca|ti|țe au în|vă|țat chiar să des|chi|dă un bor|can cu ca|pac, ca să a|jun|gă la mân|ca|rea di|nă|un|tru.\n\nCând vi|ne un pe|ri|col, ca|ra|ca|ti|ța își schim|bă cu|loa|rea în câ|te|va cli|pe și se as|cun|de prin|tre pie|tre. Da|că duș|ma|nul o ve|de to|tuși, ea a|run|că un nor de cer|nea|lă nea|gră și fu|ge re|pe|de. Ca|ra|ca|ti|ța mai a|re un se|cret: a|re trei i|nimi, iar sân|ge|le ei es|te al|bas|tru.",
+      "imageId": "octopus_camouflage",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_ursul_brun_4",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 4,
+      "title": "Ursul brun și puii lui",
+      "body": "Ursul brun trăiește în pădurile de munte. În Carpați trăiesc mai mulți urși decât în aproape orice altă parte a Europei. Ursul mănâncă aproape orice: ierburi, rădăcini, afine, miere, insecte și uneori pește. Toamna mănâncă foarte mult, ca să se îngrașe. Iarna doarme în bârlog, o peșteră sau o groapă ascunsă. Are un miros mult mai bun decât al unui câine și poate alerga mai repede decât un om.\n\nPuii se nasc iarna, în bârlog. La naștere sunt mici cât o veveriță și nu au dinți. Primăvara ies afară cu mama lor. Ursoaica îi învață unde să găsească hrană și cum să se ferească de pericole. Puii rămân cu ea aproape doi ani.\n\nPuii se joacă mult și se ridică adesea în două picioare. Așa văd mai departe și simt mai bine mirosurile din pădure.",
+      "syllable_body": "Ur|sul brun tră|ieș|te în pă|du|ri|le de mun|te. În Car|pați tră|iesc mai mulți urși de|cât în a|proa|pe o|ri|ce al|tă par|te a Eu|ro|pei. Ur|sul mă|nân|că a|proa|pe o|ri|ce: ier|buri, ră|dă|cini, a|fi|ne, mie|re, in|sec|te și u|ne|ori peș|te. Toam|na mă|nân|că foar|te mult, ca să se în|gra|șe. Iar|na doar|me în bâr|log, o peș|te|ră sau o groa|pă as|cun|să. A|re un mi|ros mult mai bun de|cât al u|nui câi|ne și poa|te a|ler|ga mai re|pe|de de|cât un om.\n\nPu|ii se nasc iar|na, în bâr|log. La naș|te|re sunt mici cât o ve|ve|ri|ță și nu au dinți. Pri|mă|va|ra ies a|fa|ră cu ma|ma lor. Ur|soai|ca îi în|va|ță un|de să gă|seas|că hra|nă și cum să se fe|reas|că de pe|ri|co|le. Pu|ii ră|mân cu ea a|proa|pe doi ani.\n\nPu|ii se joa|că mult și se ri|di|că a|de|sea în do|uă pi|cioa|re. A|șa văd mai de|par|te și simt mai bi|ne mi|ro|su|ri|le din pă|du|re.",
+      "imageId": "brown_bear_cubs",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_balena_albastra_5",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 5,
+      "title": "Balena albastră",
+      "body": "Balena albastră este cel mai mare animal care a trăit vreodată pe Pământ, mai mare chiar decât dinozaurii. Poate fi lungă cât trei autobuze puse unul după altul. Numai limba ei cântărește cât un elefant, iar inima este mare cât o mașină mică.\n\nDeși este atât de mare, balena albastră mănâncă animale foarte mici: niște crustacei mărunți, asemănători cu creveții, numiți krill. Ea deschide gura larg și înghite multă apă cu krill. Apoi strecoară apa printr-un fel de perie din gură, numită fanoane. Krillul rămâne înăuntru. Într-o singură zi, o balenă poate mânca milioane de astfel de animale.\n\nBalena este mamifer, nu pește, așa că respiră aer. Când iese la suprafață, suflă pe nări o fântână înaltă de apă și abur, care se vede de departe. Balenele albastre își trimit unele altora sunete foarte joase. Alte balene le pot auzi chiar de la sute de kilometri. Puiul se naște sub apă, este lung cât două mașini și bea lapte de la mama lui. Balenele albastre trăiesc în toate oceanele lumii.",
+      "syllable_body": "Ba|le|na al|bas|tră es|te cel mai ma|re a|ni|mal ca|re a tră|it vreo|da|tă pe Pă|mânt, mai ma|re chiar de|cât di|no|za|u|rii. Poa|te fi lun|gă cât trei au|to|bu|ze pu|se u|nul du|pă al|tul. Nu|mai lim|ba ei cân|tă|reș|te cât un e|le|fant, iar i|ni|ma es|te ma|re cât o ma|și|nă mi|că.\n\nDeși es|te a|tât de ma|re, ba|le|na al|bas|tră mă|nân|că a|ni|ma|le foar|te mici: niș|te crus|ta|cei mă|runți, a|se|mă|nă|tori cu cre|ve|ții, nu|miți krill. Ea des|chi|de gu|ra larg și în|ghi|te mul|tă a|pă cu krill. A|poi stre|coa|ră a|pa printr-un fel de pe|ri|e din gu|ră, nu|mi|tă fa|noa|ne. Kril|lul ră|mâ|ne î|nă|un|tru. Într-o sin|gu|ră zi, o ba|le|nă poa|te mân|ca mi|li|oa|ne de ast|fel de a|ni|ma|le.\n\nBa|le|na es|te ma|mi|fer, nu peș|te, a|șa că res|pi|ră a|er. Când ie|se la su|pra|fa|ță, su|flă pe nări o fân|tâ|nă î|nal|tă de a|pă și a|bur, ca|re se ve|de de de|par|te. Ba|le|ne|le al|bas|tre își tri|mit u|ne|le al|to|ra su|ne|te foar|te joa|se. Al|te ba|le|ne le pot a|u|zi chiar de la su|te de ki|lo|metri. Pu|iul se naș|te sub a|pă, es|te lung cât do|uă ma|șini și bea lap|te de la ma|ma lui. Ba|le|ne|le al|bas|tre tră|iesc în toa|te o|ce|a|ne|le lu|mii.",
+      "imageId": "modri_kit",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_secretele_delfinilor_5",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 5,
+      "title": "Secretele delfinilor",
+      "body": "Delfinii au câteva secrete care îi ajută să trăiască în mare. Primul secret este ecoul. Delfinii scot clicuri scurte, care călătoresc prin apă. Când un clic lovește un pește sau o stâncă, se întoarce înapoi. Ascultând ecoul, delfinul află unde este peștele, cât este de mare și încotro se mișcă, chiar și în apă tulbure. Acest fel de a „vedea” cu sunete se numește ecolocație.\n\nAl doilea secret este somnul. Delfinii respiră aer printr-o gaură din vârful capului, așa că nu pot dormi adânc, ca oamenii. Ei dorm cu o jumătate de creier, în timp ce cealaltă jumătate rămâne trează. Așa nu uită să iasă la suprafață ca să respire. Uneori chiar înoată încet, cu un ochi deschis.\n\nAl treilea secret este familia. Delfinii trăiesc în grupuri și au grijă unii de alții. Adesea vânează împreună: înconjoară un banc de pești și îl strâng ca într-o plasă. Puiul înoată lângă mama lui câțiva ani și învață de la ea să vâneze. Când un delfin este rănit, ceilalți îl ajută să ajungă la suprafață.",
+      "syllable_body": "Del|fi|nii au câ|te|va se|cre|te ca|re îi a|ju|tă să tră|ias|că în ma|re. Pri|mul se|cret es|te e|co|ul. Del|fi|nii scot cli|curi scur|te, ca|re că|lă|to|resc prin a|pă. Când un clic lo|veș|te un peș|te sau o stân|că, se în|toar|ce î|na|poi. As|cul|tând e|co|ul, del|fi|nul a|flă un|de es|te peș|te|le, cât es|te de ma|re și în|co|tro se miș|că, chiar și în a|pă tul|bu|re. A|cest fel de a „ve|dea” cu su|ne|te se nu|meș|te e|co|lo|ca|ți|e.\n\nAl doi|lea se|cret es|te som|nul. Del|fi|nii res|pi|ră a|er printr-o ga|u|ră din vâr|ful ca|pu|lui, a|șa că nu pot dormi a|dânc, ca oa|me|nii. Ei dorm cu o ju|mă|ta|te de cre|ier, în timp ce cea|lal|tă ju|mă|ta|te ră|mâ|ne trea|ză. A|șa nu ui|tă să ia|să la su|pra|fa|ță ca să res|pi|re. U|ne|ori chiar î|noa|tă în|cet, cu un ochi des|chis.\n\nAl trei|lea se|cret es|te fa|mi|li|a. Del|fi|nii tră|iesc în gru|puri și au gri|jă u|nii de al|ții. A|de|sea vâ|nea|ză îm|pre|u|nă: în|con|joa|ră un banc de pești și îl strâng ca într-o pla|să. Pu|iul î|noa|tă lân|gă ma|ma lui câ|ți|va ani și în|va|ță de la ea să vâ|ne|ze. Când un del|fin es|te ră|nit, cei|lalți îl a|ju|tă să a|jun|gă la su|pra|fa|ță.",
+      "imageId": "delfin_morje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_familia_elefantilor_5",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 5,
+      "title": "Familia elefanților",
+      "body": "Elefanții africani trăiesc în familii mari. Familia este condusă de cea mai bătrână femelă, care știe drumurile spre apă și spre locurile cu hrană. Masculii mari trăiesc de obicei singuri sau în grupuri mici.\n\nTrompa elefantului este, de fapt, nasul și buza lui de sus, lipite împreună. Are mii de mușchi, așa că elefantul o poate folosi ca pe o mână. Cu ea rupe frunze și crengi, adună iarbă și duce apa la gură. Când e cald, elefantul își stropește spatele cu apă sau cu praf, ca să se răcorească. Urechile lui mari îl ajută și ele: când le flutură, corpul se răcește.\n\nPuiul de elefant se naște după aproape doi ani. De la naștere, cântărește cât un om mare. Mama și celelalte femele din familie au grijă de el. Când merg, puiul se ține cu trompa de coada mamei, ca să nu se piardă. Un elefant mare mănâncă foarte mult: până la o sută cincizeci de kilograme de hrană pe zi.",
+      "syllable_body": "E|le|fan|ții a|fri|cani tră|iesc în fa|mi|lii mari. Fa|mi|li|a es|te con|du|să de cea mai bă|trâ|nă fe|me|lă, ca|re ști|e dru|mu|ri|le spre a|pă și spre lo|cu|ri|le cu hra|nă. Mas|cu|lii mari tră|iesc de o|bi|cei sin|guri sau în gru|puri mici.\n\nTrom|pa e|le|fan|tu|lui es|te, de fapt, na|sul și bu|za lui de sus, li|pi|te îm|pre|u|nă. A|re mii de mușchi, a|șa că e|le|fan|tul o poa|te fo|losi ca pe o mâ|nă. Cu ea ru|pe frun|ze și crengi, a|du|nă iar|bă și du|ce a|pa la gu|ră. Când e cald, e|le|fan|tul își stro|peș|te spa|te|le cu a|pă sau cu praf, ca să se ră|co|reas|că. U|re|chi|le lui mari îl a|ju|tă și e|le: când le flu|tu|ră, cor|pul se ră|ceș|te.\n\nPu|iul de e|le|fant se naș|te du|pă a|proa|pe doi ani. De la naș|te|re, cân|tă|reș|te cât un om ma|re. Ma|ma și ce|le|lal|te fe|me|le din fa|mi|li|e au gri|jă de el. Când merg, pu|iul se ți|ne cu trom|pa de coa|da ma|mei, ca să nu se piar|dă. Un e|le|fant ma|re mă|nân|că foar|te mult: pâ|nă la o su|tă cin|ci|zeci de ki|lo|gra|me de hra|nă pe zi.",
+      "imageId": "elephant_waterhole",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_apeductul_1",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 1,
+      "title": "Podul cu arcade",
+      "body": "Acesta este un apeduct foarte vechi. L-au construit romanii, acum două mii de ani. Are multe arcade de piatră. Sus, pe apeduct, curgea apă. Așa ajungea apa până în oraș.",
+      "syllable_body": "A|ces|ta es|te un a|pe|duct foar|te vechi. L-au con|stru|it ro|ma|nii, a|cum do|uă mii de ani. A|re mul|te ar|ca|de de pia|tră. Sus, pe a|pe|duct, cur|gea a|pă. A|șa a|jun|gea a|pa pâ|nă în o|raș.",
+      "imageId": "roman_aqueduct",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_piramidele_1",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 1,
+      "title": "Piramidele",
+      "body": "În Egipt sunt trei piramide mari. Ele sunt foarte vechi. Sunt făcute din blocuri de piatră. În jurul lor este deșert. Doi copii merg pe cămile. Soarele este fierbinte.",
+      "syllable_body": "În E|gipt sunt trei pi|ra|mi|de mari. E|le sunt foar|te vechi. Sunt fă|cu|te din blo|curi de pia|tră. În ju|rul lor es|te de|șert. Doi co|pii merg pe că|mi|le. Soa|re|le es|te fier|bin|te.",
+      "imageId": "piramide_giza",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_statuile_moai_2",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 2,
+      "title": "Statuile de pe insulă",
+      "body": "Insula Paștelui este o insulă mică din mijlocul Oceanului Pacific. Pe ea sunt aproape o mie de statui uriașe de piatră. Ele se numesc moai. Statuile au capete mari, nasuri lungi și frunți înalte. Multe dintre ele stau cu spatele spre mare. Oamenii insulei le-au sculptat acum sute de ani, cu unelte de piatră.",
+      "syllable_body": "In|su|la Paș|te|lui es|te o in|su|lă mi|că din mij|lo|cul O|ce|a|nu|lui Pa|ci|fic. Pe ea sunt a|proa|pe o mi|e de sta|tui u|ri|a|șe de pia|tră. E|le se nu|mesc mo|ai. Sta|tu|i|le au ca|pe|te mari, na|suri lungi și frunți î|nal|te. Mul|te din|tre e|le stau cu spa|te|le spre ma|re. Oa|me|nii in|su|lei le-au sculp|tat a|cum su|te de ani, cu u|nel|te de pia|tră.",
+      "imageId": "moai_statues",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_piramidele_2",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 2,
+      "title": "Blocurile de piatră",
+      "body": "Piramidele din Egipt au fost construite acum peste patru mii de ani. Ele sunt făcute din blocuri mari de piatră. Unele blocuri erau mai grele decât o mașină. Muncitorii le trăgeau pe sănii de lemn, cu frânghii groase. Apoi le urcau pe rampe de pământ. Mii de oameni au lucrat la o singură piramidă, mulți ani la rând.",
+      "syllable_body": "Pi|ra|mi|de|le din E|gipt au fost con|stru|i|te a|cum pes|te pa|tru mii de ani. E|le sunt fă|cu|te din blo|curi mari de pia|tră. U|ne|le blo|curi e|rau mai gre|le de|cât o ma|și|nă. Mun|ci|to|rii le tră|geau pe să|nii de lemn, cu frân|ghii groa|se. A|poi le ur|cau pe ram|pe de pă|mânt. Mii de oa|meni au lu|crat la o sin|gu|ră pi|ra|mi|dă, mulți ani la rând.",
+      "imageId": "piramide_bloki",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_ecoul_din_munti_3",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 3,
+      "title": "Ecoul din munți",
+      "body": "Munții Carpați trec prin mijlocul României, ca un arc mare. Au vârfuri înalte, păduri de brad și lacuri limpezi. Cel mai înalt vârf din țară este Moldoveanu, în Munții Făgăraș. Vara, multe familii urcă pe potecile de munte. Acolo poți face un joc frumos cu ecoul. Stai în fața unui perete de stâncă și strigi tare. Sunetul vocii tale zboară prin aer, lovește stânca și se întoarce. După o clipă, îți auzi din nou vocea, ca și cum ți-ar răspunde muntele. Ecoul se aude cel mai bine în liniștea dimineții.",
+      "syllable_body": "Mun|ții Car|pați trec prin mij|lo|cul Ro|mâ|ni|ei, ca un arc ma|re. Au vâr|furi î|nal|te, pă|duri de brad și la|curi lim|pezi. Cel mai î|nalt vârf din ța|ră es|te Mol|do|vea|nu, în Mun|ții Fă|gă|raș. Va|ra, mul|te fa|mi|lii ur|că pe po|te|ci|le de mun|te. A|co|lo poți fa|ce un joc fru|mos cu e|co|ul. Stai în fa|ța u|nui pe|re|te de stân|că și strigi ta|re. Su|ne|tul vo|cii ta|le zboa|ră prin a|er, lo|veș|te stân|ca și se în|toar|ce. Du|pă o cli|pă, îți a|u|zi din nou vo|cea, ca și cum ți-ar răs|pun|de mun|te|le. E|co|ul se a|u|de cel mai bi|ne în li|niș|tea di|mi|ne|ții.",
+      "imageId": "odmev_gore",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "plausible"
+      }
+    },
+    {
+      "id": "around_the_world_piramidele_3",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 3,
+      "title": "Camera ascunsă",
+      "body": "Piramidele din Egipt nu erau doar clădiri mari. Ele erau morminte pentru faraoni, regii Egiptului de demult. Adânc, în interiorul piramidei, era o cameră ascunsă. Acolo era pus faraonul, într-un sarcofag aurit. Lângă el erau statui, vase, mobilă și bijuterii. Egiptenii credeau că regele va avea nevoie de ele într-o altă viață. Ușa camerei era apoi închisă cu pietre mari, ca să nu intre hoții. Pereții camerei erau pictați cu oameni, animale și semne numite hieroglife. Pictorii lucrau la lumina lămpilor cu ulei. Afară, muncitorii trăgeau blocuri uriașe de piatră pe rampe lungi.",
+      "syllable_body": "Pi|ra|mi|de|le din E|gipt nu e|rau doar clă|diri mari. E|le e|rau mor|min|te pen|tru fa|ra|oni, re|gii E|gip|tu|lui de de|mult. A|dânc, în in|te|ri|o|rul pi|ra|mi|dei, e|ra o ca|me|ră as|cun|să. A|co|lo e|ra pus fa|ra|o|nul, într-un sar|co|fag a|u|rit. Lân|gă el e|rau sta|tui, va|se, mo|bi|lă și bi|ju|te|rii. E|gip|te|nii cre|deau că re|ge|le va a|vea ne|vo|ie de e|le într-o al|tă via|ță. U|șa ca|me|rei e|ra a|poi în|chi|să cu pie|tre mari, ca să nu in|tre ho|ții. Pe|re|ții ca|me|rei e|rau pic|tați cu oa|meni, a|ni|ma|le și sem|ne nu|mi|te hi|e|ro|gli|fe. Pic|to|rii lu|crau la lu|mi|na lăm|pi|lor cu u|lei. A|fa|ră, mun|ci|to|rii tră|geau blo|curi u|ri|a|șe de pia|tră pe ram|pe lungi.",
+      "imageId": "piramide_kamnolom",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_dunarea_4",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 4,
+      "title": "Dunărea, de la munte la mare",
+      "body": "Dunărea este al doilea cel mai lung râu din Europa. Izvorăște din munții Germaniei și curge spre est prin zece țări. Pe drum, primește apă de la multe râuri mai mici. Trece prin păduri, pe lângă sate și orașe mari, pe sub poduri vechi de piatră.\n\nÎn România, Dunărea curge mult timp la granița de sud a țării. La sfârșit, înainte să se verse în Marea Neagră, se desparte în trei brațe mari și în multe canale. Așa se formează Delta Dunării.\n\nDelta este plină de viață. Printre stuf trăiesc stârci, pelicani și mii de alte păsări. Unele păsări vin aici tocmai din Africa. În ape înoată mulți pești. În Marea Neagră, lângă gura Dunării, se văd uneori chiar și delfini. Delta este una dintre cele mai frumoase comori ale României.",
+      "syllable_body": "Du|nă|rea es|te al doi|lea cel mai lung râu din Eu|ro|pa. Iz|vo|răș|te din mun|ții Ger|ma|ni|ei și cur|ge spre est prin ze|ce țări. Pe drum, pri|meș|te a|pă de la mul|te râ|uri mai mici. Tre|ce prin pă|duri, pe lân|gă sa|te și o|ra|șe mari, pe sub po|duri vechi de pia|tră.\n\nÎn Ro|mâ|ni|a, Du|nă|rea cur|ge mult timp la gra|ni|ța de sud a ță|rii. La sfâr|șit, î|na|in|te să se ver|se în Ma|rea Nea|gră, se des|par|te în trei bra|țe mari și în mul|te ca|na|le. A|șa se for|mea|ză Del|ta Du|nă|rii.\n\nDel|ta es|te pli|nă de via|ță. Prin|tre stuf tră|iesc stârci, pe|li|cani și mii de al|te pă|sări. U|ne|le pă|sări vin a|ici toc|mai din A|fri|ca. În a|pe î|noa|tă mulți pești. În Ma|rea Nea|gră, lân|gă gu|ra Du|nă|rii, se văd u|ne|ori chiar și del|fini. Del|ta es|te u|na din|tre ce|le mai fru|moa|se co|mori a|le Ro|mâ|ni|ei.",
+      "imageId": "reka",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "plausible"
+      }
+    },
+    {
+      "id": "around_the_world_piramidele_4",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 4,
+      "title": "Rampa cea lungă",
+      "body": "Cum au urcat egiptenii blocuri atât de grele până în vârful piramidei? Nu aveau macarale și nici mașini. Aveau însă multă putere, răbdare și idei bune.\n\nMai întâi, muncitorii tăiau blocurile de piatră cu unelte de cupru. Uneori, blocurile erau aduse cu bărci pe Nil. Apoi le puneau pe sănii de lemn și le legau cu frânghii groase. Echipe de oameni trăgeau săniile. În fața lor, cineva turna apă pe nisip, ca sania să alunece mai ușor.\n\nPe măsură ce piramida creștea, muncitorii construiau o rampă lungă din pământ și cărămizi. Blocurile erau trase pe rampă, tot mai sus. Muncitorii nu erau sclavi, cum se credea demult, ci oameni plătiți cu pâine, ceapă și alte alimente. Au lucrat mulți ani la fiecare piramidă. Cea mai mare piramidă are peste două milioane de blocuri.",
+      "syllable_body": "Cum au ur|cat e|gip|te|nii blo|curi a|tât de gre|le pâ|nă în vâr|ful pi|ra|mi|dei? Nu a|veau ma|ca|ra|le și nici ma|șini. A|veau în|să mul|tă pu|te|re, răb|da|re și i|dei bu|ne.\n\nMai în|tâi, mun|ci|to|rii tă|iau blo|cu|ri|le de pia|tră cu u|nel|te de cu|pru. U|ne|ori, blo|cu|ri|le e|rau a|du|se cu bărci pe Nil. A|poi le pu|neau pe să|nii de lemn și le le|gau cu frân|ghii groa|se. E|chi|pe de oa|meni tră|geau să|ni|i|le. În fa|ța lor, ci|ne|va tur|na a|pă pe ni|sip, ca sa|ni|a să a|lu|ne|ce mai u|șor.\n\nPe mă|su|ră ce pi|ra|mi|da creș|tea, mun|ci|to|rii con|stru|iau o ram|pă lun|gă din pă|mânt și că|ră|mizi. Blo|cu|ri|le e|rau tra|se pe ram|pă, tot mai sus. Mun|ci|to|rii nu e|rau sclavi, cum se cre|dea de|mult, ci oa|meni plă|tiți cu pâi|ne, cea|pă și al|te a|li|men|te. Au lu|crat mulți ani la fi|e|ca|re pi|ra|mi|dă. Cea mai ma|re pi|ra|mi|dă a|re pes|te do|uă mi|li|oa|ne de blo|curi.",
+      "imageId": "piramide_klancina",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_venetia_5",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 5,
+      "title": "Orașul de pe apă",
+      "body": "Veneția este un oraș din Italia construit pe apă. Are peste o sută de insule mici, despărțite de canale. În loc de străzi pentru mașini, Veneția are canale, iar în loc de autobuze are bărci. Peste canale trec sute de poduri, mari și mici. Pe canalul cel mare, cel mai lung din oraș, circulă vaporașe pline de oameni.\n\nDar cum poate sta un oraș întreg pe apă? Secretul se află sub case. Acum mai bine de o mie de ani, oamenii au bătut în fundul lagunei milioane de stâlpi de lemn. Stâlpii au fost înfipți unul lângă altul, până au ajuns în pământul tare. Deasupra lor au pus scânduri groase și pietre, iar pe ele au construit casele, bisericile și palatele.\n\nStâlpii sunt și azi acolo, sub apă. Pentru că la ei nu ajunge aer, lemnul nu putrezește, ci devine tot mai tare. Când te plimbi cu gondola pe lângă case, poți vedea uneori, prin apa limpede, capetele vechilor stâlpi. Azi, Veneția este unul dintre cele mai vizitate orașe din lume.",
+      "syllable_body": "Ve|ne|ți|a es|te un o|raș din I|ta|li|a con|stru|it pe a|pă. A|re pes|te o su|tă de in|su|le mici, des|păr|ți|te de ca|na|le. În loc de străzi pen|tru ma|șini, Ve|ne|ți|a a|re ca|na|le, iar în loc de au|to|bu|ze a|re bărci. Pes|te ca|na|le trec su|te de po|duri, mari și mici. Pe ca|na|lul cel ma|re, cel mai lung din o|raș, cir|cu|lă va|po|ra|șe pli|ne de oa|meni.\n\nDar cum poa|te sta un o|raș în|treg pe a|pă? Se|cre|tul se a|flă sub ca|se. A|cum mai bi|ne de o mi|e de ani, oa|me|nii au bă|tut în fun|dul la|gu|nei mi|li|oa|ne de stâlpi de lemn. Stâl|pii au fost în|fipți u|nul lân|gă al|tul, pâ|nă au a|juns în pă|mân|tul ta|re. Dea|su|pra lor au pus scân|duri groa|se și pie|tre, iar pe e|le au con|stru|it ca|se|le, bi|se|ri|ci|le și pa|la|te|le.\n\nStâl|pii sunt și azi a|co|lo, sub a|pă. Pen|tru că la ei nu a|jun|ge a|er, lem|nul nu pu|tre|zeș|te, ci de|vi|ne tot mai ta|re. Când te plimbi cu gon|do|la pe lân|gă ca|se, poți ve|dea u|ne|ori, prin a|pa lim|pe|de, ca|pe|te|le ve|chi|lor stâlpi. Azi, Ve|ne|ți|a es|te u|nul din|tre ce|le mai vi|zi|ta|te o|ra|șe din lu|me.",
+      "imageId": "benetke_ulica",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_gondola_5",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 5,
+      "title": "O plimbare cu gondola",
+      "body": "În vacanța de vară, Maria, Radu și Ioana au fost la Veneția cu părinții. Încă din prima zi au înțeles că nu este un oraș obișnuit. Pe străzi nu erau mașini, biciclete sau autobuze. Oamenii mergeau pe jos sau cu barca.\n\nÎn a doua zi, copiii s-au urcat într-o gondolă. Gondola este o barcă lungă, îngustă și neagră, cu vârful ridicat. Gondolierul stătea în picioare în spatele ei, cu o vâslă lungă. Purta o cămașă cu dungi și o pălărie de pai. Vâslea ușor, fără grabă, printre casele colorate. Au trecut pe sub un pod de piatră, plin de turiști care le făceau cu mâna.\n\nPe canalul cel mare au văzut un vaporaș plin de oameni. „Acesta este autobuzul Veneției”, le-a explicat gondolierul. Ioana a observat stâlpii groși de lemn care ieșeau din apă, lângă case. Radu a întrebat dacă oamenilor nu le este frică de inundații. „Uneori apa crește și intră în piețe”, a spus gondolierul, „dar localnicii s-au obișnuit.”",
+      "syllable_body": "În va|can|ța de va|ră, Ma|ri|a, Ra|du și Ioa|na au fost la Ve|ne|ți|a cu pă|rin|ții. În|că din pri|ma zi au în|țe|les că nu es|te un o|raș o|biș|nu|it. Pe străzi nu e|rau ma|șini, bi|ci|cle|te sau au|to|bu|ze. Oa|me|nii mer|geau pe jos sau cu bar|ca.\n\nÎn a do|ua zi, co|pi|ii s-au ur|cat într-o gon|do|lă. Gon|do|la es|te o bar|că lun|gă, în|gus|tă și nea|gră, cu vâr|ful ri|di|cat. Gon|do|li|e|rul stă|tea în pi|cioa|re în spa|te|le ei, cu o vâs|lă lun|gă. Pur|ta o că|ma|șă cu dungi și o pă|lă|ri|e de pai. Vâs|lea u|șor, fă|ră gra|bă, prin|tre ca|se|le co|lo|ra|te. Au tre|cut pe sub un pod de pia|tră, plin de tu|riști ca|re le fă|ceau cu mâ|na.\n\nPe ca|na|lul cel ma|re au vă|zut un va|po|raș plin de oa|meni. „A|ces|ta es|te au|to|bu|zul Ve|ne|ți|ei”, le-a ex|pli|cat gon|do|li|e|rul. Ioa|na a ob|ser|vat stâl|pii groși de lemn ca|re ie|șeau din a|pă, lân|gă ca|se. Ra|du a în|tre|bat da|că oa|me|ni|lor nu le es|te fri|că de i|nun|da|ții. „U|ne|ori a|pa creș|te și in|tră în pie|țe”, a spus gon|do|li|e|rul, „dar lo|cal|ni|cii s-au o|biș|nu|it.”",
+      "imageId": "benetke_trg",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_vantul_1",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 1,
+      "title": "Vântul",
+      "body": "Vântul este aer care se mișcă. Nu îl putem vedea. Dar vedem ce face. Vântul mișcă frunzele. El usucă rufele și învârte moara de vânt. Tot el duce departe semințele de păpădie.",
+      "syllable_body": "Vân|tul es|te a|er ca|re se miș|că. Nu îl pu|tem ve|dea. Dar ve|dem ce fa|ce. Vân|tul miș|că frun|ze|le. El u|su|că ru|fe|le și în|vâr|te moa|ra de vânt. Tot el du|ce de|par|te se|min|țe|le de pă|pă|di|e.",
+      "imageId": "veter",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_curcubeul_1",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 1,
+      "title": "Curcubeul",
+      "body": "Plouă, dar iese și soarele. Pe cer apare un curcubeu mare. Are multe culori: roșu, portocaliu, galben, verde, albastru și violet. Ana se uită la el cu cățelul ei.",
+      "syllable_body": "Plo|uă, dar ie|se și soa|re|le. Pe cer a|pa|re un cur|cu|beu ma|re. A|re mul|te cu|lori: ro|șu, por|to|ca|liu, gal|ben, ver|de, al|bas|tru și vi|o|let. A|na se ui|tă la el cu că|țe|lul ei.",
+      "imageId": "mavrica",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_gravitatia_2",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 2,
+      "title": "De ce cad lucrurile?",
+      "body": "Andrei aruncă o minge în sus. Mingea urcă puțin, apoi cade înapoi. De ce? Pământul trage totul spre el. Această putere se numește gravitație. Din cauza ei cad merele din copaci. Tot din cauza ei cad și picăturile de ploaie. Gravitația ne ține și pe noi pe pământ. Fără gravitație, mingea lui Andrei nu s-ar mai întoarce niciodată!",
+      "syllable_body": "An|drei a|run|că o min|ge în sus. Min|gea ur|că pu|țin, a|poi ca|de î|na|poi. De ce? Pă|mân|tul tra|ge to|tul spre el. A|ceas|tă pu|te|re se nu|meș|te gra|vi|ta|ți|e. Din cau|za ei cad me|re|le din co|paci. Tot din cau|za ei cad și pi|că|tu|ri|le de ploa|ie. Gra|vi|ta|ți|a ne ți|ne și pe noi pe pă|mânt. Fă|ră gra|vi|ta|ți|e, min|gea lui An|drei nu s-ar mai în|toar|ce ni|cio|da|tă!",
+      "imageId": "gravitacija_jabolko",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_pamantul_rotund_2",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 2,
+      "title": "Jos este mereu spre Pământ",
+      "body": "Pământul este rotund, ca o minge uriașă. Oamenii trăiesc peste tot pe el, chiar și pe partea cealaltă. Atunci de ce nu cad oamenii de pe Pământ? Pentru că Pământul trage totul spre mijlocul lui. Așa că „jos” înseamnă mereu spre Pământ. De aceea merele cad pe iarbă, iar noi stăm cu picioarele pe pământ, oriunde am fi.",
+      "syllable_body": "Pă|mân|tul es|te ro|tund, ca o min|ge u|ri|a|șă. Oa|me|nii tră|iesc pes|te tot pe el, chiar și pe par|tea cea|lal|tă. A|tunci de ce nu cad oa|me|nii de pe Pă|mânt? Pen|tru că Pă|mân|tul tra|ge to|tul spre mij|lo|cul lui. A|șa că „jos” în|seam|nă me|reu spre Pă|mânt. De a|cee|a me|re|le cad pe iar|bă, iar noi stăm cu pi|cioa|re|le pe pă|mânt, o|ri|un|de am fi.",
+      "imageId": "gravitacija_jabolko",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_vantul_3",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 3,
+      "title": "De unde vine vântul?",
+      "body": "Soarele încălzește pământul, dar nu peste tot la fel. Deasupra locurilor calde, aerul se încălzește, devine mai ușor și urcă. Locul lui este luat de aer mai rece, care vine din altă parte. Această mișcare a aerului este vântul. Uneori vântul este o adiere blândă, care abia mișcă frunzele. Alteori este puternic și rupe crengi. Oamenii folosesc vântul de foarte mult timp. Morile de vânt măcinau grâul, iar corăbiile cu pânze traversau mările. Astăzi, turbinele de vânt fac electricitate. Vântul poartă și norii pe cer, de la un loc la altul.",
+      "syllable_body": "Soa|re|le în|căl|zeș|te pă|mân|tul, dar nu pes|te tot la fel. Dea|su|pra lo|cu|ri|lor cal|de, a|e|rul se în|căl|zeș|te, de|vi|ne mai u|șor și ur|că. Lo|cul lui es|te lu|at de a|er mai re|ce, ca|re vi|ne din al|tă par|te. A|ceas|tă miș|ca|re a a|e|ru|lui es|te vân|tul. U|ne|ori vân|tul es|te o a|di|e|re blân|dă, ca|re a|bi|a miș|că frun|ze|le. Al|te|ori es|te pu|ter|nic și ru|pe crengi. Oa|me|nii fo|lo|sesc vân|tul de foar|te mult timp. Mo|ri|le de vânt mă|ci|nau grâ|ul, iar co|ră|bi|i|le cu pân|ze tra|ver|sau mă|ri|le. As|tăzi, tur|bi|ne|le de vânt fac e|lec|tri|ci|ta|te. Vân|tul poar|tă și no|rii pe cer, de la un loc la al|tul.",
+      "imageId": "veter",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_curcubeul_3",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 3,
+      "title": "Cum se face un curcubeu",
+      "body": "Lumina soarelui pare albă, dar în ea se ascund multe culori. Când plouă și soarele strălucește în același timp, razele lui trec prin picăturile de ploaie. Fiecare picătură este ca o prismă mică. Ea desface lumina albă în culori: roșu, portocaliu, galben, verde, albastru, indigo și violet. Milioane de picături fac asta deodată, iar pe cer apare un curcubeu. Culorile sunt mereu în aceeași ordine. Ca să vezi curcubeul, trebuie să stai cu spatele la soare. Cel mai des apare dimineața sau seara, după o ploaie de vară.",
+      "syllable_body": "Lu|mi|na soa|re|lui pa|re al|bă, dar în ea se as|cund mul|te cu|lori. Când plo|uă și soa|re|le stră|lu|ceș|te în a|ce|lași timp, ra|ze|le lui trec prin pi|că|tu|ri|le de ploa|ie. Fi|e|ca|re pi|că|tu|ră es|te ca o pris|mă mi|că. Ea des|fa|ce lu|mi|na al|bă în cu|lori: ro|șu, por|to|ca|liu, gal|ben, ver|de, al|bas|tru, in|di|go și vi|o|let. Mi|li|oa|ne de pi|că|turi fac as|ta de|o|da|tă, iar pe cer a|pa|re un cur|cu|beu. Cu|lo|ri|le sunt me|reu în a|ce|eași or|di|ne. Ca să vezi cur|cu|beul, tre|bu|ie să stai cu spa|te|le la soa|re. Cel mai des a|pa|re di|mi|nea|ța sau sea|ra, du|pă o ploa|ie de va|ră.",
+      "imageId": "mavrica_kaplja",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_ordinea_culorilor_4",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 4,
+      "title": "Ordinea culorilor",
+      "body": "Te-ai uitat vreodată atent la un curcubeu? Culorile lui sunt mereu în aceeași ordine. Roșul este întotdeauna sus, pe marginea de afară, iar violetul jos, pe marginea dinăuntru. Între ele sunt portocaliul, galbenul, verdele, albastrul și indigoul.\n\nOrdinea nu se schimbă, pentru că fiecare culoare se îndoaie altfel când trece prin picătura de apă. Roșul se îndoaie cel mai puțin, iar violetul cel mai mult. Așa culorile se despart și se așază una lângă alta, ca într-un evantai.\n\nUneori, deasupra curcubeului apare un al doilea curcubeu, mai slab. La el, culorile sunt așezate invers: roșul este jos, iar violetul sus. Poți face și tu un curcubeu. Într-o zi cu soare, stai cu spatele la soare și stropește apă cu furtunul din grădină. Atenție doar să nu uzi pe nimeni!",
+      "syllable_body": "Te-ai ui|tat vreo|da|tă a|tent la un cur|cu|beu? Cu|lo|ri|le lui sunt me|reu în a|ce|eași or|di|ne. Ro|șul es|te în|tot|deau|na sus, pe mar|gi|nea de a|fa|ră, iar vi|o|le|tul jos, pe mar|gi|nea di|nă|un|tru. În|tre e|le sunt por|to|ca|liul, gal|be|nul, ver|de|le, al|bas|trul și in|di|go|ul.\n\nOr|di|nea nu se schim|bă, pen|tru că fi|e|ca|re cu|loa|re se în|doa|ie alt|fel când tre|ce prin pi|că|tu|ra de a|pă. Ro|șul se în|doa|ie cel mai pu|țin, iar vi|o|le|tul cel mai mult. A|șa cu|lo|ri|le se des|part și se a|șa|ză u|na lân|gă al|ta, ca într-un e|van|tai.\n\nU|ne|ori, dea|su|pra cur|cu|be|u|lui a|pa|re un al doi|lea cur|cu|beu, mai slab. La el, cu|lo|ri|le sunt a|șe|za|te in|vers: ro|șul es|te jos, iar vi|o|le|tul sus. Poți fa|ce și tu un cur|cu|beu. Într-o zi cu soa|re, stai cu spa|te|le la soa|re și stro|peș|te a|pă cu fur|tu|nul din gră|di|nă. A|ten|ți|e doar să nu uzi pe ni|meni!",
+      "imageId": "mavrica_kaplja",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_arcul_colorat_4",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 4,
+      "title": "Curcubeul tău",
+      "body": "Curcubeul are forma unui arc mare, ca un pod colorat peste cer. Dar știai că, de fapt, curcubeul este un cerc întreg? Noi vedem doar partea de sus, pentru că partea de jos este ascunsă de pământ. Curcubeul apare doar atunci când soarele este jos pe cer. Din avion sau de pe vârful unui munte înalt, oamenii pot vedea uneori curcubeul ca pe un cerc complet.\n\nMulți copii au încercat să ajungă la capătul curcubeului. Poveștile spun că acolo este ascunsă o oală cu aur. Dar nimeni nu a reușit. Când mergi spre curcubeu, se mută și el, pentru că depinde de locul în care stai.\n\nDe aceea, doi oameni aflați unul lângă altul nu văd exact același curcubeu. Fiecare vede lumina din alte picături de ploaie. Curcubeul tău este numai al tău!",
+      "syllable_body": "Cur|cu|beul a|re for|ma u|nui arc ma|re, ca un pod co|lo|rat pes|te cer. Dar știai că, de fapt, cur|cu|beul es|te un cerc în|treg? Noi ve|dem doar par|tea de sus, pen|tru că par|tea de jos es|te as|cun|să de pă|mânt. Cur|cu|beul a|pa|re doar a|tunci când soa|re|le es|te jos pe cer. Din a|vi|on sau de pe vâr|ful u|nui mun|te î|nalt, oa|me|nii pot ve|dea u|ne|ori cur|cu|beul ca pe un cerc com|plet.\n\nMulți co|pii au în|cer|cat să a|jun|gă la ca|pă|tul cur|cu|be|u|lui. Po|veș|ti|le spun că a|co|lo es|te as|cun|să o oa|lă cu a|ur. Dar ni|meni nu a re|u|șit. Când mergi spre cur|cu|beu, se mu|tă și el, pen|tru că de|pin|de de lo|cul în ca|re stai.\n\nDe a|cee|a, doi oa|meni a|flați u|nul lân|gă al|tul nu văd e|xact a|ce|lași cur|cu|beu. Fi|e|ca|re ve|de lu|mi|na din al|te pi|că|turi de ploa|ie. Cur|cu|beul tău es|te nu|mai al tău!",
+      "imageId": "mavrica_lok",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_puterea_vantului_5",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 5,
+      "title": "Puterea vântului",
+      "body": "Vântul nu se vede, dar are o putere uriașă. De mii de ani, oamenii au învățat să o folosească. Primele corăbii cu pânze au plutit pe râuri și mări, împinse doar de vânt. Mai târziu, oamenii au construit mori de vânt. Aripile lor mari se învârteau și puneau în mișcare pietrele grele care măcinau grâul în făină.\n\nȘi natura folosește vântul. Semințele de păpădie au o umbreluță din fire subțiri. Când bate vântul, ele zboară departe și cresc în alte locuri. Mulți copaci și multe ierburi își trimit polenul tot cu ajutorul vântului.\n\nAstăzi, în multe țări, pe dealuri și chiar în mare, se ridică turbine de vânt înalte, cu trei pale. Când vântul le învârte, ele produc electricitate, fără fum și fără să polueze aerul. Uneori, vântul devine atât de puternic, încât smulge copaci din rădăcini. Ca să afle cât de tare bate vântul, oamenii folosesc un aparat numit anemometru. El are câteva cupe mici, care se învârt cu atât mai repede cu cât vântul este mai puternic.",
+      "syllable_body": "Vân|tul nu se ve|de, dar a|re o pu|te|re u|ri|a|șă. De mii de ani, oa|me|nii au în|vă|țat să o fo|lo|seas|că. Pri|me|le co|ră|bii cu pân|ze au plu|tit pe râ|uri și mări, îm|pin|se doar de vânt. Mai târ|ziu, oa|me|nii au con|stru|it mori de vânt. A|ri|pi|le lor mari se în|vâr|teau și pu|neau în miș|ca|re pie|tre|le gre|le ca|re mă|ci|nau grâ|ul în făi|nă.\n\nȘi na|tu|ra fo|lo|seș|te vân|tul. Se|min|țe|le de pă|pă|di|e au o um|bre|lu|ță din fi|re sub|țiri. Când ba|te vân|tul, e|le zboa|ră de|par|te și cresc în al|te lo|curi. Mulți co|paci și mul|te ier|buri își tri|mit po|le|nul tot cu a|ju|to|rul vân|tu|lui.\n\nAs|tăzi, în mul|te țări, pe dea|luri și chiar în ma|re, se ri|di|că tur|bi|ne de vânt î|nal|te, cu trei pa|le. Când vân|tul le în|vâr|te, e|le pro|duc e|lec|tri|ci|ta|te, fă|ră fum și fă|ră să po|lu|e|ze a|e|rul. U|ne|ori, vân|tul de|vi|ne a|tât de pu|ter|nic, în|cât smul|ge co|paci din ră|dă|cini. Ca să a|fle cât de ta|re ba|te vân|tul, oa|me|nii fo|lo|sesc un a|pa|rat nu|mit a|ne|mo|me|tru. El a|re câ|te|va cu|pe mici, ca|re se în|vârt cu a|tât mai re|pe|de cu cât vân|tul es|te mai pu|ter|nic.",
+      "imageId": "veter",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_secretul_luminii_5",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 5,
+      "title": "Secretul luminii",
+      "body": "Acum mai bine de trei sute de ani, un om de știință englez, Isaac Newton, a făcut un experiment simplu, dar foarte important. A întunecat camera și a lăsat să intre o singură rază de soare printr-o gaură mică din oblon. În calea razei a pus o prismă de sticlă. Pe peretele din față a apărut o fâșie colorată, exact ca un curcubeu.\n\nAșa a arătat Newton că lumina albă a soarelui este, de fapt, un amestec de culori. Newton a numit șapte culori, la fel ca notele muzicale. Prisma le desparte, pentru că fiecare culoare se îndoaie puțin altfel când trece prin sticlă. Picăturile de ploaie fac același lucru, doar că sunt milioane.\n\nPoți face și tu un experiment asemănător. Umple un pahar cu apă și pune-l pe pervaz, în soare. Pune o foaie albă pe podea și mută paharul încet, până când apar culorile. Vei vedea curcubee și în alte locuri: în stropii unei fântâni, în ceața de lângă o cascadă sau chiar în baloanele de săpun.",
+      "syllable_body": "A|cum mai bi|ne de trei su|te de ani, un om de ști|in|ță en|glez, I|sa|ac New|ton, a fă|cut un ex|pe|ri|ment sim|plu, dar foar|te im|por|tant. A în|tu|ne|cat ca|me|ra și a lă|sat să in|tre o sin|gu|ră ra|ză de soa|re printr-o ga|u|ră mi|că din o|blon. În ca|lea ra|zei a pus o pris|mă de sti|clă. Pe pe|re|te|le din fa|ță a a|pă|rut o fâ|și|e co|lo|ra|tă, e|xact ca un cur|cu|beu.\n\nA|șa a a|ră|tat New|ton că lu|mi|na al|bă a soa|re|lui es|te, de fapt, un a|mes|tec de cu|lori. New|ton a nu|mit șap|te cu|lori, la fel ca no|te|le mu|zi|ca|le. Pris|ma le des|par|te, pen|tru că fi|e|ca|re cu|loa|re se în|doa|ie pu|țin alt|fel când tre|ce prin sti|clă. Pi|că|tu|ri|le de ploa|ie fac a|ce|lași lu|cru, doar că sunt mi|li|oa|ne.\n\nPoți fa|ce și tu un ex|pe|ri|ment a|se|mă|nă|tor. Um|ple un pa|har cu a|pă și pu|ne-l pe per|vaz, în soa|re. Pu|ne o foa|ie al|bă pe po|dea și mu|tă pa|ha|rul în|cet, pâ|nă când a|par cu|lo|ri|le. Vei ve|dea cur|cu|be|e și în al|te lo|curi: în stro|pii u|nei fân|tâni, în cea|ța de lân|gă o cas|ca|dă sau chiar în ba|loa|ne|le de să|pun.",
+      "imageId": "mavrica_polje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_prima_gheata_1",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 1,
+      "title": "Prima gheață",
+      "body": "Afară este foarte frig. Pe o baltă mică s-a făcut gheață. Matei calcă atent pe ea. Gheața trosnește și crapă. Gheața subțire nu este sigură. Lacul mare este și el înghețat.",
+      "syllable_body": "A|fa|ră es|te foar|te frig. Pe o bal|tă mi|că s-a fă|cut ghea|ță. Ma|tei cal|că a|tent pe ea. Ghea|ța tros|neș|te și cra|pă. Ghea|ța sub|ți|re nu es|te si|gu|ră. La|cul ma|re es|te și el în|ghe|țat.",
+      "imageId": "prvi_led",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_samanta_1",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 1,
+      "title": "Sămânța",
+      "body": "O sămânță stă în pământ. Ea primește apă și soare. Întâi iese o rădăcină mică. Apoi iese o tulpină verde. Planta crește tot mai mare. La sfârșit, face o floare-soarelui!",
+      "syllable_body": "O să|mân|ță stă în pă|mânt. Ea pri|meș|te a|pă și soa|re. În|tâi ie|se o ră|dă|ci|nă mi|că. A|poi ie|se o tul|pi|nă ver|de. Plan|ta creș|te tot mai ma|re. La sfâr|șit, fa|ce o floa|re-soa|re|lui!",
+      "imageId": "seme_kalica",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_ploaia_2",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 2,
+      "title": "De unde vine ploaia?",
+      "body": "Norii sunt făcuți din picături de apă foarte mici. Ele sunt atât de ușoare, încât plutesc în aer. În nor, picăturile se lovesc și se unesc. Așa se fac tot mai mari și mai grele. Când sunt prea grele, ele cad pe pământ. Aceasta este ploaia. Ploaia udă plantele și umple râurile și lacurile.",
+      "syllable_body": "No|rii sunt fă|cuți din pi|că|turi de a|pă foar|te mici. E|le sunt a|tât de u|șoa|re, în|cât plu|tesc în a|er. În nor, pi|că|tu|ri|le se lo|vesc și se u|nesc. A|șa se fac tot mai mari și mai gre|le. Când sunt prea gre|le, e|le cad pe pă|mânt. A|ceas|ta es|te ploa|ia. Ploa|ia u|dă plan|te|le și um|ple râ|u|ri|le și la|cu|ri|le.",
+      "imageId": "dez_kaplje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_dupa_ploaie_2",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 2,
+      "title": "După ploaie",
+      "body": "Toată dimineața a plouat. Acum, pe frunzele verzi strălucesc picături mici. Pământul este moale și ud. Râmele ies la suprafață. Melcii ies și ei din ascunzători. Florile își ridică iar capul. Aerul miroase proaspăt, a iarbă și a pământ. Plantele au băut multă apă și vor crește repede. Ploaia este bună pentru grădină și pentru câmpuri.",
+      "syllable_body": "Toa|tă di|mi|nea|ța a plo|uat. A|cum, pe frun|ze|le verzi stră|lu|cesc pi|că|turi mici. Pă|mân|tul es|te moa|le și ud. Râ|me|le ies la su|pra|fa|ță. Mel|cii ies și ei din as|cun|ză|tori. Flo|ri|le își ri|di|că iar ca|pul. A|e|rul mi|roa|se proas|păt, a iar|bă și a pă|mânt. Plan|te|le au bă|ut mul|tă a|pă și vor creș|te re|pe|de. Ploa|ia es|te bu|nă pen|tru gră|di|nă și pen|tru câm|puri.",
+      "imageId": "dez_kaplje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_calatoria_apei_3",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 3,
+      "title": "Călătoria picăturii de apă",
+      "body": "Picătura de apă face o călătorie lungă, care nu se termină niciodată. Soarele încălzește apa din mări, lacuri și râuri. O parte din apă se transformă în vapori, care urcă nevăzuți în aer. Sus, unde este frig, vaporii se răcesc și formează picături mici. Din ele se fac norii. Când picăturile se unesc și devin grele, cad pe pământ ca ploaie sau ca zăpadă. Apa ajunge apoi în râuri, iar râurile o duc înapoi în mare. Și totul o ia de la capăt! O picătură poate face această călătorie de multe ori.",
+      "syllable_body": "Pi|că|tu|ra de a|pă fa|ce o că|lă|to|ri|e lun|gă, ca|re nu se ter|mi|nă ni|cio|da|tă. Soa|re|le în|căl|zeș|te a|pa din mări, la|curi și râ|uri. O par|te din a|pă se trans|for|mă în va|pori, ca|re ur|că ne|vă|zuți în a|er. Sus, un|de es|te frig, va|po|rii se ră|cesc și for|mea|ză pi|că|turi mici. Din e|le se fac no|rii. Când pi|că|tu|ri|le se u|nesc și de|vin gre|le, cad pe pă|mânt ca ploa|ie sau ca ză|pa|dă. A|pa a|jun|ge a|poi în râ|uri, iar râ|u|ri|le o duc î|na|poi în ma|re. Și to|tul o ia de la ca|păt! O pi|că|tu|ră poa|te fa|ce a|ceas|tă că|lă|to|ri|e de mul|te ori.",
+      "imageId": "dez_kaplje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_zi_cu_vant_3",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 3,
+      "title": "O zi cu vânt",
+      "body": "Într-o zi de primăvară, a început să bată vântul. Elena a ieșit pe pajiște cu cățelul ei, Bobi. Vântul îi ciufulea părul și îi umfla jacheta. Frunzele zburau din copac, iar rufele de pe sârmă se legănau ca niște steaguri. Pe deal, moara de vânt se învârtea repede. Elena a suflat într-o păpădie. Semințele albe s-au ridicat în aer și au zburat departe, peste iarbă. „Unde se duc?” a întrebat ea. Bunica i-a spus că vântul le duce în alte locuri, unde vor crește păpădii noi.",
+      "syllable_body": "Într-o zi de pri|mă|va|ră, a în|ce|put să ba|tă vân|tul. E|le|na a ie|șit pe pa|jiș|te cu că|țe|lul ei, Bobi. Vân|tul îi ciu|fu|lea pă|rul și îi um|fla ja|che|ta. Frun|ze|le zbu|rau din co|pac, iar ru|fe|le de pe sâr|mă se le|gă|nau ca niș|te stea|guri. Pe deal, moa|ra de vânt se în|vâr|tea re|pe|de. E|le|na a su|flat într-o pă|pă|di|e. Se|min|țe|le al|be s-au ri|di|cat în a|er și au zbu|rat de|par|te, pes|te iar|bă. „Un|de se duc?” a în|tre|bat ea. Bu|ni|ca i-a spus că vân|tul le du|ce în al|te lo|curi, un|de vor creș|te pă|pă|dii noi.",
+      "imageId": "veter",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_matisorii_4",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 4,
+      "title": "Mâțișorii",
+      "body": "La sfârșitul iernii, când zăpada încă acoperă pământul, pe crengile unor sălcii apar niște muguri ciudați. Ei nu sunt verzi, ci pufoși și argintii, ca blana unei pisici. De aceea, în România li se spune mâțișori.\n\nMâțișorii sunt, de fapt, florile salciei. La început, fiecare stă ascuns sub o coajă maro și lucioasă. Când zilele devin mai calde, coaja se desface și iese puful. Firișoarele moi țin de cald florii, așa cum o haină groasă ne ține pe noi de cald.\n\nMâțișorii înfloresc înaintea frunzelor. Pentru albine, ei sunt una dintre primele mese ale anului, după o iarnă lungă. Mâțișorii sunt plini de polen galben, pe care albinele îl duc la stup. În multe case din România, oamenii aduc crenguțe cu mâțișori de Florii, sărbătoarea de primăvară dinaintea Paștelui.",
+      "syllable_body": "La sfâr|și|tul ier|nii, când ză|pa|da în|că a|co|pe|ră pă|mân|tul, pe cren|gi|le u|nor săl|cii a|par niș|te mu|guri ciu|dați. Ei nu sunt verzi, ci pu|foși și ar|gin|tii, ca bla|na u|nei pi|sici. De a|cee|a, în Ro|mâ|ni|a li se spu|ne mâ|ți|șori.\n\nMâ|ți|șo|rii sunt, de fapt, flo|ri|le sal|ci|ei. La în|ce|put, fi|e|ca|re stă as|cuns sub o coa|jă ma|ro și lu|cioa|să. Când zi|le|le de|vin mai cal|de, coa|ja se des|fa|ce și ie|se pu|ful. Fi|ri|șoa|re|le moi țin de cald flo|rii, a|șa cum o hai|nă groa|să ne ți|ne pe noi de cald.\n\nMâ|ți|șo|rii în|flo|resc î|na|in|tea frun|ze|lor. Pen|tru al|bi|ne, ei sunt u|na din|tre pri|me|le me|se a|le a|nu|lui, du|pă o iar|nă lun|gă. Mâ|ți|șo|rii sunt plini de po|len gal|ben, pe ca|re al|bi|ne|le îl duc la stup. În mul|te ca|se din Ro|mâ|ni|a, oa|me|nii a|duc cren|gu|țe cu mâ|ți|șori de Flo|rii, săr|bă|toa|rea de pri|mă|va|ră di|na|in|tea Paș|te|lui.",
+      "imageId": "winter_tree_buds",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_frunzele_toamnei_4",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 4,
+      "title": "De ce se colorează frunzele?",
+      "body": "Vara, frunzele copacilor sunt verzi. Culoarea verde vine de la o substanță numită clorofilă. Cu ajutorul ei, frunza folosește lumina soarelui ca să facă hrană pentru copac.\n\nToamna, zilele devin mai scurte și mai reci. Copacul nu mai are nevoie de clorofilă, așa că nu o mai face. Verdele dispare încet, iar culorile galbene și portocalii, care erau ascunse în frunză toată vara, se văd în sfârșit. Unii copaci fac și o culoare roșie nouă. Pădurile se fac galbene, portocalii și roșii, ca un tablou.\n\nApoi frunzele se usucă și cad. Copacul le lasă să cadă ca să nu piardă apă în timpul iernii, când pământul este înghețat. Iarna, copacul se odihnește, cu crengile goale. Dar pe fiecare creangă așteaptă deja muguri mici, gata să se deschidă primăvara.",
+      "syllable_body": "Va|ra, frun|ze|le co|pa|ci|lor sunt verzi. Cu|loa|rea ver|de vi|ne de la o sub|stan|ță nu|mi|tă clo|ro|fi|lă. Cu a|ju|to|rul ei, frun|za fo|lo|seș|te lu|mi|na soa|re|lui ca să fa|că hra|nă pen|tru co|pac.\n\nToam|na, zi|le|le de|vin mai scur|te și mai reci. Co|pa|cul nu mai a|re ne|vo|ie de clo|ro|fi|lă, a|șa că nu o mai fa|ce. Ver|de|le dis|pa|re în|cet, iar cu|lo|ri|le gal|be|ne și por|to|ca|lii, ca|re e|rau as|cun|se în frun|ză toa|tă va|ra, se văd în sfâr|șit. U|nii co|paci fac și o cu|loa|re ro|și|e no|uă. Pă|du|ri|le se fac gal|be|ne, por|to|ca|lii și ro|șii, ca un ta|blou.\n\nA|poi frun|ze|le se u|su|că și cad. Co|pa|cul le la|să să ca|dă ca să nu piar|dă a|pă în tim|pul ier|nii, când pă|mân|tul es|te în|ghe|țat. Iar|na, co|pa|cul se o|dih|neș|te, cu cren|gi|le goa|le. Dar pe fi|e|ca|re crean|gă aș|teap|tă de|ja mu|guri mici, ga|ta să se des|chi|dă pri|mă|va|ra.",
+      "imageId": "jesensko_listje_drevo",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_mugurii_5",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 5,
+      "title": "Mugurii așteaptă primăvara",
+      "body": "Mulți oameni cred că iarna copacii sunt morți. Crengile lor sunt goale, iar zăpada se așază pe ele. Dar dacă te uiți mai atent, vei vedea pe fiecare creangă muguri mici și tari. Copacul i-a pregătit încă din vară, cu mult înainte să cadă frunzele.\n\nFiecare mugur este ca o cutiuță bine închisă. Afară are solzi tari și maronii, care îl apără de frig, de vânt și de apă. Unii muguri sunt acoperiți și cu un puf des, care îi ține de cald. Alții sunt lipicioși, ca să nu intre în ei apa și insectele. Înăuntru, strânse cu grijă, stau frunzele sau florile anului viitor, foarte mici.\n\nMugurii așteaptă răbdători. Ei nu se deschid la prima zi caldă de iarnă, pentru că frigul s-ar putea întoarce. Abia când zilele devin lungi și calde, solzii se desfac și frunzele ies la lumină. În România există un obicei frumos: de Sfântul Andrei, oamenii pun în apă câteva crenguțe de măr sau de cireș. Ținute la căldură, ele înfloresc până la Anul Nou.",
+      "syllable_body": "Mulți oa|meni cred că iar|na co|pa|cii sunt morți. Cren|gi|le lor sunt goa|le, iar ză|pa|da se a|șa|ză pe e|le. Dar da|că te uiți mai a|tent, vei ve|dea pe fi|e|ca|re crean|gă mu|guri mici și tari. Co|pa|cul i-a pre|gă|tit în|că din va|ră, cu mult î|na|in|te să ca|dă frun|ze|le.\n\nFi|e|ca|re mu|gur es|te ca o cu|ti|u|ță bi|ne în|chi|să. A|fa|ră a|re solzi tari și ma|ro|nii, ca|re îl a|pă|ră de frig, de vânt și de a|pă. U|nii mu|guri sunt a|co|pe|riți și cu un puf des, ca|re îi ți|ne de cald. Al|ții sunt li|pi|cioși, ca să nu in|tre în ei a|pa și in|sec|te|le. Î|nă|un|tru, strân|se cu gri|jă, stau frun|ze|le sau flo|ri|le a|nu|lui vi|i|tor, foar|te mici.\n\nMu|gu|rii aș|teap|tă răb|dă|tori. Ei nu se des|chid la pri|ma zi cal|dă de iar|nă, pen|tru că fri|gul s-ar pu|tea în|toar|ce. A|bi|a când zi|le|le de|vin lungi și cal|de, sol|zii se des|fac și frun|ze|le ies la lu|mi|nă. În Ro|mâ|ni|a e|xis|tă un o|bi|cei fru|mos: de Sfân|tul An|drei, oa|me|nii pun în a|pă câ|te|va cren|gu|țe de măr sau de ci|reș. Ți|nu|te la căl|du|ră, e|le în|flo|resc pâ|nă la A|nul Nou.",
+      "imageId": "winter_tree_buds",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_anotimpurile_5",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 5,
+      "title": "Cele patru anotimpuri",
+      "body": "În România, ca în multe alte țări, anul are patru anotimpuri: primăvara, vara, toamna și iarna. Dar de ce se schimbă anotimpurile? Pământul se învârte în jurul Soarelui, iar drumul lui durează un an. În timpul acestei călătorii, Pământul stă puțin înclinat. De aceea, într-o parte a anului țara noastră primește mai multă lumină și căldură, iar în cealaltă parte mai puțină.\n\nPrimăvara, zilele cresc, iar pomii se umplu de flori. Pe câmpuri încep să crească grâul și porumbul. Rândunelele se întorc din țările calde, iar păsările își fac cuiburi. Vara este anotimpul cel mai cald. Zilele sunt lungi, floarea-soarelui crește înaltă, iar copiii se joacă afară până seara.\n\nToamna, frunzele se fac galbene și roșii. Oamenii culeg merele, strugurii și dovlecii. Multe animale își fac provizii pentru iarnă, iar ursul se pregătește de somn. Păsările călătoare pleacă spre sud. Apoi vine iarna, cu zile scurte și nopți lungi. Ninge, lacurile îngheață, iar copiii fac oameni de zăpadă. Iar după iarnă, totul începe din nou.",
+      "syllable_body": "În Ro|mâ|ni|a, ca în mul|te al|te țări, a|nul a|re pa|tru a|no|tim|puri: pri|mă|va|ra, va|ra, toam|na și iar|na. Dar de ce se schim|bă a|no|tim|pu|ri|le? Pă|mân|tul se în|vâr|te în ju|rul Soa|re|lui, iar dru|mul lui du|rea|ză un an. În tim|pul a|ces|tei că|lă|to|rii, Pă|mân|tul stă pu|țin în|cli|nat. De a|cee|a, într-o par|te a a|nu|lui ța|ra noas|tră pri|meș|te mai mul|tă lu|mi|nă și căl|du|ră, iar în cea|lal|tă par|te mai pu|ți|nă.\n\nPri|mă|va|ra, zi|le|le cresc, iar po|mii se um|plu de flori. Pe câm|puri în|cep să creas|că grâ|ul și po|rum|bul. Rân|du|ne|le|le se în|torc din ță|ri|le cal|de, iar pă|să|ri|le își fac cui|buri. Va|ra es|te a|no|tim|pul cel mai cald. Zi|le|le sunt lungi, floa|rea-soa|re|lui creș|te î|nal|tă, iar co|pi|ii se joa|că a|fa|ră pâ|nă sea|ra.\n\nToam|na, frun|ze|le se fac gal|be|ne și ro|șii. Oa|me|nii cu|leg me|re|le, stru|gu|rii și do|vle|cii. Mul|te a|ni|ma|le își fac pro|vi|zii pen|tru iar|nă, iar ur|sul se pre|gă|teș|te de somn. Pă|să|ri|le că|lă|toa|re plea|că spre sud. A|poi vi|ne iar|na, cu zi|le scur|te și nopți lungi. Nin|ge, la|cu|ri|le în|ghea|ță, iar co|pi|ii fac oa|meni de ză|pa|dă. Iar du|pă iar|nă, to|tul în|ce|pe din nou.",
+      "imageId": "letni_casi_pokrajina",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Romanian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    }
+  ]
+}

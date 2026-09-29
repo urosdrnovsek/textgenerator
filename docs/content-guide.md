@@ -55,11 +55,20 @@ text). `npm run validate-content` (and so `npm run build`) refuses to run
 while one of the three is missing or a file names another language. The
 tests
 and the verify scripts loop over `src/languages.js`, so the new language
-is checked everywhere at once. Before release, check that the four fonts
-have its letters (`Instructions/tools/cmap.mjs`; all four cover the
-Latin-alphabet languages of Europe except Romanian `ș` in Comic Neue) and
-that the level word bands (`LEVEL_WORD_BANDS` in `src/config.js`) suit
-it; a language of long compound words may need its own.
+is checked everywhere at once, the fonts included:
+`tests/unit/fontCoverage.test.js` reads every bundled font file and fails
+when a font lacks a letter the language prints (its texts and sheet
+strings). The fix is then a line in `FONT_MISSING_LANGUAGES`
+(`src/config.js`), not new code: that font isn't offered for the
+language, and a sheet in it is set in Andika with the notice
+`FONT_REPLACED` (Comic Neue has no Romanian `ș`, the one case so far).
+Also check that the level word bands (`LEVEL_WORD_BANDS` in
+`src/config.js`) suit it; a language of long compound words may need its
+own, and a compact one (Romanian) needs more sentences to reach them.
+
+The interface has no plural forms yet (backlog), so a counted string is
+written as "label: {count}" wherever the language's grammar changes with
+the number (Romanian needs "de" from 20 up: "32 de cuvinte").
 
 ## Levels
 
@@ -181,6 +190,21 @@ a teacher and is not covered here); apply the same rules to new entries.
   (`fac|es`, `chang|es`, `ex|pe|ri|enc|es`); place names by pronunciation
   (`Se|ren|ge|ti`, `Tan|za|nia`, `Cap|pa|do|cia`); `tired` is one syllable.
 
+- **Romanian** — DOOM rules, pronunciation first. Consonants: one opens
+  the next syllable (`ca|să`); of two, the first closes the syllable
+  (`păs|tăi`) unless an obstruent + `l`/`r` (`a|cru`, `co|bră`); of three,
+  one closes the syllable (`as|tru`) except `lpt mpt mpț nct ncț ncș ndv
+  rct rtf stm` (`punc|tul`); `ch`/`gh` before `e`/`i` are one consonant,
+  compounds split at the parts (`ast|fel`, `trans|for|mă`). Vowels:
+  diphthongs and triphthongs stay whole (`școa|lă`, `iar|nă`, `le|oai|că`);
+  an `i` or `u` between two vowels opens the next syllable (`bă|iat`,
+  `che|ie`, `no|uă`, `zi|ua`); a final `i` after a consonant is not a
+  syllable (`lupi`, `o|chi`), final `-ii` is one (`co|pii`), `-ii-` inside a
+  word two (`co|pi|i|lor`); final `-ie`/`-ia`/`-iei` after a consonant
+  split (`fa|mi|li|e`, `ști|e`, `Ma|ri|ei`). Hiatus is lexical and follows
+  DOOM word by word (`a|u|zi`, `î|na|in|te`, `vi|oa|ră`, `re|a|li|ta|te`,
+  `di|no|za|ur`, `o|ce|an`). Always comma-below `ș ț`, never cedilla.
+
 ## Images
 
 Each `imageId` points at `assets/manifest.json`, which records the file,
@@ -220,9 +244,24 @@ Rules of thumb:
 - Set `imageAccuracy` independently of the text review; it's a different
   check, and often a different person.
 
-### Where the content stands (2026-09-28)
+### Where the content stands (2026-09-29)
 
 From `npm run content-status`:
+
+- **Romanian (2026-09-29):** 75 entries, the fr/de/es shape (six per
+  story level, three per animal level, two elsewhere), original Romanian
+  texts on the pictures the French texts use, each written after opening
+  its picture. Some are set in Romania on generic pictures (the echo in
+  the Carpathians, the Danube and its Delta): those two are
+  `imageAccuracy: plausible`, the other 73 `verified`. `reviewed` by
+  Claude, `nativeSpeaker: false`, `syllablesReviewed: true`: syllabified
+  with a DOOM-rule splitter plus an override list for lexical hiatus
+  (`Instructions/tools/ro.py`), every vowel group and consonant cluster
+  read, with the TeX `hyph-ro` patterns as a second opinion (they are
+  worse: `morcov` unsplit, `furt|un`). Romanian is compact: first drafts
+  came out 10–15% under the word bands and were lengthened with more
+  sentences, not longer words. Every text fits one page. Generators:
+  `Instructions/tools/ro-round1-*.py` with `ro_pack.py` (gitignored).
 
 - **Slovene:** 80 entries. The original 25 (`draft` — written by the
   project owner, never formally reviewed; their story pictures were

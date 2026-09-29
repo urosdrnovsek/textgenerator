@@ -23,7 +23,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { LANGUAGE_CODES } from '../src/languages.js';
-import { MEASURING, pageScripts } from './lib/chromium.mjs';
+import { FITS, MEASURING, pageScripts } from './lib/chromium.mjs';
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 
@@ -468,7 +468,7 @@ async function main() {
         document.getElementById('language-select').dispatchEvent(new Event('change', { bubbles: true }));
       `);
       const fitText = await waitForFit();
-      check(`${language}: worksheet renders and fits`, /^(Ustreza|Fits|Cabe|Passt|Tient)/i.test(fitText));
+      check(`${language}: worksheet renders and fits`, FITS.test(fitText));
       await evalJs(`document.getElementById('btn-add-to-packet').click();`);
     }
 
