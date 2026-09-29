@@ -1,0 +1,1357 @@
+{
+  "schemaVersion": 1,
+  "packId": "starter-hr",
+  "language": "hr",
+  "entries": [
+    {
+      "id": "stories_stara_skrinja_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Stara škrinja",
+      "body": "Ana sjedi na tepihu u podrumu. Pokraj nje stoji stara drvena škrinja. U škrinji su knjige, pisma i fotografije. Ana drži jednu fotografiju u rukama. Na podu leži mali ključić.",
+      "syllable_body": "A|na sje|di na te|pi|hu u po|dru|mu. Po|kraj nje sto|ji sta|ra dr|ve|na škri|nja. U škri|nji su knji|ge, pi|sma i fo|to|gra|fi|je. A|na dr|ži je|dnu fo|to|gra|fi|ju u ru|ka|ma. Na po|du le|ži ma|li klju|čić.",
+      "imageId": "stara_skrinja",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_mokri_macic_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Mokri mačić",
+      "body": "Vani jako pada kiša. Lucija kraj klupe nađe mokrog mačića. Mačiću je hladno. Lucija ga odnese kući. Tamo ga umota u ružičastu deku. Mačić pije mlijeko i zadovoljno prede.",
+      "syllable_body": "Va|ni ja|ko pa|da ki|ša. Lu|ci|ja kraj klu|pe na|đe mo|krog ma|či|ća. Ma|či|ću je hla|dno. Lu|ci|ja ga o|dne|se ku|ći. Ta|mo ga u|mo|ta u ru|ži|ča|stu de|ku. Ma|čić pi|je mli|je|ko i za|do|volj|no pre|de.",
+      "imageId": "moker_muc",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_juha_od_povrca_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Juha od povrća",
+      "body": "Večer je. Mama kuha veliki lonac juhe. Petra pere mrkvu. Luka vadi grašak iz mahuna. U loncu se kuha puno povrća. Cijela kuhinja lijepo miriše. Svi zajedno pomažu mami.",
+      "syllable_body": "Ve|čer je. Ma|ma ku|ha ve|li|ki lo|nac ju|he. Pe|tra pe|re mr|kvu. Lu|ka va|di gra|šak iz ma|hu|na. U lon|cu se ku|ha pu|no po|vr|ća. Ci|je|la ku|hi|nja li|je|po mi|ri|še. Svi za|je|dno po|ma|žu ma|mi.",
+      "imageId": "family_soup",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_lokva_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Lokva",
+      "body": "Kiša je prestala i izašlo je sunce. Ema ima žuti kaput i crvene čizme. Skoči u veliku lokvu. Voda pljusne na sve strane. I njezin psić skače u vodu. Kakva zabava!",
+      "syllable_body": "Ki|ša je pre|sta|la i i|za|šlo je sun|ce. E|ma i|ma žu|ti ka|put i cr|ve|ne či|zme. Sko|či u ve|li|ku lo|kvu. Vo|da plju|sne na sve stra|ne. I nje|zin psić ska|če u vo|du. Ka|kva za|ba|va!",
+      "imageId": "puddle_jump",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_naslikana_ptica_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Naslikana ptica",
+      "body": "Mia slika plavu pticu. Odjednom ptica otvori oči. Zamaše krilima i izleti s papira! Sada pjeva kraj prozora. Mia se smije. Mačka na stolcu i dalje spava.",
+      "syllable_body": "Mi|a sli|ka pla|vu pti|cu. O|dje|dnom pti|ca o|tvo|ri o|či. Za|ma|še kri|li|ma i i|zle|ti s pa|pi|ra! Sa|da pje|va kraj pro|zo|ra. Mi|a se smi|je. Mač|ka na stol|cu i da|lje spa|va.",
+      "imageId": "magic_paintbrush",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_ovcica_od_oblaka_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Ovčica od oblaka",
+      "body": "Filip vidi oblak koji izgleda kao ovčica. Oblak se spusti i nasmiješi mu se. Filip sjedne na njegova meka leđa. Sada lete zajedno! Dolje su rijeka, male kuće i zeleni brežuljci.",
+      "syllable_body": "Fi|lip vi|di o|blak ko|ji iz|gle|da ka|o ov|či|ca. O|blak se spu|sti i na|smi|je|ši mu se. Fi|lip sje|dne na nje|go|va me|ka le|đa. Sa|da le|te za|je|dno! Do|lje su ri|je|ka, ma|le ku|će i ze|le|ni bre|žulj|ci.",
+      "imageId": "cloud_sheep",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_stara_skrinja_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Fotografija iz škrinje",
+      "body": "Ana u podrumu pronađe staru drvenu škrinju. Pokraj nje leži mali ključić. Ana polako podigne teški poklopac. Unutra su pisma vezana uzicom, stare knjige i mnogo fotografija. Na jednoj fotografiji su gospodin i mala djevojčica. Djevojčica ima kovrčavu kosu, baš kao Ana. „Tko bi to mogao biti?“ pita se Ana. Zatim otrči uza stepenice da pita baku.",
+      "syllable_body": "A|na u po|dru|mu pro|na|đe sta|ru dr|ve|nu škri|nju. Po|kraj nje le|ži ma|li klju|čić. A|na po|la|ko po|di|gne te|ški po|klo|pac. U|nu|tra su pi|sma ve|za|na u|zi|com, sta|re knji|ge i mno|go fo|to|gra|fi|ja. Na je|dnoj fo|to|gra|fi|ji su go|spo|din i ma|la dje|voj|či|ca. Dje|voj|či|ca i|ma ko|vr|ča|vu ko|su, baš ka|o A|na. „Tko bi to mo|ga|o bi|ti?“ pi|ta se A|na. Za|tim o|tr|či u|za ste|pe|ni|ce da pi|ta ba|ku.",
+      "imageId": "stara_skrinja",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_bijelo_jaje_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Bijelo jaje",
+      "body": "Lucija je na selu kod bake. U staji, u gnijezdu od slame, leži bijelo jaje. Lucija ga svako jutro dolazi gledati. Danas se jaje miče! Zatim ljuska pukne. Iz jaja izađe malo žuto pile. Pile je sasvim mokro i malo drhti. Tiho pijuče: „Pi, pi.“ Lucija od radosti stavi ruke na obraze. Baka se smiješi ispod slamnatog šešira.",
+      "syllable_body": "Lu|ci|ja je na se|lu kod ba|ke. U sta|ji, u gni|je|zdu od sla|me, le|ži bi|je|lo ja|je. Lu|ci|ja ga sva|ko ju|tro do|la|zi gle|da|ti. Da|nas se ja|je mi|če! Za|tim lju|ska pu|kne. Iz ja|ja i|za|đe ma|lo žu|to pi|le. Pi|le je sa|svim mo|kro i ma|lo drh|ti. Ti|ho pi|ju|če: „Pi, pi.“ Lu|ci|ja od ra|do|sti sta|vi ru|ke na o|bra|ze. Ba|ka se smi|je|ši i|spod sla|mna|tog še|ši|ra.",
+      "imageId": "piscancek_gnezdo",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_paket_u_snijegu_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Paket u snijegu",
+      "body": "Od jutra pada snijeg i sve su kuće u selu bijele. Cestom dolazi poštar s velikom torbom. Zaustavi se kraj vrtnih vrata, gdje stoji Petra. „Imam paket za tebe!“ kaže. Paket ima crvenu mašnu. Petra se nasmiješi i pažljivo ga uzme. Na poštanskom sandučiću sjedi crvendać i znatiželjno gleda. Što li je u paketu?",
+      "syllable_body": "Od ju|tra pa|da sni|jeg i sve su ku|će u se|lu bi|je|le. Ce|stom do|la|zi po|štar s ve|li|kom tor|bom. Za|u|sta|vi se kraj vrt|nih vra|ta, gdje sto|ji Pe|tra. „I|mam pa|ket za te|be!“ ka|že. Pa|ket i|ma cr|ve|nu ma|šnu. Pe|tra se na|smi|je|ši i paž|lji|vo ga u|zme. Na po|štan|skom san|du|či|ću sje|di cr|ven|dać i zna|ti|želj|no gle|da. Što li je u pa|ke|tu?",
+      "imageId": "winter_postman",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_snjegovic_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Snjegović",
+      "body": "Preko noći napadalo je mnogo snijega. Ema i Jakov odu u vrt. Otkotrljaju tri velike kugle i stave ih jednu na drugu. Snjegović ima crne oči i nos od mrkve. Ema mu da svoj crveni šal. Jakov mu na glavu stavi zelenu kantu. Djeca se smiješe i ponosna su na svog snjegovića. Zatim doleti ptičica, sjedne na kantu i veselo zacvrkuće.",
+      "syllable_body": "Pre|ko no|ći na|pa|da|lo je mno|go sni|je|ga. E|ma i Ja|kov o|du u vrt. O|tko|tr|lja|ju tri ve|li|ke ku|gle i sta|ve ih je|dnu na dru|gu. Snje|go|vić i|ma cr|ne o|či i nos od mr|kve. E|ma mu da svoj cr|ve|ni šal. Ja|kov mu na gla|vu sta|vi ze|le|nu kan|tu. Dje|ca se smi|je|še i po|no|sna su na svog snje|go|vi|ća. Za|tim do|le|ti pti|či|ca, sje|dne na kan|tu i ve|se|lo za|cvr|ku|će.",
+      "imageId": "snowman_garden",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_vratasca_u_stablu_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Vratašca u stablu",
+      "body": "Mia leži u travi kraj starog stabla. Među korijenjem vidi mala drvena vratašca s okruglim prozorčićem. Odjednom se vratašca otvore. Izađe miš u crvenom kaputiću, s čajnikom u šapicama. „Hoćeš li čaja?“ pita. Ali Mia je prevelika da uđe unutra. Zato joj miš donese van šalicu, malu kao naprstak. Čaj miriše na cvijeće.",
+      "syllable_body": "Mi|a le|ži u tra|vi kraj sta|rog sta|bla. Me|đu ko|ri|je|njem vi|di ma|la dr|ve|na vra|taš|ca s o|kru|glim pro|zor|či|ćem. O|dje|dnom se vra|taš|ca o|tvo|re. I|za|đe miš u cr|ve|nom ka|pu|ti|ću, s čaj|ni|kom u ša|pi|ca|ma. „Ho|ćeš li ča|ja?“ pi|ta. A|li Mi|a je pre|ve|li|ka da u|đe u|nu|tra. Za|to joj miš do|ne|se van ša|li|cu, ma|lu ka|o na|pr|stak. Čaj mi|ri|še na cvi|je|će.",
+      "imageId": "tiny_door",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_divova_carapa_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Divova čarapa",
+      "body": "Na livadi punoj ovaca Marko pronađe nešto neobično: golemu čarapu s crvenim i bijelim prugama! Velika je kao šator. Marko se uvuče u nju i smije se. Ovce ga začuđeno gledaju. Odjednom se zemlja zatrese. Daleko iza brežuljaka hoda div s jednom bosom nogom. „Evo tvoje čarape!“ viče Marko i maše mu. Div se nasmije i mahne mu natrag.",
+      "syllable_body": "Na li|va|di pu|noj o|va|ca Mar|ko pro|na|đe ne|što ne|o|bič|no: go|le|mu ča|ra|pu s cr|ve|nim i bi|je|lim pru|ga|ma! Ve|li|ka je ka|o ša|tor. Mar|ko se u|vu|če u nju i smi|je se. Ov|ce ga za|ču|đe|no gle|da|ju. O|dje|dnom se ze|mlja za|tre|se. Da|le|ko i|za bre|žu|lja|ka ho|da div s je|dnom bo|som no|gom. „E|vo tvo|je ča|ra|pe!“ vi|če Mar|ko i ma|še mu. Div se na|smi|je i ma|hne mu na|trag.",
+      "imageId": "giant_sock",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_plavi_bicikl_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Plavi bicikl",
+      "body": "U subotu ujutro Petra je htjela biciklom otići do bake i djeda. No njezinu plavom biciklu spao je lanac. Petra je bila tužna jer ga nije znala popraviti. Njezin brat Luka donio je crvenu kutiju s alatom. Oboje su otišli u šupu. Najprije su potražili što se pokvarilo. Luka je uzeo ključ i zategnuo vijke na kotaču. Petra je držala upravljač da bicikl ne padne. Zatim su zajedno vratili lanac na mjesto. Kad su završili, Petra se provozala po dvorištu. Bicikl je vozio kao nov!",
+      "syllable_body": "U su|bo|tu u|ju|tro Pe|tra je htje|la bi|ci|klom o|ti|ći do ba|ke i dje|da. No nje|zi|nu pla|vom bi|ci|klu spa|o je la|nac. Pe|tra je bi|la tu|žna jer ga ni|je zna|la po|pra|vi|ti. Nje|zin brat Lu|ka do|ni|o je cr|ve|nu ku|ti|ju s a|la|tom. O|bo|je su o|ti|šli u šu|pu. Naj|pri|je su po|tra|ži|li što se po|kva|ri|lo. Lu|ka je u|ze|o ključ i za|te|gnu|o vij|ke na ko|ta|ču. Pe|tra je dr|ža|la u|prav|ljač da bi|cikl ne pa|dne. Za|tim su za|je|dno vra|ti|li la|nac na mje|sto. Kad su za|vr|ši|li, Pe|tra se pro|vo|za|la po dvo|ri|štu. Bi|cikl je vo|zi|o ka|o nov!",
+      "imageId": "bicycle_repair",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_puz_pobjednik_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Puž pobjednik",
+      "body": "Životinje u šumi organizirale su utrku. Zec je bio siguran da će pobijediti jer je jako brzo trčao. Puž je bio najsporiji od svih. Kad je utrka počela, zec je pojurio naprijed. No nakon nekog vremena sjeo je pod drvo. „Imam vremena malo odrijemati,“ pomislio je. Puž je puzao polako, ali nijednom nije stao. Vjeverica, srna, jazavac i jež bodrili su ga s ruba staze. Navečer, kad je sunce zalazilo, puž je dotaknuo crvenu vrpcu. Zec je još uvijek spavao! Kad se probudio, svi su čestitali pužu.",
+      "syllable_body": "Ži|vo|ti|nje u šu|mi or|ga|ni|zi|ra|le su u|tr|ku. Zec je bi|o si|gu|ran da će po|bi|je|di|ti jer je ja|ko br|zo tr|ča|o. Puž je bi|o naj|spo|ri|ji od svih. Kad je u|tr|ka po|če|la, zec je po|ju|ri|o na|pri|jed. No na|kon ne|kog vre|me|na sje|o je pod dr|vo. „I|mam vre|me|na ma|lo o|dri|je|ma|ti,“ po|mi|sli|o je. Puž je pu|za|o po|la|ko, a|li ni|je|dnom ni|je sta|o. Vje|ve|ri|ca, sr|na, ja|za|vac i jež bo|dri|li su ga s ru|ba sta|ze. Na|ve|čer, kad je sun|ce za|la|zi|lo, puž je do|ta|knu|o cr|ve|nu vrp|cu. Zec je još u|vi|jek spa|va|o! Kad se pro|bu|di|o, svi su če|sti|ta|li pu|žu.",
+      "imageId": "polz_dirka",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_subotnji_orkestar_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Subotnji orkestar",
+      "body": "Svake subote četvero djece dolazi gospođi Mariji. Ona je vesela baka s okruglim naočalama koja jako voli glazbu. Ema svira violinu, a Ivan flautu. Petra ima violončelo koje je gotovo veliko kao ona. Jakov udara u bubanj i drži ritam. Na početku je svatko svirao po svome i čula se samo buka. Ali gospođa Marija naučila ih je da slušaju jedni druge. Sada njihova pjesma zvuči prekrasno. Gospođa Marija ravna rukama i zadovoljno se smiješi. Susjedi zastaju pod otvorenim prozorom i slušaju.",
+      "syllable_body": "Sva|ke su|bo|te če|tve|ro dje|ce do|la|zi go|spo|đi Ma|ri|ji. O|na je ve|se|la ba|ka s o|kru|glim na|o|ča|la|ma ko|ja ja|ko vo|li gla|zbu. E|ma svi|ra vi|o|li|nu, a I|van fla|u|tu. Pe|tra i|ma vi|o|lon|če|lo ko|je je go|to|vo ve|li|ko ka|o o|na. Ja|kov u|da|ra u bu|banj i dr|ži ri|tam. Na po|če|tku je sva|tko svi|ra|o po svo|me i ču|la se sa|mo bu|ka. A|li go|spo|đa Ma|ri|ja na|u|či|la ih je da slu|ša|ju je|dni dru|ge. Sa|da nji|ho|va pje|sma zvu|či pre|kra|sno. Go|spo|đa Ma|ri|ja rav|na ru|ka|ma i za|do|volj|no se smi|je|ši. Su|sje|di za|sta|ju pod o|tvo|re|nim pro|zo|rom i slu|ša|ju.",
+      "imageId": "music_rehearsal",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_dvorac_od_pijeska_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Dvorac od pijeska",
+      "body": "Prošlog ljeta Ema i Luka bili su na moru. Jednog dana odlučili su sagraditi najveći dvorac od pijeska na cijeloj plaži. Vodu su nosili u crvenoj kantici, a kopali su plavom lopaticom. Dvorac je imao visoke kule i mala vrata. Ema ga je ukrasila školjkama, a Luka je na najvišu kulu zataknuo bijelo pero. Zatim su oko dvorca iskopali jarak. Kad su došli valovi, voda je napunila jarak, ali dvorac je ostao stajati! Na kraju su djeca sjela u pijesak i divila se svom djelu.",
+      "syllable_body": "Pro|šlog lje|ta E|ma i Lu|ka bi|li su na mo|ru. Je|dnog da|na o|dlu|či|li su sa|gra|di|ti naj|ve|ći dvo|rac od pi|je|ska na ci|je|loj pla|ži. Vo|du su no|si|li u cr|ve|noj kan|ti|ci, a ko|pa|li su pla|vom lo|pa|ti|com. Dvo|rac je i|ma|o vi|so|ke ku|le i ma|la vra|ta. E|ma ga je u|kra|si|la školj|ka|ma, a Lu|ka je na naj|vi|šu ku|lu za|ta|knu|o bi|je|lo pe|ro. Za|tim su o|ko dvor|ca i|sko|pa|li ja|rak. Kad su do|šli va|lo|vi, vo|da je na|pu|ni|la ja|rak, a|li dvo|rac je o|sta|o sta|ja|ti! Na kra|ju su dje|ca sje|la u pi|je|sak i di|vi|la se svom dje|lu.",
+      "imageId": "sandcastle_beach",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_jednorog_u_vrtu_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Jednorog u vrtu",
+      "body": "Jedne večeri Lucija je izašla u vrt zaliti povrće. Kraj gredica s mrkvom ugledala je malog bijelog jednoroga. Imao je srebrni rog i zlatnu grivu s upletenim cvjetićima. Oprezno je hodao između salate. Svuda gdje je stao kopitom, iz zemlje je izraslo cvijeće svih boja. Lucija je kleknula i pružila mu ruku. Jednorog joj je stavio kopito na dlan, kao da joj želi nešto reći. Zatim je zatresao grivom i otkasao prema šumi dok je sunce zalazilo. Otada je Lucijin vrt najljepši u selu.",
+      "syllable_body": "Je|dne ve|če|ri Lu|ci|ja je i|za|šla u vrt za|li|ti po|vr|će. Kraj gre|di|ca s mr|kvom u|gle|da|la je ma|log bi|je|log je|dno|ro|ga. I|ma|o je sre|br|ni rog i zlat|nu gri|vu s u|ple|te|nim cvje|ti|ći|ma. O|pre|zno je ho|da|o i|zme|đu sa|la|te. Svu|da gdje je sta|o ko|pi|tom, iz ze|mlje je i|zra|slo cvi|je|će svih bo|ja. Lu|ci|ja je kle|knu|la i pru|ži|la mu ru|ku. Je|dno|rog joj je sta|vi|o ko|pi|to na dlan, ka|o da joj že|li ne|što re|ći. Za|tim je za|tre|sa|o gri|vom i o|tka|sa|o pre|ma šu|mi dok je sun|ce za|la|zi|lo. O|ta|da je Lu|ci|jin vrt naj|lje|pši u se|lu.",
+      "imageId": "unicorn_garden",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_carobnjakov_sesir_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Čarobnjakov šešir",
+      "body": "Jednog sunčanog poslijepodneva Ivan se popeo na tavan. Ondje je pronašao staru škrinju punu neobičnih stvari. U njoj su bile stare knjige, dalekozor i sat. Na vrhu je ležao plavi šešir sa zlatnim zvijezdama i mjesecima. Bio mu je prevelik, ali Ivan ga je ipak stavio na glavu. U tom trenutku sivi mačak u naslonjaču podigao je šapu i rekao: „Napokon me čuješ!“ Ivan je ostao otvorenih usta. „Ti znaš govoriti?“ „Već godinama,“ odgovorio je mačak. „A kad me već čuješ, htio bih više mlijeka za večeru.“",
+      "syllable_body": "Je|dnog sun|ča|nog po|sli|je|po|dne|va I|van se po|pe|o na ta|van. On|dje je pro|na|ša|o sta|ru škri|nju pu|nu ne|o|bič|nih stva|ri. U njoj su bi|le sta|re knji|ge, da|le|ko|zor i sat. Na vr|hu je le|ža|o pla|vi še|šir sa zlat|nim zvi|je|zda|ma i mje|se|ci|ma. Bi|o mu je pre|ve|lik, a|li I|van ga je i|pak sta|vi|o na gla|vu. U tom tre|nu|tku si|vi ma|čak u na|slo|nja|ču po|di|ga|o je ša|pu i re|ka|o: „Na|po|kon me ču|ješ!“ I|van je o|sta|o o|tvo|re|nih u|sta. „Ti znaš go|vo|ri|ti?“ „Već go|di|na|ma,“ od|go|vo|ri|o je ma|čak. „A kad me već ču|ješ, hti|o bih vi|še mli|je|ka za ve|če|ru.“",
+      "imageId": "wizard_hat",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_srebrni_kljucic_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Srebrni ključić",
+      "body": "Filip je provodio praznike kod bake, u kući s vrtom punim cvijeća. Ondje su rasle metvica, lavanda i rajčice. Jednog poslijepodneva, dok je zalijevao metvicu, vidio je da nešto svjetluca u zemlji. Bio je to mali srebrni ključić.\n\n„Bako, što se otključava ovim ključićem?“ upitao je. Baka je pogledala ključić i nasmiješila se. „Mislim da znam,“ rekla je. Iz kuće je donijela staru drvenu kutiju sa željeznom bravom.\n\nFilip je stavio ključić u bravu i okrenuo ga. Poklopac se uz škripu otvorio. Unutra su bile stare fotografije i razglednice: planine pod snijegom, grad uz jezero i mlada djevojka u dugoj haljini.\n\n„Ta djevojka sam ja,“ rekla je baka. I mačka je došla bliže da pogleda. Cijelu večer baka je Filipu pričala o svojim putovanjima.",
+      "syllable_body": "Fi|lip je pro|vo|di|o pra|zni|ke kod ba|ke, u ku|ći s vr|tom pu|nim cvi|je|ća. On|dje su ra|sle me|tvi|ca, la|van|da i raj|či|ce. Je|dnog po|sli|je|po|dne|va, dok je za|li|je|va|o me|tvi|cu, vi|di|o je da ne|što svje|tlu|ca u ze|mlji. Bi|o je to ma|li sre|br|ni klju|čić.\n\n„Ba|ko, što se ot|klju|ča|va o|vim klju|či|ćem?“ u|pi|ta|o je. Ba|ka je po|gle|da|la klju|čić i na|smi|je|ši|la se. „Mi|slim da znam,“ re|kla je. Iz ku|će je do|ni|je|la sta|ru dr|ve|nu ku|ti|ju sa že|lje|znom bra|vom.\n\nFi|lip je sta|vi|o klju|čić u bra|vu i o|kre|nu|o ga. Po|klo|pac se uz škri|pu o|tvo|ri|o. U|nu|tra su bi|le sta|re fo|to|gra|fi|je i raz|gle|dni|ce: pla|ni|ne pod sni|je|gom, grad uz je|ze|ro i mla|da dje|voj|ka u du|goj ha|lji|ni.\n\n„Ta dje|voj|ka sam ja,“ re|kla je ba|ka. I mač|ka je do|šla bli|že da po|gle|da. Ci|je|lu ve|čer ba|ka je Fi|li|pu pri|ča|la o svo|jim pu|to|va|nji|ma.",
+      "imageId": "silver_key_garden",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_zvuk_u_staji_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Zvuk u staji",
+      "body": "Tijekom ljetnih praznika Lucija je bila kod bake na selu. Jednog jutra iz staje je začula neobičan zvuk: „kuc, kuc, kuc“. Lucija se malo uplašila i zastala. Je li to miš? Ili nešto veće?\n\nPolako je otvorila drvena vrata i ušla. U staji je bilo polumračno i mirisalo je na sijeno. Zvuk je dolazio iz gnijezda od slame. U njemu je ležalo bijelo jaje koje je kokoš ostavila samo. I jaje se micalo!\n\nLucija je pozvala baku. Obje su se nagnule nad gnijezdo i tiho čekale. „Kuc, kuc,“ začulo se ponovno. Odjednom je ljuska pukla i pojavio se mali žuti kljunić. Zatim je izašlo mokro pile, otreslo se i reklo: „Pi!“\n\n„Nije to bilo nikakvo čudovište,“ nasmijala se Lucija. „To je najmanja životinja na cijelom imanju!“",
+      "syllable_body": "Ti|je|kom ljet|nih pra|zni|ka Lu|ci|ja je bi|la kod ba|ke na se|lu. Je|dnog ju|tra iz sta|je je za|ču|la ne|o|bi|čan zvuk: „kuc, kuc, kuc“. Lu|ci|ja se ma|lo u|pla|ši|la i za|sta|la. Je li to miš? I|li ne|što ve|će?\n\nPo|la|ko je o|tvo|ri|la dr|ve|na vra|ta i u|šla. U sta|ji je bi|lo po|lu|mrač|no i mi|ri|sa|lo je na si|je|no. Zvuk je do|la|zi|o iz gni|je|zda od sla|me. U nje|mu je le|ža|lo bi|je|lo ja|je ko|je je ko|koš o|sta|vi|la sa|mo. I ja|je se mi|ca|lo!\n\nLu|ci|ja je po|zva|la ba|ku. O|bje su se na|gnu|le nad gni|je|zdo i ti|ho če|ka|le. „Kuc, kuc,“ za|ču|lo se po|nov|no. O|dje|dnom je lju|ska pu|kla i po|ja|vi|o se ma|li žu|ti klju|nić. Za|tim je i|za|šlo mo|kro pi|le, o|tre|slo se i re|klo: „Pi!“\n\n„Ni|je to bi|lo ni|ka|kvo ču|do|vi|šte,“ na|smi|ja|la se Lu|ci|ja. „To je naj|ma|nja ži|vo|ti|nja na ci|je|lom i|ma|nju!“",
+      "imageId": "piscancek_skedenj",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_svjetiljka_svjetionicara_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Svjetiljka svjetioničara",
+      "body": "Na stijeni kraj mora stajao je bijeli svjetionik s crvenim krovom. U njemu je živio gospodin Josip, svjetioničar. Svake večeri palio je veliko svjetlo da brodovima pokaže put.\n\nJedne večeri počeo je puhati jak vjetar. Nebo je postalo narančasto i brzo se smračilo. Valovi su udarali o stijene i dizali bijelu pjenu. Odjednom je gospodin Josip u daljini ugledao mali čamac. U njemu su bila dva ribara koji nisu mogli pronaći put do luke.\n\nGospodin Josip uzeo je svoju staru svjetiljku i spustio se niz stijene što bliže vodi. Podigao je svjetiljku visoko i mahao njome amo-tamo. „Ovamo, ovuda!“ vikao je.\n\nRibari su ugledali svjetlo i okrenuli čamac prema njemu. Uskoro su pristali uz obalu. Mahnuli su svjetioničaru i smijali se od radosti. Iznad njih kružili su galebovi.",
+      "syllable_body": "Na sti|je|ni kraj mo|ra sta|ja|o je bi|je|li svje|ti|o|nik s cr|ve|nim kro|vom. U nje|mu je ži|vi|o go|spo|din Jo|sip, svje|ti|o|ni|čar. Sva|ke ve|če|ri pa|li|o je ve|li|ko svje|tlo da bro|do|vi|ma po|ka|že put.\n\nJe|dne ve|če|ri po|če|o je pu|ha|ti jak vje|tar. Ne|bo je po|sta|lo na|ran|ča|sto i br|zo se smra|či|lo. Va|lo|vi su u|da|ra|li o sti|je|ne i di|za|li bi|je|lu pje|nu. O|dje|dnom je go|spo|din Jo|sip u da|lji|ni u|gle|da|o ma|li ča|mac. U nje|mu su bi|la dva ri|ba|ra ko|ji ni|su mo|gli pro|na|ći put do lu|ke.\n\nGo|spo|din Jo|sip u|ze|o je svo|ju sta|ru svje|tilj|ku i spu|sti|o se niz sti|je|ne što bli|že vo|di. Po|di|ga|o je svje|tilj|ku vi|so|ko i ma|ha|o njo|me a|mo-ta|mo. „O|va|mo, o|vu|da!“ vi|ka|o je.\n\nRi|ba|ri su u|gle|da|li svje|tlo i o|kre|nu|li ča|mac pre|ma nje|mu. U|sko|ro su pri|sta|li uz o|ba|lu. Ma|hnu|li su svje|ti|o|ni|ča|ru i smi|ja|li se od ra|do|sti. I|znad njih kru|ži|li su ga|le|bo|vi.",
+      "imageId": "lighthouse_rescue",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_hranilica_za_ptice_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Hranilica za ptice",
+      "body": "Ova zima bila je vrlo hladna. Snijeg je prekrio polja i drveće i ptice nisu imale što jesti. Ema ih je svako jutro viđala na ogradi, šćućurene i gladne.\n\n„Moramo im pomoći,“ rekla je svom bratu Marku. S tatom su od dasaka napravili malu hranilicu. Stavili su joj crveni krović da u nju ne pada snijeg.\n\nU subotu su izašli u vrt. Snijeg je bio do koljena, a mraz ih je štipao za obraze. Ema se propela na prste i objesila hranilicu na debelu granu starog stabla. Marko je držao vrećicu sa suncokretovim sjemenkama i nasuo ih unutra.\n\nNisu se stigli ni udaljiti, a već je stigao prvi gost: sjenica sa žutim trbuščićem. Zatim su doletjele i druge. Otada djeca svaki dan pune hranilicu, a njihov je vrt pun pjesme.",
+      "syllable_body": "O|va zi|ma bi|la je vr|lo hla|dna. Sni|jeg je pre|kri|o po|lja i dr|ve|će i pti|ce ni|su i|ma|le što je|sti. E|ma ih je sva|ko ju|tro vi|đa|la na o|gra|di, šću|ću|re|ne i gla|dne.\n\n„Mo|ra|mo im po|mo|ći,“ re|kla je svom bra|tu Mar|ku. S ta|tom su od da|sa|ka na|pra|vi|li ma|lu hra|ni|li|cu. Sta|vi|li su joj cr|ve|ni kro|vić da u nju ne pa|da sni|jeg.\n\nU su|bo|tu su i|za|šli u vrt. Sni|jeg je bi|o do ko|lje|na, a mraz ih je šti|pa|o za o|bra|ze. E|ma se pro|pe|la na pr|ste i o|bje|si|la hra|ni|li|cu na de|be|lu gra|nu sta|rog sta|bla. Mar|ko je dr|ža|o vre|ći|cu sa sun|co|kre|to|vim sje|men|ka|ma i na|su|o ih u|nu|tra.\n\nNi|su se sti|gli ni u|da|lji|ti, a već je sti|ga|o pr|vi gost: sje|ni|ca sa žu|tim tr|buš|či|ćem. Za|tim su do|le|tje|le i dru|ge. O|ta|da dje|ca sva|ki dan pu|ne hra|ni|li|cu, a nji|hov je vrt pun pje|sme.",
+      "imageId": "bird_feeder_winter",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_zmaj_bez_vatre_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Zmaj bez vatre",
+      "body": "Na brdu iznad sela živio je veliki ljubičasti zmaj. Svi zmajevi iz priča rigaju vatru, ali on to nije znao. Koliko god se trudio, iz nosa mu je izlazio samo mali sivi oblačić dima. Zato je živio sam i nikad nije silazio u selo.\n\nJedne večeri Mia se popela na brdo sa svojom svjetiljkom. Pronašla je zmaja sklupčanog u travi, tužnih očiju. „Zašto si sam?“ upitala je. „Zato što ne znam napraviti vatru,“ uzdahnuo je zmaj.\n\nMia je podigla svjetiljku prema njemu. „Ni ja ne znam napraviti vatru,“ rekla je. „Ali imam svjetlo. Uzmi svjetiljku da vidiš put do sela.“\n\nZmaj se prvi put nasmiješio. Te noći sišao je u selo sa svjetiljkom u pandžama, a oko njega su letjele krijesnice. Ljudi iz sela lijepo su ga dočekali.",
+      "syllable_body": "Na br|du i|znad se|la ži|vi|o je ve|li|ki lju|bi|ča|sti zmaj. Svi zma|je|vi iz pri|ča ri|ga|ju va|tru, a|li on to ni|je zna|o. Ko|li|ko god se tru|di|o, iz no|sa mu je i|zla|zi|o sa|mo ma|li si|vi o|bla|čić di|ma. Za|to je ži|vi|o sam i ni|kad ni|je si|la|zi|o u se|lo.\n\nJe|dne ve|če|ri Mi|a se po|pe|la na br|do sa svo|jom svje|tilj|kom. Pro|na|šla je zma|ja sklup|ča|nog u tra|vi, tu|žnih o|či|ju. „Za|što si sam?“ u|pi|ta|la je. „Za|to što ne znam na|pra|vi|ti va|tru,“ u|zda|hnu|o je zmaj.\n\nMi|a je po|di|gla svje|tilj|ku pre|ma nje|mu. „Ni ja ne znam na|pra|vi|ti va|tru,“ re|kla je. „A|li i|mam svje|tlo. U|zmi svje|tilj|ku da vi|diš put do se|la.“\n\nZmaj se pr|vi put na|smi|je|ši|o. Te no|ći si|ša|o je u se|lo sa svje|tilj|kom u pan|dža|ma, a o|ko nje|ga su le|tje|le kri|je|sni|ce. Lju|di iz se|la li|je|po su ga do|če|ka|li.",
+      "imageId": "dragon_lantern",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_sirenina_skoljka_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Sirenina školjka",
+      "body": "Marko se volio navečer šetati po stijenama uz more. Jednog dana, dok je sunce zalazilo, pronašao je među algama veliku ružičastu školjku. Bila je tako lijepa da ju je htio ponijeti kući.\n\nOdjednom je iz vode začuo glas: „Molim te, nemoj je uzeti!“ Među valovima bila je djevojčica duge kose, u kojoj su bile morske zvijezde. Iza nje se u vodi presijavao zeleni rep. Bila je to sirena!\n\n„Ova školjka je moja svjetiljka,“ rekla je sirena. „Noću mi na dnu mora njezino svjetlo pokazuje put kući.“\n\nMarko se nagnuo sa stijene i pružio joj školjku. Sirena se nasmiješila i nestala pod valovima. Kasnije je Marko daleko u vodi vidio ružičasto svjetlo koje je treptalo kao zahvala. Otada Marko svake večeri dolazi na more.",
+      "syllable_body": "Mar|ko se vo|li|o na|ve|čer še|ta|ti po sti|je|na|ma uz mo|re. Je|dnog da|na, dok je sun|ce za|la|zi|lo, pro|na|ša|o je me|đu al|ga|ma ve|li|ku ru|ži|ča|stu školj|ku. Bi|la je ta|ko li|je|pa da ju je hti|o po|ni|je|ti ku|ći.\n\nO|dje|dnom je iz vo|de za|ču|o glas: „Mo|lim te, ne|moj je u|ze|ti!“ Me|đu va|lo|vi|ma bi|la je dje|voj|či|ca du|ge ko|se, u ko|joj su bi|le mor|ske zvi|je|zde. I|za nje se u vo|di pre|si|ja|va|o ze|le|ni rep. Bi|la je to si|re|na!\n\n„O|va školj|ka je mo|ja svje|tilj|ka,“ re|kla je si|re|na. „No|ću mi na dnu mo|ra nje|zi|no svje|tlo po|ka|zu|je put ku|ći.“\n\nMar|ko se na|gnu|o sa sti|je|ne i pru|ži|o joj školj|ku. Si|re|na se na|smi|je|ši|la i ne|sta|la pod va|lo|vi|ma. Ka|sni|je je Mar|ko da|le|ko u vo|di vi|di|o ru|ži|ča|sto svje|tlo ko|je je tre|pta|lo ka|o za|hva|la. O|ta|da Mar|ko sva|ke ve|če|ri do|la|zi na mo|re.",
+      "imageId": "mermaid_shell",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_vrt_sa_zelenim_vratima_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Vrt sa zelenim vratima",
+      "body": "Pokraj kuće bake i djeda bio je stari vrt, skriven iza kamenog zida. Njegova zelena vrata bila su mnogo godina zaključana. Jednog proljeća djed je dao ključ Petri. „Ako se budeš brinula o njemu, vrt će biti tvoj,“ rekao je.\n\nPetra je radila cijeli mjesec. Počupala je korov, pomela kamenu stazu i u teglice nasula novu zemlju. Posadila je lavandu, ružmarin, bosiljak i rajčice. Djed joj je pokazao kako se pravilno sadi i koliko vode trebaju biljke. Svako jutro prije škole izlazila je s kantom za zalijevanje i sve zalila. Na početku se ništa nije događalo i Petra se pitala hoće li biljčice ikad narasti.\n\nA onda su se jednog dana pojavili prvi listići. Nakon nekoliko tjedana vrt je mirisao na lavandu i bosiljak, a među cvijećem su zujale pčele. Susjedi su zastajali kraj vrata i gledali. Došao je i djed, sjeo na drvenu klupu i nasmiješio se. „Znao sam da vrt čeka baš nekoga kao što si ti,“ rekao je.",
+      "syllable_body": "Po|kraj ku|će ba|ke i dje|da bi|o je sta|ri vrt, skri|ven i|za ka|me|nog zi|da. Nje|go|va ze|le|na vra|ta bi|la su mno|go go|di|na za|klju|ča|na. Je|dnog pro|lje|ća djed je da|o ključ Pe|tri. „A|ko se bu|deš bri|nu|la o nje|mu, vrt će bi|ti tvoj,“ re|ka|o je.\n\nPe|tra je ra|di|la ci|je|li mje|sec. Po|ču|pa|la je ko|rov, po|me|la ka|me|nu sta|zu i u te|gli|ce na|su|la no|vu ze|mlju. Po|sa|di|la je la|van|du, ru|žma|rin, bo|si|ljak i raj|či|ce. Djed joj je po|ka|za|o ka|ko se pra|vil|no sa|di i ko|li|ko vo|de tre|ba|ju bilj|ke. Sva|ko ju|tro pri|je ško|le i|zla|zi|la je s kan|tom za za|li|je|va|nje i sve za|li|la. Na po|če|tku se ni|šta ni|je do|ga|đa|lo i Pe|tra se pi|ta|la ho|će li bilj|či|ce i|kad na|ra|sti.\n\nA on|da su se je|dnog da|na po|ja|vi|li pr|vi li|sti|ći. Na|kon ne|ko|li|ko tje|da|na vrt je mi|ri|sa|o na la|van|du i bo|si|ljak, a me|đu cvi|je|ćem su zu|ja|le pče|le. Su|sje|di su za|sta|ja|li kraj vra|ta i gle|da|li. Do|ša|o je i djed, sje|o na dr|ve|nu klu|pu i na|smi|je|ši|o se. „Zna|o sam da vrt če|ka baš ne|ko|ga ka|o što si ti,“ re|ka|o je.",
+      "imageId": "green_garden_gate",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_ime_za_macica_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Ime za mačića",
+      "body": "Već tjedan dana u Eminoj kući živio je mali prugasti mačić. Ema ga je pronašla jedne kišne večeri kraj klupe u parku, mokrog i drhtavog. Mama je tada rekla: „Može ostati kod nas dok ne nađemo njegova vlasnika.“\n\nEma je nacrtala plakate s mačićem i zalijepila ih na stupove po cijelom kvartu. Svaki put kad bi netko pozvonio, trčala je do vrata, ali nitko nije došao po mačića. Mačić je u međuvremenu naučio piti mlijeko iz zdjelice sa šapicama, igrati se plišanim mišem i spavati u košari s plavom dekom. Svaki dan bio je malo deblji, a krzno mu je počelo sjati. Navečer bi joj se popeo u krilo i preo kao mali motor.\n\nJedne večeri vani je opet padala kiša. Mama je sjela do Eme na tepih. „Nitko nije došao,“ rekla je tiho. „Mislim da je mačić već pronašao svoj dom.“ Ema je skočila od radosti. „Onda mora dobiti ime!“ uzviknula je. Zajedno su odabrale ime Oblačić jer mu je krzno bilo sivo i meko.",
+      "syllable_body": "Već tje|dan da|na u E|mi|noj ku|ći ži|vi|o je ma|li pru|ga|sti ma|čić. E|ma ga je pro|na|šla je|dne ki|šne ve|če|ri kraj klu|pe u par|ku, mo|krog i drh|ta|vog. Ma|ma je ta|da re|kla: „Mo|že o|sta|ti kod nas dok ne na|đe|mo nje|go|va vla|sni|ka.“\n\nE|ma je na|cr|ta|la pla|ka|te s ma|či|ćem i za|li|je|pi|la ih na stu|po|ve po ci|je|lom kvar|tu. Sva|ki put kad bi ne|tko po|zvo|ni|o, tr|ča|la je do vra|ta, a|li ni|tko ni|je do|ša|o po ma|či|ća. Ma|čić je u me|đu|vre|me|nu na|u|či|o pi|ti mli|je|ko iz zdje|li|ce sa ša|pi|ca|ma, i|gra|ti se pli|ša|nim mi|šem i spa|va|ti u ko|ša|ri s pla|vom de|kom. Sva|ki dan bi|o je ma|lo deb|lji, a kr|zno mu je po|če|lo sja|ti. Na|ve|čer bi joj se po|pe|o u kri|lo i pre|o ka|o ma|li mo|tor.\n\nJe|dne ve|če|ri va|ni je o|pet pa|da|la ki|ša. Ma|ma je sje|la do E|me na te|pih. „Ni|tko ni|je do|ša|o,“ re|kla je ti|ho. „Mi|slim da je ma|čić već pro|na|ša|o svoj dom.“ E|ma je sko|či|la od ra|do|sti. „On|da mo|ra do|bi|ti i|me!“ u|zvi|knu|la je. Za|je|dno su o|da|bra|le i|me O|bla|čić jer mu je kr|zno bi|lo si|vo i me|ko.",
+      "imageId": "muc_dom",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_kod_vatrogasaca_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Dan kod vatrogasaca",
+      "body": "Jednog svibanjskog jutra drugi razred otišao je u posjet vatrogascima. Djeca su stajala iza narančastih čunjeva i otvorenih usta gledala dugo, crveno i sjajno vatrogasno vozilo. Sa strane je imalo cijevi, ljestve i mnogo malih vratašca. Vrata postaje bila su širom otvorena.\n\nVatrogasac Tomislav pozdravio ih je s osmijehom. „Pokazat ću vam kako se pripremamo,“ rekao je. Kleknuo je i odmotao žutu cijev, debelu i tešku. Pokazao im je i crvenu kacigu koja mu štiti glavu te posebno odijelo koje ne gori. Njegova kolegica Ivana uhvatila je kraj cijevi i spojila ga s vozilom. Vatrogasci moraju biti snažni i spretni, zato mnogo vježbaju.\n\n„Koliko brzo krećete kad se oglasi uzbuna?“ upitala je Ana. „Za manje od minute,“ odgovorio je Tomislav. Djeca su ostala zadivljena i pljeskala su. Smjela su sjesti i u vozilo, za volan. Na kraju je svatko dobio malu plastičnu kacigu. Ana je odmah stavila svoju na glavu. U autobusu su svi pričali o istome: kad odrastu, bit će vatrogasci.",
+      "syllable_body": "Je|dnog svi|banj|skog ju|tra dru|gi ra|zred o|ti|ša|o je u po|sjet va|tro|ga|sci|ma. Dje|ca su sta|ja|la i|za na|ran|ča|stih ču|nje|va i o|tvo|re|nih u|sta gle|da|la du|go, cr|ve|no i sjaj|no va|tro|ga|sno vo|zi|lo. Sa stra|ne je i|ma|lo ci|je|vi, lje|stve i mno|go ma|lih vra|taš|ca. Vra|ta po|sta|je bi|la su ši|rom o|tvo|re|na.\n\nVa|tro|ga|sac To|mi|slav po|zdra|vi|o ih je s o|smi|je|hom. „Po|ka|zat ću vam ka|ko se pri|pre|ma|mo,“ re|ka|o je. Kle|knu|o je i od|mo|ta|o žu|tu ci|jev, de|be|lu i te|šku. Po|ka|za|o im je i cr|ve|nu ka|ci|gu ko|ja mu šti|ti gla|vu te po|seb|no o|di|je|lo ko|je ne go|ri. Nje|go|va ko|le|gi|ca I|va|na u|hva|ti|la je kraj ci|je|vi i spo|ji|la ga s vo|zi|lom. Va|tro|ga|sci mo|ra|ju bi|ti sna|žni i spret|ni, za|to mno|go vjež|ba|ju.\n\n„Ko|li|ko br|zo kre|će|te kad se o|gla|si u|zbu|na?“ u|pi|ta|la je A|na. „Za ma|nje od mi|nu|te,“ od|go|vo|ri|o je To|mi|slav. Dje|ca su o|sta|la za|div|lje|na i plje|ska|la su. Smje|la su sje|sti i u vo|zi|lo, za vo|lan. Na kra|ju je sva|tko do|bi|o ma|lu pla|stič|nu ka|ci|gu. A|na je od|mah sta|vi|la svo|ju na gla|vu. U a|u|to|bu|su su svi pri|ča|li o i|sto|me: kad o|dra|stu, bit će va|tro|ga|sci.",
+      "imageId": "fire_station",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_div_u_muzeju_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Div u muzeju",
+      "body": "Velika dvorana muzeja bila je puna svjetla. Kroz visoke prozore sunce je padalo na golem kostur s vratom dugim kao drvo. Glava dinosaura bila je tako visoko da su djeca morala gledati ravno gore. Kad su stala pred njega, od čuđenja nisu mogla ništa reći. Svi su na leđima nosili šarene ruksake.\n\n„Ovo je diplodok,“ rekao je vodič, gospodin s bijelom bradom. „Živio je davno, mnogo prije nego što su se pojavili ljudi. Bio je dug kao tri autobusa i jeo je samo biljke.“ Lucija je upitala kako su kosti dospjele u muzej. Vodič je objasnio da su ih znanstvenici pronašli u zemlji i pažljivo iskopali, komad po komad. Zatim su ih složili kao golemu slagalicu.\n\nSamo Filip nije slušao. Sjedio je na podu malo dalje i crtao kostur u bilježnicu. Na crtežu nije nedostajala nijedna kost. Kad je vodič završio, djeca su se okupila oko njega. „Izgleda baš kao pravi!“ rekla je Lucija. Vodič se nasmiješio: „Možda ćeš jednoga dana baš ti pronaći novog dinosaura.“",
+      "syllable_body": "Ve|li|ka dvo|ra|na mu|ze|ja bi|la je pu|na svje|tla. Kroz vi|so|ke pro|zo|re sun|ce je pa|da|lo na go|lem ko|stur s vra|tom du|gim ka|o dr|vo. Gla|va di|no|sa|u|ra bi|la je ta|ko vi|so|ko da su dje|ca mo|ra|la gle|da|ti rav|no go|re. Kad su sta|la pred nje|ga, od ču|đe|nja ni|su mo|gla ni|šta re|ći. Svi su na le|đi|ma no|si|li ša|re|ne ruk|sa|ke.\n\n„O|vo je di|plo|dok,“ re|ka|o je vo|dič, go|spo|din s bi|je|lom bra|dom. „Ži|vi|o je dav|no, mno|go pri|je ne|go što su se po|ja|vi|li lju|di. Bi|o je dug ka|o tri a|u|to|bu|sa i je|o je sa|mo bilj|ke.“ Lu|ci|ja je u|pi|ta|la ka|ko su ko|sti do|spje|le u mu|zej. Vo|dič je o|bja|sni|o da su ih znan|stve|ni|ci pro|na|šli u ze|mlji i paž|lji|vo i|sko|pa|li, ko|mad po ko|mad. Za|tim su ih slo|ži|li ka|o go|le|mu sla|ga|li|cu.\n\nSa|mo Fi|lip ni|je slu|ša|o. Sje|di|o je na po|du ma|lo da|lje i cr|ta|o ko|stur u bi|lje|žni|cu. Na cr|te|žu ni|je ne|do|sta|ja|la ni|je|dna kost. Kad je vo|dič za|vr|ši|o, dje|ca su se o|ku|pi|la o|ko nje|ga. „Iz|gle|da baš ka|o pra|vi!“ re|kla je Lu|ci|ja. Vo|dič se na|smi|je|ši|o: „Mo|žda ćeš je|dno|ga da|na baš ti pro|na|ći no|vog di|no|sa|u|ra.“",
+      "imageId": "dinosaur_museum",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_dvorac_u_oblacima_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Dvorac u oblacima",
+      "body": "Jednog jutra, nakon kratke ljetne kiše, Mia i Jakov ugledali su dugu kakvu još nikad nisu vidjeli. Počinjala je na samom rubu njihova vrta i penjala se prema nebu, široka kao cesta. Iznad nje letjela je sova koja se stalno okretala prema njima, kao da ih zove. Sova je imala smeđe perje i velike žute oči.\n\nDjeca su uzela ruksake, uhvatila se za ruke i stupila na dugu. Boje su pod nogama bile meke i tople. Što su se više penjali, to je njihovo selo bilo manje: rijeka, kameni most, crkva sa šiljastim tornjem i crveni krovovi. Usput su prošli i kroz oblak koji im je malo ovlažio obraze.\n\nNa kraju duge, na velikom oblaku, stajao je bijeli dvorac s plavim tornjevima i zastavama. Vrata su se sama otvorila i iz njih je izašlo zlatno svjetlo. Sova je sjela pokraj njih. „Dobro došli,“ rekla je. „Ovaj se dvorac pokazuje samo djeci koja ne zaboravljaju gledati u nebo.“ Mia i Jakov pogledali su se i zajedno ušli.",
+      "syllable_body": "Je|dnog ju|tra, na|kon kra|tke ljet|ne ki|še, Mi|a i Ja|kov u|gle|da|li su du|gu ka|kvu još ni|kad ni|su vi|dje|li. Po|či|nja|la je na sa|mom ru|bu nji|ho|va vr|ta i pe|nja|la se pre|ma ne|bu, ši|ro|ka ka|o ce|sta. I|znad nje le|tje|la je so|va ko|ja se stal|no o|kre|ta|la pre|ma nji|ma, ka|o da ih zo|ve. So|va je i|ma|la sme|đe per|je i ve|li|ke žu|te o|či.\n\nDje|ca su u|ze|la ruk|sa|ke, u|hva|ti|la se za ru|ke i stu|pi|la na du|gu. Bo|je su pod no|ga|ma bi|le me|ke i to|ple. Što su se vi|še pe|nja|li, to je nji|ho|vo se|lo bi|lo ma|nje: ri|je|ka, ka|me|ni most, cr|kva sa ši|lja|stim tor|njem i cr|ve|ni kro|vo|vi. U|sput su pro|šli i kroz o|blak ko|ji im je ma|lo o|vla|ži|o o|bra|ze.\n\nNa kra|ju du|ge, na ve|li|kom o|bla|ku, sta|ja|o je bi|je|li dvo|rac s pla|vim tor|nje|vi|ma i za|sta|va|ma. Vra|ta su se sa|ma o|tvo|ri|la i iz njih je i|za|šlo zlat|no svje|tlo. So|va je sje|la po|kraj njih. „Do|bro do|šli,“ re|kla je. „O|vaj se dvo|rac po|ka|zu|je sa|mo dje|ci ko|ja ne za|bo|rav|lja|ju gle|da|ti u ne|bo.“ Mi|a i Ja|kov po|gle|da|li su se i za|je|dno u|šli.",
+      "imageId": "rainbow_castle",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_patuljci_u_vrtu_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Patuljci u vrtu",
+      "body": "Ograda u Ivanovu vrtu bila je stara i kriva. U posljednjoj oluji slomilo se nekoliko dasaka, a tata je rekao da će je popraviti u nedjelju. U vrtu je stajalo pet gipsanih patuljaka s crvenim kapama i bijelim bradama. Danju se nikada nisu pomaknuli.\n\nJedne noći, za punog mjeseca, Ivan nije mogao zaspati. Mjesec je obasjavao cijeli vrt. Pogledao je kroz prozor i nije vjerovao svojim očima. Patuljci su se micali! Jedan se popeo na ljestve i malim čekićem zabijao čavle. Dvojica su zajedno nosila dugu dasku. Treći je držao novu dasku na mjestu, a najstariji je tražio čavle u sanduku uz svjetlo svjetiljke. Radili su tiho da nikoga ne probude.\n\nUjutro je Ivan istrčao u vrt. Ograda je bila ravna i cijela, a patuljci su nepomično stajali na svojim mjestima. U travi je ležao samo jedan mali čavao. Tata se začuđeno počešao po glavi. „Tko ju je popravio?“ Ivan se nasmiješio i nije ništa rekao. Samo mu se učinilo da mu je jedan patuljak namignuo.",
+      "syllable_body": "O|gra|da u I|va|no|vu vr|tu bi|la je sta|ra i kri|va. U po|sljed|njoj o|lu|ji slo|mi|lo se ne|ko|li|ko da|sa|ka, a ta|ta je re|ka|o da će je po|pra|vi|ti u ne|dje|lju. U vr|tu je sta|ja|lo pet gi|psa|nih pa|tu|lja|ka s cr|ve|nim ka|pa|ma i bi|je|lim bra|da|ma. Da|nju se ni|ka|da ni|su po|ma|knu|li.\n\nJe|dne no|ći, za pu|nog mje|se|ca, I|van ni|je mo|ga|o za|spa|ti. Mje|sec je o|ba|sja|va|o ci|je|li vrt. Po|gle|da|o je kroz pro|zor i ni|je vje|ro|va|o svo|jim o|či|ma. Pa|tulj|ci su se mi|ca|li! Je|dan se po|pe|o na lje|stve i ma|lim če|ki|ćem za|bi|ja|o ča|vle. Dvo|ji|ca su za|je|dno no|si|la du|gu da|sku. Tre|ći je dr|ža|o no|vu da|sku na mje|stu, a naj|sta|ri|ji je tra|ži|o ča|vle u san|du|ku uz svje|tlo svje|tilj|ke. Ra|di|li su ti|ho da ni|ko|ga ne pro|bu|de.\n\nU|ju|tro je I|van i|str|ča|o u vrt. O|gra|da je bi|la rav|na i ci|je|la, a pa|tulj|ci su ne|po|mič|no sta|ja|li na svo|jim mje|sti|ma. U tra|vi je le|ža|o sa|mo je|dan ma|li ča|va|o. Ta|ta se za|ču|đe|no po|če|ša|o po gla|vi. „Tko ju je po|pra|vi|o?“ I|van se na|smi|je|ši|o i ni|je ni|šta re|ka|o. Sa|mo mu se u|či|ni|lo da mu je je|dan pa|tu|ljak na|mi|gnu|o.",
+      "imageId": "garden_gnomes",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_jez_1",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 1,
+      "title": "Jež",
+      "body": "Jež je mala životinja. Na leđima ima mnogo oštrih bodlji. Bodlje ga štite. Noću jež traži hranu. Jede puževe, kukce i gliste. Zimi spava u gnijezdu od lišća.",
+      "syllable_body": "Jež je ma|la ži|vo|ti|nja. Na le|đi|ma i|ma mno|go oš|trih bod|lji. Bod|lje ga šti|te. No|ću jež tra|ži hra|nu. Je|de pu|že|ve, kuk|ce i gli|ste. Zi|mi spa|va u gni|je|zdu od li|šća.",
+      "imageId": "jez",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_sova_1",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 1,
+      "title": "Sova",
+      "body": "Sova je noćna ptica. Danju spava u duplji stabla. Noću leti posve tiho. Ima velike oči i dobro vidi u mraku. Sova lovi miševe. Perje joj je smeđe i bijelo.",
+      "syllable_body": "So|va je noć|na pti|ca. Da|nju spa|va u du|plji sta|bla. No|ću le|ti po|sve ti|ho. I|ma ve|li|ke o|či i do|bro vi|di u mra|ku. So|va lo|vi mi|še|ve. Per|je joj je sme|đe i bi|je|lo.",
+      "imageId": "sova_veja",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_bubamara_1",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 1,
+      "title": "Bubamara",
+      "body": "Bubamara je mali kukac. Ima crvena krila s crnim točkicama. Rado sjedi na zelenom lišću. Bubamara jede lisne uši. Tako pomaže vrtu. Vrtlari je jako vole.",
+      "syllable_body": "Bu|ba|ma|ra je ma|li ku|kac. I|ma cr|ve|na kri|la s cr|nim toč|ki|ca|ma. Ra|do sje|di na ze|le|nom li|šću. Bu|ba|ma|ra je|de li|sne u|ši. Ta|ko po|ma|že vr|tu. Vr|tla|ri je ja|ko vo|le.",
+      "imageId": "ladybird_leaf",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_kornjaca_2",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 2,
+      "title": "Kornjača",
+      "body": "Kornjača na leđima ima tvrd oklop. Oklop je njezina kućica i štiti je od opasnosti. Kad se kornjača uplaši, u njega sakrije glavu i noge. Neke kornjače žive na kopnu, a druge u moru. Morske kornjače imaju noge poput vesala i odlično plivaju. Kornjače dugo žive, neke čak više od sto godina.",
+      "syllable_body": "Kor|nja|ča na le|đi|ma i|ma tvrd o|klop. O|klop je nje|zi|na ku|ći|ca i šti|ti je od o|pa|sno|sti. Kad se kor|nja|ča u|pla|ši, u nje|ga sa|kri|je gla|vu i no|ge. Ne|ke kor|nja|če ži|ve na kop|nu, a dru|ge u mo|ru. Mor|ske kor|nja|če i|ma|ju no|ge po|put ve|sa|la i o|dlič|no pli|va|ju. Kor|nja|če du|go ži|ve, ne|ke čak vi|še od sto go|di|na.",
+      "imageId": "zelva",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_pcela_2",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 2,
+      "title": "Marljiva pčela",
+      "body": "Pčela leti s cvijeta na cvijet. Pije slatki nektar, a na nogama skuplja žuti pelud. Zatim sve odnese u košnicu. U košnici žive tisuće pčela, ali samo jedna matica. Pčele u njoj proizvode med i vosak. Pomažu i biljkama jer prenose pelud s cvijeta na cvijet. Zahvaljujući tome na stablima raste voće.",
+      "syllable_body": "Pče|la le|ti s cvi|je|ta na cvi|jet. Pi|je sla|tki nek|tar, a na no|ga|ma sku|plja žu|ti pe|lud. Za|tim sve o|dne|se u ko|šni|cu. U ko|šni|ci ži|ve ti|su|će pče|la, a|li sa|mo je|dna ma|ti|ca. Pče|le u njoj pro|i|zvo|de med i vo|sak. Po|ma|žu i bilj|ka|ma jer pre|no|se pe|lud s cvi|je|ta na cvi|jet. Za|hva|lju|ju|ći to|me na sta|bli|ma ra|ste vo|će.",
+      "imageId": "cebela_cvet",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_klokan_2",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 2,
+      "title": "Klokan",
+      "body": "Klokan živi u Australiji. Ima duge i snažne stražnje noge i velik rep. Klokan ne hoda, nego skače. Jednim skokom može skočiti jako daleko. Mama klokanica na trbuhu ima vrećicu. U njoj živi njezino mladunče, koje je na početku sasvim malo. Mladunče raste u vrećici nekoliko mjeseci, a zatim izađe van. Klokani žive u skupinama na suhim travnatim ravnicama.",
+      "syllable_body": "Klo|kan ži|vi u A|u|stra|li|ji. I|ma du|ge i sna|žne straž|nje no|ge i ve|lik rep. Klo|kan ne ho|da, ne|go ska|če. Je|dnim sko|kom mo|že sko|či|ti ja|ko da|le|ko. Ma|ma klo|ka|ni|ca na tr|bu|hu i|ma vre|ći|cu. U njoj ži|vi nje|zi|no mla|dun|če, ko|je je na po|če|tku sa|svim ma|lo. Mla|dun|če ra|ste u vre|ći|ci ne|ko|li|ko mje|se|ci, a za|tim i|za|đe van. Klo|ka|ni ži|ve u sku|pi|na|ma na su|him trav|na|tim rav|ni|ca|ma.",
+      "imageId": "kangaroo_joey",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_lisica_3",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 3,
+      "title": "Lisica",
+      "body": "Lisica živi u šumama i na poljima, ali ponekad dođe sve do sela. Ima narančasto krzno, bijela prsa i dug, čupav rep. Rep joj pomaže da održi ravnotežu dok trči. Zimi se njime pokriva kao pokrivačem. Lisica lovi uglavnom noću. Ima izvrstan sluh i čuje miša čak i ispod snijega. Jede miševe i kukce, ali i šumske plodove. Danju se odmara u jazbini koju iskopa u zemlji. Lisica je vrlo oprezna i izbjegava ljude. Mladunci joj se rađaju u proljeće.",
+      "syllable_body": "Li|si|ca ži|vi u šu|ma|ma i na po|lji|ma, a|li po|ne|kad do|đe sve do se|la. I|ma na|ran|ča|sto kr|zno, bi|je|la pr|sa i dug, ču|pav rep. Rep joj po|ma|že da o|dr|ži rav|no|te|žu dok tr|či. Zi|mi se nji|me po|kri|va ka|o po|kri|va|čem. Li|si|ca lo|vi u|glav|nom no|ću. I|ma i|zvr|stan sluh i ču|je mi|ša čak i i|spod sni|je|ga. Je|de mi|še|ve i kuk|ce, a|li i šum|ske plo|do|ve. Da|nju se od|ma|ra u ja|zbi|ni ko|ju i|sko|pa u ze|mlji. Li|si|ca je vr|lo o|pre|zna i iz|bje|ga|va lju|de. Mla|dun|ci joj se ra|đa|ju u pro|lje|će.",
+      "imageId": "lisica",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_dupini_3",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 3,
+      "title": "Imena dupina",
+      "body": "Dupini žive u skupinama i vrlo su prijateljski. Nisu ribe, nego sisavci, baš kao i ljudi. Zato moraju izroniti na površinu i udahnuti zrak. Dupini se međusobno sporazumijevaju zviždanjem i škljocanjem. Svaki dupin ima svoj zvižduk, koji mu je poput imena. Kad dupin čuje svoje ime, odgovori. Dupini su vrlo pametni i brzo uče. Pomažu jedni drugima i mnogo se igraju. Ponekad iskoče iz vode i okrenu se u zraku, kao od radosti. Mladunci dugo ostaju uz majke i uče od njih. U Jadranskom moru žive dobri dupini.",
+      "syllable_body": "Du|pi|ni ži|ve u sku|pi|na|ma i vr|lo su pri|ja|telj|ski. Ni|su ri|be, ne|go si|sav|ci, baš ka|o i lju|di. Za|to mo|ra|ju i|zro|ni|ti na po|vr|ši|nu i u|da|hnu|ti zrak. Du|pi|ni se me|đu|sob|no spo|ra|zu|mi|je|va|ju zvi|žda|njem i škljo|ca|njem. Sva|ki du|pin i|ma svoj zvi|žduk, ko|ji mu je po|put i|me|na. Kad du|pin ču|je svo|je i|me, od|go|vo|ri. Du|pi|ni su vr|lo pa|met|ni i br|zo u|če. Po|ma|žu je|dni dru|gi|ma i mno|go se i|gra|ju. Po|ne|kad i|sko|če iz vo|de i o|kre|nu se u zra|ku, ka|o od ra|do|sti. Mla|dun|ci du|go o|sta|ju uz maj|ke i u|če od njih. U Ja|dran|skom mo|ru ži|ve do|bri du|pi|ni.",
+      "imageId": "delfin_jata",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_roda_3",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 3,
+      "title": "Roda",
+      "body": "Svakog proljeća bijela roda vraća se iz Afrike. Često dolazi godinu za godinom u isto gnijezdo. Gnijezdo je od grana i može biti vrlo veliko. Nalazi se na krovu, na dimnjaku ili na stupu. Roda ima duge crvene noge i dug crveni kljun. Šeta po vlažnim livadama i lovi žabe, miševe i kukce. Rode ne pjevaju, nego klepeću kljunom. U proljeće se roditelji zajedno brinu o mladima. U jesen rode ponovno odlaze na jug. U selu Čigoču u Lonjskom polju gnijezdi se toliko roda da ga zovu europskim selom roda.",
+      "syllable_body": "Sva|kog pro|lje|ća bi|je|la ro|da vra|ća se iz A|fri|ke. Če|sto do|la|zi go|di|nu za go|di|nom u i|sto gni|je|zdo. Gni|je|zdo je od gra|na i mo|že bi|ti vr|lo ve|li|ko. Na|la|zi se na kro|vu, na dim|nja|ku i|li na stu|pu. Ro|da i|ma du|ge cr|ve|ne no|ge i dug cr|ve|ni kljun. Še|ta po vla|žnim li|va|da|ma i lo|vi ža|be, mi|še|ve i kuk|ce. Ro|de ne pje|va|ju, ne|go kle|pe|ću klju|nom. U pro|lje|će se ro|di|te|lji za|je|dno bri|nu o mla|di|ma. U je|sen ro|de po|nov|no o|dla|ze na jug. U se|lu Či|go|ču u Lonj|skom po|lju gni|je|zdi se to|li|ko ro|da da ga zo|vu e|u|rop|skim se|lom ro|da.",
+      "imageId": "stork_nest",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_simis_4",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 4,
+      "title": "Šišmiš i jeka",
+      "body": "Šišmiš je jedini sisavac koji zaista može letjeti. Krila mu čini tanka koža razapeta između dugih prstiju. Danju šišmiši spavaju u špiljama ili na tavanima, obješeni naglavačke. Za stijenu se drže pandžicama na nogama.\n\nNoću šišmiš kreće u lov. U mraku ne vidi baš dobro, ali ima nešto poput radara. Ispušta vrlo visoke zvukove koje ljudi ne čuju. Zvukovi udare u kukca i vrate se kao jeka. Po jeki šišmiš zna gdje je plijen i koliko je daleko.\n\nMali šišmiš može u jednoj noći uloviti stotine komaraca. Zato su šišmiši vrlo korisni. Neki šišmiši jedu voće ili nektar iz cvijeća. Zimi, kad nema kukaca, spavaju u špiljama sve do proljeća. Neki šišmiši žive i više od dvadeset godina. U Hrvatskoj su zaštićeni i nitko ih ne smije ozlijediti.",
+      "syllable_body": "Ši|šmiš je je|di|ni si|sa|vac ko|ji za|i|sta mo|že le|tje|ti. Kri|la mu či|ni tan|ka ko|ža ra|za|pe|ta i|zme|đu du|gih pr|sti|ju. Da|nju ši|šmi|ši spa|va|ju u špi|lja|ma i|li na ta|va|ni|ma, o|bje|še|ni na|gla|vač|ke. Za sti|je|nu se dr|že pan|dži|ca|ma na no|ga|ma.\n\nNo|ću ši|šmiš kre|će u lov. U mra|ku ne vi|di baš do|bro, a|li i|ma ne|što po|put ra|da|ra. I|spu|šta vr|lo vi|so|ke zvu|ko|ve ko|je lju|di ne ču|ju. Zvu|ko|vi u|da|re u kuk|ca i vra|te se ka|o je|ka. Po je|ki ši|šmiš zna gdje je pli|jen i ko|li|ko je da|le|ko.\n\nMa|li ši|šmiš mo|že u je|dnoj no|ći u|lo|vi|ti sto|ti|ne ko|ma|ra|ca. Za|to su ši|šmi|ši vr|lo ko|ri|sni. Ne|ki ši|šmi|ši je|du vo|će i|li nek|tar iz cvi|je|ća. Zi|mi, kad ne|ma ku|ka|ca, spa|va|ju u špi|lja|ma sve do pro|lje|ća. Ne|ki ši|šmi|ši ži|ve i vi|še od dva|de|set go|di|na. U Hr|vat|skoj su za|šti|će|ni i ni|tko ih ne smi|je o|zli|je|di|ti.",
+      "imageId": "netopir",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_hobotnica_4",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 4,
+      "title": "Pametna hobotnica",
+      "body": "Hobotnica živi u moru među stijenama. Ima osam dugih krakova prekrivenih sisaljkama. Njima opipava, hvata i drži stvari. Sisaljkama čak osjeća okus stvari koje dotakne. Hobotnica nema kostiju, pa se može provući i kroz vrlo male otvore. Kad izbaci vodu iz tijela, može plivati vrlo brzo.\n\nHobotnica je jedna od najpametnijih životinja u moru. Zaklon si pravi u pukotini stijene i zna rješavati teške zadatke. Neke su hobotnice čak naučile otvoriti staklenku s poklopcem kako bi došle do hrane unutra.\n\nKad prijeti opasnost, hobotnica u nekoliko trenutaka promijeni boju i sakrije se među kamenje. Ako je neprijatelj ipak vidi, ispusti oblak crne tinte i brzo pobjegne. Hobotnica ima još jednu tajnu: tri srca i plavu krv. Mnoge hobotnice žive samo godinu ili dvije.",
+      "syllable_body": "Ho|bot|ni|ca ži|vi u mo|ru me|đu sti|je|na|ma. I|ma o|sam du|gih kra|ko|va pre|kri|ve|nih si|salj|ka|ma. Nji|ma o|pi|pa|va, hva|ta i dr|ži stva|ri. Si|salj|ka|ma čak o|sje|ća o|kus stva|ri ko|je do|ta|kne. Ho|bot|ni|ca ne|ma ko|sti|ju, pa se mo|že pro|vu|ći i kroz vr|lo ma|le o|tvo|re. Kad i|zba|ci vo|du iz ti|je|la, mo|že pli|va|ti vr|lo br|zo.\n\nHo|bot|ni|ca je je|dna od naj|pa|met|ni|jih ži|vo|ti|nja u mo|ru. Za|klon si pra|vi u pu|ko|ti|ni sti|je|ne i zna r|je|ša|va|ti te|ške za|da|tke. Ne|ke su ho|bot|ni|ce čak na|u|či|le o|tvo|ri|ti sta|klen|ku s po|klop|cem ka|ko bi do|šle do hra|ne u|nu|tra.\n\nKad pri|je|ti o|pa|snost, ho|bot|ni|ca u ne|ko|li|ko tre|nu|ta|ka pro|mi|je|ni bo|ju i sa|kri|je se me|đu ka|me|nje. A|ko je ne|pri|ja|telj i|pak vi|di, i|spu|sti o|blak cr|ne tin|te i br|zo po|bje|gne. Ho|bot|ni|ca i|ma još je|dnu taj|nu: tri sr|ca i pla|vu krv. Mno|ge ho|bot|ni|ce ži|ve sa|mo go|di|nu i|li dvi|je.",
+      "imageId": "octopus_camouflage",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_medvjed_4",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 4,
+      "title": "Medvjedica i medvjedići",
+      "body": "Smeđi medvjed živi u planinskim šumama. U Hrvatskoj ga možemo sresti u Gorskom kotaru i na Velebitu. Medvjed jede gotovo sve: travu, korijenje, borovnice, med, kukce, a ponekad i ribu. U jesen mnogo jede da se udeblja. Zimi spava u brlogu, u špilji ili u skrivenoj jami. Ima mnogo bolji njuh od psa i može trčati brže od čovjeka.\n\nMladunci se rađaju zimi u brlogu. Kad se rode, maleni su kao vjeverica i nemaju zube. U proljeće izađu van s mamom. Medvjedica ih uči gdje će naći hranu i kako se čuvati od opasnosti. Mladunci ostaju s njom gotovo dvije godine.\n\nMladunci se mnogo igraju i često se propinju na stražnje noge. Tako vide dalje i bolje osjećaju mirise šume. Kad se medvjedica uspravi, viša je od čovjeka.",
+      "syllable_body": "Sme|đi med|vjed ži|vi u pla|nin|skim šu|ma|ma. U Hr|vat|skoj ga mo|že|mo sre|sti u Gor|skom ko|ta|ru i na Ve|le|bi|tu. Med|vjed je|de go|to|vo sve: tra|vu, ko|ri|je|nje, bo|rov|ni|ce, med, kuk|ce, a po|ne|kad i ri|bu. U je|sen mno|go je|de da se u|deb|lja. Zi|mi spa|va u br|lo|gu, u špi|lji i|li u skri|ve|noj ja|mi. I|ma mno|go bo|lji njuh od psa i mo|že tr|ča|ti br|že od čo|vje|ka.\n\nMla|dun|ci se ra|đa|ju zi|mi u br|lo|gu. Kad se ro|de, ma|le|ni su ka|o vje|ve|ri|ca i ne|ma|ju zu|be. U pro|lje|će i|za|đu van s ma|mom. Med|vje|di|ca ih u|či gdje će na|ći hra|nu i ka|ko se ču|va|ti od o|pa|sno|sti. Mla|dun|ci o|sta|ju s njom go|to|vo dvi|je go|di|ne.\n\nMla|dun|ci se mno|go i|gra|ju i če|sto se pro|pi|nju na straž|nje no|ge. Ta|ko vi|de da|lje i bo|lje o|sje|ća|ju mi|ri|se šu|me. Kad se med|vje|di|ca u|spra|vi, vi|ša je od čo|vje|ka.",
+      "imageId": "brown_bear_cubs",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_plavi_kit_5",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 5,
+      "title": "Plavi kit",
+      "body": "Plavi kit je najveća životinja koja je ikada živjela na Zemlji, veća čak i od dinosaura. Dug je tridesetak metara, kao tri autobusa jedan iza drugoga. Samo mu jezik teži koliko slon, a srce je veliko kao mali automobil.\n\nIako je kit tako golem, hrani se vrlo malim životinjama: sitnim račićima nalik na kozice, koji se zovu kril. Kril živi u hladnim morima u velikim jatima. Kit širom otvori usta i proguta mnogo vode s krilom. Zatim vodu procijedi kroz neku vrstu četke u ustima, koja se zove usi. Kril ostane unutra. U jednom danu kit može pojesti milijune takvih životinjica.\n\nKit je sisavac, a ne riba, pa diše zrak. Kad izroni, kroz nosnice izbaci visok stup vode i pare koji se vidi izdaleka. Srce mu kuca vrlo polako. Plavi kitovi jedni drugima šalju vrlo duboke zvukove. Drugi kitovi mogu ih čuti i na stotine kilometara. Mladunče se rađa pod vodom, dugo je kao dva automobila i pije majčino mlijeko. Plavi kitovi žive u svim oceanima svijeta.",
+      "syllable_body": "Pla|vi kit je naj|ve|ća ži|vo|ti|nja ko|ja je i|ka|da ži|vje|la na Ze|mlji, ve|ća čak i od di|no|sa|u|ra. Dug je tri|de|se|tak me|ta|ra, ka|o tri a|u|to|bu|sa je|dan i|za dru|go|ga. Sa|mo mu je|zik te|ži ko|li|ko slon, a sr|ce je ve|li|ko ka|o ma|li a|u|to|mo|bil.\n\nI|a|ko je kit ta|ko go|lem, hra|ni se vr|lo ma|lim ži|vo|ti|nja|ma: sit|nim ra|či|ći|ma na|lik na ko|zi|ce, ko|ji se zo|vu kril. Kril ži|vi u hla|dnim mo|ri|ma u ve|li|kim ja|ti|ma. Kit ši|rom o|tvo|ri u|sta i pro|gu|ta mno|go vo|de s kri|lom. Za|tim vo|du pro|ci|je|di kroz ne|ku vr|stu če|tke u u|sti|ma, ko|ja se zo|ve u|si. Kril o|sta|ne u|nu|tra. U je|dnom da|nu kit mo|že po|je|sti mi|li|ju|ne ta|kvih ži|vo|ti|nji|ca.\n\nKit je si|sa|vac, a ne ri|ba, pa di|še zrak. Kad i|zro|ni, kroz no|sni|ce i|zba|ci vi|sok stup vo|de i pa|re ko|ji se vi|di i|zda|le|ka. Sr|ce mu ku|ca vr|lo po|la|ko. Pla|vi ki|to|vi je|dni dru|gi|ma ša|lju vr|lo du|bo|ke zvu|ko|ve. Dru|gi ki|to|vi mo|gu ih ču|ti i na sto|ti|ne ki|lo|me|ta|ra. Mla|dun|če se ra|đa pod vo|dom, du|go je ka|o dva a|u|to|mo|bi|la i pi|je maj|či|no mli|je|ko. Pla|vi ki|to|vi ži|ve u svim o|ce|a|ni|ma svi|je|ta.",
+      "imageId": "modri_kit",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_tajne_dupina_5",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 5,
+      "title": "Tajne dupina",
+      "body": "Dupini imaju nekoliko tajni koje im pomažu da žive u moru. Prva je tajna jeka. Dupini ispuštaju kratke zvukove poput škljocanja, koji putuju kroz vodu. Kad škljocaj udari u ribu ili stijenu, vrati se natrag. Po jeki dupin dozna gdje je riba, kolika je i kamo pliva, čak i u mutnoj vodi. Takvo „gledanje“ zvukom zove se eholokacija.\n\nDruga je tajna spavanje. Dupini dišu zrak kroz otvor na tjemenu, pa ne mogu spavati tako duboko kao ljudi. Spavaju samo jednom polovicom mozga, dok druga polovica ostaje budna. Mozak dupina velik je i vrlo razvijen. Tako ne zaborave izroniti i udahnuti. Ponekad čak polako plivaju s jednim okom otvorenim.\n\nTreća je tajna obitelj. Dupini žive u skupinama i brinu jedni o drugima. Često love zajedno: okruže jato riba i stisnu ga kao u mrežu. Mladunče nekoliko godina pliva uz majku i od nje uči loviti. Kad je dupin ozlijeđen, ostali mu pomognu da dođe do površine. Dupini mogu živjeti i četrdeset godina.",
+      "syllable_body": "Du|pi|ni i|ma|ju ne|ko|li|ko taj|ni ko|je im po|ma|žu da ži|ve u mo|ru. Pr|va je taj|na je|ka. Du|pi|ni i|spu|šta|ju kra|tke zvu|ko|ve po|put škljo|ca|nja, ko|ji pu|tu|ju kroz vo|du. Kad škljo|caj u|da|ri u ri|bu i|li sti|je|nu, vra|ti se na|trag. Po je|ki du|pin do|zna gdje je ri|ba, ko|li|ka je i ka|mo pli|va, čak i u mut|noj vo|di. Ta|kvo „gle|da|nje“ zvu|kom zo|ve se e|ho|lo|ka|ci|ja.\n\nDru|ga je taj|na spa|va|nje. Du|pi|ni di|šu zrak kroz o|tvor na tje|me|nu, pa ne mo|gu spa|va|ti ta|ko du|bo|ko ka|o lju|di. Spa|va|ju sa|mo je|dnom po|lo|vi|com mo|zga, dok dru|ga po|lo|vi|ca o|sta|je bu|dna. Mo|zak du|pi|na ve|lik je i vr|lo ra|zvi|jen. Ta|ko ne za|bo|ra|ve i|zro|ni|ti i u|da|hnu|ti. Po|ne|kad čak po|la|ko pli|va|ju s je|dnim o|kom o|tvo|re|nim.\n\nTre|ća je taj|na o|bi|telj. Du|pi|ni ži|ve u sku|pi|na|ma i bri|nu je|dni o dru|gi|ma. Če|sto lo|ve za|je|dno: o|kru|že ja|to ri|ba i sti|snu ga ka|o u mre|žu. Mla|dun|če ne|ko|li|ko go|di|na pli|va uz maj|ku i od nje u|či lo|vi|ti. Kad je du|pin o|zli|je|đen, o|sta|li mu po|mo|gnu da do|đe do po|vr|ši|ne. Du|pi|ni mo|gu ži|vje|ti i če|tr|de|set go|di|na.",
+      "imageId": "delfin_morje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_obitelj_slonova_5",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 5,
+      "title": "Obitelj slonova",
+      "body": "Afrički slonovi žive u velikim obiteljima. Obitelj vodi najstarija ženka, koja zna put do vode i do mjesta s hranom. Odrasli mužjaci obično žive sami ili u malim skupinama. Slonovi su najveće životinje koje žive na kopnu. Afrički slon može težiti i šest tona.\n\nSurla je zapravo nos i gornja usna koji su srasli. Ima tisuće mišića, pa je slon može koristiti kao ruku. Surlom kida lišće i grane, skuplja travu i nosi vodu u usta. Kad je vruće, slon po leđima poprska vodu ili prašinu da se rashladi. Pomažu mu i velike uši: kad njima maše, tijelo se hladi. Slonovi imaju i kljove, a to su vrlo dugi zubi.\n\nSlonić se rodi nakon gotovo dvije godine. Već pri rođenju težak je kao odrastao čovjek. Majka i ostale ženke iz obitelji brinu se o njemu. Slonovi imaju izvrsno pamćenje. Kad hodaju, slonić se surlom drži za majčin rep da se ne izgubi. Odrastao slon pojede jako mnogo: i do sto pedeset kilograma hrane na dan.",
+      "syllable_body": "A|frič|ki slo|no|vi ži|ve u ve|li|kim o|bi|te|lji|ma. O|bi|telj vo|di naj|sta|ri|ja žen|ka, ko|ja zna put do vo|de i do mje|sta s hra|nom. O|dra|sli muž|ja|ci o|bič|no ži|ve sa|mi i|li u ma|lim sku|pi|na|ma. Slo|no|vi su naj|ve|će ži|vo|ti|nje ko|je ži|ve na kop|nu. A|frič|ki slon mo|že te|ži|ti i šest to|na.\n\nSur|la je za|pra|vo nos i gor|nja u|sna ko|ji su sra|sli. I|ma ti|su|će mi|ši|ća, pa je slon mo|že ko|ri|sti|ti ka|o ru|ku. Sur|lom ki|da li|šće i gra|ne, sku|plja tra|vu i no|si vo|du u u|sta. Kad je vru|će, slon po le|đi|ma po|pr|ska vo|du i|li pra|ši|nu da se ras|hla|di. Po|ma|žu mu i ve|li|ke u|ši: kad nji|ma ma|še, ti|je|lo se hla|di. Slo|no|vi i|ma|ju i kljo|ve, a to su vr|lo du|gi zu|bi.\n\nSlo|nić se ro|di na|kon go|to|vo dvi|je go|di|ne. Već pri ro|đe|nju te|žak je ka|o o|dra|sta|o čo|vjek. Maj|ka i o|sta|le žen|ke iz o|bi|te|lji bri|nu se o nje|mu. Slo|no|vi i|ma|ju i|zvr|sno pam|će|nje. Kad ho|da|ju, slo|nić se sur|lom dr|ži za maj|čin rep da se ne i|zgu|bi. O|dra|sta|o slon po|je|de ja|ko mno|go: i do sto pe|de|set ki|lo|gra|ma hra|ne na dan.",
+      "imageId": "elephant_waterhole",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_akvadukt_1",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 1,
+      "title": "Most s lukovima",
+      "body": "Ovo je vrlo star akvedukt. Sagradili su ga Rimljani prije dvije tisuće godina. Ima mnogo kamenih lukova. Gore po akveduktu tekla je voda. Tako je voda stizala sve do grada. Okolo rastu drveće i cvijeće.",
+      "syllable_body": "O|vo je vr|lo star a|kve|dukt. Sa|gra|di|li su ga Ri|mlja|ni pri|je dvi|je ti|su|će go|di|na. I|ma mno|go ka|me|nih lu|ko|va. Go|re po a|kve|duk|tu te|kla je vo|da. Ta|ko je vo|da sti|za|la sve do gra|da. O|ko|lo ra|stu dr|ve|će i cvi|je|će.",
+      "imageId": "roman_aqueduct",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_piramide_1",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 1,
+      "title": "Piramide",
+      "body": "U Egiptu stoje tri velike piramide. Vrlo su stare. Sagrađene su od kamenih blokova. Oko njih je pustinja. Dvoje djece jaše na devama. Sunce jako prži.",
+      "syllable_body": "U E|gi|ptu sto|je tri ve|li|ke pi|ra|mi|de. Vr|lo su sta|re. Sa|gra|đe|ne su od ka|me|nih blo|ko|va. O|ko njih je pu|sti|nja. Dvo|je dje|ce ja|še na de|va|ma. Sun|ce ja|ko pr|ži.",
+      "imageId": "piramide_giza",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_kipovi_moai_2",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 2,
+      "title": "Kipovi na otoku",
+      "body": "Uskršnji otok mali je otok usred Tihog oceana. Na njemu stoji gotovo tisuću golemih kamenih kipova. Zovu se moai. Kipovi imaju velike glave, duge noseve i visoka čela. Neki su viši od kuće. Mnogi od njih stoje leđima okrenuti moru. Stanovnici otoka isklesali su ih prije više stotina godina kamenim alatom. Na otok se može doploviti brodom ili doletjeti avionom.",
+      "syllable_body": "U|skrš|nji o|tok ma|li je o|tok u|sred Ti|hog o|ce|a|na. Na nje|mu sto|ji go|to|vo ti|su|ću go|le|mih ka|me|nih ki|po|va. Zo|vu se mo|a|i. Ki|po|vi i|ma|ju ve|li|ke gla|ve, du|ge no|se|ve i vi|so|ka če|la. Ne|ki su vi|ši od ku|će. Mno|gi od njih sto|je le|đi|ma o|kre|nu|ti mo|ru. Sta|nov|ni|ci o|to|ka i|skle|sa|li su ih pri|je vi|še sto|ti|na go|di|na ka|me|nim a|la|tom. Na o|tok se mo|že do|plo|vi|ti bro|dom i|li do|le|tje|ti a|vi|o|nom.",
+      "imageId": "moai_statues",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_piramide_2",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 2,
+      "title": "Kameni blokovi",
+      "body": "Piramide u Egiptu sagrađene su prije više od četiri tisuće godina. Napravljene su od velikih kamenih blokova. Neki blokovi bili su teži od automobila. Radnici su ih vukli debelim užadima na drvenim saonicama. Zatim su ih izvlačili gore po zemljanim rampama. Blokove su slagali jedan na drugi, red po red. Na jednoj piramidi godinama su radile tisuće ljudi.",
+      "syllable_body": "Pi|ra|mi|de u E|gi|ptu sa|gra|đe|ne su pri|je vi|še od če|ti|ri ti|su|će go|di|na. Na|prav|lje|ne su od ve|li|kih ka|me|nih blo|ko|va. Ne|ki blo|ko|vi bi|li su te|ži od a|u|to|mo|bi|la. Ra|dni|ci su ih vu|kli de|be|lim u|ža|di|ma na dr|ve|nim sa|o|ni|ca|ma. Za|tim su ih iz|vla|či|li go|re po ze|mlja|nim ram|pa|ma. Blo|ko|ve su sla|ga|li je|dan na dru|gi, red po red. Na je|dnoj pi|ra|mi|di go|di|na|ma su ra|di|le ti|su|će lju|di.",
+      "imageId": "piramide_bloki",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_jeka_na_velebitu_3",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 3,
+      "title": "Jeka na Velebitu",
+      "body": "Velebit je najduža planina u Hrvatskoj. Ima strme vrhove, šume bukve i bora i duboke doline. Najviši vrh Hrvatske ipak nije na Velebitu, nego na Dinari, a visok je tisuću osamsto trideset i jedan metar. Ljeti mnoge obitelji hodaju planinskim stazama. Na stazama treba biti oprezan i ne hodati sam. Ondje se može igrati lijepa igra s jekom. Stani nasuprot stijeni i glasno vikni. Zvuk tvoga glasa leti kroz zrak, udari u stijenu i vrati se. Za tren opet čuješ svoj glas, kao da ti planina odgovara.",
+      "syllable_body": "Ve|le|bit je naj|du|ža pla|ni|na u Hr|vat|skoj. I|ma str|me vr|ho|ve, šu|me bu|kve i bo|ra i du|bo|ke do|li|ne. Naj|vi|ši vrh Hr|vat|ske i|pak ni|je na Ve|le|bi|tu, ne|go na Di|na|ri, a vi|sok je ti|su|ću o|sam|sto tri|de|set i je|dan me|tar. Lje|ti mno|ge o|bi|te|lji ho|da|ju pla|nin|skim sta|za|ma. Na sta|za|ma tre|ba bi|ti o|pre|zan i ne ho|da|ti sam. On|dje se mo|že i|gra|ti li|je|pa i|gra s je|kom. Sta|ni na|su|prot sti|je|ni i gla|sno vi|kni. Zvuk tvo|ga gla|sa le|ti kroz zrak, u|da|ri u sti|je|nu i vra|ti se. Za tren o|pet ču|ješ svoj glas, ka|o da ti pla|ni|na od|go|va|ra.",
+      "imageId": "odmev_gore",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "plausible"
+      }
+    },
+    {
+      "id": "around_the_world_piramide_3",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 3,
+      "title": "Skrivena odaja",
+      "body": "Piramide u Egiptu nisu bile samo velike građevine. Bile su grobnice za faraone, kraljeve starog Egipta. Duboko u piramidi nalazila se skrivena odaja. Faraona su prije pokopa omotali platnenim trakama. Zatim su ga položili u pozlaćeni sarkofag. Pokraj njega bili su kipovi, posude, namještaj i nakit. Egipćani su vjerovali da će kralju te stvari trebati u drugom životu. Zidovi odaje bili su oslikani ljudima, životinjama i znakovima koji se zovu hijeroglifi. Vrata odaje zatim su zatvorili velikim kamenjem da unutra ne uđu lopovi.",
+      "syllable_body": "Pi|ra|mi|de u E|gi|ptu ni|su bi|le sa|mo ve|li|ke gra|đe|vi|ne. Bi|le su grob|ni|ce za fa|ra|o|ne, kra|lje|ve sta|rog E|gi|pta. Du|bo|ko u pi|ra|mi|di na|la|zi|la se skri|ve|na o|da|ja. Fa|ra|o|na su pri|je po|ko|pa o|mo|ta|li plat|ne|nim tra|ka|ma. Za|tim su ga po|lo|ži|li u po|zla|će|ni sar|ko|fag. Po|kraj nje|ga bi|li su ki|po|vi, po|su|de, na|mje|štaj i na|kit. E|gip|ća|ni su vje|ro|va|li da će kra|lju te stva|ri tre|ba|ti u dru|gom ži|vo|tu. Zi|do|vi o|da|je bi|li su o|sli|ka|ni lju|di|ma, ži|vo|ti|nja|ma i zna|ko|vi|ma ko|ji se zo|vu hi|je|ro|gli|fi. Vra|ta o|da|je za|tim su za|tvo|ri|li ve|li|kim ka|me|njem da u|nu|tra ne u|đu lo|po|vi.",
+      "imageId": "piramide_kamnolom",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_dunav_4",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 4,
+      "title": "Dunav, od planina do mora",
+      "body": "Dunav je druga najduža rijeka u Europi. Izvire u planinama Njemačke i teče prema istoku kroz deset zemalja. Dug je gotovo tri tisuće kilometara. Usput se u njega ulijevaju mnoge manje rijeke. Teče kroz šume, pokraj sela i velikih gradova i ispod starih kamenih mostova.\n\nDunav teče i uz istok Hrvatske. Prolazi pokraj Vukovara i ondje je granica sa Srbijom. U blizini, kod ušća Drave u Dunav, nalazi se Kopački rit, močvara puna ptica i riba. Na kraju svoga puta, prije nego što se ulije u Crno more, Dunav se podijeli na tri velika rukavca i mnogo kanala. Tako nastaje delta Dunava.\n\nDelta je puna života. U trsci žive čaplje, pelikani i tisuće drugih ptica. Neke dolijeću čak iz Afrike. U Crnom moru kod ušća Dunava ponekad se mogu vidjeti i dupini.",
+      "syllable_body": "Du|nav je dru|ga naj|du|ža ri|je|ka u E|u|ro|pi. I|zvi|re u pla|ni|na|ma Nje|mač|ke i te|če pre|ma i|sto|ku kroz de|set ze|ma|lja. Dug je go|to|vo tri ti|su|će ki|lo|me|ta|ra. U|sput se u nje|ga u|li|je|va|ju mno|ge ma|nje ri|je|ke. Te|če kroz šu|me, po|kraj se|la i ve|li|kih gra|do|va i i|spod sta|rih ka|me|nih mo|sto|va.\n\nDu|nav te|če i uz i|stok Hr|vat|ske. Pro|la|zi po|kraj Vu|ko|va|ra i on|dje je gra|ni|ca sa Sr|bi|jom. U bli|zi|ni, kod u|šća Dra|ve u Du|nav, na|la|zi se Ko|pač|ki rit, mo|čva|ra pu|na pti|ca i ri|ba. Na kra|ju svo|ga pu|ta, pri|je ne|go što se u|li|je u Cr|no mo|re, Du|nav se po|di|je|li na tri ve|li|ka ru|kav|ca i mno|go ka|na|la. Ta|ko na|sta|je del|ta Du|na|va.\n\nDel|ta je pu|na ži|vo|ta. U tr|sci ži|ve ča|plje, pe|li|ka|ni i ti|su|će dru|gih pti|ca. Ne|ke do|li|je|ću čak iz A|fri|ke. U Cr|nom mo|ru kod u|šća Du|na|va po|ne|kad se mo|gu vi|dje|ti i du|pi|ni.",
+      "imageId": "reka",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "plausible"
+      }
+    },
+    {
+      "id": "around_the_world_piramide_4",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 4,
+      "title": "Duga rampa",
+      "body": "Kako su Egipćani izvukli tako teške blokove sve do vrha piramide? Nisu imali dizalice ni strojeve. Ali imali su mnogo snage, strpljenja i dobrih ideja. Njihovi su graditelji dobro znali računati i mjeriti.\n\nNajprije su radnici bakrenim alatom klesali kamene blokove. Ponekad su blokove dovozili brodovima po Nilu. Zatim su ih stavljali na drvene saonice i vezali debelim užadima. Skupine ljudi vukle su saonice. Ispred njih netko je polijevao pijesak vodom da saonice lakše klize.\n\nDok je piramida rasla, radnici su gradili dugu rampu od zemlje i opeke. Blokove su vukli po rampi sve više. Radnici nisu bili robovi, kako se nekad mislilo, nego ljudi koje su plaćali kruhom, lukom i drugom hranom. Na svakoj piramidi radili su mnogo godina. Najveća piramida ima više od dva milijuna blokova.",
+      "syllable_body": "Ka|ko su E|gip|ća|ni i|zvu|kli ta|ko te|ške blo|ko|ve sve do vr|ha pi|ra|mi|de? Ni|su i|ma|li di|za|li|ce ni stro|je|ve. A|li i|ma|li su mno|go sna|ge, str|plje|nja i do|brih i|de|ja. Nji|ho|vi su gra|di|te|lji do|bro zna|li ra|ču|na|ti i mje|ri|ti.\n\nNaj|pri|je su ra|dni|ci ba|kre|nim a|la|tom kle|sa|li ka|me|ne blo|ko|ve. Po|ne|kad su blo|ko|ve do|vo|zi|li bro|do|vi|ma po Ni|lu. Za|tim su ih stav|lja|li na dr|ve|ne sa|o|ni|ce i ve|za|li de|be|lim u|ža|di|ma. Sku|pi|ne lju|di vu|kle su sa|o|ni|ce. I|spred njih ne|tko je po|li|je|va|o pi|je|sak vo|dom da sa|o|ni|ce lak|še kli|ze.\n\nDok je pi|ra|mi|da ra|sla, ra|dni|ci su gra|di|li du|gu ram|pu od ze|mlje i o|pe|ke. Blo|ko|ve su vu|kli po ram|pi sve vi|še. Ra|dni|ci ni|su bi|li ro|bo|vi, ka|ko se ne|kad mi|sli|lo, ne|go lju|di ko|je su pla|ća|li kru|hom, lu|kom i dru|gom hra|nom. Na sva|koj pi|ra|mi|di ra|di|li su mno|go go|di|na. Naj|ve|ća pi|ra|mi|da i|ma vi|še od dva mi|li|ju|na blo|ko|va.",
+      "imageId": "piramide_klancina",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_venecija_5",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 5,
+      "title": "Grad na vodi",
+      "body": "Venecija je grad u Italiji sagrađen na vodi. Grad leži u plitkoj laguni uz more. Ima više od sto malih otoka koje razdvajaju kanali. Umjesto ulica za automobile Venecija ima kanale, a umjesto autobusa brodove. Preko kanala vode stotine mostova, velikih i malih. Najduži je Veliki kanal, po kojem plove brodovi puni ljudi.\n\nKako cijeli grad može stajati na vodi? Tajna se krije ispod kuća. Prije više od tisuću godina ljudi su u dno lagune zabili milijune drvenih stupova. Zabijali su ih tijesno jedan uz drugi dok nisu došli do čvrstog tla. Za gradnju su koristili ponajviše hrastovo i arišovo drvo. Na njih su položili debele daske i kamenje, a na to su sagradili kuće, crkve i palače.\n\nStupovi su i danas ondje, pod vodom. Budući da do njih ne dopire zrak, drvo ne trune, nego postaje sve tvrđe. Kad ploviš gondolom pokraj kuća, ponekad kroz bistru vodu vidiš vrhove starih stupova. Venecija je danas jedan od najposjećenijih gradova na svijetu.",
+      "syllable_body": "Ve|ne|ci|ja je grad u I|ta|li|ji sa|gra|đen na vo|di. Grad le|ži u pli|tkoj la|gu|ni uz mo|re. I|ma vi|še od sto ma|lih o|to|ka ko|je raz|dva|ja|ju ka|na|li. U|mje|sto u|li|ca za a|u|to|mo|bi|le Ve|ne|ci|ja i|ma ka|na|le, a u|mje|sto a|u|to|bu|sa bro|do|ve. Pre|ko ka|na|la vo|de sto|ti|ne mo|sto|va, ve|li|kih i ma|lih. Naj|du|ži je Ve|li|ki ka|nal, po ko|jem plo|ve bro|do|vi pu|ni lju|di.\n\nKa|ko ci|je|li grad mo|že sta|ja|ti na vo|di? Taj|na se kri|je i|spod ku|ća. Pri|je vi|še od ti|su|ću go|di|na lju|di su u dno la|gu|ne za|bi|li mi|li|ju|ne dr|ve|nih stu|po|va. Za|bi|ja|li su ih ti|je|sno je|dan uz dru|gi dok ni|su do|šli do čvr|stog tla. Za grad|nju su ko|ri|sti|li po|naj|vi|še hra|sto|vo i a|ri|šo|vo dr|vo. Na njih su po|lo|ži|li de|be|le da|ske i ka|me|nje, a na to su sa|gra|di|li ku|će, cr|kve i pa|la|če.\n\nStu|po|vi su i da|nas on|dje, pod vo|dom. Bu|du|ći da do njih ne do|pi|re zrak, dr|vo ne tru|ne, ne|go po|sta|je sve tvr|đe. Kad plo|viš gon|do|lom po|kraj ku|ća, po|ne|kad kroz bi|stru vo|du vi|diš vr|ho|ve sta|rih stu|po|va. Ve|ne|ci|ja je da|nas je|dan od naj|po|sje|će|ni|jih gra|do|va na svi|je|tu.",
+      "imageId": "benetke_ulica",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_gondola_5",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 5,
+      "title": "Vožnja gondolom",
+      "body": "Tijekom ljetnih praznika Ana, Filip i Petra bili su s roditeljima u Veneciji. Već prvog dana shvatili su da to nije običan grad. Na ulicama nije bilo automobila, bicikala ni autobusa. Ljudi su hodali pješice ili se vozili brodom.\n\nDrugog dana djeca su sjela u gondolu. Gondola je dug, uzak i crn čamac s podignutim vrhom. Gondolijer je stajao straga s dugim veslom. Na sebi je imao prugastu majicu i slamnati šešir. Polako ih je vozio između šarenih kuća s cvijećem na prozorima. Prošli su ispod kamenog mosta punog turista koji su im mahali. Voda u kanalu bila je zelenoplava i svjetlucala je na suncu.\n\nNa Velikom kanalu vidjeli su brodić pun ljudi. „To je venecijanski autobus,“ objasnio im je gondolijer. Petra je primijetila debele drvene stupove koji su virili iz vode pokraj kuća. Petra je u bilježnicu nacrtala gondolu i most. Filip je upitao boje li se ljudi poplava. „Ponekad voda naraste i poplavi trgove,“ rekao je gondolijer, „ali mještani su se navikli.“",
+      "syllable_body": "Ti|je|kom ljet|nih pra|zni|ka A|na, Fi|lip i Pe|tra bi|li su s ro|di|te|lji|ma u Ve|ne|ci|ji. Već pr|vog da|na shva|ti|li su da to ni|je o|bi|čan grad. Na u|li|ca|ma ni|je bi|lo a|u|to|mo|bi|la, bi|ci|ka|la ni a|u|to|bu|sa. Lju|di su ho|da|li pje|ši|ce i|li se vo|zi|li bro|dom.\n\nDru|gog da|na dje|ca su sje|la u gon|do|lu. Gon|do|la je dug, u|zak i crn ča|mac s po|di|gnu|tim vr|hom. Gon|do|li|jer je sta|ja|o stra|ga s du|gim ve|slom. Na se|bi je i|ma|o pru|ga|stu ma|ji|cu i sla|mna|ti še|šir. Po|la|ko ih je vo|zi|o i|zme|đu ša|re|nih ku|ća s cvi|je|ćem na pro|zo|ri|ma. Pro|šli su i|spod ka|me|nog mo|sta pu|nog tu|ri|sta ko|ji su im ma|ha|li. Vo|da u ka|na|lu bi|la je ze|le|no|pla|va i svje|tlu|ca|la je na sun|cu.\n\nNa Ve|li|kom ka|na|lu vi|dje|li su bro|dić pun lju|di. „To je ve|ne|ci|jan|ski a|u|to|bus,“ o|bja|sni|o im je gon|do|li|jer. Pe|tra je pri|mi|je|ti|la de|be|le dr|ve|ne stu|po|ve ko|ji su vi|ri|li iz vo|de po|kraj ku|ća. Pe|tra je u bi|lje|žni|cu na|cr|ta|la gon|do|lu i most. Fi|lip je u|pi|ta|o bo|je li se lju|di po|pla|va. „Po|ne|kad vo|da na|ra|ste i po|pla|vi tr|go|ve,“ re|ka|o je gon|do|li|jer, „a|li mje|šta|ni su se na|vi|kli.“",
+      "imageId": "benetke_trg",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_vjetar_1",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 1,
+      "title": "Vjetar",
+      "body": "Vjetar je zrak koji se kreće. Ne možemo ga vidjeti. Ali vidimo što radi. Vjetar njiše lišće. Suši rublje i okreće vjetrenjaču. Nosi daleko i sjemenke maslačka.",
+      "syllable_body": "Vje|tar je zrak ko|ji se kre|će. Ne mo|že|mo ga vi|dje|ti. A|li vi|di|mo što ra|di. Vje|tar nji|še li|šće. Su|ši rub|lje i o|kre|će vje|tre|nja|ču. No|si da|le|ko i sje|men|ke ma|slač|ka.",
+      "imageId": "veter",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_duga_1",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 1,
+      "title": "Duga",
+      "body": "Pada kiša, ali sja i sunce. Na nebu se pojavi velika duga. Ima mnogo boja: crvenu, narančastu, žutu, zelenu, plavu i ljubičastu. Ema je gleda sa svojim psićem.",
+      "syllable_body": "Pa|da ki|ša, a|li sja i sun|ce. Na ne|bu se po|ja|vi ve|li|ka du|ga. I|ma mno|go bo|ja: cr|ve|nu, na|ran|ča|stu, žu|tu, ze|le|nu, pla|vu i lju|bi|ča|stu. E|ma je gle|da sa svo|jim psi|ćem.",
+      "imageId": "mavrica",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_gravitacija_2",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 2,
+      "title": "Zašto stvari padaju?",
+      "body": "Luka baci loptu uvis. Lopta se malo podigne, a zatim padne natrag. Zašto? Zemlja sve privlači k sebi. Ta se sila zove gravitacija. Zbog nje jabuke padaju sa stabla. Zbog nje padaju i kapi kiše. Gravitacija i nas drži na zemlji. Bez gravitacije Lukina se lopta nikada ne bi vratila!",
+      "syllable_body": "Lu|ka ba|ci lo|ptu u|vis. Lo|pta se ma|lo po|di|gne, a za|tim pa|dne na|trag. Za|što? Ze|mlja sve pri|vla|či k se|bi. Ta se si|la zo|ve gra|vi|ta|ci|ja. Zbog nje ja|bu|ke pa|da|ju sa sta|bla. Zbog nje pa|da|ju i ka|pi ki|še. Gra|vi|ta|ci|ja i nas dr|ži na ze|mlji. Bez gra|vi|ta|ci|je Lu|ki|na se lo|pta ni|ka|da ne bi vra|ti|la!",
+      "imageId": "gravitacija_jabolko",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_dolje_prema_zemlji_2",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 2,
+      "title": "Dolje je uvijek prema Zemlji",
+      "body": "Zemlja je okrugla kao golema lopta. Ljudi žive posvuda na njoj, i na drugoj strani. Zašto onda ljudi ne padnu sa Zemlje? Zato što Zemlja sve privlači prema svojem središtu. „Dolje“ uvijek znači prema Zemlji. Zato jabuke padaju u travu, a mi stojimo nogama na tlu, gdje god bili. I psić ispod stabla čvrsto stoji na zemlji.",
+      "syllable_body": "Ze|mlja je o|kru|gla ka|o go|le|ma lo|pta. Lju|di ži|ve po|svu|da na njoj, i na dru|goj stra|ni. Za|što on|da lju|di ne pa|dnu sa Ze|mlje? Za|to što Ze|mlja sve pri|vla|či pre|ma svo|jem sre|di|štu. „Do|lje“ u|vi|jek zna|či pre|ma Ze|mlji. Za|to ja|bu|ke pa|da|ju u tra|vu, a mi sto|ji|mo no|ga|ma na tlu, gdje god bi|li. I psić i|spod sta|bla čvr|sto sto|ji na ze|mlji.",
+      "imageId": "gravitacija_jabolko",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_vjetar_3",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 3,
+      "title": "Odakle dolazi vjetar?",
+      "body": "Sunce grije zemlju, ali ne svugdje jednako. Iznad toplih mjesta zrak se zagrije, postane lakši i diže se. Njegovo mjesto zauzme hladniji zrak koji dolazi odnekud drugdje. To kretanje zraka je vjetar. Ponekad je vjetar blag povjetarac koji jedva pomakne lišće. Drugi put je jak i lomi grane. Na Jadranu puše bura, hladan i snažan vjetar. Ljudi vjetar koriste već jako dugo. Vjetrenjače su mljele žito, a jedrenjaci su plovili morima. Danas vjetroelektrane proizvode struju. Vjetar tjera po nebu i oblake.",
+      "syllable_body": "Sun|ce gri|je ze|mlju, a|li ne svug|dje je|dna|ko. I|znad to|plih mje|sta zrak se za|gri|je, po|sta|ne lak|ši i di|že se. Nje|go|vo mje|sto za|u|zme hla|dni|ji zrak ko|ji do|la|zi o|dne|kud drug|dje. To kre|ta|nje zra|ka je vje|tar. Po|ne|kad je vje|tar blag po|vje|ta|rac ko|ji je|dva po|ma|kne li|šće. Dru|gi put je jak i lo|mi gra|ne. Na Ja|dra|nu pu|še bu|ra, hla|dan i sna|žan vje|tar. Lju|di vje|tar ko|ri|ste već ja|ko du|go. Vje|tre|nja|če su mlje|le ži|to, a je|dre|nja|ci su plo|vi|li mo|ri|ma. Da|nas vje|tro|e|lek|tra|ne pro|i|zvo|de stru|ju. Vje|tar tje|ra po ne|bu i o|bla|ke.",
+      "imageId": "veter",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_duga_3",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 3,
+      "title": "Kako nastaje duga",
+      "body": "Sunčeva svjetlost čini se bijelom, ali u njoj se skriva mnogo boja. Kad pada kiša, a istodobno sja sunce, zrake prolaze kroz kišne kapi. Svaka je kap poput male prizme. Rastavi bijelu svjetlost na boje: crvenu, narančastu, žutu, zelenu, plavu, modru i ljubičastu. Milijuni kapi to rade istodobno i na nebu se pojavi duga. Boje su uvijek istim redom. Da bi vidio dugu, moraš stajati leđima okrenut suncu. Najčešće se pojavljuje ujutro ili navečer, nakon ljetne kiše.",
+      "syllable_body": "Sun|če|va svje|tlost či|ni se bi|je|lom, a|li u njoj se skri|va mno|go bo|ja. Kad pa|da ki|ša, a i|sto|dob|no sja sun|ce, zra|ke pro|la|ze kroz ki|šne ka|pi. Sva|ka je kap po|put ma|le pri|zme. Ra|sta|vi bi|je|lu svje|tlost na bo|je: cr|ve|nu, na|ran|ča|stu, žu|tu, ze|le|nu, pla|vu, mo|dru i lju|bi|ča|stu. Mi|li|ju|ni ka|pi to ra|de i|sto|dob|no i na ne|bu se po|ja|vi du|ga. Bo|je su u|vi|jek i|stim re|dom. Da bi vi|di|o du|gu, mo|raš sta|ja|ti le|đi|ma o|kre|nut sun|cu. Naj|če|šće se po|jav|lju|je u|ju|tro i|li na|ve|čer, na|kon ljet|ne ki|še.",
+      "imageId": "mavrica_kaplja",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_redoslijed_boja_4",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 4,
+      "title": "Redoslijed boja",
+      "body": "Jesi li ikada pažljivo pogledao dugu? Njezine su boje uvijek istim redom. Crvena je uvijek gore, na vanjskom rubu, a ljubičasta dolje, na unutarnjem rubu. Između njih su narančasta, žuta, zelena, plava i modra.\n\nRedoslijed se ne mijenja jer se svaka boja pri prolasku kroz kap vode lomi malo drukčije. Crvena se lomi najmanje, a ljubičasta najviše. Tako se boje odvoje jedna od druge i slože jedna do druge kao lepeza.\n\nPonekad se iznad duge pojavi još jedna, slabija duga. Boje su u njoj obrnute: crvena je dolje, a ljubičasta gore. I ti možeš napraviti dugu. Za sunčana dana stani leđima okrenut suncu i prskaj vodu vrtnim crijevom. Pažljivo pogledaj u vodenu maglicu i vidjet ćeš boje. Samo pazi da nikoga ne poliješ!",
+      "syllable_body": "Je|si li i|ka|da paž|lji|vo po|gle|da|o du|gu? Nje|zi|ne su bo|je u|vi|jek i|stim re|dom. Cr|ve|na je u|vi|jek go|re, na vanj|skom ru|bu, a lju|bi|ča|sta do|lje, na u|nu|tar|njem ru|bu. I|zme|đu njih su na|ran|ča|sta, žu|ta, ze|le|na, pla|va i mo|dra.\n\nRe|do|sli|jed se ne mi|je|nja jer se sva|ka bo|ja pri pro|la|sku kroz kap vo|de lo|mi ma|lo druk|či|je. Cr|ve|na se lo|mi naj|ma|nje, a lju|bi|ča|sta naj|vi|še. Ta|ko se bo|je o|dvo|je je|dna od dru|ge i slo|že je|dna do dru|ge ka|o le|pe|za.\n\nPo|ne|kad se i|znad du|ge po|ja|vi još je|dna, sla|bi|ja du|ga. Bo|je su u njoj o|br|nu|te: cr|ve|na je do|lje, a lju|bi|ča|sta go|re. I ti mo|žeš na|pra|vi|ti du|gu. Za sun|ča|na da|na sta|ni le|đi|ma o|kre|nut sun|cu i pr|skaj vo|du vrt|nim cri|je|vom. Paž|lji|vo po|gle|daj u vo|de|nu ma|gli|cu i vi|djet ćeš bo|je. Sa|mo pa|zi da ni|ko|ga ne po|li|ješ!",
+      "imageId": "mavrica_kaplja",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_tvoja_duga_4",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 4,
+      "title": "Tvoja duga",
+      "body": "Duga ima oblik velikog luka, kao šareni most preko neba. Ali jesi li znao da je duga zapravo cijeli krug? Mi vidimo samo njegov gornji dio jer donji dio skriva zemlja. Iz zrakoplova ili s vrha visoke planine ljudi je ponekad vide kao cijeli krug. Duga se pojavi samo kad je sunce nisko na nebu.\n\nMnoga su djeca pokušala doći do kraja duge. Priče kažu da je ondje skriven lonac zlata. To je lijepa priča, ali zlato ondje nitko nije pronašao. Kad ideš prema dugi, i ona se pomiče jer ovisi o mjestu na kojem stojiš.\n\nZato dvoje ljudi koji stoje jedno do drugoga ne vide potpuno istu dugu. Svatko vidi svjetlost iz drugih kišnih kapi. Kad je sljedeći put ugledaš, dobro je pogledaj. Tvoja duga pripada samo tebi!",
+      "syllable_body": "Du|ga i|ma o|blik ve|li|kog lu|ka, ka|o ša|re|ni most pre|ko ne|ba. A|li je|si li zna|o da je du|ga za|pra|vo ci|je|li krug? Mi vi|di|mo sa|mo nje|gov gor|nji di|o jer do|nji di|o skri|va ze|mlja. Iz zra|ko|plo|va i|li s vr|ha vi|so|ke pla|ni|ne lju|di je po|ne|kad vi|de ka|o ci|je|li krug. Du|ga se po|ja|vi sa|mo kad je sun|ce ni|sko na ne|bu.\n\nMno|ga su dje|ca po|ku|ša|la do|ći do kra|ja du|ge. Pri|če ka|žu da je on|dje skri|ven lo|nac zla|ta. To je li|je|pa pri|ča, a|li zla|to on|dje ni|tko ni|je pro|na|ša|o. Kad i|deš pre|ma du|gi, i o|na se po|mi|če jer o|vi|si o mje|stu na ko|jem sto|jiš.\n\nZa|to dvo|je lju|di ko|ji sto|je je|dno do dru|go|ga ne vi|de pot|pu|no i|stu du|gu. Sva|tko vi|di svje|tlost iz dru|gih ki|šnih ka|pi. Kad je slje|de|ći put u|gle|daš, do|bro je po|gle|daj. Tvo|ja du|ga pri|pa|da sa|mo te|bi!",
+      "imageId": "mavrica_lok",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_snaga_vjetra_5",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 5,
+      "title": "Snaga vjetra",
+      "body": "Vjetar se ne vidi, ali ima golemu snagu. Ljudi je znaju koristiti već tisućama godina. Prvi jedrenjaci plovili su rijekama i morima samo zahvaljujući vjetru. Kasnije su ljudi gradili vjetrenjače. Njihova su se velika krila okretala i pokretala teško kamenje koje je mljelo žito u brašno.\n\nI priroda koristi vjetar. Sjemenke maslačka imaju mali padobran od tankih niti. Kad puše vjetar, odlete daleko i izrastu na novim mjestima. Mnoga stabla i trave također prenose pelud uz pomoć vjetra. Vjetar nosi i pijesak i prašinu na velike udaljenosti. Tako do nas stiže prašina čak iz Sahare.\n\nDanas u mnogim zemljama na brdima, pa čak i u moru, stoje visoke vjetroelektrane s tri lopatice. Kad ih vjetar zavrti, proizvode struju bez dima i bez onečišćenja zraka. Najjači vjetrovi pušu za vrijeme oluja. Ponekad je vjetar tako jak da čupa stabla s korijenjem. Da bi ljudi znali koliko jako puše, koriste uređaj koji se zove anemometar. Ima nekoliko malih posudica koje se vrte to brže što je vjetar jači.",
+      "syllable_body": "Vje|tar se ne vi|di, a|li i|ma go|le|mu sna|gu. Lju|di je zna|ju ko|ri|sti|ti već ti|su|ća|ma go|di|na. Pr|vi je|dre|nja|ci plo|vi|li su ri|je|ka|ma i mo|ri|ma sa|mo za|hva|lju|ju|ći vje|tru. Ka|sni|je su lju|di gra|di|li vje|tre|nja|če. Nji|ho|va su se ve|li|ka kri|la o|kre|ta|la i po|kre|ta|la te|ško ka|me|nje ko|je je mlje|lo ži|to u bra|šno.\n\nI pri|ro|da ko|ri|sti vje|tar. Sje|men|ke ma|slač|ka i|ma|ju ma|li pa|do|bran od tan|kih ni|ti. Kad pu|še vje|tar, o|dle|te da|le|ko i i|zra|stu na no|vim mje|sti|ma. Mno|ga sta|bla i tra|ve ta|ko|đer pre|no|se pe|lud uz po|moć vje|tra. Vje|tar no|si i pi|je|sak i pra|ši|nu na ve|li|ke u|da|lje|no|sti. Ta|ko do nas sti|že pra|ši|na čak iz Sa|ha|re.\n\nDa|nas u mno|gim ze|mlja|ma na br|di|ma, pa čak i u mo|ru, sto|je vi|so|ke vje|tro|e|lek|tra|ne s tri lo|pa|ti|ce. Kad ih vje|tar za|vr|ti, pro|i|zvo|de stru|ju bez di|ma i bez o|ne|či|šće|nja zra|ka. Naj|ja|či vje|tro|vi pu|šu za vri|je|me o|lu|ja. Po|ne|kad je vje|tar ta|ko jak da ču|pa sta|bla s ko|ri|je|njem. Da bi lju|di zna|li ko|li|ko ja|ko pu|še, ko|ri|ste u|re|đaj ko|ji se zo|ve a|ne|mo|me|tar. I|ma ne|ko|li|ko ma|lih po|su|di|ca ko|je se vr|te to br|že što je vje|tar ja|či.",
+      "imageId": "veter",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_tajna_svjetlosti_5",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 5,
+      "title": "Tajna svjetlosti",
+      "body": "Prije više od tristo godina engleski znanstvenik Isaac Newton izveo je jednostavan, ali vrlo važan pokus. Zamračio je sobu i kroz malu rupicu na kapku pustio unutra jednu jedinu sunčevu zraku. Na put zraci postavio je staklenu prizmu. Na suprotnom zidu pojavila se šarena pruga, baš kao duga. Mnogi su ljudi tada vjerovali da boje stvara samo staklo.\n\nNewton je tako pokazao da je bijela sunčeva svjetlost zapravo mješavina boja. Prizma ih razdvaja jer se svaka boja u staklu lomi malo drukčije. Newton je nabrojio sedam boja, kao što postoji i sedam tonova u glazbi. Kišne kapi rade isto, samo što ih je milijun. Newton je svoj pokus ponovio mnogo puta.\n\nI ti možeš izvesti sličan pokus. Napuni čašu vodom i stavi je na sunčanu prozorsku dasku. Na pod stavi bijeli papir i polako pomiči čašu dok se ne pojave boje. Promatraj kako se boje mijenjaju. Duge ćeš vidjeti i na drugim mjestima: u kapima fontane, u maglici pokraj slapa ili čak u mjehurićima od sapuna.",
+      "syllable_body": "Pri|je vi|še od tri|sto go|di|na en|gle|ski znan|stve|nik I|sa|ac New|ton i|zve|o je je|dno|sta|van, a|li vr|lo va|žan po|kus. Za|mra|či|o je so|bu i kroz ma|lu ru|pi|cu na kap|ku pu|sti|o u|nu|tra je|dnu je|di|nu sun|če|vu zra|ku. Na put zra|ci po|sta|vi|o je sta|kle|nu pri|zmu. Na su|prot|nom zi|du po|ja|vi|la se ša|re|na pru|ga, baš ka|o du|ga. Mno|gi su lju|di ta|da vje|ro|va|li da bo|je stva|ra sa|mo sta|klo.\n\nNew|ton je ta|ko po|ka|za|o da je bi|je|la sun|če|va svje|tlost za|pra|vo mje|ša|vi|na bo|ja. Pri|zma ih raz|dva|ja jer se sva|ka bo|ja u sta|klu lo|mi ma|lo druk|či|je. New|ton je na|bro|ji|o se|dam bo|ja, ka|o što po|sto|ji i se|dam to|no|va u gla|zbi. Ki|šne ka|pi ra|de i|sto, sa|mo što ih je mi|li|jun. New|ton je svoj po|kus po|no|vi|o mno|go pu|ta.\n\nI ti mo|žeš i|zve|sti sli|čan po|kus. Na|pu|ni ča|šu vo|dom i sta|vi je na sun|ča|nu pro|zor|sku da|sku. Na pod sta|vi bi|je|li pa|pir i po|la|ko po|mi|či ča|šu dok se ne po|ja|ve bo|je. Pro|ma|traj ka|ko se bo|je mi|je|nja|ju. Du|ge ćeš vi|dje|ti i na dru|gim mje|sti|ma: u ka|pi|ma fon|ta|ne, u ma|gli|ci po|kraj sla|pa i|li čak u mje|hu|ri|ći|ma od sa|pu|na.",
+      "imageId": "mavrica_polje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_prvi_led_1",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 1,
+      "title": "Prvi led",
+      "body": "Vani je jako hladno. Na maloj lokvi ima leda. Luka oprezno stane na njega. Led puca i lomi se. Tanak led nije siguran. I veliko jezero je zaleđeno.",
+      "syllable_body": "Va|ni je ja|ko hla|dno. Na ma|loj lo|kvi i|ma le|da. Lu|ka o|pre|zno sta|ne na nje|ga. Led pu|ca i lo|mi se. Ta|nak led ni|je si|gu|ran. I ve|li|ko je|ze|ro je za|le|đe|no.",
+      "imageId": "prvi_led",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_sjemenka_1",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 1,
+      "title": "Sjemenka",
+      "body": "Sjemenka leži u zemlji. Dobiva vodu i sunce. Najprije iz nje izraste mali korijen. Zatim izraste zelena stabljika. Biljčica je sve veća. Na kraju iz nje izraste suncokret!",
+      "syllable_body": "Sje|men|ka le|ži u ze|mlji. Do|bi|va vo|du i sun|ce. Naj|pri|je iz nje i|zra|ste ma|li ko|ri|jen. Za|tim i|zra|ste ze|le|na stab|lji|ka. Bilj|či|ca je sve ve|ća. Na kra|ju iz nje i|zra|ste sun|co|kret!",
+      "imageId": "seme_kalica",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_kisa_2",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 2,
+      "title": "Odakle dolazi kiša?",
+      "body": "Oblaci su od vrlo malih kapljica vode. Toliko su lagane da lebde u zraku. U oblaku se kapljice sudaraju i spajaju. Tako postaju sve veće i teže. Kad su preteške, padaju na zemlju. To je kiša. Kiša zalijeva biljke i puni rijeke i jezera. Bez kiše ništa ne bi raslo.",
+      "syllable_body": "O|bla|ci su od vr|lo ma|lih ka|plji|ca vo|de. To|li|ko su la|ga|ne da leb|de u zra|ku. U o|bla|ku se ka|plji|ce su|da|ra|ju i spa|ja|ju. Ta|ko po|sta|ju sve ve|će i te|že. Kad su pre|te|ške, pa|da|ju na ze|mlju. To je ki|ša. Ki|ša za|li|je|va bilj|ke i pu|ni ri|je|ke i je|ze|ra. Bez ki|še ni|šta ne bi ra|slo.",
+      "imageId": "dez_kaplje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_nakon_kise_2",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 2,
+      "title": "Nakon kiše",
+      "body": "Cijelo jutro padala je kiša. Sada na zelenom lišću blistaju sitne kapi. Zemlja je meka i mokra. Gliste izlaze na površinu. I puževi izlaze iz svojih skrovišta. Cvijeće opet podiže glavice. Zrak svježe miriše na travu i zemlju. Biljke su popile mnogo vode i brzo će rasti. Kiša je dobra i za vrt i za polja.",
+      "syllable_body": "Ci|je|lo ju|tro pa|da|la je ki|ša. Sa|da na ze|le|nom li|šću bli|sta|ju sit|ne ka|pi. Ze|mlja je me|ka i mo|kra. Gli|ste i|zla|ze na po|vr|ši|nu. I pu|že|vi i|zla|ze iz svo|jih skro|vi|šta. Cvi|je|će o|pet po|di|že gla|vi|ce. Zrak svje|že mi|ri|še na tra|vu i ze|mlju. Bilj|ke su po|pi|le mno|go vo|de i br|zo će ra|sti. Ki|ša je do|bra i za vrt i za po|lja.",
+      "imageId": "dez_kaplje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_put_kapi_3",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 3,
+      "title": "Put kapi vode",
+      "body": "Kap vode kreće na dugo putovanje koje nikad ne završava. Sunce grije vodu u morima, jezerima i rijekama. Dio vode pretvara se u paru koja se nevidljivo diže u zrak. Gore, gdje je hladno, para se ohladi i stvori male kapljice. Od njih nastaju oblaci. Kad se kapljice spoje i otežaju, padaju na zemlju kao kiša ili snijeg. Voda zatim otječe u rijeke, a rijeke je odnose natrag u more. I sve počinje ispočetka! Jedna kap može taj put prijeći mnogo puta.",
+      "syllable_body": "Kap vo|de kre|će na du|go pu|to|va|nje ko|je ni|kad ne za|vr|ša|va. Sun|ce gri|je vo|du u mo|ri|ma, je|ze|ri|ma i ri|je|ka|ma. Di|o vo|de pre|tva|ra se u pa|ru ko|ja se ne|vid|lji|vo di|že u zrak. Go|re, gdje je hla|dno, pa|ra se o|hla|di i stvo|ri ma|le ka|plji|ce. Od njih na|sta|ju o|bla|ci. Kad se ka|plji|ce spo|je i o|te|ža|ju, pa|da|ju na ze|mlju ka|o ki|ša i|li sni|jeg. Vo|da za|tim o|tje|če u ri|je|ke, a ri|je|ke je o|dno|se na|trag u mo|re. I sve po|či|nje i|spo|če|tka! Je|dna kap mo|že taj put pri|je|ći mno|go pu|ta.",
+      "imageId": "dez_kaplje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_vjetrovit_dan_3",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 3,
+      "title": "Vjetrovit dan",
+      "body": "Jednog proljetnog dana počeo je puhati vjetar. Mia je izašla na livadu sa svojim psićem Medom. Raširila je ruke i zatvorila oči. Vjetar joj je mrsio kosu i napuhivao jaknu. Lišće je letjelo sa stabla, a rublje na konopu vijorilo se kao zastave. Na brežuljku se brzo okretala vjetrenjača. Mia je puhnula u maslačak. Bijele sjemenke podigle su se u zrak i odletjele daleko preko trave. Medo je veselo trčao za njima i lajao. „Kamo lete?“ upitala je Mia. Baka joj je rekla da će ih vjetar odnijeti na druga mjesta, gdje će izrasti novi maslačci.",
+      "syllable_body": "Je|dnog pro|ljet|nog da|na po|če|o je pu|ha|ti vje|tar. Mi|a je i|za|šla na li|va|du sa svo|jim psi|ćem Me|dom. Ra|ši|ri|la je ru|ke i za|tvo|ri|la o|či. Vje|tar joj je mr|si|o ko|su i na|pu|hi|va|o ja|knu. Li|šće je le|tje|lo sa sta|bla, a rub|lje na ko|no|pu vi|jo|ri|lo se ka|o za|sta|ve. Na bre|žulj|ku se br|zo o|kre|ta|la vje|tre|nja|ča. Mi|a je pu|hnu|la u ma|sla|čak. Bi|je|le sje|men|ke po|di|gle su se u zrak i o|dle|tje|le da|le|ko pre|ko tra|ve. Me|do je ve|se|lo tr|ča|o za nji|ma i la|ja|o. „Ka|mo le|te?“ u|pi|ta|la je Mi|a. Ba|ka joj je re|kla da će ih vje|tar o|dni|je|ti na dru|ga mje|sta, gdje će i|zra|sti no|vi ma|slač|ci.",
+      "imageId": "veter",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_mace_4",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 4,
+      "title": "Mace",
+      "body": "Krajem zime, kad još snijeg prekriva zemlju, na granama nekih vrba pojave se neobični pupoljci. Nisu zeleni, nego dlakavi i srebrnasti, kao mačje krzno. Zato ih zovemo mace. Vrbe često rastu uz potoke i rijeke.\n\nMace su zapravo cvjetovi vrbe. Najprije je svaka skrivena ispod smeđe, sjajne ljuske. Kad dani postanu topliji, ljuska otpadne i provire pahuljice. Nježne dlačice griju cvijet, kao što nas grije debeli kaput.\n\nMace cvatu prije lišća. Za pčele su nakon duge zime jedna od prvih hrana u godini. Pune su žutog peluda, koji pčele nose u košnicu. U mnogim krajevima Hrvatske ljudi na Cvjetnicu, proljetni blagdan prije Uskrsa, nose u crkvu grančice s macama. Kod kuće ih stave u vazu i vesele se proljeću.",
+      "syllable_body": "Kra|jem zi|me, kad još sni|jeg pre|kri|va ze|mlju, na gra|na|ma ne|kih vr|ba po|ja|ve se ne|o|bič|ni pu|polj|ci. Ni|su ze|le|ni, ne|go dla|ka|vi i sre|br|na|sti, ka|o mač|je kr|zno. Za|to ih zo|ve|mo ma|ce. Vr|be če|sto ra|stu uz po|to|ke i ri|je|ke.\n\nMa|ce su za|pra|vo cvje|to|vi vr|be. Naj|pri|je je sva|ka skri|ve|na i|spod sme|đe, sjaj|ne lju|ske. Kad da|ni po|sta|nu to|pli|ji, lju|ska ot|pa|dne i pro|vi|re pa|hu|lji|ce. Nje|žne dla|či|ce gri|ju cvi|jet, ka|o što nas gri|je de|be|li ka|put.\n\nMa|ce cva|tu pri|je li|šća. Za pče|le su na|kon du|ge zi|me je|dna od pr|vih hra|na u go|di|ni. Pu|ne su žu|tog pe|lu|da, ko|ji pče|le no|se u ko|šni|cu. U mno|gim kra|je|vi|ma Hr|vat|ske lju|di na Cvjet|ni|cu, pro|ljet|ni blag|dan pri|je U|skr|sa, no|se u cr|kvu gran|či|ce s ma|ca|ma. Kod ku|će ih sta|ve u va|zu i ve|se|le se pro|lje|ću.",
+      "imageId": "winter_tree_buds",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_sareno_lisce_4",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 4,
+      "title": "Zašto lišće mijenja boju?",
+      "body": "Ljeti je lišće drveća zeleno. Zelenu boju daje mu tvar koja se zove klorofil. Uz njezinu pomoć list koristi sunčevu svjetlost da napravi hranu za stablo. Listovi su kao male kuhinje stabla.\n\nU jesen su dani kraći i hladniji. Stablu klorofil više ne treba, pa ga prestane stvarati. Zelena boja polako nestaje, a žute i narančaste boje, koje su cijelo ljeto bile skrivene u listu, napokon se pokažu. Neka stabla stvore i novu crvenu boju. Šume su tada žute, narančaste i crvene kao slika.\n\nZatim se listovi osuše i otpadnu. Stablo ih odbaci da zimi ne gubi vodu, kad je zemlja smrznuta. Otpalo lišće istrune i nahrani zemlju. Zimi stablo odmara golih grana. Ali na svakoj grani već čekaju mali pupoljci, spremni da se u proljeće otvore.",
+      "syllable_body": "Lje|ti je li|šće dr|ve|ća ze|le|no. Ze|le|nu bo|ju da|je mu tvar ko|ja se zo|ve klo|ro|fil. Uz nje|zi|nu po|moć list ko|ri|sti sun|če|vu svje|tlost da na|pra|vi hra|nu za sta|blo. Li|sto|vi su ka|o ma|le ku|hi|nje sta|bla.\n\nU je|sen su da|ni kra|ći i hla|dni|ji. Sta|blu klo|ro|fil vi|še ne tre|ba, pa ga pre|sta|ne stva|ra|ti. Ze|le|na bo|ja po|la|ko ne|sta|je, a žu|te i na|ran|ča|ste bo|je, ko|je su ci|je|lo lje|to bi|le skri|ve|ne u li|stu, na|po|kon se po|ka|žu. Ne|ka sta|bla stvo|re i no|vu cr|ve|nu bo|ju. Šu|me su ta|da žu|te, na|ran|ča|ste i cr|ve|ne ka|o sli|ka.\n\nZa|tim se li|sto|vi o|su|še i ot|pa|dnu. Sta|blo ih od|ba|ci da zi|mi ne gu|bi vo|du, kad je ze|mlja smr|znu|ta. Ot|pa|lo li|šće i|stru|ne i na|hra|ni ze|mlju. Zi|mi sta|blo od|ma|ra go|lih gra|na. A|li na sva|koj gra|ni već če|ka|ju ma|li pu|polj|ci, spre|mni da se u pro|lje|će o|tvo|re.",
+      "imageId": "jesensko_listje_drevo",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_pupoljci_5",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 5,
+      "title": "Pupoljci čekaju proljeće",
+      "body": "Mnogi ljudi misle da je drveće zimi mrtvo. Grane su mu gole i po njima pada snijeg. Ali ako bolje pogledaš, na svakoj grani vidjet ćeš male, tvrde pupoljke. Stablo ih je pripremilo još ljeti, mnogo prije nego što je otpalo lišće. Pupoljci su na granama cijelu zimu.\n\nSvaki je pupoljak kao dobro zatvorena kutijica. Izvana ima tvrde smeđe ljuske koje ga štite od mraza, vjetra i vode. Neke pupoljke pokriva i gusto paperje koje ih grije. Drugi su ljepljivi, da u njih ne uđu voda ni kukci. Unutra su pažljivo složeni sićušni listovi ili cvjetovi iduće godine. Svaka vrsta drveća ima drukčije pupoljke.\n\nPupoljci strpljivo čekaju. Ne otvaraju se prvog toplog zimskog dana jer bi se mraz mogao vratiti. Tek kad su dani dugi i topli, ljuske se razmaknu i listovi izađu na svjetlo. To možeš vidjeti i kod kuće. Stavi zimi u vazu s vodom nekoliko grančica trešnje. Na toplom će procvjetati mnogo prije onih vani. Tako na stolu imaš malo proljeće usred zime.",
+      "syllable_body": "Mno|gi lju|di mi|sle da je dr|ve|će zi|mi mr|tvo. Gra|ne su mu go|le i po nji|ma pa|da sni|jeg. A|li a|ko bo|lje po|gle|daš, na sva|koj gra|ni vi|djet ćeš ma|le, tvr|de pu|polj|ke. Sta|blo ih je pri|pre|mi|lo još lje|ti, mno|go pri|je ne|go što je ot|pa|lo li|šće. Pu|polj|ci su na gra|na|ma ci|je|lu zi|mu.\n\nSva|ki je pu|po|ljak ka|o do|bro za|tvo|re|na ku|ti|ji|ca. I|zva|na i|ma tvr|de sme|đe lju|ske ko|je ga šti|te od mra|za, vje|tra i vo|de. Ne|ke pu|polj|ke po|kri|va i gu|sto pa|per|je ko|je ih gri|je. Dru|gi su lje|plji|vi, da u njih ne u|đu vo|da ni kuk|ci. U|nu|tra su paž|lji|vo slo|že|ni si|ću|šni li|sto|vi i|li cvje|to|vi i|du|će go|di|ne. Sva|ka vr|sta dr|ve|ća i|ma druk|či|je pu|polj|ke.\n\nPu|polj|ci str|plji|vo če|ka|ju. Ne o|tva|ra|ju se pr|vog to|plog zim|skog da|na jer bi se mraz mo|ga|o vra|ti|ti. Tek kad su da|ni du|gi i to|pli, lju|ske se ra|zma|knu i li|sto|vi i|za|đu na svje|tlo. To mo|žeš vi|dje|ti i kod ku|će. Sta|vi zi|mi u va|zu s vo|dom ne|ko|li|ko gran|či|ca treš|nje. Na to|plom će pro|cvje|ta|ti mno|go pri|je o|nih va|ni. Ta|ko na sto|lu i|maš ma|lo pro|lje|će u|sred zi|me.",
+      "imageId": "winter_tree_buds",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_godisnja_doba_5",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 5,
+      "title": "Četiri godišnja doba",
+      "body": "U Hrvatskoj, kao i u mnogim drugim zemljama, godina ima četiri godišnja doba: proljeće, ljeto, jesen i zimu. Ali zašto se godišnja doba izmjenjuju? Zemlja kruži oko Sunca, a to putovanje traje jednu godinu. Svako godišnje doba traje otprilike tri mjeseca. Pritom je Zemlja malo nagnuta. Zato naša zemlja u jednom dijelu godine dobiva više svjetlosti i topline, a u drugom manje.\n\nU proljeće dani postaju dulji, a drveće se okiti cvijećem. Iz toplih krajeva vraćaju se lastavice, a ptice grade gnijezda. Na poljima počinju rasti žito i kukuruz. Ljeto je najtoplije godišnje doba. Dani su dugi, suncokreti rastu u visinu, a djeca se igraju vani do večeri.\n\nU jesen lišće požuti i pocrveni. Ljudi beru jabuke, grožđe i bundeve. Mnoge životinje spremaju zalihe za zimu. Zatim dolazi zima s kratkim danima i dugim noćima. Pada snijeg, jezera se lede, a djeca rade snjegoviće. Na dan svete Lucije mnoge obitelji siju pšenicu koja do Božića naraste zelena. A nakon zime sve počinje ispočetka.",
+      "syllable_body": "U Hr|vat|skoj, ka|o i u mno|gim dru|gim ze|mlja|ma, go|di|na i|ma če|ti|ri go|diš|nja do|ba: pro|lje|će, lje|to, je|sen i zi|mu. A|li za|što se go|diš|nja do|ba iz|mje|nju|ju? Ze|mlja kru|ži o|ko Sun|ca, a to pu|to|va|nje tra|je je|dnu go|di|nu. Sva|ko go|diš|nje do|ba tra|je ot|pri|li|ke tri mje|se|ca. Pri|tom je Ze|mlja ma|lo na|gnu|ta. Za|to na|ša ze|mlja u je|dnom di|je|lu go|di|ne do|bi|va vi|še svje|tlo|sti i to|pli|ne, a u dru|gom ma|nje.\n\nU pro|lje|će da|ni po|sta|ju du|lji, a dr|ve|će se o|ki|ti cvi|je|ćem. Iz to|plih kra|je|va vra|ća|ju se la|sta|vi|ce, a pti|ce gra|de gni|je|zda. Na po|lji|ma po|či|nju ra|sti ži|to i ku|ku|ruz. Lje|to je naj|to|pli|je go|diš|nje do|ba. Da|ni su du|gi, sun|co|kre|ti ra|stu u vi|si|nu, a dje|ca se i|gra|ju va|ni do ve|če|ri.\n\nU je|sen li|šće po|žu|ti i po|cr|ve|ni. Lju|di be|ru ja|bu|ke, grož|đe i bun|de|ve. Mno|ge ži|vo|ti|nje spre|ma|ju za|li|he za zi|mu. Za|tim do|la|zi zi|ma s kra|tkim da|ni|ma i du|gim no|ći|ma. Pa|da sni|jeg, je|ze|ra se le|de, a dje|ca ra|de snje|go|vi|će. Na dan sve|te Lu|ci|je mno|ge o|bi|te|lji si|ju pše|ni|cu ko|ja do Bo|ži|ća na|ra|ste ze|le|na. A na|kon zi|me sve po|či|nje i|spo|če|tka.",
+      "imageId": "letni_casi_pokrajina",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Croatian text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    }
+  ]
+}

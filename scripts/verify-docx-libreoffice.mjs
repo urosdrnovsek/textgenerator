@@ -150,7 +150,14 @@ const CASES = [
   { label: 'sk-andika-level2-cloze-wordbank', language: 'sk', theme: 'animal_facts', level: 2, entryId: 'animal_facts_korytnacka_2', fontId: 'andika', writingMode: 'cloze', clozeEveryNth: 5, wordBank: true },
   { label: 'sk-opendyslexic-level3-sequence', language: 'sk', theme: 'stories', level: 3, entryId: 'stories_slimak_vitaz_3', fontId: 'opendyslexic', writingMode: 'sequence' },
   { label: 'sk-lexend-level4-starter', language: 'sk', theme: 'around_the_world', level: 4, entryId: 'around_the_world_dunaj_4', fontId: 'lexend', writingMode: 'starter' },
-  { label: 'sk-andika-level5-readcopy-stress', language: 'sk', theme: 'stories', level: 5, entryId: 'stories_obor_v_muzeu_5', fontId: 'andika', writingMode: 'read-copy' }
+  { label: 'sk-andika-level5-readcopy-stress', language: 'sk', theme: 'stories', level: 5, entryId: 'stories_obor_v_muzeu_5', fontId: 'andika', writingMode: 'read-copy' },
+  // Croatian (2026-09-29): one case per level across all four fonts, so
+  // LibreOffice draws č ć đ š ž (and Đ) in each.
+  { label: 'hr-lexend-level1-readcopy-colors', language: 'hr', theme: 'stories', level: 1, entryId: 'stories_mokri_macic_1', fontId: 'lexend', writingMode: 'read-copy', letterColors: true, syllableColors: true },
+  { label: 'hr-comicneue-level2-cloze-wordbank', language: 'hr', theme: 'animal_facts', level: 2, entryId: 'animal_facts_kornjaca_2', fontId: 'comicneue', writingMode: 'cloze', clozeEveryNth: 5, wordBank: true },
+  { label: 'hr-opendyslexic-level3-sequence', language: 'hr', theme: 'stories', level: 3, entryId: 'stories_puz_pobjednik_3', fontId: 'opendyslexic', writingMode: 'sequence' },
+  { label: 'hr-andika-level4-starter', language: 'hr', theme: 'around_the_world', level: 4, entryId: 'around_the_world_dunav_4', fontId: 'andika', writingMode: 'starter' },
+  { label: 'hr-andika-level5-readcopy-stress', language: 'hr', theme: 'stories', level: 5, entryId: 'stories_vrt_sa_zelenim_vratima_5', fontId: 'andika', writingMode: 'read-copy' }
 ];
 
 // The development machine's LibreOffice; CI sets SOFFICE_BIN (and

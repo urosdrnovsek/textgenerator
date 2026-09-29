@@ -5,11 +5,22 @@ can be an introduction rather than a log. Newest first. Each entry
 summarizes what shipped and what was verified; the commit messages in
 `git log` carry the full per-change detail and are the source of truth.
 
-## Unreleased — Romanian and Slovak (branches `feature/lang-ro`, `feature/lang-sk`, 2026-09-29)
+## Unreleased — Romanian, Slovak and Croatian (branches `feature/lang-ro`, `feature/lang-sk`, `feature/lang-hr`, 2026-09-29)
 
-A sixth and a seventh language, Romanian (Română) and Slovak
-(Slovenčina), with 75 texts each; no change to how the app works for the
+Three new languages, Romanian (Română), Slovak (Slovenčina) and Croatian
+(Hrvatski), with 75 texts each; no change to how the app works for the
 other five.
+
+- **75 Croatian texts** (668 texts in all), made the same way, on the
+  same pictures, in standard ijekavian Croatian with Croatian angles
+  (Velebit, the Danube at Vukovar, Čigoč's storks, *mace*, St. Lucy's
+  wheat). Syllables: the school rule (a syllable per vowel, plus
+  syllabic `r`). Every text fits one page. All four fonts write Croatian.
+- **Croatian interface and sheet strings** (`locales/hr.json`).
+- `verify-docx`: five Croatian cases across all four fonts (40 in all).
+  `verify-offline`'s word-bank check now sorts in the sheet's language,
+  as the app does: in Croatian `škrinji` comes after `stara`, and the
+  check had used the default order.
 
 - **75 Slovak texts** (593 texts in all), made the same way as the
   Romanian ones below, on the same pictures, with Slovak angles (the
@@ -45,8 +56,9 @@ other five.
 Verified (with Slovak): `npm test` (264), `typecheck`,
 `validate-content`, the golden runs (only the new entries added each
 time), `fitcheck` (all 75 Romanian and all 75 Slovak texts on one page),
-`verify-docx` (35), `verify-offline` (35 checks), `verify-firefox`. Not
-done: a native speaker's read of either language; a release ZIP.
+`verify-docx` (35), `verify-offline` (35 checks), `verify-firefox`. With
+Croatian: `fitcheck` 75/75, `verify-docx` 40, the rest as above. Not
+done: a native speaker's read of any of the three; a release ZIP.
 
 ## 0.10.0-rc.4 — 2026-09-28 (more texts)
 

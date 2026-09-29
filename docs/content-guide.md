@@ -215,6 +215,14 @@ a teacher and is not covered here); apply the same rules to new entries.
   `Eu|ró|pa`), final `-ou` too (`veľ|kou`, `po|mo|cou`); other vowel pairs
   split (`po|u|ží|vať`, `mú|ze|a`). `jablko` is avoided in the pack: whether
   its `l` is a syllable is disputed.
+- **Croatian** — the school rule: as many syllables as vowels, plus a
+  syllabic `r` (between consonants: `vrt`, `sr|ce`, `tr|ča|ti`, `U|skr|sa`).
+  So `ije` is two (`ri|je|ka`, `mli|je|ko`), participles end in their own
+  `o` (`bi|o`, `vi|di|o`), and vowel pairs split (`a|u|to`,
+  `A|u|stra|li|ja`). `lj`, `nj`, `dž` are one letter. A consonant group
+  goes to the next syllable when a word can begin with it (`se|stra`,
+  `ze|mlja`, `pti|ca`, `ot|klju|ča|va`), otherwise it splits (`sun|ce`,
+  `mor|ski`, `pal|ma`).
 
 ## Images
 
@@ -258,6 +266,16 @@ Rules of thumb:
 ### Where the content stands (2026-09-29)
 
 From `npm run content-status`:
+
+- **Croatian (2026-09-29):** 75 entries, same shape and pictures as
+  Romanian and Slovak, original texts in standard ijekavian Croatian
+  (Croatian angles: the Velebit echo, the Danube at Vukovar and Kopački
+  rit, the storks of Čigoč, *mace* on Cvjetnica, St. Lucy's wheat). Two
+  `plausible`, 73 `verified`; `reviewed` by Claude, `nativeSpeaker:
+  false`, syllables by `Instructions/tools/hr.py` (the school rule, every
+  flagged word read). Level-5 drafts came out 145–157 words and were
+  lengthened to 161–167; all 75 fit one page. All four fonts have every
+  Croatian letter. Generators: `Instructions/tools/hr-round1-*.py`.
 
 - **Slovak (2026-09-29):** 75 entries, the same shape and pictures as
   Romanian, original Slovak texts (Slovak angles: the High Tatras echo,

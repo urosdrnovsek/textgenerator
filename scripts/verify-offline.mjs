@@ -540,7 +540,9 @@ async function main() {
     await waitForFit();
     const bankOff = await evalJs(bankState);
     await setSelect('writing-mode-select', 'read-copy');
-    const collator = new Intl.Collator(undefined, { sensitivity: 'base' });
+    // Alphabetical in the sheet's language, as the app sorts it (Croatian
+    // and Slovak put š after s; the default order would not).
+    const collator = new Intl.Collator(await evalJs(`document.documentElement.lang`), { sensitivity: 'base' });
     const bankOk = bankOn.bank.length > 0 && JSON.stringify(bankOn.bank) === JSON.stringify([...bankOn.answers].sort(collator.compare))
       && JSON.stringify(bankOn.printBank) === JSON.stringify(bankOn.bank) && bankOn.beforeText === 'passage' && bankOff.bank.length === 0;
     journeyChecks.push({
