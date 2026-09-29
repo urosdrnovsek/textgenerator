@@ -142,7 +142,15 @@ const CASES = [
   { label: 'ro-lexend-level2-cloze-wordbank', language: 'ro', theme: 'animal_facts', level: 2, entryId: 'animal_facts_testoasa_2', fontId: 'lexend', writingMode: 'cloze', clozeEveryNth: 5, wordBank: true },
   { label: 'ro-opendyslexic-level3-sequence', language: 'ro', theme: 'stories', level: 3, entryId: 'stories_melcul_campion_3', fontId: 'opendyslexic', writingMode: 'sequence' },
   { label: 'ro-lexend-level4-starter', language: 'ro', theme: 'around_the_world', level: 4, entryId: 'around_the_world_dunarea_4', fontId: 'lexend', writingMode: 'starter' },
-  { label: 'ro-andika-level5-readcopy-stress', language: 'ro', theme: 'nature_seasons', level: 5, entryId: 'nature_seasons_anotimpurile_5', fontId: 'andika', writingMode: 'read-copy' }
+  { label: 'ro-andika-level5-readcopy-stress', language: 'ro', theme: 'nature_seasons', level: 5, entryId: 'nature_seasons_anotimpurile_5', fontId: 'andika', writingMode: 'read-copy' },
+  // Slovak (2026-09-29): one case per level across all four fonts (Slovak is
+  // offered in Comic Neue), so LibreOffice draws ä ô ľ ĺ ŕ ď ť in each.
+  // Level 5 is the pack's longest text (1040 characters).
+  { label: 'sk-comicneue-level1-readcopy-colors', language: 'sk', theme: 'stories', level: 1, entryId: 'stories_mokre_macatko_1', fontId: 'comicneue', writingMode: 'read-copy', letterColors: true, syllableColors: true },
+  { label: 'sk-andika-level2-cloze-wordbank', language: 'sk', theme: 'animal_facts', level: 2, entryId: 'animal_facts_korytnacka_2', fontId: 'andika', writingMode: 'cloze', clozeEveryNth: 5, wordBank: true },
+  { label: 'sk-opendyslexic-level3-sequence', language: 'sk', theme: 'stories', level: 3, entryId: 'stories_slimak_vitaz_3', fontId: 'opendyslexic', writingMode: 'sequence' },
+  { label: 'sk-lexend-level4-starter', language: 'sk', theme: 'around_the_world', level: 4, entryId: 'around_the_world_dunaj_4', fontId: 'lexend', writingMode: 'starter' },
+  { label: 'sk-andika-level5-readcopy-stress', language: 'sk', theme: 'stories', level: 5, entryId: 'stories_obor_v_muzeu_5', fontId: 'andika', writingMode: 'read-copy' }
 ];
 
 // The development machine's LibreOffice; CI sets SOFFICE_BIN (and

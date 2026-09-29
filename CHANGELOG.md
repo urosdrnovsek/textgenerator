@@ -5,10 +5,21 @@ can be an introduction rather than a log. Newest first. Each entry
 summarizes what shipped and what was verified; the commit messages in
 `git log` carry the full per-change detail and are the source of truth.
 
-## Unreleased — Romanian (branch `feature/lang-ro`, 2026-09-29)
+## Unreleased — Romanian and Slovak (branches `feature/lang-ro`, `feature/lang-sk`, 2026-09-29)
 
-A sixth language, Romanian (Română), with 75 texts; no change to how the
-app works for the other five.
+A sixth and a seventh language, Romanian (Română) and Slovak
+(Slovenčina), with 75 texts each; no change to how the app works for the
+other five.
+
+- **75 Slovak texts** (593 texts in all), made the same way as the
+  Romanian ones below, on the same pictures, with Slovak angles (the
+  Tatras, the Danube in Bratislava, *bahniatka*, *barborky*). Syllables:
+  the pack's Slovene convention with syllabic `r`/`l`. Every text fits
+  one page (seven level-5 texts lost a sentence and a paragraph break to
+  get there). All four fonts, Comic Neue included, write Slovak.
+- **Slovak interface and sheet strings** (`locales/sk.json`), counted
+  strings as "label: number" (1 slovo, 2 slová, 5 slov).
+- `verify-docx`: five Slovak cases across all four fonts (35 in all).
 
 - **75 Romanian texts** in the fr/de/es shape (six per story level, three
   per animal level, two elsewhere; 518 texts in all), original texts on
@@ -31,10 +42,11 @@ app works for the other five.
   in order" sheets with `-layout`. `verify-offline` drives Comic Neue into
   Romanian and back.
 
-Verified: `npm test` (264), `typecheck`, `validate-content`, the golden
-runs (only the 75 new entries added), `fitcheck` (all 75 Romanian texts
-on one page), `verify-docx` (30), `verify-offline` (35 checks),
-`verify-firefox`. Not done: a native speaker's read; a release ZIP.
+Verified (with Slovak): `npm test` (264), `typecheck`,
+`validate-content`, the golden runs (only the new entries added each
+time), `fitcheck` (all 75 Romanian and all 75 Slovak texts on one page),
+`verify-docx` (35), `verify-offline` (35 checks), `verify-firefox`. Not
+done: a native speaker's read of either language; a release ZIP.
 
 ## 0.10.0-rc.4 — 2026-09-28 (more texts)
 

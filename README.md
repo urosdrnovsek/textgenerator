@@ -7,10 +7,11 @@ coloring, adjustable spacing, handwriting rulings), exported as print/PDF
 or an editable Word (`.docx`) file. It runs entirely offline — open
 `index.html`; no server, no install, no internet connection at any point.
 
-Six languages (Slovene, English, German, French, Spanish, Romanian), five
-themes, five difficulty levels; English has three to eight texts for every
-theme and level (118 entries), Slovene three to seven (100), French,
-German, Spanish and Romanian two to six (75 each) — 518 texts in all,
+Seven languages (Slovene, English, German, French, Spanish, Romanian,
+Slovak), five themes, five difficulty levels; English has three to eight
+texts for every theme and level (118 entries), Slovene three to seven
+(100), French, German, Spanish, Romanian and Slovak two to six (75 each)
+— 593 texts in all,
 including a set of gentle fantasy stories.
 Current version:
 `0.10.0-rc.4` — a release candidate; see "Status" below for what's still
@@ -101,12 +102,12 @@ real Word, real desktop Firefox/Safari and printer tests need the
 project owner's own hardware.
 
 Still open, deliberately: a native speaker's review of the English, German,
-French, Spanish and Romanian content (they've had a careful editorial pass, not a
-native speaker's read — 0 of 418 non-Slovene entries native-reviewed, and
+French, Spanish, Romanian and Slovak content (they've had a careful editorial pass, not a
+native speaker's read — 0 of 493 non-Slovene entries native-reviewed, and
 the same goes for the short instruction lines printed on the new activity
 sheets); an
 image-accuracy pass over the entries whose pictures were reassigned on
-topic rather than drawn for the text (407 of 518 verified, the rest
+topic rather than drawn for the text (480 of 593 verified, the rest
 plausible, no known mismatch). Both numbers come from the per-entry review record and are
 printed by `npm run content-status`, so progress is measurable rather
 than asserted (see `docs/content-guide.md`). Also open: country-specific

@@ -1,0 +1,1357 @@
+{
+  "schemaVersion": 1,
+  "packId": "starter-sk",
+  "language": "sk",
+  "entries": [
+    {
+      "id": "animal_facts_jezko_1",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 1,
+      "title": "Ježko",
+      "body": "Ježko je malé zviera. Na chrbte má veľa ostrých pichliačov. Pichliače ho chránia. V noci ježko hľadá potravu. Je slimáky, chrobáky a dážďovky. V zime spí v pelechu z lístia.",
+      "syllable_body": "Jež|ko je ma|lé zvie|ra. Na chrb|te má ve|ľa o|strých pi|chlia|čov. Pi|chlia|če ho chrá|nia. V no|ci jež|ko hľa|dá po|tra|vu. Je sli|má|ky, chro|bá|ky a dáž|ďov|ky. V zi|me spí v pe|le|chu z lí|stia.",
+      "imageId": "jez",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_sova_1",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 1,
+      "title": "Sova",
+      "body": "Sova je nočný vták. Cez deň spí v dutine stromu. V noci letí úplne potichu. Má veľké oči a v tme dobre vidí. Sova chytá myši. Jej perie je hnedé a biele.",
+      "syllable_body": "So|va je noč|ný vták. Cez deň spí v du|ti|ne stro|mu. V no|ci le|tí ú|pl|ne po|ti|chu. Má veľ|ké o|či a v tme do|bre vi|dí. So|va chy|tá my|ši. Jej pe|rie je hne|dé a bie|le.",
+      "imageId": "sova_veja",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_lienka_1",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 1,
+      "title": "Lienka",
+      "body": "Lienka je malý chrobák. Má červené krídla s čiernymi bodkami. Rada sedí na zelených listoch. Lienka je vošky. Tak pomáha záhrade. Záhradníci ju majú veľmi radi.",
+      "syllable_body": "Lien|ka je ma|lý chro|bák. Má čer|ve|né krí|dla s čier|ny|mi bod|ka|mi. Ra|da se|dí na ze|le|ných li|stoch. Lien|ka je vo|šky. Tak po|má|ha zá|hra|de. Zá|hra|dní|ci ju ma|jú veľ|mi ra|di.",
+      "imageId": "ladybird_leaf",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_korytnacka_2",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 2,
+      "title": "Korytnačka",
+      "body": "Korytnačka má na chrbte tvrdý pancier. Pancier je jej domček a chráni ju pred nebezpečenstvom. Keď sa korytnačka zľakne, schová doň hlavu aj nohy. Niektoré korytnačky žijú na súši, iné v mori. Morské korytnačky majú nohy ako veslá a výborne plávajú. Korytnačky sa dožívajú vysokého veku, niektoré aj viac ako sto rokov.",
+      "syllable_body": "Ko|ryt|nač|ka má na chrb|te tvr|dý pan|cier. Pan|cier je jej dom|ček a chrá|ni ju pred ne|bez|pe|čen|stvom. Keď sa ko|ryt|nač|ka zľa|kne, scho|vá doň hla|vu aj no|hy. Nie|kto|ré ko|ryt|nač|ky ži|jú na sú|ši, i|né v mo|ri. Mor|ské ko|ryt|nač|ky ma|jú no|hy a|ko ve|slá a vý|bor|ne plá|va|jú. Ko|ryt|nač|ky sa do|ží|va|jú vy|so|ké|ho ve|ku, nie|kto|ré aj viac a|ko sto ro|kov.",
+      "imageId": "zelva",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_vcela_2",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 2,
+      "title": "Usilovná včela",
+      "body": "Včela lieta z kvetu na kvet. Pije sladký nektár a na nohách zbiera žltý peľ. Potom všetko odnesie do úľa. V úli žijú tisíce včiel, ale iba jedna kráľovná. Včely v ňom vyrábajú med a vosk. Pomáhajú aj rastlinám, lebo prenášajú peľ z kvetu na kvet. Vďaka tomu rastie ovocie na stromoch.",
+      "syllable_body": "Vče|la lie|ta z kve|tu na kvet. Pi|je slad|ký ne|ktár a na no|hách zbie|ra žl|tý peľ. Po|tom všet|ko o|dne|sie do ú|ľa. V ú|li ži|jú ti|sí|ce včiel, a|le i|ba je|dna krá|ľo|vná. Vče|ly v ňom vy|rá|ba|jú med a vosk. Po|má|ha|jú aj ra|stli|nám, le|bo pre|ná|ša|jú peľ z kve|tu na kvet. Vďa|ka to|mu ra|stie o|vo|cie na stro|moch.",
+      "imageId": "cebela_cvet",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_klokan_2",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 2,
+      "title": "Klokan",
+      "body": "Klokan žije v Austrálii. Má dlhé a silné zadné nohy a veľký chvost. Klokan nechodí, ale skáče. Jedným skokom doskočí veľmi ďaleko. Mama klokanica má na brušku vrecko. V ňom býva jej mláďa, ktoré je na začiatku veľmi malé. Mláďa rastie vo vrecku niekoľko mesiacov a potom vylezie von. Klokany žijú v skupinách na suchých trávnatých pláňach.",
+      "syllable_body": "Klo|kan ži|je v Au|strá|li|i. Má dl|hé a sil|né za|dné no|hy a veľ|ký chvost. Klo|kan ne|cho|dí, a|le ská|če. Je|dným sko|kom do|sko|čí veľ|mi ďa|le|ko. Ma|ma klo|ka|ni|ca má na bru|šku vrec|ko. V ňom bý|va jej mlá|ďa, kto|ré je na za|čiat|ku veľ|mi ma|lé. Mlá|ďa ra|stie vo vrec|ku nie|koľ|ko me|sia|cov a po|tom vy|le|zie von. Klo|ka|ny ži|jú v sku|pi|nách na su|chých trá|vna|tých plá|ňach.",
+      "imageId": "kangaroo_joey",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_liska_3",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 3,
+      "title": "Líška",
+      "body": "Líška hrdzavá žije v lesoch a na poliach, ale niekedy príde až k dedine. Má oranžovú srsť, bielu hruď a dlhý huňatý chvost. Chvost jej pomáha udržať rovnováhu, keď beží. V zime sa ním prikrýva ako perinou. Líška loví najmä v noci. Má výborný sluch a myš začuje aj pod snehom. Je myši a hmyz, ale aj lesné plody. Cez deň odpočíva v nore, ktorú si vyhrabe v zemi. Líška je veľmi opatrná a vyhýba sa ľuďom. Mláďatá sa jej rodia na jar. Líščatá sa hrajú pred norou a učia sa loviť.",
+      "syllable_body": "Lí|ška hr|dza|vá ži|je v le|soch a na po|liach, a|le nie|ke|dy prí|de až k de|di|ne. Má o|ran|žo|vú srsť, bie|lu hruď a dl|hý hu|ňa|tý chvost. Chvost jej po|má|ha u|dr|žať ro|vno|vá|hu, keď be|ží. V zi|me sa ním pri|krý|va a|ko pe|ri|nou. Lí|ška lo|ví naj|mä v no|ci. Má vý|bor|ný sluch a myš za|ču|je aj pod sne|hom. Je my|ši a hmyz, a|le aj le|sné plo|dy. Cez deň od|po|čí|va v no|re, kto|rú si vy|hra|be v ze|mi. Lí|ška je veľ|mi o|pa|tr|ná a vy|hý|ba sa ľu|ďom. Mlá|ďa|tá sa jej ro|dia na jar. Líš|ča|tá sa hra|jú pred no|rou a u|čia sa lo|viť.",
+      "imageId": "lisica",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_delfiny_3",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 3,
+      "title": "Mená delfínov",
+      "body": "Delfíny žijú v skupinách a sú veľmi priateľské. Nie sú to ryby, ale cicavce, rovnako ako ľudia. Preto musia vyplávať na hladinu a nadýchnuť sa vzduchu. Delfíny sa medzi sebou dorozumievajú pískaním a cvakaním. Každý delfín má svoje vlastné zapískanie, ktoré je ako meno. Keď delfín začuje svoje meno, odpovie. Delfíny sú veľmi múdre a rýchlo sa učia. Navzájom si pomáhajú a veľa sa hrajú. Niekedy vyskočia z vody a otočia sa vo vzduchu, akoby od radosti. Mláďatá dlho zostávajú pri mamách a učia sa od nich.",
+      "syllable_body": "Del|fí|ny ži|jú v sku|pi|nách a sú veľ|mi pria|teľ|ské. Nie sú to ry|by, a|le ci|cav|ce, ro|vna|ko a|ko ľu|dia. Pre|to mu|sia vy|plá|vať na hla|di|nu a na|dých|nuť sa vzdu|chu. Del|fí|ny sa me|dzi se|bou do|ro|zu|mie|va|jú pí|ska|ním a cva|ka|ním. Ka|ždý del|fín má svo|je vlast|né za|pí|ska|nie, kto|ré je a|ko me|no. Keď del|fín za|ču|je svo|je me|no, od|po|vie. Del|fí|ny sú veľ|mi mú|dre a rý|chlo sa u|čia. Na|vzá|jom si po|má|ha|jú a ve|ľa sa hra|jú. Nie|ke|dy vy|sko|čia z vo|dy a o|to|čia sa vo vzdu|chu, a|ko|by od ra|do|sti. Mlá|ďa|tá dl|ho zo|stá|va|jú pri ma|mách a u|čia sa od nich.",
+      "imageId": "delfin_jata",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_bocian_3",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 3,
+      "title": "Bocian",
+      "body": "Každú jar sa biely bocian vracia z Afriky. Často prilieta rok čo rok do toho istého hniezda. Hniezdo je z konárov a môže byť veľmi veľké. Býva na streche, na komíne alebo na stĺpe. Bocian má dlhé červené nohy a dlhý červený zobák. Prechádza sa po vlhkých lúkach a chytá žaby, myši a hmyz. Bociany nespievajú, ale klepocú zobákom. Na jar sa rodičia spoločne starajú o mláďatá. Mláďatá sú najprv sivobiele a majú čierny zobák. Na jeseň bociany znova odlietajú na juh. Cestou preletia tisíce kilometrov.",
+      "syllable_body": "Ka|ždú jar sa bie|ly bo|cian vra|cia z A|fri|ky. Ča|sto pri|lie|ta rok čo rok do to|ho i|sté|ho hnie|zda. Hnie|zdo je z ko|ná|rov a mô|že byť veľ|mi veľ|ké. Bý|va na stre|che, na ko|mí|ne a|le|bo na stĺ|pe. Bo|cian má dl|hé čer|ve|né no|hy a dl|hý čer|ve|ný zo|bák. Pre|chá|dza sa po vlh|kých lú|kach a chy|tá ža|by, my|ši a hmyz. Bo|cia|ny ne|spie|va|jú, a|le kle|po|cú zo|bá|kom. Na jar sa ro|di|čia spo|loč|ne sta|ra|jú o mlá|ďa|tá. Mlá|ďa|tá sú naj|prv si|vo|bie|le a ma|jú čier|ny zo|bák. Na je|seň bo|cia|ny zno|va o|dlie|ta|jú na juh. Ce|stou pre|le|tia ti|sí|ce ki|lo|me|trov.",
+      "imageId": "stork_nest",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_netopier_4",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 4,
+      "title": "Netopier a ozvena",
+      "body": "Netopier je jediný cicavec, ktorý naozaj vie lietať. Jeho krídla tvorí tenká koža natiahnutá medzi dlhými prstami. Cez deň netopiere spia v jaskyniach alebo na povalách, zavesené hlavou dolu. Na skalu sa zachytia pazúrikmi na nohách.\n\nV noci ide netopier na lov. V tme nevidí veľmi dobre, ale má niečo ako radar. Vydáva veľmi vysoké zvuky, ktoré ľudia nepočujú. Zvuky narazia na hmyz a vrátia sa ako ozvena. Podľa ozveny netopier vie, kde je korisť a ako ďaleko.\n\nMalý netopier dokáže za jednu noc chytiť stovky komárov. Preto sú netopiere veľmi užitočné. Niektoré netopiere jedia ovocie alebo nektár z kvetov. V zime, keď nie je hmyz, spia v jaskyniach až do jari. Niektoré netopiere žijú aj viac ako dvadsať rokov. Netopiere sú u nás chránené a nikto im nesmie ubližovať.",
+      "syllable_body": "Ne|to|pier je je|di|ný ci|ca|vec, kto|rý na|o|zaj vie lie|tať. Je|ho krí|dla tvo|rí ten|ká ko|ža na|tia|hnu|tá me|dzi dl|hý|mi pr|sta|mi. Cez deň ne|to|pie|re spia v ja|sky|niach a|le|bo na po|va|lách, za|ve|se|né hla|vou do|lu. Na ska|lu sa za|chy|tia pa|zú|rik|mi na no|hách.\n\nV no|ci i|de ne|to|pier na lov. V tme ne|vi|dí veľ|mi do|bre, a|le má nie|čo a|ko ra|dar. Vy|dá|va veľ|mi vy|so|ké zvu|ky, kto|ré ľu|dia ne|po|ču|jú. Zvu|ky na|ra|zia na hmyz a vrá|tia sa a|ko o|zve|na. Pod|ľa o|zve|ny ne|to|pier vie, kde je ko|risť a a|ko ďa|le|ko.\n\nMa|lý ne|to|pier do|ká|že za je|dnu noc chy|tiť stov|ky ko|má|rov. Pre|to sú ne|to|pie|re veľ|mi u|ži|toč|né. Nie|kto|ré ne|to|pie|re je|dia o|vo|cie a|le|bo ne|ktár z kve|tov. V zi|me, keď nie je hmyz, spia v ja|sky|niach až do ja|ri. Nie|kto|ré ne|to|pie|re ži|jú aj viac a|ko dvad|sať ro|kov. Ne|to|pie|re sú u nás chrá|ne|né a ni|kto im ne|smie u|bli|žo|vať.",
+      "imageId": "netopir",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_chobotnica_4",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 4,
+      "title": "Múdra chobotnica",
+      "body": "Chobotnica žije v mori medzi skalami. Má osem dlhých ramien pokrytých prísavkami. Nimi hmatá, chytá a drží veci. Prísavkami dokonca cíti chuť vecí, ktorých sa dotkne. Chobotnica nemá kosti, a preto sa pretiahne aj cez veľmi malé otvory. Keď vystrekne vodu z tela, dokáže plávať aj veľmi rýchlo.\n\nChobotnica patrí medzi najmúdrejšie zvieratá v mori. Úkryt si robí v štrbine skaly a vie riešiť ťažké úlohy. Niektoré chobotnice sa dokonca naučili otvoriť pohár s viečkom, aby sa dostali k potrave vo vnútri.\n\nKeď hrozí nebezpečenstvo, chobotnica za pár okamihov zmení farbu a skryje sa medzi kamene. Ak ju nepriateľ predsa uvidí, vypustí oblak čierneho atramentu a rýchlo ujde. Chobotnica má ešte jedno tajomstvo: tri srdcia a modrú krv. Mnohé chobotnice žijú iba jeden až dva roky.",
+      "syllable_body": "Cho|bot|ni|ca ži|je v mo|ri me|dzi ska|la|mi. Má o|sem dl|hých ra|mien po|kry|tých prí|sav|ka|mi. Ni|mi hma|tá, chy|tá a dr|ží ve|ci. Prí|sav|ka|mi do|kon|ca cí|ti chuť ve|cí, kto|rých sa dot|kne. Cho|bot|ni|ca ne|má ko|sti, a pre|to sa pre|tia|hne aj cez veľ|mi ma|lé o|tvo|ry. Keď vy|stre|kne vo|du z te|la, do|ká|že plá|vať aj veľ|mi rý|chlo.\n\nCho|bot|ni|ca pa|trí me|dzi naj|mú|drej|šie zvie|ra|tá v mo|ri. Ú|kryt si ro|bí v štr|bi|ne ska|ly a vie rie|šiť ťaž|ké ú|lo|hy. Nie|kto|ré cho|bot|ni|ce sa do|kon|ca na|u|či|li o|tvo|riť po|hár s vieč|kom, a|by sa do|sta|li k po|tra|ve vo vnú|tri.\n\nKeď hro|zí ne|bez|pe|čen|stvo, cho|bot|ni|ca za pár o|ka|mi|hov zme|ní far|bu a skry|je sa me|dzi ka|me|ne. Ak ju ne|pria|teľ pred|sa u|vi|dí, vy|pu|stí o|blak čier|ne|ho a|tra|men|tu a rý|chlo uj|de. Cho|bot|ni|ca má e|šte je|dno ta|jom|stvo: tri srd|cia a mo|drú krv. Mno|hé cho|bot|ni|ce ži|jú i|ba je|den až dva ro|ky.",
+      "imageId": "octopus_camouflage",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_medved_4",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 4,
+      "title": "Medvedica a medvieďatá",
+      "body": "Medveď hnedý žije v horských lesoch. Na Slovensku ho stretneme najmä v horách, v lesoch Karpát. Medveď zje takmer všetko: trávu, korienky, čučoriedky, med, hmyz a niekedy aj ryby. Na jeseň veľa je, aby pribral. V zime spí v brlohu, v jaskyni alebo v ukrytej jame. Má oveľa lepší čuch ako pes a dokáže bežať rýchlejšie ako človek.\n\nMláďatá sa rodia v zime v brlohu. Pri narodení sú malé ako veverička a nemajú zuby. Na jar vyjdú s mamou von. Medvedica ich učí, kde nájdu potravu a ako sa vyhnúť nebezpečenstvu. Mláďatá zostávajú s ňou takmer dva roky.\n\nMláďatá sa veľa hrajú a často sa stavajú na zadné nohy. Tak vidia ďalej a lepšie cítia pachy lesa. Keď sa medvedica postaví na zadné nohy, je vyššia ako človek.",
+      "syllable_body": "Me|dveď hne|dý ži|je v hor|ských le|soch. Na Slo|ven|sku ho stret|ne|me naj|mä v ho|rách, v le|soch Kar|pát. Me|dveď zje tak|mer všet|ko: trá|vu, ko|rien|ky, ču|čo|ried|ky, med, hmyz a nie|ke|dy aj ry|by. Na je|seň ve|ľa je, a|by pri|bral. V zi|me spí v br|lo|hu, v ja|sky|ni a|le|bo v u|kry|tej ja|me. Má o|ve|ľa lep|ší čuch a|ko pes a do|ká|že be|žať rý|chlej|šie a|ko člo|vek.\n\nMlá|ďa|tá sa ro|dia v zi|me v br|lo|hu. Pri na|ro|de|ní sú ma|lé a|ko ve|ve|rič|ka a ne|ma|jú zu|by. Na jar vyj|dú s ma|mou von. Me|dve|di|ca ich u|čí, kde náj|du po|tra|vu a a|ko sa vy|hnúť ne|bez|pe|čen|stvu. Mlá|ďa|tá zo|stá|va|jú s ňou tak|mer dva ro|ky.\n\nMlá|ďa|tá sa ve|ľa hra|jú a ča|sto sa sta|va|jú na za|dné no|hy. Tak vi|dia ďa|lej a lep|šie cí|tia pa|chy le|sa. Keď sa me|dve|di|ca po|sta|ví na za|dné no|hy, je vyš|šia a|ko člo|vek.",
+      "imageId": "brown_bear_cubs",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_velryba_modra_5",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 5,
+      "title": "Veľryba modrá",
+      "body": "Veľryba modrá je najväčšie zviera, aké kedy žilo na Zemi, väčšie dokonca ako dinosaury. Je dlhá asi tridsať metrov, ako tri autobusy za sebou. Len jej jazyk váži toľko ako slon a srdce je veľké ako malé auto.\n\nHoci je veľryba taká obrovská, živí sa veľmi malými zvieratkami: drobnými kôrovcami podobnými krevetám, ktoré sa volajú kril. Kril žije v studených moriach vo veľkých húfoch. Veľryba otvorí papuľu dokorán a nahltá veľa vody s krilom. Potom vodu precedí cez akúsi kefu v ústach, ktorá sa volá kostice. Kril zostane vnútri. Za jeden deň dokáže veľryba zjesť milióny takýchto zvieratiek.\n\nVeľryba je cicavec, nie ryba, a preto dýcha vzduch. Jej obrovské srdce bije veľmi pomaly. Keď sa vynorí, vyfúkne nozdrami vysoký stĺp vody a pary, ktorý je vidieť zďaleka. Veľryby modré si posielajú veľmi hlboké zvuky. Iné veľryby ich počujú aj na stovky kilometrov. Mláďa sa rodí pod vodou, je dlhé ako dve autá a pije mlieko od mamy. Veľryby modré žijú vo všetkých oceánoch sveta.",
+      "syllable_body": "Veľ|ry|ba mo|drá je naj|väč|šie zvie|ra, a|ké ke|dy ži|lo na Ze|mi, väč|šie do|kon|ca a|ko di|no|sau|ry. Je dl|há a|si trid|sať me|trov, a|ko tri au|to|bu|sy za se|bou. Len jej ja|zyk vá|ži toľ|ko a|ko slon a srd|ce je veľ|ké a|ko ma|lé au|to.\n\nHo|ci je veľ|ry|ba ta|ká o|brov|ská, ži|ví sa veľ|mi ma|lý|mi zvie|rat|ka|mi: drob|ný|mi kô|rov|ca|mi po|dob|ný|mi kre|ve|tám, kto|ré sa vo|la|jú kril. Kril ži|je v stu|de|ných mo|riach vo veľ|kých hú|foch. Veľ|ry|ba o|tvo|rí pa|pu|ľu do|ko|rán a na|hl|tá ve|ľa vo|dy s kri|lom. Po|tom vo|du pre|ce|dí cez a|kú|si ke|fu v ú|stach, kto|rá sa vo|lá ko|sti|ce. Kril zo|sta|ne vnú|tri. Za je|den deň do|ká|že veľ|ry|ba zjesť mi|li|ó|ny ta|kých|to zvie|ra|tiek.\n\nVeľ|ry|ba je ci|ca|vec, nie ry|ba, a pre|to dý|cha vzduch. Jej o|brov|ské srd|ce bi|je veľ|mi po|ma|ly. Keď sa vy|no|rí, vy|fú|kne no|zdra|mi vy|so|ký stĺp vo|dy a pa|ry, kto|rý je vi|dieť zďa|le|ka. Veľ|ry|by mo|dré si po|sie|la|jú veľ|mi hl|bo|ké zvu|ky. I|né veľ|ry|by ich po|ču|jú aj na stov|ky ki|lo|me|trov. Mlá|ďa sa ro|dí pod vo|dou, je dl|hé a|ko dve au|tá a pi|je mlie|ko od ma|my. Veľ|ry|by mo|dré ži|jú vo všet|kých o|ce|á|noch sve|ta.",
+      "imageId": "modri_kit",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_tajomstva_delfinov_5",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 5,
+      "title": "Tajomstvá delfínov",
+      "body": "Delfíny majú niekoľko tajomstiev, ktoré im pomáhajú žiť v mori. Prvým tajomstvom je ozvena. Delfíny vydávajú krátke cvakavé zvuky, ktoré sa šíria vodou. Keď cvaknutie narazí na rybu alebo skalu, vráti sa späť. Podľa ozveny delfín zistí, kde je ryba, aká je veľká a kam pláva, a to aj v kalnej vode. Takémuto „videniu“ zvukom sa hovorí echolokácia.\n\nDruhým tajomstvom je spánok. Delfíny dýchajú vzduch cez otvor na temene hlavy, a preto nemôžu spať tak hlboko ako ľudia. Spia iba polovicou mozgu, kým druhá polovica zostáva bdelá. Mozog delfína je veľký a veľmi dobre vyvinutý. Tak nezabudnú vyplávať na hladinu a nadýchnuť sa. Niekedy dokonca pomaly plávajú s jedným okom otvoreným.\n\nTretím tajomstvom je rodina. Delfíny žijú v skupinách a starajú sa jeden o druhého. Často lovia spolu: obkľúčia húf rýb a stiahnu ho ako do siete. Mláďa pláva niekoľko rokov pri mame a učí sa od nej loviť. Keď je delfín zranený, ostatné mu pomôžu dostať sa na hladinu. Delfíny sa dožívajú aj štyridsať rokov.",
+      "syllable_body": "Del|fí|ny ma|jú nie|koľ|ko ta|jom|stiev, kto|ré im po|má|ha|jú žiť v mo|ri. Pr|vým ta|jom|stvom je o|zve|na. Del|fí|ny vy|dá|va|jú krát|ke cva|ka|vé zvu|ky, kto|ré sa ší|ria vo|dou. Keď cva|knu|tie na|ra|zí na ry|bu a|le|bo ska|lu, vrá|ti sa späť. Pod|ľa o|zve|ny del|fín zi|stí, kde je ry|ba, a|ká je veľ|ká a kam plá|va, a to aj v kal|nej vo|de. Ta|ké|mu|to „vi|de|niu“ zvu|kom sa ho|vo|rí e|cho|lo|ká|cia.\n\nDru|hým ta|jom|stvom je spá|nok. Del|fí|ny dý|cha|jú vzduch cez o|tvor na te|me|ne hla|vy, a pre|to ne|mô|žu spať tak hl|bo|ko a|ko ľu|dia. Spia i|ba po|lo|vi|cou moz|gu, kým dru|há po|lo|vi|ca zo|stá|va bde|lá. Mo|zog del|fí|na je veľ|ký a veľ|mi do|bre vy|vi|nu|tý. Tak ne|za|bu|dnú vy|plá|vať na hla|di|nu a na|dých|nuť sa. Nie|ke|dy do|kon|ca po|ma|ly plá|va|jú s je|dným o|kom o|tvo|re|ným.\n\nTre|tím ta|jom|stvom je ro|di|na. Del|fí|ny ži|jú v sku|pi|nách a sta|ra|jú sa je|den o dru|hé|ho. Ča|sto lo|via spo|lu: ob|kľú|čia húf rýb a stia|hnu ho a|ko do sie|te. Mlá|ďa plá|va nie|koľ|ko ro|kov pri ma|me a u|čí sa od nej lo|viť. Keď je del|fín zra|ne|ný, o|stat|né mu po|mô|žu do|stať sa na hla|di|nu. Del|fí|ny sa do|ží|va|jú aj šty|rid|sať ro|kov.",
+      "imageId": "delfin_morje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "animal_facts_rodina_slonov_5",
+      "version": 1,
+      "theme": "animal_facts",
+      "level": 5,
+      "title": "Rodina slonov",
+      "body": "Africké slony žijú vo veľkých rodinách. Rodinu vedie najstaršia samica, ktorá pozná cestu k vode a k miestam s potravou. Dospelé samce žijú zvyčajne samy alebo v malých skupinách. Slony sú najväčšie zvieratá, ktoré žijú na súši. Africký slon môže vážiť aj šesť ton.\n\nSloní chobot je vlastne nos a horná pera, ktoré zrástli dokopy. Má tisíce svalov, a preto ho slon môže používať ako ruku. Chobotom trhá listy a konáre, zbiera trávu a nosí si vodu do úst. Keď je horúco, slon si striekne na chrbát vodu alebo prach, aby sa ochladil. Slony majú aj kly, čo sú veľmi dlhé zuby. Pomáhajú mu aj veľké uši: keď nimi máva, telo sa ochladzuje.\n\nSlonie mláďa sa narodí po takmer dvoch rokoch. Už pri narodení váži toľko ako dospelý človek. Mama a ostatné samice z rodiny sa oň starajú. Slony sú veľmi múdre a majú výbornú pamäť. Keď idú, mláďa sa drží chobotom maminho chvosta, aby sa nestratilo. Dospelý slon zje veľmi veľa: až stopäťdesiat kilogramov potravy za deň.",
+      "syllable_body": "A|fric|ké slo|ny ži|jú vo veľ|kých ro|di|nách. Ro|di|nu ve|die naj|star|šia sa|mi|ca, kto|rá po|zná ce|stu k vo|de a k mie|stam s po|tra|vou. Do|spe|lé sam|ce ži|jú zvy|čaj|ne sa|my a|le|bo v ma|lých sku|pi|nách. Slo|ny sú naj|väč|šie zvie|ra|tá, kto|ré ži|jú na sú|ši. A|fric|ký slon mô|že vá|žiť aj šesť ton.\n\nSlo|ní cho|bot je vlast|ne nos a hor|ná pe|ra, kto|ré zrá|stli do|ko|py. Má ti|sí|ce sva|lov, a pre|to ho slon mô|že po|u|ží|vať a|ko ru|ku. Cho|bo|tom tr|há li|sty a ko|ná|re, zbie|ra trá|vu a no|sí si vo|du do úst. Keď je ho|rú|co, slon si strie|kne na chr|bát vo|du a|le|bo prach, a|by sa o|chla|dil. Slo|ny ma|jú aj kly, čo sú veľ|mi dl|hé zu|by. Po|má|ha|jú mu aj veľ|ké u|ši: keď ni|mi má|va, te|lo sa o|chla|dzu|je.\n\nSlo|nie mlá|ďa sa na|ro|dí po tak|mer dvoch ro|koch. Už pri na|ro|de|ní vá|ži toľ|ko a|ko do|spe|lý člo|vek. Ma|ma a o|stat|né sa|mi|ce z ro|di|ny sa oň sta|ra|jú. Slo|ny sú veľ|mi mú|dre a ma|jú vý|bor|nú pa|mäť. Keď i|dú, mlá|ďa sa dr|ží cho|bo|tom ma|min|ho chvo|sta, a|by sa ne|stra|ti|lo. Do|spe|lý slon zje veľ|mi ve|ľa: až sto|päť|de|siat ki|lo|gra|mov po|tra|vy za deň.",
+      "imageId": "elephant_waterhole",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_stara_truhlica_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Stará truhlica",
+      "body": "Janka sedí na koberci v pivnici. Vedľa nej stojí stará drevená truhlica. V truhlici sú knihy, listy a fotografie. Janka drží v rukách jednu fotografiu. Na zemi leží malý kľúčik.",
+      "syllable_body": "Jan|ka se|dí na ko|ber|ci v pi|vni|ci. Ved|ľa nej sto|jí sta|rá dre|ve|ná tru|hli|ca. V tru|hli|ci sú kni|hy, li|sty a fo|to|gra|fie. Jan|ka dr|ží v ru|kách je|dnu fo|to|gra|fiu. Na ze|mi le|ží ma|lý kľú|čik.",
+      "imageId": "stara_skrinja",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_mokre_macatko_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Mokré mačiatko",
+      "body": "Vonku silno prší. Zuzka nájde pri lavičke mokré mačiatko. Mačiatku je zima. Zuzka ho odnesie domov. Tam ho zabalí do ružovej deky. Mačiatko pije mlieko a spokojne pradie.",
+      "syllable_body": "Von|ku sil|no pr|ší. Zuz|ka náj|de pri la|vič|ke mo|kré ma|čiat|ko. Ma|čiat|ku je zi|ma. Zuz|ka ho o|dne|sie do|mov. Tam ho za|ba|lí do ru|žo|vej de|ky. Ma|čiat|ko pi|je mlie|ko a spo|koj|ne pra|die.",
+      "imageId": "moker_muc",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_zeleninova_polievka_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Zeleninová polievka",
+      "body": "Je večer. Mama varí veľký hrniec polievky. Ema umýva mrkvu. Tomáš vyberá hrášok zo strukov. V hrnci sa varí veľa zeleniny. Celá kuchyňa krásne vonia.",
+      "syllable_body": "Je ve|čer. Ma|ma va|rí veľ|ký hr|niec po|liev|ky. E|ma u|mý|va mr|kvu. To|máš vy|be|rá hrá|šok zo stru|kov. V hrn|ci sa va|rí ve|ľa ze|le|ni|ny. Ce|lá ku|chy|ňa krá|sne vo|nia.",
+      "imageId": "family_soup",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_mlaka_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Mláka",
+      "body": "Dážď prestal a vyšlo slniečko. Katka má žltý kabát a červené čižmy. Skočí do veľkej mláky. Voda špliechne na všetky strany. Aj jej psík skáče do vody. To je zábava!",
+      "syllable_body": "Dážď pre|stal a vy|šlo sl|nieč|ko. Kat|ka má žl|tý ka|bát a čer|ve|né či|žmy. Sko|čí do veľ|kej mlá|ky. Vo|da špliech|ne na všet|ky stra|ny. Aj jej psík ská|če do vo|dy. To je zá|ba|va!",
+      "imageId": "puddle_jump",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_namalovany_vtak_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Namaľovaný vták",
+      "body": "Sofia maľuje modrého vtáka. Zrazu vták otvorí oči. Zamáva krídlami a vyletí z papiera! Teraz spieva pri okne. Sofia sa smeje. Mačka na stoličke ďalej spí.",
+      "syllable_body": "So|fia ma|ľu|je mo|dré|ho vtá|ka. Zra|zu vták o|tvo|rí o|či. Za|má|va krí|dla|mi a vy|le|tí z pa|pie|ra! Te|raz spie|va pri o|kne. So|fia sa sme|je. Mač|ka na sto|lič|ke ďa|lej spí.",
+      "imageId": "magic_paintbrush",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_ovecka_z_oblaku_1",
+      "version": 1,
+      "theme": "stories",
+      "level": 1,
+      "title": "Ovečka z oblaku",
+      "body": "Miško vidí oblak, ktorý vyzerá ako ovečka. Oblak zletí dolu a usmeje sa naňho. Miško si sadne na jeho mäkký chrbát. Teraz letia spolu! Dole je rieka, malé domy a zelené kopce.",
+      "syllable_body": "Mi|ško vi|dí o|blak, kto|rý vy|ze|rá a|ko o|več|ka. O|blak zle|tí do|lu a u|sme|je sa naň|ho. Mi|ško si sa|dne na je|ho mäk|ký chr|bát. Te|raz le|tia spo|lu! Do|le je rie|ka, ma|lé do|my a ze|le|né kop|ce.",
+      "imageId": "cloud_sheep",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_stara_truhlica_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Fotografia z truhlice",
+      "body": "Janka nájde v pivnici starú drevenú truhlicu. Vedľa nej leží malý kľúčik. Janka pomaly zdvihne ťažké veko. Vnútri sú listy previazané špagátom, staré knihy a veľa fotografií. Na jednej fotografii je pán a malé dievčatko. Dievčatko má kučeravé vlasy, presne ako Janka. „Kto to asi je?“ čuduje sa Janka. Potom beží hore po schodoch opýtať sa babky.",
+      "syllable_body": "Jan|ka náj|de v pi|vni|ci sta|rú dre|ve|nú tru|hli|cu. Ved|ľa nej le|ží ma|lý kľú|čik. Jan|ka po|ma|ly zdvi|hne ťaž|ké ve|ko. Vnú|tri sú li|sty pre|via|za|né špa|gá|tom, sta|ré kni|hy a ve|ľa fo|to|gra|fi|í. Na je|dnej fo|to|gra|fi|i je pán a ma|lé die|včat|ko. Die|včat|ko má ku|če|ra|vé vla|sy, pre|sne a|ko Jan|ka. „Kto to a|si je?“ ču|du|je sa Jan|ka. Po|tom be|ží ho|re po scho|doch o|pý|tať sa bab|ky.",
+      "imageId": "stara_skrinja",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_biele_vajicko_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Biele vajíčko",
+      "body": "Zuzka je na dedine u babky. V stodole, v hniezde zo slamy, leží biele vajíčko. Zuzka sa naň chodí pozerať každé ráno. Dnes sa vajíčko hýbe! Potom škrupinka praskne. Z vajíčka vylezie malé žlté kuriatko. Kuriatko je celé mokré a trochu sa trasie. Urobí „píp, píp“. Zuzka si od radosti chytí líca. Babka sa usmieva pod slameným klobúkom.",
+      "syllable_body": "Zuz|ka je na de|di|ne u bab|ky. V sto|do|le, v hnie|zde zo sla|my, le|ží bie|le va|jíč|ko. Zuz|ka sa naň cho|dí po|ze|rať ka|ždé rá|no. Dnes sa va|jíč|ko hý|be! Po|tom škru|pin|ka pras|kne. Z va|jíč|ka vy|le|zie ma|lé žl|té ku|riat|ko. Ku|riat|ko je ce|lé mo|kré a tro|chu sa tra|sie. U|ro|bí „píp, píp“. Zuz|ka si od ra|do|sti chy|tí lí|ca. Bab|ka sa u|smie|va pod sla|me|ným klo|bú|kom.",
+      "imageId": "piscancek_gnezdo",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_balik_v_snehu_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Balík v snehu",
+      "body": "Od rána sneží a všetky domy v dedine sú biele. Po ceste ide poštár s veľkou taškou. Zastaví sa pri bráničke, kde stojí Ema. „Mám pre teba balík!“ povie. Balík má červenú mašľu. Ema sa usmeje a opatrne si ho vezme. Na poštovej schránke sedí červienka a zvedavo sa pozerá. Čo asi je v balíku?",
+      "syllable_body": "Od rá|na sne|ží a všet|ky do|my v de|di|ne sú bie|le. Po ce|ste i|de po|štár s veľ|kou ta|škou. Za|sta|ví sa pri brá|nič|ke, kde sto|jí E|ma. „Mám pre te|ba ba|lík!“ po|vie. Ba|lík má čer|ve|nú ma|šľu. E|ma sa u|sme|je a o|pa|tr|ne si ho ve|zme. Na po|što|vej schrán|ke se|dí čer|vien|ka a zve|da|vo sa po|ze|rá. Čo a|si je v ba|lí|ku?",
+      "imageId": "winter_postman",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_snehuliak_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Snehuliak",
+      "body": "Cez noc veľa nasnežilo. Katka a Lukáš idú do záhrady. Vygúľajú tri veľké gule a položia ich na seba. Snehuliak má čierne oči a nos z mrkvy. Katka mu dá svoj červený šál. Lukáš mu na hlavu posadí zelené vedierko. Deti sa usmievajú a sú na svojho snehuliaka pyšné. Potom priletí vtáčik, sadne si na vedierko a veselo zaštebotá.",
+      "syllable_body": "Cez noc ve|ľa na|sne|ži|lo. Kat|ka a Lu|káš i|dú do zá|hra|dy. Vy|gú|ľa|jú tri veľ|ké gu|le a po|lo|žia ich na se|ba. Sne|hu|liak má čier|ne o|či a nos z mr|kvy. Kat|ka mu dá svoj čer|ve|ný šál. Lu|káš mu na hla|vu po|sa|dí ze|le|né ve|dier|ko. De|ti sa u|smie|va|jú a sú na svoj|ho sne|hu|lia|ka py|šné. Po|tom pri|le|tí vtá|čik, sa|dne si na ve|dier|ko a ve|se|lo za|šte|bo|tá.",
+      "imageId": "snowman_garden",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_dvierka_v_strome_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Dvierka v strome",
+      "body": "Sofia leží v tráve pri starom strome. Medzi koreňmi vidí malé drevené dvierka s okrúhlym okienkom. Zrazu sa dvierka otvoria. Vyjde myška v červenom kabátiku a s čajníkom v labkách. „Dáš si čaj?“ spýta sa. Sofia je však príliš veľká, aby vošla dnu. A tak jej myška prinesie von šálku, malú ako náprstok.",
+      "syllable_body": "So|fia le|ží v trá|ve pri sta|rom stro|me. Me|dzi ko|reň|mi vi|dí ma|lé dre|ve|né dvier|ka s o|krú|hlym o|kien|kom. Zra|zu sa dvier|ka o|tvo|ria. Vyj|de my|ška v čer|ve|nom ka|bá|ti|ku a s čaj|ní|kom v lab|kách. „Dáš si čaj?“ spý|ta sa. So|fia je však prí|liš veľ|ká, a|by vo|šla dnu. A tak jej my|ška pri|ne|sie von šál|ku, ma|lú a|ko ná|pr|stok.",
+      "imageId": "tiny_door",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_obrova_ponozka_2",
+      "version": 1,
+      "theme": "stories",
+      "level": 2,
+      "title": "Obrova ponožka",
+      "body": "Na lúke plnej oviec nájde Adam niečo zvláštne: obrovskú ponožku s červenými a bielymi pásikmi! Je veľká ako stan. Adam do nej vlezie a smeje sa. Ovce sa naňho čudujú. Zrazu sa zem zatrasie. Ďaleko za kopcami kráča obor s jednou bosou nohou. „Tu je tvoja ponožka!“ volá Adam a máva mu.",
+      "syllable_body": "Na lú|ke pl|nej o|viec náj|de A|dam nie|čo zvlášt|ne: o|brov|skú po|nož|ku s čer|ve|ný|mi a bie|ly|mi pá|sik|mi! Je veľ|ká a|ko stan. A|dam do nej vle|zie a sme|je sa. Ov|ce sa naň|ho ču|du|jú. Zra|zu sa zem za|tra|sie. Ďa|le|ko za kop|ca|mi krá|ča o|bor s je|dnou bo|sou no|hou. „Tu je tvo|ja po|nož|ka!“ vo|lá A|dam a má|va mu.",
+      "imageId": "giant_sock",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_modry_bicykel_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Modrý bicykel",
+      "body": "V sobotu ráno chcela Ema ísť na bicykli k starým rodičom. Jej modrý bicykel však mal spadnutú reťaz. Ema bola smutná, lebo ho nevedela opraviť. Jej brat Tomáš priniesol červenú krabicu s náradím. Obaja išli do kôlne. Najprv hľadali, čo sa pokazilo. Tomáš vzal kľúč a utiahol skrutky na kolese. Ema držala riadidlá, aby bicykel nespadol. Potom spolu nasadili reťaz späť. Tomáš jej ukázal, ako sa to robí, aby to nabudúce zvládla sama. Keď skončili, Ema sa previezla po dvore. Bicykel išiel ako nový! Večer sa Tomášovi poďakovala veľkým objatím.",
+      "syllable_body": "V so|bo|tu rá|no chce|la E|ma ísť na bi|cy|kli k sta|rým ro|di|čom. Jej mo|drý bi|cy|kel však mal spa|dnu|tú re|ťaz. E|ma bo|la smut|ná, le|bo ho ne|ve|de|la o|pra|viť. Jej brat To|máš pri|nie|sol čer|ve|nú kra|bi|cu s ná|ra|dím. O|ba|ja i|šli do kôl|ne. Naj|prv hľa|da|li, čo sa po|ka|zi|lo. To|máš vzal kľúč a u|tia|hol skrut|ky na ko|le|se. E|ma dr|ža|la ria|di|dlá, a|by bi|cy|kel ne|spa|dol. Po|tom spo|lu na|sa|di|li re|ťaz späť. To|máš jej u|ká|zal, a|ko sa to ro|bí, a|by to na|bu|dú|ce zvlá|dla sa|ma. Keď skon|či|li, E|ma sa pre|vie|zla po dvo|re. Bi|cy|kel i|šiel a|ko no|vý! Ve|čer sa To|má|šo|vi po|ďa|ko|va|la veľ|kým ob|ja|tím.",
+      "imageId": "bicycle_repair",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_slimak_vitaz_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Slimák víťaz",
+      "body": "Zvieratá v lese usporiadali preteky. Zajac si bol istý, že vyhrá, lebo behal veľmi rýchlo. Slimák bol zo všetkých najpomalší. Keď sa preteky začali, zajac vystrelil dopredu. Po chvíli si však sadol pod strom. „Mám čas si trochu zdriemnuť,“ pomyslel si. Slimák liezol pomaly, ale ani raz nezastal. Veverička, srnka, jazvec a ježko ho povzbudzovali z okraja cesty. Večer, keď zapadalo slnko, sa slimák dotkol červenej pásky. Zajac ešte stále spal! Keď sa zobudil, všetci blahoželali slimákovi. Slimák sa len usmial a povedal, že dôležité je nevzdávať sa.",
+      "syllable_body": "Zvie|ra|tá v le|se u|spo|ria|da|li pre|te|ky. Za|jac si bol i|stý, že vy|hrá, le|bo be|hal veľ|mi rý|chlo. Sli|mák bol zo všet|kých naj|po|mal|ší. Keď sa pre|te|ky za|ča|li, za|jac vy|stre|lil do|pre|du. Po chví|li si však sa|dol pod strom. „Mám čas si tro|chu zdrie|mnuť,“ po|my|slel si. Sli|mák lie|zol po|ma|ly, a|le a|ni raz ne|za|stal. Ve|ve|rič|ka, srn|ka, ja|zvec a jež|ko ho po|vzbu|dzo|va|li z o|kra|ja ce|sty. Ve|čer, keď za|pa|da|lo sln|ko, sa sli|mák dot|kol čer|ve|nej pá|sky. Za|jac e|šte stá|le spal! Keď sa zo|bu|dil, všet|ci bla|ho|že|la|li sli|má|ko|vi. Sli|mák sa len u|smial a po|ve|dal, že dô|le|ži|té je ne|vzdá|vať sa.",
+      "imageId": "polz_dirka",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_sobotny_orchester_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Sobotný orchester",
+      "body": "Každú sobotu prichádzajú štyri deti k pani Márii. Je to veselá babička s okrúhlymi okuliarmi, ktorá má rada hudbu. Katka hrá na husliach a Peter na flaute. Zuzka má violončelo, ktoré je skoro také veľké ako ona. Adam udiera do bubna a udáva rytmus. Na začiatku hral každý po svojom a bolo počuť iba hluk. Pani Mária ich však naučila navzájom sa počúvať. Teraz ich pieseň znie krásne. Najradšej hrajú veselé ľudové piesne. Pani Mária diriguje rukami a spokojne sa usmieva. Susedia pod otvoreným oknom zastavujú a počúvajú.",
+      "syllable_body": "Ka|ždú so|bo|tu pri|chá|dza|jú šty|ri de|ti k pa|ni Má|ri|i. Je to ve|se|lá ba|bič|ka s o|krú|hly|mi o|ku|liar|mi, kto|rá má ra|da hud|bu. Kat|ka hrá na hu|sliach a Pe|ter na flau|te. Zuz|ka má vi|o|lon|če|lo, kto|ré je sko|ro ta|ké veľ|ké a|ko o|na. A|dam u|die|ra do bub|na a u|dá|va ryt|mus. Na za|čiat|ku hral ka|ždý po svo|jom a bo|lo po|čuť i|ba hluk. Pa|ni Má|ria ich však na|u|či|la na|vzá|jom sa po|čú|vať. Te|raz ich pie|seň znie krá|sne. Naj|rad|šej hra|jú ve|se|lé ľu|do|vé pie|sne. Pa|ni Má|ria di|ri|gu|je ru|ka|mi a spo|koj|ne sa u|smie|va. Su|se|dia pod o|tvo|re|ným o|knom za|sta|vu|jú a po|čú|va|jú.",
+      "imageId": "music_rehearsal",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_hrad_z_piesku_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Hrad z piesku",
+      "body": "Minulé leto boli Katka a Lukáš pri mori. Jedného dňa sa rozhodli postaviť najväčší hrad z piesku na celej pláži. Vodu nosili v červenom vedierku a kopali modrou lopatkou. Pracovali celé dopoludnie a ruky mali plné piesku. Hrad mal vysoké veže a malú bránu. Katka ho ozdobila mušľami a Lukáš zapichol na najvyššiu vežu biele pierko. Potom okolo hradu vykopali priekopu. Keď prišli vlny, voda naplnila priekopu, ale hrad zostal stáť! Deti tlieskali a vlny sa pomaly vracali späť do mora. Nakoniec si deti sadli do piesku a obdivovali svoje dielo.",
+      "syllable_body": "Mi|nu|lé le|to bo|li Kat|ka a Lu|káš pri mo|ri. Je|dné|ho dňa sa ro|zho|dli po|sta|viť naj|väč|ší hrad z pie|sku na ce|lej plá|ži. Vo|du no|si|li v čer|ve|nom ve|dier|ku a ko|pa|li mo|drou lo|pat|kou. Pra|co|va|li ce|lé do|po|lu|dnie a ru|ky ma|li pl|né pie|sku. Hrad mal vy|so|ké ve|že a ma|lú brá|nu. Kat|ka ho o|zdo|bi|la mu|šľa|mi a Lu|káš za|pi|chol na naj|vyš|šiu ve|žu bie|le pier|ko. Po|tom o|ko|lo hra|du vy|ko|pa|li prie|ko|pu. Keď pri|šli vl|ny, vo|da na|pl|ni|la prie|ko|pu, a|le hrad zo|stal stáť! De|ti tlie|ska|li a vl|ny sa po|ma|ly vra|ca|li späť do mo|ra. Na|ko|niec si de|ti sa|dli do pie|sku a ob|di|vo|va|li svo|je die|lo.",
+      "imageId": "sandcastle_beach",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_jednorozec_v_zahrade_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Jednorožec v záhrade",
+      "body": "Jedného večera vyšla Janka do záhrady poliať zeleninu. Pri záhonoch s mrkvou uvidela malého bieleho jednorožca. Janka od prekvapenia ani nedýchala. Jednorožec mal na hlave strieborný roh a zlatú hrivu so zapletenými kvietkami. Jednorožec opatrne kráčal pomedzi šalát. Všade, kam stúpil kopytom, vyrástli zo zeme kvety všetkých farieb. Kvety voňali ako med. Janka si kľakla a natiahla k nemu ruku. Jednorožec jej položil kopyto do dlane, akoby jej chcel niečo povedať. Potom pohodil hrivou a odcválal k lesu, práve keď zapadlo slnko. Odvtedy je Jankina záhrada najkrajšia v celej dedine.",
+      "syllable_body": "Je|dné|ho ve|če|ra vy|šla Jan|ka do zá|hra|dy po|liať ze|le|ni|nu. Pri zá|ho|noch s mr|kvou u|vi|de|la ma|lé|ho bie|le|ho je|dno|rož|ca. Jan|ka od pre|kva|pe|nia a|ni ne|dý|cha|la. Je|dno|ro|žec mal na hla|ve strie|bor|ný roh a zla|tú hri|vu so za|ple|te|ný|mi kviet|ka|mi. Je|dno|ro|žec o|pa|tr|ne krá|čal po|me|dzi ša|lát. Vša|de, kam stú|pil ko|py|tom, vy|rá|stli zo ze|me kve|ty všet|kých fa|rieb. Kve|ty vo|ňa|li a|ko med. Jan|ka si kľa|kla a na|tia|hla k ne|mu ru|ku. Je|dno|ro|žec jej po|lo|žil ko|py|to do dla|ne, a|ko|by jej chcel nie|čo po|ve|dať. Po|tom po|ho|dil hri|vou a od|cvá|lal k le|su, prá|ve keď za|pa|dlo sln|ko. Od|vte|dy je Jan|ki|na zá|hra|da naj|kraj|šia v ce|lej de|di|ne.",
+      "imageId": "unicorn_garden",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_carodejnikov_klobuk_3",
+      "version": 1,
+      "theme": "stories",
+      "level": 3,
+      "title": "Čarodejníkov klobúk",
+      "body": "Jedného slnečného popoludnia vyliezol Tomáš na povalu. Tam našiel starú truhlicu plnú zvláštnych vecí. V truhlici boli staré knihy, ďalekohľad a hodiny. Navrchu ležal modrý klobúk so zlatými hviezdami a mesiačikmi. Bol mu priveľký a padal mu až na oči, ale Tomáš si ho aj tak nasadil. Vtom sivý kocúr v kresle zdvihol labku a povedal: „Konečne ma počuješ!“ Tomáš si od prekvapenia sadol na zem a ostal s otvorenými ústami. „Ty vieš rozprávať?“ „Už celé roky,“ odpovedal kocúr. „A keď ma už počuješ, chcel by som na večeru viac mlieka.“",
+      "syllable_body": "Je|dné|ho sl|neč|né|ho po|po|lu|dnia vy|lie|zol To|máš na po|va|lu. Tam na|šiel sta|rú tru|hli|cu pl|nú zvlášt|nych ve|cí. V tru|hli|ci bo|li sta|ré kni|hy, ďa|le|ko|hľad a ho|di|ny. Na|vr|chu le|žal mo|drý klo|búk so zla|tý|mi hvie|zda|mi a me|sia|čik|mi. Bol mu pri|veľ|ký a pa|dal mu až na o|či, a|le To|máš si ho aj tak na|sa|dil. Vtom si|vý ko|cúr v kre|sle zdvi|hol lab|ku a po|ve|dal: „Ko|neč|ne ma po|ču|ješ!“ To|máš si od pre|kva|pe|nia sa|dol na zem a o|stal s o|tvo|re|ný|mi ú|sta|mi. „Ty vieš roz|prá|vať?“ „Už ce|lé ro|ky,“ od|po|ve|dal ko|cúr. „A keď ma už po|ču|ješ, chcel by som na ve|če|ru viac mlie|ka.“",
+      "imageId": "wizard_hat",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_strieborny_kluc_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Strieborný kľúčik",
+      "body": "Lukáš trávil prázdniny u babky, v dome so záhradou plnou kvetov. Rástla tam mäta, levanduľa aj paradajky. Jedného popoludnia, keď polieval mätu, uvidel, že sa v zemi niečo ligoce. Bol to malý strieborný kľúčik.\n\n„Babka, čo sa odomyká týmto kľúčikom?“ spýtal sa. Babka sa na kľúčik pozrela a usmiala sa. „Myslím, že to viem,“ povedala. Z domu priniesla starú drevenú skrinku so železnou zámkou.\n\nLukáš vložil kľúčik do zámky a otočil ním. Veko sa so zavŕzganím otvorilo. Vnútri boli staré fotografie a pohľadnice: hory so snehom, mesto pri jazere a mladé dievča v dlhých šatách. Na jednej fotografii bol aj starý kostol pri jazere.\n\n„To dievča som ja,“ povedala babka. Aj mačka prišla bližšie, aby sa pozrela. Celý večer potom babka Lukášovi rozprávala o svojich cestách. Lukáš počúval a snil o tom, že aj on raz bude cestovať.",
+      "syllable_body": "Lu|káš trá|vil práz|dni|ny u bab|ky, v do|me so zá|hra|dou pl|nou kve|tov. Rá|stla tam mä|ta, le|van|du|ľa aj pa|ra|daj|ky. Je|dné|ho po|po|lu|dnia, keď po|lie|val mä|tu, u|vi|del, že sa v ze|mi nie|čo li|go|ce. Bol to ma|lý strie|bor|ný kľú|čik.\n\n„Bab|ka, čo sa o|do|my|ká tým|to kľú|či|kom?“ spý|tal sa. Bab|ka sa na kľú|čik po|zre|la a u|smia|la sa. „My|slím, že to viem,“ po|ve|da|la. Z do|mu pri|nie|sla sta|rú dre|ve|nú skrin|ku so že|le|znou zám|kou.\n\nLu|káš vlo|žil kľú|čik do zám|ky a o|to|čil ním. Ve|ko sa so za|vŕz|ga|ním o|tvo|ri|lo. Vnú|tri bo|li sta|ré fo|to|gra|fie a po|hľa|dni|ce: ho|ry so sne|hom, me|sto pri ja|ze|re a mla|dé die|vča v dl|hých ša|tách. Na je|dnej fo|to|gra|fi|i bol aj sta|rý ko|stol pri ja|ze|re.\n\n„To die|vča som ja,“ po|ve|da|la bab|ka. Aj mač|ka pri|šla bliž|šie, a|by sa po|zre|la. Ce|lý ve|čer po|tom bab|ka Lu|ká|šo|vi roz|prá|va|la o svo|jich ce|stách. Lu|káš po|čú|val a snil o tom, že aj on raz bu|de ce|sto|vať.",
+      "imageId": "silver_key_garden",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_zvuk_v_stodole_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Zvuk v stodole",
+      "body": "Cez letné prázdniny bola Zuzka u babky na dedine. Jedného rána počula zo stodoly zvláštny zvuk: „klop, klop, klop“. Zuzka sa trochu zľakla a zastala. Bola to azda myš? Alebo niečo väčšie?\n\nPomaly otvorila drevené dvere a vošla dnu. V stodole bolo šero a voňalo tam seno. Zvuk vychádzal z hniezda zo slamy. Ležalo v ňom biele vajíčko, ktoré tam sliepka nechala samé. A vajíčko sa hýbalo!\n\nZuzka zavolala babku. Babka si prisunula stoličku a usmiala sa. Obe sa sklonili nad hniezdo a potichu čakali. „Klop, klop,“ ozvalo sa znova. Zrazu škrupina praskla a objavil sa malý žltý zobáčik. Potom vyliezlo mokré kuriatko, otriaslo sa a povedalo: „Píp!“\n\n„Nebola to žiadna príšera,“ zasmiala sa Zuzka. „Je to najmenšie zvieratko na celej farme!“ Babka povedala, že kuriatko musí dostať meno.",
+      "syllable_body": "Cez let|né práz|dni|ny bo|la Zuz|ka u bab|ky na de|di|ne. Je|dné|ho rá|na po|ču|la zo sto|do|ly zvlášt|ny zvuk: „klop, klop, klop“. Zuz|ka sa tro|chu zľa|kla a za|sta|la. Bo|la to a|zda myš? A|le|bo nie|čo väč|šie?\n\nPo|ma|ly o|tvo|ri|la dre|ve|né dve|re a vo|šla dnu. V sto|do|le bo|lo še|ro a vo|ňa|lo tam se|no. Zvuk vy|chá|dzal z hnie|zda zo sla|my. Le|ža|lo v ňom bie|le va|jíč|ko, kto|ré tam sliep|ka ne|cha|la sa|mé. A va|jíč|ko sa hý|ba|lo!\n\nZuz|ka za|vo|la|la bab|ku. Bab|ka si pri|su|nu|la sto|lič|ku a u|smia|la sa. O|be sa sklo|ni|li nad hnie|zdo a po|ti|chu ča|ka|li. „Klop, klop,“ o|zva|lo sa zno|va. Zra|zu škru|pi|na pra|skla a ob|ja|vil sa ma|lý žl|tý zo|bá|čik. Po|tom vy|lie|zlo mo|kré ku|riat|ko, o|tria|slo sa a po|ve|da|lo: „Píp!“\n\n„Ne|bo|la to žia|dna prí|še|ra,“ za|smia|la sa Zuz|ka. „Je to naj|men|šie zvie|rat|ko na ce|lej far|me!“ Bab|ka po|ve|da|la, že ku|riat|ko mu|sí do|stať me|no.",
+      "imageId": "piscancek_skedenj",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_lampas_strazcu_majaka_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Lampáš strážcu majáka",
+      "body": "Na skale pri mori stál biely maják s červenou strechou. Býval v ňom pán Jozef, strážca majáka. Každý večer zažal veľké svetlo, aby lodiam ukázal cestu. Na skalách pod majákom rástli drobné biele kvety.\n\nJedného večera začal fúkať silný vietor. Obloha sa sfarbila do oranžova a rýchlo sa stmievalo. Vlny narážali do skál a dvíhali bielu penu. Zrazu pán Jozef uvidel v diaľke malú loďku. Sedeli v nej dvaja rybári, ktorí nevedeli nájsť cestu do prístavu.\n\nPán Jozef vzal svoj starý lampáš a zišiel po skalách čo najbližšie k vode. Zdvihol lampáš vysoko a kýval ním sem a tam. „Sem, tadiaľto!“ volal.\n\nRybári zbadali svetlo a nasmerovali loďku k nemu. Onedlho pristáli pri brehu. Zamávali strážcovi majáka a smiali sa od radosti. Nad nimi krúžili čajky. Pán Jozef bol rád, že jeho starý lampáš ešte slúži.",
+      "syllable_body": "Na ska|le pri mo|ri stál bie|ly ma|ják s čer|ve|nou stre|chou. Bý|val v ňom pán Jo|zef, stráž|ca ma|já|ka. Ka|ždý ve|čer za|žal veľ|ké sve|tlo, a|by lo|diam u|ká|zal ce|stu. Na ska|lách pod ma|já|kom rá|stli drob|né bie|le kve|ty.\n\nJe|dné|ho ve|če|ra za|čal fú|kať sil|ný vie|tor. O|blo|ha sa sfar|bi|la do o|ran|žo|va a rý|chlo sa stmie|va|lo. Vl|ny na|rá|ža|li do skál a dví|ha|li bie|lu pe|nu. Zra|zu pán Jo|zef u|vi|del v diaľ|ke ma|lú loď|ku. Se|de|li v nej dva|ja ry|bá|ri, kto|rí ne|ve|de|li nájsť ce|stu do prí|sta|vu.\n\nPán Jo|zef vzal svoj sta|rý lam|páš a zi|šiel po ska|lách čo naj|bliž|šie k vo|de. Zdvi|hol lam|páš vy|so|ko a ký|val ním sem a tam. „Sem, ta|diaľ|to!“ vo|lal.\n\nRy|bá|ri zba|da|li sve|tlo a na|sme|ro|va|li loď|ku k ne|mu. O|ne|dl|ho pri|stá|li pri bre|hu. Za|má|va|li stráž|co|vi ma|já|ka a smia|li sa od ra|do|sti. Nad ni|mi krú|ži|li čaj|ky. Pán Jo|zef bol rád, že je|ho sta|rý lam|páš e|šte slú|ži.",
+      "imageId": "lighthouse_rescue",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_krmidlo_pre_vtaciky_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Kŕmidlo pre vtáčiky",
+      "body": "Táto zima bola veľmi tuhá. Sneh prikryl polia aj stromy a vtáčiky nemali čo jesť. Katka ich každé ráno videla na plote, schúlené a hladné. Hľadali semienka pod snehom, ale nič nenašli.\n\n„Musíme im pomôcť,“ povedala svojmu bratovi Petrovi. S ockom zbili z dosiek malé kŕmidlo. Dali mu červenú striešku, aby doň nenapadal sneh. Pomáhali si navzájom a o chvíľu bolo hotové.\n\nV sobotu vyšli do záhrady. Snehu bolo po kolená a mráz ich štípal na lícach. Katka sa postavila na špičky a zavesila kŕmidlo na hrubý konár starého stromu. Peter držal vrecko so slnečnicovými semienkami a nasypal ich dovnútra.\n\nAni sa nestihli vzdialiť, a už prišiel prvý hosť: sýkorka so žltým bruškom. Potom prileteli ďalšie. Odvtedy deti dopĺňajú kŕmidlo každý deň a ich záhrada je plná spevu.",
+      "syllable_body": "Tá|to zi|ma bo|la veľ|mi tu|há. Sneh pri|kryl po|lia aj stro|my a vtá|či|ky ne|ma|li čo jesť. Kat|ka ich ka|ždé rá|no vi|de|la na plo|te, schú|le|né a hla|dné. Hľa|da|li se|mien|ka pod sne|hom, a|le nič ne|na|šli.\n\n„Mu|sí|me im po|môcť,“ po|ve|da|la svoj|mu bra|to|vi Pe|tro|vi. S oc|kom zbi|li z do|siek ma|lé kŕ|mi|dlo. Da|li mu čer|ve|nú strie|šku, a|by doň ne|na|pa|dal sneh. Po|má|ha|li si na|vzá|jom a o chví|ľu bo|lo ho|to|vé.\n\nV so|bo|tu vy|šli do zá|hra|dy. Sne|hu bo|lo po ko|le|ná a mráz ich ští|pal na lí|cach. Kat|ka sa po|sta|vi|la na špič|ky a za|ve|si|la kŕ|mi|dlo na hru|bý ko|nár sta|ré|ho stro|mu. Pe|ter dr|žal vrec|ko so sl|neč|ni|co|vý|mi se|mien|ka|mi a na|sy|pal ich do|vnú|tra.\n\nA|ni sa ne|sti|hli vzdia|liť, a už pri|šiel pr|vý hosť: sý|kor|ka so žl|tým bru|škom. Po|tom pri|le|te|li ďal|šie. Od|vte|dy de|ti do|pĺ|ňa|jú kŕ|mi|dlo ka|ždý deň a ich zá|hra|da je pl|ná spe|vu.",
+      "imageId": "bird_feeder_winter",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_drak_bez_ohna_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Drak bez ohňa",
+      "body": "Na kopci nad dedinou žil veľký fialový drak. Všetky draky z rozprávok chrlia oheň, ale on to nevedel. Nech sa snažil, ako chcel, z nosa mu vyšiel len malý sivý obláčik dymu. Preto býval sám a nikdy nechodil do dediny.\n\nJedného večera vyšla Ema na kopec so svojím lampášom. Našla draka schúleného v tráve, so smutnými očami. Nad kopcom svietil mesiac a hviezdy. „Prečo si sám?“ spýtala sa. „Lebo neviem urobiť oheň,“ vzdychol drak.\n\nEma zdvihla lampáš k nemu. „Ani ja neviem urobiť oheň,“ povedala. „Ale mám svetlo. Vezmi si lampáš, aby si videl cestu do dediny.“\n\nDrak sa prvý raz usmial. V tú noc zišiel dolu do dediny s lampášom v pazúroch a okolo neho lietali svätojánske mušky. Ľudia z dediny ho privítali a deti sa s ním hrali.",
+      "syllable_body": "Na kop|ci nad de|di|nou žil veľ|ký fia|lo|vý drak. Všet|ky dra|ky z roz|prá|vok chr|lia o|heň, a|le on to ne|ve|del. Nech sa sna|žil, a|ko chcel, z no|sa mu vy|šiel len ma|lý si|vý o|blá|čik dy|mu. Pre|to bý|val sám a ni|kdy ne|cho|dil do de|di|ny.\n\nJe|dné|ho ve|če|ra vy|šla E|ma na ko|pec so svo|jím lam|pá|šom. Na|šla dra|ka schú|le|né|ho v trá|ve, so smut|ný|mi o|ča|mi. Nad kop|com svie|til me|siac a hvie|zdy. „Pre|čo si sám?“ spý|ta|la sa. „Le|bo ne|viem u|ro|biť o|heň,“ vzdy|chol drak.\n\nE|ma zdvi|hla lam|páš k ne|mu. „A|ni ja ne|viem u|ro|biť o|heň,“ po|ve|da|la. „A|le mám sve|tlo. Ve|zmi si lam|páš, a|by si vi|del ce|stu do de|di|ny.“\n\nDrak sa pr|vý raz u|smial. V tú noc zi|šiel do|lu do de|di|ny s lam|pá|šom v pa|zú|roch a o|ko|lo ne|ho lie|ta|li svä|to|ján|ske mu|šky. Ľu|dia z de|di|ny ho pri|ví|ta|li a de|ti sa s ním hra|li.",
+      "imageId": "dragon_lantern",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_musla_morskej_panny_4",
+      "version": 1,
+      "theme": "stories",
+      "level": 4,
+      "title": "Mušľa morskej panny",
+      "body": "Adam sa rád prechádzal večer po skalách pri mori. Jedného dňa, keď zapadalo slnko, našiel medzi riasami veľkú ružovú mušľu. Bola taká krásna, že si ju chcel vziať domov. Na skalách rástli riasy a v jamkách s vodou sa skrývali morské hviezdice.\n\nZrazu z vody začul hlas: „Prosím ťa, neber ju!“ Medzi vlnami bolo dievča s dlhými vlasmi, v ktorých malo morské hviezdice. Za ním sa vo vode ligotal zelený chvost. Bola to morská panna!\n\n„Táto mušľa je moja lampa,“ povedala morská panna. „V noci mi na dne mora jej svetlo ukazuje cestu domov.“\n\nAdam sa zo skaly naklonil a podal jej mušľu. Morská panna sa usmiala a zmizla pod vlnami. Neskôr Adam videl ďaleko vo vode ružové svetlo, ktoré blikalo ako poďakovanie. Odvtedy Adam chodieva k moru každý večer.",
+      "syllable_body": "A|dam sa rád pre|chá|dzal ve|čer po ska|lách pri mo|ri. Je|dné|ho dňa, keď za|pa|da|lo sln|ko, na|šiel me|dzi ria|sa|mi veľ|kú ru|žo|vú mu|šľu. Bo|la ta|ká krá|sna, že si ju chcel vziať do|mov. Na ska|lách rá|stli ria|sy a v jam|kách s vo|dou sa skrý|va|li mor|ské hvie|zdi|ce.\n\nZra|zu z vo|dy za|čul hlas: „Pro|sím ťa, ne|ber ju!“ Me|dzi vl|na|mi bo|lo die|vča s dl|hý|mi vla|smi, v kto|rých ma|lo mor|ské hvie|zdi|ce. Za ním sa vo vo|de li|go|tal ze|le|ný chvost. Bo|la to mor|ská pan|na!\n\n„Tá|to mu|šľa je mo|ja lam|pa,“ po|ve|da|la mor|ská pan|na. „V no|ci mi na dne mo|ra jej sve|tlo u|ka|zu|je ce|stu do|mov.“\n\nA|dam sa zo ska|ly na|klo|nil a po|dal jej mu|šľu. Mor|ská pan|na sa u|smia|la a zmi|zla pod vl|na|mi. Ne|skôr A|dam vi|del ďa|le|ko vo vo|de ru|žo|vé sve|tlo, kto|ré bli|ka|lo a|ko po|ďa|ko|va|nie. Od|vte|dy A|dam cho|die|va k mo|ru ka|ždý ve|čer.",
+      "imageId": "mermaid_shell",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_zahrada_so_zelenou_brankou_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Záhrada so zelenou bránkou",
+      "body": "Pri dome starých rodičov bola stará záhrada, skrytá za kamenným múrom. Jej zelená bránka bola mnoho rokov zamknutá. Za múrom rástli len burina a staré kríky. Jednej jari dal dedko Zuzke kľúč. „Ak sa o ňu budeš starať, záhrada bude tvoja,“ povedal jej.\n\nZuzka pracovala celý mesiac. Vytrhala burinu, pozametala kamenný chodník a do kvetináčov nasypala novú zem. Zasadila levanduľu, rozmarín, bazalku a paradajky. Dedko jej ukázal, ako sa správne sadí a koľko vody rastliny potrebujú. Každé ráno pred školou vyšla s krhlou a všetko poliala. Ruky mala od hliny a večer bola unavená, ale šťastná. Najprv sa nič nedialo a Zuzka rozmýšľala, či rastlinky vôbec niekedy vyrastú. Potom sa jedného dňa objavili prvé lístky. O niekoľko týždňov voňala záhrada levanduľou a bazalkou a medzi kvetmi bzučali včely. Paradajky na slnku očerveneli. Susedia sa zastavovali pri bránke a obzerali sa. Prišiel aj dedko, sadol si na drevenú lavičku a usmial sa. „Vedel som, že záhrada čaká práve na niekoho, ako si ty,“ povedal.",
+      "syllable_body": "Pri do|me sta|rých ro|di|čov bo|la sta|rá zá|hra|da, skry|tá za ka|men|ným mú|rom. Jej ze|le|ná brán|ka bo|la mno|ho ro|kov zam|knu|tá. Za mú|rom rá|stli len bu|ri|na a sta|ré krí|ky. Je|dnej ja|ri dal ded|ko Zuz|ke kľúč. „Ak sa o ňu bu|deš sta|rať, zá|hra|da bu|de tvo|ja,“ po|ve|dal jej.\n\nZuz|ka pra|co|va|la ce|lý me|siac. Vy|tr|ha|la bu|ri|nu, po|za|me|ta|la ka|men|ný cho|dník a do kve|ti|ná|čov na|sy|pa|la no|vú zem. Za|sa|di|la le|van|du|ľu, ro|zma|rín, ba|zal|ku a pa|ra|daj|ky. Ded|ko jej u|ká|zal, a|ko sa sprá|vne sa|dí a koľ|ko vo|dy ra|stli|ny po|tre|bu|jú. Ka|ždé rá|no pred ško|lou vy|šla s kr|hlou a všet|ko po|lia|la. Ru|ky ma|la od hli|ny a ve|čer bo|la u|na|ve|ná, a|le šťast|ná. Naj|prv sa nič ne|dia|lo a Zuz|ka ro|zmý|šľa|la, či ra|stlin|ky vô|bec nie|ke|dy vy|ra|stú. Po|tom sa je|dné|ho dňa ob|ja|vi|li pr|vé líst|ky. O nie|koľ|ko týžd|ňov vo|ňa|la zá|hra|da le|van|du|ľou a ba|zal|kou a me|dzi kvet|mi bzu|ča|li vče|ly. Pa|ra|daj|ky na sln|ku o|čer|ve|ne|li. Su|se|dia sa za|sta|vo|va|li pri brán|ke a ob|ze|ra|li sa. Pri|šiel aj ded|ko, sa|dol si na dre|ve|nú la|vič|ku a u|smial sa. „Ve|del som, že zá|hra|da ča|ká prá|ve na nie|ko|ho, a|ko si ty,“ po|ve|dal.",
+      "imageId": "green_garden_gate",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_meno_pre_macatko_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Meno pre mačiatko",
+      "body": "Už týždeň bývalo v Katkinom dome malé pásikavé mačiatko. Katka ho našla jedného daždivého večera pri lavičke v parku, mokré a trasúce sa. Bolo také chudé, že sa jej zmestilo do dlaní. Katka ho doma osušila uterákom a zabalila do deky. Mama vtedy povedala: „Môže u nás zostať, kým nenájdeme jeho majiteľa.“\n\nKatka nakreslila plagáty s mačiatkom a vylepila ich na stĺpy v celej štvrti. Vždy, keď niekto zazvonil, bežala k dverám, ale po mačiatko nikto neprišiel. Mačiatko sa medzitým naučilo piť mlieko z misky s labkami, hrať sa s plyšovou myškou a spávať v košíku s modrou dekou. Každý deň pribralo trochu viac a srsť sa mu začala lesknúť. Večer sa jej vyšplhalo do lona a priadlo ako malý motorček. Jedného večera vonku znova pršalo. Mama si sadla ku Katke na koberec. „Nikto neprišiel,“ povedala potichu. „Myslím, že mačiatko si už svoj domov našlo.“ Katka vyskočila od radosti. „Tak potom musí mať meno!“ zvolala. Spolu vybrali meno Obláčik, lebo jeho srsť bola sivá a hebká.",
+      "syllable_body": "Už tý|ždeň bý|va|lo v Kat|ki|nom do|me ma|lé pá|si|ka|vé ma|čiat|ko. Kat|ka ho na|šla je|dné|ho da|ždi|vé|ho ve|če|ra pri la|vič|ke v par|ku, mo|kré a tra|sú|ce sa. Bo|lo ta|ké chu|dé, že sa jej zme|sti|lo do dla|ní. Kat|ka ho do|ma o|su|ši|la u|te|rá|kom a za|ba|li|la do de|ky. Ma|ma vte|dy po|ve|da|la: „Mô|že u nás zo|stať, kým ne|náj|de|me je|ho ma|ji|te|ľa.“\n\nKat|ka na|kre|sli|la pla|gá|ty s ma|čiat|kom a vy|le|pi|la ich na stĺ|py v ce|lej štvr|ti. Vždy, keď nie|kto za|zvo|nil, be|ža|la k dve|rám, a|le po ma|čiat|ko ni|kto ne|pri|šiel. Ma|čiat|ko sa me|dzi|tým na|u|či|lo piť mlie|ko z mi|sky s lab|ka|mi, hrať sa s ply|šo|vou my|škou a spá|vať v ko|ší|ku s mo|drou de|kou. Ka|ždý deň pri|bra|lo tro|chu viac a srsť sa mu za|ča|la les|knúť. Ve|čer sa jej vy|špl|ha|lo do lo|na a pria|dlo a|ko ma|lý mo|tor|ček. Je|dné|ho ve|če|ra von|ku zno|va pr|ša|lo. Ma|ma si sa|dla ku Kat|ke na ko|be|rec. „Ni|kto ne|pri|šiel,“ po|ve|da|la po|ti|chu. „My|slím, že ma|čiat|ko si už svoj do|mov na|šlo.“ Kat|ka vy|sko|či|la od ra|do|sti. „Tak po|tom mu|sí mať me|no!“ zvo|la|la. Spo|lu vy|bra|li me|no O|blá|čik, le|bo je|ho srsť bo|la si|vá a heb|ká.",
+      "imageId": "muc_dom",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_u_hasicov_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Deň u hasičov",
+      "body": "Jedného májového rána išla druhá trieda na návštevu k hasičom. Deti stáli za oranžovými kužeľmi a s otvorenými ústami pozerali na dlhé, červené a lesklé hasičské auto. Na bokoch malo hadice, rebríky a veľa malých dvierok.\n\nHasič Martin ich s úsmevom pozdravil. „Ukážem vám, ako sa pripravujeme,“ povedal. Kľakol si a rozvinul žltú hadicu, hrubú a ťažkú. Ukázal im aj červenú prilbu, ktorá mu chráni hlavu, a špeciálny oblek, ktorý nehorí. Hasiči musia byť silní a zdatní, preto veľa trénujú. Jeho kolegyňa Jana chytila koniec hadice a pripojila ho k autu. Ďalší hasič kontroloval rebríky a baterky v aute. „Ako rýchlo vyrazíte, keď zaznie poplach?“ spýtala sa Ema. „Za menej ako minútu,“ odpovedal Martin. Deti ostali v úžase. Martin im ukázal aj lesklú tyč, po ktorej sa hasiči spúšťajú z poschodia. Deti si mohli sadnúť aj do auta za volant. Na konci dostal každý malú plastovú prilbu. Ema si ju hneď nasadila. V autobuse sa všetci rozprávali o jednom: keď budú veľkí, budú hasičmi.",
+      "syllable_body": "Je|dné|ho má|jo|vé|ho rá|na i|šla dru|há trie|da na náv|šte|vu k ha|si|čom. De|ti stá|li za o|ran|žo|vý|mi ku|žeľ|mi a s o|tvo|re|ný|mi ú|sta|mi po|ze|ra|li na dl|hé, čer|ve|né a le|sklé ha|sič|ské au|to. Na bo|koch ma|lo ha|di|ce, re|brí|ky a ve|ľa ma|lých dvie|rok.\n\nHa|sič Mar|tin ich s ú|sme|vom po|zdra|vil. „U|ká|žem vám, a|ko sa pri|pra|vu|je|me,“ po|ve|dal. Kľa|kol si a ro|zvi|nul žl|tú ha|di|cu, hru|bú a ťaž|kú. U|ká|zal im aj čer|ve|nú pril|bu, kto|rá mu chrá|ni hla|vu, a špe|ci|ál|ny o|blek, kto|rý ne|ho|rí. Ha|si|či mu|sia byť sil|ní a zdat|ní, pre|to ve|ľa tré|nu|jú. Je|ho ko|le|gy|ňa Ja|na chy|ti|la ko|niec ha|di|ce a pri|po|ji|la ho k au|tu. Ďal|ší ha|sič kon|tro|lo|val re|brí|ky a ba|ter|ky v au|te. „A|ko rý|chlo vy|ra|zí|te, keď za|znie po|plach?“ spý|ta|la sa E|ma. „Za me|nej a|ko mi|nú|tu,“ od|po|ve|dal Mar|tin. De|ti o|sta|li v ú|ža|se. Mar|tin im u|ká|zal aj le|sklú tyč, po kto|rej sa ha|si|či spú|šťa|jú z po|scho|dia. De|ti si mo|hli sa|dnúť aj do au|ta za vo|lant. Na kon|ci do|stal ka|ždý ma|lú pla|sto|vú pril|bu. E|ma si ju hneď na|sa|di|la. V au|to|bu|se sa všet|ci roz|prá|va|li o je|dnom: keď bu|dú veľ|kí, bu|dú ha|si|čmi.",
+      "imageId": "fire_station",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_obor_v_muzeu_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Obor v múzeu",
+      "body": "Veľká sála múzea bola plná svetla. Vysokými oknami dopadalo slnko na obrovskú kostru s krkom dlhým ako strom. Hlava dinosaura bola tak vysoko, že deti sa museli pozerať priamo hore. Keď pred ňou zastali, nevedeli od úžasu nič povedať. Všetci mali na chrbtoch farebné batohy. Pri kostre stála aj lebka iného dinosaura s rohmi.\n\n„Toto je diplodok,“ povedal sprievodca, pán s bielou bradou. „Žil pred veľmi dávnymi časmi, dávno predtým, ako sa objavili ľudia. Bol dlhý ako tri autobusy a jedol iba rastliny.“ Deti sa čudovali, že taký veľký tvor jedol len listy. Janka sa spýtala, ako sa kosti dostali do múzea. Sprievodca vysvetlil, že vedci ich našli v zemi a opatrne ich vykopali, kúsok po kúsku. Potom ich poskladali, ako keď sa skladá obrovská skladačka.\n\nIba Peter nepočúval. Sedel na zemi kúsok bokom a kreslil si kostru do zošita. Na výkrese nechýbala ani jedna kosť. Keď sprievodca skončil, deti sa okolo neho zhromaždili. „Vyzerá presne ako naozaj!“ povedala Janka. Sprievodca sa usmial: „Možno raz nájdeš nového dinosaura práve ty.“",
+      "syllable_body": "Veľ|ká sá|la mú|ze|a bo|la pl|ná sve|tla. Vy|so|ký|mi o|kna|mi do|pa|da|lo sln|ko na o|brov|skú ko|stru s kr|kom dl|hým a|ko strom. Hla|va di|no|sau|ra bo|la tak vy|so|ko, že de|ti sa mu|se|li po|ze|rať pria|mo ho|re. Keď pred ňou za|sta|li, ne|ve|de|li od ú|ža|su nič po|ve|dať. Všet|ci ma|li na chrb|toch fa|reb|né ba|to|hy. Pri ko|stre stá|la aj leb|ka i|né|ho di|no|sau|ra s roh|mi.\n\n„To|to je di|plo|dok,“ po|ve|dal sprie|vod|ca, pán s bie|lou bra|dou. „Žil pred veľ|mi dá|vny|mi ča|smi, dá|vno pred|tým, a|ko sa ob|ja|vi|li ľu|dia. Bol dl|hý a|ko tri au|to|bu|sy a je|dol i|ba ra|stli|ny.“ De|ti sa ču|do|va|li, že ta|ký veľ|ký tvor je|dol len li|sty. Jan|ka sa spý|ta|la, a|ko sa ko|sti do|sta|li do mú|ze|a. Sprie|vod|ca vy|sve|tlil, že ved|ci ich na|šli v ze|mi a o|pa|tr|ne ich vy|ko|pa|li, kú|sok po kú|sku. Po|tom ich po|skla|da|li, a|ko keď sa skla|dá o|brov|ská skla|dač|ka.\n\nI|ba Pe|ter ne|po|čú|val. Se|del na ze|mi kú|sok bo|kom a kre|slil si ko|stru do zo|ši|ta. Na vý|kre|se ne|chý|ba|la a|ni je|dna kosť. Keď sprie|vod|ca skon|čil, de|ti sa o|ko|lo ne|ho zhro|ma|ždi|li. „Vy|ze|rá pre|sne a|ko na|o|zaj!“ po|ve|da|la Jan|ka. Sprie|vod|ca sa u|smial: „Mo|žno raz náj|deš no|vé|ho di|no|sau|ra prá|ve ty.“",
+      "imageId": "dinosaur_museum",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_hrad_v_oblakoch_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Hrad v oblakoch",
+      "body": "Jedného rána, po krátkom letnom daždi, uvideli Sofia a Miško dúhu, akú ešte nikdy nevideli. Začínala priamo na kraji ich záhrady a stúpala k nebu, široká ako cesta. Nad ňou letela sova, ktorá sa stále obzerala na nich, akoby ich volala. Sova mala hnedé perie a veľké žlté oči.\n\nDeti si vzali batohy, chytili sa za ruky a vykročili na dúhu. Farby boli pod nohami mäkké a teplé. Nad nimi svietilo slnko a pod nimi sa leskli polia a lúky. Čím vyššie stúpali, tým menšia bola ich dedina: rieka, kamenný most, kostol so špicatou vežou a červené strechy. Cestou prešli aj cez oblak, ktorý im trochu navlhčil líca. Okolo nich plávali biele, nadýchané oblaky.\n\nNa konci dúhy, na veľkom oblaku, stál biely hrad s modrými vežami a zástavami. Brána sa sama otvorila a vyšlo z nej zlaté svetlo. Sova si sadla vedľa nich. „Vitajte,“ povedala. „Tento hrad sa ukáže iba deťom, ktoré nezabúdajú pozerať na oblohu.“ Sofia a Miško sa na seba pozreli a spolu vošli dnu.",
+      "syllable_body": "Je|dné|ho rá|na, po krát|kom let|nom da|ždi, u|vi|de|li So|fia a Mi|ško dú|hu, a|kú e|šte ni|kdy ne|vi|de|li. Za|čí|na|la pria|mo na kra|ji ich zá|hra|dy a stú|pa|la k ne|bu, ši|ro|ká a|ko ce|sta. Nad ňou le|te|la so|va, kto|rá sa stá|le ob|ze|ra|la na nich, a|ko|by ich vo|la|la. So|va ma|la hne|dé pe|rie a veľ|ké žl|té o|či.\n\nDe|ti si vza|li ba|to|hy, chy|ti|li sa za ru|ky a vy|kro|či|li na dú|hu. Far|by bo|li pod no|ha|mi mäk|ké a te|plé. Nad ni|mi svie|ti|lo sln|ko a pod ni|mi sa le|skli po|lia a lú|ky. Čím vyš|šie stú|pa|li, tým men|šia bo|la ich de|di|na: rie|ka, ka|men|ný most, ko|stol so špi|ca|tou ve|žou a čer|ve|né stre|chy. Ce|stou pre|šli aj cez o|blak, kto|rý im tro|chu na|vlh|čil lí|ca. O|ko|lo nich plá|va|li bie|le, na|dý|cha|né o|bla|ky.\n\nNa kon|ci dú|hy, na veľ|kom o|bla|ku, stál bie|ly hrad s mo|drý|mi ve|ža|mi a zá|sta|va|mi. Brá|na sa sa|ma o|tvo|ri|la a vy|šlo z nej zla|té sve|tlo. So|va si sa|dla ved|ľa nich. „Vi|taj|te,“ po|ve|da|la. „Ten|to hrad sa u|ká|že i|ba de|ťom, kto|ré ne|za|bú|da|jú po|ze|rať na o|blo|hu.“ So|fia a Mi|ško sa na se|ba po|zre|li a spo|lu vo|šli dnu.",
+      "imageId": "rainbow_castle",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "stories_trpaslici_v_zahrade_5",
+      "version": 1,
+      "theme": "stories",
+      "level": 5,
+      "title": "Trpaslíci v záhrade",
+      "body": "Plot v Adamovej záhrade bol starý a krivý. Pri poslednej búrke sa niekoľko dosiek zlomilo a ocko povedal, že ho v nedeľu opraví. V záhrade stálo päť sadrových trpaslíkov s červenými čiapkami a bielymi bradami. Cez deň sa nikdy nepohli. Adam ich mal veľmi rád a každý večer im dával dobrú noc.\n\nJednej noci, keď bol spln, Adam nemohol zaspať. Pozrel sa z okna a neveril vlastným očiam. Trpaslíci sa hýbali! Jeden vyliezol na rebrík a malým kladivom zatĺkal klince. Dvaja spolu niesli dlhú dosku. Ďalší držal novú dosku na jej mieste a ten najstarší hľadal v debničke klince pri svetle lampáša. Pracovali potichu, aby nikoho nezobudili. Ráno Adam vybehol do záhrady. Plot bol rovný a celý a trpaslíci stáli bez pohnutia na svojich miestach. V tráve ležal už len jeden malý klinec. Adam ho rýchlo schoval do vrecka. Ocko sa začudovane poškrabal na hlave. „Kto ho opravil?“ Adam sa usmial a nepovedal nič. Len sa mu zdalo, že jeden z trpaslíkov naňho žmurkol.",
+      "syllable_body": "Plot v A|da|mo|vej zá|hra|de bol sta|rý a kri|vý. Pri po|sle|dnej búr|ke sa nie|koľ|ko do|siek zlo|mi|lo a oc|ko po|ve|dal, že ho v ne|de|ľu o|pra|ví. V zá|hra|de stá|lo päť sa|dro|vých tr|pa|slí|kov s čer|ve|ný|mi čiap|ka|mi a bie|ly|mi bra|da|mi. Cez deň sa ni|kdy ne|po|hli. A|dam ich mal veľ|mi rád a ka|ždý ve|čer im dá|val do|brú noc.\n\nJe|dnej no|ci, keď bol spln, A|dam ne|mo|hol za|spať. Po|zrel sa z o|kna a ne|ve|ril vlast|ným o|čiam. Tr|pa|slí|ci sa hý|ba|li! Je|den vy|lie|zol na re|brík a ma|lým kla|di|vom za|tĺ|kal klin|ce. Dva|ja spo|lu nie|sli dl|hú do|sku. Ďal|ší dr|žal no|vú do|sku na jej mie|ste a ten naj|star|ší hľa|dal v deb|nič|ke klin|ce pri sve|tle lam|pá|ša. Pra|co|va|li po|ti|chu, a|by ni|ko|ho ne|zo|bu|di|li. Rá|no A|dam vy|be|hol do zá|hra|dy. Plot bol ro|vný a ce|lý a tr|pa|slí|ci stá|li bez po|hnu|tia na svo|jich mie|stach. V trá|ve le|žal už len je|den ma|lý kli|nec. A|dam ho rý|chlo scho|val do vrec|ka. Oc|ko sa za|ču|do|va|ne po|škra|bal na hla|ve. „Kto ho o|pra|vil?“ A|dam sa u|smial a ne|po|ve|dal nič. Len sa mu zda|lo, že je|den z tr|pa|slí|kov naň|ho žmur|kol.",
+      "imageId": "garden_gnomes",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_akvadukt_1",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 1,
+      "title": "Most s oblúkmi",
+      "body": "Toto je veľmi starý akvadukt. Postavili ho Rimania pred dvetisíc rokmi. Má veľa kamenných oblúkov. Hore po akvadukte tiekla voda. Tak sa voda dostala až do mesta. Okolo rastú stromy a kvety.",
+      "syllable_body": "To|to je veľ|mi sta|rý a|kva|dukt. Po|sta|vi|li ho Ri|ma|nia pred dve|ti|síc rok|mi. Má ve|ľa ka|men|ných o|blú|kov. Ho|re po a|kva|du|kte tie|kla vo|da. Tak sa vo|da do|sta|la až do me|sta. O|ko|lo ra|stú stro|my a kve|ty.",
+      "imageId": "roman_aqueduct",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_pyramidy_1",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 1,
+      "title": "Pyramídy",
+      "body": "V Egypte stoja tri veľké pyramídy. Sú veľmi staré. Sú postavené z kamenných kvádrov. Okolo nich je púšť. Dve deti sa vezú na ťavách. Slnko silno páli.",
+      "syllable_body": "V E|gy|pte sto|ja tri veľ|ké py|ra|mí|dy. Sú veľ|mi sta|ré. Sú po|sta|ve|né z ka|men|ných kvá|drov. O|ko|lo nich je púšť. Dve de|ti sa ve|zú na ťa|vách. Sln|ko sil|no pá|li.",
+      "imageId": "piramide_giza",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_sochy_moai_2",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 2,
+      "title": "Sochy na ostrove",
+      "body": "Veľkonočný ostrov je malý ostrov uprostred Tichého oceánu. Stojí na ňom takmer tisíc obrovských kamenných sôch. Volajú sa moai. Sochy majú veľké hlavy, dlhé nosy a vysoké čelá. Niektoré sú vyššie ako dom. Mnohé z nich stoja chrbtom k moru. Obyvatelia ostrova ich vytesali pred stovkami rokov kamennými nástrojmi. Na ostrov sa dá doplávať iba loďou alebo priletieť lietadlom.",
+      "syllable_body": "Veľ|ko|noč|ný o|strov je ma|lý o|strov u|pro|stred Ti|ché|ho o|ce|á|nu. Sto|jí na ňom tak|mer ti|síc o|brov|ských ka|men|ných sôch. Vo|la|jú sa mo|a|i. So|chy ma|jú veľ|ké hla|vy, dl|hé no|sy a vy|so|ké če|lá. Nie|kto|ré sú vyš|šie a|ko dom. Mno|hé z nich sto|ja chrb|tom k mo|ru. O|by|va|te|lia o|stro|va ich vy|te|sa|li pred stov|ka|mi ro|kov ka|men|ný|mi ná|stroj|mi. Na o|strov sa dá do|plá|vať i|ba lo|ďou a|le|bo pri|le|tieť lie|ta|dlom.",
+      "imageId": "moai_statues",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_pyramidy_2",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 2,
+      "title": "Kamenné kvádre",
+      "body": "Pyramídy v Egypte postavili pred viac ako štyritisíc rokmi. Sú z veľkých kamenných kvádrov. Niektoré kvádre boli ťažšie ako auto. Robotníci ich ťahali hrubými lanami na drevených saniach. Potom ich vytiahli hore po hlinených rampách. Kvádre kládli jeden na druhý, rad za radom. Na jednej pyramíde pracovali tisíce ľudí celé roky. Pyramídy sú dodnes veľmi pevné. Neďaleko tečie rieka Níl.",
+      "syllable_body": "Py|ra|mí|dy v E|gy|pte po|sta|vi|li pred viac a|ko šty|ri|ti|síc rok|mi. Sú z veľ|kých ka|men|ných kvá|drov. Nie|kto|ré kvá|dre bo|li ťaž|šie a|ko au|to. Ro|bot|ní|ci ich ťa|ha|li hru|bý|mi la|na|mi na dre|ve|ných sa|niach. Po|tom ich vy|tia|hli ho|re po hli|ne|ných ram|pách. Kvá|dre klá|dli je|den na dru|hý, rad za ra|dom. Na je|dnej py|ra|mí|de pra|co|va|li ti|sí|ce ľu|dí ce|lé ro|ky. Py|ra|mí|dy sú do|dnes veľ|mi pe|vné. Ne|ďa|le|ko te|čie rie|ka Níl.",
+      "imageId": "piramide_bloki",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_ozvena_v_tatrach_3",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 3,
+      "title": "Ozvena v Tatrách",
+      "body": "Vysoké Tatry sú najvyššie hory na Slovensku. Majú ostré štíty, smrekové lesy a čisté horské plesá. Žijú tam kamzíky a svište. Najvyšším štítom je Gerlachovský štít, ktorý je vysoký takmer dvetisícsedemsto metrov. V lete chodí po horských chodníkoch veľa rodín. Na chodníkoch treba byť opatrný a nechodiť sám. Tam sa dá hrať pekná hra s ozvenou. Postav sa oproti skalnej stene a hlasno zakrič. Zvuk tvojho hlasu letí vzduchom, narazí do skaly a vráti sa. O chvíľu znova počuješ svoj hlas, akoby ti hora odpovedala. Ozvenu najlepšie počuť v tichu skorého rána.",
+      "syllable_body": "Vy|so|ké Ta|try sú naj|vyš|šie ho|ry na Slo|ven|sku. Ma|jú o|stré ští|ty, smre|ko|vé le|sy a či|sté hor|ské ple|sá. Ži|jú tam kam|zí|ky a svi|šte. Naj|vyš|ším ští|tom je Ger|la|chov|ský štít, kto|rý je vy|so|ký tak|mer dve|ti|síc|se|dem|sto me|trov. V le|te cho|dí po hor|ských cho|dní|koch ve|ľa ro|dín. Na cho|dní|koch tre|ba byť o|pa|tr|ný a ne|cho|diť sám. Tam sa dá hrať pe|kná hra s o|zve|nou. Po|stav sa o|pro|ti skal|nej ste|ne a hla|sno za|krič. Zvuk tvoj|ho hla|su le|tí vzdu|chom, na|ra|zí do ska|ly a vrá|ti sa. O chví|ľu zno|va po|ču|ješ svoj hlas, a|ko|by ti ho|ra od|po|ve|da|la. O|zve|nu naj|lep|šie po|čuť v ti|chu sko|ré|ho rá|na.",
+      "imageId": "odmev_gore",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "plausible"
+      }
+    },
+    {
+      "id": "around_the_world_pyramidy_3",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 3,
+      "title": "Skrytá komnata",
+      "body": "Pyramídy v Egypte neboli len veľké stavby. Boli to hrobky pre faraónov, kráľov starého Egypta. Hlboko vo vnútri pyramídy bola skrytá komnata. Faraóna pred pohrebom zabalili do látkových pásov. Potom ho uložili do pozláteného sarkofágu. Vedľa neho boli sochy, nádoby, nábytok a šperky. Egypťania verili, že ich kráľ bude tieto veci potrebovať v inom živote. Steny komnaty boli pomaľované ľuďmi, zvieratami a znakmi, ktoré sa volajú hieroglyfy. Maliari pracovali pri svetle olejových lámp. Dvere komnaty potom zatarasili veľkými kameňmi, aby dnu nevnikli zlodeji. Vonku robotníci ťahali po dlhých rampách obrovské kamenné kvádre.",
+      "syllable_body": "Py|ra|mí|dy v E|gy|pte ne|bo|li len veľ|ké stav|by. Bo|li to hrob|ky pre fa|ra|ó|nov, krá|ľov sta|ré|ho E|gy|pta. Hl|bo|ko vo vnú|tri py|ra|mí|dy bo|la skry|tá ko|mna|ta. Fa|ra|ó|na pred po|hre|bom za|ba|li|li do lát|ko|vých pá|sov. Po|tom ho u|lo|ži|li do po|zlá|te|né|ho sar|ko|fá|gu. Ved|ľa ne|ho bo|li so|chy, ná|do|by, ná|by|tok a šper|ky. E|gyp|ťa|nia ve|ri|li, že ich kráľ bu|de tie|to ve|ci po|tre|bo|vať v i|nom ži|vo|te. Ste|ny ko|mna|ty bo|li po|ma|ľo|va|né ľuď|mi, zvie|ra|ta|mi a znak|mi, kto|ré sa vo|la|jú hie|ro|gly|fy. Ma|lia|ri pra|co|va|li pri sve|tle o|le|jo|vých lámp. Dve|re ko|mna|ty po|tom za|ta|ra|si|li veľ|ký|mi ka|meň|mi, a|by dnu ne|vni|kli zlo|de|ji. Von|ku ro|bot|ní|ci ťa|ha|li po dl|hých ram|pách o|brov|ské ka|men|né kvá|dre.",
+      "imageId": "piramide_kamnolom",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_dunaj_4",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 4,
+      "title": "Dunaj, od hôr k moru",
+      "body": "Dunaj je druhá najdlhšia rieka v Európe. Pramení v horách Nemecka a tečie na východ cez desať krajín. Je dlhý takmer tritisíc kilometrov. Po ceste do neho vtekajú mnohé menšie rieky. Tečie cez lesy, popri dedinách a veľkých mestách a pod starými kamennými mostami.\n\nDunaj preteká aj Slovenskom. Tečie cez Bratislavu, hlavné mesto Slovenska, a potom tvorí hranicu s Maďarskom. V Bratislave cez Dunaj vedie niekoľko mostov. Na konci svojej cesty, ešte predtým, ako sa vleje do Čierneho mora, sa rozdelí na tri veľké ramená a mnoho kanálov. Tak vzniká delta Dunaja.\n\nDelta je plná života. V rákosí žijú volavky, pelikány a tisíce ďalších vtákov. Niektoré prilietajú až z Afriky. Vo vode pláva množstvo rýb. V Čiernom mori pri ústí Dunaja možno niekedy vidieť aj delfíny.",
+      "syllable_body": "Du|naj je dru|há naj|dlh|šia rie|ka v Eu|ró|pe. Pra|me|ní v ho|rách Ne|mec|ka a te|čie na vý|chod cez de|sať kra|jín. Je dl|hý tak|mer tri|ti|síc ki|lo|me|trov. Po ce|ste do ne|ho vte|ka|jú mno|hé men|šie rie|ky. Te|čie cez le|sy, po|pri de|di|nách a veľ|kých me|stách a pod sta|rý|mi ka|men|ný|mi mo|sta|mi.\n\nDu|naj pre|te|ká aj Slo|ven|skom. Te|čie cez Bra|ti|sla|vu, hla|vné me|sto Slo|ven|ska, a po|tom tvo|rí hra|ni|cu s Ma|ďar|skom. V Bra|ti|sla|ve cez Du|naj ve|die nie|koľ|ko mo|stov. Na kon|ci svo|jej ce|sty, e|šte pred|tým, a|ko sa vle|je do Čier|ne|ho mo|ra, sa ro|zde|lí na tri veľ|ké ra|me|ná a mno|ho ka|ná|lov. Tak vzni|ká del|ta Du|na|ja.\n\nDel|ta je pl|ná ži|vo|ta. V rá|ko|sí ži|jú vo|lav|ky, pe|li|ká|ny a ti|sí|ce ďal|ších vtá|kov. Nie|kto|ré pri|lie|ta|jú až z A|fri|ky. Vo vo|de plá|va množ|stvo rýb. V Čier|nom mo|ri pri ú|stí Du|na|ja mo|žno nie|ke|dy vi|dieť aj del|fí|ny.",
+      "imageId": "reka",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "plausible"
+      }
+    },
+    {
+      "id": "around_the_world_pyramidy_4",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 4,
+      "title": "Dlhá rampa",
+      "body": "Ako vytiahli Egypťania také ťažké kvádre až na vrchol pyramídy? Nemali žeriavy ani stroje. Mali však veľa sily, trpezlivosti a dobré nápady. Ich múdri stavitelia vedeli dobre počítať a merať.\n\nNajprv robotníci vysekávali kamenné kvádre medenými nástrojmi. Niekedy kvádre priviezli na lodiach po Níle. Potom ich položili na drevené sane a priviazali hrubými lanami. Skupiny ľudí ťahali sane. Pred nimi niekto polieval piesok vodou, aby sane ľahšie kĺzali. Kvádre museli presne zapadnúť jeden do druhého.\n\nKeď pyramída rástla, robotníci stavali dlhú rampu z hliny a tehál. Kvádre ťahali po rampe stále vyššie. Robotníci neboli otroci, ako sa kedysi myslelo, ale ľudia, ktorých platili chlebom, cibuľou a inými potravinami. Na každej pyramíde pracovali mnoho rokov. Najväčšia pyramída má viac ako dva milióny kvádrov. Aj dnes sa pyramídam čudujú ľudia z celého sveta.",
+      "syllable_body": "A|ko vy|tia|hli E|gyp|ťa|nia ta|ké ťaž|ké kvá|dre až na vr|chol py|ra|mí|dy? Ne|ma|li že|ria|vy a|ni stro|je. Ma|li však ve|ľa si|ly, tr|pe|zli|vo|sti a do|bré ná|pa|dy. Ich mú|dri sta|vi|te|lia ve|de|li do|bre po|čí|tať a me|rať.\n\nNaj|prv ro|bot|ní|ci vy|se|ká|va|li ka|men|né kvá|dre me|de|ný|mi ná|stroj|mi. Nie|ke|dy kvá|dre pri|vie|zli na lo|diach po Ní|le. Po|tom ich po|lo|ži|li na dre|ve|né sa|ne a pri|via|za|li hru|bý|mi la|na|mi. Sku|pi|ny ľu|dí ťa|ha|li sa|ne. Pred ni|mi nie|kto po|lie|val pie|sok vo|dou, a|by sa|ne ľah|šie kĺ|za|li. Kvá|dre mu|se|li pre|sne za|pa|dnúť je|den do dru|hé|ho.\n\nKeď py|ra|mí|da rá|stla, ro|bot|ní|ci sta|va|li dl|hú ram|pu z hli|ny a te|hál. Kvá|dre ťa|ha|li po ram|pe stá|le vyš|šie. Ro|bot|ní|ci ne|bo|li o|tro|ci, a|ko sa ke|dy|si my|sle|lo, a|le ľu|dia, kto|rých pla|ti|li chle|bom, ci|bu|ľou a i|ný|mi po|tra|vi|na|mi. Na ka|ždej py|ra|mí|de pra|co|va|li mno|ho ro|kov. Naj|väč|šia py|ra|mí|da má viac a|ko dva mi|li|ó|ny kvá|drov. Aj dnes sa py|ra|mí|dam ču|du|jú ľu|dia z ce|lé|ho sve|ta.",
+      "imageId": "piramide_klancina",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_benatky_5",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 5,
+      "title": "Mesto na vode",
+      "body": "Benátky sú mesto v Taliansku postavené na vode. Mesto leží v plytkej lagúne pri mori. Majú vyše sto malých ostrovov, ktoré oddeľujú kanály. Namiesto ulíc pre autá majú Benátky kanály a namiesto autobusov lode. Cez kanály vedú stovky mostov, veľkých aj malých. Po Veľkom kanáli, najdlhšom v meste, plávajú lode plné ľudí.\n\nAko však môže celé mesto stáť na vode? Tajomstvo sa skrýva pod domami. Pred viac ako tisíc rokmi ľudia zatĺkli do dna lagúny milióny drevených kolov. Koly zarážali tesne vedľa seba, až kým nedosiahli pevnú zem. Na stavbu použili hlavne dubové a smrekovcové drevo. Na ne položili hrubé dosky a kamene a na tie postavili domy, kostoly a paláce. Koly sú tam aj dnes, pod vodou. Keďže k nim nepreniká vzduch, drevo nehnije, ale je stále tvrdšie. Keď sa plavíš gondolou popri domoch, niekedy cez priezračnú vodu uvidíš konce starých kolov. Dnes patria Benátky k najnavštevovanejším mestám sveta. Niekedy Benátky zaplaví voda a ľudia chodia po drevených lávkach.",
+      "syllable_body": "Be|nát|ky sú me|sto v Ta|lian|sku po|sta|ve|né na vo|de. Me|sto le|ží v plyt|kej la|gú|ne pri mo|ri. Ma|jú vy|še sto ma|lých o|stro|vov, kto|ré od|de|ľu|jú ka|ná|ly. Na|mie|sto u|líc pre au|tá ma|jú Be|nát|ky ka|ná|ly a na|mie|sto au|to|bu|sov lo|de. Cez ka|ná|ly ve|dú stov|ky mo|stov, veľ|kých aj ma|lých. Po Veľ|kom ka|ná|li, naj|dlh|šom v me|ste, plá|va|jú lo|de pl|né ľu|dí.\n\nA|ko však mô|že ce|lé me|sto stáť na vo|de? Ta|jom|stvo sa skrý|va pod do|ma|mi. Pred viac a|ko ti|síc rok|mi ľu|dia za|tĺ|kli do dna la|gú|ny mi|li|ó|ny dre|ve|ných ko|lov. Ko|ly za|rá|ža|li te|sne ved|ľa se|ba, až kým ne|do|sia|hli pe|vnú zem. Na stav|bu po|u|ži|li hla|vne du|bo|vé a smre|kov|co|vé dre|vo. Na ne po|lo|ži|li hru|bé do|sky a ka|me|ne a na tie po|sta|vi|li do|my, ko|sto|ly a pa|lá|ce. Ko|ly sú tam aj dnes, pod vo|dou. Keď|že k nim ne|pre|ni|ká vzduch, dre|vo ne|hni|je, a|le je stá|le tvrd|šie. Keď sa pla|víš gon|do|lou po|pri do|moch, nie|ke|dy cez prie|zrač|nú vo|du u|vi|díš kon|ce sta|rých ko|lov. Dnes pa|tria Be|nát|ky k naj|nav|šte|vo|va|nej|ším me|stám sve|ta. Nie|ke|dy Be|nát|ky za|pla|ví vo|da a ľu|dia cho|dia po dre|ve|ných láv|kach.",
+      "imageId": "benetke_ulica",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "around_the_world_gondola_5",
+      "version": 1,
+      "theme": "around_the_world",
+      "level": 5,
+      "title": "Plavba gondolou",
+      "body": "Cez letné prázdniny boli Janka, Peter a Ema s rodičmi v Benátkach. Hneď prvý deň pochopili, že to nie je obyčajné mesto. Na uliciach neboli autá, bicykle ani autobusy. Ľudia chodili pešo alebo sa vozili loďou.\n\nNa druhý deň si deti sadli do gondoly. Gondola je dlhá, úzka a čierna loď so zdvihnutou špičkou. Gondoliér stál vzadu s dlhým veslom. Mal na sebe pruhované tričko a slamený klobúk. Pomaly ich viezol pomedzi farebné domy, na ktorých oknách kvitli kvety. Prešli popod kamenný most plný turistov, ktorí im mávali. Voda v kanáli bola zelenomodrá a trblietala sa na slnku.\n\nNa Veľkom kanáli uvideli loďku plnú ľudí. „To je benátsky autobus,“ vysvetlil im gondoliér. Ema si všimla hrubé drevené koly, ktoré trčali z vody pri domoch. Peter sa spýtal, či sa ľudia neboja povodní. „Niekedy voda stúpne a zaleje námestia,“ povedal gondoliér, „ale miestni si už zvykli.“ Janka si do zošita nakreslila gondolu aj most. Večer deti zaspávali s pocitom, že sa ešte stále hojdajú na vlnách.",
+      "syllable_body": "Cez let|né práz|dni|ny bo|li Jan|ka, Pe|ter a E|ma s ro|di|čmi v Be|nát|kach. Hneď pr|vý deň po|cho|pi|li, že to nie je o|by|čaj|né me|sto. Na u|li|ciach ne|bo|li au|tá, bi|cy|kle a|ni au|to|bu|sy. Ľu|dia cho|di|li pe|šo a|le|bo sa vo|zi|li lo|ďou.\n\nNa dru|hý deň si de|ti sa|dli do gon|do|ly. Gon|do|la je dl|há, úz|ka a čier|na loď so zdvi|hnu|tou špič|kou. Gon|do|li|ér stál vza|du s dl|hým ve|slom. Mal na se|be pru|ho|va|né trič|ko a sla|me|ný klo|búk. Po|ma|ly ich vie|zol po|me|dzi fa|reb|né do|my, na kto|rých o|knách kvi|tli kve|ty. Pre|šli po|pod ka|men|ný most pl|ný tu|ri|stov, kto|rí im má|va|li. Vo|da v ka|ná|li bo|la ze|le|no|mo|drá a tr|blie|ta|la sa na sln|ku.\n\nNa Veľ|kom ka|ná|li u|vi|de|li loď|ku pl|nú ľu|dí. „To je be|nát|sky au|to|bus,“ vy|sve|tlil im gon|do|li|ér. E|ma si vši|mla hru|bé dre|ve|né ko|ly, kto|ré tr|ča|li z vo|dy pri do|moch. Pe|ter sa spý|tal, či sa ľu|dia ne|bo|ja po|vo|dní. „Nie|ke|dy vo|da stúp|ne a za|le|je ná|me|stia,“ po|ve|dal gon|do|li|ér, „a|le miest|ni si už zvy|kli.“ Jan|ka si do zo|ši|ta na|kre|sli|la gon|do|lu aj most. Ve|čer de|ti za|spá|va|li s po|ci|tom, že sa e|šte stá|le hoj|da|jú na vl|nách.",
+      "imageId": "benetke_trg",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_vietor_1",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 1,
+      "title": "Vietor",
+      "body": "Vietor je vzduch, ktorý sa hýbe. Nevidíme ho. Ale vidíme, čo robí. Vietor hýbe lístím. Suší bielizeň a točí veterný mlyn. Odnáša ďaleko aj semienka púpavy.",
+      "syllable_body": "Vie|tor je vzduch, kto|rý sa hý|be. Ne|vi|dí|me ho. A|le vi|dí|me, čo ro|bí. Vie|tor hý|be lí|stím. Su|ší bie|li|zeň a to|čí ve|ter|ný mlyn. O|dná|ša ďa|le|ko aj se|mien|ka pú|pa|vy.",
+      "imageId": "veter",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_duha_1",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 1,
+      "title": "Dúha",
+      "body": "Prší, ale svieti aj slnko. Na oblohe sa objaví veľká dúha. Má veľa farieb: červenú, oranžovú, žltú, zelenú, modrú a fialovú. Ema sa na ňu pozerá so svojím psíkom.",
+      "syllable_body": "Pr|ší, a|le svie|ti aj sln|ko. Na o|blo|he sa ob|ja|ví veľ|ká dú|ha. Má ve|ľa fa|rieb: čer|ve|nú, o|ran|žo|vú, žl|tú, ze|le|nú, mo|drú a fia|lo|vú. E|ma sa na ňu po|ze|rá so svo|jím psí|kom.",
+      "imageId": "mavrica",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_gravitacia_2",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 2,
+      "title": "Prečo veci padajú?",
+      "body": "Tomáš vyhodí loptu do výšky. Lopta vyletí kúsok hore a potom spadne späť. Prečo? Zem priťahuje všetko k sebe. Tejto sile sa hovorí gravitácia. Kvôli nej padajú plody zo stromov. Kvôli nej padajú aj kvapky dažďa. Gravitácia drží na zemi aj nás. Aj psík, ktorý sa pozerá na padajúci plod, stojí na zemi vďaka nej. Bez gravitácie by sa Tomášova lopta už nikdy nevrátila!",
+      "syllable_body": "To|máš vy|ho|dí lo|ptu do vý|šky. Lo|pta vy|le|tí kú|sok ho|re a po|tom spa|dne späť. Pre|čo? Zem pri|ťa|hu|je všet|ko k se|be. Tej|to si|le sa ho|vo|rí gra|vi|tá|cia. Kvô|li nej pa|da|jú plo|dy zo stro|mov. Kvô|li nej pa|da|jú aj kvap|ky daž|ďa. Gra|vi|tá|cia dr|ží na ze|mi aj nás. Aj psík, kto|rý sa po|ze|rá na pa|da|jú|ci plod, sto|jí na ze|mi vďa|ka nej. Bez gra|vi|tá|cie by sa To|má|šo|va lo|pta už ni|kdy ne|vrá|ti|la!",
+      "imageId": "gravitacija_jabolko",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_dole_k_zemi_2",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 2,
+      "title": "Dole je vždy k Zemi",
+      "body": "Zem je guľatá ako obrovská lopta. Ľudia žijú všade na nej, aj na druhej strane. Prečo teda ľudia zo Zeme nespadnú? Lebo Zem priťahuje všetko k svojmu stredu. „Dole“ teda vždy znamená smerom k Zemi. Preto plody padajú do trávy a my stojíme nohami na zemi, nech sme kdekoľvek. Aj psík pod stromom stojí pevne na zemi.",
+      "syllable_body": "Zem je gu|ľa|tá a|ko o|brov|ská lo|pta. Ľu|dia ži|jú vša|de na nej, aj na dru|hej stra|ne. Pre|čo te|da ľu|dia zo Ze|me ne|spa|dnú? Le|bo Zem pri|ťa|hu|je všet|ko k svoj|mu stre|du. „Do|le“ te|da vždy zna|me|ná sme|rom k Ze|mi. Pre|to plo|dy pa|da|jú do trá|vy a my sto|jí|me no|ha|mi na ze|mi, nech sme kde|koľ|vek. Aj psík pod stro|mom sto|jí pe|vne na ze|mi.",
+      "imageId": "gravitacija_jabolko",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_vietor_3",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 3,
+      "title": "Odkiaľ sa berie vietor?",
+      "body": "Slnko ohrieva zem, ale nie všade rovnako. Nad teplými miestami sa vzduch zohreje, je ľahší a stúpa hore. Jeho miesto zaujme chladnejší vzduch, ktorý prúdi odinakiaľ. Tento pohyb vzduchu je vietor. Niekedy je vietor jemný vánok, ktorý sotva pohne lístím. Inokedy je silný a láme konáre. Najsilnejší vietor fúka pri búrkach. Vtedy je lepšie zostať doma. Vietor môže byť teplý aj studený, podľa toho, odkiaľ fúka. Ľudia využívajú vietor už veľmi dlho. Veterné mlyny mleli obilie a plachetnice sa plavili po moriach. Dnes veterné turbíny vyrábajú elektrinu. Vietor ženie po oblohe aj mraky.",
+      "syllable_body": "Sln|ko o|hrie|va zem, a|le nie vša|de ro|vna|ko. Nad te|plý|mi mie|sta|mi sa vzduch zo|hre|je, je ľah|ší a stú|pa ho|re. Je|ho mie|sto za|uj|me chla|dnej|ší vzduch, kto|rý prú|di o|di|na|kiaľ. Ten|to po|hyb vzdu|chu je vie|tor. Nie|ke|dy je vie|tor je|mný vá|nok, kto|rý so|tva po|hne lí|stím. I|no|ke|dy je sil|ný a lá|me ko|ná|re. Naj|sil|nej|ší vie|tor fú|ka pri búr|kach. Vte|dy je lep|šie zo|stať do|ma. Vie|tor mô|že byť te|plý aj stu|de|ný, pod|ľa to|ho, od|kiaľ fú|ka. Ľu|dia vy|u|ží|va|jú vie|tor už veľ|mi dl|ho. Ve|ter|né mly|ny mle|li o|bi|lie a pla|chet|ni|ce sa pla|vi|li po mo|riach. Dnes ve|ter|né tur|bí|ny vy|rá|ba|jú e|lek|tri|nu. Vie|tor že|nie po o|blo|he aj mra|ky.",
+      "imageId": "veter",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_duha_3",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 3,
+      "title": "Ako vzniká dúha",
+      "body": "Slnečné svetlo sa zdá biele, ale skrýva sa v ňom veľa farieb. Keď prší a zároveň svieti slnko, lúče prechádzajú cez dažďové kvapky. Každá kvapka je ako malý hranol. Rozloží biele svetlo na farby: červenú, oranžovú, žltú, zelenú, modrú, indigovú a fialovú. Milióny kvapiek to robia naraz a na oblohe sa objaví dúha. Farby sú vždy v rovnakom poradí. Aby si dúhu videl, musíš stáť chrbtom k slnku. Najčastejšie sa objavuje ráno alebo večer, po letnom daždi. Dúha zmizne, keď prestane pršať alebo keď slnko zájde za mrak.",
+      "syllable_body": "Sl|neč|né sve|tlo sa zdá bie|le, a|le skrý|va sa v ňom ve|ľa fa|rieb. Keď pr|ší a zá|ro|veň svie|ti sln|ko, lú|če pre|chá|dza|jú cez daž|ďo|vé kvap|ky. Ka|ždá kvap|ka je a|ko ma|lý hra|nol. Ro|zlo|ží bie|le sve|tlo na far|by: čer|ve|nú, o|ran|žo|vú, žl|tú, ze|le|nú, mo|drú, in|di|go|vú a fia|lo|vú. Mi|li|ó|ny kva|piek to ro|bia na|raz a na o|blo|he sa ob|ja|ví dú|ha. Far|by sú vždy v ro|vna|kom po|ra|dí. A|by si dú|hu vi|del, mu|síš stáť chrb|tom k sln|ku. Naj|ča|stej|šie sa ob|ja|vu|je rá|no a|le|bo ve|čer, po let|nom da|ždi. Dú|ha zmi|zne, keď pre|sta|ne pr|šať a|le|bo keď sln|ko záj|de za mrak.",
+      "imageId": "mavrica_kaplja",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_poradie_farieb_4",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 4,
+      "title": "Poradie farieb",
+      "body": "Pozeral si sa už niekedy pozorne na dúhu? Jej farby sú vždy v rovnakom poradí. Červená je vždy hore, na vonkajšom okraji, a fialová dole, na vnútornom okraji. Medzi nimi je oranžová, žltá, zelená, modrá a indigová.\n\nPoradie sa nemení, pretože každá farba sa pri prechode kvapkou vody láme trochu inak. Červená sa láme najmenej a fialová najviac. Tak sa farby od seba oddelia a uložia sa jedna vedľa druhej ako vejár.\n\nNiekedy sa nad dúhou objaví ešte druhá, slabšia dúha. Farby v nej sú obrátené: červená je dole a fialová hore. Aj ty si môžeš urobiť dúhu. V slnečný deň sa postav chrbtom k slnku a striekaj vodu záhradnou hadicou. Pozorne sa pozri do vodnej hmly a uvidíš farby. Len pozor, aby si nikoho neoblial!",
+      "syllable_body": "Po|ze|ral si sa už nie|ke|dy po|zor|ne na dú|hu? Jej far|by sú vždy v ro|vna|kom po|ra|dí. Čer|ve|ná je vždy ho|re, na von|kaj|šom o|kra|ji, a fia|lo|vá do|le, na vnú|tor|nom o|kra|ji. Me|dzi ni|mi je o|ran|žo|vá, žl|tá, ze|le|ná, mo|drá a in|di|go|vá.\n\nPo|ra|die sa ne|me|ní, pre|to|že ka|ždá far|ba sa pri pre|cho|de kvap|kou vo|dy lá|me tro|chu i|nak. Čer|ve|ná sa lá|me naj|me|nej a fia|lo|vá naj|viac. Tak sa far|by od se|ba od|de|lia a u|lo|žia sa je|dna ved|ľa dru|hej a|ko ve|jár.\n\nNie|ke|dy sa nad dú|hou ob|ja|ví e|šte dru|há, slab|šia dú|ha. Far|by v nej sú o|brá|te|né: čer|ve|ná je do|le a fia|lo|vá ho|re. Aj ty si mô|žeš u|ro|biť dú|hu. V sl|neč|ný deň sa po|stav chrb|tom k sln|ku a strie|kaj vo|du zá|hra|dnou ha|di|cou. Po|zor|ne sa po|zri do vo|dnej hmly a u|vi|díš far|by. Len po|zor, a|by si ni|ko|ho ne|o|blial!",
+      "imageId": "mavrica_kaplja",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_tvoja_duha_4",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 4,
+      "title": "Tvoja dúha",
+      "body": "Dúha má tvar veľkého oblúka, ako farebný most cez oblohu. Vedel si však, že dúha je v skutočnosti celý kruh? My vidíme len jeho hornú časť, pretože spodnú zakrýva zem. Z lietadla alebo z vrcholu vysokej hory ju ľudia niekedy uvidia ako celý kruh. Dúha sa objaví, len keď je slnko nízko na oblohe.\n\nMnohé deti sa snažili dostať na koniec dúhy. Rozprávky hovoria, že je tam ukrytý hrniec so zlatom. Je to pekná rozprávka, ale zlato tam nikto nenašiel. Keď ideš k dúhe, posúva sa aj ona, pretože závisí od miesta, kde stojíš.\n\nPreto dvaja ľudia, ktorí stoja vedľa seba, nevidia presne tú istú dúhu. Každý vidí svetlo z iných dažďových kvapiek. Keď ju nabudúce uvidíš, dobre sa na ňu pozri. Tvoja dúha patrí iba tebe!",
+      "syllable_body": "Dú|ha má tvar veľ|ké|ho o|blú|ka, a|ko fa|reb|ný most cez o|blo|hu. Ve|del si však, že dú|ha je v sku|toč|no|sti ce|lý kruh? My vi|dí|me len je|ho hor|nú časť, pre|to|že spo|dnú za|krý|va zem. Z lie|ta|dla a|le|bo z vr|cho|lu vy|so|kej ho|ry ju ľu|dia nie|ke|dy u|vi|dia a|ko ce|lý kruh. Dú|ha sa ob|ja|ví, len keď je sln|ko níz|ko na o|blo|he.\n\nMno|hé de|ti sa sna|ži|li do|stať na ko|niec dú|hy. Roz|práv|ky ho|vo|ria, že je tam u|kry|tý hr|niec so zla|tom. Je to pe|kná roz|práv|ka, a|le zla|to tam ni|kto ne|na|šiel. Keď i|deš k dú|he, po|sú|va sa aj o|na, pre|to|že zá|vi|sí od mie|sta, kde sto|jíš.\n\nPre|to dva|ja ľu|dia, kto|rí sto|ja ved|ľa se|ba, ne|vi|dia pre|sne tú i|stú dú|hu. Ka|ždý vi|dí sve|tlo z i|ných daž|ďo|vých kva|piek. Keď ju na|bu|dú|ce u|vi|díš, do|bre sa na ňu po|zri. Tvo|ja dú|ha pa|trí i|ba te|be!",
+      "imageId": "mavrica_lok",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_sila_vetra_5",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 5,
+      "title": "Sila vetra",
+      "body": "Vietor nevidno, ale má obrovskú silu. Ľudia ju vedia využívať už tisíce rokov. Prvé plachetnice sa plavili po riekach a moriach len vďaka vetru. Neskôr ľudia postavili veterné mlyny. Ich veľké krídla sa točili a poháňali ťažké kamene, ktoré mleli obilie na múku. Jeden starý veterný mlyn sa zachoval aj na Slovensku, v Holíči.\n\nAj príroda využíva vietor. Semienka púpavy majú malý padáčik z tenkých vlákien. Keď fúka vietor, odletia ďaleko a vyrastú na nových miestach. Mnohé stromy a trávy prenášajú svoj peľ tiež s pomocou vetra. Vietor prenáša aj piesok a prach na veľké vzdialenosti. Dnes v mnohých krajinách stoja na kopcoch, a dokonca aj v mori, vysoké veterné turbíny s tromi lopatkami. Keď ich vietor roztočí, vyrábajú elektrinu bez dymu a bez znečistenia vzduchu. Niekedy je však vietor taký silný, že vyvracia stromy aj s koreňmi. Aby ľudia vedeli, ako silno fúka, používajú prístroj, ktorý sa volá anemometer. Má niekoľko malých misiek, ktoré sa točia tým rýchlejšie, čím silnejší je vietor.",
+      "syllable_body": "Vie|tor ne|vi|dno, a|le má o|brov|skú si|lu. Ľu|dia ju ve|dia vy|u|ží|vať už ti|sí|ce ro|kov. Pr|vé pla|chet|ni|ce sa pla|vi|li po rie|kach a mo|riach len vďa|ka ve|tru. Ne|skôr ľu|dia po|sta|vi|li ve|ter|né mly|ny. Ich veľ|ké krí|dla sa to|či|li a po|há|ňa|li ťaž|ké ka|me|ne, kto|ré mle|li o|bi|lie na mú|ku. Je|den sta|rý ve|ter|ný mlyn sa za|cho|val aj na Slo|ven|sku, v Ho|lí|či.\n\nAj prí|ro|da vy|u|ží|va vie|tor. Se|mien|ka pú|pa|vy ma|jú ma|lý pa|dá|čik z ten|kých vlá|kien. Keď fú|ka vie|tor, o|dle|tia ďa|le|ko a vy|ra|stú na no|vých mie|stach. Mno|hé stro|my a trá|vy pre|ná|ša|jú svoj peľ tiež s po|mo|cou ve|tra. Vie|tor pre|ná|ša aj pie|sok a prach na veľ|ké vzdia|le|no|sti. Dnes v mno|hých kra|ji|nách sto|ja na kop|coch, a do|kon|ca aj v mo|ri, vy|so|ké ve|ter|né tur|bí|ny s tro|mi lo|pat|ka|mi. Keď ich vie|tor roz|to|čí, vy|rá|ba|jú e|lek|tri|nu bez dy|mu a bez zne|či|ste|nia vzdu|chu. Nie|ke|dy je však vie|tor ta|ký sil|ný, že vy|vra|cia stro|my aj s ko|reň|mi. A|by ľu|dia ve|de|li, a|ko sil|no fú|ka, po|u|ží|va|jú prí|stroj, kto|rý sa vo|lá a|ne|mo|me|ter. Má nie|koľ|ko ma|lých mi|siek, kto|ré sa to|čia tým rý|chlej|šie, čím sil|nej|ší je vie|tor.",
+      "imageId": "veter",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "amazing_science_tajomstvo_svetla_5",
+      "version": 1,
+      "theme": "amazing_science",
+      "level": 5,
+      "title": "Tajomstvo svetla",
+      "body": "Pred viac ako tristo rokmi urobil anglický vedec Isaac Newton jednoduchý, ale veľmi dôležitý pokus. Zatemnil izbu a cez malú dierku v okenici pustil dnu jediný slnečný lúč. Do cesty lúču postavil sklenený hranol. Na protiľahlej stene sa objavil farebný pás, presne ako dúha. Mnohí ľudia vtedy verili, že farby vytvára samotné sklo.\n\nNewton tak ukázal, že biele slnečné svetlo je v skutočnosti zmesou farieb. Hranol ich od seba oddelí, pretože každá farba sa v skle láme trochu inak. Newton pomenoval sedem farieb, rovnako ako je sedem tónov v hudbe. Dažďové kvapky robia to isté, len je ich milión. Aj ty môžeš urobiť podobný pokus. Naplň pohár vodou a polož ho na slnečný parapet. Na zem daj biely papier a pomaly posúvaj pohár, kým sa neobjavia farby. Pozoruj, ako sa menia, keď pohneš papierom. Dúhy uvidíš aj na iných miestach: v kvapkách fontány, v hmle pri vodopáde alebo aj v mydlových bublinách. Svetlo je plné farieb, len ich treba vedieť nájsť.",
+      "syllable_body": "Pred viac a|ko tri|sto rok|mi u|ro|bil an|glic|ký ve|dec I|sa|ac New|ton je|dno|du|chý, a|le veľ|mi dô|le|ži|tý po|kus. Za|te|mnil i|zbu a cez ma|lú dier|ku v o|ke|ni|ci pu|stil dnu je|di|ný sl|neč|ný lúč. Do ce|sty lú|ču po|sta|vil skle|ne|ný hra|nol. Na pro|ti|ľa|hlej ste|ne sa ob|ja|vil fa|reb|ný pás, pre|sne a|ko dú|ha. Mno|hí ľu|dia vte|dy ve|ri|li, že far|by vy|tvá|ra sa|mot|né sklo.\n\nNew|ton tak u|ká|zal, že bie|le sl|neč|né sve|tlo je v sku|toč|no|sti zme|sou fa|rieb. Hra|nol ich od se|ba od|de|lí, pre|to|že ka|ždá far|ba sa v skle lá|me tro|chu i|nak. New|ton po|me|no|val se|dem fa|rieb, ro|vna|ko a|ko je se|dem tó|nov v hud|be. Daž|ďo|vé kvap|ky ro|bia to i|sté, len je ich mi|li|ón. Aj ty mô|žeš u|ro|biť po|dob|ný po|kus. Na|plň po|hár vo|dou a po|lož ho na sl|neč|ný pa|ra|pet. Na zem daj bie|ly pa|pier a po|ma|ly po|sú|vaj po|hár, kým sa ne|ob|ja|via far|by. Po|zo|ruj, a|ko sa me|nia, keď po|hneš pa|pie|rom. Dú|hy u|vi|díš aj na i|ných mie|stach: v kvap|kách fon|tá|ny, v hmle pri vo|do|pá|de a|le|bo aj v my|dlo|vých bu|bli|nách. Sve|tlo je pl|né fa|rieb, len ich tre|ba ve|dieť nájsť.",
+      "imageId": "mavrica_polje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_prvy_lad_1",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 1,
+      "title": "Prvý ľad",
+      "body": "Vonku je veľká zima. Na malej mláke je ľad. Lukáš na ňu opatrne stúpi. Ľad praská a láme sa. Tenký ľad nie je bezpečný. Aj veľké jazero je zamrznuté.",
+      "syllable_body": "Von|ku je veľ|ká zi|ma. Na ma|lej mlá|ke je ľad. Lu|káš na ňu o|pa|tr|ne stú|pi. Ľad pra|ská a lá|me sa. Ten|ký ľad nie je bez|peč|ný. Aj veľ|ké ja|ze|ro je za|mr|znu|té.",
+      "imageId": "prvi_led",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_semienko_1",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 1,
+      "title": "Semienko",
+      "body": "Semienko leží v zemi. Dostáva vodu a slnko. Najprv z neho vyrastie malý korienok. Potom vyrastie zelená stonka. Rastlinka je čoraz väčšia. Nakoniec z nej je slnečnica!",
+      "syllable_body": "Se|mien|ko le|ží v ze|mi. Do|stá|va vo|du a sln|ko. Naj|prv z ne|ho vy|ra|stie ma|lý ko|rie|nok. Po|tom vy|ra|stie ze|le|ná ston|ka. Ra|stlin|ka je čo|raz väč|šia. Na|ko|niec z nej je sl|neč|ni|ca!",
+      "imageId": "seme_kalica",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_dazd_2",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 2,
+      "title": "Odkiaľ sa berie dážď?",
+      "body": "Mraky sú z veľmi malých kvapiek vody. Sú také ľahké, že sa vznášajú vo vzduchu. V mraku do seba kvapky narážajú a spájajú sa. Tak sú stále väčšie a ťažšie. Keď sú príliš ťažké, padajú na zem. To je dážď. Dážď polieva rastliny a napĺňa rieky a jazerá. Bez dažďa by nič nerástlo.",
+      "syllable_body": "Mra|ky sú z veľ|mi ma|lých kva|piek vo|dy. Sú ta|ké ľah|ké, že sa vzná|ša|jú vo vzdu|chu. V mra|ku do se|ba kvap|ky na|rá|ža|jú a spá|ja|jú sa. Tak sú stá|le väč|šie a ťaž|šie. Keď sú prí|liš ťaž|ké, pa|da|jú na zem. To je dážď. Dážď po|lie|va ra|stli|ny a na|pĺ|ňa rie|ky a ja|ze|rá. Bez daž|ďa by nič ne|rá|stlo.",
+      "imageId": "dez_kaplje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_po_dazdi_2",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 2,
+      "title": "Po daždi",
+      "body": "Celé dopoludnie pršalo. Teraz sa na zelených listoch ligocú drobné kvapky. Zem je mäkká a mokrá. Dážďovky vyliezajú na povrch. Aj slimáky vyliezajú zo svojich úkrytov. Kvety znova dvíhajú hlavičky. Vzduch vonia sviežo, trávou a zemou. Rastliny sa napili veľa vody a rýchlo porastú. Dážď je dobrý pre záhradu aj pre polia.",
+      "syllable_body": "Ce|lé do|po|lu|dnie pr|ša|lo. Te|raz sa na ze|le|ných li|stoch li|go|cú drob|né kvap|ky. Zem je mäk|ká a mo|krá. Dáž|ďov|ky vy|lie|za|jú na po|vrch. Aj sli|má|ky vy|lie|za|jú zo svo|jich ú|kry|tov. Kve|ty zno|va dví|ha|jú hla|vič|ky. Vzduch vo|nia svie|žo, trá|vou a ze|mou. Ra|stli|ny sa na|pi|li ve|ľa vo|dy a rý|chlo po|ra|stú. Dážď je do|brý pre zá|hra|du aj pre po|lia.",
+      "imageId": "dez_kaplje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_cesta_kvapky_3",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 3,
+      "title": "Cesta kvapky vody",
+      "body": "Kvapka vody sa vydáva na dlhú cestu, ktorá sa nikdy nekončí. Slnko zohrieva vodu v moriach, jazerách a riekach. Časť vody sa mení na paru, ktorá neviditeľne stúpa do vzduchu. Hore, kde je zima, sa para ochladí a vytvorí malé kvapky. Z nich vznikajú mraky. Keď sa kvapky spoja a oťažejú, padajú na zem ako dážď alebo sneh. Voda potom steká do riek a rieky ju odnesú späť do mora. A všetko sa začína odznova! Jedna kvapka môže túto cestu prejsť mnohokrát. Možno si dnes pil vodu, ktorá kedysi padala ako dážď na dinosaury.",
+      "syllable_body": "Kvap|ka vo|dy sa vy|dá|va na dl|hú ce|stu, kto|rá sa ni|kdy ne|kon|čí. Sln|ko zo|hrie|va vo|du v mo|riach, ja|ze|rách a rie|kach. Časť vo|dy sa me|ní na pa|ru, kto|rá ne|vi|di|teľ|ne stú|pa do vzdu|chu. Ho|re, kde je zi|ma, sa pa|ra o|chla|dí a vy|tvo|rí ma|lé kvap|ky. Z nich vzni|ka|jú mra|ky. Keď sa kvap|ky spo|ja a o|ťa|že|jú, pa|da|jú na zem a|ko dážď a|le|bo sneh. Vo|da po|tom ste|ká do riek a rie|ky ju o|dne|sú späť do mo|ra. A všet|ko sa za|čí|na od|zno|va! Je|dna kvap|ka mô|že tú|to ce|stu prejsť mno|ho|krát. Mo|žno si dnes pil vo|du, kto|rá ke|dy|si pa|da|la a|ko dážď na di|no|sau|ry.",
+      "imageId": "dez_kaplje",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_veterny_den_3",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 3,
+      "title": "Veterný deň",
+      "body": "Jedného jarného dňa začal fúkať vietor. Sofia vyšla na lúku so svojím psíkom Bobíkom. Rozpažila ruky a zatvorila oči. Vietor voňal kvetmi a trávou. Vietor jej strapatil vlasy a nafukoval bundu. Lístie letelo zo stromu a bielizeň na šnúre sa vlnila ako zástavy. Na kopci sa rýchlo točil veterný mlyn. Sofia fúkla do púpavy. Biele semienka sa vzniesli do vzduchu a odleteli ďaleko ponad trávu. Bobík za nimi veselo bežal a štekal. „Kam letia?“ spýtala sa Sofia. Babka jej povedala, že vietor ich zanesie na iné miesta, kde vyrastú nové púpavy.",
+      "syllable_body": "Je|dné|ho jar|né|ho dňa za|čal fú|kať vie|tor. So|fia vy|šla na lú|ku so svo|jím psí|kom Bo|bí|kom. Roz|pa|ži|la ru|ky a za|tvo|ri|la o|či. Vie|tor vo|ňal kvet|mi a trá|vou. Vie|tor jej stra|pa|til vla|sy a na|fu|ko|val bun|du. Lí|stie le|te|lo zo stro|mu a bie|li|zeň na šnú|re sa vl|ni|la a|ko zá|sta|vy. Na kop|ci sa rý|chlo to|čil ve|ter|ný mlyn. So|fia fú|kla do pú|pa|vy. Bie|le se|mien|ka sa vznie|sli do vzdu|chu a o|dle|te|li ďa|le|ko po|nad trá|vu. Bo|bík za ni|mi ve|se|lo be|žal a šte|kal. „Kam le|tia?“ spý|ta|la sa So|fia. Bab|ka jej po|ve|da|la, že vie|tor ich za|ne|sie na i|né mie|sta, kde vy|ra|stú no|vé pú|pa|vy.",
+      "imageId": "veter",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_bahniatka_4",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 4,
+      "title": "Bahniatka",
+      "body": "Na konci zimy, keď ešte zem pokrýva sneh, sa na konároch niektorých vŕb objavia zvláštne púčiky. Nie sú zelené, ale chlpaté a strieborné, ako mačacia srsť. Na Slovensku sa im hovorí bahniatka. Vŕby rastú často pri potokoch a riekach.\n\nBahniatka sú v skutočnosti kvety vŕby. Najprv je každé ukryté pod hnedou lesklou šupinou. Keď sa dni oteplia, šupina sa odlúpne a vykukne páperie. Jemné chĺpky kvet zahrievajú, tak ako nás hreje hrubý kabát.\n\nBahniatka kvitnú skôr ako listy. Vŕba patrí medzi prvé kvitnúce stromy. Pre včely sú po dlhej zime jedným z prvých jedál v roku. Sú plné žltého peľu, ktorý včely nosia do úľa. V mnohých domácnostiach na Slovensku prinášajú ľudia vetvičky s bahniatkami na Kvetnú nedeľu, jarný sviatok pred Veľkou nocou. Doma ich dajú do vázy a tešia sa z jari.",
+      "syllable_body": "Na kon|ci zi|my, keď e|šte zem po|krý|va sneh, sa na ko|ná|roch nie|kto|rých vŕb ob|ja|via zvlášt|ne pú|či|ky. Nie sú ze|le|né, a|le chl|pa|té a strie|bor|né, a|ko ma|ča|cia srsť. Na Slo|ven|sku sa im ho|vo|rí ba|hniat|ka. Vŕ|by ra|stú ča|sto pri po|to|koch a rie|kach.\n\nBa|hniat|ka sú v sku|toč|no|sti kve|ty vŕ|by. Naj|prv je ka|ždé u|kry|té pod hne|dou le|sklou šu|pi|nou. Keď sa dni o|te|plia, šu|pi|na sa o|dlúp|ne a vy|ku|kne pá|pe|rie. Je|mné chĺp|ky kvet za|hrie|va|jú, tak a|ko nás hre|je hru|bý ka|bát.\n\nBa|hniat|ka kvit|nú skôr a|ko li|sty. Vŕ|ba pa|trí me|dzi pr|vé kvit|nú|ce stro|my. Pre vče|ly sú po dl|hej zi|me je|dným z pr|vých je|dál v ro|ku. Sú pl|né žl|té|ho pe|ľu, kto|rý vče|ly no|sia do ú|ľa. V mno|hých do|mác|no|stiach na Slo|ven|sku pri|ná|ša|jú ľu|dia ve|tvič|ky s ba|hniat|ka|mi na Kvet|nú ne|de|ľu, jar|ný svia|tok pred Veľ|kou no|cou. Do|ma ich da|jú do vá|zy a te|šia sa z ja|ri.",
+      "imageId": "winter_tree_buds",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_farebne_listy_4",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 4,
+      "title": "Prečo sa lístie farbí?",
+      "body": "V lete sú listy stromov zelené. Zelenú farbu im dáva látka, ktorá sa volá chlorofyl. Pomocou nej list využíva slnečné svetlo, aby vyrobil potravu pre strom. Listy sú ako malé kuchynky stromu.\n\nNa jeseň sú dni kratšie a chladnejšie. Strom už chlorofyl nepotrebuje, a tak ho prestane vyrábať. Zelená farba pomaly mizne a žlté a oranžové farby, ktoré boli v liste skryté celé leto, sa konečne ukážu. Niektoré stromy vytvoria aj novú červenú farbu. Lesy sú potom žlté, oranžové a červené ako obraz. Najkrajšie sú javory a buky.\n\nPotom listy uschnú a opadnú. Strom ich zhodí, aby počas zimy nestrácal vodu, keď je zem zamrznutá. Opadané lístie sa rozpadne a zúrodní zem. V zime strom odpočíva s holými konármi. Na každom konári však už čakajú malé púčiky, pripravené na jar sa otvoriť.",
+      "syllable_body": "V le|te sú li|sty stro|mov ze|le|né. Ze|le|nú far|bu im dá|va lát|ka, kto|rá sa vo|lá chlo|ro|fyl. Po|mo|cou nej list vy|u|ží|va sl|neč|né sve|tlo, a|by vy|ro|bil po|tra|vu pre strom. Li|sty sú a|ko ma|lé ku|chyn|ky stro|mu.\n\nNa je|seň sú dni krat|šie a chla|dnej|šie. Strom už chlo|ro|fyl ne|po|tre|bu|je, a tak ho pre|sta|ne vy|rá|bať. Ze|le|ná far|ba po|ma|ly mi|zne a žl|té a o|ran|žo|vé far|by, kto|ré bo|li v li|ste skry|té ce|lé le|to, sa ko|neč|ne u|ká|žu. Nie|kto|ré stro|my vy|tvo|ria aj no|vú čer|ve|nú far|bu. Le|sy sú po|tom žl|té, o|ran|žo|vé a čer|ve|né a|ko o|braz. Naj|kraj|šie sú ja|vo|ry a bu|ky.\n\nPo|tom li|sty u|schnú a o|pa|dnú. Strom ich zho|dí, a|by po|čas zi|my ne|strá|cal vo|du, keď je zem za|mr|znu|tá. O|pa|da|né lí|stie sa roz|pa|dne a zú|ro|dní zem. V zi|me strom od|po|čí|va s ho|lý|mi ko|nár|mi. Na ka|ždom ko|ná|ri však už ča|ka|jú ma|lé pú|či|ky, pri|pra|ve|né na jar sa o|tvo|riť.",
+      "imageId": "jesensko_listje_drevo",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_pucike_5",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 5,
+      "title": "Púčiky čakajú na jar",
+      "body": "Mnohí ľudia si myslia, že stromy sú v zime mŕtve. Ich konáre sú holé a sadá na ne sneh. Ak sa však pozrieš pozornejšie, na každom konári uvidíš malé tvrdé púčiky. Strom si ich pripravil už v lete, dávno predtým, ako opadalo lístie. Púčiky sú na konároch celú zimu.\n\nKaždý púčik je ako dobre zatvorená škatuľka. Zvonku má tvrdé hnedé šupiny, ktoré ho chránia pred mrazom, vetrom a vodou. Niektoré púčiky pokrýva aj husté páperie, ktoré ich zahrieva. Iné sú lepkavé, aby do nich nevnikla voda ani hmyz. Vo vnútri sú starostlivo poskladané drobné listy alebo kvety budúceho roka. Každý druh stromu má iné púčiky.\n\nPúčiky trpezlivo čakajú. Neotvoria sa v prvý teplý zimný deň, lebo mráz by sa mohol vrátiť. Až keď sú dni dlhé a teplé, šupiny sa roztvoria a listy vyjdú na svetlo. Na Slovensku je krásny zvyk: na svätú Barboru ľudia odrežú vetvičky čerešne a dajú ich do vody. Volajú sa barborky. Keď sú v teple, do Vianoc rozkvitnú. Rozkvitnutá barborka je peknou ozdobou na Vianoce.",
+      "syllable_body": "Mno|hí ľu|dia si my|slia, že stro|my sú v zi|me mŕ|tve. Ich ko|ná|re sú ho|lé a sa|dá na ne sneh. Ak sa však po|zrieš po|zor|nej|šie, na ka|ždom ko|ná|ri u|vi|díš ma|lé tvr|dé pú|či|ky. Strom si ich pri|pra|vil už v le|te, dá|vno pred|tým, a|ko o|pa|da|lo lí|stie. Pú|či|ky sú na ko|ná|roch ce|lú zi|mu.\n\nKa|ždý pú|čik je a|ko do|bre za|tvo|re|ná ška|tuľ|ka. Zvon|ku má tvr|dé hne|dé šu|pi|ny, kto|ré ho chrá|nia pred mra|zom, ve|trom a vo|dou. Nie|kto|ré pú|či|ky po|krý|va aj hu|sté pá|pe|rie, kto|ré ich za|hrie|va. I|né sú lep|ka|vé, a|by do nich ne|vni|kla vo|da a|ni hmyz. Vo vnú|tri sú sta|ro|stli|vo po|skla|da|né drob|né li|sty a|le|bo kve|ty bu|dú|ce|ho ro|ka. Ka|ždý druh stro|mu má i|né pú|či|ky.\n\nPú|či|ky tr|pe|zli|vo ča|ka|jú. Ne|o|tvo|ria sa v pr|vý te|plý zi|mný deň, le|bo mráz by sa mo|hol vrá|tiť. Až keď sú dni dl|hé a te|plé, šu|pi|ny sa roz|tvo|ria a li|sty vyj|dú na sve|tlo. Na Slo|ven|sku je krá|sny zvyk: na svä|tú Bar|bo|ru ľu|dia o|dre|žú ve|tvič|ky če|re|šne a da|jú ich do vo|dy. Vo|la|jú sa bar|bor|ky. Keď sú v te|ple, do Via|noc roz|kvit|nú. Roz|kvit|nu|tá bar|bor|ka je pe|knou o|zdo|bou na Via|no|ce.",
+      "imageId": "winter_tree_buds",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    },
+    {
+      "id": "nature_seasons_rocne_obdobia_5",
+      "version": 1,
+      "theme": "nature_seasons",
+      "level": 5,
+      "title": "Štyri ročné obdobia",
+      "body": "Na Slovensku, rovnako ako v mnohých iných krajinách, má rok štyri ročné obdobia: jar, leto, jeseň a zimu. Prečo sa však ročné obdobia striedajú? Zem obieha okolo Slnka a táto cesta trvá jeden rok. Každé ročné obdobie trvá asi tri mesiace. Počas nej je Zem trochu naklonená. Preto naša krajina dostáva v jednej časti roka viac svetla a tepla a v druhej časti menej.\n\nNa jar sa dni predlžujú a stromy sa obsypú kvetmi. Z teplých krajín sa vracajú lastovičky a vtáky si stavajú hniezda. Na poliach začína rásť obilie a kukurica. Leto je najteplejšie ročné obdobie. Dni sú dlhé, slnečnice rastú do výšky a deti sa hrajú vonku až do večera.\n\nNa jeseň lístie žltne a červenie. Ľudia oberajú ovocie, hrozno a tekvice. Mnohé zvieratá si robia zásoby na zimu a medveď sa chystá na spánok. Sťahovavé vtáky odlietajú na juh. Potom príde zima s krátkymi dňami a dlhými nocami. Sneží, jazerá zamŕzajú a deti stavajú snehuliakov. A po zime sa všetko začína odznova.",
+      "syllable_body": "Na Slo|ven|sku, ro|vna|ko a|ko v mno|hých i|ných kra|ji|nách, má rok šty|ri roč|né ob|do|bia: jar, le|to, je|seň a zi|mu. Pre|čo sa však roč|né ob|do|bia strie|da|jú? Zem o|bie|ha o|ko|lo Sln|ka a tá|to ce|sta tr|vá je|den rok. Ka|ždé roč|né ob|do|bie tr|vá a|si tri me|sia|ce. Po|čas nej je Zem tro|chu na|klo|ne|ná. Pre|to na|ša kra|ji|na do|stá|va v je|dnej ča|sti ro|ka viac sve|tla a te|pla a v dru|hej ča|sti me|nej.\n\nNa jar sa dni pre|dl|žu|jú a stro|my sa ob|sy|pú kvet|mi. Z te|plých kra|jín sa vra|ca|jú la|sto|vič|ky a vtá|ky si sta|va|jú hnie|zda. Na po|liach za|čí|na rásť o|bi|lie a ku|ku|ri|ca. Le|to je naj|te|plej|šie roč|né ob|do|bie. Dni sú dl|hé, sl|neč|ni|ce ra|stú do vý|šky a de|ti sa hra|jú von|ku až do ve|če|ra.\n\nNa je|seň lí|stie žlt|ne a čer|ve|nie. Ľu|dia o|be|ra|jú o|vo|cie, hro|zno a te|kvi|ce. Mno|hé zvie|ra|tá si ro|bia zá|so|by na zi|mu a me|dveď sa chy|stá na spá|nok. Sťa|ho|va|vé vtá|ky o|dlie|ta|jú na juh. Po|tom prí|de zi|ma s krát|ky|mi dňa|mi a dl|hý|mi no|ca|mi. Sne|ží, ja|ze|rá za|mŕ|za|jú a de|ti sta|va|jú sne|hu|lia|kov. A po zi|me sa všet|ko za|čí|na od|zno|va.",
+      "imageId": "letni_casi_pokrajina",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "Claude (original Slovak text, not a native speaker; syllable breaks checked)",
+        "date": "2026-09-29",
+        "nativeSpeaker": false,
+        "syllablesReviewed": true,
+        "imageAccuracy": "verified"
+      }
+    }
+  ]
+}

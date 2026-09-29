@@ -204,6 +204,17 @@ a teacher and is not covered here); apply the same rules to new entries.
   split (`fa|mi|li|e`, `ști|e`, `Ma|ri|ei`). Hiatus is lexical and follows
   DOOM word by word (`a|u|zi`, `î|na|in|te`, `vi|oa|ră`, `re|a|li|ta|te`,
   `di|no|za|ur`, `o|ce|an`). Always comma-below `ș ț`, never cedilla.
+- **Slovak** — the pack's Slovene convention, which the Pravidlá
+  slovenského pravopisu allow (`ses-tra` or `se-stra`): the next syllable
+  takes the longest consonant group a Slovak word can begin with
+  (`se|stra`, `pí|sme|no`, `lep|šie`, `zvlášt|ne`, `mor|ský`); `ch`, `dz`,
+  `dž` are one consonant; prefixes split where the rule would cut them
+  (`po|vzbu|dzo|va|li`, `na|u|či|la`, `od|zno|va`, `u|schnú`). `r ŕ l ĺ`
+  between consonants are syllables (`vlk`, `pr|ší`, `štvr|tok`, `hl|bo|ký`,
+  `sln|ko`, `kĺ|za|li`); `ia ie iu ô` and `au eu` stay whole (`bo|cian`,
+  `Eu|ró|pa`), final `-ou` too (`veľ|kou`, `po|mo|cou`); other vowel pairs
+  split (`po|u|ží|vať`, `mú|ze|a`). `jablko` is avoided in the pack: whether
+  its `l` is a syllable is disputed.
 
 ## Images
 
@@ -247,6 +258,19 @@ Rules of thumb:
 ### Where the content stands (2026-09-29)
 
 From `npm run content-status`:
+
+- **Slovak (2026-09-29):** 75 entries, the same shape and pictures as
+  Romanian, original Slovak texts (Slovak angles: the High Tatras echo,
+  the Danube through Bratislava, *bahniatka* for Kvetná nedeľa, *barborky*
+  on St. Barbara's day). Two `plausible`, 73 `verified`; `reviewed` by
+  Claude, `nativeSpeaker: false`, syllables by `Instructions/tools/sk.py`
+  (read word by word, every vowel group, syllabic liquid and consonant
+  cluster listed by `sk_pack.py`). Slovak is compact in words but long in
+  characters: drafts came out 15–25% under the word bands, and seven
+  level-5 texts at 165–172 words spilled to a second page until one
+  sentence and one paragraph break each came out (160–166 words now).
+  All four fonts have every Slovak letter. Generators:
+  `Instructions/tools/sk-round1-*.py`.
 
 - **Romanian (2026-09-29):** 75 entries, the fr/de/es shape (six per
   story level, three per animal level, two elsewhere), original Romanian
