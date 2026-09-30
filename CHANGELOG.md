@@ -7,6 +7,17 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
+- **34 Slovene texts corrected** (version bumped), from a teacher-style
+  read of all 100 that the owner approved point by point (2026-09-30).
+  Grammar: `veliko violončelo`, `Če vržeš žogo…`. Logic: Tim, not the
+  giant, calls "here is your sock"; Venice's visitors are no longer
+  "them" after the pigeons; a snail moves "centimetre by centimetre";
+  the feeder is filled after it is hung. Facts: the Sun always lights
+  half the Moon. Safety for children: mushrooms only with an adult; a
+  lone tree in a thunderstorm; testing an echo safely; unlit turtle
+  beaches. The teacher's pool texts lose repetitions and adult phrasing
+  (hummingbird, wolves, echo, bridges, winter, Eiffel Tower). Draft
+  texts stay `draft`.
 - **64 Romanian, Slovak and Croatian texts corrected** (version 2), after
   a teacher-style read of all 225 that the owner approved point by point
   (2026-09-30). Grammar: Slovak `je` ("eats") read as "is", so animals
