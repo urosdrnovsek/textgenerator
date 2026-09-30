@@ -46,8 +46,9 @@ languages.
 2. `locales/<code>.json`: every key the other locale files have (copy
    `en.json` and translate; a unit test holds the key sets equal),
    including the instruction lines printed on the sheets.
-3. One line in `src/languages.js`: the code and the language's own name,
-   in the position it should have in the menu.
+3. One line in `src/languages.js`: the code, the language's own name and
+   its Word tag (language and region, e.g. `hr-HR`, so Word checks the
+   spelling in it), in the position it should have in the menu.
 
 Then `node scripts/dump-golden-runs.mjs` records the new texts' styling
 fingerprints (the golden test fails until then, as it should for any new
