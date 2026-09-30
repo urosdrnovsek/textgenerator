@@ -13,6 +13,12 @@ summarizes what shipped and what was verified; the commit messages in
   a Slovene sheet as English on an English Windows and underline every
   word. Nothing else in the file changes: `document.xml` is
   byte-identical for all 668 texts in five settings combinations.
+- **The last line under a question, and under the copy lines, is
+  printed again.** Each block of ruled lines is a small SVG exactly as
+  tall as its rows, so the bottom solid line lay on its edge and was cut
+  off, half or whole depending on rounding (found by the owner in Edge:
+  the second of two questions had lost its last line). The SVG now draws
+  past its edge (`overflow: visible`); nothing moves or changes size.
 - **First real Windows results** (the owner, 2026-09-30): the rc.5 ZIP
   works and prints in Edge, and an exported Slovene sheet opens correctly
   in Microsoft Word, with the known single copy lines (no dashed middle

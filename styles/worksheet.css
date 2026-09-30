@@ -372,6 +372,9 @@
 
 .ws-ruling {
   display: block;
+  /* The last baseline lies on the SVG's bottom edge; clipped, half of its
+     stroke (or all of it, by rounding) went missing. */
+  overflow: visible;
 }
 
 .ws-ruling-line {
