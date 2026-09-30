@@ -7,6 +7,17 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
+- **21 German and 20 Spanish texts corrected** (version bumped), from a
+  teacher-style read of all 150 that the owner approved point by point
+  (2026-09-30); with it, all eight languages have had this read. German:
+  official-sounding pool stories (the light in the old house) made child-
+  friendly, the tower-clock echo story rewritten as a story, repeated
+  second halves (seahorse, okapi, Victoria Falls, Amazon, pendulum,
+  balloon, icicle, acorn, moss) replaced by facts and small experiments.
+  Spanish: the five stacked pool series (bread dough, axolotl, Atacama,
+  autumn leaves, green kite) no longer repeat themselves from level 3
+  up. Both: the bird feeder order, the snail's "steps", the kitten's
+  wedding vow, "every block heavier than a car".
 - **25 English and 24 French texts corrected** (version bumped), from a
   teacher-style read of all 193 that the owner approved point by point
   (2026-09-30). Errors: "She drew" for Tom, a dangling "While digging",
