@@ -7,6 +7,17 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
+## 0.10.0-rc.6 — 2026-09-30 (texts read as a teacher would)
+
+The rc.5 app with 232 texts corrected in all eight languages, after a
+teacher-style read that the owner approved point by point, and two
+fixes from the first real test on Windows.
+
+Worth knowing: Word files now tell Word the text's language, so the spelling check
+no longer marks correct Slovene words on an English Windows. The last
+ruled line under a question and under the copy lines prints again.
+Still no native speaker's read.
+
 - **21 German and 20 Spanish texts corrected** (version bumped), from a
   teacher-style read of all 150 that the owner approved point by point
   (2026-09-30); with it, all eight languages have had this read. German:

@@ -1,6 +1,6 @@
 {
   "name": "writing-worksheet-generator",
-  "version": "0.10.0-rc.5",
+  "version": "0.10.0-rc.6",
   "private": true,
   "description": "Offline writing-practice worksheet generator for elementary schools.",
   "type": "module",
