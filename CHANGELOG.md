@@ -7,6 +7,17 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
+- **25 English and 24 French texts corrected** (version bumped), from a
+  teacher-style read of all 193 that the owner approved point by point
+  (2026-09-30). Errors: "She drew" for Tom, a dangling "While digging",
+  moths that "bite", a whale's head "high in the sky", "every stone"
+  heavier than a car, Machu Picchu "found again" though locals always
+  knew it, the bird feeder filled before it is hung. Safety: wild
+  mushrooms only with an adult. The teacher's pool texts lose their
+  repeated second halves (narwhal, Serengeti, taste, water cycle,
+  fireflies, maple seeds; Lake Baikal, Chefchaouen, balloon rocket,
+  rainbow, dew, buds, fjord) for facts and small experiments, and the
+  French rooftop-garden story is rewritten as a story.
 - **34 Slovene texts corrected** (version bumped), from a teacher-style
   read of all 100 that the owner approved point by point (2026-09-30).
   Grammar: `veliko violončelo`, `Če vržeš žogo…`. Logic: Tim, not the
