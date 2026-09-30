@@ -86,7 +86,7 @@ it was an app bug, since fixed — see "Corrected on 2026-09-20" below).
 | Chromium (headless, this dev environment) | **Automated, passing** | `npm run verify-offline` and the Phase 3–6 CDP-driven scripts referenced in commit history: language switching, every dyslexia support, presets, packets, content import, print, `.docx` export. |
 | Firefox (headless, this dev environment — version 155.0.1) | **Automated, passing** | `npm run verify-firefox`, via `geckodriver` + `selenium-webdriver` (Firefox doesn't speak Chrome DevTools Protocol — it speaks WebDriver BiDi, so the Chromium scripts' approach doesn't carry over). Covers all 8 languages, the dyslexia preset, saving a setup, `.docx` export, single-worksheet and packet printing verified via WebDriver's real `printPage()` command (Firefox's actual print/PDF engine) piped through `pdfinfo`/`pdftotext` — not a simulation — a forced multi-page worksheet, and a packet whose settings are changed after it was built (a regression check for a real app bug; see "Corrected on 2026-09-20" below). |
 | Google Chrome (real, desktop) | **Not yet tested here** | Same underlying engine as Chromium; low risk, but not the same binary — needs a real run before claiming it. |
-| Microsoft Edge (real, desktop — the brief's primary target, "Windows most likely") | **Not yet tested here** | Chromium-based; same low-but-nonzero risk as Chrome. This is the brief's actual primary target browser and should be the first real-browser check done outside this environment. |
+| Microsoft Edge (real, desktop — the brief's primary target, "Windows most likely") | **First real run passed (2026-09-30)** | The owner opened the 0.10.0-rc.5 ZIP on a Windows PC in Edge: the app works and prints normally. One session, by hand; the checklists below (printer, packets, saved setups after a restart) are still open for Edge. |
 | Firefox (real, desktop) | **Not yet tested** | The headless automated run above is real Firefox, but a real desktop session (different windowing/print-dialog path) hasn't been checked. |
 | Safari | **Not tested — not applicable to this Linux dev environment** | Lower priority per the brief ("Windows most likely, possibly Mac/Linux") but should be checked before claiming Mac support. One known difference is handled without being tested there: Safari's `print()` may return before printing ends, so a printed packet is only replaced by the sheet on screen on the `afterprint` event (simulated in Chromium on 2026-09-27). On a Mac, print a packet of two different sheets and check both are in the print. |
 
@@ -139,7 +139,7 @@ regression first.
 | --- | --- | --- |
 | LibreOffice (real, headless, this dev environment — version 26.8.0.3) | **Automated, passing** | `npm run verify-docx`: 40 representative `.docx` exports (every bundled language, every font, every writing mode, the near-max-content level-5 boundary case in two languages, tint, sentence-per-line, a maximum-word-spacing case, two genuinely multi-page cases since 0.8, and since 0.10 one case per new feature: line numbers, drawing box, write about the picture, highlighted letters, visible word spaces, gap-fill and its answer key, copy target, put in order and its answer key; since 0.10.0-rc.2 continue the text, the teacher's own questions, the gap-fill word bank, and an own text without a picture — every language+level pair of the first five languages is taken; Romanian, Slovak and Croatian, added 2026-09-29, have one case per level each, in each font they are offered in) — each downloaded from the real running app (not hand-built), converted to PDF with real `soffice --convert-to pdf`, and checked against the *app's own reported page count* (read from the fit indicator, not a hardcoded 1) and non-empty extracted text via `pdfinfo`/`pdftotext`. All 40 pass on the current codebase with no tolerance, run against the real bundled fonts (a `toleratedPageDelta: 1` on the 24pt multi-page case was removed in 0.8.1 once its cause turned out to be an exporter bug — see below). An earlier draft of this check hand-built the WorksheetModel instead of driving the real app, hardcoded a guess at the handwriting-line row count, and reported 2 false "page overflow" failures for the level-5 cases — a reminder that this kind of check is only trustworthy when it exercises the real, live fit-checked output, not a re-implementation of it. (0.8 gotcha found while adding the word-spacing case: two cases sharing the same language+level download to the same filename, and Chromium's headless auto-download silently overwrites rather than uniquifying — each case now needs a distinct language+level pair, not just a distinct label.) (2026-09-29, found with the Romanian cases: the text comparison ignores hyphens, because pdftotext joins a line that breaks after a hyphen in the text — Romanian `floarea-|soarelui`, `s-|a` — without it; and "Put in order" sheets are read with `pdftotext -layout`, like gap-fill, because at large sizes its two-column table interleaved lines. Both were extraction artifacts: the Word files were right.) |
 | LibreOffice (real, interactive desktop GUI) | **Not yet tested** | The headless conversion above proves PDF-rendered pagination; it does *not* prove the file *opens cleanly*, *displays correctly on screen*, or that a teacher can *edit the text* in LibreOffice Writer afterward without breaking colors/spacing. Open a few exported files in the actual LibreOffice Writer GUI and check visually. |
-| Microsoft Word (real) | **Not tested — Word is not available in this Linux development environment** | This is the single most important remaining compatibility gap (blueprint: "the pilot needs editable output," and font substitution behavior is genuinely Word-specific, not just "close enough to LibreOffice"). Needs the user's own Windows machine with a real, licensed Word install. Checklist below. |
+| Microsoft Word (real) | **First sheet opened correctly (2026-09-30); most of the checklist still open** | Word is not available in this Linux development environment, so every check is the owner's, on their Windows machine. The first result is below the checklist. Still the most important compatibility gap (blueprint: "the pilot needs editable output," and font substitution behavior is genuinely Word-specific, not just "close enough to LibreOffice"). |
 | OpenOffice | **Not tested** | Lower priority per blueprint ("include OpenOffice's actual import behavior before claiming it supported" — basic, not blocking). |
 
 **LibreOffice-vs-Chromium pagination note (0.8, corrected in 0.8.1):**
@@ -218,7 +218,39 @@ For at least one exported `.docx` per language and per writing mode (3 × 5 = 15
 - [ ] Line numbers (where enabled): Word numbers every passage line, one
       count across pages; the header, title, picture and copy rows carry no
       number; the numbers sit left of the passage, not over it.
+- [ ] Spelling check: Word checks the text in its own language (no wavy
+      underline under correct Slovene words on an English Windows). Needs
+      Word's proofing tools for that language; without them Word says so
+      instead of marking every word.
 - [ ] Edit the text (type a sentence, delete a sentence) and confirm the document remains usable — colors/spacing on the *edited* text may reasonably degrade (blueprint explicitly doesn't promise otherwise), but the file itself shouldn't break.
+
+### First real-Word result (2026-09-30)
+
+The owner exported a Slovene sheet from the 0.10.0-rc.5 ZIP in Edge on
+Windows ("Kamnite gore": name and date line, title, picture, coloured
+text, one of the teacher's own questions with its answer lines, then copy
+lines) and opened it in Microsoft Word. It opened normally and looked
+right, with two differences from the preview, both known and both by
+design:
+
+- **Copy lines are single lines.** The preview and print draw the
+  three-line ruling (top line, dashed middle line, baseline); the Word
+  file draws only the baseline of each row, because every line is an
+  exact-height table row, the one height Word and LibreOffice both keep.
+  The middle line could be added (for example two half-height rows per
+  line); left until teachers ask. The owner's view: most teachers won't
+  mind.
+- **The font was a serif fallback,** not Andika: the font isn't installed
+  on that PC, and fonts are declared, not embedded (see the Font item
+  above; the fallback's name was not recorded).
+
+It also showed Word's wavy spelling underlines under correct Slovene
+words: the file declared no language, so Word checked the text as the
+PC's language (English). Since this change the file declares the text's
+language (`sl-SI`, `en-GB`, `de-DE`, `fr-FR`, `es-ES`, `ro-RO`, `sk-SK`,
+`hr-HR`) once, as the document default in `styles.xml`; `document.xml`
+is byte-identical for all 668 texts in five settings combinations.
+Not yet re-checked in Word.
 
 ## Fresh-machine / offline test
 

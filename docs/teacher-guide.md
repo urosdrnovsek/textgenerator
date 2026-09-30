@@ -34,7 +34,10 @@ the app needs is already inside that folder.
    **Export as Word (.docx)** at the bottom of the sidebar (they stay in
    view while you scroll the settings). Print / PDF keeps the layout
    exactly as previewed; Word is editable and may reflow slightly in your
-   word processor.
+   word processor. In the Word file each writing line is a single line:
+   the dashed middle line of the preview is only in the printout and the
+   PDF. Word checks the spelling in the text's language, if that
+   language's proofing tools are installed.
 
 ### When a worksheet is longer than one page
 

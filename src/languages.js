@@ -14,19 +14,23 @@
  * `name` is the language's own name, the same in every interface language
  * (the endonym convention), so it lives here and not in the locale files.
  *
+ * `wordTag` is the language and region the Word file declares, so Word
+ * checks the spelling in the text's language, not the PC's (English uses
+ * British spelling, hence en-GB).
+ *
  * Pure data, no imports: node scripts and tests read it as it is.
  */
 
-/** @type {ReadonlyArray<Readonly<{ code: string, name: string }>>} */
+/** @type {ReadonlyArray<Readonly<{ code: string, name: string, wordTag: string }>>} */
 export const LANGUAGES = Object.freeze([
-  Object.freeze({ code: 'sl', name: 'Slovenščina' }),
-  Object.freeze({ code: 'en', name: 'English' }),
-  Object.freeze({ code: 'de', name: 'Deutsch' }),
-  Object.freeze({ code: 'fr', name: 'Français' }),
-  Object.freeze({ code: 'es', name: 'Español' }),
-  Object.freeze({ code: 'ro', name: 'Română' }),
-  Object.freeze({ code: 'sk', name: 'Slovenčina' }),
-  Object.freeze({ code: 'hr', name: 'Hrvatski' })
+  Object.freeze({ code: 'sl', name: 'Slovenščina', wordTag: 'sl-SI' }),
+  Object.freeze({ code: 'en', name: 'English', wordTag: 'en-GB' }),
+  Object.freeze({ code: 'de', name: 'Deutsch', wordTag: 'de-DE' }),
+  Object.freeze({ code: 'fr', name: 'Français', wordTag: 'fr-FR' }),
+  Object.freeze({ code: 'es', name: 'Español', wordTag: 'es-ES' }),
+  Object.freeze({ code: 'ro', name: 'Română', wordTag: 'ro-RO' }),
+  Object.freeze({ code: 'sk', name: 'Slovenčina', wordTag: 'sk-SK' }),
+  Object.freeze({ code: 'hr', name: 'Hrvatski', wordTag: 'hr-HR' })
 ]);
 
 /** @type {ReadonlyArray<string>} e.g. ['sl', 'en', …] */
@@ -42,4 +46,14 @@ const NAMES = new Map(LANGUAGES.map((language) => [language.code, language.name]
  */
 export function languageName(code) {
   return NAMES.get(code) ?? code;
+}
+
+const WORD_TAGS = new Map(LANGUAGES.map((language) => [language.code, language.wordTag]));
+
+/**
+ * @param {string} code
+ * @returns {string | undefined} the tag the Word file declares (sl-SI, …); undefined for an unknown code
+ */
+export function wordLanguageTag(code) {
+  return WORD_TAGS.get(code);
 }

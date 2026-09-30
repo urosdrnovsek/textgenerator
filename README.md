@@ -99,7 +99,9 @@ Microsoft Word, real desktop browsers, and physical printers, is in
 LibreOffice conversion of exported DOCX, a fresh-profile offline run in
 real Chromium, and real Firefox printing are all automated and passing;
 real Word, real desktop Firefox/Safari and printer tests need the
-project owner's own hardware.
+project owner's own hardware. The first by hand (2026-09-30): the ZIP
+works and prints in Edge on Windows, and an exported sheet opens
+correctly in Microsoft Word.
 
 Still open, deliberately: a native speaker's review of the English, German,
 French, Spanish, Romanian, Slovak and Croatian content (they've had a careful editorial pass, not a
@@ -113,7 +115,8 @@ printed by `npm run content-status`, so progress is measurable rather
 than asserted (see `docs/content-guide.md`). Also open: country-specific
 handwriting rulings (blocked on real classroom samples); fonts are declared
 but not embedded in `.docx`; zebra striping and syllable arcs are
-screen/PDF only (the app says so when they are on). The
+screen/PDF only (the app says so when they are on), and the `.docx`
+writing lines are single lines, without the dashed middle line. The
 project's development history is in `CHANGELOG.md`.
 
 ## Adding content

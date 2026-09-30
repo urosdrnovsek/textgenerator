@@ -34,6 +34,7 @@ import {
 import { FONT_FAMILIES, TWIPS_PER_PT, mmToPx, mmToTwips, TINTS_BY_ID, contentWidthMm, LINE_NUMBER_GUTTER_MM, DRAWING_BOX_GAP_MM, CLOZE, COPY_MARK_COLOR, SEQUENCE_BOX_FACTOR, WORD_BANK, ptToMm } from '../config.js';
 import { markedParagraphs } from '../worksheet/copyMark.js';
 import { computeContainedImageSizeMm, IMAGE_BOX_LARGE } from '../layout/imageBox.js';
+import { wordLanguageTag } from '../languages.js';
 
 /**
  * Ruled handwriting lines as Word draws them reliably: a one-column table,
@@ -497,7 +498,12 @@ export async function exportDocx(model, layout, imageBytes, labels = DEFAULT_LAB
     });
   }
 
+  // The text's language as the document default (styles.xml), so Word
+  // checks the spelling in it, not in the PC's language. Runs don't repeat it.
+  const languageTag = wordLanguageTag(model.contentKey.language);
+
   const doc = new Document({
+    ...(languageTag ? { styles: { default: { document: { run: { language: { value: languageTag } } } } } } : {}),
     sections: [
       {
         properties: {

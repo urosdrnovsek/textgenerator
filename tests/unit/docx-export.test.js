@@ -12,6 +12,7 @@ import { exportDocx } from '../../src/export/docx.js';
 import { convertMillimetersToTwip } from 'docx';
 import { mmToTwips, mmToPx, LINE_NUMBER_GUTTER_MM } from '../../src/config.js';
 import { readJson, readPack } from './helpers.js';
+import { LANGUAGES } from '../../src/languages.js';
 
 const root = path.dirname(path.dirname(path.dirname(fileURLToPath(import.meta.url))));
 const TEST_ENTRY_ID = 'stories_muc_1';
@@ -446,4 +447,26 @@ test('the word bank in Word: one bordered cell with the missing words, above the
   assert.ok(xml.indexOf(table) < xml.indexOf('<w:widowControl w:val="false"/>'), 'before the passage (its paragraphs carry widowControl false)');
   const spacer = xml.slice(xml.indexOf(table) + table.length).match(/^<w:p>[\s\S]*?<\/w:p>/)[0];
   assert.match(spacer, /<w:suppressLineNumbers\/>/);
+});
+
+test('the Word file declares the text\'s language once, as the document default, so Word checks its spelling in that language', async (t) => {
+  const { assetIds, imagesById } = await loadManifestAssets();
+  const tmpDir = await mkdtemp(path.join(os.tmpdir(), 'worksheet-docx-test-'));
+  t.after(() => rm(tmpDir, { recursive: true, force: true }));
+  const partsOf = async (model, name) => {
+    const docxPath = path.join(tmpDir, `${name}.docx`);
+    const blob = await exportDocx(model, { copyBlocks: [] }, undefined);
+    await import('node:fs/promises').then(async (fs) => fs.writeFile(docxPath, Buffer.from(await blob.arrayBuffer())));
+    return { styles: await unzipEntry(docxPath, 'word/styles.xml'), document: await unzipEntry(docxPath, 'word/document.xml') };
+  };
+  for (const { code, wordTag } of LANGUAGES) {
+    const { pack } = validatePack(readPack(code), assetIds);
+    const model = buildWorksheet({ ...pack.entries[0], language: pack.language }, SETTINGS, { imagesById }, code);
+    const { styles, document } = await partsOf(model, code);
+    assert.match(styles, new RegExp(`<w:rPrDefault><w:rPr><w:lang w:val="${wordTag}"/></w:rPr></w:rPrDefault>`), code);
+    assert.doesNotMatch(document, /<w:lang /, `${code}: runs don't repeat the language`);
+  }
+  const model = await buildModel(TEST_ENTRY_ID);
+  const unknown = await partsOf({ ...model, contentKey: { ...model.contentKey, language: 'xx' } }, 'unknown');
+  assert.doesNotMatch(unknown.styles, /<w:lang /, 'an unknown language declares none');
 });

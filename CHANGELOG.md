@@ -5,6 +5,20 @@ can be an introduction rather than a log. Newest first. Each entry
 summarizes what shipped and what was verified; the commit messages in
 `git log` carry the full per-change detail and are the source of truth.
 
+## Unreleased
+
+- **The Word file declares the text's language** (`sl-SI`, `en-GB`,
+  `de-DE`, `fr-FR`, `es-ES`, `ro-RO`, `sk-SK`, `hr-HR`, from
+  `src/languages.js`), once, as the document default. Word used to check
+  a Slovene sheet as English on an English Windows and underline every
+  word. Nothing else in the file changes: `document.xml` is
+  byte-identical for all 668 texts in five settings combinations.
+- **First real Windows results** (the owner, 2026-09-30): the rc.5 ZIP
+  works and prints in Edge, and an exported Slovene sheet opens correctly
+  in Microsoft Word, with the known single copy lines (no dashed middle
+  line) and a fallback font. Recorded in `docs/compatibility.md`; the
+  single lines are now also in the README and the teacher guide.
+
 ## 0.10.0-rc.5 — 2026-09-29 (three new languages)
 
 The rc.4 app with three new languages, Romanian, Slovak and Croatian
