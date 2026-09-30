@@ -7,6 +7,19 @@ summarizes what shipped and what was verified; the commit messages in
 
 ## Unreleased
 
+- **64 Romanian, Slovak and Croatian texts corrected** (version 2), after
+  a teacher-style read of all 225 that the owner approved point by point
+  (2026-09-30). Grammar: Slovak `je` ("eats") read as "is", so animals
+  now `žerie`; Croatian word order, agreement and cases (`Preko noći je
+  napadalo`, `raste drveće`, `treba biljkama`, `nemaju zuba`). Logic: five
+  gnomes counted as four, a sentence moved into the middle of another
+  thought (dolphins' sleep, the seasons, Venice's stakes, elephants'
+  ears), the pyramid chamber sealed before it was painted, a grandmother
+  who appeared from nowhere. Facts: Venice's foundation stakes can't be
+  seen from a gondola; kangaroos can walk; a rainbow needs the sun not
+  too high, rather than low. Safety: the thin-ice text now ends with the
+  child stepping back. The rest is more natural wording. Still no
+  native speaker's read.
 - **The Word file declares the text's language** (`sl-SI`, `en-GB`,
   `de-DE`, `fr-FR`, `es-ES`, `ro-RO`, `sk-SK`, `hr-HR`, from
   `src/languages.js`), once, as the document default. Word used to check
